@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="com.mqfdy.bom.project.newWizard"
+         name="BOM project wizard"
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="com.mqfdy.code.category"
+            class="com.mqfdy.bom.project.wizard.NewBOMProjectWizard"
+            icon="icons/mdd.png"
+            id="com.mqfdy.bom.project.wizard"
+            name="BOM模型项目"
+            project="true">
+      </wizard>
+   </extension>
+   <extension
+         id="com.mqfdy.code.category"
+         name="BOM project nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="com.mqfdy.bom.project.BOMProjectNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <newWizardShortcut
+               id="com.mqfdy.bom.project.wizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+   </extension>
+
+</plugin>

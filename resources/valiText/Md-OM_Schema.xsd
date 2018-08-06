@@ -1,0 +1,723 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- version="1.2" -->
+<tns:schema xmlns:tns="http://www.w3.org/2001/XMLSchema">
+	<tns:simpleType name="isTime">
+		<tns:restriction base="tns:string">
+		<tns:pattern value="\d{4}(-|\/)((0[1-9])|(1[0-2]))(-|\/)((0[1-9])|([1-2][0-9])|(3[0-1]))( |\s)(([0-1][0-9])|(2[0-3])):([0-5][0-9]):([0-5][0-9])"></tns:pattern>
+		</tns:restriction>
+	</tns:simpleType>
+	<!-- 可以为空的整数 -->
+	<tns:simpleType name="isint">
+		<tns:restriction base="tns:string">
+		<tns:pattern value="[0-9]*|.{0}"/>
+		</tns:restriction>
+	</tns:simpleType>
+	<!-- 百分比 -->
+	<tns:simpleType name="isper">
+		<tns:restriction base="tns:string">
+		<tns:pattern value="[0-9]*%"/>
+		</tns:restriction>
+	</tns:simpleType>
+	<tns:attribute name="id" type="tns:string"/>
+	<tns:attribute name="name" type="tns:string"/>
+	<tns:attribute name="displayName" type="tns:string"/>
+	<tns:attribute name="nameSpace" type="tns:string"/>
+	<tns:attribute name="refId" type="tns:string"/>
+   	<tns:attribute name="refModelId" type="tns:string"/>
+   	<tns:attribute name="refModelPath" type="tns:string"/>
+    <tns:element name="Model">
+    
+    	<tns:complexType>
+    		<tns:sequence>
+    			<tns:element name="Remark" type="tns:string" minOccurs="0" maxOccurs="1"/>
+    			<tns:element name="VersionInfo" type="VersionInfo" minOccurs="1" maxOccurs="1" />
+    			<tns:element name="Package" type="Package" minOccurs="0" maxOccurs="1000" />
+    		</tns:sequence>
+    		<tns:attribute ref="id" use="required" />
+    		<tns:attribute ref="name" use="required" />
+    		<tns:attribute ref="nameSpace" use="required"/>
+    		<tns:attribute name="stereotype" type="tns:string"/>
+    		<tns:attribute ref="displayName" />
+    	</tns:complexType>
+    </tns:element>
+    
+    <tns:complexType name="Package">
+    
+    	<tns:sequence minOccurs="0" maxOccurs="1">
+    		<tns:sequence minOccurs="0" maxOccurs="1">
+	    		<tns:element name="Diagrams" minOccurs="0" maxOccurs="1" >
+	    			<tns:complexType>
+	    				<tns:sequence>
+	    					<tns:element name="Diagram" type="Diagram"
+	    						minOccurs="0" maxOccurs="1000" />
+	    				</tns:sequence>
+	    			</tns:complexType>
+	    		</tns:element>
+	    		<tns:element name="Package" type="Package" minOccurs="0"
+	    			maxOccurs="1000" />
+	    			
+	    		<tns:element name="BusinessClasses" minOccurs="0" maxOccurs="1" >
+	    			<tns:complexType>
+	    				<tns:sequence>
+	    					<tns:element name="BusinessClass" type="BusinessClass" 
+	    						minOccurs="0"  maxOccurs="1000" />
+	    				</tns:sequence>
+	    			</tns:complexType>
+	    		</tns:element>
+	    		<tns:element name="Enumerations" minOccurs="0" maxOccurs="1" >
+	    			<tns:complexType>
+	    				<tns:sequence>
+	    					<tns:element name="Enumeration"
+	    						type="Enumeration" minOccurs="0"  maxOccurs="1000" />
+	    				</tns:sequence>
+	    			</tns:complexType>
+	    		</tns:element>
+	    		
+	    		<tns:element name="RefObjects" minOccurs="0" maxOccurs="1" >
+	    			<tns:complexType>
+	    				<tns:sequence>
+	    					<tns:element name="RefObject"
+	    						type="RefObject" minOccurs="0"  maxOccurs="1000" />
+	    				</tns:sequence>
+	    			</tns:complexType>
+	    		</tns:element>
+	    		<tns:element name="Annotations" minOccurs="0" maxOccurs="1" >
+	    			<tns:complexType>
+	    				<tns:sequence>
+	    					<tns:element name="Annotation"
+	    						type="Annotation" minOccurs="0"  maxOccurs="1000" />
+	    				</tns:sequence>
+	    			</tns:complexType>
+	    		</tns:element>
+	    		<tns:element name="Links" minOccurs="0" maxOccurs="1" >
+	    			<tns:complexType>
+	    				<tns:sequence>
+	    					<tns:element name="LinkAnnotation"
+	    						type="LinkAnnotation" minOccurs="0"  maxOccurs="1000" />
+	    				</tns:sequence>
+	    			</tns:complexType>
+	    		</tns:element>
+	    		<tns:element name="Associations" minOccurs="0" maxOccurs="1" >
+	    			<tns:complexType>
+	    				<tns:sequence>
+	    					<tns:element name="Association"
+	    						type="Association" minOccurs="0"  maxOccurs="1000" />
+	    				</tns:sequence>
+	    			</tns:complexType>
+	    		</tns:element>
+	    			<tns:element name="Inheritances" minOccurs="0"
+	    				maxOccurs="1">
+	    				<tns:complexType>
+	    					<tns:sequence>
+	    						<tns:element name="Inheritance"
+	    							type="Inheritance" minOccurs="0" maxOccurs="1000" />
+	    					</tns:sequence>
+	    				</tns:complexType>
+	    			</tns:element>
+	    		
+    		</tns:sequence>
+    		<tns:sequence minOccurs="0" maxOccurs="1">
+    			<tns:element name="Package" type="Package" minOccurs="0"
+	    			maxOccurs="1000" />
+	    			
+	    		<tns:element name="BusinessClasses" minOccurs="0" maxOccurs="1" >
+	    			<tns:complexType>
+	    				<tns:sequence>
+	    					<tns:element name="BusinessClass" type="BusinessClass" 
+	    						minOccurs="0"  maxOccurs="1000" />
+	    				</tns:sequence>
+	    			</tns:complexType>
+	    		</tns:element>
+	    		<tns:element name="Enumerations" minOccurs="0" maxOccurs="1" >
+	    			<tns:complexType>
+	    				<tns:sequence>
+	    					<tns:element name="Enumeration"
+	    						type="Enumeration" minOccurs="0"  maxOccurs="1000" />
+	    				</tns:sequence>
+	    			</tns:complexType>
+	    		</tns:element>
+	    		
+	    		<tns:element name="RefObjects" minOccurs="0" maxOccurs="1" >
+	    			<tns:complexType>
+	    				<tns:sequence>
+	    					<tns:element name="RefObject"
+	    						type="RefObject" minOccurs="0"  maxOccurs="1000" />
+	    				</tns:sequence>
+	    			</tns:complexType>
+	    		</tns:element>
+	    		<tns:element name="Annotations" minOccurs="0" maxOccurs="1" >
+	    			<tns:complexType>
+	    				<tns:sequence>
+	    					<tns:element name="Annotation"
+	    						type="Annotation" minOccurs="0"  maxOccurs="1000" />
+	    				</tns:sequence>
+	    			</tns:complexType>
+	    		</tns:element>
+	    		<tns:element name="Links" minOccurs="0" maxOccurs="1" >
+	    			<tns:complexType>
+	    				<tns:sequence>
+	    					<tns:element name="LinkAnnotation"
+	    						type="LinkAnnotation" minOccurs="0"  maxOccurs="1000" />
+	    				</tns:sequence>
+	    			</tns:complexType>
+	    		</tns:element>
+	    		<tns:element name="Associations" minOccurs="0" maxOccurs="1" >
+	    			<tns:complexType>
+	    				<tns:sequence>
+	    					<tns:element name="Association"
+	    						type="Association" minOccurs="0"  maxOccurs="1000" />
+	    				</tns:sequence>
+	    			</tns:complexType>
+	    		</tns:element>
+	    			<tns:element name="Inheritances" minOccurs="0"
+	    				maxOccurs="1">
+	    				<tns:complexType>
+	    					<tns:sequence>
+	    						<tns:element name="Inheritance"
+	    							type="Inheritance" minOccurs="0" maxOccurs="1000" />
+	    					</tns:sequence>
+	    				</tns:complexType>
+    			</tns:element>
+    			<tns:element name="Diagrams" minOccurs="0" maxOccurs="1" >
+	    			<tns:complexType>
+	    				<tns:sequence>
+	    					<tns:element name="Diagram" type="Diagram"
+	    						minOccurs="0" maxOccurs="1000" />
+	    				</tns:sequence>
+	    			</tns:complexType>
+	    		</tns:element>
+	    		
+    		</tns:sequence>
+    		
+    	</tns:sequence>
+	   	<tns:attribute ref="id" use="required"  />
+	   	<tns:attribute ref="name" use="required" />
+	   	<tns:attribute name="stereotype" type="tns:string"/>
+	   	<tns:attribute ref="displayName" use="required" />
+    </tns:complexType>
+
+    <tns:complexType name="Diagram">
+    	<tns:sequence>
+    		<tns:element name="DiagramStyle" type="DiagramStyle"  minOccurs="0" maxOccurs="1"/>
+   			<tns:element name="Elements"  minOccurs="0" maxOccurs="1">
+    			<tns:complexType>
+    				<tns:sequence>
+    					<tns:element name="Element" type="Element" maxOccurs="1000"/>
+    				</tns:sequence>
+    			</tns:complexType>
+			</tns:element>
+    	</tns:sequence>
+    	<tns:attribute ref="id" />
+    	<tns:attribute ref="name" use="required" />
+    	<tns:attribute name="stereotype" type="tns:string"/>
+    	<tns:attribute name="isDefault" type="tns:string"/>
+    	<tns:attribute ref="displayName" use="required" />
+    	
+    </tns:complexType>
+    <!-- 对象版本信息 -->
+    <tns:complexType name="VersionInfo">
+    	<tns:all>
+    		 <tns:element name="CreatedTime" type="isTime" maxOccurs="1"/>
+    		 <tns:element name="ChangedTime" type="isTime" maxOccurs="1"/>
+    		 <tns:element name="Description" type="tns:string" maxOccurs="1"/>
+    		 <tns:element name="Version" type="tns:string" maxOccurs="1"/>
+    		 <tns:element name="Creator" type="tns:string" maxOccurs="1"/>
+    		 <tns:element name="Modifier" type="tns:string" maxOccurs="1"/>
+		</tns:all>
+		<tns:attribute ref="id" />
+	</tns:complexType>
+	
+	
+	
+	
+	<tns:complexType name="BusinessClass">
+		<tns:all maxOccurs="1">
+			<tns:element name="VersionInfo" type="VersionInfo" minOccurs="0" maxOccurs="1" />
+    		<tns:element name="TableName" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="IsAbstract" type="tns:boolean" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="Remark" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="Groups" minOccurs="0" maxOccurs="1">
+				<tns:complexType>
+					<tns:sequence> 
+						<tns:element name="Group" minOccurs="1" maxOccurs="1000">
+							<tns:complexType>
+								<tns:attribute ref="id" use="required"/>
+								<tns:attribute ref="name" use="required"/>
+								<tns:attribute ref="displayName" use="required"/>
+								<tns:attribute name="stereotype"/>
+							</tns:complexType>
+						</tns:element>
+					</tns:sequence>
+				</tns:complexType>
+			</tns:element>
+<!-- 			<tns:element name="Statuses" minOccurs="0" maxOccurs="1">
+				<tns:complexType>
+					<tns:sequence>
+						<tns:element name="Status" type="Status" minOccurs="1" maxOccurs="1000"/>
+					</tns:sequence>
+				</tns:complexType>
+			</tns:element> -->
+			<tns:element name="Properties">
+				<tns:complexType>
+					<tns:sequence>
+						<tns:element name="Property" type="Property" minOccurs="1" maxOccurs="1000"/>
+					</tns:sequence>
+				</tns:complexType>
+			</tns:element>
+			<tns:element name="Operations"  minOccurs="0" maxOccurs="1">
+				<tns:complexType>
+					<tns:sequence>
+						<tns:element name="Operation" type="Operation" minOccurs="0" maxOccurs="1000"/>
+					</tns:sequence>
+				</tns:complexType>
+			</tns:element>
+		</tns:all>
+		<tns:attribute ref="id" use="required"/>
+    	<tns:attribute ref="name" use="required"/>
+    	<tns:attribute ref="displayName"/>
+    	<tns:attribute name="stereotype" type="tns:string"/>
+	</tns:complexType>
+
+	<tns:complexType name="Enumeration">
+		<tns:sequence>
+		<tns:element name="Remark" type="tns:string"
+    				minOccurs="0" maxOccurs="1" />
+		<tns:element name="VersionInfo" type="VersionInfo"
+    				minOccurs="1" maxOccurs="1" />
+			<tns:element name="Element" minOccurs="0" maxOccurs="1000">
+				<tns:complexType>
+					<tns:attribute name="name" type="tns:string"/>
+					<tns:attribute name="value" type="tns:string"/>
+					<tns:anyAttribute/>
+				</tns:complexType>
+			</tns:element>
+		</tns:sequence>
+		<tns:attribute ref="id" use="required"/>
+    	<tns:attribute ref="name" use="required"/>
+    	<tns:attribute ref="displayName"/>
+    	<tns:attribute name="stereotype" type="tns:string"/>
+	</tns:complexType>
+	
+	<tns:complexType name="Annotation">
+		<tns:sequence>
+		<tns:element name="Content" type="tns:string"
+    				minOccurs="0" maxOccurs="1" />
+		</tns:sequence>
+		<tns:attribute ref="id" use="required"/>
+    	<tns:attribute ref="name" use="required"/>
+    	<tns:attribute ref="displayName"/>
+	</tns:complexType>
+	
+	<tns:complexType name="RefObject">
+		<tns:attribute ref="id" use="required"/>
+    	<tns:attribute ref="name" use="required"/>
+    	<tns:attribute ref="displayName"/>
+    	<tns:attribute ref="refId" use="required"/>
+    	<tns:attribute ref="refModelId" use="required"/>
+    	<tns:attribute ref="refModelPath" use="required"/>
+    	<tns:attribute name="stereotype" type="tns:string"/>
+	</tns:complexType>
+	
+	<tns:complexType name="LinkAnnotation">
+		<tns:all>
+			<tns:element name="ClassA" type="tns:string" minOccurs="1"/>
+			<tns:element name="ClassB" type="tns:string" minOccurs="1"/>
+		</tns:all>
+		<tns:attribute ref="id"/>
+		<tns:attribute ref="name" use="required"/>
+    	<tns:attribute name="displayName" type="tns:string"/>
+	</tns:complexType>
+	
+	
+	
+	<tns:complexType name="Property">
+		<tns:all minOccurs="0"  maxOccurs="1">
+			<tns:element name="GroupId" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="DataType" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="OrderNum" type="tns:int" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="DefaultValue" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="DBColumnName" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="DBDataType" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="DBDataLength" type="isint" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="DBDataPrecision" type="isint" minOccurs="0" maxOccurs="1" nillable="true"/>
+			<tns:element name="QueryProperty" type="tns:boolean" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="IsPrimaryKey" type="tns:boolean" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="Unique" type="tns:boolean" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="Nullable" type="tns:boolean" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="ReadOnly" type="tns:boolean" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="IndexedColumn" type="tns:boolean" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="Persistence" type="tns:boolean" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="Editor" type="Editor" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="PkName" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="PrimaryKeyPloy" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="PrimaryKeyParams"  minOccurs="0" maxOccurs="1">
+				<tns:complexType>
+					<tns:sequence>
+						<tns:element name="Param" minOccurs="0" maxOccurs="1">
+							<tns:complexType>
+								<tns:sequence>
+									<tns:element name="name" type="tns:string"/>
+									<tns:element name="value" type="tns:string"/>
+								</tns:sequence>
+						<!-- 	<tns:attribute ref="id"/>
+						    	<tns:attribute ref="name"/>
+						    	<tns:attribute ref="displayName"/>
+						    	<tns:attribute name="stereotype" type="tns:string"/> -->
+							</tns:complexType>
+						</tns:element>
+					</tns:sequence>
+				</tns:complexType>
+			</tns:element>
+			<tns:element name="Validators"  minOccurs="0" maxOccurs="1">
+				<tns:complexType>
+					<tns:sequence>
+						<tns:element name="Validator" type="Validator" minOccurs="0" maxOccurs="1000"/>
+					</tns:sequence>
+				</tns:complexType>
+			</tns:element>
+			
+		</tns:all>
+		<tns:attribute ref="id"/>
+		<tns:attribute ref="name"/>
+		<tns:attribute ref="displayName"/>
+		<tns:attribute name="stereotype"/>
+	</tns:complexType>
+	<!-- 业务操作 -->
+	<tns:complexType name="Operation">
+		<tns:all maxOccurs="1">
+			 <tns:element name="OrderNum" type="tns:int" minOccurs="0" maxOccurs="1"/>
+			 <tns:element name="ReturnDataType" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			 <tns:element name="TransactionType" type="transactionType" minOccurs="0" maxOccurs="1"/>
+			 <tns:element name="ErrorMessage" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			 <tns:element name="Remark" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			 <tns:element name="Params" minOccurs="0" maxOccurs="1">
+			 	<tns:complexType>
+			 		<tns:sequence>
+			 			<tns:element name="Param" type="OperationParam" minOccurs="0" maxOccurs="1000"></tns:element>
+			 		</tns:sequence>
+			 		<tns:attribute ref="id"/>
+			    	<tns:attribute ref="name"/>
+			    	<tns:attribute ref="displayName"/>
+			    	<tns:attribute name="stereotype" type="tns:string"/>
+			 	</tns:complexType>
+			 </tns:element>
+		</tns:all>
+		<tns:attribute ref="id"  use="required"/>
+    	<tns:attribute ref="name" use="required"/>
+    	<tns:attribute name="displayName" type="tns:string"/>
+    	<tns:attribute name="stereotype" type="tns:string"/>
+    	<tns:attribute name="operationType" type="tns:string"/>
+	</tns:complexType>
+	
+	<!-- 编辑器 -->
+	<tns:complexType name="Editor">
+		<tns:sequence>
+			<tns:element name="Params" minOccurs="0" maxOccurs="1">
+				<tns:complexType>
+					<tns:sequence>
+						<tns:element name="Param"  minOccurs="1" maxOccurs="1000">
+							<tns:complexType>
+								<tns:sequence>
+									<tns:element name="name" type="tns:string"/>
+									<tns:element name="value" type="tns:string"/>
+								</tns:sequence>
+								<tns:attribute ref="id"  />
+						    	<tns:attribute ref="name" />
+						    	<tns:attribute ref="displayName" use="optional"/>
+						    	<tns:attribute name="stereotype" type="tns:string"/>
+							</tns:complexType>
+						</tns:element>
+					</tns:sequence>
+				</tns:complexType>
+			</tns:element>
+			<tns:element name="Conditions"  minOccurs="0" maxOccurs="1">
+				<tns:complexType>
+					<tns:sequence>
+						<tns:element name="Condition" type="Condition" minOccurs="0" maxOccurs="1000"/>
+					</tns:sequence>
+				</tns:complexType>
+			</tns:element>
+		</tns:sequence>
+		<tns:attribute ref="id"/>
+		<tns:attribute ref="name" use="required"/>
+    	<tns:attribute name="displayName" type="tns:string"/>
+    	<tns:attribute name="stereotype" type="tns:string"/>
+    	<tns:attribute name="editorType" type="editorType" use="required" />
+    	<tns:attribute name="dataSourceType" type="tns:string" use="required" />
+	</tns:complexType>
+	
+	<!-- 校验器 -->
+	<tns:complexType name="Validator">
+		<tns:sequence>
+			<tns:element name="Params"  minOccurs="0" maxOccurs="1">
+				<tns:complexType>
+					<tns:sequence>
+						<tns:element name="Param" minOccurs="0" maxOccurs="1000">
+							<tns:complexType>
+								<tns:sequence>
+									<tns:element name="name" type="tns:string"/>
+									<tns:element name="value" type="tns:string"/>
+								</tns:sequence>
+								<tns:attribute ref="id"/>
+						    	<tns:attribute ref="name"/>
+						    	<tns:attribute ref="displayName"/>
+						    	<tns:attribute name="stereotype" type="tns:string"/>
+							</tns:complexType>
+						</tns:element>
+					</tns:sequence>
+				</tns:complexType>
+			</tns:element>
+		</tns:sequence>
+		<tns:attribute ref="id"/>
+    	<tns:attribute ref="name" use="required"/>
+    	<tns:attribute ref="displayName"/>
+    	<tns:attribute name="stereotype" type="tns:string"/>
+    	<tns:attribute name="orderNumber" type="tns:int"/>
+    	<tns:attribute name="validatorType"  type="validatorType" use="required" />
+    	<tns:attribute name="validatorMessage" type="tns:string"/>
+    	<tns:attribute name="expression" type="tns:string"/>
+    	<tns:attribute name="validatorClass" type="tns:string"/>
+    	<tns:attribute name="interfaceName" type="tns:string"/>
+	</tns:complexType>
+	<!-- 查询条件 -->
+	<tns:complexType name="Condition">
+		<tns:attribute ref="id"/>
+    	<tns:attribute name="preBraces" type="tns:string"/>
+    	<tns:attribute name="propertyName" type="tns:string"/>
+    	<tns:attribute name="sqlOperateType"  type="tns:string"/>
+    	<tns:attribute name="value1" type="tns:string"/>
+    	<tns:attribute name="afterBraces" type="tns:string"/>
+    	<tns:attribute name="sqlLogicOperateType" type="tns:string"/>
+	</tns:complexType>
+	<!-- 参数 -->
+	<tns:complexType name="OperationParam">
+		<tns:all maxOccurs="1">
+			<tns:element name="DataType" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="DefaultValue" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="OrderNum" type="tns:int" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="Remark" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="Value" type="tns:string" minOccurs="0" maxOccurs="1"/>
+		</tns:all>
+		<tns:attribute name='id' type='tns:string'/>
+		<tns:attribute name='name' type='tns:string' use="required"/>
+		<tns:attribute name='displayName' type='tns:string'/>
+		<tns:attribute name='stereotype' type='tns:string'/>
+		<tns:attribute name='value' type='tns:string'/>
+	</tns:complexType>
+	
+	<!-- 编辑器类型 -->
+	<tns:simpleType name="editorType">
+		<tns:restriction base="tns:string">
+			<tns:enumeration value="TextEditor"/>
+			<tns:enumeration value="MultTextEditor"/>
+			<tns:enumeration value="PasswordTextEditor"/>
+			<tns:enumeration value="NumberEditor"/>
+			<tns:enumeration value="RichTextEditor"/>
+			<tns:enumeration value="DateTimeEditor"/>
+			<tns:enumeration value="DateEditor"/>
+			<tns:enumeration value="TimeEditor"/>
+			<tns:enumeration value="ComboBox"/>
+			<tns:enumeration value="CheckComboBox"/>
+			<tns:enumeration value="ListEditor"/>
+			<tns:enumeration value="CheckListEditor"/>
+			<tns:enumeration value="DropDownTreeEditor"/>
+			<tns:enumeration value="DropDownCheckBoxTreeEditor"/>
+			<tns:enumeration value="DropDownGridEditor"/>
+			<tns:enumeration value="CheckEditor"/>
+			<tns:enumeration value="RadioEditor"/>
+			<tns:enumeration value="FileEditor"/>
+			<tns:enumeration value="LableEditor"/>
+			<tns:enumeration value="LinkEditor"/>
+			<tns:enumeration value="CustomEditor"/>
+			<tns:enumeration value="AutoCompleteEditor"/>
+		</tns:restriction>
+	</tns:simpleType>
+	
+	<!-- 校验器类型 -->
+	<tns:simpleType name="validatorType">
+		<tns:restriction base="tns:string">
+			<tns:enumeration value="NOTNULL"/>
+			<tns:enumeration value="CHINESE"/>
+			<tns:enumeration value="LETTER"/>
+			<tns:enumeration value="DIGIT"/>
+			<tns:enumeration value="INTEGER"/>
+			<tns:enumeration value="ZIPCODE"/>
+			<tns:enumeration value="DATETIME"/>
+			<tns:enumeration value="URL"/>
+			<tns:enumeration value="EMAIL"/>
+			<tns:enumeration value="REGEXP"/>
+			<tns:enumeration value="UNIQUE"/>
+			<tns:enumeration value="CUSTOM"/>
+		</tns:restriction>
+	</tns:simpleType>
+	
+	<!-- 事务类型 -->
+	<tns:simpleType name="transactionType">
+		<tns:restriction base="tns:string">
+			<tns:enumeration value="REQUIRED"/>
+			<tns:enumeration value="SUPPORTS"/>
+			<tns:enumeration value="MANDATORY"/>
+			<tns:enumeration value="REQUIRES_NEW"/>
+			<tns:enumeration value="NOT_SUPPORTED"/>
+			<tns:enumeration value="NEVER"/>
+			<tns:enumeration value="NESTED"/>
+		</tns:restriction>
+	</tns:simpleType>
+	
+	<!-- 主键生成策略 -->
+	<tns:simpleType name="PrimaryKeyPloy">
+		<tns:restriction base="tns:string">
+			<tns:enumeration value="UUID"/>
+			<tns:enumeration value="SEQUENCE"/>
+			<tns:enumeration value="ASSIGNED"/>
+		</tns:restriction>
+	</tns:simpleType>
+	
+	<tns:complexType name="Association">
+		<tns:all>
+			<tns:element name="ClassA" type="tns:string" minOccurs="1"/>
+			<tns:element name="ClassB" type="tns:string" minOccurs="1"/>
+			<tns:element name="Type" type="relationType" minOccurs="1"/>
+			<tns:element name="CascadeDeleteClassB" type="tns:boolean"/>
+			<tns:element name="CascadeDeleteClassA" type="tns:boolean"/>
+			<tns:element name="NavigateToClassB" type="tns:boolean"/>
+			<tns:element name="NavigateToClassA" type="tns:boolean"/>
+			<tns:element name="navigateToClassBRoleName" type="tns:string"/>
+			<tns:element name="MajorClassId" type="tns:string"/>
+			<tns:element name="navigateToClassARoleName" type="tns:string"/>
+			<tns:element name="Remark" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="PersistencePloy" type="tns:string"/>
+			<tns:element name="PersistencePloyParams"  minOccurs="0" maxOccurs="1">
+				<tns:complexType>
+					<tns:sequence>
+						<tns:element name="Param" minOccurs="0" maxOccurs="1000">
+							<tns:complexType>
+								<tns:sequence>
+									<tns:element name="name" type="tns:string"/>
+									<tns:element name="value" type="tns:string"/>
+								</tns:sequence>
+								<!-- <tns:attribute ref="id"/>
+						    	<tns:attribute ref="name"/>
+						    	<tns:attribute ref="displayName"/>
+						    	<tns:attribute name="stereotype" type="tns:string"/> -->
+							</tns:complexType>
+						</tns:element>
+					</tns:sequence>
+				</tns:complexType>
+			</tns:element>
+			<!-- <tns:complexType>
+				<tns:sequence>
+					<tns:element name="ForeignkeyPloy" type="tns:relationType"/>
+					<tns:element name="RelationTableName" type="tns:string"/>
+					<tns:element name="SourceRelationColumn" type="tns:string"/>
+					<tns:element name="TargetRelationColumn" type="tns:string"/>
+				</tns:sequence>
+			</tns:complexType> -->
+			<tns:element name="Editor" type="Editor" minOccurs="0" maxOccurs="1"/>
+		</tns:all>
+		<tns:attribute ref="id"/>
+		<tns:attribute ref="name" use="required"/>
+    	<tns:attribute name="displayName" type="tns:string"/>
+    	<tns:attribute name="stereotype" type="tns:string"/>
+	</tns:complexType>
+	
+	<tns:complexType name="Inheritance">
+		<tns:sequence>
+			<tns:element name="ParentClass" type="tns:string"/>
+			<tns:element name="ChildClass" type="tns:string"/>
+			<tns:element name="Remark" type="tns:string"/>
+			<tns:element name="PersistencePloy" type="tns:string"/>
+			<tns:element name="PersistencePloyParams"  minOccurs="0" maxOccurs="1">
+				<tns:complexType>
+					<tns:sequence>
+						<tns:element name="Param" minOccurs="0" maxOccurs="1000">
+							<tns:complexType>
+								<tns:sequence>
+									<tns:element name="name" type="tns:string"/>
+									<tns:element name="value" type="tns:string"/>
+								</tns:sequence>
+								<tns:attribute ref="id"/>
+						    	<tns:attribute ref="name"/>
+						    	<tns:attribute ref="displayName"/>
+						    	<tns:attribute name="stereotype" type="tns:string"/>
+							</tns:complexType>
+						</tns:element>
+					</tns:sequence>
+				</tns:complexType>
+			</tns:element>
+		</tns:sequence>
+	</tns:complexType>
+	 
+	<!-- 关联关系类型 -->
+	<tns:simpleType name="relationType">
+		<tns:restriction base="tns:string">
+			<tns:enumeration value="m-n"/>
+			<tns:enumeration value="m-1"/>
+			<tns:enumeration value="1-m"/>
+			<tns:enumeration value="1-1"/>
+			<!--<tns:enumeration value="Aggregation"/>
+			<tns:enumeration value="Composition"/> -->
+		</tns:restriction>
+	</tns:simpleType>
+	
+	<!-- <tns:simpleType name="foreignkeyPloy">
+		<tns:restriction base="string">
+			<tns:enumeration value="ForeignkeyOnSource"/>
+			<tns:enumeration value="ForeignkeyOnTarget"/>
+		</tns:restriction>
+	</tns:simpleType> -->
+	
+	<!-- <tns:simpleType name="createTablePloy">
+		<tns:restriction base="string">
+			<tns:enumeration value="each"/>
+			<tns:enumeration value="together"/>
+		</tns:restriction>
+	</tns:simpleType> -->
+	
+	<!-- 模型文件整体样式 -->
+	<tns:complexType name="DiagramStyle">
+		<tns:sequence>
+			<tns:element name="BackGroundColor" type="tns:string"/>
+			<tns:element name="GridStyle" type="tns:boolean"/>
+			<tns:element name="ZoomScale" type="isper"/>
+			<tns:element name="ElementStyle" type="ElementStyle" minOccurs="0" maxOccurs="1"/>
+		</tns:sequence>
+	</tns:complexType>
+	
+	<!-- 对象样式 -->
+	<tns:complexType name="Element">
+		<tns:sequence>
+			<tns:element name="ElementStyle" type="ElementStyle" minOccurs="0" maxOccurs="1"/>
+		</tns:sequence>
+		<tns:attribute ref="id"/>
+    	<tns:attribute name="objectId" type="tns:string" use="required"/>
+	</tns:complexType>
+	
+	<tns:complexType name="ElementStyle">
+	<tns:all minOccurs="0" maxOccurs="1">
+		<!-- <tns:sequence> -->
+			<tns:element name="FontFamily" type="tns:string"/>
+			<tns:element name="FontSize" type="tns:int"/>
+			<tns:element name="Width" type="tns:int"/>
+			<tns:element name="Height" type="tns:int"/>
+			<tns:element name="Position_X" type="tns:double"/>
+			<tns:element name="Position_Y" type="tns:double"/>
+			<tns:element name="End_Position_X" type="tns:double"/>
+			<tns:element name="End_Position_Y" type="tns:double"/>
+			<tns:element name="Point_List" type="tns:string" minOccurs="0" maxOccurs="1"/>
+			<tns:element name="Border" type="tns:boolean"/>
+			<tns:element name="BorderColor" type="tns:string"/>
+			<tns:element name="BackGroundColor" type="tns:string"/>
+		<!-- </tns:sequence> -->
+		</tns:all>
+	</tns:complexType>
+	<!-- 
+	<tns:complexType name="Status">
+		<tns:attribute ref="id" use="required"/>
+		<tns:attribute ref="name" use="required"/>
+		<tns:attribute ref="displayName" use="required"/>
+		<tns:attribute name="stereotype" use="required"/>
+		<tns:attribute name="OrderNum" use="required"/>
+		<tns:attribute name="isNoneStatus" use="required"/>
+	</tns:complexType> -->
+</tns:schema>

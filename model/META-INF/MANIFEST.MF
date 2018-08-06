@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: code Model Plug-in
+Bundle-SymbolicName: com.mqfdy.code.model
+Bundle-Version: 1.0.0.vqualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: com.mqfdy.code.model,
+ com.mqfdy.code.model.graph,
+ com.mqfdy.code.model.utils
+Bundle-ClassPath: .
+Bundle-Vendor: mqf
+Require-Bundle: com.mqfdy.code.commonlib;bundle-version="1.0.0"

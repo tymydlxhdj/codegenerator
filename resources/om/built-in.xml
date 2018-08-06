@@ -1,0 +1,1048 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model id="5989fc1d15e2422fb166e791f6a650e4" name="built-in-model" displayName="内置模型" stereotype="0">
+    <Remark>rrrr</Remark>
+    
+    <Package id="1617ee0d8b1c447f812bca8f6b3f0883" name="standardUnit" displayName="基准组织单元" stereotype="0">
+    	 <BusinessClasses>
+			<!--User-->
+            <BusinessClass id="a94f37f324d147849d9fbb5a34e502fa" name="User" displayName="人员" stereotype="0">
+                <Remark>SYS_USER</Remark>
+                <TableName>SYS_USER</TableName>
+                <IsAbstract>false</IsAbstract><!--固定值，model暂不支持true-->
+				
+                <Properties>
+					<!-- SYS_USER -->
+                    <Property id="2dd1cd14fb2f41b1aafcccb81f092c40" name="id" displayName="User表主键" stereotype="0">
+                        <Remark>ID</Remark>
+						<DataType>long</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>ID</DBColumnName>
+						<DBDataLength>22</DBDataLength><!--数值类型、字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>true</Unique>
+						<Nullable>false</Nullable>
+						<IndexedColumn>true</IndexedColumn>
+                        
+						<IsPrimaryKey>true</IsPrimaryKey>
+						<PkName>Pk_T_USER_ID</PkName>
+                        <PrimaryKeyPloy>sequence</PrimaryKeyPloy>
+                        <PrimaryKeyParams>
+                            <Param>
+                                <name>sequence</name>
+                                <value>SEQ_SYSUSER</value>
+                            </Param>
+                        </PrimaryKeyParams>
+                    </Property>
+                    
+                    <!-- 组织单元ID -->
+                    <Property id="f3cbfdbb0b7842b08e5ca7e4fc1d2078" name="baseOrgId" displayName="组织单元ID" stereotype="0">
+                        <Remark>TRANSFORMER_NAME</Remark>
+						<DataType>long</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>BASEORG_ID</DBColumnName>
+						<DBDataLength>22</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 用户名 -->
+                    <Property id="b629fd21408a4facbd0ecdcf3afa8950" name="name" displayName="用户名" stereotype="0">
+                        <Remark>用户名</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>NAME</DBColumnName>
+						<DBDataLength>60</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 用户操作代码 -->
+                    <Property id="6c3c3987a0f1429eb9738c8683806338" name="userName" displayName="用户操作代码" stereotype="0">
+                        <Remark>用户操作代码</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>NAMECODE</DBColumnName>
+						<DBDataLength>100</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 用户状态 -->
+                    <Property id="11a2cc92bd204f9fb28f1f5a84ca6c15" name="state" displayName="用户状态" stereotype="0">
+                        <Remark>用户状态</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>STATE</DBColumnName>
+						<DBDataLength>22</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 用户统一码 -->
+                    <Property id="d6ed701854a44380b5af44a97d32078a" name="unicode" displayName="用户统一码" stereotype="0">
+                        <Remark>用户统一码</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>CODE</DBColumnName>
+						<DBDataLength>22</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 用户手机号码 -->
+                    <Property id="0570b5a2cee54038b2129605e18d12a6" name="mobile" displayName="用户手机号码" stereotype="0">
+                        <Remark>用户手机号码</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>TEL</DBColumnName>
+						<DBDataLength>30</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- EMAIL -->
+                    <Property id="cbf808ab470343ee874e3e6838c0caf3" name="email" displayName="EMAIL" stereotype="0">
+                        <Remark>EMAIL</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>email</DBColumnName>
+						<DBDataLength>40</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 权限数据已缓存 -->
+                    <Property id="e8638d3ecae04317a38c32dd62824d6b" name="isCached" displayName="权限数据已缓存" stereotype="0">
+                        <Remark>权限数据已缓存</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>ISCACHED</DBColumnName>
+						<DBDataLength>40</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                     <!-- 排序 -->
+                    <Property id="4b80d9f6a7404c7eaed3b57091e77bb5" name="dispOrder" displayName="排序" stereotype="0">
+                        <Remark>排序</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>DISP_ORDER</DBColumnName>
+						<DBDataLength>22</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 用户个性设置 -->
+                    <Property id="36c749125a5241d6a3e3a711b93c8a72" name="config" displayName="用户个性设置" stereotype="0">
+                        <Remark>用户个性设置</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>CONFIG</DBColumnName>
+						<DBDataLength>200</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 数据ID -->
+                    <Property id="0d34fbcccc0f4bc290dd2c33802548d4" name="dataId" displayName="数据ID" stereotype="0">
+                        <Remark>数据ID</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>SYSDATAID</DBColumnName>
+						<DBDataLength>32</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 系统标志 -->
+                    <Property id="d34fa8ba9f694c69beab005c298221be" name="sysMark" displayName="系统标志" stereotype="0">
+                        <Remark>系统标志</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>SYSCODE</DBColumnName>
+						<DBDataLength>32</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 有效期开始时间 -->
+                    <Property id="a178a7e7ff6d4f33891bef6b28d15658" name="startUsefulLife" displayName="有效期开始时间" stereotype="0">
+                        <Remark>有效期开始时间</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>START_USEFULLIFE</DBColumnName>
+						<DBDataLength>32</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 有效期结束时间 -->
+                    <Property id="f95c3eb7b73142ab86bb986babc58cf3" name="endUsefulLife" displayName="有效期结束时间" stereotype="0">
+                        <Remark>有效期结束时间</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>END_USEFULLIFE</DBColumnName>
+						<DBDataLength>32</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 用户名拼音缩写 -->
+                    <Property id="589ce22a63ad43498c139e3bc820ea5f" name="spell" displayName="用户名拼音缩写" stereotype="0">
+                        <Remark>用户名拼音缩写</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>SPELL</DBColumnName>
+						<DBDataLength>30</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                     <!-- 是否同步到SAP -->
+                    <Property id="cc8aef3a566e49b4a9c9b8e4065f8d69" name="isSyncToSap" displayName="是否同步到SAP" stereotype="0">
+                        <Remark>是否同步到SAP</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>SYNCTOSAP</DBColumnName>
+						<DBDataLength>30</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                     <!-- SAP人资ID -->
+                    <Property id="c81e4ae8a309472895c5d721b73922d3" name="sapHrCode" displayName="SAP人资ID" stereotype="0">
+                        <Remark>SAP人资ID</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>SAPHRID</DBColumnName>
+						<DBDataLength>22</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 用工形式ID -->
+                    <Property id="b2017e42b34643c9b5b967b57a6a6b8c" name="employFormId" displayName="用工形式ID" stereotype="0">
+                        <Remark>用工形式ID</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>GOTOWORKS_TYPE_ID</DBColumnName>
+						<DBDataLength>22</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 员工性质ID -->
+                    <Property id="86d71952d7d3471c81ca9c7cce7009de" name="employNatureId" displayName="员工性质ID" stereotype="0">
+                        <Remark>员工性质ID</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>STAFF_PROPERTIES_ID</DBColumnName>
+						<DBDataLength>22</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                     <!-- 人员类别ID -->
+                    <Property id="ecc86eb14850420cad83cb8b31064b69" name="employCategoryId" displayName="人员类别ID" stereotype="0">
+                        <Remark>人员类别ID</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>PERSONNEL_TYPE_ID</DBColumnName>
+						<DBDataLength>8</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 职称 -->
+                    <Property id="ffefbdbb3cae44a8bdb147c5ad7988c5" name="title" displayName="职称" stereotype="0">
+                        <Remark>职称</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>TITLE</DBColumnName>
+						<DBDataLength>32</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 婚姻状况ID -->
+                    <Property id="a47f76e0c6bd42e782cdd82b77fd2b28" name="maritalStatusId" displayName="婚姻状况ID" stereotype="0">
+                        <Remark>婚姻状况ID</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>MARITAL_STATUS_ID</DBColumnName>
+						<DBDataLength>8</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                     <!-- BIRTH_DATE -->
+                    <Property id="7abaff0827374084acd88581b74a765c" name="birthDate" displayName="BIRTH_DATE" stereotype="0">
+                        <Remark>BIRTH_DATE</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>BIRTH_DATE</DBColumnName>
+						<DBDataLength>8</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- BIRTH_PLACE -->
+                    <Property id="2519dd01085347e4b0410bcb5d1ff629" name="birthPlace" displayName="BIRTH_PLACE" stereotype="0">
+                        <Remark>BIRTH_PLACE</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>BIRTH_PLACE</DBColumnName>
+						<DBDataLength>128</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- SEX_CODE -->
+                    <Property id="4da8346ea757452e987b3bee8a29e4c7" name="sexCode" displayName="SEX_CODE" stereotype="0">
+                        <Remark>SEX_CODE</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>SEX_CODE</DBColumnName>
+						<DBDataLength>8</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 中文姓 -->
+                    <Property id="4a184401d7394c3abe27105573eb1b9b" name="givenName" displayName="中文姓" stereotype="0">
+                        <Remark>中文姓</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>GIVEN_NAME</DBColumnName>
+						<DBDataLength>20</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 曾用名 -->
+                    <Property id="9b19a42be6664701b5f800b8cc9504e1" name="formerName" displayName="曾用名" stereotype="0">
+                        <Remark>曾用名</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>FORMER_NAME</DBColumnName>
+						<DBDataLength>20</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 住址邮政地址 -->
+                    <Property id="982e555bb73b4f2a839a2ab41f6619dd" name="homePostalAddress" displayName="住址邮政地址" stereotype="0">
+                        <Remark>住址邮政地址</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>HOME_POSTAL_ADDRESS</DBColumnName>
+						<DBDataLength>20</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- HOME_POSTAL_CODE -->
+                    <Property id="06ee4e3d74da41f798e5723b8b14d948" name="homePostalCode" displayName="HOME_POSTAL_CODE" stereotype="0">
+                        <Remark>HOME_POSTAL_CODE</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>HOME_POSTAL_ADDRESS</DBColumnName>
+						<DBDataLength>8</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- HOME_PHONE -->
+                    <Property id="c17587a06ef04b4fb33c43d23c400338" name="homePhone" displayName="HOME_PHONE" stereotype="0">
+                        <Remark>HOME_PHONE</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>HOME_PHONE</DBColumnName>
+						<DBDataLength>30</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    
+                    <!-- 邮政地址 -->
+                    <Property id="258429eaafca41ba8feba4d267b88562" name="postalAddress" displayName="邮政地址" stereotype="0">
+                        <Remark>邮政地址</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>POSTAL_ADDRESS</DBColumnName>
+						<DBDataLength>100</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- POSTAL_CODE -->
+                    <Property id="9c3e8920b0644c9abb458fadcb8557f0" name="postalCode" displayName="POSTAL_CODE" stereotype="0">
+                        <Remark>POSTAL_CODE</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>POSTAL_CODE</DBColumnName>
+						<DBDataLength>8</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- FAX -->
+                    <Property id="520f8daca71b449eb70f1899bf2ad60b" name="fax" displayName="FAX" stereotype="0">
+                        <Remark>FAX</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>FAX</DBColumnName>
+						<DBDataLength>30</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- TELEPHONE_NUMBER -->
+                    <Property id="d677bea5ae6844f49952392acb2091fd" name="telephoneNumber" displayName="TELEPHONE_NUMBER" stereotype="0">
+                        <Remark>TELEPHONE_NUMBER</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>TELEPHONE_NUMBER</DBColumnName>
+						<DBDataLength>30</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 个人身份ID -->
+                    <Property id="e1830b32e4464604abc1d92e25b407dc" name="privateIdentityId" displayName="个人身份ID" stereotype="0">
+                        <Remark>个人身份ID</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>PRIVATE_IDENTITY_ID</DBColumnName>
+						<DBDataLength>30</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 民族 -->
+                    <Property id="b3f93b64df8749678606a0f12db9fde6" name="nationCode" displayName="民族" stereotype="0">
+                        <Remark>民族</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>NATION_CODE</DBColumnName>
+						<DBDataLength>2</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- REMARK -->
+                    <Property id="54c4268ce6e84b8f9562efea8335979d" name="remark" displayName="REMARK" stereotype="0">
+                        <Remark>REMARK</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>REMARK</DBColumnName>
+						<DBDataLength>256</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- NATIVE_PLACE -->
+                    <Property id="35bdb6bae2734de8acc7471f280c4b85" name="nativePlace" displayName="NATIVE_PLACE" stereotype="0">
+                        <Remark>NATIVE_PLACE</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>NATIVE_PLACE</DBColumnName>
+						<DBDataLength>40</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- 所属组织机构名称 -->
+                    <Property id="7cc05e4836224733a6181849873d80c3" name="orgAnisationName" displayName="所属组织机构名称" stereotype="0">
+                        <Remark>所属组织机构名称</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>ORG_ANISATION_NAME</DBColumnName>
+						<DBDataLength>40</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                     <!-- PHOTO -->
+                    <Property id="44e62e70a03f4e07bdf40b2601296758" name="photo" displayName="PHOTO" stereotype="0">
+                        <Remark>PHOTO</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>PHOTO</DBColumnName>
+						<DBDataLength>1000</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- PASSWORD -->
+                    <Property id="d00cd597607e49f1a401c877d1e0e3cd" name="password" displayName="PASSWORD" stereotype="0">
+                        <Remark>PASSWORD</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>PASSWORD</DBColumnName>
+						<DBDataLength>60</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+				</Properties>
+            </BusinessClass>
+            <!--Organization-->
+            <BusinessClass id="0cff40dfb4314965b6f7bbe071efff95" name="BusinessOrganization" displayName="组织机构" stereotype="0">
+                <Remark>Organization</Remark>
+                <TableName>ORGANIZATION</TableName>
+                <IsAbstract>false</IsAbstract><!--固定值，model暂不支持true-->
+				
+                <Properties>
+					<!-- Organization -->
+                    <Property id="484adad4eb174129a40cc85af460fd4e" name="id" displayName="Organization表主键" stereotype="0">
+                        <Remark>ID</Remark>
+						<DataType>string</DataType>
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>ID</DBColumnName>
+						<DBDataLength>36</DBDataLength>
+						<DBDataPrecision>0</DBDataPrecision>
+						<QueryProperty>true</QueryProperty>
+						<Unique>true</Unique>
+						<Nullable>false</Nullable>
+						<IndexedColumn>true</IndexedColumn>
+                        
+						<IsPrimaryKey>true</IsPrimaryKey>
+						<PkName>Pk_T_USER_ID</PkName>
+                        <PrimaryKeyPloy>sequence</PrimaryKeyPloy>
+                        <PrimaryKeyParams>
+                            <Param>
+                                <name>sequence</name>
+                                <value>SEQ_SYSBASEORG</value>
+                            </Param>
+                        </PrimaryKeyParams>
+                    </Property>
+                    
+                    <!-- NAME -->
+                    <Property id="7972676d49f742eb9c60f3cfb9c39d60" name="name" displayName="NAME" stereotype="0">
+                        <Remark>NAME</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>NAME</DBColumnName>
+						<DBDataLength>60</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- SHORTNAME -->
+                    <Property id="c0ac8dd82a29422f93f0dad0f32e09e0" name="shortName" displayName="SHORTNAME" stereotype="0">
+                        <Remark>SHORTNAME</Remark>
+						<DataType>string</DataType>
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>ATTR</DBColumnName>
+						<DBDataLength>50</DBDataLength>
+						<DBDataPrecision>0</DBDataPrecision>
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>   <!--该字段在生成hbm，ddl时无用-->
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+
+                    <!-- CODE -->
+                    <Property id="8cbcb89f597e44c692eae60b72021630" name="code" displayName="CODE" stereotype="0">
+                        <Remark>CODE</Remark>
+						<DataType>string</DataType>
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>CODE</DBColumnName>
+						<DBDataLength>120</DBDataLength>
+						<DBDataPrecision>0</DBDataPrecision>
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- UNICODE -->
+                    <Property id="a0b4b70209544987b4c544d2cbc4e345" name="unicode" displayName="UNICODE" stereotype="0">
+                        <Remark>UNICODE</Remark>
+						<DataType>string</DataType>
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>UNICODE</DBColumnName>
+						<DBDataLength>30</DBDataLength>
+						<DBDataPrecision>0</DBDataPrecision>
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+					
+					<!-- RELATION -->
+                    <Property id="48409d1153824051b4b715a8e18f3915" name="relation" displayName="RELATION" stereotype="0">
+                        <Remark>RELATION</Remark>
+						<DataType>string</DataType>
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>RELATION</DBColumnName>
+						<DBDataLength>30</DBDataLength>
+						<DBDataPrecision>0</DBDataPrecision>
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- FOUND_DATE -->
+                    <Property id="caed44cd5d5d417fb00f5aaaea7b6ba7" name="foundDate" displayName="FOUND_DATE" stereotype="0">
+                        <Remark>FOUND_DATE</Remark>
+						<DataType>string</DataType>        <!--hibernate数据类型-->
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>FOUND_DATE</DBColumnName>
+						<DBDataLength>50</DBDataLength><!--不管是数值类型还是字符串、日期类型都用该字段表达长度-->
+						<DBDataPrecision>0</DBDataPrecision><!--该字段表达数值型字段的精度，不是数值字段该字段无用-->
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- RETRACT_DATE -->
+                    <Property id="e1aac119d8764979ae75c2619e0ee75c" name="retractDate" displayName="RETRACT_DATE" stereotype="0">
+                        <Remark>RETRACT_DATE</Remark>
+						<DataType>string</DataType>
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>RETRACT_DATE</DBColumnName>
+						<DBDataLength>50</DBDataLength>
+						<DBDataPrecision>0</DBDataPrecision>
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+                    <!-- COMMENT -->
+                    <Property id="f72f3b31d2ab41d1b691d3f96676edf7" name="comment" displayName="COMMENT" stereotype="0">
+                        <Remark>COMMENT</Remark>
+						<DataType>string</DataType>
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>COMMENT</DBColumnName>
+						<DBDataLength>2000</DBDataLength>
+						<DBDataPrecision>0</DBDataPrecision>
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+
+                    <!-- STATE -->
+                    <Property id="788d9ce82c1748cfa6259a1d2ee84378" name="state" displayName="STATE" stereotype="0">
+                        <Remark>STATE</Remark>
+						<DataType>string</DataType>
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>STATE</DBColumnName>
+						<DBDataLength>2</DBDataLength>
+						<DBDataPrecision>0</DBDataPrecision>
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+					
+					 <!-- level -->
+                    <Property id="ea66a1ac2e0548c0ad7fdc9bbf757723" name="level" displayName="LEVEL" stereotype="0">
+                        <Remark>LEVEL</Remark>
+						<DataType>string</DataType>
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>LEVEL</DBColumnName>
+						<DBDataLength>20</DBDataLength>
+						<DBDataPrecision>0</DBDataPrecision>
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+					
+					<!-- isLeaf -->
+                    <Property id="380f8889e0784f00b9ee16bf0f3c78e9" name="isLeaf" displayName="ISLEAF" stereotype="0">
+                        <Remark>ISLEAF</Remark>
+						<DataType>string</DataType>
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>ISLEAF</DBColumnName>
+						<DBDataLength>20</DBDataLength>
+						<DBDataPrecision>0</DBDataPrecision>
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+					
+					<!-- orgTypeId -->
+                    <Property id="d5a654fa91124c95ab017e454df2f730" name="orgTypeId" displayName="ORGTYPEID" stereotype="0">
+                        <Remark>orgTypeId</Remark>
+						<DataType>string</DataType>
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>ORGTYPEID</DBColumnName>
+						<DBDataLength>36</DBDataLength>
+						<DBDataPrecision>0</DBDataPrecision>
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+					
+					<!-- parentId -->
+                    <Property id="737f2f01338547f9b08ab92653a4a994" name="parentId" displayName="PARENTID" stereotype="0">
+                        <Remark>parentId</Remark>
+						<DataType>string</DataType>
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>PARENTID</DBColumnName>
+						<DBDataLength>36</DBDataLength>
+						<DBDataPrecision>0</DBDataPrecision>
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+					
+					<!-- upperOrgId -->
+                    <Property id="6fdd2b170e6e43cbab303944f2122fb6" name="upperOrgId" displayName="UPPERORGID" stereotype="0">
+                        <Remark>UPPERORGID</Remark>
+						<DataType>string</DataType>
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>UPPERORGID</DBColumnName>
+						<DBDataLength>36</DBDataLength>
+						<DBDataPrecision>0</DBDataPrecision>
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+					
+					<!-- dimId -->
+                    <Property id="20be39a53dce4efbb42193e9a3a4042b" name="dimId" displayName="DIMID" stereotype="0">
+                        <Remark>DIMID</Remark>
+						<DataType>string</DataType>
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>DIMID</DBColumnName>
+						<DBDataLength>36</DBDataLength>
+						<DBDataPrecision>0</DBDataPrecision>
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+					
+					<!-- natureId -->
+                    <Property id="65f98b65a7e04acf876238907637da99" name="natureId" displayName="NATUREID" stereotype="0">
+                        <Remark>NATUREID</Remark>
+						<DataType>string</DataType>
+                        <OrderNum>0</OrderNum>
+						
+						<Persistence>true</Persistence>
+						<DBColumnName>NATUREID</DBColumnName>
+						<DBDataLength>36</DBDataLength>
+						<DBDataPrecision>0</DBDataPrecision>
+						<QueryProperty>true</QueryProperty>
+						<Unique>false</Unique>
+						<Nullable>true</Nullable>
+                        <ReadOnly>true</ReadOnly>
+						<IndexedColumn>true</IndexedColumn>
+                    </Property>
+                    
+				</Properties>
+            </BusinessClass>
+        </BusinessClasses>
+    </Package>
+</Model>

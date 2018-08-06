@@ -1,0 +1,38 @@
+#set($table=$ptable.getTable())
+#set($tjavaName=$table.getJavaName())
+#set($tjavaName_l=${strings.lowercaseFirstLetter($tjavaName)})
+#set($primaryKeyCol=$table.getPrimaryKey().getColumns().get(0))
+${packageStr}
+
+${importStr1}
+
+/**
+ * <b>概述</b>：<br>
+ *	TODO
+ * <p>
+ * <b>功能</b>：<br>
+ *	TODO
+ *	
+ * @author ${author}
+ */
+public interface ${tjavaName}Repository extends JpaRepository<${tjavaName},${primaryKeyCol.javaType}>,JpaSpecificationExecutor<${tjavaName}> {
+
+#if($isTree)
+	/**
+	 * @findBy${strings.capitalizeFirstLetter($parent_col_name)}IsNull:查询父id为空的${tjavaName}列表
+	 * @return List<${tjavaName}> ${tjavaName}对象列表
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	public List<${tjavaName}> findBy${strings.capitalizeFirstLetter($parent_col_name)}IsNull();
+	/**
+	 * @findBy${strings.capitalizeFirstLetter($parent_col_name)}:根据父id查询${tjavaName}
+	 * @param $parent_col_name 父id
+	 * @return List<${tjavaName}> ${tjavaName}对象列表
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	public List<${tjavaName}> findBy${strings.capitalizeFirstLetter($parent_col_name)}(${primaryKeyCol.javaType} ${parent_col_name});
+#end
+	${methods}
+}

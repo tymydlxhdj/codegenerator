@@ -1,0 +1,76 @@
+#set($table=$ptable.getTable())
+#set($primaryKey=$table.getPrimaryKey().getColumns().get(0).getJavaName())
+#set($tjavaName=$table.getJavaName())
+#set($tjavaName_l=${strings.lowercaseFirstLetter($tjavaName)})
+#set($primaryKeyCol=$table.getPrimaryKey().getColumns().get(0))
+${packageStr}
+
+${importStr1}
+
+/**
+ * <b>概述</b>：<br>
+ *	TODO
+ * <p>
+ * <b>功能</b>：<br>
+ *	TODO
+ *
+ * @author ${author}
+ */
+public interface I${tjavaName}Service {
+
+#if($isTree)
+	/**
+	 * @listNodes:列出根节点id下的子节点列表
+	 * @param nodeId 树节点id
+	 * @param boo    是否有子节点
+	 * @return List<TreeNode> 树节点列表
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	public List<TreeNode> listNodes(String nodeId,boolean boo);
+
+#end
+#if($hasGet)
+	/**
+	 * @get${tjavaName}By${strings.capitalizeFirstLetter($primaryKey)}:根据主键 查询
+	 * @param queryCondition 查询条件
+	 * @return QueryResultObject 查询结果
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	public QueryResultObject get${tjavaName}By${strings.capitalizeFirstLetter($primaryKey)}(String ${primaryKey});
+#end
+#if($hasDelete)
+	/**
+	 * @remove:根据idObject删除
+	 * @param idObject 主键id
+	 * @return void
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	public void remove(IDRequestObject idObject);
+#end
+#if($hasSave)
+	/**
+	 * @save:保存或更新
+	 * @param map 保存或更新的数据
+	 * @return ${tjavaName} ${tjavaName}对象
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	public ${tjavaName} save${tjavaName}(Map<String,Object> map) throws Exception;
+#end
+#if($hasQuery)
+	/**
+	 * @query:根据查询条件 查询
+	 * @param queryCondition 查询条件
+	 * @return QueryResultObject 查询结果
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	public QueryResultObject query(RequestCondition queryCondition);
+#end
+
+${customMethods}
+
+}

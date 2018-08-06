@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: code Resource Plug-in
+Bundle-SymbolicName: com.mqfdy.code.resource
+Bundle-Version: 1.0.0.vqualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: com.mqfdy.code.resource,
+ com.mqfdy.code.resource.validator
+Bundle-ClassPath: .
+Bundle-Vendor: mqf
+Require-Bundle: com.mqfdy.code.model;bundle-version="1.0.0",
+ com.mqfdy.code.commonlib,
+ org.eclipse.osgi

@@ -1,0 +1,403 @@
+#set($table=$ptable.getTable())
+#set($primaryKey=$table.getPrimaryKey().getColumns().get(0).getJavaName())
+#set($primaryJavaType=$table.getPrimaryKey().getColumns().get(0).getJavaType())
+#set($tjavaName=$table.getJavaName())
+#set($tjavaName_l=${strings.lowercaseFirstLetter($tjavaName)})
+#set($primaryKeyCol=$table.getPrimaryKey().getColumns().get(0))
+${packageStr}
+
+${importStr1}
+
+/**
+ * <b>概述</b>：<br>
+ * TODO
+ * <p>
+ * <b>功能</b>：<br>
+ * TODO
+ *
+ * @author ${author}
+ */
+@Service
+#if($hasEnum)
+@RefreshScope
+@PropertySource(value = "classpath:/enum/enums.properties", ignoreResourceNotFound = true)
+#end
+public class ${tjavaName}Service implements I${tjavaName}Service{
+	/** 
+     * 注入${tjavaName_l}Repository
+     */
+	@Autowired
+	private ${tjavaName}Repository ${tjavaName_l}Repository;
+	@Autowired
+	private ValidateService validateService;
+	${fields}
+#if($isTree)
+	@Override
+	public List<TreeNode> listNodes(String nodeId,boolean boo){
+		List<TreeNode> trees = new ArrayList<TreeNode>();
+		List<${tjavaName}> ${tjavaName_l}List = get${tjavaName}List(nodeId,boo);
+		for(${tjavaName} ${tjavaName_l} : ${tjavaName_l}List){
+			TreeNode node = new TreeNode();
+			node.setId(${tjavaName_l}.get${strings.capitalizeFirstLetter($primaryKey)}());
+			node.setText(${tjavaName_l}.get${strings.capitalizeFirstLetter($nodeText)}());
+			List<${tjavaName}> ${tjavaName_l}ChildList = ${tjavaName_l}Repository.findBy${strings.capitalizeFirstLetter(${parent_col_name})}(node.getId());
+			if(${tjavaName_l}ChildList.size() > 0){
+				node.setHasChildren(true);
+			}else{
+				node.setHasChildren(false);
+			}
+			trees.add(node);
+		}
+		return trees;
+	}
+	/**
+	 * @get${tjavaName}List:根据节点id获取部门列表
+	 * @param nodeId 树节点
+	 * @param boo 是否有子节点
+	 * @return List<${tjavaName}>  部门对象列表
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	private List<${tjavaName}> get${tjavaName}List(String nodeId,boolean boo){
+		List<${tjavaName}> ${tjavaName_l}List = new ArrayList<${tjavaName}>();
+		if(boo){
+			if(null == nodeId){
+				${tjavaName_l}List = ${tjavaName_l}Repository.findBy${strings.capitalizeFirstLetter(${parent_col_name})}IsNull();
+			}else{
+				${tjavaName_l}List = ${tjavaName_l}Repository.findBy${strings.capitalizeFirstLetter(${parent_col_name})}(nodeId);
+			}
+		}else{
+			${tjavaName} temp =  ${tjavaName_l}Repository.findOne(nodeId);
+			${tjavaName_l}List.add(temp);
+		}
+		return ${tjavaName_l}List;
+	}
+#end
+#if($hasGet)
+	@Override
+	public QueryResultObject get${tjavaName}By${strings.capitalizeFirstLetter($primaryKey)}(String ${primaryKey}) {
+#if(${primaryKeyCol.javaType} == "Long")
+		Long temp_${primaryKey} = -1L;
+		if(!StringUtil.isNullOrEmpty(${primaryKey}) && !"null".equals(${primaryKey})){
+			temp_${primaryKey} = Long.parseLong(${primaryKey});
+		}
+		Optional<${tjavaName}> ${tjavaName_l}Page = ${tjavaName_l}Repository.findById(temp_${primaryKey});
+#else
+		Optional<${tjavaName}> ${tjavaName_l}Page = ${tjavaName_l}Repository.findById(id);
+#end
+		${tjavaName} ${tjavaName_l} = ${tjavaName_l}Page.get();
+		return RestUtils.wrappQueryResult(${tjavaName_l})${addDicts};
+	}
+#end
+#if($hasDelete)
+	@Override
+	public void remove(IDRequestObject idObject) {
+		if(idObject == null){
+			throw new NullArgumentException("idObject");
+		}
+		String[] ids = idObject.getIds();
+		for (String id : ids){
+#if(${primaryKeyCol.javaType} == "String")
+			${tjavaName_l}Repository.deleteById(id);
+#else
+			${tjavaName_l}Repository.deleteById(${primaryKeyCol.javaType}.valueOf(id));
+#end				
+		}
+	}
+#end
+#if($hasSave)
+	@Override
+	public ${tjavaName} save${tjavaName}(Map<String,Object> map) throws Exception{
+		validateService.validateWithException(${tjavaName}.class,map);
+		${tjavaName} ${tjavaName_l} = new ${tjavaName}();
+		#if($primaryJavaType == "String")
+			$primaryJavaType ${primaryKey} = ($primaryJavaType) map.get("${primaryKey}");
+#else
+			$primaryJavaType ${primaryKey} = ${primaryJavaType}.parse$primaryJavaType(map.get("${primaryKey}").toString());
+#end
+		if (!StringUtil.isEmpty(id)) {
+			Optional<${tjavaName}> ${tjavaName_l}Page = ${tjavaName_l}Repository.findById(id);
+			if(${tjavaName_l}Page == null){
+				throw new NullArgumentException("执行查询错误");
+			}
+			if(doubleColorCompPage.isPresent()){
+				throw new NullArgumentException("数据库中没有该记录");
+			}
+			CrudUtils.mapToObject(map, ${tjavaName_l},  "${primaryKey}");
+		}else{
+			CrudUtils.transMap2Bean(map, ${tjavaName_l});
+		}
+		return ${tjavaName_l}Repository.save(${tjavaName_l});
+	}
+#end
+#if($hasQuery)
+	@Override
+	public QueryResultObject query(RequestCondition queryCondition) {
+		if(queryCondition == null){
+			throw new NullArgumentException("queryCondition");
+		}
+		Object o = queryCondition.getFilter();
+		if(o != null && o instanceof List){
+			return queryByCondition(queryCondition);
+		} 
+		return queryAll(queryCondition);
+	}
+	/**
+	 * @queryByCondition:根据条件查询
+	 * @param queryCondition 查询条件
+	 * @return QueryResultObject 查询结果
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	private QueryResultObject queryByCondition(RequestCondition queryCondition) {
+		List<QueryFilter> qList = getFilterList(queryCondition);
+		Specification<${tjavaName}> specification = buildSpecication(qList);
+		PageRequest request = this.buildPageRequest(queryCondition);
+		Page<${tjavaName}> ${tjavaName_l} = ${tjavaName_l}Repository.findAll(specification,request);
+		List<${tjavaName}> result = new ArrayList<${tjavaName}>();
+		long count = 0;
+		if(null != qList && !qList.isEmpty()){
+			result = ${tjavaName_l}.getContent();
+			count = ${tjavaName_l}.getTotalElements();
+		}
+		return RestUtils.wrappQueryResult(result, count)${addDicts};
+	}
+	/**
+	 * @queryAll:查询所有
+	 * @param queryCondition 查询条件
+	 * @return QueryResultObject 查询结果
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	private QueryResultObject queryAll(RequestCondition queryCondition) {
+		PageRequest request = this.buildPageRequest(queryCondition);
+		Page<${tjavaName}> ${tjavaName_l}Page = null;
+		if(request != null){
+			${tjavaName_l}Page = ${tjavaName_l}Repository.findAll(request);
+		}
+		
+		List<${tjavaName}> result = new ArrayList<${tjavaName}>();
+		long count = 0;
+		if(${tjavaName_l}Page == null){
+			List<${tjavaName}> resultList = ${tjavaName_l}Repository.findAll();
+			if(resultList != null && !resultList.isEmpty()){
+				result.addAll(resultList);
+			}
+			count = result.size();
+		} else {
+			result = ${tjavaName_l}Page.getContent();
+			count = ${tjavaName_l}Page.getTotalElements();
+		}
+		return RestUtils.wrappQueryResult(result, count)${addDicts};
+	}
+	/**
+	 * 字符串类型模糊查询示例：
+	 * Predicate predicate = cb.like(root.get("employeeName"), "%" + 三 + "%");  查询名字中含有“三”的员工
+	 * 
+	 * 数字类型or时间类型示例:
+	 * Predicate predicate = cb.equal(root.get("age"), 26); 查询年龄为26的员工
+	 * Predicate predicate = cb.ge(root.get("age"), 26);	 查询年龄大于26的员工  同理大于等于为gt
+     * Predicate predicate = cb.le(root.get("age"), 26);	 查询年龄小于26的员工  同理小于等于为lt
+     * Predicate predicate = cb.between(root.get("age"), 26, 30);查询年龄在26与30之间的员工
+	 * 若查询条件为时间类型，需用DateTimeConverter类的toDate方法将条件转换为对应的日期类型，然后进行查询
+	 * 例如：Date date = (Date) DateTimeConverter.toDate(Date.class, queryFilter.getValue()); Predicate predicate = cb.equal(namePath, date); 
+	 * @buildSpecication:获取该Specification对象
+	 * @param qList
+	 * @return Specification<${tjavaName}>
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	private Specification<${tjavaName}> buildSpecication(List<QueryFilter> qList) {
+		Specification<${tjavaName}> specification = new Specification<${tjavaName}>() {
+			@Override
+			public Predicate toPredicate(Root<${tjavaName}> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+				List<Predicate> preList = new ArrayList<Predicate>();
+				if(qList != null && !qList.isEmpty()){
+					for(QueryFilter queryFilter : qList){
+		
+						Predicate predicate = null;
+						String operator = queryFilter.getOperator();
+						String fieldName = queryFilter.getFieldName();
+						Object value = queryFilter.getValue();
+						if(StringUtil.isEmpty(fieldName) || StringUtil.isEmpty(value)){
+							continue;
+						}
+						if(StringUtil.isEmpty(operator)){
+							Class fieldType = null;
+							boolean isKey = false;
+							try {
+								fieldType = ClassUtil.getFieldClassType(${tjavaName}.class, fieldName);
+								isKey = ClassUtil.fieldIsKey(${tjavaName}.class, fieldName);
+							} catch (NoSuchFieldException e) {
+								throw new RestClientException("没有名为"+fieldName+"的属性");
+							} catch (SecurityException e) {
+								throw new RestClientException(fieldName+"属性存在安全性问题");
+							}
+							if(String.class.equals(fieldType) && !isKey){
+								predicate = cb.like(root.get(fieldName), "%"+value.toString()+"%");
+							} else {
+								Path<String> namePath = root.get(fieldName);
+								predicate = cb.equal(namePath, value);
+							}
+							
+						} else {
+							if(SqlOperateType.eq.getKey().equals(operator)){
+								Path<String> namePath = root.get(fieldName);
+								predicate = cb.equal(namePath, value);
+							} else if(SqlOperateType.ge.getKey().equals(operator)){
+								Double num = Double.parseDouble(value.toString());
+								predicate = cb.ge(root.get(fieldName), num);
+							}else if(SqlOperateType.le.getKey().equals(operator)){
+								Double num = Double.parseDouble(value.toString());
+								predicate = cb.le(root.get(fieldName), num);
+							} else if(SqlOperateType.like.getKey().equals(operator)){
+								predicate = cb.like(root.get(fieldName), "%"+value.toString()+"%");
+							} 
+						}
+						
+						preList.add(predicate);
+					}
+					query.where(preList.toArray(new Predicate[preList.size()]));
+				}
+				preList.clear();
+				return null;
+			}
+		};
+		return specification;
+	}
+	
+	/**
+	 * @getFilterList:获取条件列表
+	 * @param queryCondition 查询条件
+	 * @return List<QueryFilter> 查询条件列表
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	private List<QueryFilter> getFilterList(RequestCondition queryCondition) {
+		List<QueryFilter> qList = new ArrayList<QueryFilter>();
+		List<Map<String, Object>> filter = (List<Map<String, Object>>) queryCondition.getFilter();
+		if(filter != null && !filter.isEmpty()){
+			for (Map<String, Object> map : filter) {
+				QueryFilter queryFilter = new QueryFilter();
+				 queryFilter.setFieldName(map.get("fieldName").toString());
+				 queryFilter.setValue(map.get("value"));
+				 queryFilter.setOperator(map.get("operator").toString());
+				 //queryFilter.setDataType("");
+				 qList.add(queryFilter);
+			}
+		}
+		return qList;
+	}
+#end
+	/**
+	 * @buildPageRequest:构建PageRequest
+	 * @param queryCondition 查询条件
+	 * @return PageRequest 页面请求对象
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	private PageRequest buildPageRequest(RequestCondition queryCondition) {
+		int pageIndex = 1, pageSize = 1;
+		if (queryCondition.getPageIndex() != null && queryCondition.getPageSize() != null) {
+			pageIndex = queryCondition.getPageIndex();
+			pageSize = queryCondition.getPageSize();
+		}
+		String sortString = queryCondition.getSorter(); 
+		PageRequest pageQuest = null;
+		Sort sort = null;
+		if(!StringUtil.isNullOrEmpty(sortString)){
+			String[] sorts = sortString.split("@");
+        	if(sorts != null && sorts.length > 1){
+        		String sortType = sorts[0];
+        		String[] fields = sorts[1].split(",");
+        		Direction d = null;
+        		if("asc".equalsIgnoreCase(sortType)){
+        			d = Direction.ASC;
+        		} else {
+        			d = Direction.DESC;
+        		}
+        		sort = new Sort(d, fields);
+        	} 
+		}
+		if(sort != null){
+			 pageQuest = new PageRequest(pageIndex - 1, pageSize,sort);
+		} else {
+			pageQuest = new PageRequest(pageIndex - 1, pageSize);
+		}
+        return pageQuest;
+	}
+
+${customMethods}
+#if($hasDb || $hasEnum)
+	/**
+	 * @wrapDictList:将字典对象封装为list
+	 * @param fieldName 映射的字段名
+	 * @param dictValue 属性文件指定key对应的值
+	 * @return List<DicItems> 数据字典列表
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	private List<DicItems> wrapDictList() {
+		List<DicItems> dicts = new ArrayList<DicItems>();
+		${dicts}
+		return dicts;
+	}
+#end	
+#if($hasEnum)		
+	/**
+	 * @translateFromFile:从属性文件中查询字典
+	 * @param fieldName 实体属性名称
+	 * @param dictValue 数据字典名称
+	 * @return DicItems  数据字典对象
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	private DicItems translateFromFile(String fieldName, String dictValue) {
+		List<Map<String, String>> list = DictUtils.translateFromFile(
+				dictValue, "value", "text");
+		DicItems dict = new DicItems();
+		dict.setName(fieldName);
+		dict.setValues(list);
+		return dict;
+	}
+#end
+#if($hasDb)		
+	/**
+	 * @translateFromDB:从数据库中查询字典
+	 * @param fieldName 实体属性名称
+	 * @return DicItems  数据字典对象
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	private DicItems translateFromDB(String fieldName) {
+		List<Map<String, String>> list = new LinkedList<Map<String, String>>();
+		List<Object[]>  lt = getLt(fieldName);
+		if(lt != null){
+			Iterator<Object[]> iterator = lt.iterator();
+			while (iterator.hasNext()) {
+				Object[] keyvalue = iterator.next();
+				if (keyvalue.length == 2) {
+					Map<String, String> map = DictUtils.keyvalueToMap("value", "text", String
+							.valueOf(keyvalue[0]), String.valueOf(keyvalue[1]));
+					list.add(map);
+				}
+			}
+		}
+		DicItems dict = new DicItems();
+		dict.setName(fieldName);
+		dict.setValues(list);
+		return dict;
+	}
+	/**
+	 * @getLt:获取数据字典查询结果
+	 * @param fieldName 实体属性名称
+	 * @return List<Object[]>  数据字典查询结果
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	private List<Object[]> getLt(String fieldName) {
+		${returnSets}
+		return null;
+	}
+#end
+}

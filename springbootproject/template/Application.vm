@@ -1,0 +1,19 @@
+package ${basePackage};
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+/**
+ *启动类
+ * @author ${author}
+ *
+ */
+
+@SpringBootApplication(scanBasePackages={"${basePackage}","com.mqfdy.code.rest.annotation","com.mqfdy.code.runtime"})
+public class Application {
+	
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+
+}

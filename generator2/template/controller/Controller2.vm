@@ -1,0 +1,268 @@
+#set($table=$ptable.getTable())
+#set($tjavaName=$table.getJavaName())
+#set($primaryKey=$table.getPrimaryKey().getColumns().get(0).getJavaName())
+#set($tjavaName_l=${strings.lowercaseFirstLetter($tjavaName)})
+#set($primaryKeyCol=$table.getPrimaryKey().getColumns().get(0))
+${packageStr}
+
+${importStr1}
+
+/**
+ * <b>概述</b>：<br>
+ * TODO
+ * <p>
+ * <b>功能</b>：<br>
+ * TODO
+ *
+ * @author ${author}
+ */
+@RestController
+@Transactional
+@RequestMapping("/${tjavaName_l}")
+public class ${tjavaName}Controller {
+	/** 
+     * 日志
+     */
+	private final static Logger logger = (Logger) LoggerFactory.getLogger(${tjavaName}Controller.class);
+	/**
+	 * 方法绑定属性中不允许的参数
+	 */
+	private final static String[] DISALLOWED_PARAMS = new String[]{"idObject.primarykey"};
+	/**
+	 * 是否为开发模式
+	 */
+	@Value("${isdev}")
+	private boolean isDev;
+	/** 
+     * ${tjavaName}服务
+     */
+	@Autowired
+	private I${tjavaName}Service ${tjavaName_l}Service;
+#if($isTree)
+	/**
+	 * @getRoot:加载根节点
+	 * @return WrappedResult 所有根节点
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	@RequestMapping(value = "/tree", method = RequestMethod.GET)
+	public WrappedResult getRoot() {
+		try {
+			List<TreeNode> treeNodes = ${tjavaName_l}Service.listNodes(null,true);
+			logger.info("加载根节点成功");  
+			return WrappedResult.successWrapedResult(new WrappedTreeNodes(treeNodes));
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			String errorMessage = "查询异常";
+			if(isDev){
+				errorMessage = e.getMessage();
+			}
+			return WrappedResult.failedWrappedResult(errorMessage);
+		}
+	}
+	/**
+	 * @getNodeById:懒加载子节点
+	 * @param id  当前节点ID
+	 * @return WrappedResult 当前节点的所有子节点
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	@RequestMapping(value = "/tree/{id}", method = RequestMethod.GET)
+	public WrappedResult getNodeById(@PathVariable String id) {
+		try {
+			List<TreeNode> treeNodes = ${tjavaName_l}Service.listNodes(id,true);
+			logger.info("懒加载成功");  
+			return WrappedResult.successWrapedResult(new WrappedTreeNodes(treeNodes));
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			String errorMessage = "查询异常";
+			if(isDev){
+				errorMessage = e.getMessage();
+			}
+			return WrappedResult.failedWrappedResult(errorMessage);
+		}
+	}
+	/**
+	 * @deleteTreeByIds:删除节点
+	 * @param idObject  封装ids主键值数组和idName主键名称
+	 * @return WrappedResult 删除结果
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	@RequestMapping(value = "/tree/delete", method = RequestMethod.POST)
+	WrappedResult deleteTreeByIds(@RequestBody IDRequestObject idObject) {
+		try {
+			${tjavaName_l}Service.remove(idObject);
+			logger.info("删除节点成功");  
+			return WrappedResult.successWrapedResult(true);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			String errorMessage = "删除异常";
+			if(isDev){
+				errorMessage = e.getMessage();
+			}
+			return WrappedResult.failedWrappedResult(errorMessage);
+		}
+	}
+	
+	/**
+	 * @reloadSelf:刷新当前节点
+	 * @param id 节点ID
+	 * @return WrappedResult  节点信息
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	@RequestMapping(value = "/tree/{id}/self", method = RequestMethod.GET)
+	public WrappedResult reloadSelf(@PathVariable String id) {
+		try {
+			List<TreeNode> treeNodes = ${tjavaName_l}Service.listNodes(id,false);
+			logger.info("刷新当前节点成功");
+			return WrappedResult.successWrapedResult(new WrappedTreeNodes(treeNodes));
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			String errorMessage = "查询异常";
+			if(isDev){
+				errorMessage = e.getMessage();
+			}
+			return WrappedResult.failedWrappedResult(errorMessage);
+		}
+	}
+#end
+#if($hasGet)
+	/**
+	 * @getBy${strings.capitalizeFirstLetter($primaryKey)}:根据${primaryKey}查询
+	 * @param ${primaryKey}
+	 * @return WrappedResult 查询结果
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	@RequestMapping(value = "/{${primaryKey}}")
+	public WrappedResult getBy${strings.capitalizeFirstLetter($primaryKey)}(@PathVariable String ${primaryKey}) {
+		try {
+			QueryResultObject result = ${tjavaName_l}Service.get${tjavaName}By${strings.capitalizeFirstLetter($primaryKey)}(${primaryKey});
+			logger.info("查询成功"); 
+			return WrappedResult.successWrapedResult(result);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			String errorMessage = "查询异常";
+			if(isDev){
+				errorMessage = e.getMessage();
+			}
+			return WrappedResult.failedWrappedResult(errorMessage);
+		}
+	}
+#end
+#if($hasDelete)
+	/**
+	 * @deleteByIds:删除
+	 * @param idObject  封装ids主键值数组和idName主键名称
+	 * @return WrappedResult 删除结果
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public WrappedResult deleteByIds(@RequestBody IDRequestObject idObject) {
+		try {
+			${tjavaName_l}Service.remove(idObject);
+			logger.info("删除成功");  
+			return WrappedResult.successWrapedResult(true);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			String errorMessage = "删除异常";
+			if(isDev){
+				errorMessage = e.getMessage();
+			}
+			return WrappedResult.failedWrappedResult(errorMessage);
+		}
+	}
+#end
+#if($hasSave)
+	/**
+	 * @saveOrUpdate:保存或更新
+	 * @param params
+	 * @return WrappedResult 保存或更新的结果
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public WrappedResult saveOrUpdate(@RequestBody FormRequestObject<Map<String,Object>> params) {
+		try {
+			if(params == null){
+				throw new NullArgumentException("params");
+			}
+			QueryResultObject result = new QueryResultObject();
+			List<Map<String,Object>> items = params.getItems();
+			if(items != null && !items.isEmpty()){
+				for(Map<String,Object> map : items){
+					result.setFormItems(${tjavaName_l}Service.save${tjavaName}(map));
+				}
+			}
+			logger.info("保存数据成功"); 
+			return WrappedResult.successWrapedResult(result);
+		} catch (ServiceValidatorBaseException e) {
+			logger.error(e.getMessage(), e);
+			String errorMessage = "校验异常";
+			if(isDev){
+				errorMessage = e.getMessage();
+			}
+			return WrappedResult.failedValidateWrappedResult(errorMessage);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			String errorMessage = "保存异常";
+			if(isDev){
+				errorMessage = e.getMessage();
+			}
+			return WrappedResult.failedWrappedResult(errorMessage);
+		}
+	}
+#end
+#if($hasQuery)
+	/**
+	 * @query:查询
+	 * @param requestCondition
+	 * @return WrappedResult 查询结果
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	@RequestMapping("/")
+	public WrappedResult query(String filter,Integer rows, Integer page) {
+		try {
+			RequestCondition requestCondition = new RequestCondition(filter,rows,page);
+			QueryResultObject queryResult = ${tjavaName_l}Service.query(requestCondition);
+			logger.info("查询数据成功"); 
+			return WrappedResult.successWrapedResult(queryResult);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			String errorMessage = "查询异常";
+			if(isDev){
+				errorMessage = e.getMessage();
+			}
+			return WrappedResult.failedWrappedResult(errorMessage);
+		}
+	}
+#end
+	/**
+	 * @query:重定向到页面
+	 * @param redirectPage
+	 * @return ModelAndView 模型视图
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	@RequestMapping("/page/{page}")
+	public ModelAndView redirectPage(@PathVariable String page){
+		return new ModelAndView("/${tjavaName_l}/"+page);
+	}
+${customMethods}
+	/**
+	 * @initBinder:初始化binder
+	 * @param binder  绑定器引用，用于控制各个方法绑定的属性
+	 * @return void
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	@InitBinder
+	public void initBinder(WebDataBinder binder){
+		binder.setDisallowedFields(DISALLOWED_PARAMS);
+	}
+
+}

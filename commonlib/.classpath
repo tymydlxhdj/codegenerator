@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jconn3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/log4j-1.2.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.gmf.runtime.common.ui_1.1.3.v20081023-2107.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.gmf.runtime.common.ui.services.properties_1.1.0.v20080425-1959.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.springframework.beans_3.1.4.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/org.springframework.core_3.1.4.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/json-20160810.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jdom2-2.0.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/ant-1.10.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/antlr-2.7.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/avalon-logkit-2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-beanutils-1.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-collections-3.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-lang-2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-logging-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/freemarker-2.3.18.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/hibernate-tools-3.4.0.CR2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/hibernate3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jdom-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/maven-ant-tasks-2.0.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/oro-2.0.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/servletapi-2.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/werken-xpath-0.9.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/com.mqfdy.code.securityTest-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jasypt-1.9.2.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

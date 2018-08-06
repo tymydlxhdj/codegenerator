@@ -1,0 +1,47 @@
+${packageStr}
+import com.sgcc.uap.service.validator.ValidateResult;
+import com.sgcc.uap.service.validator.base.validator.IValidator;
+import com.sgcc.uap.tools.utils.StringUtil;
+/**
+ * <b>概述</b>：自定义校验器<br>
+ * TODO
+ * <p>
+ * <b>功能</b>：<br>
+ * TODO
+ *
+ * @author $author 
+ */
+public class $validatorClassName implements IValidator {
+
+	/**
+     * @validate:自定义验证方法
+     * @param validateValue 被校验的字符串
+     * @return ValidateResult 验证结果
+	 * @date $now
+ 	 * @author $author
+	 */
+	public ValidateResult validate(String validateValue){
+		ValidateResult result = new ValidateResult();
+		if(!StringUtil.isBlank(validateValue)){
+			//校验  在下面填写校验代码
+			
+			
+			//如果不能通过验证则 需要添加验证错误提示信息代码：
+			//result.addError("xxxx");
+		}
+		return result;
+	}
+
+	//下面注释的内容是示例：
+	/*public ValidateResult validate(String validateValue){
+		ValidateResult result = new ValidateResult();
+		if(!StringUtil.isBlank(validateValue)){
+			//验证是否有“#”,如果有，则要添加校验错误提示信息；如果没有，则不需要
+			if(validateValue.contains("#")){
+				result.addError("不能含有特殊字符“#”！");
+			}
+		}
+		return result;
+	}*/
+}
+ 

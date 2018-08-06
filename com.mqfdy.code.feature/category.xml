@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.mqfdy.code.feature_1.0.0.qualifier.jar" id="com.mqfdy.code.feature" version="1.0.0.qualifier">
+      <category name="code_generator"/>
+   </feature>
+   <bundle id="com.mqfdy.code.bom.project" version="1.0.0.vqualifier">
+      <category name="code_generator"/>
+   </bundle>
+   <bundle id="com.mqfdy.code.commonlib" version="1.0.0.qualifier">
+      <category name="code_generator"/>
+   </bundle>
+   <bundle id="com.mqfdy.code.designer" version="1.0.0.vqualifier">
+      <category name="code_generator"/>
+   </bundle>
+   <bundle id="com.mqfdy.code.generator" version="1.0.0.vqualifier">
+      <category name="code_generator"/>
+   </bundle>
+   <bundle id="com.mqfdy.code.model" version="1.0.0.vqualifier">
+      <category name="code_generator"/>
+   </bundle>
+   <bundle id="com.mqfdy.code.resource" version="1.0.0.vqualifier">
+      <category name="code_generator"/>
+   </bundle>
+   <bundle id="com.mqfdy.code.springboot.project" version="1.0.0.vqualifier">
+      <category name="code_generator"/>
+   </bundle>
+   <category-def name="code_generator" label="code_generator">
+      <description>
+         代码生成插件
+      </description>
+   </category-def>
+</site>

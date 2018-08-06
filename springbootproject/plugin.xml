@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+
+<extension
+      id="com.mqfdy.code.springboot.nature"
+      point="org.eclipse.core.resources.natures">
+   <runtime>
+      <run
+            class="com.mqfdy.springboot.nature">
+      </run>
+   </runtime>
+</extension>
+ <extension point="org.eclipse.ui.ide.projectNatureImages">
+  <image 
+    id="com.mqfdy.code.springboot.core.nature.img"
+    natureId="com.mqfdy.code.springboot.nature"
+    icon="icons/etool16/boot-icon.png.png">
+  </image>
+ </extension>
+
+<extension
+      point = "org.eclipse.ui.newWizards">
+ 	<wizard
+        category="com.mqfdy.code.category"
+        class="com.mqfdy.code.springboot.ui.wizards.NewMicroProjectWizard"
+        icon="icons/etool16/new_template_project_obj.png"
+        id="com.mqfdy.code.springboot.wizards.microproject"
+        name="Springboot项目"
+        project="true">
+    	   <description>Springboot项目</description>
+	   <selection class="org.eclipse.core.resources.IResource"/>
+	</wizard>
+</extension>
+<extension
+      point="org.eclipse.ui.perspectiveExtensions">
+   <perspectiveExtension
+         targetID="org.eclipse.jdt.ui.JavaPerspective">
+      <newWizardShortcut
+            id="com.mqfdy.code.springboot.wizards.microproject">
+      </newWizardShortcut>
+   </perspectiveExtension>
+</extension>
+</plugin>

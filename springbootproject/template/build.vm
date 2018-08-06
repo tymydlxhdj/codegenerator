@@ -1,0 +1,48 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+group = '${basePackage}'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+jar {
+    manifest {
+        attributes 'Main-Class': '${basePackage}.Application'
+    }
+}
+repositories {
+		 flatDir {
+	        dirs 'lib'
+	    }
+	   //maven { url "http://repo.spring.io/libs-snapshot" }
+       mavenLocal() 
+		//mavenCentral()
+	 
+	}
+
+
+dependencies {
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version:'2.0.3.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version:'2.0.3.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'2.0.3.RELEASE'
+    runtime group: 'org.springframework.boot', name: 'spring-boot-devtools', version:'2.0.3.RELEASE'
+    runtime group: 'mysql', name: 'mysql-connector-java', version:'5.1.46'
+    // https://mvnrepository.com/artifact/net.sf.json-lib/json-lib
+	compile 'net.sf.json-lib:json-lib:2.4:jdk15'
+    runtime group: 'org.apache.commons', name: 'commons-lang3', version:'3.7'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'2.0.3.RELEASE'
+    compile fileTree(dir:'lib',include:'*.jar')
+  	compile subprojects
+  	
+}
