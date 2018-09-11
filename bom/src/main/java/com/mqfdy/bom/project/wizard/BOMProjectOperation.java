@@ -17,20 +17,41 @@ import com.mqfdy.bom.project.Activator;
 import com.mqfdy.bom.project.util.ZipFileUtil;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BOMProjectOperation.
+ *
+ * @author mqfdy
+ */
 public class BOMProjectOperation {
 	
+	/** The project name. */
 	private String projectName;
 	
+	/** The location. */
 	private String location;
 
+	/** The parent project. */
 	private IProject parentProject;
 	
+	/** The Constant IGNORED_NAMES. */
 	private static final FilenameFilter IGNORED_NAMES = new FilenameFilter() {
 		public boolean accept(File dir, String name) {
 			return name.endsWith(".zip");
 		}
 	};
 	
+	/**
+	 * Perform.
+	 *
+	 * @author mqfdy
+	 * @param monitor
+	 *            the monitor
+	 * @return true, if successful
+	 * @throws CoreException
+	 *             the core exception
+	 * @Date 2018-09-03 09:00
+	 */
 	//拷贝代码到本地目录下,并创建JAVA工程
 	public boolean perform(IProgressMonitor monitor) throws CoreException {
 		monitor.beginTask("Create project contents", 5);
@@ -76,6 +97,14 @@ public class BOMProjectOperation {
 		}
 		return true;
 	}
+	
+	/**
+	 * Gets the local samples dir.
+	 *
+	 * @author mqfdy
+	 * @return the local samples dir
+	 * @Date 2018-09-03 09:00
+	 */
 	private File getLocalSamplesDir() {
 		Bundle bundle = Platform.getBundle(Activator.TOOL_PLUGIN_ID);
 		try {
@@ -98,26 +127,71 @@ public class BOMProjectOperation {
 	}
 	
 
+	/**
+	 * Gets the project name.
+	 *
+	 * @author mqfdy
+	 * @return the project name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getProjectName() {
 		return projectName;
 	}
 
+	/**
+	 * Sets the project name.
+	 *
+	 * @author mqfdy
+	 * @param projectName
+	 *            the new project name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
 	}
 
+	/**
+	 * Gets the location.
+	 *
+	 * @author mqfdy
+	 * @return the location
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getLocation() {
 		return location;
 	}
 
+	/**
+	 * Sets the location.
+	 *
+	 * @author mqfdy
+	 * @param location
+	 *            the new location
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setLocation(String location) {
 		this.location = location;
 	}
 	
+	/**
+	 * Gets the parent project.
+	 *
+	 * @author mqfdy
+	 * @return the parent project
+	 * @Date 2018-09-03 09:00
+	 */
 	public IProject getParentProject() {
 		return parentProject;
 	}
 
+	/**
+	 * Sets the parent project.
+	 *
+	 * @author mqfdy
+	 * @param parentProject
+	 *            the new parent project
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setParentProject(IProject parentProject) {
 		this.parentProject = parentProject;
 	}

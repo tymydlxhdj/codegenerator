@@ -14,17 +14,32 @@ import com.mqfdy.bom.project.Activator;
 import com.mqfdy.code.security.util.SecurityTestUtil;
 
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ZipFileUtil.
+ *
  * @author mqfdy
  */
 public class ZipFileUtil {
 
+	/**
+	 * The Class PermissionSetter.
+	 *
+	 * @author mqfdy
+	 */
 	public static abstract class PermissionSetter {
 
 		/**
 		 * Called after a file was succesfully extracted from the zip archive.
-		 * 
+		 *
+		 * @author mqfdy
+		 * @param entry
+		 *            the entry
+		 * @param entryFile
+		 *            the entry file
 		 * @throws IOException
+		 *             Signals that an I/O exception has occurred.
+		 * @Date 2018-09-03 09:00
 		 */
 		public abstract void fileUnzipped(ZipEntry entry, File entryFile) throws IOException;
 
@@ -43,6 +58,12 @@ public class ZipFileUtil {
 		 * extensions.
 		 * <p>
 		 * Any file ending with the extension will be made executable.
+		 *
+		 * @author mqfdy
+		 * @param exts
+		 *            the exts
+		 * @return the permission setter
+		 * @Date 2018-09-03 09:00
 		 */
 		public static PermissionSetter executableExtensions(final String... exts) {
 			if (OsUtils.isWindows()) {
@@ -66,23 +87,36 @@ public class ZipFileUtil {
 
 	}
 
+	/** The Constant BUFFER_SIZE. */
 	private static final int BUFFER_SIZE = 1024 * 1024;
 
 	/**
-	 * 将模板项目解压拷贝到向导第一页中的LOCATION位置
+	 * 将模板项目解压拷贝到向导第一页中的LOCATION位置.
+	 *
+	 * @author mqfdy
+	 * @param source
+	 *            the source
+	 * @param targetFile
+	 *            the target file
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void unzip(URL source, File targetFile) throws IOException {
 		unzip(source, targetFile, PermissionSetter.NULL);
 	}
 
 	/**
-	 * 将模板项目解压拷贝到向导第一页中的LOCATION位置
-	 * 
+	 * 将模板项目解压拷贝到向导第一页中的LOCATION位置.
+	 *
+	 * @author mqfdy
 	 * @param source
+	 *            the source
 	 * @param targetFile
 	 *            F:\runtime-New_configuration\aa
 	 * @param permsetter
-	 * @throws IOException
+	 *            the permsetter
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void unzip(URL source, File targetFile, PermissionSetter permsetter) {
 		targetFile.mkdirs();
@@ -139,6 +173,13 @@ public class ZipFileUtil {
 		}
 	}
 
+	/**
+	 * Gets the studio install location.
+	 *
+	 * @author mqfdy
+	 * @return the studio install location
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getStudioInstallLocation() {
 		final Location location = Platform.getInstallLocation();
 		return new File(location.getURL().getPath()).getParent();

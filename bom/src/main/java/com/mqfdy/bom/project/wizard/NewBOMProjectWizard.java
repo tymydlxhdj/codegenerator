@@ -12,25 +12,47 @@ import com.mqfdy.bom.project.util.JobUtil;
 import com.mqfdy.bom.project.util.Operation2Runnable;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class NewBOMProjectWizard.
+ *
+ * @author mqfdy
+ */
 public class NewBOMProjectWizard extends Wizard implements INewWizard {
 	
+	/** The operation. */
 	private final BOMProjectOperation operation = new BOMProjectOperation();
+	
+	/** The info page. */
 	private ProjectInfoPage infoPage;
 	
+	/**
+	 * Instantiates a new new BOM project wizard.
+	 */
 	public NewBOMProjectWizard(){
 		setWindowTitle("新建BOM模型项目");
 	}
 
+	/**
+	 * @param workbench
+	 * @param selection
+	 */
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		setNeedsProgressMonitor(true);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void addPages() {
 		infoPage = new ProjectInfoPage(operation);
 		addPage(infoPage);
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean performFinish() {
 		JobUtil.userJob(new Operation2Runnable("Create BOM project") {

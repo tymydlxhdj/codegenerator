@@ -8,14 +8,25 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class IOUtils.
+ *
+ * @author mqfdy
+ */
 public class IOUtils {
 	
 	/**
-     * 读取文件内容
-     * 
-     * @param file
-     * @return
-     */
+	 * 读取文件内容.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @param content
+	 *            the content
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
     public static String read(File file, String content) {
         BufferedReader br = null;
         String line = null;
@@ -53,11 +64,15 @@ public class IOUtils {
     }
     
     /**
-     * 将内容回写到文件中
-     * 
-     * @param filePath
-     * @param content
-     */
+	 * 将内容回写到文件中.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @param content
+	 *            the content
+	 * @Date 2018-09-03 09:00
+	 */
     public static void write(File file, String content) {
         BufferedWriter bw = null;
         

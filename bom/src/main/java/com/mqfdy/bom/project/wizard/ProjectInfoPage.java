@@ -24,28 +24,58 @@ import org.eclipse.swt.widgets.Text;
 
 import com.mqfdy.bom.project.util.ValidateUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ProjectInfoPage.
+ *
+ * @author mqfdy
+ */
 public class ProjectInfoPage extends WizardPage {
 	
+	/** The operation. */
 	public final BOMProjectOperation operation;
 	
+	/** The Constant WIZBAN_IMAGE. */
 	private static final ImageDescriptor WIZBAN_IMAGE = ImageDescriptor
 			.createFromURL(ProjectInfoPage.class.getClassLoader().getResource(
 					"icons/dropwizard-import-wizban.png"));
+	
+	/** The Constant SIZING_TEXT_FIELD_WIDTH. */
 	private static final int SIZING_TEXT_FIELD_WIDTH = 250;
+	
+	/** The Constant SAVED_LOCATION_ATTR. */
 	private static final String SAVED_LOCATION_ATTR = "OUTSIDE_LOCATION"; //$NON-NLS-1$
 	
+	/** The project name field. */
 	private Text projectNameField;
+	
+	/** The use defaults button. */
 	private Button useDefaultsButton;
+	
+	/** The location label. */
 	private Label locationLabel;
+	
+	/** The location path field. */
 	private Text locationPathField;
+	
+	/** The browse button. */
 	private Button browseButton;
 
+	/**
+	 * Instantiates a new project info page.
+	 *
+	 * @param operation
+	 *            the operation
+	 */
 	protected ProjectInfoPage(BOMProjectOperation operation) {
 		super("项目基本信息", "BOM模型项目", WIZBAN_IMAGE);
 		setTitle("项目基本信息配置");
 		this.operation = operation;
 	}
 
+	/**
+	 * @param parent
+	 */
 	public void createControl(Composite parent) {
 		Composite page = new Composite(parent, SWT.NONE);
         GridLayout layout = new GridLayout(1, false);
@@ -59,9 +89,14 @@ public class ProjectInfoPage extends WizardPage {
         createLocationContent(page);
         validate();
 	}
+	
 	/**
-	 * 项目基本信息
-	 * @param page 向导首页
+	 * 项目基本信息.
+	 *
+	 * @author mqfdy
+	 * @param page
+	 *            向导首页
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createBasicContent(Composite page) {
 		Composite projectGroup = new Composite(page, SWT.NONE);
@@ -85,8 +120,12 @@ public class ProjectInfoPage extends WizardPage {
 	}
 	
 	/**
-	 * 项目保存目录
-	 * @param page 向导首页
+	 * 项目保存目录.
+	 *
+	 * @author mqfdy
+	 * @param page
+	 *            向导首页
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createLocationContent(Composite page) {
 		boolean defaultEnabled = true;
@@ -133,8 +172,11 @@ public class ProjectInfoPage extends WizardPage {
 	
 	/**
 	 * Set the enablement state of the receiver.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param enabled
+	 *            the new user area enabled
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setUserAreaEnabled(boolean enabled) {
 		locationLabel.setEnabled(enabled);
@@ -142,6 +184,16 @@ public class ProjectInfoPage extends WizardPage {
 		browseButton.setEnabled(enabled);
 	}
 	
+	/**
+	 * Creates the user entry area.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @param defaultEnabled
+	 *            the default enabled
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createUserEntryArea(Composite composite, boolean defaultEnabled) {
 		// location label
 		locationLabel = new Label(composite, SWT.NONE);
@@ -171,6 +223,12 @@ public class ProjectInfoPage extends WizardPage {
 		}
 	}
 	
+	/**
+	 * Handle location browse button pressed.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void handleLocationBrowseButtonPressed() {
 		String selectedDirectory = null;
 		String dirName = getPathFromLocationField();
@@ -200,8 +258,10 @@ public class ProjectInfoPage extends WizardPage {
 	
 	/**
 	 * Return the path on the location field.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return the path or the field's text if the path is invalid
+	 * @Date 2018-09-03 09:00
 	 */
 	private String getPathFromLocationField() {
 		URI fieldURI;
@@ -215,6 +275,12 @@ public class ProjectInfoPage extends WizardPage {
 	}
 	
 	
+	/**
+	 * Validate.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void validate() {
 		String perjectName = projectNameField.getText();
 		if(null == perjectName || perjectName.length() == 0){

@@ -27,13 +27,24 @@ import com.mqfdy.bom.project.BOMProjectNature;
 import com.mqfdy.bom.project.util.NatureUtils;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BOMProjectManager.
+ *
+ * @author mqfdy
+ */
 public class BOMProjectManager {
 
 	/**
-	 * 在ECLIPSE中创建JAVA项目(入口)
-	 * 
-	 * @param projectName
-	 * @return
+	 * 在ECLIPSE中创建JAVA项目(入口).
+	 *
+	 * @author mqfdy
+	 * @param location
+	 *            the location
+	 * @param monitor
+	 *            the monitor
+	 * @return the i project
+	 * @Date 2018-09-03 09:00
 	 */
 	public IProject newInstance(File location, IProgressMonitor monitor) {
 
@@ -54,6 +65,18 @@ public class BOMProjectManager {
 		return null;
 	}
 	
+	/**
+	 * Adds the to classpath.
+	 *
+	 * @author mqfdy
+	 * @param jproj
+	 *            the jproj
+	 * @param entry
+	 *            the entry
+	 * @throws CoreException
+	 *             the core exception
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void addToClasspath(final IJavaProject jproj,
 			final IClasspathEntry[] entry) throws CoreException {
 		
@@ -80,10 +103,14 @@ public class BOMProjectManager {
 	}
 
 	
-	/**在ECLIPSE中创建JAVA项目
-	 * create Java Project
+	/**
+	 * 在ECLIPSE中创建JAVA项目 create Java Project.
+	 *
+	 * @author mqfdy
 	 * @param location
-	 * @return
+	 *            the location
+	 * @return the i java project
+	 * @Date 2018-09-03 09:00
 	 */
 	private IJavaProject createJavaProject(File location) {
 		// 获取工作区
@@ -129,9 +156,14 @@ public class BOMProjectManager {
 
 		return javaProject;
 	}
+	
 	/**
-	 * 创建bin目录
+	 * 创建bin目录.
+	 *
+	 * @author mqfdy
 	 * @param javaProject
+	 *            the java project
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createBin(IJavaProject javaProject) {
 		// create ouput folders
@@ -143,10 +175,16 @@ public class BOMProjectManager {
 			Activator.log(e);
 		}
 	}
+	
 	/**
-	 * 构建classpath文件
+	 * 构建classpath文件.
+	 *
+	 * @author mqfdy
 	 * @param javaProject
+	 *            the java project
 	 * @param jrelibs
+	 *            the jrelibs
+	 * @Date 2018-09-03 09:00
 	 */
 	private void buildClasspath(IJavaProject javaProject, List<IClasspathEntry> jrelibs) {
 		try {
@@ -166,10 +204,16 @@ public class BOMProjectManager {
 			e1.printStackTrace();
 		}
 	}
+	
 	/**
-	 * 创建src目录
+	 * 创建src目录.
+	 *
+	 * @author mqfdy
 	 * @param javaProject
+	 *            the java project
 	 * @param jrelibs
+	 *            the jrelibs
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createSrc(IJavaProject javaProject, List<IClasspathEntry> jrelibs) {
 		List<String> folders = new ArrayList<String>();
@@ -187,8 +231,12 @@ public class BOMProjectManager {
 	}
 
 	/**
+	 * Mk folders.
+	 *
+	 * @author mqfdy
 	 * @param folder
-	 *            
+	 *            the folder
+	 * @Date 2018-09-03 09:00
 	 */
 	private void mkFolders(final IFolder folder) {
 		if (!folder.exists()) {
@@ -204,6 +252,16 @@ public class BOMProjectManager {
 		}
 	}
 
+	/**
+	 * Convert gradle project.
+	 *
+	 * @author mqfdy
+	 * @param pj
+	 *            the pj
+	 * @param monitor
+	 *            the monitor
+	 * @Date 2018-09-03 09:00
+	 */
 	private void convertGradleProject(IProject pj,
 			IProgressMonitor monitor) {
 		monitor.setTaskName("Convert to BOM Project " + pj.getName());
