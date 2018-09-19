@@ -17,9 +17,12 @@ import org.eclipse.gef.ui.actions.GEFActionConstants;
 import org.eclipse.gef.ui.actions.MatchSizeAction;
 import org.eclipse.ui.IWorkbenchPart;
 
+// TODO: Auto-generated Javadoc
 /**
  * An action that matches the width of all selected EditPart's Figures to the
  * width of the Primary Selection EditPart's Figure.
+ *
+ * @author mqfdy
  */
 public class MatchWidthAction extends MatchSizeAction {
 
@@ -41,12 +44,14 @@ public class MatchWidthAction extends MatchSizeAction {
 
 	/**
 	 * Returns 0 to make this action affect only the width delta.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param precisePartBounds
 	 *            the precise bounds of the EditPart's Figure to be matched
 	 * @param precisePrimaryBounds
 	 *            the precise bounds of the Primary Selection EditPart's Figure
 	 * @return 0.
+	 * @Date 2018-09-03 09:00
 	 */
 	protected double getPreciseHeightDelta(
 			PrecisionRectangle precisePartBounds,

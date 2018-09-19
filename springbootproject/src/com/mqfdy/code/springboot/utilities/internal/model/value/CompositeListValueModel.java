@@ -24,19 +24,24 @@ import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
  * A <code>CompositeListValueModel</code> wraps another
- * <code>ListValueModel</code> and uses a <code>Transformer</code>
- * to convert each item in the wrapped list to yet another
- * <code>ListValueModel</code>. This composite list contains
- * the combined items from all these component lists.
+ * <code>ListValueModel</code> and uses a <code>Transformer</code> to convert
+ * each item in the wrapped list to yet another <code>ListValueModel</code>.
+ * This composite list contains the combined items from all these component
+ * lists.
  * 
- * Terminology:
- * - sources - the items in the wrapped list value model; these
- *    are converted into component LVMs by the transformer
- * - componentLVMs - the component list value models that are combined
- *    by this composite list value model
- * - items - the items held by the component LVMs
+ * Terminology: - sources - the items in the wrapped list value model; these are
+ * converted into component LVMs by the transformer - componentLVMs - the
+ * component list value models that are combined by this composite list value
+ * model - items - the items held by the component LVMs
+ *
+ * @author mqfdy
+ * @param <E1>
+ *            the generic type
+ * @param <E2>
+ *            the generic type
  */
 public class CompositeListValueModel<E1, E2>
 	extends ListValueModelWrapper<E1>
@@ -52,6 +57,12 @@ public class CompositeListValueModel<E1, E2>
 	 * Cache of the sources, component LVMs, lists.
 	 */
 	private final ArrayList<Info> infoList;
+	
+	/**
+	 * The Class Info.
+	 *
+	 * @author mqfdy
+	 */
 	protected class Info {
 		// the object passed to the transformer
 		final E1 source;
@@ -80,20 +91,27 @@ public class CompositeListValueModel<E1, E2>
 	// ********** constructors **********
 
 	/**
-	 * Construct a list value model with the specified wrapped
-	 * list value model. Use this constructor if
-	 *     - the wrapped list value model already contains other
-	 *       list value models or
-	 *     - you want to override the <code>transform(E1)</code> method
-	 *       instead of building a <code>Transformer</code>
+	 * Construct a list value model with the specified wrapped list value model.
+	 * Use this constructor if - the wrapped list value model already contains
+	 * other list value models or - you want to override the
+	 * <code>transform(E1)</code> method instead of building a
+	 * <code>Transformer</code>
+	 *
+	 * @param listHolder
+	 *            the list holder
 	 */
 	public CompositeListValueModel(ListValueModel<? extends E1> listHolder) {
 		this(listHolder, Transformer.Null.<E1, ListValueModel<E2>>instance());
 	}
 
 	/**
-	 * Construct a list value model with the specified wrapped
-	 * list value model and transformer.
+	 * Construct a list value model with the specified wrapped list value model
+	 * and transformer.
+	 *
+	 * @param listHolder
+	 *            the list holder
+	 * @param transformer
+	 *            the transformer
 	 */
 	public CompositeListValueModel(ListValueModel<? extends E1> listHolder, Transformer<E1, ListValueModel<E2>> transformer) {
 		super(listHolder);
@@ -105,18 +123,25 @@ public class CompositeListValueModel<E1, E2>
 
 	/**
 	 * Construct a list value model with the specified, unchanging, wrapped
-	 * list. Use this constructor if
-	 *     - the wrapped list already contains list value models or
-	 *     - you want to override the <code>transform(E1)</code> method
-	 *       instead of building a <code>Transformer</code>
+	 * list. Use this constructor if - the wrapped list already contains list
+	 * value models or - you want to override the <code>transform(E1)</code>
+	 * method instead of building a <code>Transformer</code>
+	 *
+	 * @param list
+	 *            the list
 	 */
 	public CompositeListValueModel(List<? extends E1> list) {
 		this(new StaticListValueModel<E1>(list));
 	}
 
 	/**
-	 * Construct a list value model with the specified, unchanging, wrapped
-	 * list and transformer.
+	 * Construct a list value model with the specified, unchanging, wrapped list
+	 * and transformer.
+	 *
+	 * @param list
+	 *            the list
+	 * @param transformer
+	 *            the transformer
 	 */
 	public CompositeListValueModel(List<? extends E1> list, Transformer<E1, ListValueModel<E2>> transformer) {
 		this(new StaticListValueModel<E1>(list), transformer);
@@ -125,6 +150,13 @@ public class CompositeListValueModel<E1, E2>
 
 	// ********** initialization **********
 
+	/**
+	 * Builds the component LVM listener.
+	 *
+	 * @author mqfdy
+	 * @return the list change listener
+	 * @Date 2018-09-03 09:00
+	 */
 	protected ListChangeListener buildComponentLVMListener() {
 		return new ListChangeListener() {
 			public void itemsAdded(ListChangeEvent event) {
@@ -177,6 +209,13 @@ public class CompositeListValueModel<E1, E2>
 		return new ReadOnlyCompositeListIterator<E2>(this.buildListsIterators());
 	}
 
+	/**
+	 * Builds the lists iterators.
+	 *
+	 * @author mqfdy
+	 * @return the list iterator
+	 * @Date 2018-09-03 09:00
+	 */
 	protected ListIterator<ListIterator<E2>> buildListsIterators() {
 		return new TransformationListIterator<Info, ListIterator<E2>>(this.infoList.listIterator()) {
 			@Override
@@ -227,14 +266,34 @@ public class CompositeListValueModel<E1, E2>
 
 	/**
 	 * Do not fire an event.
+	 *
+	 * @author mqfdy
+	 * @param addedSourcesIndex
+	 *            the added sources index
+	 * @param addedSources
+	 *            the added sources
+	 * @param addedSourcesSize
+	 *            the added sources size
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void addComponentSources(int addedSourcesIndex, ListIterator<? extends E1> addedSources, int addedSourcesSize) {
 		this.addComponentSources(addedSourcesIndex, addedSources, addedSourcesSize, false);  // false = do not fire event
 	}
 
 	/**
-	 * Add infos corresponding to the specified sources to our cache.
-	 * Fire the appropriate event if requested.
+	 * Add infos corresponding to the specified sources to our cache. Fire the
+	 * appropriate event if requested.
+	 *
+	 * @author mqfdy
+	 * @param addedSourcesIndex
+	 *            the added sources index
+	 * @param addedSources
+	 *            the added sources
+	 * @param addedSourcesSize
+	 *            the added sources size
+	 * @param fireEvent
+	 *            the fire event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void addComponentSources(int addedSourcesIndex, ListIterator<? extends E1> addedSources, int addedSourcesSize, boolean fireEvent) {
 		ArrayList<Info> newInfoList = new ArrayList<Info>(addedSourcesSize);
@@ -281,6 +340,13 @@ public class CompositeListValueModel<E1, E2>
 
 	/**
 	 * Do not fire an event.
+	 *
+	 * @author mqfdy
+	 * @param removedSourcesIndex
+	 *            the removed sources index
+	 * @param removedSourcesSize
+	 *            the removed sources size
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void removeComponentSources(int removedSourcesIndex, int removedSourcesSize) {
 		this.removeComponentSources(removedSourcesIndex, removedSourcesSize, false);  // false = do not fire event
@@ -288,6 +354,15 @@ public class CompositeListValueModel<E1, E2>
 
 	/**
 	 * Remove the infos corresponding to the specified sources from our cache.
+	 *
+	 * @author mqfdy
+	 * @param removedSourcesIndex
+	 *            the removed sources index
+	 * @param removedSourcesSize
+	 *            the removed sources size
+	 * @param fireEvent
+	 *            the fire event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void removeComponentSources(int removedSourcesIndex, int removedSourcesSize, boolean fireEvent) {
 		int removedItemsIndex = this.infoList.get(removedSourcesIndex).begin;
@@ -328,8 +403,19 @@ public class CompositeListValueModel<E1, E2>
 
 	/**
 	 * Replaced component sources will not (typically) map to a set of replaced
-	 * items, so we remove and add the corresponding lists of items, resulting in
-	 * two events.
+	 * items, so we remove and add the corresponding lists of items, resulting
+	 * in two events.
+	 *
+	 * @author mqfdy
+	 * @param replacedSourcesIndex
+	 *            the replaced sources index
+	 * @param newSources
+	 *            the new sources
+	 * @param replacedSourcesSize
+	 *            the replaced sources size
+	 * @param fireEvent
+	 *            the fire event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void replaceComponentSources(int replacedSourcesIndex, ListIterator<? extends E1> newSources, int replacedSourcesSize, boolean fireEvent) {
 		this.removeComponentSources(replacedSourcesIndex, replacedSourcesSize, fireEvent);
@@ -344,6 +430,20 @@ public class CompositeListValueModel<E1, E2>
 		this.moveComponentSources(event.getTargetIndex(), event.getSourceIndex(), event.getMoveLength(), true);  // true = fire event
 	}
 
+	/**
+	 * Move component sources.
+	 *
+	 * @author mqfdy
+	 * @param targetSourcesIndex
+	 *            the target sources index
+	 * @param sourceSourcesIndex
+	 *            the source sources index
+	 * @param movedSourcesLength
+	 *            the moved sources length
+	 * @param fireEvent
+	 *            the fire event
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void moveComponentSources(int targetSourcesIndex, int sourceSourcesIndex, int movedSourcesLength, boolean fireEvent) {
 		int sourceItemsIndex = this.infoList.get(sourceSourcesIndex).begin;
 
@@ -409,8 +509,14 @@ public class CompositeListValueModel<E1, E2>
 	/**
 	 * Transform the specified object into a list value model.
 	 * <p>
-	 * This method can be overridden by a subclass as an
-	 * alternative to building a <code>Transformer</code>.
+	 * This method can be overridden by a subclass as an alternative to building
+	 * a <code>Transformer</code>.
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            the value
+	 * @return the list value model
+	 * @Date 2018-09-03 09:00
 	 */
 	protected ListValueModel<E2> transform(E1 value) {
 		return this.transformer.transform(value);
@@ -418,6 +524,12 @@ public class CompositeListValueModel<E1, E2>
 
 	/**
 	 * Return the index of the specified component LVM.
+	 *
+	 * @author mqfdy
+	 * @param componentLVM
+	 *            the component LVM
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	protected int indexOf(ListValueModel<E2> componentLVM) {
 		for (int i = 0; i < this.infoList.size(); i++) {
@@ -430,14 +542,24 @@ public class CompositeListValueModel<E1, E2>
 
 	/**
 	 * Return the index of the specified event's component LVM.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	protected int indexFor(ListChangeEvent event) {
 		return this.indexOf(this.componentLVM(event));
 	}
 
 	/**
-	 * Items were added to one of the component lists;
-	 * synchronize our cache.
+	 * Items were added to one of the component lists; synchronize our cache.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void componentItemsAdded(ListChangeEvent event) {
 		// update the affected 'begin' indices
@@ -457,8 +579,13 @@ public class CompositeListValueModel<E1, E2>
 	}
 
 	/**
-	 * Items were removed from one of the component lists;
-	 * synchronize our cache.
+	 * Items were removed from one of the component lists; synchronize our
+	 * cache.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void componentItemsRemoved(ListChangeEvent event) {
 		// update the affected 'begin' indices
@@ -479,8 +606,12 @@ public class CompositeListValueModel<E1, E2>
 	}
 
 	/**
-	 * Items were replaced in one of the component lists;
-	 * synchronize our cache.
+	 * Items were replaced in one of the component lists; synchronize our cache.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void componentItemsReplaced(ListChangeEvent event) {
 		// no changes to the 'begin' indices or size
@@ -498,8 +629,12 @@ public class CompositeListValueModel<E1, E2>
 	}
 
 	/**
-	 * Items were moved in one of the component lists;
-	 * synchronize our cache.
+	 * Items were moved in one of the component lists; synchronize our cache.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void componentItemsMoved(ListChangeEvent event) {
 		// no changes to the 'begin' indices or size
@@ -514,14 +649,28 @@ public class CompositeListValueModel<E1, E2>
 	}
 
 	/**
-	 * One of the component lists was cleared;
-	 * synchronize our cache.
+	 * One of the component lists was cleared; synchronize our cache.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void componentListCleared(ListChangeEvent event) {
 		int componentLVMIndex = this.indexFor(event);
 		this.clearComponentList(componentLVMIndex, this.infoList.get(componentLVMIndex));
 	}
 
+	/**
+	 * Clear component list.
+	 *
+	 * @author mqfdy
+	 * @param componentLVMIndex
+	 *            the component LVM index
+	 * @param info
+	 *            the info
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void clearComponentList(int componentLVMIndex, Info info) {
 		// update the affected 'begin' indices
 		int removedItemsSize = info.items.size();
@@ -539,9 +688,13 @@ public class CompositeListValueModel<E1, E2>
 	}
 
 	/**
-	 * One of the component lists changed;
-	 * synchronize our cache by clearing out the appropriate
-	 * list and rebuilding it.
+	 * One of the component lists changed; synchronize our cache by clearing out
+	 * the appropriate list and rebuilding it.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void componentListChanged(ListChangeEvent event) {
 		int componentLVMIndex = this.indexFor(event);
@@ -562,12 +715,30 @@ public class CompositeListValueModel<E1, E2>
 		this.fireItemsAdded(LIST_VALUES, info.begin, info.items);
 	}
 
+	/**
+	 * Component items.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @return the list iterator
+	 * @Date 2018-09-03 09:00
+	 */
 	// minimize scope of suppressed warnings
 	@SuppressWarnings("unchecked")
 	protected ListIterator<E2> componentItems(ListChangeEvent event) {
 		return (ListIterator<E2>) event.items();
 	}
 
+	/**
+	 * Component LVM.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @return the list value model
+	 * @Date 2018-09-03 09:00
+	 */
 	// minimize scope of suppressed warnings
 	@SuppressWarnings("unchecked")
 	protected ListValueModel<E2> componentLVM(ListChangeEvent event) {

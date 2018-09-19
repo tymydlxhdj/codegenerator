@@ -3,15 +3,23 @@ package com.mqfdy.code.designer.views.properties.sources;
 import com.mqfdy.code.model.AbstractModelElement;
 import com.mqfdy.code.model.Inheritance;
 
+// TODO: Auto-generated Javadoc
 /**
- * 继承关系InheritancePropertySource
- * 
+ * 继承关系InheritancePropertySource.
+ *
  * @author mqfdy
- * 
  */
 public class InheritancePropertySource extends ModelPropertySource {
+	
+	/** The inheritance. */
 	public Inheritance inheritance;
 
+	/**
+	 * Instantiates a new inheritance property source.
+	 *
+	 * @param inheritance
+	 *            the inheritance
+	 */
 	public InheritancePropertySource(AbstractModelElement inheritance) {
 		super();
 		this.inheritance = (Inheritance) inheritance;
@@ -21,9 +29,15 @@ public class InheritancePropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	protected void initializeDescriptors() {
 	}
 
+	/**
+	 * 
+	 */
 	protected void installModelProperty() {
 		addStringModelProperty(IBusinessModelPropertyNames.PROPERTY_COMMON_ID,
 				IBusinessModelPropertyNames.CATEGORY_BASE, "", true, "01");
@@ -55,6 +69,15 @@ public class InheritancePropertySource extends ModelPropertySource {
 		// /MAP
 	}
 
+	/**
+	 * Gets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return the property value
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -99,6 +122,16 @@ public class InheritancePropertySource extends ModelPropertySource {
 			return "";
 	}
 
+	/**
+	 * Sets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPropertyValue(Object propertyId, Object value) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException(propertyId.toString());
@@ -173,10 +206,27 @@ public class InheritancePropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * Checks if is property set.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return true, if is property set
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isPropertySet(Object propertyId) {
 		return true;
 	}
 
+	/**
+	 * Reset property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @Date 2018-09-03 09:00
+	 */
 	public void resetPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -188,6 +238,9 @@ public class InheritancePropertySource extends ModelPropertySource {
 		 */
 	}
 
+	/**
+	 * @return
+	 */
 	public Object getEditableValue() {
 		return this;
 	}

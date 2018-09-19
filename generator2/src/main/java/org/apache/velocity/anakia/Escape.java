@@ -1,5 +1,6 @@
 package org.apache.velocity.anakia;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -31,24 +32,27 @@ package org.apache.velocity.anakia;
  */
 public class Escape
 {
-    /**
-     *
-     */
+    
+    /** The Constant LINE_SEPARATOR. */
     public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
     /**
-     * Empty constructor
-     */
+	 * Empty constructor.
+	 */
     public Escape()
     {
         // left blank on purpose
     }
 
     /**
-     * Do the escaping.
-     * @param st
-     * @return The escaped text.
-     */
+	 * Do the escaping.
+	 *
+	 * @author mqfdy
+	 * @param st
+	 *            the st
+	 * @return The escaped text.
+	 * @Date 2018-09-03 09:00
+	 */
     public static final String getText(String st)
     {
         StringBuffer buff = new StringBuffer();

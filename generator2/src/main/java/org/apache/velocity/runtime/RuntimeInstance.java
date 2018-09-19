@@ -68,6 +68,7 @@ import org.apache.velocity.util.introspection.LinkingUberspector;
 import org.apache.velocity.util.introspection.Uberspect;
 import org.apache.velocity.util.introspection.UberspectLoggable;
 
+// TODO: Auto-generated Javadoc
 /**
  * This is the Runtime system for Velocity. It is the
  * single access point for all functionality in Velocity.
@@ -117,9 +118,8 @@ import org.apache.velocity.util.introspection.UberspectLoggable;
  */
 public class RuntimeInstance implements RuntimeConstants, RuntimeServices
 {
-    /**
-     *  VelocimacroFactory object to manage VMs
-     */
+    
+    /** VelocimacroFactory object to manage VMs. */
     private  VelocimacroFactory vmFactory = null;
 
     /**
@@ -130,9 +130,7 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
      */
     private Log log = new Log();
 
-    /**
-     * The Runtime parser pool
-     */
+    /** The Runtime parser pool. */
     private  ParserPool parserPool;
 
     /**
@@ -182,6 +180,7 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
      */
     private  ExtendedProperties configuration = new ExtendedProperties();
 
+    /** The resource manager. */
     private ResourceManager resourceManager = null;
 
     /**
@@ -190,25 +189,34 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
      */
     private EventCartridge eventCartridge = null;
 
+    /** The introspector. */
     /*
      *  Each runtime instance has it's own introspector
      *  to ensure that each instance is completely separate.
      */
     private Introspector introspector = null;
 
+    /** The evaluate scope name. */
     /*
      * Settings for provision of root scope for evaluate(...) calls.
      */
     private String evaluateScopeName = "evaluate";
+    
+    /** The provide evaluate scope. */
     private boolean provideEvaluateScope = false;
 
+    /** The application attributes. */
     /*
      *  Opaque reference to something specificed by the
      *  application for use in application supplied/specified
      *  pluggable components
      */
     private Map applicationAttributes = null;
+    
+    /** The uber spect. */
     private Uberspect uberSpect;
+    
+    /** The encoding. */
     private String encoding;
 
     /**
@@ -233,20 +241,22 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * This is the primary initialization method in the Velocity
-     * Runtime. The systems that are setup/initialized here are
-     * as follows:
-     *
-     * <ul>
-     *   <li>Logging System</li>
-     *   <li>ResourceManager</li>
-     *   <li>EventHandler</li>
-     *   <li>Parser Pool</li>
-     *   <li>Global Cache</li>
-     *   <li>Static Content Include System</li>
-     *   <li>Velocimacro System</li>
-     * </ul>
-     */
+	 * This is the primary initialization method in the Velocity Runtime. The
+	 * systems that are setup/initialized here are as follows:
+	 * 
+	 * <ul>
+	 * <li>Logging System</li>
+	 * <li>ResourceManager</li>
+	 * <li>EventHandler</li>
+	 * <li>Parser Pool</li>
+	 * <li>Global Cache</li>
+	 * <li>Static Content Include System</li>
+	 * <li>Velocimacro System</li>
+	 * </ul>
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:33
+	 */
     public synchronized void init()
     {
         if (!initialized && !initializing)
@@ -291,8 +301,11 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Init or die! (with some log help, of course)
-     */
+	 * Init or die! (with some log help, of course).
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:33
+	 */
     private void requireInitialization()
     {
         if (!initialized)
@@ -310,9 +323,12 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     *  Gets the classname for the Uberspect introspection package and
-     *  instantiates an instance.
-     */
+	 * Gets the classname for the Uberspect introspection package and
+	 * instantiates an instance.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:33
+	 */
     private void initializeIntrospection()
     {
         String[] uberspectors = configuration.getStringArray(RuntimeConstants.UBERSPECT_CLASSNAME);
@@ -401,10 +417,13 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Initializes the Velocity Runtime with properties file.
-     * The properties file may be in the file system proper,
-     * or the properties file may be in the classpath.
-     */
+	 * Initializes the Velocity Runtime with properties file. The properties
+	 * file may be in the file system proper, or the properties file may be in
+	 * the classpath.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:33
+	 */
     private void setDefaultProperties()
     {
         InputStream inputStream = null;
@@ -448,12 +467,15 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Allows an external system to set a property in
-     * the Velocity Runtime.
-     *
-     * @param key property key
-     * @param  value property value
-     */
+	 * Allows an external system to set a property in the Velocity Runtime.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            property key
+	 * @param value
+	 *            the value
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void setProperty(String key, Object value)
     {
         if (overridingProperties == null)
@@ -466,8 +488,14 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     
 
     /**
-     * Add all properties contained in the file fileName to the RuntimeInstance properties
-     */
+	 * Add all properties contained in the file fileName to the RuntimeInstance
+	 * properties.
+	 *
+	 * @author mqfdy
+	 * @param fileName
+	 *            the new properties
+	 * @Date 2018-09-03 09:00
+	 */
     public void setProperties(String fileName)
     {
         ExtendedProperties props = null;
@@ -491,8 +519,13 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     
 
     /**
-     * Add all the properties in props to the RuntimeInstance properties
-     */
+	 * Add all the properties in props to the RuntimeInstance properties.
+	 *
+	 * @author mqfdy
+	 * @param props
+	 *            the new properties
+	 * @Date 2018-09-03 09:00
+	 */
     public void setProperties(Properties props)
     {
         Enumeration en = props.keys();
@@ -504,15 +537,16 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
         
     /**
-     * Allow an external system to set an ExtendedProperties
-     * object to use. This is useful where the external
-     * system also uses the ExtendedProperties class and
-     * the velocity configuration is a subset of
-     * parent application's configuration. This is
-     * the case with Turbine.
-     *
-     * @param  configuration
-     */
+	 * Allow an external system to set an ExtendedProperties object to use. This
+	 * is useful where the external system also uses the ExtendedProperties
+	 * class and the velocity configuration is a subset of parent application's
+	 * configuration. This is the case with Turbine.
+	 *
+	 * @author mqfdy
+	 * @param configuration
+	 *            the new configuration
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void setConfiguration( ExtendedProperties configuration)
     {
         if (overridingProperties == null)
@@ -530,24 +564,26 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Add a property to the configuration. If it already
-     * exists then the value stated here will be added
-     * to the configuration entry. For example, if
-     *
-     * resource.loader = file
-     *
-     * is already present in the configuration and you
-     *
-     * addProperty("resource.loader", "classpath")
-     *
-     * Then you will end up with a Vector like the
-     * following:
-     *
-     * ["file", "classpath"]
-     *
-     * @param  key
-     * @param  value
-     */
+	 * Add a property to the configuration. If it already exists then the value
+	 * stated here will be added to the configuration entry. For example, if
+	 * 
+	 * resource.loader = file
+	 * 
+	 * is already present in the configuration and you
+	 * 
+	 * addProperty("resource.loader", "classpath")
+	 * 
+	 * Then you will end up with a Vector like the following:
+	 * 
+	 * ["file", "classpath"]
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @param value
+	 *            the value
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void addProperty(String key, Object value)
     {
         if (overridingProperties == null)
@@ -559,11 +595,13 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Clear the values pertaining to a particular
-     * property.
-     *
-     * @param key of property to clear
-     */
+	 * Clear the values pertaining to a particular property.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            of property to clear
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void clearProperty(String key)
     {
         if (overridingProperties != null)
@@ -573,13 +611,16 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     *  Allows an external caller to get a property.  The calling
-     *  routine is required to know the type, as this routine
-     *  will return an Object, as that is what properties can be.
-     *
-     *  @param key property to return
-     *  @return Value of the property or null if it does not exist.
-     */
+	 * Allows an external caller to get a property. The calling routine is
+	 * required to know the type, as this routine will return an Object, as that
+	 * is what properties can be.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            property to return
+	 * @return Value of the property or null if it does not exist.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public Object getProperty(String key)
     {
         Object o = null;
@@ -610,13 +651,14 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Initialize Velocity properties, if the default
-     * properties have not been laid down first then
-     * do so. Then proceed to process any overriding
-     * properties. Laying down the default properties
-     * gives a much greater chance of having a
-     * working system.
-     */
+	 * Initialize Velocity properties, if the default properties have not been
+	 * laid down first then do so. Then proceed to process any overriding
+	 * properties. Laying down the default properties gives a much greater
+	 * chance of having a working system.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:33
+	 */
     private void initializeProperties()
     {
         /*
@@ -635,17 +677,27 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Initialize the Velocity Runtime with a Properties
-     * object.
-     *
-     * @param p Velocity properties for initialization
-     */
+	 * Initialize the Velocity Runtime with a Properties object.
+	 *
+	 * @author mqfdy
+	 * @param p
+	 *            Velocity properties for initialization
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void init(Properties p)
     {
         setProperties(ExtendedProperties.convertProperties(p));
         init();
     }
 
+    /**
+	 * Sets the properties.
+	 *
+	 * @author mqfdy
+	 * @param p
+	 *            the new properties
+	 * @Date 2018-9-3 11:38:33
+	 */
     private void setProperties(ExtendedProperties p)
     {
         if (overridingProperties == null)
@@ -659,11 +711,14 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Initialize the Velocity Runtime with the name of
-     * ExtendedProperties object.
-     *
-     * @param configurationFile
-     */
+	 * Initialize the Velocity Runtime with the name of ExtendedProperties
+	 * object.
+	 *
+	 * @author mqfdy
+	 * @param configurationFile
+	 *            the configuration file
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void init(String configurationFile)
     {
         try
@@ -678,6 +733,12 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
         init();
     }
 
+    /**
+	 * Initialize resource manager.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:33
+	 */
     private void initializeResourceManager()
     {
         /*
@@ -744,6 +805,12 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
         }
     }
 
+    /**
+	 * Initialize event handlers.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:33
+	 */
     private void initializeEventHandlers()
     {
 
@@ -813,6 +880,19 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
 
     }
 
+    /**
+	 * Initialize specific event handler.
+	 *
+	 * @author mqfdy
+	 * @param classname
+	 *            the classname
+	 * @param paramName
+	 *            the param name
+	 * @param EventHandlerInterface
+	 *            the event handler interface
+	 * @return the event handler
+	 * @Date 2018-9-3 11:38:33
+	 */
     private EventHandler initializeSpecificEventHandler(String classname, String paramName, Class EventHandlerInterface)
     {
         if ( classname != null && classname.length() > 0)
@@ -860,8 +940,11 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Initialize the Velocity logging system.
-     */
+	 * Initialize the Velocity logging system.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:33
+	 */
     private void initializeLog()
     {
         // since the Log we started with was just placeholding,
@@ -878,12 +961,13 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
 
 
     /**
-     * This methods initializes all the directives
-     * that are used by the Velocity Runtime. The
-     * directives to be initialized are listed in
-     * the RUNTIME_DEFAULT_DIRECTIVES properties
-     * file.
-     */
+	 * This methods initializes all the directives that are used by the Velocity
+	 * Runtime. The directives to be initialized are listed in the
+	 * RUNTIME_DEFAULT_DIRECTIVES properties file.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:33
+	 */
     private void initializeDirectives()
     {
         Properties directiveProperties = new Properties();
@@ -968,9 +1052,13 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Programatically add a directive.
-     * @param directive
-     */
+	 * Programatically add a directive.
+	 *
+	 * @author mqfdy
+	 * @param directive
+	 *            the directive
+	 * @Date 2018-09-03 09:00
+	 */
     public synchronized void addDirective(Directive directive) 
     {
         runtimeDirectives.put(directive.getName(), directive);
@@ -978,19 +1066,27 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Retrieve a previously instantiated directive.
-     * @param name name of the directive
-     * @return the {@link Directive} for that name
-     */
+	 * Retrieve a previously instantiated directive.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            name of the directive
+	 * @return the {@link Directive} for that name
+	 * @Date 2018-9-3 11:38:33
+	 */
     public Directive getDirective(String name) 
     {
         return (Directive) runtimeDirectivesShared.get(name);
     }
 
     /**
-     * Remove a directive.
-     * @param name name of the directive.
-     */
+	 * Remove a directive.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            name of the directive.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public synchronized void removeDirective(String name) 
     {
         runtimeDirectives.remove(name);
@@ -998,13 +1094,16 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
     
     /**
-     * Makes an unsynchronized copy of the directives map
-     * that is used for Directive lookups by all parsers.
-     * 
-     * This follows Copy-on-Write pattern. The cost of creating
-     * a new map is acceptable since directives are typically
-     * set and modified only during Velocity setup phase.
-     */
+	 * Makes an unsynchronized copy of the directives map that is used for
+	 * Directive lookups by all parsers.
+	 * 
+	 * This follows Copy-on-Write pattern. The cost of creating a new map is
+	 * acceptable since directives are typically set and modified only during
+	 * Velocity setup phase.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:33
+	 */
     private void updateSharedDirectivesMap()
     {
         Map tmp = new HashMap(runtimeDirectives);
@@ -1012,10 +1111,13 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     *  instantiates and loads the directive with some basic checks
-     *
-     *  @param directiveClass classname of directive to load
-     */
+	 * instantiates and loads the directive with some basic checks.
+	 *
+	 * @author mqfdy
+	 * @param directiveClass
+	 *            classname of directive to load
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void loadDirective(String directiveClass)
     {
         try
@@ -1048,8 +1150,11 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
 
 
     /**
-     * Initializes the Velocity parser pool.
-     */
+	 * Initializes the Velocity parser pool.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:33
+	 */
     private void initializeParserPool()
     {
         /*
@@ -1119,10 +1224,12 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Returns a JavaCC generated Parser.
-     *
-     * @return Parser javacc generated parser
-     */
+	 * Returns a JavaCC generated Parser.
+	 *
+	 * @author mqfdy
+	 * @return Parser javacc generated parser
+	 * @Date 2018-9-3 11:38:33
+	 */
     public Parser createNewParser()
     {
         requireInitialization();
@@ -1156,22 +1263,24 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Parse the input and return the root of
-     * AST node structure.
-     * <br><br>
-     *  In the event that it runs out of parsers in the
-     *  pool, it will create and let them be GC'd
-     *  dynamically, logging that it has to do that.  This
-     *  is considered an exceptional condition.  It is
-     *  expected that the user will set the
-     *  PARSER_POOL_SIZE property appropriately for their
-     *  application.  We will revisit this.
-     *
-     * @param reader Reader retrieved by a resource loader
-     * @param templateName name of the template being parsed
-     * @return A root node representing the template as an AST tree.
-     * @throws ParseException When the template could not be parsed.
-     */
+	 * Parse the input and return the root of AST node structure. <br>
+	 * <br>
+	 * In the event that it runs out of parsers in the pool, it will create and
+	 * let them be GC'd dynamically, logging that it has to do that. This is
+	 * considered an exceptional condition. It is expected that the user will
+	 * set the PARSER_POOL_SIZE property appropriately for their application. We
+	 * will revisit this.
+	 *
+	 * @author mqfdy
+	 * @param reader
+	 *            Reader retrieved by a resource loader
+	 * @param templateName
+	 *            name of the template being parsed
+	 * @return A root node representing the template as an AST tree.
+	 * @throws ParseException
+	 *             When the template could not be parsed.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public SimpleNode parse(Reader reader, String templateName)
         throws ParseException
     {
@@ -1182,14 +1291,20 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     *  Parse the input and return the root of the AST node structure.
-     *
-     * @param reader Reader retrieved by a resource loader
-     * @param templateName name of the template being parsed
-     * @param dumpNamespace flag to dump the Velocimacro namespace for this template
-     * @return A root node representing the template as an AST tree.
-     * @throws ParseException When the template could not be parsed.
-     */
+	 * Parse the input and return the root of the AST node structure.
+	 *
+	 * @author mqfdy
+	 * @param reader
+	 *            Reader retrieved by a resource loader
+	 * @param templateName
+	 *            name of the template being parsed
+	 * @param dumpNamespace
+	 *            flag to dump the Velocimacro namespace for this template
+	 * @return A root node representing the template as an AST tree.
+	 * @throws ParseException
+	 *             When the template could not be parsed.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public SimpleNode parse(Reader reader, String templateName, boolean dumpNamespace)
         throws ParseException
     {
@@ -1235,6 +1350,12 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
         }
     }
 
+    /**
+	 * Initialize evaluate scope settings.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:33
+	 */
     private void initializeEvaluateScopeSettings()
     {
         String property = evaluateScopeName+'.'+PROVIDE_SCOPE_CONTROL;
@@ -1483,9 +1604,13 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Retrieves and caches the configured default encoding
-     * for better performance. (VELOCITY-606)
-     */
+	 * Retrieves and caches the configured default encoding for better
+	 * performance. (VELOCITY-606)
+	 *
+	 * @author mqfdy
+	 * @return the default encoding
+	 * @Date 2018-9-3 11:38:33
+	 */
     private String getDefaultEncoding()
     {
         if (encoding == null)
@@ -1496,18 +1621,20 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Returns a <code>Template</code> from the resource manager.
-     * This method assumes that the character encoding of the
-     * template is set by the <code>input.encoding</code>
-     * property.  The default is "ISO-8859-1"
-     *
-     * @param name The file name of the desired template.
-     * @return     The template.
-     * @throws ResourceNotFoundException if template not found
-     *          from any available source.
-     * @throws ParseErrorException if template cannot be parsed due
-     *          to syntax (or other) error.
-     */
+	 * Returns a <code>Template</code> from the resource manager. This method
+	 * assumes that the character encoding of the template is set by the
+	 * <code>input.encoding</code> property. The default is "ISO-8859-1"
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            The file name of the desired template.
+	 * @return The template.
+	 * @throws ResourceNotFoundException
+	 *             if template not found from any available source.
+	 * @throws ParseErrorException
+	 *             if template cannot be parsed due to syntax (or other) error.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public Template getTemplate(String name)
         throws ResourceNotFoundException, ParseErrorException
     {
@@ -1515,16 +1642,20 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Returns a <code>Template</code> from the resource manager
-     *
-     * @param name The  name of the desired template.
-     * @param encoding Character encoding of the template
-     * @return     The template.
-     * @throws ResourceNotFoundException if template not found
-     *          from any available source.
-     * @throws ParseErrorException if template cannot be parsed due
-     *          to syntax (or other) error.
-     */
+	 * Returns a <code>Template</code> from the resource manager.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            The name of the desired template.
+	 * @param encoding
+	 *            Character encoding of the template
+	 * @return The template.
+	 * @throws ResourceNotFoundException
+	 *             if template not found from any available source.
+	 * @throws ParseErrorException
+	 *             if template cannot be parsed due to syntax (or other) error.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public Template getTemplate(String name, String  encoding)
         throws ResourceNotFoundException, ParseErrorException
     {
@@ -1536,16 +1667,19 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Returns a static content resource from the
-     * resource manager.  Uses the current value
-     * if INPUT_ENCODING as the character encoding.
-     *
-     * @param name Name of content resource to get
-     * @return parsed ContentResource object ready for use
-     * @throws ResourceNotFoundException if template not found
-     *          from any available source.
-     * @throws ParseErrorException When the template could not be parsed.
-     */
+	 * Returns a static content resource from the resource manager. Uses the
+	 * current value if INPUT_ENCODING as the character encoding.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            Name of content resource to get
+	 * @return parsed ContentResource object ready for use
+	 * @throws ResourceNotFoundException
+	 *             if template not found from any available source.
+	 * @throws ParseErrorException
+	 *             When the template could not be parsed.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public ContentResource getContent(String name)
         throws ResourceNotFoundException, ParseErrorException
     {
@@ -1558,16 +1692,20 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Returns a static content resource from the
-     * resource manager.
-     *
-     * @param name Name of content resource to get
-     * @param encoding Character encoding to use
-     * @return parsed ContentResource object ready for use
-     * @throws ResourceNotFoundException if template not found
-     *          from any available source.
-     * @throws ParseErrorException When the template could not be parsed.
-     */
+	 * Returns a static content resource from the resource manager.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            Name of content resource to get
+	 * @param encoding
+	 *            Character encoding to use
+	 * @return parsed ContentResource object ready for use
+	 * @throws ResourceNotFoundException
+	 *             if template not found from any available source.
+	 * @throws ParseErrorException
+	 *             When the template could not be parsed.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public ContentResource getContent(String name, String encoding)
         throws ResourceNotFoundException, ParseErrorException
     {
@@ -1580,14 +1718,17 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
 
 
     /**
-     *  Determines if a template exists and returns name of the loader that
-     *  provides it.  This is a slightly less hokey way to support
-     *  the Velocity.resourceExists() utility method, which was broken
-     *  when per-template encoding was introduced.  We can revisit this.
-     *
-     *  @param resourceName Name of template or content resource
-     *  @return class name of loader than can provide it
-     */
+	 * Determines if a template exists and returns name of the loader that
+	 * provides it. This is a slightly less hokey way to support the
+	 * Velocity.resourceExists() utility method, which was broken when
+	 * per-template encoding was introduced. We can revisit this.
+	 *
+	 * @author mqfdy
+	 * @param resourceName
+	 *            Name of template or content resource
+	 * @return class name of loader than can provide it
+	 * @Date 2018-9-3 11:38:33
+	 */
     public String getLoaderNameForResource(String resourceName)
     {
         requireInitialization();
@@ -1608,54 +1749,69 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * @deprecated Use getLog() and call warn() on it.
-     * @see Log#warn(Object)
-     * @param message The message to log.
-     */
+	 * Warn.
+	 *
+	 * @param message
+	 *            The message to log.
+	 * @see Log#warn(Object)
+	 * @deprecated Use getLog() and call warn() on it.
+	 */
     public void warn(Object message)
     {
         getLog().warn(message);
     }
 
     /**
-     * @deprecated Use getLog() and call info() on it.
-     * @see Log#info(Object)
-     * @param message The message to log.
-     */
+	 * Info.
+	 *
+	 * @param message
+	 *            The message to log.
+	 * @see Log#info(Object)
+	 * @deprecated Use getLog() and call info() on it.
+	 */
     public void info(Object message)
     {
         getLog().info(message);
     }
 
     /**
-     * @deprecated Use getLog() and call error() on it.
-     * @see Log#error(Object)
-     * @param message The message to log.
-     */
+	 * Error.
+	 *
+	 * @param message
+	 *            The message to log.
+	 * @see Log#error(Object)
+	 * @deprecated Use getLog() and call error() on it.
+	 */
     public void error(Object message)
     {
         getLog().error(message);
     }
 
     /**
-     * @deprecated Use getLog() and call debug() on it.
-     * @see Log#debug(Object)
-     * @param message The message to log.
-     */
+	 * Debug.
+	 *
+	 * @param message
+	 *            The message to log.
+	 * @see Log#debug(Object)
+	 * @deprecated Use getLog() and call debug() on it.
+	 */
     public void debug(Object message)
     {
         getLog().debug(message);
     }
 
     /**
-     * String property accessor method with default to hide the
-     * configuration implementation.
-     *
-     * @param key property key
-     * @param defaultValue  default value to return if key not
-     *               found in resource manager.
-     * @return value of key or default
-     */
+	 * String property accessor method with default to hide the configuration
+	 * implementation.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            property key
+	 * @param defaultValue
+	 *            default value to return if key not found in resource manager.
+	 * @return value of key or default
+	 * @Date 2018-9-3 11:38:33
+	 */
     public String getString( String key, String defaultValue)
     {
         return configuration.getString(key, defaultValue);
@@ -1676,19 +1832,21 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Returns the appropriate VelocimacroProxy object if vmName
-     * is a valid current Velocimacro.
-     *
-     * @param vmName  Name of velocimacro requested
-     * @param templateName Name of the namespace.
-     * @param renderingTemplate Name of the template we are currently rendering. This
-     *    information is needed when VM_PERM_ALLOW_INLINE_REPLACE_GLOBAL setting is true
-     *    and template contains a macro with the same name as the global macro library.
-     * 
-     * @since Velocity 1.6
-     * 
-     * @return VelocimacroProxy
-     */
+	 * Returns the appropriate VelocimacroProxy object if vmName is a valid
+	 * current Velocimacro.
+	 *
+	 * @param vmName
+	 *            Name of velocimacro requested
+	 * @param templateName
+	 *            Name of the namespace.
+	 * @param renderingTemplate
+	 *            Name of the template we are currently rendering. This
+	 *            information is needed when VM_PERM_ALLOW_INLINE_REPLACE_GLOBAL
+	 *            setting is true and template contains a macro with the same
+	 *            name as the global macro library.
+	 * @return VelocimacroProxy
+	 * @since Velocity 1.6
+	 */
     public Directive getVelocimacro(String vmName, String templateName, String renderingTemplate)
     {
         return vmFactory.getVelocimacro( vmName, templateName, renderingTemplate );
@@ -1696,19 +1854,21 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     
     
    /**
-    * Adds a new Velocimacro. Usually called by Macro only while parsing.
-    *
-    * @param name Name of velocimacro
-    * @param macro String form of macro body
-    * @param argArray Array of strings, containing the
-    *                         #macro() arguments.  the 0th is the name.
-    * @param sourceTemplate Name of the template that contains the velocimacro.
-    * 
-    * @deprecated Use addVelocimacro(String, Node, String[], String) instead
-    * 
-    * @return True if added, false if rejected for some
-    *                  reason (either parameters or permission settings)
-    */
+	 * Adds a new Velocimacro. Usually called by Macro only while parsing.
+	 *
+	 * @param name
+	 *            Name of velocimacro
+	 * @param macro
+	 *            String form of macro body
+	 * @param argArray
+	 *            Array of strings, containing the #macro() arguments. the 0th
+	 *            is the name.
+	 * @param sourceTemplate
+	 *            Name of the template that contains the velocimacro.
+	 * @return True if added, false if rejected for some reason (either
+	 *         parameters or permission settings)
+	 * @deprecated Use addVelocimacro(String, Node, String[], String) instead
+	 */
     public boolean addVelocimacro( String name,
                                           String macro,
                                           String argArray[],
@@ -1718,21 +1878,24 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     }
 
     /**
-     * Adds a new Velocimacro. Usually called by Macro only while parsing.
-     * 
-     * Called by org.apache.velocity.runtime.directive.processAndRegister
-     *
-     * @param name  Name of velocimacro
-     * @param macro  root AST node of the parsed macro
-     * @param argArray  Array of strings, containing the
-     *                         #macro() arguments.  the 0th is the name.
-     * @param sourceTemplate
-     * 
-     * @since Velocity 1.6
-     *                   
-     * @return boolean  True if added, false if rejected for some
-     *                  reason (either parameters or permission settings)
-     */
+	 * Adds a new Velocimacro. Usually called by Macro only while parsing.
+	 * 
+	 * Called by org.apache.velocity.runtime.directive.processAndRegister
+	 *
+	 * @param name
+	 *            Name of velocimacro
+	 * @param macro
+	 *            root AST node of the parsed macro
+	 * @param argArray
+	 *            Array of strings, containing the #macro() arguments. the 0th
+	 *            is the name.
+	 * @param sourceTemplate
+	 *            the source template
+	 * @return boolean True if added, false if rejected for some reason (either
+	 *         parameters or permission settings)
+	 * @since Velocity 1.6
+	 * 
+	 */
     public boolean addVelocimacro( String name,
                                           Node macro,
                                           String argArray[],
@@ -1743,23 +1906,31 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
     
     
     /**
-     *  Checks to see if a VM exists
-     *
-     * @param vmName Name of the Velocimacro.
-     * @param templateName Template on which to look for the Macro.
-     * @return True if VM by that name exists, false if not
-     */
+	 * Checks to see if a VM exists.
+	 *
+	 * @author mqfdy
+	 * @param vmName
+	 *            Name of the Velocimacro.
+	 * @param templateName
+	 *            Template on which to look for the Macro.
+	 * @return True if VM by that name exists, false if not
+	 * @Date 2018-9-3 11:38:33
+	 */
     public boolean isVelocimacro( String vmName, String templateName )
     {
         return vmFactory.isVelocimacro(vmName.intern(), templateName);
     }
 
     /**
-     * tells the vmFactory to dump the specified namespace.  This is to support
-     * clearing the VM list when in inline-VM-local-scope mode
-     * @param namespace Namespace to dump.
-     * @return True if namespace was dumped successfully.
-     */
+	 * tells the vmFactory to dump the specified namespace. This is to support
+	 * clearing the VM list when in inline-VM-local-scope mode
+	 *
+	 * @author mqfdy
+	 * @param namespace
+	 *            Namespace to dump.
+	 * @return True if namespace was dumped successfully.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public boolean dumpVMNamespace(String namespace)
     {
         return vmFactory.dumpVMNamespace( namespace );
@@ -1778,65 +1949,86 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
      */
 
     /**
-     * String property accessor method to hide the configuration implementation
-     * @param key  property key
-     * @return   value of key or null
-     */
+	 * String property accessor method to hide the configuration implementation.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            property key
+	 * @return value of key or null
+	 * @Date 2018-9-3 11:38:33
+	 */
     public String getString(String key)
     {
         return StringUtils.nullTrim(configuration.getString(key));
     }
 
     /**
-     * Int property accessor method to hide the configuration implementation.
-     *
-     * @param key Property key
-     * @return value
-     */
+	 * Int property accessor method to hide the configuration implementation.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            Property key
+	 * @return value
+	 * @Date 2018-9-3 11:38:33
+	 */
     public int getInt(String key)
     {
         return configuration.getInt(key);
     }
 
     /**
-     * Int property accessor method to hide the configuration implementation.
-     *
-     * @param key  property key
-     * @param defaultValue The default value.
-     * @return value
-     */
+	 * Int property accessor method to hide the configuration implementation.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            property key
+	 * @param defaultValue
+	 *            The default value.
+	 * @return value
+	 * @Date 2018-9-3 11:38:33
+	 */
     public int getInt(String key, int defaultValue)
     {
         return configuration.getInt(key, defaultValue);
     }
 
     /**
-     * Boolean property accessor method to hide the configuration implementation.
-     *
-     * @param key property key
-     * @param def The default value if property not found.
-     * @return value of key or default value
-     */
+	 * Boolean property accessor method to hide the configuration
+	 * implementation.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            property key
+	 * @param def
+	 *            The default value if property not found.
+	 * @return value of key or default value
+	 * @Date 2018-9-3 11:38:33
+	 */
     public boolean getBoolean(String key, boolean def)
     {
         return configuration.getBoolean(key, def);
     }
 
     /**
-     * Return the velocity runtime configuration object.
-     *
-     * @return Configuration object which houses the Velocity runtime
-     * properties.
-     */
+	 * Return the velocity runtime configuration object.
+	 *
+	 * @author mqfdy
+	 * @return Configuration object which houses the Velocity runtime
+	 *         properties.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public ExtendedProperties getConfiguration()
     {
         return configuration;
     }
 
     /**
-     *  Return the Introspector for this instance
-     * @return The Introspector for this instance
-     */
+	 * Return the Introspector for this instance.
+	 *
+	 * @author mqfdy
+	 * @return The Introspector for this instance
+	 * @Date 2018-9-3 11:38:33
+	 */
     public Introspector getIntrospector()
     {
         return introspector;
@@ -1854,33 +2046,43 @@ public class RuntimeInstance implements RuntimeConstants, RuntimeServices
 
 
     /**
-     *  Gets the application attribute for the given key
-     *
-     * @param key
-     * @return The application attribute for the given key.
-     */
+	 * Gets the application attribute for the given key.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @return The application attribute for the given key.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public Object getApplicationAttribute(Object key)
     {
         return applicationAttributes.get(key);
     }
 
     /**
-     *   Sets the application attribute for the given key
-     *
-     * @param key
-     * @param o The new application attribute.
-     * @return The old value of this attribute or null if it hasn't been set before.
-     */
+	 * Sets the application attribute for the given key.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @param o
+	 *            The new application attribute.
+	 * @return The old value of this attribute or null if it hasn't been set
+	 *         before.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public Object setApplicationAttribute(Object key, Object o)
     {
         return applicationAttributes.put(key, o);
     }
 
     /**
-     * Returns the Uberspect object for this Instance.
-     *
-     * @return The Uberspect object for this Instance.
-     */
+	 * Returns the Uberspect object for this Instance.
+	 *
+	 * @author mqfdy
+	 * @return The Uberspect object for this Instance.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public Uberspect getUberspect()
     {
         return uberSpect;

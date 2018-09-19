@@ -42,8 +42,9 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.texen.Generator;
 import org.apache.velocity.util.StringUtils;
 
+// TODO: Auto-generated Javadoc
 /**
- * An ant task for generating output by using Velocity
+ * An ant task for generating output by using Velocity.
  *
  * @author <a href="mailto:jvanzyl@apache.org">Jason van Zyl</a>
  * @author <a href="robertdonkin@mac.com">Robert Burrell Donkin</a>
@@ -148,38 +149,46 @@ public class TexenTask
      */
 
     protected String useResourceLoaderCache = "false";
-    /**
-     *
-     */
+    
+    /** The resource loader modification check interval. */
     protected String resourceLoaderModificationCheckInterval = "2";
 
     /**
-     * [REQUIRED] Set the control template for the
-     * generating process.
-     * @param controlTemplate
-     */
+	 * [REQUIRED] Set the control template for the generating process.
+	 *
+	 * @author mqfdy
+	 * @param controlTemplate
+	 *            the new control template
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void setControlTemplate (String controlTemplate)
     {
         this.controlTemplate = controlTemplate;
     }
 
     /**
-     * Get the control template for the
-     * generating process.
-     * @return The current control template.
-     */
+	 * Get the control template for the generating process.
+	 *
+	 * @author mqfdy
+	 * @return The current control template.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public String getControlTemplate()
     {
         return controlTemplate;
     }
 
     /**
-     * [REQUIRED] Set the path where Velocity will look
-     * for templates using the file template
-     * loader.
-     * @param templatePath
-     * @throws Exception
-     */
+	 * [REQUIRED] Set the path where Velocity will look for templates using the
+	 * file template loader.
+	 *
+	 * @author mqfdy
+	 * @param templatePath
+	 *            the new template path
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:33
+	 */
 
     public void setTemplatePath(String templatePath) throws Exception
     {
@@ -202,21 +211,27 @@ public class TexenTask
      }
 
     /**
-     * Get the path where Velocity will look
-     * for templates using the file template
-     * loader.
-     * @return The template path.
-     */
+	 * Get the path where Velocity will look for templates using the file
+	 * template loader.
+	 *
+	 * @author mqfdy
+	 * @return The template path.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public String getTemplatePath()
     {
         return templatePath;
     }
 
     /**
-     * [REQUIRED] Set the output directory. It will be
-     * created if it doesn't exist.
-     * @param outputDirectory
-     */
+	 * [REQUIRED] Set the output directory. It will be created if it doesn't
+	 * exist.
+	 *
+	 * @author mqfdy
+	 * @param outputDirectory
+	 *            the new output directory
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void setOutputDirectory(File outputDirectory)
     {
         try
@@ -230,76 +245,102 @@ public class TexenTask
     }
 
     /**
-     * Get the output directory.
-     * @return The output directory.
-     */
+	 * Get the output directory.
+	 *
+	 * @author mqfdy
+	 * @return The output directory.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public String getOutputDirectory()
     {
         return outputDirectory;
     }
 
     /**
-     * [REQUIRED] Set the output file for the
-     * generation process.
-     * @param outputFile
-     */
+	 * [REQUIRED] Set the output file for the generation process.
+	 *
+	 * @author mqfdy
+	 * @param outputFile
+	 *            the new output file
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void setOutputFile(String outputFile)
     {
         this.outputFile = outputFile;
     }
 
     /**
-     * Set the output encoding.
-     * @param outputEncoding
-     */
+	 * Set the output encoding.
+	 *
+	 * @author mqfdy
+	 * @param outputEncoding
+	 *            the new output encoding
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void setOutputEncoding(String outputEncoding)
     {
         this.outputEncoding = outputEncoding;
     }
 
     /**
-     * Set the input (template) encoding.
-     * @param inputEncoding
-     */
+	 * Set the input (template) encoding.
+	 *
+	 * @author mqfdy
+	 * @param inputEncoding
+	 *            the new input encoding
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void setInputEncoding(String inputEncoding)
     {
         this.inputEncoding = inputEncoding;
     }
 
     /**
-     * Get the output file for the
-     * generation process.
-     * @return The output file.
-     */
+	 * Get the output file for the generation process.
+	 *
+	 * @author mqfdy
+	 * @return The output file.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public String getOutputFile()
     {
         return outputFile;
     }
 
     /**
-     * Sets the log file.
-     * @param log
-     */
+	 * Sets the log file.
+	 *
+	 * @author mqfdy
+	 * @param log
+	 *            the new log file
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void setLogFile(String log)
     {
         this.logFile = log;
     }
 
     /**
-     * Gets the log file.
-     * @return The log file.
-     */
+	 * Gets the log file.
+	 *
+	 * @author mqfdy
+	 * @return The log file.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public String getLogFile()
     {
         return this.logFile;
     }
 
     /**
-     * Set the context properties that will be
-     * fed into the initial context be the
-     * generating process starts.
-     * @param file
-     */
+	 * Set the context properties that will be fed into the initial context be
+	 * the generating process starts.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the new context properties
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void setContextProperties( String file )
     {
         String[] sources = StringUtils.split(file,",");
@@ -360,48 +401,67 @@ public class TexenTask
     }
 
     /**
-     * Get the context properties that will be
-     * fed into the initial context be the
-     * generating process starts.
-     * @return The current context properties.
-     */
+	 * Get the context properties that will be fed into the initial context be
+	 * the generating process starts.
+	 *
+	 * @author mqfdy
+	 * @return The current context properties.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public ExtendedProperties getContextProperties()
     {
         return contextProperties;
     }
 
     /**
-     * Set the use of the classpath in locating templates
-     *
-     * @param useClasspath true means the classpath will be used.
-     */
+	 * Set the use of the classpath in locating templates.
+	 *
+	 * @author mqfdy
+	 * @param useClasspath
+	 *            true means the classpath will be used.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void setUseClasspath(boolean useClasspath)
     {
         this.useClasspath = useClasspath;
     }
 
     /**
-     * @param useResourceLoaderCache
-     */
+	 * Sets the use resource loader cache.
+	 *
+	 * @author mqfdy
+	 * @param useResourceLoaderCache
+	 *            the new use resource loader cache
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void setUseResourceLoaderCache(String useResourceLoaderCache)
     {
         this.useResourceLoaderCache = useResourceLoaderCache;
     }
 
     /**
-     * @param resourceLoaderModificationCheckInterval
-     */
+	 * Sets the resource loader modification check interval.
+	 *
+	 * @author mqfdy
+	 * @param resourceLoaderModificationCheckInterval
+	 *            the new resource loader modification check interval
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void setResourceLoaderModificationCheckInterval(String resourceLoaderModificationCheckInterval)
     {
         this.resourceLoaderModificationCheckInterval = resourceLoaderModificationCheckInterval;
     }
+    
     /**
-     * Creates a VelocityContext.
-     *
-     * @return new Context
-     * @throws Exception the execute method will catch
-     *         and rethrow as a <code>BuildException</code>
-     */
+	 * Creates a VelocityContext.
+	 *
+	 * @author mqfdy
+	 * @return new Context
+	 * @throws Exception
+	 *             the execute method will catch and rethrow as a
+	 *             <code>BuildException</code>
+	 * @Date 2018-9-3 11:38:33
+	 */
     public Context initControlContext()
         throws Exception
     {
@@ -409,12 +469,15 @@ public class TexenTask
     }
 
     /**
-     * Execute the input script with Velocity
-     *
-     * @throws BuildException
-     * BuildExceptions are thrown when required attributes are missing.
-     * Exceptions thrown by Velocity are rethrown as BuildExceptions.
-     */
+	 * Execute the input script with Velocity.
+	 *
+	 * @author mqfdy
+	 * @throws BuildException
+	 *             BuildExceptions are thrown when required attributes are
+	 *             missing. Exceptions thrown by Velocity are rethrown as
+	 *             BuildExceptions.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void execute ()
         throws BuildException
     {
@@ -613,22 +676,29 @@ public class TexenTask
     }
 
     /**
-     * <p>Place useful objects into the initial context.</p>
-     *
-     * <p>TexenTask places <code>Date().toString()</code> into the
-     * context as <code>$now</code>.  Subclasses who want to vary the
-     * objects in the context should override this method.</p>
-     *
-     * <p><code>$generator</code> is not put into the context in this
-     * method.</p>
-     *
-     * @param context The context to populate, as retrieved from
-     * {@link #initControlContext()}.
-     *
-     * @throws Exception Error while populating context.  The {@link
-     * #execute()} method will catch and rethrow as a
-     * <code>BuildException</code>.
-     */
+	 * <p>
+	 * Place useful objects into the initial context.
+	 * </p>
+	 * 
+	 * <p>
+	 * TexenTask places <code>Date().toString()</code> into the context as
+	 * <code>$now</code>. Subclasses who want to vary the objects in the context
+	 * should override this method.
+	 * </p>
+	 * 
+	 * <p>
+	 * <code>$generator</code> is not put into the context in this method.
+	 * </p>
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            The context to populate, as retrieved from
+	 *            {@link #initControlContext()}.
+	 * @throws Exception
+	 *             Error while populating context. The {@link #execute()} method
+	 *             will catch and rethrow as a <code>BuildException</code>.
+	 * @Date 2018-9-3 11:38:33
+	 */
     protected void populateInitialContext(Context context)
         throws Exception
     {
@@ -636,13 +706,15 @@ public class TexenTask
     }
 
     /**
-     * A hook method called at the end of {@link #execute()} which can
-     * be overridden to perform any necessary cleanup activities (such
-     * as the release of database connections, etc.).  By default,
-     * does nothing.
-     *
-     * @exception Exception Problem cleaning up.
-     */
+	 * A hook method called at the end of {@link #execute()} which can be
+	 * overridden to perform any necessary cleanup activities (such as the
+	 * release of database connections, etc.). By default, does nothing.
+	 *
+	 * @author mqfdy
+	 * @exception Exception
+	 *                Problem cleaning up.
+	 * @Date 2018-9-3 11:38:33
+	 */
     protected void cleanup()
         throws Exception
     {

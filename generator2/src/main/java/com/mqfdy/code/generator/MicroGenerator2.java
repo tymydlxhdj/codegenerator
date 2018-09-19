@@ -25,18 +25,33 @@ import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.model.utils.DBType;
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MicroGenerator2.
+ *
+ * @author mqfdy
+ */
 public class MicroGenerator2 implements ICodeGenerator {
 	
+	/** The hbm generator. */
 	private DdlGenerator hbmGenerator;
 	
+	/** The project. */
 	private IProject project;
 
+	/** The package name. */
 	private String packageName;
 	
+	/** The output path. */
 	private String outputPath;
+	
+	/** The option. */
 	public static int option = 0;   //用于标记是否全部不覆盖(0：覆盖;1:不覆盖;2:全部覆盖;-1:用户点击关闭按钮，执行全部不覆盖)
+	
+	/** The override all. */
 	public static boolean overrideAll = false;
 	
+	/** The pk type map. */
 	private static Map<String,String> pkTypeMap;
 	static{
 		pkTypeMap = new HashMap<String, String>();
@@ -45,14 +60,35 @@ public class MicroGenerator2 implements ICodeGenerator {
 		pkTypeMap.put("UUID", "uuid");  
 		pkTypeMap.put("SEQUENCE", "sequence");
 	}
+	
+	/**
+	 * Instantiates a new micro generator 2.
+	 *
+	 * @param project
+	 *            the project
+	 * @param option
+	 *            the option
+	 * @param packageName
+	 *            the package name
+	 * @param outputPath
+	 *            the output path
+	 */
 	public MicroGenerator2(IProject project, int option,String packageName,String outputPath) {
 		this.project = project;
 		MicroGenerator2.option = option;
 		this.packageName = packageName;
 		this.outputPath = outputPath;
 	}
+	
 	/**
-	 * 生成代码
+	 * 生成代码.
+	 *
+	 * @author mqfdy
+	 * @param bom
+	 *            the bom
+	 * @param config
+	 *            the config
+	 * @Date 2018-9-3 11:38:33
 	 */
 	public void generateCode(BusinessObjectModel bom, MddConfiguration config) {
 		String exportPath = config.getExportPath() + bom.getNameSpace().replace(".", "\\") +File.separator+bom.getName();
@@ -97,16 +133,28 @@ public class MicroGenerator2 implements ICodeGenerator {
 		
 
 	}
+	
 	/**
-	 * 生成ddl文件
+	 * 生成ddl文件.
+	 *
+	 * @author mqfdy
 	 * @param bom
+	 *            the bom
 	 * @param config
+	 *            the config
 	 * @param exportPath
+	 *            the export path
 	 * @param map
+	 *            the map
 	 * @param context
+	 *            the context
 	 * @param generateFk
+	 *            the generate fk
 	 * @param isOverride
+	 *            the is override
 	 * @param existFiles
+	 *            the exist files
+	 * @Date 2018-9-3 11:38:33
 	 */
 	private void generateDDL(BusinessObjectModel bom, MddConfiguration config, String exportPath,
 			Map<String, Object> map, GeneratorContext context, boolean generateFk, boolean isOverride,
@@ -154,9 +202,20 @@ public class MicroGenerator2 implements ICodeGenerator {
 			}
 		}
 	}
+	
 	/**
-	 * 生成后端java代码
+	 * 生成后端java代码.
+	 *
+	 * @author mqfdy
 	 * @param bom
+	 *            the bom
+	 * @param existFiles
+	 *            the exist files
+	 * @param isOverride
+	 *            the is override
+	 * @param context
+	 *            the context
+	 * @Date 2018-09-03 09:00
 	 */
 	public void generateJava(BusinessObjectModel bom, List<String> existFiles, boolean isOverride,GeneratorContext context) {
 		List<BusinessClass> bcList = bom.getBusinessClasses();
@@ -166,9 +225,22 @@ public class MicroGenerator2 implements ICodeGenerator {
 			}
 		}
 	}
+	
 	/**
-	 * 生成后端java代码
+	 * 生成后端java代码.
+	 *
+	 * @author mqfdy
 	 * @param bom
+	 *            the bom
+	 * @param bcList
+	 *            the bc list
+	 * @param existFiles
+	 *            the exist files
+	 * @param isOverride
+	 *            the is override
+	 * @param context
+	 *            the context
+	 * @Date 2018-09-03 09:00
 	 */
 	public void generateJavaSingle(BusinessObjectModel bom, List<BusinessClass> bcList,List<String> existFiles, boolean isOverride,GeneratorContext context) {
 		if(bcList != null && !bcList.isEmpty()){
@@ -177,13 +249,22 @@ public class MicroGenerator2 implements ICodeGenerator {
 			}
 		}
 	}
+	
 	/**
-	 * 生成代码
+	 * 生成代码.
+	 *
+	 * @author mqfdy
+	 * @param bom
+	 *            the bom
 	 * @param existFiles
+	 *            the exist files
 	 * @param isOverride
+	 *            the is override
 	 * @param context
-	 * @param table
-	 * @param sceneType
+	 *            the context
+	 * @param bc
+	 *            the bc
+	 * @Date 2018-9-3 11:38:33
 	 */
 	private void generateCode(BusinessObjectModel bom,List<String> existFiles, boolean isOverride, GeneratorContext context, BusinessClass bc) {
 		ClassParam param = new ClassParam(bc, project, bom,outputPath);
@@ -212,15 +293,18 @@ public class MicroGenerator2 implements ICodeGenerator {
 			}
 		}
 	}
+	
 	/**
-	 * 根据数据库类型生成相应的ddl脚本文件
-	 * 
+	 * 根据数据库类型生成相应的ddl脚本文件.
+	 *
+	 * @author mqfdy
 	 * @param bom
 	 *            业务模型对象
 	 * @param dbType
 	 *            指定数据库
 	 * @param exportDDLDir
 	 *            生成路径
+	 * @Date 2018-9-3 11:38:33
 	 */
 	private void generateDDL(BusinessObjectModel bom, String dbType, String exportDDLDir) {
 		if (this.hbmGenerator == null) {// 如果不为null说明hbm已经执行了一遍

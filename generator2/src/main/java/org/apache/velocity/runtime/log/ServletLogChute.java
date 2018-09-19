@@ -24,6 +24,7 @@ import java.io.PrintWriter;
 import javax.servlet.ServletContext;
 import org.apache.velocity.runtime.RuntimeServices;
 
+// TODO: Auto-generated Javadoc
 /**
  * Simple wrapper for the servlet log.  This passes Velocity log
  * messages to ServletContext.log(String).  You may configure the
@@ -39,13 +40,18 @@ import org.apache.velocity.runtime.RuntimeServices;
  */
 public class ServletLogChute implements LogChute
 {
+    
+    /** The Constant RUNTIME_LOG_LEVEL_KEY. */
     public static final String RUNTIME_LOG_LEVEL_KEY = 
         "runtime.log.logsystem.servlet.level";
 
+    /** The enabled. */
     private int enabled = TRACE_ID;
 
+    /** The servlet context. */
     protected ServletContext servletContext = null;
 
+    /** The Constant PREFIX. */
     public static final String PREFIX = " Velocity ";
 
     /**
@@ -60,11 +66,18 @@ public class ServletLogChute implements LogChute
     }
 
     /**
-     * init()
-     *
-     * @throws IllegalStateException if the ServletContext is not available
-     *         in the application attributes under the appropriate key.
-     */
+	 * init().
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @throws Exception
+	 *             the exception
+	 * @throws IllegalStateException
+	 *             if the ServletContext is not available in the application
+	 *             attributes under the appropriate key.
+	 * @Date 2018-9-3 11:38:34
+	 */
     public void init(RuntimeServices rs) throws Exception
     {
         Object obj = rs.getApplicationAttribute(ServletContext.class.getName());
@@ -83,6 +96,15 @@ public class ServletLogChute implements LogChute
         }
     }
 
+    /**
+	 * To level.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the level
+	 * @return the int
+	 * @Date 2018-09-03 09:00
+	 */
     protected int toLevel(String level) {
         if (level.equalsIgnoreCase("debug"))
         {
@@ -107,34 +129,55 @@ public class ServletLogChute implements LogChute
     }
 
     /**
-     * Set the minimum level at which messages will be printed.
-     */
+	 * Set the minimum level at which messages will be printed.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the new enabled level
+	 * @Date 2018-09-03 09:00
+	 */
     public void setEnabledLevel(int level)
     {
         this.enabled = level;
     }
 
     /**
-     * Returns the current minimum level at which messages will be printed.
-     */
+	 * Returns the current minimum level at which messages will be printed.
+	 *
+	 * @author mqfdy
+	 * @return the enabled level
+	 * @Date 2018-09-03 09:00
+	 */
     public int getEnabledLevel()
     {
         return this.enabled;
     }
 
     /**
-     * This will return true if the specified level
-     * is equal to or higher than the level this
-     * LogChute is enabled for.
-     */
+	 * This will return true if the specified level is equal to or higher than
+	 * the level this LogChute is enabled for.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the level
+	 * @return true, if is level enabled
+	 * @Date 2018-9-3 11:38:34
+	 */
     public boolean isLevelEnabled(int level)
     {
         return (level >= this.enabled);
     }
 
     /**
-     * Send a log message from Velocity.
-     */
+	 * Send a log message from Velocity.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @Date 2018-9-3 11:38:34
+	 */
     public void log(int level, String message)
     {
         if (!isLevelEnabled(level))
@@ -165,6 +208,12 @@ public class ServletLogChute implements LogChute
         }
     }
 
+    /**
+     * @see org.apache.velocity.runtime.log.LogChute#log(int, java.lang.String, java.lang.Throwable)
+     * @param level
+     * @param message
+     * @param t ServletLogChute
+     */
     public void log(int level, String message, Throwable t)
     {
         if (!isLevelEnabled(level))

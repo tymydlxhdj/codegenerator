@@ -26,6 +26,7 @@ import java.util.Set;
 import org.apache.velocity.Template;
 import org.apache.velocity.runtime.directive.Directive;
 
+// TODO: Auto-generated Javadoc
 /**
  * This handles context scoping and metadata for directives.
  *
@@ -34,12 +35,30 @@ import org.apache.velocity.runtime.directive.Directive;
  */
 public class Scope extends AbstractMap
 {
+    
+    /** The storage. */
     private Map storage;
+    
+    /** The replaced. */
     private Object replaced;
+    
+    /** The parent. */
     private Scope parent;
+    
+    /** The info. */
     private Info info;
+    
+    /** The owner. */
     protected final Object owner;
 
+    /**
+	 * Instantiates a new scope.
+	 *
+	 * @param owner
+	 *            the owner
+	 * @param previous
+	 *            the previous
+	 */
     public Scope(Object owner, Object previous)
     {
         this.owner = owner;
@@ -56,6 +75,13 @@ public class Scope extends AbstractMap
         }
     }
 
+    /**
+	 * Gets the storage.
+	 *
+	 * @author mqfdy
+	 * @return the storage
+	 * @Date 2018-9-3 11:38:35
+	 */
     private Map getStorage()
     {
         if (storage == null)
@@ -65,11 +91,20 @@ public class Scope extends AbstractMap
         return storage;
     }
 
+    /**
+     * @see java.util.AbstractMap#entrySet()
+     * @return Scope
+     */
     public Set entrySet()
     {
         return getStorage().entrySet();
     }
 
+    /**
+     * @see java.util.AbstractMap#get(java.lang.Object)
+     * @param key
+     * @return Scope
+     */
     public Object get(Object key)
     {
         Object o = super.get(key);
@@ -80,25 +115,37 @@ public class Scope extends AbstractMap
         return o;
     }
 
+    /**
+     * @see java.util.AbstractMap#put(java.lang.Object, java.lang.Object)
+     * @param key
+     * @param value
+     * @return Scope
+     */
     public Object put(Object key, Object value)
     {
         return getStorage().put(key, value);
     }
 
     /**
-     * Allows #stop to easily trigger the proper StopCommand for this scope.
-     */
+	 * Allows #stop to easily trigger the proper StopCommand for this scope.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:35
+	 */
     protected void stop()
     {
         throw new StopCommand(owner);
     }
 
     /**
-     * Returns the number of control arguments of this type
-     * that are stacked up.  This is the distance between this
-     * instance and the topmost instance, plus one. This value
-     * will never be negative or zero.
-     */
+	 * Returns the number of control arguments of this type that are stacked up.
+	 * This is the distance between this instance and the topmost instance, plus
+	 * one. This value will never be negative or zero.
+	 *
+	 * @author mqfdy
+	 * @return the depth
+	 * @Date 2018-09-03 09:00
+	 */
     protected int getDepth()
     {
         if (parent == null)
@@ -109,9 +156,13 @@ public class Scope extends AbstractMap
     }
 
     /**
-     * Returns the topmost parent control reference, retrieved
-     * by simple recursion on {@link #getParent}.
-     */
+	 * Returns the topmost parent control reference, retrieved by simple
+	 * recursion on {@link #getParent}.
+	 *
+	 * @author mqfdy
+	 * @return the topmost
+	 * @Date 2018-09-03 09:00
+	 */
     public Scope getTopmost()
     {
         if (parent == null)
@@ -122,20 +173,28 @@ public class Scope extends AbstractMap
     }
 
     /**
-     * Returns the parent control reference overridden by the placement
-     * of this instance in the context.
-     */
+	 * Returns the parent control reference overridden by the placement of this
+	 * instance in the context.
+	 *
+	 * @author mqfdy
+	 * @return the parent
+	 * @Date 2018-09-03 09:00
+	 */
     public Scope getParent()
     {
         return parent;
     }
 
     /**
-     * Returns the user's context reference overridden by the placement
-     * of this instance in the context.  If there was none (as is hoped),
-     * then this will return null.  This never returns parent controls;
-     * those are returned by {@link #getParent}.
-     */
+	 * Returns the user's context reference overridden by the placement of this
+	 * instance in the context. If there was none (as is hoped), then this will
+	 * return null. This never returns parent controls; those are returned by
+	 * {@link #getParent}.
+	 *
+	 * @author mqfdy
+	 * @return the replaced
+	 * @Date 2018-09-03 09:00
+	 */
     public Object getReplaced()
     {
         if (replaced == null && parent != null)
@@ -146,8 +205,12 @@ public class Scope extends AbstractMap
     }
 
     /**
-     * Returns info about the current scope for debugging purposes.
-     */
+	 * Returns info about the current scope for debugging purposes.
+	 *
+	 * @author mqfdy
+	 * @return the info
+	 * @Date 2018-09-03 09:00
+	 */
     public Info getInfo()
     {
         if (info == null)
@@ -158,15 +221,31 @@ public class Scope extends AbstractMap
     }
 
     /**
-     * Class to encapsulate and provide access to info about
-     * the current scope for debugging.
-     */
+	 * Class to encapsulate and provide access to info about the current scope
+	 * for debugging.
+	 *
+	 * @author mqfdy
+	 */
     public static class Info
     {
+        
+        /** The scope. */
         private Scope scope;
+        
+        /** The directive. */
         private Directive directive;
+        
+        /** The template. */
         private Template template;
 
+        /**
+		 * Instantiates a new info.
+		 *
+		 * @param scope
+		 *            the scope
+		 * @param owner
+		 *            the owner
+		 */
         public Info(Scope scope, Object owner)
         {
             if (owner instanceof Directive)
@@ -180,6 +259,13 @@ public class Scope extends AbstractMap
             this.scope = scope;
         }
 
+        /**
+		 * Gets the name.
+		 *
+		 * @author mqfdy
+		 * @return the name
+		 * @Date 2018-09-03 09:00
+		 */
         public String getName()
         {
             if (directive != null)
@@ -193,6 +279,13 @@ public class Scope extends AbstractMap
             return null;
         }
 
+        /**
+		 * Gets the type.
+		 *
+		 * @author mqfdy
+		 * @return the type
+		 * @Date 2018-09-03 09:00
+		 */
         public String getType()
         {
             if (directive != null)
@@ -212,11 +305,25 @@ public class Scope extends AbstractMap
             return null;
         }
 
+        /**
+		 * Gets the depth.
+		 *
+		 * @author mqfdy
+		 * @return the depth
+		 * @Date 2018-09-03 09:00
+		 */
         public int getDepth()
         {
             return scope.getDepth();
         }
 
+        /**
+		 * Gets the template.
+		 *
+		 * @author mqfdy
+		 * @return the template
+		 * @Date 2018-09-03 09:00
+		 */
         public String getTemplate()
         {
             if (directive != null)
@@ -230,6 +337,13 @@ public class Scope extends AbstractMap
             return null;
         }
 
+        /**
+		 * Gets the line.
+		 *
+		 * @author mqfdy
+		 * @return the line
+		 * @Date 2018-09-03 09:00
+		 */
         public int getLine()
         {
             if (directive != null)
@@ -239,6 +353,13 @@ public class Scope extends AbstractMap
             return 0;
         }
 
+        /**
+		 * Gets the column.
+		 *
+		 * @author mqfdy
+		 * @return the column
+		 * @Date 2018-09-03 09:00
+		 */
         public int getColumn()
         {
             if (directive != null)
@@ -248,6 +369,10 @@ public class Scope extends AbstractMap
             return 0;
         }
 
+        /**
+         * @see java.lang.Object#toString()
+         * @return Info
+         */
         public String toString()
         {
             StringBuffer sb = new StringBuffer();

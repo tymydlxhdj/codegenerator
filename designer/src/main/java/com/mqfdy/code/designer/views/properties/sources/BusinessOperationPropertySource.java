@@ -9,15 +9,23 @@ import com.mqfdy.code.model.utils.TransactionType;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务操作PropertyPropertySource
- * 
+ * 业务操作PropertyPropertySource.
+ *
  * @author mqfdy
- * 
  */
 public class BusinessOperationPropertySource extends ModelPropertySource {
+	
+	/** The business operation. */
 	public BusinessOperation businessOperation;
 
+	/**
+	 * Instantiates a new business operation property source.
+	 *
+	 * @param property
+	 *            the property
+	 */
 	public BusinessOperationPropertySource(AbstractModelElement property) {
 		super();
 		this.businessOperation = (BusinessOperation) property;
@@ -28,6 +36,9 @@ public class BusinessOperationPropertySource extends ModelPropertySource {
 		// }
 	}
 
+	/**
+	 * 
+	 */
 	protected void installModelProperty() {
 		if (businessOperation.getOperationType() != null
 				&& businessOperation.getOperationType().equals(
@@ -82,6 +93,15 @@ public class BusinessOperationPropertySource extends ModelPropertySource {
 		}// addButtonModelProperty(IBusinessModelPropertyNames.PROPERTY_ENUMERARION_VALUES,IBusinessModelPropertyNames.CATEGORY_ENUMERARION,"");
 	}
 
+	/**
+	 * Gets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return the property value
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -121,6 +141,16 @@ public class BusinessOperationPropertySource extends ModelPropertySource {
 			return "";
 	}
 
+	/**
+	 * Sets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPropertyValue(Object propertyId, Object value) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException(propertyId.toString());
@@ -233,10 +263,27 @@ public class BusinessOperationPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * Checks if is property set.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return true, if is property set
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isPropertySet(Object propertyId) {
 		return true;
 	}
 
+	/**
+	 * Reset property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @Date 2018-09-03 09:00
+	 */
 	public void resetPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -250,10 +297,16 @@ public class BusinessOperationPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public Object getEditableValue() {
 		return this;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void initializeDescriptors() {
 		// TODO Auto-generated method stub

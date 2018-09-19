@@ -14,39 +14,50 @@ import java.io.Serializable;
 import com.mqfdy.code.springboot.utilities.Filter;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * Simple, abstract implementation of <code>Filter</code>
- * that holds on to a criterion object that can be used in the
- * <code>accept(Object)</code> or <code>reject(Object)</code>
- * methods. Subclasses can override either of these methods,
- * depending on which is easier to implement. Note that at least
- * one of these methods <em>must</em> be overridden or
- * an infinite loop will occur. If both of them are overridden,
- * only the <code>accept(Object)</code> method will be used.
+ * Simple, abstract implementation of <code>Filter</code> that holds on to a
+ * criterion object that can be used in the <code>accept(Object)</code> or
+ * <code>reject(Object)</code> methods. Subclasses can override either of these
+ * methods, depending on which is easier to implement. Note that at least one of
+ * these methods <em>must</em> be overridden or an infinite loop will occur. If
+ * both of them are overridden, only the <code>accept(Object)</code> method will
+ * be used.
  * <p>
- * Simplifies the implementation of straightforward inner classes.
- * Here is an example of a filter that can be used by a
- * <code>FilteringIterator</code> to return only those strings
- * in the nested iterator start with "prefix":
+ * Simplifies the implementation of straightforward inner classes. Here is an
+ * example of a filter that can be used by a <code>FilteringIterator</code> to
+ * return only those strings in the nested iterator start with "prefix":
+ * 
  * <pre>
- *	Filter<String> filter = new SimpleFilter<String>("prefix") {
- *		public boolean accept(String o) {
- *			return o.startsWith((String) criterion);
- *		}
- *	};
+ * Filter<String> filter = new SimpleFilter<String>("prefix") {
+ * 	public boolean accept(String o) {
+ * 		return o.startsWith((String) criterion);
+ * 	}
+ * };
  * </pre>
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
+ * @param <S>
+ *            the generic type
  */
 public abstract class SimpleFilter<T, S>
 	implements Filter<T>, Cloneable, Serializable
 {
+	
+	/** The criterion. */
 	protected final S criterion;
 
 	private static final long serialVersionUID = 1L;
 
 
 	/**
-	 * More useful constructor. The specified criterion can
-	 * be used by a subclass to "accept" or "reject" objects.
+	 * More useful constructor. The specified criterion can be used by a
+	 * subclass to "accept" or "reject" objects.
+	 *
+	 * @param criterion
+	 *            the criterion
 	 */
 	protected SimpleFilter(S criterion) {
 		super();
@@ -61,8 +72,14 @@ public abstract class SimpleFilter<T, S>
 	}
 
 	/**
-	 * Return whether the the specified object should be "rejected".
-	 * The semantics of "rejected" is determined by the client.
+	 * Return whether the the specified object should be "rejected". The
+	 * semantics of "rejected" is determined by the client.
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	protected boolean reject(T o) {
 		return ! this.accept(o);

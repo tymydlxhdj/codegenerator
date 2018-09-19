@@ -1,5 +1,6 @@
 package org.apache.velocity.util.introspection;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -29,28 +30,36 @@ package org.apache.velocity.util.introspection;
 public interface IntrospectorCache {
 
     /**
-     * Clears the internal cache.
-     */
+	 * Clears the internal cache.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:38
+	 */
     void clear();
 
     /**
-     * Lookup a given Class object in the cache. If it does not exist, 
-     * check whether this is due to a class change and purge the caches
-     * eventually.
-     *
-     * @param c The class to look up.
-     * @return A ClassMap object or null if it does not exist in the cache.
-     */
+	 * Lookup a given Class object in the cache. If it does not exist, check
+	 * whether this is due to a class change and purge the caches eventually.
+	 *
+	 * @author mqfdy
+	 * @param c
+	 *            The class to look up.
+	 * @return A ClassMap object or null if it does not exist in the cache.
+	 * @Date 2018-9-3 11:38:38
+	 */
     ClassMap get(Class c);
 
     /**
-     * Creates a class map for specific class and registers it in the
-     * cache.  Also adds the qualified name to the name-&gt;class map
-     * for later Classloader change detection.
-     *
-     * @param c The class for which the class map gets generated.
-     * @return A ClassMap object.
-     */
+	 * Creates a class map for specific class and registers it in the cache.
+	 * Also adds the qualified name to the name-&gt;class map for later
+	 * Classloader change detection.
+	 *
+	 * @author mqfdy
+	 * @param c
+	 *            The class for which the class map gets generated.
+	 * @return A ClassMap object.
+	 * @Date 2018-9-3 11:38:38
+	 */
     ClassMap put(Class c);
 
 }

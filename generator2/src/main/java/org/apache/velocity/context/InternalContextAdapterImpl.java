@@ -25,6 +25,7 @@ import org.apache.velocity.util.introspection.IntrospectionCacheData;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
  *  This adapter class is the container for all context types for internal
  *  use.  The AST now uses this class rather than the app-level Context
@@ -60,9 +61,8 @@ import java.util.List;
  */
 public final class InternalContextAdapterImpl implements InternalContextAdapter
 {
-    /**
-     *  the user data Context that we are wrapping
-     */
+    
+    /** the user data Context that we are wrapping. */
     Context context = null;
 
     /**
@@ -85,13 +85,14 @@ public final class InternalContextAdapterImpl implements InternalContextAdapter
     InternalEventContext iec = null;
 
     /**
-     *  CTOR takes a Context and wraps it, delegating all 'data' calls
-     *  to it.
-     *
-     *  For support of internal contexts, it will create an InternalContextBase
-     *  if need be.
-     * @param c
-     */
+	 * CTOR takes a Context and wraps it, delegating all 'data' calls to it.
+	 * 
+	 * For support of internal contexts, it will create an InternalContextBase
+	 * if need be.
+	 *
+	 * @param c
+	 *            the c
+	 */
     public InternalContextAdapterImpl( Context c )
     {
         context = c;
@@ -114,127 +115,180 @@ public final class InternalContextAdapterImpl implements InternalContextAdapter
     /* --- InternalHousekeepingContext interface methods --- */
 
     /**
-     * @see org.apache.velocity.context.InternalHousekeepingContext#pushCurrentTemplateName(java.lang.String)
-     */
+	 * Push current template name.
+	 *
+	 * @param s
+	 *            the s
+	 * @see org.apache.velocity.context.InternalHousekeepingContext#pushCurrentTemplateName(java.lang.String)
+	 */
     public void pushCurrentTemplateName( String s )
     {
         icb.pushCurrentTemplateName( s );
     }
 
     /**
-     * @see org.apache.velocity.context.InternalHousekeepingContext#popCurrentTemplateName()
-     */
+	 * Pop current template name.
+	 *
+	 * @see org.apache.velocity.context.InternalHousekeepingContext#popCurrentTemplateName()
+	 */
     public void popCurrentTemplateName()
     {
         icb.popCurrentTemplateName();
     }
 
     /**
-     * @see org.apache.velocity.context.InternalHousekeepingContext#getCurrentTemplateName()
-     */
+	 * Gets the current template name.
+	 *
+	 * @return the current template name
+	 * @see org.apache.velocity.context.InternalHousekeepingContext#getCurrentTemplateName()
+	 */
     public String getCurrentTemplateName()
     {
         return icb.getCurrentTemplateName();
     }
 
     /**
-     * @see org.apache.velocity.context.InternalHousekeepingContext#getTemplateNameStack()
-     */
+	 * Gets the template name stack.
+	 *
+	 * @return the template name stack
+	 * @see org.apache.velocity.context.InternalHousekeepingContext#getTemplateNameStack()
+	 */
     public Object[] getTemplateNameStack()
     {
         return icb.getTemplateNameStack();
     }
 
     /**
-     * @see org.apache.velocity.context.InternalHousekeepingContext#pushCurrentMacroName(java.lang.String)
-     * @since 1.6
-     */
+	 * Push current macro name.
+	 *
+	 * @param s
+	 *            the s
+	 * @see org.apache.velocity.context.InternalHousekeepingContext#pushCurrentMacroName(java.lang.String)
+	 * @since 1.6
+	 */
     public void pushCurrentMacroName( String s )
     {
         icb.pushCurrentMacroName( s );
     }
 
     /**
-     * @see org.apache.velocity.context.InternalHousekeepingContext#popCurrentMacroName()
-     * @since 1.6
-     */
+	 * Pop current macro name.
+	 *
+	 * @see org.apache.velocity.context.InternalHousekeepingContext#popCurrentMacroName()
+	 * @since 1.6
+	 */
     public void popCurrentMacroName()
     {
         icb.popCurrentMacroName();
     }
 
     /**
-     * @see org.apache.velocity.context.InternalHousekeepingContext#getCurrentMacroName()
-     * @since 1.6
-     */
+	 * Gets the current macro name.
+	 *
+	 * @return the current macro name
+	 * @see org.apache.velocity.context.InternalHousekeepingContext#getCurrentMacroName()
+	 * @since 1.6
+	 */
     public String getCurrentMacroName()
     {
         return icb.getCurrentMacroName();
     }
 
     /**
-     * @see org.apache.velocity.context.InternalHousekeepingContext#getCurrentMacroCallDepth()
-     * @since 1.6
-     */
+	 * Gets the current macro call depth.
+	 *
+	 * @return the current macro call depth
+	 * @see org.apache.velocity.context.InternalHousekeepingContext#getCurrentMacroCallDepth()
+	 * @since 1.6
+	 */
     public int getCurrentMacroCallDepth()
     {
         return icb.getCurrentMacroCallDepth();
     }
 
     /**
-     * @see org.apache.velocity.context.InternalHousekeepingContext#getMacroNameStack()
-     * @since 1.6
-     */
+	 * Gets the macro name stack.
+	 *
+	 * @return the macro name stack
+	 * @see org.apache.velocity.context.InternalHousekeepingContext#getMacroNameStack()
+	 * @since 1.6
+	 */
     public Object[] getMacroNameStack()
     {
         return icb.getMacroNameStack();
     }
 
     /**
-     * @see org.apache.velocity.context.InternalHousekeepingContext#icacheGet(java.lang.Object)
-     */
+	 * Icache get.
+	 *
+	 * @param key
+	 *            the key
+	 * @return the introspection cache data
+	 * @see org.apache.velocity.context.InternalHousekeepingContext#icacheGet(java.lang.Object)
+	 */
     public IntrospectionCacheData icacheGet( Object key )
     {
         return icb.icacheGet( key );
     }
 
     /**
-     * @see org.apache.velocity.context.InternalHousekeepingContext#icachePut(java.lang.Object, org.apache.velocity.util.introspection.IntrospectionCacheData)
-     */
+	 * Icache put.
+	 *
+	 * @param key
+	 *            the key
+	 * @param o
+	 *            the o
+	 * @see org.apache.velocity.context.InternalHousekeepingContext#icachePut(java.lang.Object,
+	 *      org.apache.velocity.util.introspection.IntrospectionCacheData)
+	 */
     public void icachePut( Object key, IntrospectionCacheData o )
     {
         icb.icachePut( key, o );
     }
 
    /**
-    * @see org.apache.velocity.context.InternalHousekeepingContext#setCurrentResource(org.apache.velocity.runtime.resource.Resource)
-    */
+	 * Sets the current resource.
+	 *
+	 * @param r
+	 *            the new current resource
+	 * @see org.apache.velocity.context.InternalHousekeepingContext#setCurrentResource(org.apache.velocity.runtime.resource.Resource)
+	 */
     public void setCurrentResource( Resource r )
     {
         icb.setCurrentResource(r);
     }
 
     /**
-     * @see org.apache.velocity.context.InternalHousekeepingContext#getCurrentResource()
-     */
+	 * Gets the current resource.
+	 *
+	 * @return the current resource
+	 * @see org.apache.velocity.context.InternalHousekeepingContext#getCurrentResource()
+	 */
     public Resource getCurrentResource()
     {
         return icb.getCurrentResource();
     }
 
     /**
-     * @see org.apache.velocity.context.InternalHousekeepingContext#setMacroLibraries(List)
-     * @since 1.6
-     */
+	 * Sets the macro libraries.
+	 *
+	 * @param macroLibraries
+	 *            the new macro libraries
+	 * @see org.apache.velocity.context.InternalHousekeepingContext#setMacroLibraries(List)
+	 * @since 1.6
+	 */
     public void setMacroLibraries(List macroLibraries)
     {
         icb.setMacroLibraries(macroLibraries);
     }
 
     /**
-     * @see org.apache.velocity.context.InternalHousekeepingContext#getMacroLibraries()
-     * @since 1.6
-     */
+	 * Gets the macro libraries.
+	 *
+	 * @return the macro libraries
+	 * @see org.apache.velocity.context.InternalHousekeepingContext#getMacroLibraries()
+	 * @since 1.6
+	 */
     public List getMacroLibraries()
     {
         return icb.getMacroLibraries();
@@ -243,49 +297,82 @@ public final class InternalContextAdapterImpl implements InternalContextAdapter
     /* ---  Context interface methods --- */
 
     /**
-     * @see org.apache.velocity.context.Context#put(java.lang.String, java.lang.Object)
-     */
+	 * Put.
+	 *
+	 * @param key
+	 *            the key
+	 * @param value
+	 *            the value
+	 * @return the object
+	 * @see org.apache.velocity.context.Context#put(java.lang.String,
+	 *      java.lang.Object)
+	 */
     public Object put(String key, Object value)
     {
         return context.put( key , value );
     }
 
     /**
-     * @see InternalWrapperContext#localPut(String, Object)
-     * @since 1.5
-     */
+	 * Local put.
+	 *
+	 * @param key
+	 *            the key
+	 * @param value
+	 *            the value
+	 * @return the object
+	 * @see InternalWrapperContext#localPut(String, Object)
+	 * @since 1.5
+	 */
     public Object localPut(final String key, final Object value)
     {
         return put(key, value);
     }
 
     /**
-     * @see org.apache.velocity.context.Context#get(java.lang.String)
-     */
+	 * Gets the.
+	 *
+	 * @param key
+	 *            the key
+	 * @return the object
+	 * @see org.apache.velocity.context.Context#get(java.lang.String)
+	 */
     public Object get(String key)
     {
         return context.get( key );
     }
 
     /**
-     * @see org.apache.velocity.context.Context#containsKey(java.lang.Object)
-     */
+	 * Contains key.
+	 *
+	 * @param key
+	 *            the key
+	 * @return true, if successful
+	 * @see org.apache.velocity.context.Context#containsKey(java.lang.Object)
+	 */
     public boolean containsKey(Object key)
     {
         return context.containsKey( key );
     }
 
     /**
-     * @see org.apache.velocity.context.Context#getKeys()
-     */
+	 * Gets the keys.
+	 *
+	 * @return the keys
+	 * @see org.apache.velocity.context.Context#getKeys()
+	 */
     public Object[] getKeys()
     {
         return context.getKeys();
     }
 
     /**
-     * @see org.apache.velocity.context.Context#remove(java.lang.Object)
-     */
+	 * Removes the.
+	 *
+	 * @param key
+	 *            the key
+	 * @return the object
+	 * @see org.apache.velocity.context.Context#remove(java.lang.Object)
+	 */
     public Object remove(Object key)
     {
         return context.remove( key );
@@ -295,22 +382,25 @@ public final class InternalContextAdapterImpl implements InternalContextAdapter
     /* ---- InternalWrapperContext --- */
 
     /**
-     *  returns the user data context that
-     *  we are wrapping
-     * @return The internal user data context.
-     */
+	 * returns the user data context that we are wrapping.
+	 *
+	 * @author mqfdy
+	 * @return The internal user data context.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public Context getInternalUserContext()
     {
         return context;
     }
 
     /**
-     *  Returns the base context that we are
-     *  wrapping. Here, its this, but for other thing
-     *  like VM related context contortions, it can
-     *  be something else
-     * @return The base context.
-     */
+	 * Returns the base context that we are wrapping. Here, its this, but for
+	 * other thing like VM related context contortions, it can be something else
+	 *
+	 * @author mqfdy
+	 * @return The base context.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public InternalContextAdapter getBaseContext()
     {
         return this;
@@ -319,8 +409,13 @@ public final class InternalContextAdapterImpl implements InternalContextAdapter
     /* -----  InternalEventContext ---- */
 
     /**
-     * @see org.apache.velocity.context.InternalEventContext#attachEventCartridge(org.apache.velocity.app.event.EventCartridge)
-     */
+	 * Attach event cartridge.
+	 *
+	 * @param ec
+	 *            the ec
+	 * @return the event cartridge
+	 * @see org.apache.velocity.context.InternalEventContext#attachEventCartridge(org.apache.velocity.app.event.EventCartridge)
+	 */
     public EventCartridge attachEventCartridge( EventCartridge ec )
     {
         if (iec != null)
@@ -332,8 +427,11 @@ public final class InternalContextAdapterImpl implements InternalContextAdapter
     }
 
     /**
-     * @see org.apache.velocity.context.InternalEventContext#getEventCartridge()
-     */
+	 * Gets the event cartridge.
+	 *
+	 * @return the event cartridge
+	 * @see org.apache.velocity.context.InternalEventContext#getEventCartridge()
+	 */
     public EventCartridge getEventCartridge()
     {
         if ( iec != null)

@@ -21,20 +21,29 @@ import com.mqfdy.code.resource.validator.ValiResult;
 import com.mqfdy.code.resource.validator.Validator;
 import com.mqfdy.code.resource.validator.ValidatorContext;
 
+// TODO: Auto-generated Javadoc
 /**
- * 模型校验Manager
- * 
+ * 模型校验Manager.
+ *
  * @author mqfdy
- * 
  */
 public class ValidatorManager {
+	
+	/** The result list. */
 	private List<ValiResult> resultList = new ArrayList<ValiResult>();
 
 	/**
-	 * 整体校验 校验所有的规则
-	 * 
-	 * @param bom
-	 * @return
+	 * 整体校验 校验所有的规则.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @param checkElements
+	 *            the check elements
+	 * @param con
+	 *            the con
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<ValiResult> checkModel(BusinessObjectModel businessObjectModel,
 			List<AbstractModelElement> checkElements, ValidatorContext con) {
@@ -43,8 +52,9 @@ public class ValidatorManager {
 	}
 
 	/**
-	 * 按照自定义的校验规则列表进行校验
-	 * 
+	 * 按照自定义的校验规则列表进行校验.
+	 *
+	 * @author mqfdy
 	 * @param businessObjectModel
 	 *            业务对象模型
 	 * @param checkElements
@@ -52,7 +62,9 @@ public class ValidatorManager {
 	 * @param vaList
 	 *            自定义的校验规则列表
 	 * @param con
-	 * @return
+	 *            the con
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<ValiResult> checkModel(BusinessObjectModel businessObjectModel,
 			List<AbstractModelElement> checkElements, List<Validator> vaList,
@@ -68,6 +80,23 @@ public class ValidatorManager {
 		return resultList;
 	}
 
+	/**
+	 * Validate.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @param modelElement
+	 *            the model element
+	 * @param vaList
+	 *            the va list
+	 * @param con
+	 *            the con
+	 * @param resultList
+	 *            the result list
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private static boolean validate(BusinessObjectModel businessObjectModel,
 			AbstractModelElement modelElement, List<Validator> vaList,
 			ValidatorContext con, List<ValiResult> resultList) {
@@ -164,10 +193,13 @@ public class ValidatorManager {
 	}
 
 	/**
-	 * 是否是常规要校验的模型元素
-	 * 
+	 * 是否是常规要校验的模型元素.
+	 *
+	 * @author mqfdy
 	 * @param element
-	 * @return
+	 *            the element
+	 * @return true, if is normal check element
+	 * @Date 2018-09-03 09:00
 	 */
 	private static boolean isNormalCheckElement(AbstractModelElement element) {
 		if (element instanceof ModelPackage) {

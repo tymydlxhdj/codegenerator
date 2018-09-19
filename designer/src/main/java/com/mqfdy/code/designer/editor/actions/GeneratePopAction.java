@@ -43,18 +43,38 @@ import com.mqfdy.code.resource.validator.ValidatorContext;
 import com.mqfdy.code.wizard.wizard.IMicroGeneratorConfigWizard;
 import com.mqfdy.code.wizard.wizard.MicroGeneratorConfigWizard2;
 
+// TODO: Auto-generated Javadoc
 /**
- * 代码生成
- * 
+ * 代码生成.
+ *
  * @author mqfdy
- * 
  */
 public class GeneratePopAction implements IObjectActionDelegate {
+	
+	/** The selection. */
 	private StructuredSelection selection = null;
 
+	/**
+	 * Sets the active part.
+	 *
+	 * @author mqfdy
+	 * @param action
+	 *            the action
+	 * @param targetPart
+	 *            the target part
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
 	}
 
+	/**
+	 * Run.
+	 *
+	 * @author mqfdy
+	 * @param action
+	 *            the action
+	 * @Date 2018-09-03 09:00
+	 */
 	public void run(IAction action) {
 
 		// 用户没做选择，则直接返回
@@ -108,6 +128,16 @@ public class GeneratePopAction implements IObjectActionDelegate {
 
 	}
 
+	/**
+	 * Selection changed.
+	 *
+	 * @author mqfdy
+	 * @param action
+	 *            the action
+	 * @param selection
+	 *            the selection
+	 * @Date 2018-09-03 09:00
+	 */
 	public void selectionChanged(IAction action, ISelection selection) {
 		if (selection instanceof StructuredSelection) {
 			this.selection = (StructuredSelection) selection;

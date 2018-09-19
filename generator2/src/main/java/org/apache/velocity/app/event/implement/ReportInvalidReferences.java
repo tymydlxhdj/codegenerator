@@ -29,6 +29,7 @@ import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.util.RuntimeServicesAware;
 import org.apache.velocity.util.introspection.Info;
 
+// TODO: Auto-generated Javadoc
 /**
  * Use this event handler to flag invalid references.  Since this 
  * is intended to be used for a specific request, this should be
@@ -62,11 +63,10 @@ public class ReportInvalidReferences implements
     InvalidReferenceEventHandler, RuntimeServicesAware
 {
 
+    /** The Constant EVENTHANDLER_INVALIDREFERENCE_EXCEPTION. */
     public static final String EVENTHANDLER_INVALIDREFERENCE_EXCEPTION = "eventhandler.invalidreference.exception";
     
-    /** 
-     * List of InvalidReferenceInfo objects
-     */
+    /** List of InvalidReferenceInfo objects. */
     List invalidReferences = new ArrayList();
 
     /**
@@ -76,16 +76,24 @@ public class ReportInvalidReferences implements
     
        
     /**
-     * Collect the error and/or throw an exception, depending on configuration.
-     *
-     * @param context the context when the reference was found invalid
-     * @param reference string with complete invalid reference
-     * @param object the object referred to, or null if not found
-     * @param property the property name from the reference
-     * @param info contains template, line, column details
-     * @return always returns null
-     * @throws ParseErrorException
-     */
+	 * Collect the error and/or throw an exception, depending on configuration.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context when the reference was found invalid
+	 * @param reference
+	 *            string with complete invalid reference
+	 * @param object
+	 *            the object referred to, or null if not found
+	 * @param property
+	 *            the property name from the reference
+	 * @param info
+	 *            contains template, line, column details
+	 * @return always returns null
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @Date 2018-9-3 11:38:31
+	 */
     public Object invalidGetMethod(Context context, String reference, Object object, 
             String property, Info info)
     {
@@ -94,16 +102,24 @@ public class ReportInvalidReferences implements
     }
 
     /**
-     * Collect the error and/or throw an exception, depending on configuration.
-     *
-     * @param context the context when the reference was found invalid
-     * @param reference complete invalid reference
-     * @param object the object referred to, or null if not found
-     * @param method the property name from the reference
-     * @param info contains template, line, column details
-     * @return always returns null
-     * @throws ParseErrorException
-     */
+	 * Collect the error and/or throw an exception, depending on configuration.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context when the reference was found invalid
+	 * @param reference
+	 *            complete invalid reference
+	 * @param object
+	 *            the object referred to, or null if not found
+	 * @param method
+	 *            the property name from the reference
+	 * @param info
+	 *            contains template, line, column details
+	 * @return always returns null
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @Date 2018-9-3 11:38:31
+	 */
     public Object invalidMethod(Context context, String reference, Object object, 
             String method, Info info)
     {
@@ -119,14 +135,20 @@ public class ReportInvalidReferences implements
     }
 
     /**
-     * Collect the error and/or throw an exception, depending on configuration.
-     *
-     * @param context the context when the reference was found invalid
-     * @param leftreference left reference being assigned to
-     * @param rightreference invalid reference on the right
-     * @param info contains info on template, line, col
-     * @return loop to end -- always returns false
-     */
+	 * Collect the error and/or throw an exception, depending on configuration.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context when the reference was found invalid
+	 * @param leftreference
+	 *            left reference being assigned to
+	 * @param rightreference
+	 *            invalid reference on the right
+	 * @param info
+	 *            contains info on template, line, col
+	 * @return loop to end -- always returns false
+	 * @Date 2018-9-3 11:38:31
+	 */
     public boolean invalidSetMethod(Context context, String leftreference, String rightreference, Info info)
     {
         reportInvalidReference(leftreference, info);
@@ -135,12 +157,16 @@ public class ReportInvalidReferences implements
 
 
     /**
-     * Check for an invalid reference and collect the error or throw an exception 
-     * (depending on configuration).
-     * 
-     * @param reference the invalid reference
-     * @param info line, column, template name
-     */
+	 * Check for an invalid reference and collect the error or throw an
+	 * exception (depending on configuration).
+	 *
+	 * @author mqfdy
+	 * @param reference
+	 *            the invalid reference
+	 * @param info
+	 *            line, column, template name
+	 * @Date 2018-9-3 11:38:31
+	 */
     private void reportInvalidReference(String reference, Info info)
     {
         InvalidReferenceInfo invalidReferenceInfo = new InvalidReferenceInfo(reference, info);
@@ -157,9 +183,12 @@ public class ReportInvalidReferences implements
 
 
     /**
-     * All invalid references during the processing of this page.
-     * @return a List of InvalidReferenceInfo objects
-     */
+	 * All invalid references during the processing of this page.
+	 *
+	 * @author mqfdy
+	 * @return a List of InvalidReferenceInfo objects
+	 * @Date 2018-9-3 11:38:31
+	 */
     public List getInvalidReferences()
     {
         return invalidReferences;
@@ -167,9 +196,13 @@ public class ReportInvalidReferences implements
     
 
     /**
-     * Called automatically when event cartridge is initialized.
-     * @param rs RuntimeServices object assigned during initialization
-     */
+	 * Called automatically when event cartridge is initialized.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            RuntimeServices object assigned during initialization
+	 * @Date 2018-9-3 11:38:31
+	 */
     public void setRuntimeServices(RuntimeServices rs)
     {
         stopOnFirstInvalidReference = rs.getConfiguration().getBoolean(

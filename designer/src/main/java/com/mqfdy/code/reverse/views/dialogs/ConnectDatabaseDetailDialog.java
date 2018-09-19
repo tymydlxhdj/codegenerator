@@ -39,52 +39,135 @@ import com.mqfdy.code.reverse.OmReverse;
 import com.mqfdy.code.reverse.utils.ReverseUtil;
 import com.mqfdy.code.reverse.views.constant.IViewConstant;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ConnectDatabaseDetailDialog.
+ *
+ * @author mqfdy
+ */
 public class ConnectDatabaseDetailDialog extends TitleAreaDialog {
 
+	/** The Constant DIALOG_WIDTH. */
 	public static final int DIALOG_WIDTH = 530;
+	
+	/** The Constant DIALOG_HEIGHT. */
 	public static final int DIALOG_HEIGHT = 530;
+	
+	/** The Constant LABELDATA_WIDTH. */
 	public static final int LABELDATA_WIDTH = 100;
+	
+	/** The Constant TEXTDATA_WIDTH. */
 	public static final int TEXTDATA_WIDTH = 500;
+	
+	/** The Constant SSGC. */
 	public static final String SSGC="请选择数据源所属的UAP工程";
+	
+	/** The Constant DATASOURCENAME. */
 	public static final String DATASOURCENAME="请填写数据源名称";
+	
+	/** The Constant SID. */
 	public static final String SID="请填写数据库ID";
+	
+	/** The Constant IP. */
 	public static final String IP="请填写服务器IP";
+	
+	/** The Constant PORT. */
 	public static final String PORT="请填写端口";
+	
+	/** The Constant USERNAME. */
 	public static final String USERNAME="请填写用户名";
+	
+	/** The Constant PPP. */
 	public static final String PPP="请填写密码";
+	
+	/** The Constant ERRORPORT. */
 	public static final String ERRORPORT="您填写的端口格式不正确";
+	
+	/** The Constant DBTYPE. */
 	public static final String DBTYPE="请选择数据库类型";
 	
     
+	/** The ds name label. */
 	private Label dsNameLabel;			//数据源名标签
+	
+	/** The ds name text. */
 	private Text dsNameText;			//数据源名文本框
+	
+	/** The uap path label. */
 	private Label uapPathLabel;		    //数据源保存路径标签
+	
+	/** The uap path combo. */
 	private Combo uapPathCombo;			//数据源保存路径下拉框
+	
+	/** The db type label. */
 	private Label dbTypeLabel;		    //数据库类型标签
+	
+	/** The db type combo. */
 	private Combo dbTypeCombo;			//数据库类型下拉框
+	
+	/** The sid label. */
 	private Label sidLabel;				//数据库id标签
+	
+	/** The sid text. */
 	private Text sidText;				//数据库id文本框
+	
+	/** The host label. */
 	private Label hostLabel;			//服务器地址标签
+	
+	/** The host text. */
 	private Text hostText;				//服务器地址文本框
+	
+	/** The port label. */
 	private Label portLabel;			//端口标签
+	
+	/** The port text. */
 	private Text portText;				//端口文本框
+	
+	/** The user label. */
 	private Label userLabel;			//用户名标签
+	
+	/** The user text. */
 	private Text userText;				//用户名文本框
+	
+	/** The password label. */
 	private Label passwordLabel;		//密码标签
+	
+	/** The password text. */
 	private Text passwordText;			//密码文本框
+	
+	/** The url label. */
 	private Label urlLabel;				//URL标签
+	
+	/** The url text. */
 	private Text urlText;				//URL文本框
+	
+	/** The check button. */
 	private Button checkButton;			//保存密码复选框
+	
+	/** The test button. */
 	private Button testButton;			//测试连接按钮
 
+	/** The connection URL. */
 	private String connectionURL;
+	
+	/** The om reverse. */
 	private IOmReverse omReverse;
+	
+	/** The data source. */
 	private DataSourceInfo dataSource;
 	
+	/** The project map. */
 	private Map<String, IProject> projectMap;
 	
+	/** The is ok pressed. */
 	private boolean isOkPressed;		//完成按钮是否Ok
 	
+	/**
+	 * Instantiates a new connect database detail dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 */
 	public ConnectDatabaseDetailDialog(Shell parentShell) {
 		super(parentShell);
 		isOkPressed = true;
@@ -92,6 +175,15 @@ public class ConnectDatabaseDetailDialog extends TitleAreaDialog {
 		projectMap = new HashMap<String, IProject>();
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		
@@ -392,23 +484,40 @@ public class ConnectDatabaseDetailDialog extends TitleAreaDialog {
 		return parent;
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void configureShell(Shell newShell) {
 		newShell.setText("新建数据源");
 		super.configureShell(newShell);
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected Point getInitialSize() {
 		return new Point( IViewConstant.SCREEN_WIDTH  * IViewConstant.DIALOG_WIDTH_PROPORTION/ 100
 				        , IViewConstant.SCREEN_HEIGHT * IViewConstant.DIALOG_HEIGHT_PROPORTION/ 100);
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected int getShellStyle() {
 		return super.getShellStyle() | SWT.RESIZE | SWT.MAX | SWT.MIN;
 	}
 	
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		validateInput();
@@ -457,8 +566,10 @@ public class ConnectDatabaseDetailDialog extends TitleAreaDialog {
 	}
 
 	/**
-	 * 校验
-	 * @return
+	 * 校验.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void validateInput(){
 		isOkPressed = true;
@@ -547,24 +658,68 @@ public class ConnectDatabaseDetailDialog extends TitleAreaDialog {
 		
 	}
 	
+	/**
+	 * Gets the data source.
+	 *
+	 * @author mqfdy
+	 * @return the data source
+	 * @Date 2018-09-03 09:00
+	 */
 	public DataSourceInfo getDataSource() {
 		return dataSource;
 	}
 
+	/**
+	 * Sets the data source.
+	 *
+	 * @author mqfdy
+	 * @param dataSource
+	 *            the new data source
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setDataSource(DataSourceInfo dataSource) {
 		this.dataSource = dataSource;
 	}
 
+	/**
+	 * Gets the project map.
+	 *
+	 * @author mqfdy
+	 * @return the project map
+	 * @Date 2018-09-03 09:00
+	 */
 	public Map<String, IProject> getProjectMap() {
 		return projectMap;
 	}
 
+	/**
+	 * Sets the project map.
+	 *
+	 * @author mqfdy
+	 * @param projectMap
+	 *            the project map
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setProjectMap(Map<String, IProject> projectMap) {
 		this.projectMap = projectMap;
 	}
 
 
+	/**
+	 * The Class ConnTextModifyAdapter.
+	 *
+	 * @author mqfdy
+	 */
 	class ConnTextModifyAdapter implements ModifyListener {
+		
+		/**
+		 * Modify text.
+		 *
+		 * @author mqfdy
+		 * @param event
+		 *            the event
+		 * @Date 2018-09-03 09:00
+		 */
 		public void modifyText(ModifyEvent event) {
 			connectionURL = ReverseUtil.getURL( dbTypeCombo.getText()
 											  , hostText.getText()

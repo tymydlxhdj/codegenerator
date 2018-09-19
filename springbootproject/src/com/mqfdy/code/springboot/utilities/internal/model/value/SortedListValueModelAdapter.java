@@ -21,22 +21,26 @@ import com.mqfdy.code.springboot.utilities.model.value.CollectionValueModel;
 import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * An adapter that allows us to make a <code>CollectionValueModel</code>
- * (or <code>ListValueModel</code>) behave like a <code>ListValueModel</code>
- * that keeps its contents sorted and notifies listeners appropriately.
+ * An adapter that allows us to make a <code>CollectionValueModel</code> (or
+ * <code>ListValueModel</code>) behave like a <code>ListValueModel</code> that
+ * keeps its contents sorted and notifies listeners appropriately.
  * <p>
- * The comparator can be changed at any time; allowing the same
- * adapter to be used with different sort criteria (e.g. when the user
- * wants to sort a list of files first by name, then by date, then by size).
+ * The comparator can be changed at any time; allowing the same adapter to be
+ * used with different sort criteria (e.g. when the user wants to sort a list of
+ * files first by name, then by date, then by size).
  * <p>
- * NB: Since we only listen to the wrapped collection when we have
- * listeners ourselves and we can only stay in synch with the wrapped
- * collection while we are listening to it, results to various methods
- * (e.g. <code>#size()</code>, <code>#getItem(int)</code>) will be
- * unpredictable whenever
- * we do not have any listeners. This should not be too painful since,
- * most likely, client objects will also be listeners.
+ * NB: Since we only listen to the wrapped collection when we have listeners
+ * ourselves and we can only stay in synch with the wrapped collection while we
+ * are listening to it, results to various methods (e.g. <code>#size()</code>,
+ * <code>#getItem(int)</code>) will be unpredictable whenever we do not have any
+ * listeners. This should not be too painful since, most likely, client objects
+ * will also be listeners.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class SortedListValueModelAdapter<E>
 	extends CollectionListValueModelAdapter<E>
@@ -51,8 +55,13 @@ public class SortedListValueModelAdapter<E>
 	// ********** constructors **********
 
 	/**
-	 * Wrap the specified collection value model and sort its contents
-	 * using the specified comparator.
+	 * Wrap the specified collection value model and sort its contents using the
+	 * specified comparator.
+	 *
+	 * @param collectionHolder
+	 *            the collection holder
+	 * @param comparator
+	 *            the comparator
 	 */
 	public SortedListValueModelAdapter(CollectionValueModel<? extends E> collectionHolder, Comparator<E> comparator) {
 		super(collectionHolder);
@@ -60,24 +69,35 @@ public class SortedListValueModelAdapter<E>
 	}
 
 	/**
-	 * Wrap the specified collection value model and sort its contents
-	 * based on the elements' "natural ordering".
+	 * Wrap the specified collection value model and sort its contents based on
+	 * the elements' "natural ordering".
+	 *
+	 * @param collectionHolder
+	 *            the collection holder
 	 */
 	public SortedListValueModelAdapter(CollectionValueModel<? extends E> collectionHolder) {
 		this(collectionHolder, null);
 	}
 
 	/**
-	 * Wrap the specified list value model and sort its contents
-	 * using the specified comparator.
+	 * Wrap the specified list value model and sort its contents using the
+	 * specified comparator.
+	 *
+	 * @param listHolder
+	 *            the list holder
+	 * @param comparator
+	 *            the comparator
 	 */
 	public SortedListValueModelAdapter(ListValueModel<? extends E> listHolder, Comparator<E> comparator) {
 		this(new ListCollectionValueModelAdapter<E>(listHolder), comparator);
 	}
 
 	/**
-	 * Wrap the specified list value model and sort its contents
-	 * based on the elements' "natural ordering".
+	 * Wrap the specified list value model and sort its contents based on the
+	 * elements' "natural ordering".
+	 *
+	 * @param listHolder
+	 *            the list holder
 	 */
 	public SortedListValueModelAdapter(ListValueModel<? extends E> listHolder) {
 		this(listHolder, null);
@@ -86,6 +106,14 @@ public class SortedListValueModelAdapter<E>
 
 	// ********** accessors **********
 
+	/**
+	 * Sets the comparator.
+	 *
+	 * @author mqfdy
+	 * @param comparator
+	 *            the new comparator
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setComparator(Comparator<E> comparator) {
 		this.comparator = comparator;
 		this.sortList();

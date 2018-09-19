@@ -27,6 +27,7 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.parser.Parser;
 import org.apache.velocity.util.TemplateNumber;
 
+// TODO: Auto-generated Javadoc
 /**
  * Helps handle math<br><br>
  *
@@ -42,21 +43,47 @@ import org.apache.velocity.util.TemplateNumber;
  */
 public abstract class ASTMathNode extends SimpleNode
 {
+    
+    /** The strict mode. */
     protected boolean strictMode = false;
 
+    /**
+	 * Instantiates a new AST math node.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTMathNode(int id)
     {
         super(id);
     }
 
+    /**
+	 * Instantiates a new AST math node.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTMathNode(Parser p, int id)
     {
         super(p, id);
     }
 
     /**
-     * {@inheritDoc}
-     */
+	 * {@inheritDoc}.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @Date 2018-9-3 11:38:37
+	 */
     public Object init(InternalContextAdapter context, Object data) throws TemplateInitException
     {
         super.init(context, data);
@@ -65,20 +92,32 @@ public abstract class ASTMathNode extends SimpleNode
     }
 
     /**
-     * {@inheritDoc}
-     */
+	 * {@inheritDoc}.
+	 *
+	 * @author mqfdy
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @Date 2018-9-3 11:38:37
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     * gets the two args and performs the operation on them
-     *
-     * @param context
-     * @return result or null
-     * @throws MethodInvocationException
-     */
+	 * gets the two args and performs the operation on them.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @return result or null
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-9-3 11:38:37
+	 */
     public Object value(InternalContextAdapter context) throws MethodInvocationException
     {
         Object left = jjtGetChild(0).value(context);
@@ -133,11 +172,19 @@ public abstract class ASTMathNode extends SimpleNode
     }
 
     /**
-     * Extension hook to allow special behavior by subclasses
-     * If this method returns a non-null value, that is returned,
-     * rather than the result of the math operation.
-     * @see ASTAddNode#handleSpecial
-     */
+	 * Extension hook to allow special behavior by subclasses If this method
+	 * returns a non-null value, that is returned, rather than the result of the
+	 * math operation.
+	 *
+	 * @param left
+	 *            the left
+	 * @param right
+	 *            the right
+	 * @param context
+	 *            the context
+	 * @return the object
+	 * @see ASTAddNode#handleSpecial
+	 */
     protected Object handleSpecial(Object left, Object right, InternalContextAdapter context)
     {
         // do nothing, this is an extension hook
@@ -145,8 +192,18 @@ public abstract class ASTMathNode extends SimpleNode
     }
 
     /**
-     * Performs the math operation represented by this node.
-     */
+	 * Performs the math operation represented by this node.
+	 *
+	 * @author mqfdy
+	 * @param left
+	 *            the left
+	 * @param right
+	 *            the right
+	 * @param context
+	 *            the context
+	 * @return the number
+	 * @Date 2018-09-03 09:00
+	 */
     public abstract Number perform(Number left, Number right, InternalContextAdapter context);
 
 }

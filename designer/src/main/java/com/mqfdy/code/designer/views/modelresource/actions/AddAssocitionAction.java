@@ -12,16 +12,25 @@ import com.mqfdy.code.designer.models.ImageKeys;
 import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.model.AbstractModelElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * 新增业务类属性动作
- * 
+ * 新增业务类属性动作.
+ *
  * @author mqfdy
- * 
  */
 public class AddAssocitionAction extends TreeAction {
 
+	/** The business class editor dialog. */
 	private BusinessClassEditorDialog businessClassEditorDialog;
 
+	/**
+	 * Instantiates a new adds the assocition action.
+	 *
+	 * @param text
+	 *            the text
+	 * @param treeViewer
+	 *            the tree viewer
+	 */
 	public AddAssocitionAction(String text, TreeViewer treeViewer) {
 		super(text, treeViewer);
 		if (ActionTexts.ASSOCIATION_ONE2ONE_ADD.equals(text)) {
@@ -43,17 +52,40 @@ public class AddAssocitionAction extends TreeAction {
 		}
 	}
 
+	/**
+	 * Instantiates a new adds the assocition action.
+	 *
+	 * @param text
+	 *            the text
+	 * @param imageDescriptor
+	 *            the image descriptor
+	 * @param treeViewer
+	 *            the tree viewer
+	 */
 	public AddAssocitionAction(String text, ImageDescriptor imageDescriptor,
 			TreeViewer treeViewer) {
 		super(text, imageDescriptor, treeViewer);
 	}
 
+	/**
+	 * Instantiates a new adds the assocition action.
+	 *
+	 * @param text
+	 *            the text
+	 * @param imageDescriptor
+	 *            the image descriptor
+	 * @param businessClassEditorDialog
+	 *            the business class editor dialog
+	 */
 	public AddAssocitionAction(String text, ImageDescriptor imageDescriptor,
 			BusinessClassEditorDialog businessClassEditorDialog) {
 		super(text, imageDescriptor);
 		this.businessClassEditorDialog = businessClassEditorDialog;
 	}
 
+	/**
+	 * 
+	 */
 	public void run() {
 		if (treeViewer != null && treeViewer.getSelection() != null) {
 			TreeItem item = treeViewer.getTree().getSelection()[0];

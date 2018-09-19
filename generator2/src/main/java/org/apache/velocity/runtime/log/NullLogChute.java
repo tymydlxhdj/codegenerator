@@ -21,6 +21,7 @@ package org.apache.velocity.runtime.log;
 
 import org.apache.velocity.runtime.RuntimeServices;
 
+// TODO: Auto-generated Javadoc
 /**
  *  Logger used in case of failure. Does nothing.
  *
@@ -33,37 +34,57 @@ public class NullLogChute implements LogChute
 {
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
-     */
+	 * Inits the.
+	 *
+	 * @param rs
+	 *            the rs
+	 * @throws Exception
+	 *             the exception
+	 * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
+	 */
     public void init(RuntimeServices rs) throws Exception
     {
     }
 
     /**
-     * logs messages to the great Garbage Collector in the sky
-     *
-     *  @param level severity level
-     *  @param message complete error message
-     */
+	 * logs messages to the great Garbage Collector in the sky.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            severity level
+	 * @param message
+	 *            complete error message
+	 * @Date 2018-9-3 11:38:38
+	 */
     public void log(int level, String message)
     {
     }
 
     /**
-     * logs messages and their accompanying Throwables
-     * to the great Garbage Collector in the sky
-     *
-     * @param level severity level
-     * @param message complete error message
-     * @param t the java.lang.Throwable
-     */
+	 * logs messages and their accompanying Throwables to the great Garbage
+	 * Collector in the sky.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            severity level
+	 * @param message
+	 *            complete error message
+	 * @param t
+	 *            the java.lang.Throwable
+	 * @Date 2018-9-3 11:38:38
+	 */
     public void log(int level, String message, Throwable t)
     {
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#isLevelEnabled(int)
-     */
+	 * Checks if is level enabled.
+	 *
+	 * @param level
+	 *            the level
+	 * @return true, if is level enabled
+	 * @see org.apache.velocity.runtime.log.LogChute#isLevelEnabled(int)
+	 */
     public boolean isLevelEnabled(int level)
     {
         return false;

@@ -32,6 +32,7 @@ import com.mqfdy.code.springboot.utilities.internal.iterators.FilteringIterator;
 import com.mqfdy.code.springboot.utilities.internal.iterators.TransformationIterator;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * TODO
  */
@@ -50,14 +51,22 @@ public class Classpath
 
 	/**
 	 * Return the Java "boot" classpath. This includes rt.jar.
+	 *
+	 * @author mqfdy
+	 * @return the classpath
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Classpath bootClasspath() {
 		return new Classpath(System.getProperty("sun.boot.class.path"));
 	}
 	
 	/**
-	 * Return a "virtual classpath" that contains all the jars
-	 * that would be used by the Java Extension Mechanism.
+	 * Return a "virtual classpath" that contains all the jars that would be
+	 * used by the Java Extension Mechanism.
+	 *
+	 * @author mqfdy
+	 * @return the classpath
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Classpath javaExtensionClasspath() {
 		File[] dirs = javaExtensionDirectories();
@@ -72,15 +81,23 @@ public class Classpath
 
 	/**
 	 * Return the Java "system" classpath.
+	 *
+	 * @author mqfdy
+	 * @return the classpath
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Classpath javaClasspath() {
 		return new Classpath(System.getProperty("java.class.path"));
 	}
 
 	/**
-	 * Return the unretouched "complete" classpath.
-	 * This includes the boot classpath, the Java Extension
-	 * Mechanism classpath, and the normal "system" classpath.
+	 * Return the unretouched "complete" classpath. This includes the boot
+	 * classpath, the Java Extension Mechanism classpath, and the normal
+	 * "system" classpath.
+	 *
+	 * @author mqfdy
+	 * @return the classpath
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Classpath completeClasspath() {
 		return new Classpath(new Classpath[] {
@@ -92,6 +109,12 @@ public class Classpath
 
 	/**
 	 * Return a classpath that contains the location of the specified class.
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the classpath
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Classpath classpathFor(Class<?> javaClass) {
 		return new Classpath(locationFor(javaClass));
@@ -101,11 +124,16 @@ public class Classpath
 	// ***** file => class *****
 
 	/**
-	 * Convert a relative file name to a class name; this will work for
-	 * any file that has a single extension beyond the base
-	 * class name.
-	 * e.g. "java/lang/String.class" is converted to "java.lang.String"
-	 * e.g. "java/lang/String.java" is converted to "java.lang.String"
+	 * Convert a relative file name to a class name; this will work for any file
+	 * that has a single extension beyond the base class name. e.g.
+	 * "java/lang/String.class" is converted to "java.lang.String" e.g.
+	 * "java/lang/String.java" is converted to "java.lang.String"
+	 *
+	 * @author mqfdy
+	 * @param classFileName
+	 *            the class file name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToClassName(String classFileName) {
 		String className = FileTools.stripExtension(classFileName);
@@ -119,24 +147,46 @@ public class Classpath
 	}
 
 	/**
-	 * Convert a file to a class name;
-	 * e.g. File(java/lang/String.class) is converted to "java.lang.String"
+	 * Convert a file to a class name; e.g. File(java/lang/String.class) is
+	 * converted to "java.lang.String"
+	 *
+	 * @author mqfdy
+	 * @param classFile
+	 *            the class file
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToClassName(File classFile) {
 		return convertToClassName(classFile.getPath());
 	}
 
 	/**
-	 * Convert a relative file name to a class;
-	 * e.g. "java/lang/String.class" is converted to java.lang.String.class
+	 * Convert a relative file name to a class; e.g. "java/lang/String.class" is
+	 * converted to java.lang.String.class
+	 *
+	 * @author mqfdy
+	 * @param classFileName
+	 *            the class file name
+	 * @return the class
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Class<?> convertToClass(String classFileName) throws ClassNotFoundException {
 		return Class.forName(convertToClassName(classFileName));
 	}
 
 	/**
-	 * Convert a relative file to a class;
-	 * e.g. File(java/lang/String.class) is converted to java.lang.String.class
+	 * Convert a relative file to a class; e.g. File(java/lang/String.class) is
+	 * converted to java.lang.String.class
+	 *
+	 * @author mqfdy
+	 * @param classFile
+	 *            the class file
+	 * @return the class
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Class<?> convertToClass(File classFile) throws ClassNotFoundException {
 		return convertToClass(classFile.getPath());
@@ -146,32 +196,56 @@ public class Classpath
 	// ***** class => JAR entry *****
 
 	/**
-	 * Convert a class name to an archive entry name base;
-	 * e.g. "java.lang.String" is converted to "java/lang/String"
+	 * Convert a class name to an archive entry name base; e.g.
+	 * "java.lang.String" is converted to "java/lang/String"
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToArchiveEntryNameBase(String className) {
 		return className.replace('.', '/');
 	}
 	
 	/**
-	 * Convert a class to an archive entry name base;
-	 * e.g. java.lang.String.class is converted to "java/lang/String"
+	 * Convert a class to an archive entry name base; e.g.
+	 * java.lang.String.class is converted to "java/lang/String"
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToArchiveEntryNameBase(Class<?> javaClass) {
 		return convertToArchiveEntryNameBase(javaClass.getName());
 	}
 	
 	/**
-	 * Convert a class name to an archive class file entry name;
-	 * e.g. "java.lang.String" is converted to "java/lang/String.class"
+	 * Convert a class name to an archive class file entry name; e.g.
+	 * "java.lang.String" is converted to "java/lang/String.class"
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToArchiveClassFileEntryName(String className) {
 		return convertToArchiveEntryNameBase(className) + ".class";
 	}
 	
 	/**
-	 * Convert a class to an archive class file entry name;
-	 * e.g. java.lang.String.class is converted to "java/lang/String.class"
+	 * Convert a class to an archive class file entry name; e.g.
+	 * java.lang.String.class is converted to "java/lang/String.class"
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToArchiveClassFileEntryName(Class<?> javaClass) {
 		return convertToArchiveClassFileEntryName(javaClass.getName());
@@ -181,86 +255,146 @@ public class Classpath
 	// ***** class => file (.class or .java) *****
 
 	/**
-	 * Convert a class name to a file name base for the current O/S;
-	 * e.g. "java.lang.String" is converted to "java/lang/String" on Unix
-	 * and "java\\lang\\String" on Windows
+	 * Convert a class name to a file name base for the current O/S; e.g.
+	 * "java.lang.String" is converted to "java/lang/String" on Unix and
+	 * "java\\lang\\String" on Windows
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToFileNameBase(String className) {
 		return className.replace('.', File.separatorChar);
 	}
 	
 	/**
-	 * Convert a class to a file name base for the current O/S;
-	 * e.g. java.lang.String.class is converted to "java/lang/String" on Unix
-	 * and "java\\lang\\String" on Windows
+	 * Convert a class to a file name base for the current O/S; e.g.
+	 * java.lang.String.class is converted to "java/lang/String" on Unix and
+	 * "java\\lang\\String" on Windows
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToFileNameBase(Class<?> javaClass) {
 		return convertToFileNameBase(javaClass.getName());
 	}
 	
 	/**
-	 * Convert a class name to a class file name for the current O/S;
-	 * e.g. "java.lang.String" is converted to "java/lang/String.class" on Unix
-	 * and "java\\lang\\String.class" on Windows
+	 * Convert a class name to a class file name for the current O/S; e.g.
+	 * "java.lang.String" is converted to "java/lang/String.class" on Unix and
+	 * "java\\lang\\String.class" on Windows
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToClassFileName(String className) {
 		return convertToFileNameBase(className) + ".class";
 	}
 	
 	/**
-	 * Convert a class to a class file name for the current O/S;
-	 * e.g. java.lang.String.class is converted to "java/lang/String.class" on Unix
+	 * Convert a class to a class file name for the current O/S; e.g.
+	 * java.lang.String.class is converted to "java/lang/String.class" on Unix
 	 * and "java\\lang\\String.class" on Windows
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToClassFileName(Class<?> javaClass) {
 		return convertToClassFileName(javaClass.getName());
 	}
 	
 	/**
-	 * Convert a class name to a class file for the current O/S;
-	 * e.g. "java.lang.String" is converted to File(java/lang/String.class)
+	 * Convert a class name to a class file for the current O/S; e.g.
+	 * "java.lang.String" is converted to File(java/lang/String.class)
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File convertToClassFile(String className) {
 		return new File(convertToClassFileName(className));
 	}
 	
 	/**
-	 * Convert a class to a class file for the current O/S;
-	 * e.g. java.lang.String.class is converted to File(java/lang/String.class)
+	 * Convert a class to a class file for the current O/S; e.g.
+	 * java.lang.String.class is converted to File(java/lang/String.class)
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File convertToClassFile(Class<?> javaClass) {
 		return convertToClassFile(javaClass.getName());
 	}
 	
 	/**
-	 * Convert a class name to a java file name for the current O/S;
-	 * e.g. "java.lang.String" is converted to "java/lang/String.java" on Unix
-	 * and "java\\lang\\String.java" on Windows
+	 * Convert a class name to a java file name for the current O/S; e.g.
+	 * "java.lang.String" is converted to "java/lang/String.java" on Unix and
+	 * "java\\lang\\String.java" on Windows
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToJavaFileName(String className) {
 		return convertToFileNameBase(className) + ".java";
 	}
 
 	/**
-	 * Convert a class to a java file name for the current O/S;
-	 * e.g. java.lang.String.class is converted to "java/lang/String.java" on Unix
+	 * Convert a class to a java file name for the current O/S; e.g.
+	 * java.lang.String.class is converted to "java/lang/String.java" on Unix
 	 * and "java\\lang\\String.java" on Windows
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToJavaFileName(Class<?> javaClass) {
 		return convertToJavaFileName(javaClass.getName());
 	}
 
 	/**
-	 * Convert a class name to a java file for the current O/S;
-	 * e.g. "java.lang.String" is converted to File(java/lang/String.java)
+	 * Convert a class name to a java file for the current O/S; e.g.
+	 * "java.lang.String" is converted to File(java/lang/String.java)
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File convertToJavaFile(String className) {
 		return new File(convertToJavaFileName(className));
 	}
 
 	/**
-	 * Convert a class to a java file for the current O/S;
-	 * e.g. java.lang.String.class is converted to File(java/lang/String.java)
+	 * Convert a class to a java file for the current O/S; e.g.
+	 * java.lang.String.class is converted to File(java/lang/String.java)
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File convertToJavaFile(Class<?> javaClass) {
 		return convertToJavaFile(javaClass.getName());
@@ -270,17 +404,28 @@ public class Classpath
 	// ***** class => resource *****
 
 	/**
-	 * Convert a class to a resource name;
-	 * e.g. java.lang.String.class is converted to "/java/lang/String.class".
+	 * Convert a class to a resource name; e.g. java.lang.String.class is
+	 * converted to "/java/lang/String.class".
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToResourceName(Class<?> javaClass) {
 		return '/' + convertToArchiveClassFileEntryName(javaClass);
 	}
 
 	/**
-	 * Convert a class to a resource;
-	 * e.g. java.lang.String.class is converted to
-	 * URL(jar:file:/C:/jdk/1.4.2_04/jre/lib/rt.jar!/java/lang/String.class).
+	 * Convert a class to a resource; e.g. java.lang.String.class is converted
+	 * to URL(jar:file:/C:/jdk/1.4.2_04/jre/lib/rt.jar!/java/lang/String.class).
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the url
+	 * @Date 2018-09-03 09:00
 	 */
 	public static URL convertToResource(Class<?> javaClass) {
 		return javaClass.getResource(convertToResourceName(javaClass));
@@ -290,8 +435,14 @@ public class Classpath
 	// ***** utilities *****
 
 	/**
-	 * Return whether the specified file is an archive file;
-	 * i.e. its name ends with ".zip" or ".jar"
+	 * Return whether the specified file is an archive file; i.e. its name ends
+	 * with ".zip" or ".jar"
+	 *
+	 * @author mqfdy
+	 * @param fileName
+	 *            the file name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean fileNameIsArchive(String fileName) {
 		String ext = FileTools.extension(fileName).toLowerCase();
@@ -299,17 +450,26 @@ public class Classpath
 	}
 	
 	/**
-	 * Return whether the specified file is an archive file;
-	 * i.e. its name ends with ".zip" or ".jar"
+	 * Return whether the specified file is an archive file; i.e. its name ends
+	 * with ".zip" or ".jar"
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean fileIsArchive(File file) {
 		return fileNameIsArchive(file.getName());
 	}
 	
 	/**
-	 * Return what should be the fully-qualified file name
-	 * for the JRE runtime JAR;
-	 * e.g. "C:\jdk1.4.2_04\jre\lib\rt.jar".
+	 * Return what should be the fully-qualified file name for the JRE runtime
+	 * JAR; e.g. "C:\jdk1.4.2_04\jre\lib\rt.jar".
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String rtJarName() {
 		return locationFor(java.lang.Object.class);
@@ -317,6 +477,12 @@ public class Classpath
 	
 	/**
 	 * Return the location from where the specified class was loaded.
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String locationFor(Class<?> javaClass) {
 		URL url = convertToResource(javaClass);
@@ -346,6 +512,10 @@ public class Classpath
 	
 	/**
 	 * Return the directories used by the Java Extension Mechanism.
+	 *
+	 * @author mqfdy
+	 * @return the file[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File[] javaExtensionDirectories() {
 		return convertToFiles(javaExtensionDirectoryNames());
@@ -353,6 +523,10 @@ public class Classpath
 
 	/**
 	 * Return the directory names used by the Java Extension Mechanism.
+	 *
+	 * @author mqfdy
+	 * @return the string[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String[] javaExtensionDirectoryNames() {
 		if(null != System.getProperty("java.ext.dirs"))
@@ -406,6 +580,9 @@ public class Classpath
 
 	/**
 	 * Construct a classpath with the specified entries.
+	 *
+	 * @param fileNames
+	 *            the file names
 	 */
 	public Classpath(String[] fileNames) {
 		this(buildEntries(fileNames));
@@ -432,6 +609,9 @@ public class Classpath
 
 	/**
 	 * Construct a classpath with the specified path.
+	 *
+	 * @param path
+	 *            the path
 	 */
 	public Classpath(String path) {
 		this(path.split(File.pathSeparator));
@@ -439,6 +619,9 @@ public class Classpath
 
 	/**
 	 * Construct a classpath with the specified entries.
+	 *
+	 * @param fileNames
+	 *            the file names
 	 */
 	public Classpath(List<String> fileNames) {
 		this(fileNames.toArray(new String[fileNames.size()]));
@@ -446,6 +629,9 @@ public class Classpath
 
 	/**
 	 * Consolidate the specified classpaths into a single classpath.
+	 *
+	 * @param classpaths
+	 *            the classpaths
 	 */
 	public Classpath(Classpath[] classpaths) {
 		this(consolidateEntries(classpaths));
@@ -464,6 +650,10 @@ public class Classpath
 
 	/**
 	 * Return the classpath's entries.
+	 *
+	 * @author mqfdy
+	 * @return the entry[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public Entry[] entries() {
 		return this.entries;
@@ -471,6 +661,10 @@ public class Classpath
 
 	/**
 	 * Return the classpath's path.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public String path() {
 		Entry[] localEntries = this.entries;
@@ -489,10 +683,15 @@ public class Classpath
 	}
 
 	/**
-	 * Search the classpath for the specified (unqualified) file
-	 * and return its entry. Return null if an entry is not found.
-	 * For example, you could use this method to find the entry
-	 * for "rt.jar" or "toplink.jar".
+	 * Search the classpath for the specified (unqualified) file and return its
+	 * entry. Return null if an entry is not found. For example, you could use
+	 * this method to find the entry for "rt.jar" or "toplink.jar".
+	 *
+	 * @author mqfdy
+	 * @param shortFileName
+	 *            the short file name
+	 * @return the entry
+	 * @Date 2018-09-03 09:00
 	 */
 	public Entry entryForFileNamed(String shortFileName) {
 		Entry[] localEntries = this.entries;
@@ -505,9 +704,14 @@ public class Classpath
 	}
 
 	/**
-	 * Return the first entry file in the classpath
-	 * that contains the specified class.
-	 * Return null if an entry is not found.
+	 * Return the first entry file in the classpath that contains the specified
+	 * class. Return null if an entry is not found.
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return the entry
+	 * @Date 2018-09-03 09:00
 	 */
 	public Entry entryForClassNamed(String className) {
 		String relativeClassFileName = convertToClassFileName(className);
@@ -522,16 +726,26 @@ public class Classpath
 	}
 
 	/**
-	 * Return the names of all the classes discovered on the classpath,
-	 * with duplicates removed.
+	 * Return the names of all the classes discovered on the classpath, with
+	 * duplicates removed.
+	 *
+	 * @author mqfdy
+	 * @return the string[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public String[] classNames() {
 		return this.classNames(Filter.Null.<String>instance());
 	}
 
 	/**
-	 * Return the names of all the classes discovered on the classpath
-	 * and accepted by the specified filter, with duplicates removed.
+	 * Return the names of all the classes discovered on the classpath and
+	 * accepted by the specified filter, with duplicates removed.
+	 *
+	 * @author mqfdy
+	 * @param filter
+	 *            the filter
+	 * @return the string[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public String[] classNames(Filter<String> filter) {
 		Collection<String> classNames = new HashSet<String>(10000);
@@ -540,16 +754,28 @@ public class Classpath
 	}
 
 	/**
-	 * Add the names of all the classes discovered on the classpath
-	 * to the specified collection.
+	 * Add the names of all the classes discovered on the classpath to the
+	 * specified collection.
+	 *
+	 * @author mqfdy
+	 * @param classNames
+	 *            the class names
+	 * @Date 2018-09-03 09:00
 	 */
 	public void addClassNamesTo(Collection<String> classNames) {
 		this.addClassNamesTo(classNames, Filter.Null.<String>instance());
 	}
 
 	/**
-	 * Add the names of all the classes discovered on the classpath
-	 * and accepted by the specified filter to the specified collection.
+	 * Add the names of all the classes discovered on the classpath and accepted
+	 * by the specified filter to the specified collection.
+	 *
+	 * @author mqfdy
+	 * @param classNames
+	 *            the class names
+	 * @param filter
+	 *            the filter
+	 * @Date 2018-09-03 09:00
 	 */
 	public void addClassNamesTo(Collection<String> classNames, Filter<String> filter) {
 		Entry[] localEntries = this.entries;
@@ -559,17 +785,27 @@ public class Classpath
 	}
 
 	/**
-	 * Return the names of all the classes discovered on the classpath.
-	 * Just a bit more performant than #classNames().
+	 * Return the names of all the classes discovered on the classpath. Just a
+	 * bit more performant than #classNames().
+	 *
+	 * @author mqfdy
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public Iterator<String> classNamesStream() {
 		return this.classNamesStream(Filter.Null.<String>instance());
 	}
 
 	/**
-	 * Return the names of all the classes discovered on the classpath
-	 * that are accepted by the specified filter.
-	 * Just a bit more performant than #classNames(Filter).
+	 * Return the names of all the classes discovered on the classpath that are
+	 * accepted by the specified filter. Just a bit more performant than
+	 * #classNames(Filter).
+	 *
+	 * @author mqfdy
+	 * @param filter
+	 *            the filter
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public Iterator<String> classNamesStream(Filter<String> filter) {
 		return new CompositeIterator<String>(this.entryClassNamesStreams(filter));
@@ -585,16 +821,24 @@ public class Classpath
 	}
 
 	/**
-	 * Return a "compressed" version of the classpath with its
-	 * duplicate entries eliminated.
+	 * Return a "compressed" version of the classpath with its duplicate entries
+	 * eliminated.
+	 *
+	 * @author mqfdy
+	 * @return the classpath
+	 * @Date 2018-09-03 09:00
 	 */
 	public Classpath compressed() {
 		return new Classpath(CollectionTools.removeDuplicateElements(this.entries));
 	}
 
 	/**
-	 * Convert the classpath to an array of URLs
-	 * (that can be used to instantiate a URLClassLoader).
+	 * Convert the classpath to an array of URLs (that can be used to
+	 * instantiate a URLClassLoader).
+	 *
+	 * @author mqfdy
+	 * @return the UR l[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public URL[] urls() {
 		Entry[] localEntries = this.entries;
@@ -634,18 +878,46 @@ public class Classpath
 			this.canonicalFile = FileTools.canonicalFile(this.file);
 		}
 
+		/**
+		 * File name.
+		 *
+		 * @author mqfdy
+		 * @return the string
+		 * @Date 2018-09-03 09:00
+		 */
 		public String fileName() {
 			return this.fileName;
 		}
 
+		/**
+		 * File.
+		 *
+		 * @author mqfdy
+		 * @return the file
+		 * @Date 2018-09-03 09:00
+		 */
 		public File file() {
 			return this.file;
 		}
 
+		/**
+		 * Canonical file.
+		 *
+		 * @author mqfdy
+		 * @return the file
+		 * @Date 2018-09-03 09:00
+		 */
 		public File canonicalFile() {
 			return this.canonicalFile;
 		}
 
+		/**
+		 * Canonical file name.
+		 *
+		 * @author mqfdy
+		 * @return the string
+		 * @Date 2018-09-03 09:00
+		 */
 		public String canonicalFileName() {
 			return this.canonicalFile.getAbsolutePath();
 		}
@@ -665,6 +937,10 @@ public class Classpath
 
 		/**
 		 * Return the entry's "canonical" URL.
+		 *
+		 * @author mqfdy
+		 * @return the url
+		 * @Date 2018-09-03 09:00
 		 */
 		public URL url() {
 			try {
@@ -676,6 +952,12 @@ public class Classpath
 
 		/**
 		 * Return whether the entry contains the specified class.
+		 *
+		 * @author mqfdy
+		 * @param javaClass
+		 *            the java class
+		 * @return true, if successful
+		 * @Date 2018-09-03 09:00
 		 */
 		public boolean contains(Class<?> javaClass) {
 			return this.contains(javaClass.getName());
@@ -683,6 +965,12 @@ public class Classpath
 
 		/**
 		 * Return whether the entry contains the specified class.
+		 *
+		 * @author mqfdy
+		 * @param className
+		 *            the class name
+		 * @return true, if successful
+		 * @Date 2018-09-03 09:00
 		 */
 		public boolean contains(String className) {
 			return this.contains(convertToClassFileName(className), convertToArchiveClassFileEntryName(className));
@@ -728,14 +1016,24 @@ public class Classpath
 
 		/**
 		 * Return the names of all the classes discovered in the entry.
+		 *
+		 * @author mqfdy
+		 * @return the string[]
+		 * @Date 2018-09-03 09:00
 		 */
 		public String[] classNames() {
 			return this.classNames(Filter.Null.<String>instance());
 		}
 
 		/**
-		 * Return the names of all the classes discovered in the entry
-		 * and accepted by the specified filter.
+		 * Return the names of all the classes discovered in the entry and
+		 * accepted by the specified filter.
+		 *
+		 * @author mqfdy
+		 * @param filter
+		 *            the filter
+		 * @return the string[]
+		 * @Date 2018-09-03 09:00
 		 */
 		public String[] classNames(Filter<String> filter) {
 			Collection<String> classNames = new ArrayList<String>(2000);
@@ -744,16 +1042,28 @@ public class Classpath
 		}
 
 		/**
-		 * Add the names of all the classes discovered in the entry
-		 * to the specified collection.
+		 * Add the names of all the classes discovered in the entry to the
+		 * specified collection.
+		 *
+		 * @author mqfdy
+		 * @param classNames
+		 *            the class names
+		 * @Date 2018-09-03 09:00
 		 */
 		public void addClassNamesTo(Collection<String> classNames) {
 			this.addClassNamesTo(classNames, Filter.Null.<String>instance());
 		}
 
 		/**
-		 * Add the names of all the classes discovered in the entry
-		 * and accepted by the specified filter to the specified collection.
+		 * Add the names of all the classes discovered in the entry and accepted
+		 * by the specified filter to the specified collection.
+		 *
+		 * @author mqfdy
+		 * @param classNames
+		 *            the class names
+		 * @param filter
+		 *            the filter
+		 * @Date 2018-09-03 09:00
 		 */
 		public void addClassNamesTo(Collection<String> classNames, Filter<String> filter) {
 			if (this.canonicalFile.exists()) {
@@ -835,17 +1145,27 @@ public class Classpath
 		}
 
 		/**
-		 * Return the names of all the classes discovered on the classpath.
-		 * Just a bit more performant than #classNames().
+		 * Return the names of all the classes discovered on the classpath. Just
+		 * a bit more performant than #classNames().
+		 *
+		 * @author mqfdy
+		 * @return the iterator
+		 * @Date 2018-09-03 09:00
 		 */
 		public Iterator<String> classNamesStream() {
 			return this.classNamesStream(Filter.Null.<String>instance());
 		}
 
 		/**
-		 * Return the names of all the classes discovered on the classpath
-		 * that are accepted by the specified filter.
-		 * Just a bit more performant than #classNames(Filter).
+		 * Return the names of all the classes discovered on the classpath that
+		 * are accepted by the specified filter. Just a bit more performant than
+		 * #classNames(Filter).
+		 *
+		 * @author mqfdy
+		 * @param filter
+		 *            the filter
+		 * @return the iterator
+		 * @Date 2018-09-03 09:00
 		 */
 		public Iterator<String> classNamesStream(Filter<String> filter) {
 			if (this.canonicalFile.exists()) {

@@ -23,15 +23,38 @@ import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.designer.utils.BusinessModelUtil;
 import com.mqfdy.code.shareModel.dialogs.FindModelDialog;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FindModelAction.
+ *
+ * @author mqfdy
+ */
 public class FindModelAction extends SelectionAction {
+	
+	/** The img reg. */
 	private static ImageRegistry imgReg=null;
+	
+	/** The Constant FINDID. */
 	public static final String FINDID="FIND";
 
+	/**
+	 * Instantiates a new find model action.
+	 *
+	 * @param part
+	 *            the part
+	 */
 	public FindModelAction(IWorkbenchPart part) {
 		super(part);
 		setLazyEnablementCalculation(true);
 	}
 	
+	/**
+	 * Gets the img registry.
+	 *
+	 * @author mqfdy
+	 * @return the img registry
+	 * @Date 2018-09-03 09:00
+	 */
 	private static ImageRegistry getImgRegistry(){
 		if(imgReg==null){
 			imgReg=new ImageRegistry();
@@ -39,6 +62,9 @@ public class FindModelAction extends SelectionAction {
 		return imgReg;
 	}
 	
+	/**
+	 * 
+	 */
 	@Override
 	protected void init() {
 		super.init();
@@ -55,11 +81,17 @@ public class FindModelAction extends SelectionAction {
 		setEnabled(true);
 	}
 	
+	/**
+	 * @return
+	 */
 	@Override
 	protected boolean calculateEnabled() {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void run() {
 		FindModelDialog dialog=new FindModelDialog(new Shell());

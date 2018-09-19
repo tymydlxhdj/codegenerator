@@ -16,9 +16,14 @@ import com.mqfdy.code.springboot.utilities.model.event.PropertyChangeEvent;
 import com.mqfdy.code.springboot.utilities.model.listener.PropertyChangeListener;
 import com.mqfdy.code.springboot.utilities.model.value.WritablePropertyValueModel;
 
+// TODO: Auto-generated Javadoc
 /**
- * Extend ValueAspectAdapter to listen to one or more
- * properties of the value in the wrapped value model.
+ * Extend ValueAspectAdapter to listen to one or more properties of the value in
+ * the wrapped value model.
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
  */
 public class ValuePropertyAdapter<T extends Model>
 	extends ValueAspectAdapter<T>
@@ -34,6 +39,11 @@ public class ValuePropertyAdapter<T extends Model>
 
 	/**
 	 * Construct an adapter for the specified value properties.
+	 *
+	 * @param valueHolder
+	 *            the value holder
+	 * @param propertyNames
+	 *            the property names
 	 */
 	public ValuePropertyAdapter(WritablePropertyValueModel<T> valueHolder, String... propertyNames) {
 		super(valueHolder);
@@ -44,6 +54,13 @@ public class ValuePropertyAdapter<T extends Model>
 
 	// ********** initialization **********
 
+	/**
+	 * Builds the value property listener.
+	 *
+	 * @author mqfdy
+	 * @return the property change listener
+	 * @Date 2018-09-03 09:00
+	 */
 	protected PropertyChangeListener buildValuePropertyListener() {
 		return new PropertyChangeListener() {
 			public void propertyChanged(PropertyChangeEvent event) {

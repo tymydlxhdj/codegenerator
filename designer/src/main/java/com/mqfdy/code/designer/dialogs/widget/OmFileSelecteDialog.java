@@ -37,15 +37,25 @@ import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.resource.BomManager;
 import com.mqfdy.code.utils.ProjectUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class OmFileSelecteDialog.
+ *
+ * @author mqfdy
+ */
 @SuppressWarnings("restriction")
 public class OmFileSelecteDialog extends ElementTreeSelectionDialog {
 
+	/** The om file. */
 	private IFile omFile = null;
 	
+	/** The cur select om files. */
 	private List<IFile> curSelectOmFiles = new ArrayList();
 	
+	/** The bom extend. */
 	private static String bomExtend = ".bom";
 
+	/** The viewer filter. */
 	private ViewerFilter viewerFilter = new ViewerFilter() {
 		public boolean select(Viewer viewer, Object parentElement,
 				Object element) {
@@ -84,6 +94,9 @@ public class OmFileSelecteDialog extends ElementTreeSelectionDialog {
 		}
 	};
 
+	/**
+	 * Instantiates a new om file selecte dialog.
+	 */
 	public OmFileSelecteDialog() {
 		super(null,new JavaElementLabelProvider(),
 				new StandardJavaElementContentProvider());
@@ -93,6 +106,15 @@ public class OmFileSelecteDialog extends ElementTreeSelectionDialog {
 		setMessage("请选择一个BOM文件:");
 	}
 
+	/**
+	 * Creates the tree viewer.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the tree viewer
+	 * @Date 2018-09-03 09:00
+	 */
 	protected TreeViewer createTreeViewer(Composite parent) {
 		TreeViewer treeViewer = super.createTreeViewer(parent);
 		makeAction();
@@ -100,6 +122,12 @@ public class OmFileSelecteDialog extends ElementTreeSelectionDialog {
 		return treeViewer;
 	}
 
+	/**
+	 * Make action.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void makeAction() {
 		getTreeViewer().addSelectionChangedListener(
 				new ISelectionChangedListener() {
@@ -123,6 +151,9 @@ public class OmFileSelecteDialog extends ElementTreeSelectionDialog {
 				});
 	}
 
+	/**
+	 * 
+	 */
 	protected void okPressed() {
 		if (getResult() != null && getResult().length > 0) {
 			Object element = getResult()[0];
@@ -145,6 +176,15 @@ public class OmFileSelecteDialog extends ElementTreeSelectionDialog {
 		}
 	}
 
+	/**
+	 * Checks if is type ok.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @return true, if is type ok
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean isTypeOk(Object element) {
 		if (element == null)
 			return false;
@@ -161,10 +201,13 @@ public class OmFileSelecteDialog extends ElementTreeSelectionDialog {
 	}
 
 	/**
-	 * 文件是否已经加载过
-	 * 
+	 * 文件是否已经加载过.
+	 *
+	 * @author mqfdy
 	 * @param file
-	 * @return
+	 *            the file
+	 * @return true, if is exist
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean isExist(IFile file) {
 		boolean result = false;
@@ -205,21 +248,46 @@ public class OmFileSelecteDialog extends ElementTreeSelectionDialog {
 		return result;
 	}
 
+	/**
+	 * Gets the om file.
+	 *
+	 * @author mqfdy
+	 * @return the om file
+	 * @Date 2018-09-03 09:00
+	 */
 	public IFile getOmFile() {
 		return omFile;
 	}
 
+	/**
+	 * Gets the om files.
+	 *
+	 * @author mqfdy
+	 * @return the om files
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<IFile> getOmFiles() {
 		return this.curSelectOmFiles;
 	}
 	
 	/**
-	 * 设置标题和信息
+	 * 设置标题和信息.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setTitleAndMessage() {
 		setTitle("dddd");
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText("引用OM文件选择器");

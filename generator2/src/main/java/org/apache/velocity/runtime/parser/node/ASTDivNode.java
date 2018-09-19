@@ -23,6 +23,7 @@ import org.apache.velocity.context.InternalContextAdapter;
 import org.apache.velocity.exception.MathException;
 import org.apache.velocity.runtime.parser.Parser;
 
+// TODO: Auto-generated Javadoc
 /**
  * Handles number division of nodes<br><br>
  *
@@ -37,23 +38,38 @@ import org.apache.velocity.runtime.parser.Parser;
  */
 public class ASTDivNode extends ASTMathNode
 {
+    
     /**
-     * @param id
-     */
+	 * Instantiates a new AST div node.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTDivNode(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST div node.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTDivNode(Parser p, int id)
     {
         super(p, id);
     }
 
+    /**
+     * @see org.apache.velocity.runtime.parser.node.ASTMathNode#perform(java.lang.Number, java.lang.Number, org.apache.velocity.context.InternalContextAdapter)
+     * @param left
+     * @param right
+     * @param context
+     * @return ASTDivNode
+     */
     public Number perform(Number left, Number right, InternalContextAdapter context)
     {
         /*

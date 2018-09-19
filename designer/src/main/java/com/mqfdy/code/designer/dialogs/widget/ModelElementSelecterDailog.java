@@ -25,29 +25,26 @@ import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.model.IModelElement;
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 模型元素选择器
- * 
+ * 模型元素选择器.
+ *
  * @author mqfdy
- * 
  */
 @SuppressWarnings("restriction")
 public class ModelElementSelecterDailog extends
 					FilteredElementTreeSelectionDialog {
 
-	/**
-	 * 可以选择的模型元素类型,为空时可选择所有类型
-	 */
+	/** 可以选择的模型元素类型,为空时可选择所有类型. */
 	private String[] modelTypes;
-	/**
-	 * 是否允许选择反向业务实体
-	 */
+	
+	/** 是否允许选择反向业务实体. */
 	private boolean includedReverse;
-	/**
-	 * 内置模型
-	 */
+	
+	/** 内置模型. */
 	private BusinessObjectModel inBom;
 
+	/** The viewer filter. */
 	private ViewerFilter viewerFilter = new ViewerFilter() {
 		public boolean select(Viewer viewer, Object parentElement,
 				Object element) {
@@ -64,26 +61,51 @@ public class ModelElementSelecterDailog extends
 		}
 	};
 
+	/**
+	 * Instantiates a new model element selecter dailog.
+	 *
+	 * @param businessModelManager
+	 *            the business model manager
+	 */
 	public ModelElementSelecterDailog(BusinessModelManager businessModelManager) {
 		this(businessModelManager, false);
 	}
 
+	/**
+	 * Instantiates a new model element selecter dailog.
+	 *
+	 * @param businessModelManager
+	 *            the business model manager
+	 * @param includedBuildIn
+	 *            the included build in
+	 */
 	public ModelElementSelecterDailog(
 			BusinessModelManager businessModelManager, boolean includedBuildIn) {
 		this(businessModelManager, false, true);
 	}
 
+	/**
+	 * Instantiates a new model element selecter dailog.
+	 *
+	 * @param modelTypes
+	 *            the model types
+	 * @param businessModelManager
+	 *            the business model manager
+	 */
 	public ModelElementSelecterDailog(String[] modelTypes,
 			BusinessModelManager businessModelManager) {
 		this(modelTypes, businessModelManager, false, true);
 	}
+	
 	/**
-	 * 构造函数
-	 * 
+	 * 构造函数.
+	 *
 	 * @param businessModelManager
 	 *            业务模型管理器
 	 * @param includedBuildIn
 	 *            是否包含内置对象
+	 * @param includedReverse
+	 *            the included reverse
 	 */
 	public ModelElementSelecterDailog(
 			BusinessModelManager businessModelManager, boolean includedBuildIn, boolean includedReverse) {
@@ -106,15 +128,18 @@ public class ModelElementSelecterDailog extends
 		setInput(boms);
 		setMessage("选择业务模型对象：");
 	}
+	
 	/**
-	 * 构造函数
-	 * 
+	 * 构造函数.
+	 *
 	 * @param modelTypes
 	 *            可以选择的模型元素类型
 	 * @param businessModelManager
 	 *            业务模型管理器
 	 * @param includedBuildIn
 	 *            是否包含内置对象
+	 * @param includedReverse
+	 *            the included reverse
 	 */
 	public ModelElementSelecterDailog(String[] modelTypes,
 			BusinessModelManager businessModelManager, boolean includedBuildIn, boolean includedReverse) {
@@ -139,12 +164,27 @@ public class ModelElementSelecterDailog extends
 		setMessage("选择业务模型对象：");
 	}
 
+	/**
+	 * Creates the tree viewer.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the tree viewer
+	 * @Date 2018-09-03 09:00
+	 */
 	protected TreeViewer createTreeViewer(Composite parent) {
 		TreeViewer treeViewer = super.createTreeViewer(parent);
 		makeAction();
 		return treeViewer;
 	}
 
+	/**
+	 * Make action.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void makeAction() {
 		getTreeViewer().expandToLevel(4);
 		getTreeViewer().addFilter(new ViewerFilter() {
@@ -176,6 +216,17 @@ public class ModelElementSelecterDailog extends
 		getTreeViewer().getTree().setFocus();
 	}
 
+	/**
+	 * Checks if is type ok.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @param type
+	 *            the type
+	 * @return true, if is type ok
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean isTypeOk(Object element, String type) {
 		setMessage(null);
 		
@@ -198,6 +249,9 @@ public class ModelElementSelecterDailog extends
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	protected void okPressed() {
 		if (getResult() != null && getResult().length > 0) {
 			AbstractModelElement element = ((AbstractModelElement) getResult()[0]);
@@ -212,6 +266,14 @@ public class ModelElementSelecterDailog extends
 		}
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText("业务对象选择");

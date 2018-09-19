@@ -38,22 +38,47 @@ import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramElement;
 import com.mqfdy.code.model.graph.ElementStyle;
 
+// TODO: Auto-generated Javadoc
 /**
- * 布局图形
- * 
+ * 布局图形.
+ *
  * @author mqfdy
- * 
  */
 public class DiagramAutoLayoutCommand extends Command {
+	
+	/** The parts. */
 	// 图形EditPart
 	List<AbstractGraphicalEditPart> parts = new ArrayList<AbstractGraphicalEditPart>();// BusinessModelUtil.getBusinessModelDiagramEditor().getViewer().getSelectedEditParts();
+	
+	/** The visited parts. */
 	List<AbstractGraphicalEditPart> visitedParts = new ArrayList<AbstractGraphicalEditPart>();
+	
+	/** The diae. */
 	DiagramEditPart diae;
+	
+	/** The style. */
 	private int style;
+	
+	/** The dia. */
 	private Diagram dia;
+	
+	/** The no conn node list. */
 	private ArrayList<AbstractGraphicalEditPart> noConnNodeList;
+	
+	/** The conn edit list. */
 	private ArrayList<OmConnectionEditPart> connEditList = new ArrayList<OmConnectionEditPart>();
+	
+	/** The y. */
 	private int y = 0;
+	
+	/**
+	 * Instantiates a new diagram auto layout command.
+	 *
+	 * @param diae
+	 *            the diae
+	 * @param style
+	 *            the style
+	 */
 	public DiagramAutoLayoutCommand(DiagramEditPart diae,int style) {
 		this.style = style;
 		parts = diae.getChildren();
@@ -61,6 +86,9 @@ public class DiagramAutoLayoutCommand extends Command {
 		dia = ((Diagram)diae.getModel()).clone();
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		if (parts == null || parts.isEmpty())
@@ -68,6 +96,9 @@ public class DiagramAutoLayoutCommand extends Command {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 		if (canExecute()) {
@@ -75,11 +106,25 @@ public class DiagramAutoLayoutCommand extends Command {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canUndo() {
 		return true;
 	}
 	
+	/**
+	 * Gets the node.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param graph
+	 *            the graph
+	 * @return the node
+	 * @Date 2018-09-03 09:00
+	 */
 	public static GraphNode getNode(Object node, Graph graph) {
 		for (Object gnode : graph.getNodes()) {
 			if (node == ((GraphNode) gnode).getData())
@@ -87,6 +132,20 @@ public class DiagramAutoLayoutCommand extends Command {
 		}
 		return null;
 	}
+	
+	/**
+	 * Gets the graphs.
+	 *
+	 * @author mqfdy
+	 * @param roots
+	 *            the roots
+	 * @param abList
+	 *            the ab list
+	 * @param connEditList2
+	 *            the conn edit list 2
+	 * @return the graphs
+	 * @Date 2018-09-03 09:00
+	 */
 	private ArrayList<NodeEditPart>[] getGraphs(List roots, List<NodeEditPart> abList,ArrayList<OmConnectionEditPart> connEditList2){
 		if (roots.size() == 0) {
 			return null;
@@ -102,6 +161,24 @@ public class DiagramAutoLayoutCommand extends Command {
 		}
 		return graphs;
 	}
+	
+	/**
+	 * Gets the graphs recursively.
+	 *
+	 * @author mqfdy
+	 * @param rootEntity
+	 *            the root entity
+	 * @param seenNodes
+	 *            the seen nodes
+	 * @param abList
+	 *            the ab list
+	 * @param graphs
+	 *            the graphs
+	 * @param connEditList2
+	 *            the conn edit list 2
+	 * @return the graphs recursively
+	 * @Date 2018-09-03 09:00
+	 */
 	private void getGraphsRecursively(NodeEditPart rootEntity,
 			List<NodeEditPart> seenNodes, List<NodeEditPart> abList, List<NodeEditPart> graphs, ArrayList<OmConnectionEditPart> connEditList2) {
 		if(!graphs.contains(rootEntity))
@@ -124,6 +201,10 @@ public class DiagramAutoLayoutCommand extends Command {
 //		}
 		
 	}
+	
+	/**
+	 * 
+	 */
 	@Override
 	public void redo() {
 		parts = BusinessModelUtil.getBusinessModelDiagramEditor().getViewer().getContents().getChildren();
@@ -193,8 +274,12 @@ public class DiagramAutoLayoutCommand extends Command {
 	}
 	
 	/**
-	 * 设置布局方式
+	 * 设置布局方式.
+	 *
+	 * @author mqfdy
 	 * @param omGraphs
+	 *            the new layout algorithm
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setLayoutAlgorithm(GraphOm[] omGraphs) {
 		int layoutStyle = LayoutStyles.NO_LAYOUT_NODE_RESIZING;
@@ -234,6 +319,14 @@ public class DiagramAutoLayoutCommand extends Command {
 		}
 	}
 
+	/**
+	 * Layout graph.
+	 *
+	 * @author mqfdy
+	 * @param omGraphs
+	 *            the om graphs
+	 * @Date 2018-09-03 09:00
+	 */
 	private void layoutGraph(GraphOm[] omGraphs) {
 		int x = 0;
 		for(int i = 0;i < omGraphs.length;i++){
@@ -262,6 +355,9 @@ public class DiagramAutoLayoutCommand extends Command {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void undo() {
 		parts = BusinessModelUtil.getBusinessModelDiagramEditor().getViewer().getContents().getChildren();
@@ -294,9 +390,12 @@ public class DiagramAutoLayoutCommand extends Command {
 			}
 		}
 	}
+	
 	/**
-	 * 布局没有关联关系的节点
-	 * @param y
+	 * 布局没有关联关系的节点.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void layoutNoConnNode() {
 		int x = 10;
@@ -324,9 +423,14 @@ public class DiagramAutoLayoutCommand extends Command {
 	}
 	
 	/**
-	 * 将连线的位置及节点信息置零
+	 * 将连线的位置及节点信息置零.
+	 *
+	 * @author mqfdy
 	 * @param conn
+	 *            the conn
 	 * @param diagram
+	 *            the diagram
+	 * @Date 2018-09-03 09:00
 	 */
 	private void resetConnection(Object conn, Diagram diagram) {
 		if(((OmConnectionEditPart) conn).getModel() instanceof Association){

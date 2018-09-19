@@ -12,17 +12,27 @@ import com.mqfdy.code.model.utils.AssociationType;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 关联关系associationPropertySource
- * 
+ * 关联关系associationPropertySource.
+ *
  * @author mqfdy
- * 
  */
 public class AssociationPropertySource extends ModelPropertySource {
+	
+	/** The association. */
 	public Association association;
+	
+	/** The manager. */
 	private BusinessModelManager manager = BusinessModelUtil
 			.getEditorBusinessModelManager();
 
+	/**
+	 * Instantiates a new association property source.
+	 *
+	 * @param association
+	 *            the association
+	 */
 	public AssociationPropertySource(AbstractModelElement association) {
 		super();
 		this.association = (Association) association;
@@ -32,9 +42,15 @@ public class AssociationPropertySource extends ModelPropertySource {
 		// }
 	}
 
+	/**
+	 * 
+	 */
 	protected void initializeDescriptors() {
 	}
 
+	/**
+	 * 
+	 */
 	protected void installModelProperty() {
 		addStringModelProperty(IBusinessModelPropertyNames.PROPERTY_COMMON_ID,
 				IBusinessModelPropertyNames.CATEGORY_BASE, "", true, "01");
@@ -108,6 +124,15 @@ public class AssociationPropertySource extends ModelPropertySource {
 
 	}
 
+	/**
+	 * Gets the string.
+	 *
+	 * @author mqfdy
+	 * @param list
+	 *            the list
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public String[] getString(List<Property> list) {
 		String[] ps = new String[list.size()];
 		for (int i = 0; i < list.size(); i++) {
@@ -116,6 +141,15 @@ public class AssociationPropertySource extends ModelPropertySource {
 		return ps;
 	}
 
+	/**
+	 * Gets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return the property value
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -215,6 +249,16 @@ public class AssociationPropertySource extends ModelPropertySource {
 
 	}
 
+	/**
+	 * Sets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPropertyValue(Object propertyId, Object value) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException(propertyId.toString());
@@ -400,10 +444,27 @@ public class AssociationPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * Checks if is property set.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return true, if is property set
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isPropertySet(Object propertyId) {
 		return true;
 	}
 
+	/**
+	 * Reset property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @Date 2018-09-03 09:00
+	 */
 	public void resetPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -417,6 +478,9 @@ public class AssociationPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public Object getEditableValue() {
 		return this;
 	}

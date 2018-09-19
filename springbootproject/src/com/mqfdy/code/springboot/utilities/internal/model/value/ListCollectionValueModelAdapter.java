@@ -25,18 +25,22 @@ import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
- * An adapter that allows us to make a ListValueModel behave like
- * a read-only CollectionValueModel, sorta.
+ * An adapter that allows us to make a ListValueModel behave like a read-only
+ * CollectionValueModel, sorta.
  * 
  * We keep an internal collection somewhat in synch with the wrapped list.
  * 
- * NB: Since we only listen to the wrapped list when we have
- * listeners ourselves and we can only stay in synch with the wrapped
- * list while we are listening to it, results to various methods
- * (e.g. #size(), value()) will be unpredictable whenever
- * we do not have any listeners. This should not be too painful since,
+ * NB: Since we only listen to the wrapped list when we have listeners ourselves
+ * and we can only stay in synch with the wrapped list while we are listening to
+ * it, results to various methods (e.g. #size(), value()) will be unpredictable
+ * whenever we do not have any listeners. This should not be too painful since,
  * most likely, client objects will also be listeners.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class ListCollectionValueModelAdapter<E>
 	extends AbstractModel
@@ -60,6 +64,9 @@ public class ListCollectionValueModelAdapter<E>
 
 	/**
 	 * Wrap the specified ListValueModel.
+	 *
+	 * @param listHolder
+	 *            the list holder
 	 */
 	public ListCollectionValueModelAdapter(ListValueModel<? extends E> listHolder) {
 		super();
@@ -79,8 +86,12 @@ public class ListCollectionValueModelAdapter<E>
 	}
 
 	/**
-	 * The wrapped list has changed, forward an equivalent
-	 * collection change event to our listeners.
+	 * The wrapped list has changed, forward an equivalent collection change
+	 * event to our listeners.
+	 *
+	 * @author mqfdy
+	 * @return the list change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected ListChangeListener buildListChangeListener() {
 		return new ListChangeListener() {
@@ -171,25 +182,53 @@ public class ListCollectionValueModelAdapter<E>
 
 	// ********** queries **********
 
+	/**
+	 * Checks for listeners.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	protected boolean hasListeners() {
 		return this.hasAnyCollectionChangeListeners(VALUES);
 	}
 
+	/**
+	 * Checks for no listeners.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	protected boolean hasNoListeners() {
 		return ! this.hasListeners();
 	}
 
 	/**
-	 * Return the index of the specified item, using object
-	 * identity instead of equality.
+	 * Return the index of the specified item, using object identity instead of
+	 * equality.
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	protected int lastIdentityIndexOf(Object o) {
 		return this.lastIdentityIndexOf(o, this.collection.size());
 	}
 	
 	/**
-	 * Return the last index of the specified item, starting just before the
-	 * the specified endpoint, and using object identity instead of equality.
+	 * Return the last index of the specified item, starting just before the the
+	 * specified endpoint, and using object identity instead of equality.
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @param end
+	 *            the end
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	protected int lastIdentityIndexOf(Object o, int end) {
 		for (int i = end; i-- > 0; ) {
@@ -203,6 +242,12 @@ public class ListCollectionValueModelAdapter<E>
 
 	// ********** behavior **********
 
+	/**
+	 * Builds the collection.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void buildCollection() {
 		Iterator<? extends E> stream = this.listHolder.iterator();
 		// if the new list is empty, do nothing
@@ -214,6 +259,12 @@ public class ListCollectionValueModelAdapter<E>
 		}
 	}
 
+	/**
+	 * Engage model.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void engageModel() {
 		this.listHolder.addListChangeListener(ListValueModel.LIST_VALUES, this.listChangeListener);
 		// synch our collection *after* we start listening to the list holder,
@@ -221,28 +272,68 @@ public class ListCollectionValueModelAdapter<E>
 		this.buildCollection();
 	}
 
+	/**
+	 * Disengage model.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void disengageModel() {
 		this.listHolder.removeListChangeListener(ListValueModel.LIST_VALUES, this.listChangeListener);
 		// clear out the collection when we are not listening to the list holder
 		this.collection.clear();
 	}
 
+	/**
+	 * Items.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @return the list iterator
+	 * @Date 2018-09-03 09:00
+	 */
 	// minimize suppressed warnings
 	@SuppressWarnings("unchecked")
 	protected ListIterator<E> items(ListChangeEvent event) {
 		return (ListIterator<E>) event.items();
 	}
 
+	/**
+	 * Replaced items.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @return the list iterator
+	 * @Date 2018-09-03 09:00
+	 */
 	// minimize suppressed warnings
 	@SuppressWarnings("unchecked")
 	protected ListIterator<E> replacedItems(ListChangeEvent event) {
 		return (ListIterator<E>) event.replacedItems();
 	}
 
+	/**
+	 * Items added.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void itemsAdded(ListChangeEvent event) {
 		this.addItemsToCollection(this.items(event), this.collection, VALUES);
 	}
 
+	/**
+	 * Removes the internal items.
+	 *
+	 * @author mqfdy
+	 * @param items
+	 *            the items
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void removeInternalItems(Iterator<E> items) {
 		// we have to remove the items individually,
 		// since they are probably not in sequence
@@ -254,19 +345,51 @@ public class ListCollectionValueModelAdapter<E>
 		}
 	}
 
+	/**
+	 * Items removed.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void itemsRemoved(ListChangeEvent event) {
 		this.removeInternalItems(this.items(event));
 	}
 
+	/**
+	 * Items replaced.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void itemsReplaced(ListChangeEvent event) {
 		this.removeInternalItems(this.replacedItems(event));
 		this.addItemsToCollection(this.items(event), this.collection, VALUES);
 	}
 
+	/**
+	 * Items moved.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void itemsMoved(ListChangeEvent event) {
 		// do nothing? moving items in a list has no net effect on a collection...
 	}
 
+	/**
+	 * List cleared.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void listCleared(ListChangeEvent event) {
 		// put in empty check so we don't fire events unnecessarily
 		if ( ! this.collection.isEmpty()) {
@@ -276,8 +399,13 @@ public class ListCollectionValueModelAdapter<E>
 	}
 
 	/**
-	 * synchronize our internal collection with the wrapped list
-	 * and fire the appropriate events
+	 * synchronize our internal collection with the wrapped list and fire the
+	 * appropriate events.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void listChanged(ListChangeEvent event) {
 		// put in empty check so we don't fire events unnecessarily

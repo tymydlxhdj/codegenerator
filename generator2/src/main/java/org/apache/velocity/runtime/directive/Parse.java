@@ -38,6 +38,7 @@ import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.runtime.parser.node.Node;
 import org.apache.velocity.runtime.parser.node.SimpleNode;
 
+// TODO: Auto-generated Javadoc
 /**
  * Pluggable directive that handles the <code>#parse()</code>
  * statement in VTL.
@@ -63,43 +64,61 @@ import org.apache.velocity.runtime.parser.node.SimpleNode;
  */
 public class Parse extends InputBase
 {
+    
+    /** The max depth. */
     private int maxDepth;
 
     /**
-     * Return name of this directive.
-     * @return The name of this directive.
-     */
+	 * Return name of this directive.
+	 *
+	 * @author mqfdy
+	 * @return The name of this directive.
+	 * @Date 2018-9-3 11:38:29
+	 */
     public String getName()
     {
         return "parse";
     }
 
     /**
-     * Overrides the default to use "template", so that all templates
-     * can use the same scope reference, whether rendered via #parse
-     * or direct merge.
-     */
+	 * Overrides the default to use "template", so that all templates can use
+	 * the same scope reference, whether rendered via #parse or direct merge.
+	 *
+	 * @author mqfdy
+	 * @return the scope name
+	 * @Date 2018-9-3 11:38:29
+	 */
     public String getScopeName()
     {
         return "template";
     }
 
     /**
-     * Return type of this directive.
-     * @return The type of this directive.
-     */
+	 * Return type of this directive.
+	 *
+	 * @author mqfdy
+	 * @return The type of this directive.
+	 * @Date 2018-9-3 11:38:29
+	 */
     public int getType()
     {
         return LINE;
     }
 
     /**
-     * Init's the #parse directive.
-     * @param rs
-     * @param context
-     * @param node
-     * @throws TemplateInitException
-     */
+	 * Init's the #parse directive.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @param context
+	 *            the context
+	 * @param node
+	 *            the node
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @Date 2018-9-3 11:38:29
+	 */
     public void init(RuntimeServices rs, InternalContextAdapter context, Node node)
         throws TemplateInitException
     {
@@ -109,18 +128,28 @@ public class Parse extends InputBase
     }
 
     /**
-     *  iterates through the argument list and renders every
-     *  argument that is appropriate.  Any non appropriate
-     *  arguments are logged, but render() continues.
-     * @param context
-     * @param writer
-     * @param node
-     * @return True if the directive rendered successfully.
-     * @throws IOException
-     * @throws ResourceNotFoundException
-     * @throws ParseErrorException
-     * @throws MethodInvocationException
-     */
+	 * iterates through the argument list and renders every argument that is
+	 * appropriate. Any non appropriate arguments are logged, but render()
+	 * continues.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @param node
+	 *            the node
+	 * @return True if the directive rendered successfully.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-9-3 11:38:29
+	 */
     public boolean render( InternalContextAdapter context,
                            Writer writer, Node node)
         throws IOException, ResourceNotFoundException, ParseErrorException,

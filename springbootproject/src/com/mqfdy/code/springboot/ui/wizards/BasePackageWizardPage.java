@@ -18,6 +18,12 @@ import com.mqfdy.code.springboot.core.generator.utils.StringUtils;
 import com.mqfdy.code.springboot.ui.util.KeyWordsChecker;
 import com.mqfdy.code.springboot.ui.util.ValidatorUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BasePackageWizardPage.
+ *
+ * @author mqfdy
+ */
 public class BasePackageWizardPage extends WizardPage {
 	
 	private static final ImageDescriptor WIZBAN_IMAGE = ImageDescriptor.createFromURL(
@@ -36,6 +42,12 @@ public class BasePackageWizardPage extends WizardPage {
 	private String basePackage;
 	private final NewMicroProjectOperation operation;
 
+	/**
+	 * Instantiates a new base package wizard page.
+	 *
+	 * @param operation
+	 *            the operation
+	 */
 	protected BasePackageWizardPage(NewMicroProjectOperation operation) {
 		super("basePackagePage","基础包配置",WIZBAN_IMAGE);
 		this.operation = operation;
@@ -87,10 +99,14 @@ public class BasePackageWizardPage extends WizardPage {
 		setControl(container);
 		validatePackage();
 	}
+	
 	/**
-	 * 提示信息的输出窗口
-	 * 
+	 * 提示信息的输出窗口.
+	 *
+	 * @author mqfdy
 	 * @param message
+	 *            the message
+	 * @Date 2018-09-03 09:00
 	 */
 	public void updateStatus(String message) {
 		setMessage(message);
@@ -138,10 +154,26 @@ public class BasePackageWizardPage extends WizardPage {
 		operation.setProjectType(projectTypeCombo.getText().trim());
 		return super.getNextPage();
 	}
+	
+	/**
+	 * Gets the base package.
+	 *
+	 * @author mqfdy
+	 * @return the base package
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getBasePackage() {
 		return basePackage;
 	}
 
+	/**
+	 * Sets the base package.
+	 *
+	 * @author mqfdy
+	 * @param basePackage
+	 *            the new base package
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBasePackage(String basePackage) {
 		this.basePackage = basePackage;
 	}

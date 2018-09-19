@@ -10,18 +10,28 @@ import com.mqfdy.code.springboot.core.util.expression.LiveExpression;
 import com.mqfdy.code.springboot.core.util.expression.ValueListener;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * @author zjing
+ * The Class ProjectNameValidator.
  *
- * TODO: remove: duplicated in eclipse-integration-commons (reusable component!).
- * Don't forget to move testing code as well.
+ * @author zjing
  * 
- * See org.springsource.ide.eclipse.commons.livexp.core.validators.NewProjectNameValidator
+ *         TODO: remove: duplicated in eclipse-integration-commons (reusable
+ *         component!). Don't forget to move testing code as well.
+ * 
+ *         See
+ *         org.springsource.ide.eclipse.commons.livexp.core.validators.NewProjectNameValidator
  */
 public class ProjectNameValidator extends Validator implements ValueListener<String> {
 	
 	private final LiveExpression<String> projectNameField;
 
+	/**
+	 * Instantiates a new project name validator.
+	 *
+	 * @param projectNameField
+	 *            the project name field
+	 */
 	public ProjectNameValidator(LiveExpression<String> projectNameField) {
 		this.projectNameField = projectNameField;
 		projectNameField.addListener(this);
@@ -31,6 +41,16 @@ public class ProjectNameValidator extends Validator implements ValueListener<Str
 		return Character.isLetterOrDigit(c) 
 			|| "-_.".indexOf(c)>=0;
 	}
+	
+	/**
+	 * Checks if is chinese character.
+	 *
+	 * @author mqfdy
+	 * @param chineseStr
+	 *            the chinese str
+	 * @return true, if is chinese character
+	 * @Date 2018-09-03 09:00
+	 */
 	//判断是否为中文
 	public boolean isChineseCharacter(String chineseStr) {
 		char[] charArray = chineseStr.toCharArray();

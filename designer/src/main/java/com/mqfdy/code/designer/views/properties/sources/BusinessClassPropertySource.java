@@ -9,17 +9,27 @@ import com.mqfdy.code.model.IModelElement;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务实体BusinessClassPropertySource
- * 
+ * 业务实体BusinessClassPropertySource.
+ *
  * @author mqfdy
- * 
  */
 public class BusinessClassPropertySource extends ModelPropertySource {
+	
+	/** The business class. */
 	public BusinessClass businessClass;
+	
+	/** The manager. */
 	private BusinessModelManager manager = BusinessModelUtil
 			.getEditorBusinessModelManager();
 
+	/**
+	 * Instantiates a new business class property source.
+	 *
+	 * @param businessClass
+	 *            the business class
+	 */
 	public BusinessClassPropertySource(AbstractModelElement businessClass) {
 		super();
 		this.businessClass = (BusinessClass) businessClass;
@@ -30,9 +40,15 @@ public class BusinessClassPropertySource extends ModelPropertySource {
 		// }
 	}
 
+	/**
+	 * 
+	 */
 	protected void initializeDescriptors() {
 	}
 
+	/**
+	 * 
+	 */
 	protected void installModelProperty() {
 		if (businessClass.getStereotype() != null
 				&& (IModelElement.STEREOTYPE_BUILDIN.equals(businessClass.getStereotype()) 
@@ -133,6 +149,15 @@ public class BusinessClassPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * Gets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return the property value
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -185,6 +210,16 @@ public class BusinessClassPropertySource extends ModelPropertySource {
 			return "";
 	}
 
+	/**
+	 * Sets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPropertyValue(Object propertyId, Object value) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException(propertyId.toString());
@@ -288,10 +323,27 @@ public class BusinessClassPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * Checks if is property set.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return true, if is property set
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isPropertySet(Object propertyId) {
 		return true;
 	}
 
+	/**
+	 * Reset property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @Date 2018-09-03 09:00
+	 */
 	public void resetPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -305,6 +357,9 @@ public class BusinessClassPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public Object getEditableValue() {
 		return this;
 	}

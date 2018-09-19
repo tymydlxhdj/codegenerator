@@ -17,6 +17,7 @@ import com.mqfdy.code.model.LinkAnnotation;
 import com.mqfdy.code.model.ReferenceObject;
 import com.mqfdy.code.model.graph.DiagramElement;
 
+// TODO: Auto-generated Javadoc
 /**
  * 重新连接
  * 
@@ -59,25 +60,40 @@ public class ConnectionReconnectCommand extends Command {
 	/** The original target endpoint. */
 	private /*final*/ AbstractModelElement oldTarget;
 
+	/** The request. */
 	private ReconnectRequest request;
 
+	/** The conele. */
 	private DiagramElement conele = null;
 
+	/** The old px. */
 	float oldPx = 0;
+	
+	/** The old py. */
 	float oldPy = 0;
+	
+	/** The new px. */
 	float newPx = 0;
+	
+	/** The new py. */
 	float newPy = 0;
+	
+	/** The conn. */
 	OmConnectionEditPart conn;
+	
+	/** The is target. */
 	boolean isTarget;
 
 	/**
 	 * Instantiate a command that can reconnect a Connection instance to a
 	 * different source or target endpoint.
-	 * 
+	 *
 	 * @param conn
 	 *            the connection instance to reconnect (non-null)
 	 * @param request
-	 * @param request
+	 *            the request
+	 * @param isTarget
+	 *            the is target
 	 * @throws IllegalArgumentException
 	 *             if conn is null
 	 */
@@ -103,6 +119,9 @@ public class ConnectionReconnectCommand extends Command {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		if (isTarget
@@ -149,6 +168,9 @@ public class ConnectionReconnectCommand extends Command {
 	/**
 	 * Reconnect the connection to newSource (if setNewSource(...) was invoked
 	 * before) or newTarget (if setNewTarget(...) was invoked before).
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void execute() {
@@ -180,6 +202,9 @@ public class ConnectionReconnectCommand extends Command {
 		redo();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void redo() {
 		if (request instanceof ReconnectRequest) {
@@ -215,11 +240,13 @@ public class ConnectionReconnectCommand extends Command {
 	 * endpoint. A single instance of this command can only reconnect either the
 	 * source or the target endpoint.
 	 * </p>
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param connectionSource
 	 *            a non-null Shape instance, to be used as a new source endpoint
 	 * @throws IllegalArgumentException
 	 *             if connectionSource is null
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setNewSource(AbstractModelElement connectionSource) {
 		if (connectionSource == null) {
@@ -239,11 +266,13 @@ public class ConnectionReconnectCommand extends Command {
 	 * endpoint. A single instance of this command can only reconnect either the
 	 * source or the target endpoint.
 	 * </p>
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param connectionTarget
 	 *            a non-null Shape instance, to be used as a new target endpoint
 	 * @throws IllegalArgumentException
 	 *             if connectionTarget is null
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setNewTarget(AbstractModelElement connectionTarget) {
 		if (connectionTarget == null) {
@@ -256,6 +285,9 @@ public class ConnectionReconnectCommand extends Command {
 
 	/**
 	 * Reconnect the connection to its original source and target endpoints.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void undo() {

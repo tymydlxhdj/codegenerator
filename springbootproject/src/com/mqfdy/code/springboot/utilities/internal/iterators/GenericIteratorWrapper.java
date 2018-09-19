@@ -14,16 +14,27 @@ import java.util.Iterator;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Wrap an iterator on elements of any sub-type of E, converting it into an
- * iterator on elements of type E. This shouldn't be a problem since there
- * is no way to add elements to the iterator.
+ * iterator on elements of type E. This shouldn't be a problem since there is no
+ * way to add elements to the iterator.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class GenericIteratorWrapper<E>
 	implements Iterator<E>
 {
 	private final Iterator<? extends E> iterator;
 
+	/**
+	 * Instantiates a new generic iterator wrapper.
+	 *
+	 * @param iterator
+	 *            the iterator
+	 */
 	public GenericIteratorWrapper(Iterator<? extends E> iterator) {
 		super();
 		this.iterator = iterator;

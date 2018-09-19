@@ -21,6 +21,7 @@ package org.apache.velocity.app.event.implement;
 
 import org.apache.velocity.app.event.IncludeEventHandler;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>Event handler that looks for included files relative to the path of the
  * current template. The handler assumes that paths are separated by a forward
@@ -33,16 +34,20 @@ import org.apache.velocity.app.event.IncludeEventHandler;
 public class IncludeRelativePath implements IncludeEventHandler {
 
     /**
-     * Return path relative to the current template's path.
-     * 
-     * @param includeResourcePath  the path as given in the include directive.
-     * @param currentResourcePath the path of the currently rendering template that includes the
-     *            include directive.
-     * @param directiveName  name of the directive used to include the resource. (With the
-     *            standard directives this is either "parse" or "include").
-
-     * @return new path relative to the current template's path
-     */
+	 * Return path relative to the current template's path.
+	 *
+	 * @author mqfdy
+	 * @param includeResourcePath
+	 *            the path as given in the include directive.
+	 * @param currentResourcePath
+	 *            the path of the currently rendering template that includes the
+	 *            include directive.
+	 * @param directiveName
+	 *            name of the directive used to include the resource. (With the
+	 *            standard directives this is either "parse" or "include").
+	 * @return new path relative to the current template's path
+	 * @Date 2018-9-3 11:38:27
+	 */
     public String includeEvent(
         String includeResourcePath,
         String currentResourcePath,

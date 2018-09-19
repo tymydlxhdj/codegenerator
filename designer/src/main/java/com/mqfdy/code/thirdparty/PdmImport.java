@@ -21,18 +21,38 @@ import com.mqfdy.code.reverse.mappings.PrimaryKey;
 import com.mqfdy.code.reverse.mappings.Table;
 import com.mqfdy.code.thirdparty.utils.PdmDataType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 将 PowerDesginser 15 文件 （pdm 文件）生成 eht model xml 文件
- * 
- * 
+ * 将 PowerDesginser 15 文件 （pdm 文件）生成 eht model xml 文件.
+ *
+ * @author mqfdy
  */
 public class PdmImport {
+	
+	/** The reader. */
 	private static SAXReader reader = new SAXReader();
+	
+	/** The doc. */
 	private static Document doc = null;
+	
+	/** The list columns. */
 	private static List<Column> listColumns = new ArrayList<Column>();
+	
+	/** The list tables. */
 	private static List<Table> listTables = new ArrayList<Table>();
+	
+	/** The pdm data type. */
 	private static PdmDataType pdmDataType;
 
+	/**
+	 * Gets the primary key of id.
+	 *
+	 * @author mqfdy
+	 * @param id
+	 *            the id
+	 * @return the primary key of id
+	 * @Date 2018-09-03 09:00
+	 */
 	private static Element getPrimaryKeyOfId(String id) {
 //		List l = doc
 //				.selectNodes("Model/o:RootObject/c:Children/o:Model/c:Tables/o:Table/c:Keys/o:Key");
@@ -50,6 +70,15 @@ public class PdmImport {
 
 	
 
+	/**
+	 * Find column.
+	 *
+	 * @author mqfdy
+	 * @param id
+	 *            the id
+	 * @return the column
+	 * @Date 2018-09-03 09:00
+	 */
 	private static Column findColumn(String id) {
 		for (Column column : listColumns) {
 			if (column.getId().equals(id)) {
@@ -59,6 +88,15 @@ public class PdmImport {
 		return null;
 	}
 
+	/**
+	 * Find table.
+	 *
+	 * @author mqfdy
+	 * @param id
+	 *            the id
+	 * @return the table
+	 * @Date 2018-09-03 09:00
+	 */
 	private static Table findTable(String id) {
 		for (Table table : listTables) {
 			if (table.getId().equals(id)) {
@@ -70,6 +108,13 @@ public class PdmImport {
 
 	
 
+	/**
+	 * Gets the references.
+	 *
+	 * @author mqfdy
+	 * @return the references
+	 * @Date 2018-09-03 09:00
+	 */
 	private static List<Element> getReferences() {
 		List<Element> rtn = new ArrayList<Element>();
 //		List l = doc
@@ -82,6 +127,19 @@ public class PdmImport {
 
 
 
+	/**
+	 * Creates the model xml.
+	 *
+	 * @author mqfdy
+	 * @param filename
+	 *            the filename
+	 * @param createfile
+	 *            the createfile
+	 * @param paginateFile
+	 *            the paginate file
+	 * @return the list
+	 * @Date 2018-09-03 09:00
+	 */
 	public static List<Table> createModelXml(String filename,
 			String createfile, boolean paginateFile) {
 		FileReader frd = null;

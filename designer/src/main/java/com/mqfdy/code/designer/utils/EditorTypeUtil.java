@@ -7,7 +7,23 @@ import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.model.utils.DataType;
 import com.mqfdy.code.model.utils.EditorType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EditorTypeUtil.
+ *
+ * @author mqfdy
+ */
 public class EditorTypeUtil {
+	
+	/**
+	 * Gets the image.
+	 *
+	 * @author mqfdy
+	 * @param editorType
+	 *            the editor type
+	 * @return the image
+	 * @Date 2018-09-03 09:00
+	 */
 	public static Image getImage(EditorType editorType) {
 		Image editorImage;
 		editorImage = ImageManager.getInstance().getImage(
@@ -47,10 +63,15 @@ public class EditorTypeUtil {
 		}
 		return editorImage;
 	}
+	
 	/**
-	 * 根据数据类型返回默认的编辑器类型
+	 * 根据数据类型返回默认的编辑器类型.
+	 *
+	 * @author mqfdy
 	 * @param selectType
-	 * @return
+	 *            the select type
+	 * @return the editor type
+	 * @Date 2018-09-03 09:00
 	 */
 	public static EditorType getEditorType(DataType selectType){
 		EditorType type = EditorType.TextEditor;

@@ -36,59 +36,100 @@ import com.mqfdy.code.model.VersionInfo;
 import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.resource.BomManager;
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务对象模型管理器,负责管理
- * 
+ * 业务对象模型管理器,负责管理.
+ *
  * @author mqfdy
- * 
  */
 public class BusinessModelManager implements IPropertyChangeListener {
 
+	/** The Constant PACKAGE_NAME_PREFIX. */
 	public static final String PACKAGE_NAME_PREFIX = "package";
+	
+	/** The Constant DIAGRAM_NAME_PREFIX. */
 	public static final String DIAGRAM_NAME_PREFIX = "diagram";
+	
+	/** The Constant BUSINESSCLASS_NAME_PREFIX. */
 	public static final String BUSINESSCLASS_NAME_PREFIX = "BusinessClass";
+	
+	/** The Constant DTO_NAME_PREFIX. */
 	public static final String DTO_NAME_PREFIX = "Dto";
+	
+	/** The Constant ENUMERATION_NAME_PREFIX. */
 	public static final String ENUMERATION_NAME_PREFIX = "Enumeration";
+	
+	/** The Constant ASSOCIATION_NAME_PREFIX. */
 	public static final String ASSOCIATION_NAME_PREFIX = "Assoiation";
 
-	/**
-	 * 当前编辑的业务模型对象;
-	 */
+	/** 当前编辑的业务模型对象;. */
 	private BusinessObjectModel businessObjectModel;
 
+	/** The file path. */
 	private String filePath;
 
-	/**
-	 * 被当前编辑的业务对象模型引用的知识库(其他模块)的业务对象模型
-	 */
+	/** 被当前编辑的业务对象模型引用的知识库(其他模块)的业务对象模型. */
 	private List<BusinessObjectModel> repositoryModels = new ArrayList<BusinessObjectModel>();
 
-	/**
-	 * 业务模型监听器列表
-	 */
+	/** 业务模型监听器列表. */
 	private List<BusinessModelListener> listeners = new ArrayList<BusinessModelListener>();
+	
+	/** The business model diagram editor. */
 	private BusinessModelDiagramEditor businessModelDiagramEditor;
 
+	/**
+	 * Gets the business object model.
+	 *
+	 * @author mqfdy
+	 * @return the business object model
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessObjectModel getBusinessObjectModel() {
 		return businessObjectModel;
 	}
 
 	/**
-	 * 当前打开的文件路径
-	 * @return
+	 * 当前打开的文件路径.
+	 *
+	 * @author mqfdy
+	 * @return the path
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getPath() {
 		return filePath;
 	}
 
+	/**
+	 * Gets the repository models.
+	 *
+	 * @author mqfdy
+	 * @return the repository models
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<BusinessObjectModel> getRepositoryModels() {
 		return this.repositoryModels;
 	}
 
+	/**
+	 * Adds the repsitory model.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addRepsitoryModel(BusinessObjectModel businessObjectModel) {
 		repositoryModels.add(businessObjectModel);
 	}
 
+	/**
+	 * Update repsitory model.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @Date 2018-09-03 09:00
+	 */
 	public void updateRepsitoryModel(BusinessObjectModel businessObjectModel) {
 		if (repositoryModels == null || businessObjectModel == null) {
 			return;
@@ -104,10 +145,25 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		}
 	}
 
+	/**
+	 * Update reference objects.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void updateReferenceObjects() {
 		BusinessModelUtil.assembReferenceObject(businessObjectModel,filePath);
 	}
 
+	/**
+	 * Gets the business object model.
+	 *
+	 * @author mqfdy
+	 * @param filePath
+	 *            the file path
+	 * @return the business object model
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessObjectModel getBusinessObjectModel(String filePath) {
 		this.filePath = filePath;
 		this.setBusinessModelDiagramEditor(businessModelDiagramEditor);
@@ -119,6 +175,18 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		}
 		return businessObjectModel;
 	}
+	
+	/**
+	 * Gets the business object model.
+	 *
+	 * @author mqfdy
+	 * @param filePath
+	 *            the file path
+	 * @param businessModelDiagramEditor
+	 *            the business model diagram editor
+	 * @return the business object model
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessObjectModel getBusinessObjectModel(String filePath,
 			BusinessModelDiagramEditor businessModelDiagramEditor) {
 		this.filePath = filePath;
@@ -132,8 +200,11 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 	
 	/**
-	 * 获取上次关闭前打开的Diagram
-	 * @return
+	 * 获取上次关闭前打开的Diagram.
+	 *
+	 * @author mqfdy
+	 * @return the default diagram
+	 * @Date 2018-09-03 09:00
 	 */
 	public Diagram getDefaultDiagram() {
 		if(businessObjectModel == null)
@@ -144,28 +215,38 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		}
 		return null;
 	}
+	
 	/**
-	 * 添加监听器
-	 * 
+	 * 添加监听器.
+	 *
+	 * @author mqfdy
 	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void addBusinessModelListener(BusinessModelListener listener) {
 		listeners.add(listener);
 	}
 
 	/**
-	 * 移除监听器
-	 * 
+	 * 移除监听器.
+	 *
+	 * @author mqfdy
 	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void removeBusinessModelListener(BusinessModelListener listener) {
 		listeners.remove(listener);
 	}
 
 	/**
-	 * 当业务对象模型有变更时调用改方法来触发监听
-	 * 
-	 * @param changedModelElement
+	 * 当业务对象模型有变更时调用改方法来触发监听.
+	 *
+	 * @author mqfdy
+	 * @param businessModelEvent
+	 *            the business model event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void businessObjectModelChanged(BusinessModelEvent businessModelEvent) {
 
@@ -241,9 +322,12 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 
 	/**
-	 * 当业务对象模型元素新增时调用改方法来触发监听
-	 * 
+	 * 当业务对象模型元素新增时调用改方法来触发监听.
+	 *
+	 * @author mqfdy
 	 * @param modelElementChanged
+	 *            the model element changed
+	 * @Date 2018-09-03 09:00
 	 */
 	private void businessModelElementAdd(
 			AbstractModelElement modelElementChanged) {
@@ -255,9 +339,12 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 
 	/**
-	 * 当业务对象模型元素修改时调用改方法来触发监听
-	 * 
+	 * 当业务对象模型元素修改时调用改方法来触发监听.
+	 *
+	 * @author mqfdy
 	 * @param modelElementChanged
+	 *            the model element changed
+	 * @Date 2018-09-03 09:00
 	 */
 	private void businessModelElementUpdate(
 			AbstractModelElement modelElementChanged) {
@@ -268,6 +355,14 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		}
 	}
 
+	/**
+	 * Business model element save.
+	 *
+	 * @author mqfdy
+	 * @param modelElementChanged
+	 *            the model element changed
+	 * @Date 2018-09-03 09:00
+	 */
 	private void businessModelElementSave(
 			AbstractModelElement modelElementChanged) {
 		Iterator<BusinessModelListener> iter;
@@ -278,9 +373,12 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 
 	/**
-	 * 引用模型新增时调用该方法来触发监听
-	 * 
+	 * 引用模型新增时调用该方法来触发监听.
+	 *
+	 * @author mqfdy
 	 * @param modelElementChanged
+	 *            the model element changed
+	 * @Date 2018-09-03 09:00
 	 */
 	private void repositoryModelAdd(AbstractModelElement modelElementChanged) {
 		Iterator<BusinessModelListener> iter;
@@ -291,9 +389,12 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 	
 	/**
-	 * 当业务对象模型元素删除时调用改方法来触发监听
-	 * 
+	 * 当业务对象模型元素删除时调用改方法来触发监听.
+	 *
+	 * @author mqfdy
 	 * @param modelElementChanged
+	 *            the model element changed
+	 * @Date 2018-09-03 09:00
 	 */
 	public void businessModelElementDelete(
 			AbstractModelElement modelElementChanged) {
@@ -304,14 +405,30 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		}
 	}
 	
+	/**
+	 * Property change.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	public void propertyChange(PropertyChangeEvent event) {
 		// fireBusinessModelChanged((AbstractModelElement)event.getSource());
 	}
 
 	/**
-	 * 根据ID查询对象
-	 * 
-	 * @return
+	 * 根据ID查询对象.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param t
+	 *            the t
+	 * @param id
+	 *            the id
+	 * @return the t
+	 * @Date 2018-09-03 09:00
 	 */
 	public <T extends AbstractModelElement> T queryObjectById(T t, String id) {
 		T tResult = (T) businessObjectModel.getModelElementById(t, id);
@@ -319,9 +436,13 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 
 	/**
-	 * 根据ID查询对象
-	 * 
-	 * @return
+	 * 根据ID查询对象.
+	 *
+	 * @author mqfdy
+	 * @param id
+	 *            the id
+	 * @return the abstract model element
+	 * @Date 2018-09-03 09:00
 	 */
 	public AbstractModelElement queryObjectById(String id) {
 		if (id == null)
@@ -334,10 +455,13 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	
 	
 	/**
-	 * 根据BusinessClass 获取与其相关的实体关系
-	 * 
+	 * 根据BusinessClass 获取与其相关的实体关系.
+	 *
+	 * @author mqfdy
 	 * @param businessClass
-	 * @return
+	 *            the business class
+	 * @return the associations by business class
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<Association> getAssociationsByBusinessClass(
 			BusinessClass businessClass) {
@@ -360,10 +484,13 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 
 	/**
-	 * 根据BusinessClass 获取与其相关的连线
-	 * 
+	 * 根据BusinessClass 获取与其相关的连线.
+	 *
+	 * @author mqfdy
 	 * @param obj
-	 * @return
+	 *            the obj
+	 * @return the links by model
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<LinkAnnotation> getLinksByModel(
 			AbstractModelElement obj) {
@@ -386,10 +513,13 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 	
 	/**
-	 * 根据BusinessClass 获取与其相关的继承关系
-	 * 
+	 * 根据BusinessClass 获取与其相关的继承关系.
+	 *
+	 * @author mqfdy
 	 * @param businessClass
-	 * @return
+	 *            the business class
+	 * @return the inheritances by business class
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<Inheritance> getInheritancesByBusinessClass(
 			BusinessClass businessClass) {
@@ -413,6 +543,15 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		return results;
 	}
 
+	/**
+	 * Gets the relation info.
+	 *
+	 * @author mqfdy
+	 * @param modelElement
+	 *            the model element
+	 * @return the relation info
+	 * @Date 2018-09-03 09:00
+	 */
 	public Map<String, Object> getRelationInfo(AbstractModelElement modelElement) {
 		Map<String, Object> relationInfo = new HashMap<String, Object>();
 		List<BusinessClass> bcs = businessObjectModel.getBusinessClasses();
@@ -506,6 +645,17 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		return relationInfo;
 	}
 
+	/**
+	 * Gets the relation info of package.
+	 *
+	 * @author mqfdy
+	 * @param pack
+	 *            the pack
+	 * @param topPackId
+	 *            the top pack id
+	 * @return the relation info of package
+	 * @Date 2018-09-03 09:00
+	 */
 	@SuppressWarnings("rawtypes")
 	public String getRelationInfoOfPackage(ModelPackage pack, String topPackId) {
 		String info = "";
@@ -546,9 +696,11 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 
 	/**
-	 * 获取默认的生成的版本信息
-	 * 
-	 * @return
+	 * 获取默认的生成的版本信息.
+	 *
+	 * @author mqfdy
+	 * @return the version info
+	 * @Date 2018-09-03 09:00
 	 */
 	public VersionInfo generateVersionInfo() {
 		VersionInfo version = new VersionInfo();
@@ -562,9 +714,11 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 
 	/**
-	 * 获取默认的包名
-	 * 
-	 * @return
+	 * 获取默认的包名.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public String generateNextPackageName() {
 		String name = "";
@@ -584,9 +738,11 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 
 	/**
-	 * 获取下一个默认的图名称
-	 * 
-	 * @return
+	 * 获取下一个默认的图名称.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public String generateNextDiagramName() {
 		String name = "";
@@ -604,6 +760,13 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		return name;
 	}
 
+	/**
+	 * Generate next business class name.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public String generateNextBusinessClassName() {
 		String name = "";
 		List<BusinessClass> list = businessObjectModel.getBusinessClasses();
@@ -621,10 +784,13 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 
 	/**
-	 * 粘贴业务实体时，计算名称
-	 * 
+	 * 粘贴业务实体时，计算名称.
+	 *
+	 * @author mqfdy
 	 * @param ref
+	 *            the ref
 	 * @return name
+	 * @Date 2018-09-03 09:00
 	 */
 	public String generateNextBusinessClassName(String ref) {
 		String name = ref;
@@ -642,10 +808,13 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 	
 	/**
-	 * 粘贴业务实体时，计算名称
-	 * 
+	 * 粘贴业务实体时，计算名称.
+	 *
+	 * @author mqfdy
 	 * @param ref
+	 *            the ref
 	 * @return name
+	 * @Date 2018-09-03 09:00
 	 */
 	public String generateNextBusinessClassDisName(String ref) {
 		String name = ref;
@@ -661,11 +830,15 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		}
 		return name;
 	}
+	
 	/**
-	 * 粘贴枚举时，计算名称
-	 * 
+	 * 粘贴枚举时，计算名称.
+	 *
+	 * @author mqfdy
 	 * @param ref
+	 *            the ref
 	 * @return name
+	 * @Date 2018-09-03 09:00
 	 */
 	public String generateNextEnumerationName(String ref) {
 		String name = ref;
@@ -681,11 +854,15 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		}
 		return name;
 	}
+	
 	/**
-	 * 粘贴枚举时，计算名称
-	 * 
+	 * 粘贴枚举时，计算名称.
+	 *
+	 * @author mqfdy
 	 * @param ref
+	 *            the ref
 	 * @return name
+	 * @Date 2018-09-03 09:00
 	 */
 	public String generateNextEnumerationDisName(String ref) {
 		String name = ref;
@@ -701,11 +878,15 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		}
 		return name;
 	}
+	
 	/**
-	 * 粘贴业务实体时，计算数据库表名称
-	 * 
+	 * 粘贴业务实体时，计算数据库表名称.
+	 *
+	 * @author mqfdy
 	 * @param ref
+	 *            the ref
 	 * @return name
+	 * @Date 2018-09-03 09:00
 	 */
 	public String generateNextBusinessClassTableName(String ref) {
 		String name = ref;
@@ -723,9 +904,11 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 
 	/**
-	 * 获取最新的关系名称
-	 * 
-	 * @return
+	 * 获取最新的关系名称.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public String generateNextAssName() {
 		String prefixName = "association";
@@ -749,9 +932,13 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 
 	/**
-	 * 获取最新的关系名称
-	 * 
-	 * @return
+	 * 获取最新的关系名称.
+	 *
+	 * @author mqfdy
+	 * @param prefixName
+	 *            the prefix name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public String generateNextAssName(String prefixName) {
 		List<Association> associations = businessObjectModel.getAssociations();
@@ -772,10 +959,15 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		}
 		return prefixName + newOrder;
 	}
+	
 	/**
-	 * 获取最新的关系名称
-	 * 
-	 * @return
+	 * 获取最新的关系名称.
+	 *
+	 * @author mqfdy
+	 * @param prefixName
+	 *            the prefix name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public String generateNextAssDisName(String prefixName) {
 		List<Association> associations = businessObjectModel.getAssociations();
@@ -798,9 +990,11 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 	
 	/**
-	 * 获取最新的继承关系名称
-	 * 
-	 * @return
+	 * 获取最新的继承关系名称.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public String generateNextInheritanceName() {
 		String prefixName = "inheritance";
@@ -829,10 +1023,15 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 
 	/**
-	 * 粘贴业务实体时，计算操作的名称
-	 * 
+	 * 粘贴业务实体时，计算操作的名称.
+	 *
+	 * @author mqfdy
 	 * @param ref
+	 *            the ref
+	 * @param bu
+	 *            the bu
 	 * @return name
+	 * @Date 2018-09-03 09:00
 	 */
 	public String generateNextOperationName(String ref, BusinessClass bu) {
 		String name = ref;
@@ -848,11 +1047,17 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		}
 		return name;
 	}
+	
 	/**
-	 * 粘贴业务实体时，计算操作的名称
-	 * 
+	 * 粘贴业务实体时，计算操作的名称.
+	 *
+	 * @author mqfdy
 	 * @param ref
+	 *            the ref
+	 * @param bu
+	 *            the bu
 	 * @return name
+	 * @Date 2018-09-03 09:00
 	 */
 	public String generateNextOperationDisName(String ref, BusinessClass bu) {
 		String name = ref;
@@ -868,11 +1073,17 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		}
 		return name;
 	}
+	
 	/**
-	 * 粘贴业务实体时，计算属性的名称
-	 * 
+	 * 粘贴业务实体时，计算属性的名称.
+	 *
+	 * @author mqfdy
 	 * @param ref
+	 *            the ref
+	 * @param bu
+	 *            the bu
 	 * @return name
+	 * @Date 2018-09-03 09:00
 	 */
 	public String generateNextPropertyName(String ref, BusinessClass bu) {
 		String name = ref;
@@ -888,11 +1099,17 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		}
 		return name;
 	}
+	
 	/**
-	 * 粘贴业务实体时，计算属性的名称
-	 * 
+	 * 粘贴业务实体时，计算属性的名称.
+	 *
+	 * @author mqfdy
 	 * @param ref
+	 *            the ref
+	 * @param bu
+	 *            the bu
 	 * @return name
+	 * @Date 2018-09-03 09:00
 	 */
 	public String generateNextPropertyDisName(String ref, BusinessClass bu) {
 		String name = ref;
@@ -908,11 +1125,17 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		}
 		return name;
 	}
+	
 	/**
-	 * 粘贴业务实体时，计算属性的名称
-	 * 
+	 * 粘贴业务实体时，计算属性的名称.
+	 *
+	 * @author mqfdy
 	 * @param ref
+	 *            the ref
+	 * @param bu
+	 *            the bu
 	 * @return name
+	 * @Date 2018-09-03 09:00
 	 */
 	public String generateNextDbColumnName(String ref, BusinessClass bu) {
 		String name = ref;
@@ -929,6 +1152,13 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		return name;
 	}
 
+	/**
+	 * Generate next DTO name.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public String generateNextDTOName() {
 		String name = "";
 		List<DataTransferObject> list = businessObjectModel.getDTOs();
@@ -945,6 +1175,13 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		return name;
 	}
 
+	/**
+	 * Generate next enumeration name.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public String generateNextEnumerationName() {
 		String name = "";
 		List<Enumeration> list = businessObjectModel.getEnumerations();
@@ -962,11 +1199,15 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 
 	/**
-	 * 判断name 是否存在
-	 * 
+	 * 判断name 是否存在.
+	 *
+	 * @author mqfdy
 	 * @param name
+	 *            the name
 	 * @param modelElementType
-	 * @return
+	 *            the model element type
+	 * @return true, if is name exist
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean isNameExist(String name, String modelElementType) {
 		if (PACKAGE_NAME_PREFIX.equals(modelElementType)) {
@@ -992,6 +1233,17 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		}
 	}
 
+	/**
+	 * Checks if is name exist.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @param list
+	 *            the list
+	 * @return true, if is name exist
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean isNameExist(String name, List<?> list) {
 		boolean isExist = false;
 		if (list != null) {
@@ -1006,6 +1258,18 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		}
 		return isExist;
 	}
+	
+	/**
+	 * Checks if is display name exist.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @param list
+	 *            the list
+	 * @return true, if is display name exist
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean isDisplayNameExist(String name, List<?> list) {
 		boolean isExist = false;
 		if (list != null) {
@@ -1022,11 +1286,15 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 	
 	/**
-	 * 判断属性或操作的名称是否已存在
-	 * 
+	 * 判断属性或操作的名称是否已存在.
+	 *
+	 * @author mqfdy
 	 * @param name
+	 *            the name
 	 * @param list
-	 * @return
+	 *            the list
+	 * @return true, if is db column name exist
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean isDbColumnNameExist(String name, List<?> list) {
 		boolean isExist = false;
@@ -1045,11 +1313,15 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 
 	/**
-	 * 判断属性或操作的名称是否已存在
-	 * 
+	 * 判断属性或操作的名称是否已存在.
+	 *
+	 * @author mqfdy
 	 * @param name
+	 *            the name
 	 * @param list
-	 * @return
+	 *            the list
+	 * @return true, if is pro or oper name exist
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean isProOrOperNameExist(String name, List<?> list) {
 		boolean isExist = false;
@@ -1101,12 +1373,16 @@ public class BusinessModelManager implements IPropertyChangeListener {
 //		return isFound;
 //	}
 	/**
-	 * 判断数据库表名是否已存在
-	 * 
-	 * @param name
-	 * @param list
-	 * @return
-	 */
+ * 判断数据库表名是否已存在.
+ *
+ * @author mqfdy
+ * @param name
+ *            the name
+ * @param list
+ *            the list
+ * @return true, if is exist table name
+ * @Date 2018-09-03 09:00
+ */
 	public boolean isExistTableName(String name, List<BusinessClass> list) {
 		boolean isExist = false;
 		if (list != null) {
@@ -1120,12 +1396,17 @@ public class BusinessModelManager implements IPropertyChangeListener {
 		}
 		return isExist;
 	}
+	
 	/**
-	 * 判断数据库表名与关联关系的中间表名是否重复
-	 * 
+	 * 判断数据库表名与关联关系的中间表名是否重复.
+	 *
+	 * @author mqfdy
 	 * @param name
+	 *            the name
 	 * @param list
-	 * @return
+	 *            the list
+	 * @return true, if is exist middle table name
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean isExistMiddleTableName(String name, List<Association> list) {
 		boolean isExist = false;
@@ -1144,9 +1425,11 @@ public class BusinessModelManager implements IPropertyChangeListener {
 
 	
 	/**
-	 * 获取内置业务对象模型
-	 * 
-	 * @return
+	 * 获取内置业务对象模型.
+	 *
+	 * @author mqfdy
+	 * @return the builds the in om
+	 * @Date 2018-09-03 09:00
 	 */
 	public static BusinessObjectModel getBuildInOm() {
 		try {
@@ -1161,20 +1444,39 @@ public class BusinessModelManager implements IPropertyChangeListener {
 	}
 
 	/**
-	 * 保存模型
-	 * 
+	 * 保存模型.
+	 *
+	 * @author mqfdy
 	 * @param businessObjectModel
+	 *            the business object model
 	 * @param osString
+	 *            the os string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void saveModel(BusinessObjectModel businessObjectModel,
 			String osString) {
 		BomManager.outputXmlFile(businessObjectModel, osString);
 	}
 
+	/**
+	 * Gets the business model diagram editor.
+	 *
+	 * @author mqfdy
+	 * @return the business model diagram editor
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessModelDiagramEditor getBusinessModelDiagramEditor() {
 		return businessModelDiagramEditor;
 	}
 
+	/**
+	 * Sets the business model diagram editor.
+	 *
+	 * @author mqfdy
+	 * @param businessModelDiagramEditor
+	 *            the new business model diagram editor
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBusinessModelDiagramEditor(
 			BusinessModelDiagramEditor businessModelDiagramEditor) {
 		this.businessModelDiagramEditor = businessModelDiagramEditor;

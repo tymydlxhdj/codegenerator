@@ -9,15 +9,26 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.jobs.MultiRule;
 import org.eclipse.swt.widgets.Display;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class JobUtil.
+ *
  * @author lenovo
  */
 public class JobUtil {
 
 	/**
-	 * Schedule this job with an appropriate default scheduling rule to avoid concurrency issues. This scheduling is
-	 * safe, but it is very restrictive, so if it can be relaxed, and you care about this then don't use this method.
-	 * Instead use the schedule method that allows specifying an explicit rule.
+	 * Schedule this job with an appropriate default scheduling rule to avoid
+	 * concurrency issues. This scheduling is safe, but it is very restrictive,
+	 * so if it can be relaxed, and you care about this then don't use this
+	 * method. Instead use the schedule method that allows specifying an
+	 * explicit rule.
+	 *
+	 * @author mqfdy
+	 * @param runable
+	 *            the runable
+	 * @return the job
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Job schedule(Operation2Runnable runable) {
 		Job job = runable.asJob();
@@ -26,10 +37,19 @@ public class JobUtil {
 	}
 
 	/**
-	 * Schedule a piece of work without attaching any scheduling rule to the Job.
+	 * Schedule a piece of work without attaching any scheduling rule to the
+	 * Job.
 	 * <p>
 	 * Be careful when using this method of running tasks because it provides no
-	 * guarantees whatsoever about what other things may be executing concurrently.
+	 * guarantees whatsoever about what other things may be executing
+	 * concurrently.
+	 *
+	 * @author mqfdy
+	 * @param rule
+	 *            the rule
+	 * @param runable
+	 *            the runable
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void schedule(ISchedulingRule rule, Operation2Runnable runable) {
 		schedule(runable.asJob(), rule);
@@ -37,7 +57,13 @@ public class JobUtil {
 
 
 	/**
-	 * Schedule this job as a "workspace job" (atomic operation, so only one resource delta generated for whole job).
+	 * Schedule this job as a "workspace job" (atomic operation, so only one
+	 * resource delta generated for whole job).
+	 *
+	 * @author mqfdy
+	 * @param runable
+	 *            the runable
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void workspaceJob(Operation2Runnable runable) {
 		Job job = runable.asWorkspaceJob();
@@ -45,14 +71,21 @@ public class JobUtil {
 	}
 	
 	/**
-	 * Schedule as a "user" job. (Normally this means that the job will popup a 
-	 * dialog to show progress. But the user can send the job into background if they so wish.
+	 * Schedule as a "user" job. (Normally this means that the job will popup a
+	 * dialog to show progress. But the user can send the job into background if
+	 * they so wish.
 	 * <p>
-	 * This is "normal" behavior, but this behavior is not guaranteed. It can be changed by
-	 * user preferences, or because other circumstances (e.g. the dialog will not pop, in the
-	 * context of another modal dialog because Eclipse has a kind of "design rule" not to
-	 * pop dialogs on top of eachother if it can be avoided.)
-	 * @return 
+	 * This is "normal" behavior, but this behavior is not guaranteed. It can be
+	 * changed by user preferences, or because other circumstances (e.g. the
+	 * dialog will not pop, in the context of another modal dialog because
+	 * Eclipse has a kind of "design rule" not to pop dialogs on top of
+	 * eachother if it can be avoided.)
+	 *
+	 * @author mqfdy
+	 * @param runable
+	 *            the runable
+	 * @return the job
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Job userJob(Operation2Runnable runable) {
 		Job job = runable.asJob();
@@ -81,11 +114,17 @@ public class JobUtil {
 	public static final ISchedulingRule LIGHT_RULE = lightRule("LIGHT_RULE");
 
 	/**
-	 * Create a scheduling rule that conflicts only with itself and only contains itself.
-	 * GradleRunnables that want to have a 'light' impact on blocking other jobs
-	 * but still some guarantee that they won't trample over other things that require
-	 * access to some internal shared resource that only they can access should use this 
-	 * rule to protect the resource. 
+	 * Create a scheduling rule that conflicts only with itself and only
+	 * contains itself. GradleRunnables that want to have a 'light' impact on
+	 * blocking other jobs but still some guarantee that they won't trample over
+	 * other things that require access to some internal shared resource that
+	 * only they can access should use this rule to protect the resource.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return the i scheduling rule
+	 * @Date 2018-09-03 09:00
 	 */
 	public static ISchedulingRule lightRule(final String name) {
 		return new ISchedulingRule() {
@@ -110,9 +149,15 @@ public class JobUtil {
 	public static final ISchedulingRule NO_RULE = null;
 
 	/**
-	 * Join a job (wait for it to complete). If the job is null, the method returns immediately. (This assumes that
-	 * things returning jobs to join, may, on occasion, return null if there's was nothing to do and so there is nothing to
-	 * wair for).
+	 * Join a job (wait for it to complete). If the job is null, the method
+	 * returns immediately. (This assumes that things returning jobs to join,
+	 * may, on occasion, return null if there's was nothing to do and so there
+	 * is nothing to wair for).
+	 *
+	 * @author mqfdy
+	 * @param job
+	 *            the job
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void join(Job job) {
 		if (job!=null) {
@@ -127,6 +172,16 @@ public class JobUtil {
 		}
 	}
 	
+	/**
+	 * Check canceled.
+	 *
+	 * @author mqfdy
+	 * @param monitor
+	 *            the monitor
+	 * @throws OperationCanceledException
+	 *             the operation canceled exception
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void checkCanceled(IProgressMonitor monitor) throws OperationCanceledException {
 		if (monitor.isCanceled()) {
 			throw new OperationCanceledException();
@@ -156,8 +211,12 @@ public class JobUtil {
 	}
 
 	/**
-	 * What all Gradle related jobs should use instead of 'buildRule'. This is buildRule, but augmented so it
-	 * also contains the LIGHT_RULE.
+	 * What all Gradle related jobs should use instead of 'buildRule'. This is
+	 * buildRule, but augmented so it also contains the LIGHT_RULE.
+	 *
+	 * @author mqfdy
+	 * @return the i scheduling rule
+	 * @Date 2018-09-03 09:00
 	 */
 	public static ISchedulingRule buildRule() {
 		return new MultiRule(new ISchedulingRule[] {
@@ -166,6 +225,15 @@ public class JobUtil {
 		});
 	}
 
+	/**
+	 * To joinable.
+	 *
+	 * @author mqfdy
+	 * @param job
+	 *            the job
+	 * @return the joinable
+	 * @Date 2018-09-03 09:00
+	 */
 	public static Joinable<Void> toJoinable(final Job job) {
 		return new Joinable<Void>() {
 			public Void join() throws Exception {
@@ -176,6 +244,22 @@ public class JobUtil {
 	}
 
 	
+	/**
+	 * With rule.
+	 *
+	 * @author mqfdy
+	 * @param rule
+	 *            the rule
+	 * @param mon
+	 *            the mon
+	 * @param ticks
+	 *            the ticks
+	 * @param runnable
+	 *            the runnable
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void withRule(ISchedulingRule rule,  IProgressMonitor mon, int ticks, Operation2Runnable runnable) throws Exception {
 		mon = new SubProgressMonitor(mon, ticks);
 		mon.beginTask(runnable.jobName, ticks);

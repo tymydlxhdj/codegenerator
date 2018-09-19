@@ -13,22 +13,42 @@ import org.eclipse.swt.widgets.TabItem;
 import com.mqfdy.code.model.AbstractModelElement;
 import com.mqfdy.code.model.BusinessObjectModel;
 
+// TODO: Auto-generated Javadoc
 /**
- * 模型校验对象选择
- * 
+ * 模型校验对象选择.
+ *
  * @author mqfdy
- * 
  */
 public class ValidatorObjectSelectPage extends Composite {
+	
+	/** The business object model. */
 	private BusinessObjectModel businessObjectModel;
+	
+	/** The bu page. */
 	// private ModelSelectPage pkgPage;
 	private ModelSelectPage buPage;
+	
+	/** The as page. */
 	private ModelSelectPage asPage;
+	
+	/** The enum page. */
 	// private ModelSelectPage inPage;
 	private ModelSelectPage enumPage;
+	
+	/** The selected models. */
 	// private ModelSelectPage dtoPage;
 	private List<AbstractModelElement> selectedModels = new ArrayList<AbstractModelElement>();
 
+	/**
+	 * Instantiates a new validator object select page.
+	 *
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 */
 	public ValidatorObjectSelectPage(BusinessObjectModel businessObjectModel,
 			Composite parent, int style) {
 		super(parent, style);
@@ -36,6 +56,14 @@ public class ValidatorObjectSelectPage extends Composite {
 		createContents(this);
 	}
 
+	/**
+	 * Creates the contents.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContents(Composite parent) {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
@@ -71,6 +99,13 @@ public class ValidatorObjectSelectPage extends Composite {
 		// tabFolder.getItem(3).setControl(inPage);
 	}
 
+	/**
+	 * Gets the selected models.
+	 *
+	 * @author mqfdy
+	 * @return the selected models
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<AbstractModelElement> getSelectedModels() {
 		selectedModels.clear();
 		selectedModels.add(businessObjectModel);

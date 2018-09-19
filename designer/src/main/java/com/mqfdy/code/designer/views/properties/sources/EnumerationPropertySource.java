@@ -8,17 +8,27 @@ import com.mqfdy.code.model.Enumeration;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 枚举PropertyPropertySource
- * 
+ * 枚举PropertyPropertySource.
+ *
  * @author mqfdy
- * 
  */
 public class EnumerationPropertySource extends ModelPropertySource {
+	
+	/** The enumeration. */
 	public Enumeration enumeration;
+	
+	/** The manager. */
 	private BusinessModelManager manager = BusinessModelUtil
 			.getEditorBusinessModelManager();
 
+	/**
+	 * Instantiates a new enumeration property source.
+	 *
+	 * @param property
+	 *            the property
+	 */
 	public EnumerationPropertySource(AbstractModelElement property) {
 		super();
 		this.enumeration = (Enumeration) property;
@@ -28,9 +38,15 @@ public class EnumerationPropertySource extends ModelPropertySource {
 		// }
 	}
 
+	/**
+	 * 
+	 */
 	protected void initializeDescriptors() {
 	}
 
+	/**
+	 * 
+	 */
 	protected void installModelProperty() {
 		addStringModelProperty(IBusinessModelPropertyNames.PROPERTY_COMMON_ID,
 				IBusinessModelPropertyNames.CATEGORY_BASE, "", true, "01");
@@ -64,6 +80,15 @@ public class EnumerationPropertySource extends ModelPropertySource {
 				IBusinessModelPropertyNames.CATEGORY_VERSION, "", true, "11");
 	}
 
+	/**
+	 * Gets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return the property value
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -106,6 +131,16 @@ public class EnumerationPropertySource extends ModelPropertySource {
 			return "";
 	}
 
+	/**
+	 * Sets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPropertyValue(Object propertyId, Object value) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException(propertyId.toString());
@@ -176,10 +211,27 @@ public class EnumerationPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * Checks if is property set.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return true, if is property set
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isPropertySet(Object propertyId) {
 		return true;
 	}
 
+	/**
+	 * Reset property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @Date 2018-09-03 09:00
+	 */
 	public void resetPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -193,6 +245,9 @@ public class EnumerationPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public Object getEditableValue() {
 		return this;
 	}

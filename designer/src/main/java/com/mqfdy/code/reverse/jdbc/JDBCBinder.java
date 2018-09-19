@@ -38,17 +38,38 @@ import com.mqfdy.code.reverse.mappings.PrimaryKey;
 import com.mqfdy.code.reverse.mappings.Table;
 import com.mqfdy.code.reverse.utils.ReverseUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JDBCBinder.
+ *
+ * @author mqfdy
+ */
 public class JDBCBinder {
 
+	/** The order num. */
 	private int orderNum = 0;
+	
+	/** The new ass ids. */
 	private List<String> newAssIds = new ArrayList<String>();// 保留新建关联关系id
 
+	/** The bom. */
 	private BusinessObjectModel bom = null;
+	
+	/** The last tables. */
 	private Map<String, Table> lastTables = ReverseContext.lastTables;
+	
+	/** The all table list. */
 	private List<Table> allTableList = null;// 数据库表集合(不包含多对多的中间表)
+	
+	/** The middle tables. */
 	private List<Table> middleTables = new ArrayList<Table>();// 中间表集合
+	
+	/** The reader. */
 	private JDBCReader reader = new JDBCReader();
 
+	/**
+	 * Instantiates a new JDBC binder.
+	 */
 	public JDBCBinder() {
 		this.bom = ReverseContext.bom;
 		this.allTableList = new ArrayList<Table>(ReverseContext.tbMap.keySet());
@@ -56,6 +77,13 @@ public class JDBCBinder {
 		// getDefaultValueAndUnique();
 	}
 
+	/**
+	 * Gets the middle tables.
+	 *
+	 * @author mqfdy
+	 * @return the middle tables
+	 * @Date 2018-09-03 09:00
+	 */
 	// 获取表的唯一约束列与字段默认值
 	@SuppressWarnings("unused")
 	/*private void getDefaultValueAndUnique() {
@@ -84,9 +112,10 @@ public class JDBCBinder {
 	}
 
 	/**
-	 * 将表信息转为业务实体对象
-	 * 
-	 * @param tableList
+	 * 将表信息转为业务实体对象.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void createBusinessClasses() {
 		// 生成新业务实体前，删除原有同名的业务实体。
@@ -168,6 +197,12 @@ public class JDBCBinder {
 		}
 	}
 
+	/**
+	 * Creates the many to many.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	// 根据中间表创建多对多关联关系对象
 	private void createManyToMany() {
 		for (Table table : middleTables) {// 遍历中间表
@@ -223,6 +258,14 @@ public class JDBCBinder {
 
 	
 
+	/**
+	 * Delete ass.
+	 *
+	 * @author mqfdy
+	 * @param bc
+	 *            the bc
+	 * @Date 2018-09-03 09:00
+	 */
 	// 删除bc时同时删除相关的业务实体
 	@SuppressWarnings("unused")
 	private void deleteAss(BusinessClass bc) {
@@ -244,6 +287,14 @@ public class JDBCBinder {
 		}
 	}
 
+	/**
+	 * Creates the operation.
+	 *
+	 * @author mqfdy
+	 * @param bc
+	 *            the bc
+	 * @Date 2018-09-03 09:00
+	 */
 	// 创建5个基本方法
 	private void createOperation(BusinessClass bc) {
 		// 新增
@@ -273,6 +324,12 @@ public class JDBCBinder {
 		bc.addOperation(query);
 	}
 
+	/**
+	 * Creates the association.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	// 创建关联关系对象
 	public void createAssociation() {
 		createManyToMany();// 创建多对多关系
@@ -281,6 +338,12 @@ public class JDBCBinder {
 		renameRepeatAssName();
 	}
 
+	/**
+	 * Rename repeat ass name.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void renameRepeatAssName() {
 		Set<String> assNames = new HashSet<String>();
 		for (Association ass : this.bom.getAssociations()) {
@@ -306,6 +369,12 @@ public class JDBCBinder {
 
 	}
 
+	/**
+	 * Creates the one to many.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	// 创建一对多关联关系
 	private void createOneToMany() {
 		DatabaseMetaData dbmd = null;
@@ -326,6 +395,16 @@ public class JDBCBinder {
 		}
 	}
 
+	/**
+	 * Creates the one 2 many ass from child table.
+	 *
+	 * @author mqfdy
+	 * @param table
+	 *            the table
+	 * @param metaData
+	 *            the meta data
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createOne2manyAssFromChildTable(Table table, DatabaseMetaData metaData) {
 		Map<String, ForeignKey> foreignKeys = table.getForeignKeys();
 		for (Iterator<String> iterator = foreignKeys.keySet().iterator(); iterator.hasNext();) {
@@ -389,6 +468,16 @@ public class JDBCBinder {
 		}
 	}
 
+	/**
+	 * Creates the one 2 many ass from pa table.
+	 *
+	 * @author mqfdy
+	 * @param table
+	 *            the table
+	 * @param metaData
+	 *            the meta data
+	 * @Date 2018-09-03 09:00
+	 */
 	@SuppressWarnings("unused")
 	private void createOne2manyAssFromPaTable(Table table, DatabaseMetaData metaData) {
 		Map<String, ForeignKey> foreignKeys = table.getForeignKeys();
@@ -447,6 +536,22 @@ public class JDBCBinder {
 		}
 	}
 
+	/**
+	 * Creates the one to one.
+	 *
+	 * @author mqfdy
+	 * @param oBc
+	 *            the o bc
+	 * @param mBc
+	 *            the m bc
+	 * @param oTable
+	 *            the o table
+	 * @param mTable
+	 *            the m table
+	 * @param foreignKey
+	 *            the foreign key
+	 * @Date 2018-09-03 09:00
+	 */
 	// 创建一对一关联关系
 	private void createOneToOne(BusinessClass oBc, BusinessClass mBc, Table oTable, Table mTable, ForeignKey foreignKey) {
 
@@ -476,6 +581,23 @@ public class JDBCBinder {
 		bom.addAssociation(ass);
 	}
 
+	/**
+	 * Creates the one 2 many ass.
+	 *
+	 * @author mqfdy
+	 * @param oBc
+	 *            the o bc
+	 * @param mBc
+	 *            the m bc
+	 * @param oTable
+	 *            the o table
+	 * @param mTable
+	 *            the m table
+	 * @param foreignKey
+	 *            the foreign key
+	 * @return the association
+	 * @Date 2018-09-03 09:00
+	 */
 	// 创建一对多关联关系
 	private Association createOne2ManyAss(BusinessClass oBc, BusinessClass mBc, Table oTable, Table mTable, ForeignKey foreignKey) {
 		Association ass = new Association();
@@ -513,9 +635,14 @@ public class JDBCBinder {
 	}
 
 	/**
-	 * 创建业务实体属性
-	 * 
+	 * 创建业务实体属性.
+	 *
+	 * @author mqfdy
 	 * @param bc
+	 *            the bc
+	 * @param table
+	 *            the table
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createProperties(BusinessClass bc, Table table) {
 
@@ -530,7 +657,14 @@ public class JDBCBinder {
 	}
 
 	/**
-	 * 绑定主键列
+	 * 绑定主键列.
+	 *
+	 * @author mqfdy
+	 * @param bc
+	 *            the bc
+	 * @param table
+	 *            the table
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createPkProperty(BusinessClass bc, Table table) {
 		// 创建主键属性
@@ -600,6 +734,16 @@ public class JDBCBinder {
 		pkProperty.setEditor(editor);
 	}
 
+	/**
+	 * Creates the property.
+	 *
+	 * @author mqfdy
+	 * @param property
+	 *            the property
+	 * @param column
+	 *            the column
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createProperty(PersistenceProperty property, Column column) {
 
 		property.setStereotype("3");
@@ -677,10 +821,13 @@ public class JDBCBinder {
 	}
 
 	/**
-	 * 根据数据类型返回默认的编辑器类型
-	 * 
+	 * 根据数据类型返回默认的编辑器类型.
+	 *
+	 * @author mqfdy
 	 * @param selectType
-	 * @return
+	 *            the select type
+	 * @return the editor type
+	 * @Date 2018-09-03 09:00
 	 */
 	static EditorType getEditorType(DataType selectType) {
 		EditorType type = EditorType.TextEditor;

@@ -29,6 +29,7 @@ import com.mqfdy.code.model.ReferenceObject;
 import com.mqfdy.code.model.graph.DiagramElement;
 import com.mqfdy.code.model.utils.AssociationType;
 
+// TODO: Auto-generated Javadoc
 /**
  * 创建连线
  * 
@@ -60,34 +61,40 @@ public class ConnectionCreateCommand extends Command {
 	/** Target point for the connection. */
 	private AbstractModelElement target;
 
+	/** The type. */
 	private String type;
 
+	/** The source edit part. */
 	private EditPart sourceEditPart;
 
+	/** The target edit part. */
 	private EditPart targetEditPart;
 
-	/**
-	 * 内置模型
-	 */
+	/** 内置模型. */
 	private BusinessObjectModel bom = null;
 
+	/** The source business class. */
 	private AbstractModelElement sourceBusinessClass;
 
+	/** The target business class. */
 	private AbstractModelElement targetBusinessClass;
 
+	/** The can redo. */
 	private boolean canRedo = true;
 
+	/** The can undo. */
 	private boolean canUndo = true;
 
 	/**
 	 * Instantiate a command that can create a connection between two
 	 * NodeModelElements.
-	 * 
+	 *
 	 * @param source
 	 *            the source endpoint
 	 * @param type
 	 *            The type of the connection. See {@link IConstants}.
 	 * @param editPart
+	 *            the edit part
 	 * @throws IllegalArgumentException
 	 *             if source is null
 	 */
@@ -105,10 +112,20 @@ public class ConnectionCreateCommand extends Command {
 		// set source for this connection
 	}
 
+	/**
+	 * Gets the connection.
+	 *
+	 * @author mqfdy
+	 * @return the connection
+	 * @Date 2018-09-03 09:00
+	 */
 	public AbstractModelElement getConnection() {
 		return connection;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 
@@ -165,6 +182,13 @@ public class ConnectionCreateCommand extends Command {
 		return false;
 	}
 
+	/**
+	 * Check relation.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean checkRelation() {
 		if (((source instanceof AbstractModelElement))
 				&& ((target instanceof AbstractModelElement))) {
@@ -286,6 +310,13 @@ public class ConnectionCreateCommand extends Command {
 		}
 	}
 
+	/**
+	 * Check inheritance.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean checkInheritance() {
 		if (((source instanceof AbstractModelElement))
 				&& ((target instanceof AbstractModelElement))) {
@@ -343,6 +374,13 @@ public class ConnectionCreateCommand extends Command {
 		}
 	}
 	
+	/**
+	 * Check link.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean checkLink() {
 		if (((source instanceof AbstractModelElement))
 				&& ((target instanceof AbstractModelElement))) {
@@ -380,6 +418,9 @@ public class ConnectionCreateCommand extends Command {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 //		if(canExecute())
@@ -588,6 +629,9 @@ public class ConnectionCreateCommand extends Command {
 		redo();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void redo() {
 		if(canRedo){
@@ -604,12 +648,15 @@ public class ConnectionCreateCommand extends Command {
 
 	/**
 	 * Set the target endpoint for the connection.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param target
 	 *            that target endpoint (a non-null Shape instance)
-	 * @param editPart2
+	 * @param editPart
+	 *            the edit part
 	 * @throws IllegalArgumentException
 	 *             if target is null
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setTarget(AbstractModelElement target, EditPart editPart) {
 		if (target == null) {
@@ -630,6 +677,9 @@ public class ConnectionCreateCommand extends Command {
 		}
 	}
 
+	/**
+	 * @return object
+	 */
 	@Override
 	public boolean canUndo() {
 		// TODO Auto-generated method stub

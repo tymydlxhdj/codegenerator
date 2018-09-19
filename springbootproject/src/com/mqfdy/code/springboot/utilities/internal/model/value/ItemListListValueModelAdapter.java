@@ -18,9 +18,14 @@ import com.mqfdy.code.springboot.utilities.model.value.CollectionValueModel;
 import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * Extend ItemAspectListValueModelAdapter to listen to one or more list
- * aspects of each item in the wrapped list model.
+ * Extend ItemAspectListValueModelAdapter to listen to one or more list aspects
+ * of each item in the wrapped list model.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class ItemListListValueModelAdapter<E>
 	extends ItemAspectListValueModelAdapter<E>
@@ -37,6 +42,11 @@ public class ItemListListValueModelAdapter<E>
 
 	/**
 	 * Construct an adapter for the specified item List aspects.
+	 *
+	 * @param listHolder
+	 *            the list holder
+	 * @param listNames
+	 *            the list names
 	 */
 	public ItemListListValueModelAdapter(ListValueModel<E> listHolder, String... listNames) {
 		super(listHolder);
@@ -46,6 +56,11 @@ public class ItemListListValueModelAdapter<E>
 
 	/**
 	 * Construct an adapter for the specified item List aspects.
+	 *
+	 * @param collectionHolder
+	 *            the collection holder
+	 * @param listNames
+	 *            the list names
 	 */
 	public ItemListListValueModelAdapter(CollectionValueModel<E> collectionHolder, String... listNames) {
 		this(new CollectionListValueModelAdapter<E>(collectionHolder), listNames);
@@ -55,8 +70,12 @@ public class ItemListListValueModelAdapter<E>
 	// ********** initialization **********
 
 	/**
-	 * All we really care about is the fact that the List aspect has 
-	 * changed.  Do the same thing no matter which event occurs.
+	 * All we really care about is the fact that the List aspect has changed. Do
+	 * the same thing no matter which event occurs.
+	 *
+	 * @author mqfdy
+	 * @return the list change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected ListChangeListener buildItemListListener() {
 		return new ListChangeListener() {

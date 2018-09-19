@@ -27,6 +27,7 @@ import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.util.ClassUtils;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>
  * This class is responsible for instantiating the correct LogChute
@@ -62,6 +63,17 @@ import org.apache.velocity.util.ClassUtils;
 public class LogManager
 {
     // Creates a new logging system or returns an existing one
+    /**
+	 * Creates the log chute.
+	 *
+	 * @author mqfdy
+	 * @param rsvc
+	 *            the rsvc
+	 * @return the log chute
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:39
+	 */
     // specified by the application.
     private static LogChute createLogChute(RuntimeServices rsvc) throws Exception
     {
@@ -237,11 +249,17 @@ public class LogManager
     }
 
     /**
-     * Simply tells whether the specified classname probably is provided
-     * by Velocity or is implemented by someone else.  Not surefire, but
-     * it'll probably always be right.  In any case, this method shouldn't
-     * be relied upon for anything important.
-     */
+	 * Simply tells whether the specified classname probably is provided by
+	 * Velocity or is implemented by someone else. Not surefire, but it'll
+	 * probably always be right. In any case, this method shouldn't be relied
+	 * upon for anything important.
+	 *
+	 * @author mqfdy
+	 * @param claz
+	 *            the claz
+	 * @return true, if is probably provided log chute
+	 * @Date 2018-9-3 11:38:39
+	 */
     private static boolean isProbablyProvidedLogChute(String claz)
     {
         if (claz == null)
@@ -256,13 +274,17 @@ public class LogManager
     }
 
     /**
-     * Update the Log instance with the appropriate LogChute and other
-     * settings determined by the RuntimeServices.
-     * @param log
-     * @param rsvc
-     * @throws Exception
-     * @since 1.5
-     */
+	 * Update the Log instance with the appropriate LogChute and other settings
+	 * determined by the RuntimeServices.
+	 *
+	 * @param log
+	 *            the log
+	 * @param rsvc
+	 *            the rsvc
+	 * @throws Exception
+	 *             the exception
+	 * @since 1.5
+	 */
     public static void updateLog(Log log, RuntimeServices rsvc) throws Exception
     {
         // create a new LogChute using the RuntimeServices

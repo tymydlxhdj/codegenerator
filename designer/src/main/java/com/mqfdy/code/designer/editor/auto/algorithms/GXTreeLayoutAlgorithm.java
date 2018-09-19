@@ -10,6 +10,7 @@ import org.eclipse.zest.layouts.dataStructures.InternalNode;
 import org.eclipse.zest.layouts.dataStructures.InternalRelationship;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * A layout algorithm that spreads the directed graph as a tree from top down
  * first a root is chosen (we offer a default way that may be overridden) then a
@@ -17,16 +18,45 @@ import org.eclipse.zest.layouts.dataStructures.InternalRelationship;
  * laid out bottom up to horizontally shift nodes. if the graph contains non
  * connected subgraphs then the process of choosing a root and spreading it's
  * child tree is continued.
+ *
+ * @author mqfdy
  */
 public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 
+	/** The hor spacing. */
 	private double horSpacing = 40;
+	
+	/** The ver spacing. */
 	private double verSpacing = 50;
 
+	/**
+	 * Instantiates a new GX tree layout algorithm.
+	 *
+	 * @param styles
+	 *            the styles
+	 */
 	public GXTreeLayoutAlgorithm(int styles) {
 		super(styles);
 	}
 
+	/**
+	 * Apply layout internal.
+	 *
+	 * @author mqfdy
+	 * @param entitiesToLayout
+	 *            the entities to layout
+	 * @param relationshipsToConsider
+	 *            the relationships to consider
+	 * @param boundsX
+	 *            the bounds X
+	 * @param boundsY
+	 *            the bounds Y
+	 * @param boundsWidth
+	 *            the bounds width
+	 * @param boundsHeight
+	 *            the bounds height
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void applyLayoutInternal(InternalNode[] entitiesToLayout,
 			InternalRelationship[] relationshipsToConsider, double boundsX,
 			double boundsY, double boundsWidth, double boundsHeight) {
@@ -86,11 +116,13 @@ public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 
 	/**
 	 * Lays out row with respect to it's children.
-	 * 
-	 * @param yLocation
-	 *            - the vertical location to start placing the nodes.
+	 *
+	 * @author mqfdy
 	 * @param row
 	 *            - the row who's nodes we'd like to lay out.
+	 * @param yLocation
+	 *            - the vertical location to start placing the nodes.
+	 * @Date 2018-09-03 09:00
 	 */
 	private void placeRow(List<GXMoreThanNode> row, int yLocation) {
 		List<GXMoreThanNode> childlessStrand = new ArrayList<GXMoreThanNode>();
@@ -136,13 +168,14 @@ public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	 * innformation such as who are the direct children and parent (only
 	 * visually in the graph not the actual relationships) the returned matrix
 	 * is organized more or less as the real tree.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param entitiesList
 	 *            - entities to place in the matrix
 	 * @param relationshipsList
 	 *            - the relationships between the entities given
-	 * 
 	 * @return the matrix矩阵 - (a list of rows of nodes)
+	 * @Date 2018-09-03 09:00
 	 */
 	private List<List<GXMoreThanNode>> buildNodeMatrix(
 			List<InternalNode> entitiesList,
@@ -176,9 +209,11 @@ public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	/**
 	 * Remove rows that are empty. This should only be the last row but since
 	 * it's not too expensive better safe than sorry.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param rows
 	 *            - to trim
+	 * @Date 2018-09-03 09:00
 	 */
 	private void trimEmptyRows(List<List<GXMoreThanNode>> rows) {
 		List<List<GXMoreThanNode>> rowsCopy = new ArrayList<List<GXMoreThanNode>>(
@@ -195,7 +230,8 @@ public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	 * evenness of the tree There are three types of such strands, extra nodes
 	 * to the left, extra to the right, or extra in between parents. This method
 	 * places those strands in spot.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param childlessStrand
 	 *            - the childless node to be laid out.
 	 * @param parentLeft
@@ -206,6 +242,7 @@ public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	 *            none such exists)
 	 * @param yLoc
 	 *            - the vertical location to lay out the nodes on.
+	 * @Date 2018-09-03 09:00
 	 */
 	private void placeChildless(List<GXMoreThanNode> childlessStrand,
 			GXMoreThanNode parentLeft, GXMoreThanNode parentRight, int yLoc) {
@@ -242,12 +279,14 @@ public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	}
 
 	/**
-	 * Shifts the trees right of mark node
-	 * 
+	 * Shifts the trees right of mark node.
+	 *
+	 * @author mqfdy
 	 * @param mark
 	 *            to shift from
 	 * @param shift
 	 *            - factor by which to move right by.
+	 * @Date 2018-09-03 09:00
 	 */
 	private void shiftTreesRightOfMark(GXMoreThanNode mark, int shift) {
 		mark.setLocation(mark.getX() + shift, mark.getY());
@@ -261,11 +300,13 @@ public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	}
 
 	/**
-	 * Returns the right most child of parent
-	 * 
+	 * Returns the right most child of parent.
+	 *
+	 * @author mqfdy
 	 * @param parent
-	 * 
+	 *            the parent
 	 * @return the right most child of parent given.
+	 * @Date 2018-09-03 09:00
 	 */
 	private GXMoreThanNode getRightMostChild(GXMoreThanNode parent) {
 		GXMoreThanNode rightMost = parent.getChildren().get(0);
@@ -281,11 +322,13 @@ public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 
 	/**
 	 * Shifts the given tree by the shift factor given to the right.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param root
 	 *            - root of tree to shift
 	 * @param shift
 	 *            - factor to shirt by
+	 * @Date 2018-09-03 09:00
 	 */
 	private void shiftTree(GXMoreThanNode root, int shift) {
 		root.setLocation(root.getX() + shift, root.getY());
@@ -297,7 +340,8 @@ public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	/**
 	 * Places the list of nodes horizontally at the given point and spaced on
 	 * horizontally by given spacing.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param strand
 	 *            - list of nodes to be laid out.
 	 * @param x
@@ -306,6 +350,7 @@ public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	 *            - vertical location to lay out the entire list.
 	 * @param spacing
 	 *            the horizontal spacing between nodes.
+	 * @Date 2018-09-03 09:00
 	 */
 	private void placeStrand(List<GXMoreThanNode> strand, int x, int y,
 			int spacing) {
@@ -318,7 +363,8 @@ public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	/**
 	 * follows the root by all its children to wrap the all up with all the
 	 * extra info needed and adds the tree to the matrix.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param currRoot
 	 *            - root to go over tree from
 	 * @param entitiesList
@@ -329,6 +375,7 @@ public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	 *            - the current row in the matrix we are working on
 	 * @param rows
 	 *            - the matrix.
+	 * @Date 2018-09-03 09:00
 	 */
 	private void builtTreeFromRoot(GXMoreThanNode currRoot,
 			List<InternalNode> entitiesList,
@@ -391,9 +438,14 @@ public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	 * Currently we will arbitrarily choose the first node that is not a
 	 * destination i.e. it's a starting point\ if none such exists we will
 	 * choose a random node.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param entitiesList
+	 *            the entities list
 	 * @param relationshipsList
+	 *            the relationships list
+	 * @return the first entity
+	 * @Date 2018-09-03 09:00
 	 */
 	private InternalNode getFirstEntity(List<InternalNode> entitiesList,
 			List<InternalRelationship> relationshipsList) {
@@ -422,36 +474,85 @@ public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	 * Arrays.asList(T ...) returns an unmodifiable array and throws runtime
 	 * exceptions when an innocent programmer is trying to manipulate the
 	 * resulting list.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param <T>
+	 *            the generic type
 	 * @param entitiesToLayout
-	 * @return
+	 *            the entities to layout
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	private <T> List<T> asList(T[] entitiesToLayout) {
 		return new ArrayList<T>(Arrays.asList(entitiesToLayout));
 	}
 
+	/**
+	 * @return
+	 */
 	protected int getCurrentLayoutStep() {
 		// do nothing
 		return 0;
 	}
 
+	/**
+	 * @return
+	 */
 	protected int getTotalNumberOfLayoutSteps() {
 		// do nothing
 		return 0;
 	}
 
+	/**
+	 * Checks if is valid configuration.
+	 *
+	 * @author mqfdy
+	 * @param asynchronous
+	 *            the asynchronous
+	 * @param continuous
+	 *            the continuous
+	 * @return true, if is valid configuration
+	 * @Date 2018-09-03 09:00
+	 */
 	protected boolean isValidConfiguration(boolean asynchronous,
 			boolean continuous) {
 		// do nothing
 		return true;
 	}
 
+	/**
+	 * Post layout algorithm.
+	 *
+	 * @author mqfdy
+	 * @param entitiesToLayout
+	 *            the entities to layout
+	 * @param relationshipsToConsider
+	 *            the relationships to consider
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void postLayoutAlgorithm(InternalNode[] entitiesToLayout,
 			InternalRelationship[] relationshipsToConsider) {
 		// do nothing
 	}
 
+	/**
+	 * Pre layout algorithm.
+	 *
+	 * @author mqfdy
+	 * @param entitiesToLayout
+	 *            the entities to layout
+	 * @param relationshipsToConsider
+	 *            the relationships to consider
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param width
+	 *            the width
+	 * @param height
+	 *            the height
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void preLayoutAlgorithm(InternalNode[] entitiesToLayout,
 			InternalRelationship[] relationshipsToConsider, double x, double y,
 			double width, double height) {
@@ -460,48 +561,134 @@ public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 
 	}
 
+	/**
+	 * Sets the layout area.
+	 *
+	 * @author mqfdy
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param width
+	 *            the width
+	 * @param height
+	 *            the height
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setLayoutArea(double x, double y, double width, double height) {
 		// do nothing
 	}
 
+	/**
+	 * Gets the hor spacing.
+	 *
+	 * @author mqfdy
+	 * @return the hor spacing
+	 * @Date 2018-09-03 09:00
+	 */
 	public double getHorSpacing() {
 		return horSpacing;
 	}
 
+	/**
+	 * Sets the hor spacing.
+	 *
+	 * @author mqfdy
+	 * @param horSpacing
+	 *            the new hor spacing
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setHorSpacing(double horSpacing) {
 		this.horSpacing = horSpacing;
 	}
 
+	/**
+	 * Gets the ver spacing.
+	 *
+	 * @author mqfdy
+	 * @return the ver spacing
+	 * @Date 2018-09-03 09:00
+	 */
 	public double getVerSpacing() {
 		return verSpacing;
 	}
 
+	/**
+	 * Sets the ver spacing.
+	 *
+	 * @author mqfdy
+	 * @param verSpacing
+	 *            the new ver spacing
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setVerSpacing(double verSpacing) {
 		this.verSpacing = verSpacing;
 	}
 
 	/**
 	 * wraps a node with useful info like parent and children etc.
+	 *
+	 * @author mqfdy
 	 */
 	private class GXMoreThanNode {
+		
+		/** The m node. */
 		private InternalNode m_node;
+		
+		/** The m parent. */
 		private InternalNode m_parent;
+		
+		/** The m children. */
 		private List<GXMoreThanNode> m_children;
+		
+		/** The m row. */
 		private List<GXMoreThanNode> m_row;
+		
+		/** The m located. */
 		private boolean m_located = false;
+		
+		/** The m y. */
 		private int m_y;
+		
+		/** The m x. */
 		private int m_x;
 
+		/**
+		 * Instantiates a new GX more than node.
+		 *
+		 * @param node
+		 *            the node
+		 * @param parent
+		 *            the parent
+		 */
 		public GXMoreThanNode(InternalNode node, InternalNode parent) {
 			m_node = node;
 			m_parent = parent;
 			m_children = new ArrayList<GXMoreThanNode>();
 		}
 
+		/**
+		 * Added to row.
+		 *
+		 * @author mqfdy
+		 * @param row
+		 *            the row
+		 * @Date 2018-09-03 09:00
+		 */
 		public void addedToRow(List<GXMoreThanNode> row) {
 			m_row = row;
 		}
 
+		/**
+		 * Sets the location.
+		 *
+		 * @author mqfdy
+		 * @param x
+		 *            the x
+		 * @param y
+		 *            the y
+		 * @Date 2018-09-03 09:00
+		 */
 		public void setLocation(int x, int y) {
 			m_x = x;
 			m_y = y;
@@ -509,46 +696,127 @@ public class GXTreeLayoutAlgorithm extends AbstractLayoutAlgorithm {
 			setLocated(true);
 		}
 
+		/**
+		 * Adds the child.
+		 *
+		 * @author mqfdy
+		 * @param currNode
+		 *            the curr node
+		 * @Date 2018-09-03 09:00
+		 */
 		public void addChild(GXMoreThanNode currNode) {
 			m_children.add(currNode);
 		}
 
+		/**
+		 * Gets the children.
+		 *
+		 * @author mqfdy
+		 * @return the children
+		 * @Date 2018-09-03 09:00
+		 */
 		public List<GXMoreThanNode> getChildren() {
 			return m_children;
 		}
 
+		/**
+		 * Sets the located.
+		 *
+		 * @author mqfdy
+		 * @param located
+		 *            the new located
+		 * @Date 2018-09-03 09:00
+		 */
 		public void setLocated(boolean located) {
 			m_located = located;
 		}
 
+		/**
+		 * Checks if is located.
+		 *
+		 * @author mqfdy
+		 * @return true, if is located
+		 * @Date 2018-09-03 09:00
+		 */
 		public boolean isLocated() {
 			return m_located;
 		}
 
+		/**
+		 * Gets the node.
+		 *
+		 * @author mqfdy
+		 * @return the node
+		 * @Date 2018-09-03 09:00
+		 */
 		public InternalNode getNode() {
 			return m_node;
 		}
 
+		/**
+		 * Gets the parent.
+		 *
+		 * @author mqfdy
+		 * @return the parent
+		 * @Date 2018-09-03 09:00
+		 */
 		public InternalNode getParent() {
 			return m_parent;
 		}
 
+		/**
+		 * Gets the y.
+		 *
+		 * @author mqfdy
+		 * @return the y
+		 * @Date 2018-09-03 09:00
+		 */
 		public int getY() {
 			return m_y;
 		}
 
+		/**
+		 * Sets the y.
+		 *
+		 * @author mqfdy
+		 * @param y
+		 *            the new y
+		 * @Date 2018-09-03 09:00
+		 */
 		public void setY(int y) {
 			m_y = y;
 		}
 
+		/**
+		 * Gets the x.
+		 *
+		 * @author mqfdy
+		 * @return the x
+		 * @Date 2018-09-03 09:00
+		 */
 		public int getX() {
 			return m_x;
 		}
 
+		/**
+		 * Sets the x.
+		 *
+		 * @author mqfdy
+		 * @param x
+		 *            the new x
+		 * @Date 2018-09-03 09:00
+		 */
 		public void setX(int x) {
 			m_x = x;
 		}
 
+		/**
+		 * Gets the row.
+		 *
+		 * @author mqfdy
+		 * @return the row
+		 * @Date 2018-09-03 09:00
+		 */
 		public List<GXMoreThanNode> getRow() {
 			return m_row;
 		}

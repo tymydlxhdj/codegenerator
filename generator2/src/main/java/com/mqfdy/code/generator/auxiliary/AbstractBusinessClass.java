@@ -16,52 +16,83 @@ import com.mqfdy.code.model.BusinessClass;
 import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.model.BusinessOperation;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @author mqf
+ * The Class AbstractBusinessClass.
  *
+ * @author mqf
  */
 public abstract class AbstractBusinessClass extends AbstractJavaClass {
-	/**
-	 * 自定义方法集合
-	 */
+	
+	/** 自定义方法集合. */
 	protected Set<String> methodSet;
-	/**
-	 * 自定义属性集合
-	 */
+	
+	/** 自定义属性集合. */
 	protected Set<String> fieldSet;
-	/**
-	 * 包
-	 */
+	
+	/** 包. */
 	protected String packageStr;
 	
+	/** The import sb. */
 	protected StringBuffer importSb;       //import
 	
+	/** The method sb. */
 	protected StringBuffer methodSb;       //方法
 	
+	/** The field sb. */
 	protected StringBuffer fieldSb;        //域
 	
+	/** The custom method sb. */
 	protected StringBuffer customMethodSb; //自定义方法
 	
+	/** The has db. */
 	protected boolean hasDb = false;  //是否有来源于业务数据的属性
+	
+	/** The has enums. */
 	protected boolean hasEnums = false; //是否有来源于枚举的属性
 	
+	/** The has get. */
 	protected boolean hasGet = false;   //是否有get方法
 	
+	/** The has query. */
 	protected boolean hasQuery = false;  //是否有query方法
 	
+	/** The has delete. */
 	protected boolean hasDelete = false; //是否有delete方法
 	
+	/** The has save. */
 	protected boolean hasSave = false;   //是否有save方法
 	
 	
+	/**
+	 * Instantiates a new abstract business class.
+	 *
+	 * @param bc
+	 *            the bc
+	 * @param persistenceModel
+	 *            the persistence model
+	 * @param project
+	 *            the project
+	 * @param bom
+	 *            the bom
+	 */
 	public AbstractBusinessClass(BusinessClass bc, IPersistenceModel persistenceModel,IProject project, BusinessObjectModel bom){
 		super(bc, persistenceModel, project,bom);
 	}
+	
+	/**
+	 * Instantiates a new abstract business class.
+	 *
+	 * @param param
+	 *            the param
+	 */
 	public AbstractBusinessClass(ClassParam param){
 		super(param);
 	}
 	
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractJavaClass#init() AbstractBusinessClass
+	 */
 	public void init(){
 		methodSet = new HashSet<String>();
 		fieldSet = new HashSet<String>();
@@ -76,35 +107,63 @@ public abstract class AbstractBusinessClass extends AbstractJavaClass {
 		putToVelocityMap();
 		
 	}
+	
 	/**
-	 * 初始化包
+	 * 初始化包.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:40
 	 */
 	public abstract void initPackage();
+	
 	/**
-	 * 初始化域
+	 * 初始化域.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:40
 	 */
 	public abstract void initFields();
+	
 	/**
-	 * 初始化import
+	 * 初始化import.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:40
 	 */
 	public abstract void initImports();
+	
 	/**
-	 * 初始化方法
+	 * 初始化方法.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:40
 	 */
 	public abstract void initMethods();
+	
 	/**
-	 * 获取自定义方法
+	 * 获取自定义方法.
+	 *
+	 * @author mqfdy
 	 * @param bop
-	 * @return
+	 *            the bop
+	 * @return the custom method
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract String getCustomMethod(BusinessOperation bop);
 	
 	/**
-	 * 设置 Velocity Map
+	 * 设置 Velocity Map.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:40
 	 */
 	public abstract void putToVelocityMap();
+	
 	/**
-	 * 设置 默认的Velocity Map
+	 * 设置 默认的Velocity Map.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:40
 	 */
 	protected void putToVelocityMapDef(){
 		map.put("isTree", isTree);
@@ -116,10 +175,15 @@ public abstract class AbstractBusinessClass extends AbstractJavaClass {
 		map.put("importStr1", importSb.toString());
 		map.put("packageStr", packageStr);
 	}
+	
 	/**
-	 * 获取Import排序List
+	 * 获取Import排序List.
+	 *
+	 * @author mqfdy
 	 * @param list
-	 * @return
+	 *            the list
+	 * @return the imoprt sort list
+	 * @Date 2018-9-3 11:38:40
 	 */
 	private List<String> getImoprtSortList(List<String> list) {
 		String[] array = new String[list.size()];
@@ -159,10 +223,15 @@ public abstract class AbstractBusinessClass extends AbstractJavaClass {
 		}
 		return newListJava;
 	}
+	
 	/**
-	 * 获取分组排序List
-	 * @param newListOther
-	 * @return
+	 * 获取分组排序List.
+	 *
+	 * @author mqfdy
+	 * @param importList
+	 *            the import list
+	 * @return the group import list
+	 * @Date 2018-9-3 11:38:40
 	 */
 	private List<String> getGroupImportList(List<String> importList) {
 		List<String> newList = new ArrayList<String>();
@@ -180,23 +249,41 @@ public abstract class AbstractBusinessClass extends AbstractJavaClass {
 		}
 		return newList;
 	}
+	
 	/**
-	 * 获取作者
-	 * @return
+	 * 获取作者.
+	 *
+	 * @author mqfdy
+	 * @return the author
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getAuthor(){
 		return System.getProperty("user.name");
 	}
+	
 	/**
-	 * 获取当前日期
-	 * @return
+	 * 获取当前日期.
+	 *
+	 * @author mqfdy
+	 * @return the date
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getDate(){
 		return DateTimeUtil.date2String(new Date());
 	}
+	
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractJavaClass#getOutputFolderPath()
+	 * @return AbstractBusinessClass
+	 */
 	public String getOutputFolderPath() {
 		return outputFolderPath;
 	}
+	
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractJavaClass#setOutputFolderPath(java.lang.String)
+	 * @param outputFolderPath AbstractBusinessClass
+	 */
 	public void setOutputFolderPath(String outputFolderPath) {
 		this.outputFolderPath = outputFolderPath;
 	}

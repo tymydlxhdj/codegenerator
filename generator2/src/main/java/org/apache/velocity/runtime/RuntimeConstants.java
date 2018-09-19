@@ -1,5 +1,6 @@
 package org.apache.velocity.runtime;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -54,61 +55,78 @@ public interface RuntimeConstants
     String RUNTIME_LOG_LOGSYSTEM_CLASS = "runtime.log.logsystem.class";
 
     /**
-     * Properties referenced in the template are required to exist the object
-     */
+	 * Properties referenced in the template are required to exist the object.
+	 */
     String RUNTIME_REFERENCES_STRICT = "runtime.references.strict";
     
-    /**
-     * Indicates we are going to use modifed escape behavior in strict mode
-     */
+    /** Indicates we are going to use modifed escape behavior in strict mode. */
     String RUNTIME_REFERENCES_STRICT_ESCAPE = "runtime.references.strict.escape";
        
     /**
-     * @deprecated  This appears to have always been meaningless.
-     */
+	 * The runtime log error stacktrace.
+	 *
+	 * @deprecated This appears to have always been meaningless.
+	 */
     String RUNTIME_LOG_ERROR_STACKTRACE = "runtime.log.error.stacktrace";
 
     /**
-     * @deprecated  The functionality this controlled is confusing and no longer necessary.
-     */
+	 * The runtime log warn stacktrace.
+	 *
+	 * @deprecated The functionality this controlled is confusing and no longer
+	 *             necessary.
+	 */
     String RUNTIME_LOG_WARN_STACKTRACE = "runtime.log.warn.stacktrace";
 
     /**
-     * @deprecated  This appears to have always been meaningless.
-     */
+	 * The runtime log info stacktrace.
+	 *
+	 * @deprecated This appears to have always been meaningless.
+	 */
     String RUNTIME_LOG_INFO_STACKTRACE = "runtime.log.info.stacktrace";
 
     /** Logging of invalid references. */
     String RUNTIME_LOG_REFERENCE_LOG_INVALID = "runtime.log.invalid.references";
 
     /**
-     * @deprecated  Use LogChute.TRACE_PREFIX instead
-     */
+	 * The trace prefix.
+	 *
+	 * @deprecated Use LogChute.TRACE_PREFIX instead
+	 */
     String TRACE_PREFIX = " [trace] ";
 
     /**
-     * @deprecated  Use LogChute.DEBUG_PREFIX instead
-     */
+	 * The debug prefix.
+	 *
+	 * @deprecated Use LogChute.DEBUG_PREFIX instead
+	 */
     String DEBUG_PREFIX = " [debug] ";
 
     /**
-     * @deprecated  Use LogChute.INFO_PREFIX instead
-     */
+	 * The info prefix.
+	 *
+	 * @deprecated Use LogChute.INFO_PREFIX instead
+	 */
     String INFO_PREFIX = "  [info] ";
 
     /**
-     * @deprecated  Use LogChute.WARN_PREFIX instead
-     */
+	 * The warn prefix.
+	 *
+	 * @deprecated Use LogChute.WARN_PREFIX instead
+	 */
     String WARN_PREFIX = "  [warn] ";
 
     /**
-     * @deprecated  Use LogChute.ERROR_PREFIX instead
-     */
+	 * The error prefix.
+	 *
+	 * @deprecated Use LogChute.ERROR_PREFIX instead
+	 */
     String ERROR_PREFIX = " [error] ";
 
     /**
-     * @deprecated  This will be removed in a future version
-     */
+	 * The unknown prefix.
+	 *
+	 * @deprecated This will be removed in a future version
+	 */
     String UNKNOWN_PREFIX = " [unknown] ";
 
     /*
@@ -174,9 +192,10 @@ public interface RuntimeConstants
     String DEFINE_DIRECTIVE_MAXDEPTH = "directive.define.max.depth";
 
     /**
-     * class to use for local context with #evaluate()
-     * @since 1.6
-     */
+	 * class to use for local context with #evaluate().
+	 *
+	 * @since 1.6
+	 */
     String EVALUATE_CONTEXT_CLASS = "directive.evaluate.context.class";
 
     /**
@@ -191,7 +210,7 @@ public interface RuntimeConstants
      * ----------------------------------------------------------------------
      */
 
-    /**  */
+    /** The resource manager class. */
     String RESOURCE_MANAGER_CLASS = "resource.manager.class";
 
     /**
@@ -292,13 +311,14 @@ public interface RuntimeConstants
     /** switch for local context in VM : default false. */
     String VM_CONTEXT_LOCALSCOPE = "velocimacro.context.localscope";
 
-    /** if true, throw an exception for wrong number of arguments **/
+    /** if true, throw an exception for wrong number of arguments *. */
     String VM_ARGUMENTS_STRICT = "velocimacro.arguments.strict";
 
     /**
-     * Specify the maximum depth for macro calls
-     * @since 1.6
-     */
+	 * Specify the maximum depth for macro calls.
+	 *
+	 * @since 1.6
+	 */
     String VM_MAX_DEPTH = "velocimacro.max.depth";
 
     /**
@@ -344,8 +364,10 @@ public interface RuntimeConstants
     String PARSER_POOL_CLASS = "parser.pool.class";
 
     /**
-     * @see  #NUMBER_OF_PARSERS
-     */
+	 * The parser pool size.
+	 *
+	 * @see #NUMBER_OF_PARSERS
+	 */
     String PARSER_POOL_SIZE = "parser.pool.size";
     
     /*

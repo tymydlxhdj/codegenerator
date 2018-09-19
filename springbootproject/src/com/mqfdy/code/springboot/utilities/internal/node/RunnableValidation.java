@@ -49,6 +49,19 @@ public class RunnableValidation
 
 	/**
 	 * Construct a validation thread.
+	 *
+	 * @param node
+	 *            the node
+	 * @param validateFlag
+	 *            the validate flag
+	 * @param continueFlag
+	 *            the continue flag
+	 * @param exceptionLogger
+	 *            the exception logger
+	 * @param exceptionLevel
+	 *            the exception level
+	 * @param exceptionMessage
+	 *            the exception message
 	 */
 	public RunnableValidation(
 			Node node,

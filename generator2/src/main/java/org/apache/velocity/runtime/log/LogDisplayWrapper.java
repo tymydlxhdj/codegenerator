@@ -1,5 +1,6 @@
 package org.apache.velocity.runtime.log;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -32,21 +33,26 @@ package org.apache.velocity.runtime.log;
 public class LogDisplayWrapper
         extends Log
 {
-    /** The prefix to record with every log message */
+    
+    /** The prefix to record with every log message. */
     private final String prefix;
 
-    /** log messages only if true */
+    /** log messages only if true. */
     private final boolean outputMessages;
 
-    /** The Log object we wrap */
+    /** The Log object we wrap. */
     private final Log log;
 
     /**
-     * Create a new LogDisplayWrapper
-     * @param log The Log object to wrap.
-     * @param prefix The prefix to record with all messages.
-     * @param outputMessages True when messages should actually get logged.
-     */
+	 * Create a new LogDisplayWrapper.
+	 *
+	 * @param log
+	 *            The Log object to wrap.
+	 * @param prefix
+	 *            The prefix to record with all messages.
+	 * @param outputMessages
+	 *            True when messages should actually get logged.
+	 */
     public LogDisplayWrapper(final Log log, final String prefix, final boolean outputMessages)
     {
         super(log.getLogChute());
@@ -56,21 +62,43 @@ public class LogDisplayWrapper
     }
 
     /**
-     * make sure that we always use the right LogChute Object
-     */
+	 * make sure that we always use the right LogChute Object.
+	 *
+	 * @author mqfdy
+	 * @return the log chute
+	 * @Date 2018-9-3 11:38:31
+	 */
     protected LogChute getLogChute()
     {
         return log.getLogChute();
     }
 
     /**
-     * @see Log#log(int, Object)
-     */
+	 * Log.
+	 *
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @see Log#log(int, Object)
+	 */
     protected void log(final int level, final Object message)
     {
     	log(outputMessages, level, message);
     }
     
+    /**
+	 * Log.
+	 *
+	 * @author mqfdy
+	 * @param doLogging
+	 *            the do logging
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @Date 2018-09-03 09:00
+	 */
     protected void log(final boolean doLogging, final int level, final Object message)
     {
         if (doLogging)
@@ -80,13 +108,35 @@ public class LogDisplayWrapper
     }
 
     /**
-     * @see Log#log(int, Object, Throwable)
-     */
+	 * Log.
+	 *
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @see Log#log(int, Object, Throwable)
+	 */
     protected void log(final int level, final Object message, final Throwable t)
     {
     	log(outputMessages, level, message);
     }
     
+    /**
+	 * Log.
+	 *
+	 * @author mqfdy
+	 * @param doLogging
+	 *            the do logging
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @Date 2018-09-03 09:00
+	 */
     protected void log(final boolean doLogging, final int level, final Object message, final Throwable t)
     {
         if (doLogging)
@@ -96,105 +146,160 @@ public class LogDisplayWrapper
     }
     
     /**
-     * Log a trace message.
-     * @param doLogging Log only if this parameter is true.
-     * @param message
-     */
+	 * Log a trace message.
+	 *
+	 * @author mqfdy
+	 * @param doLogging
+	 *            Log only if this parameter is true.
+	 * @param message
+	 *            the message
+	 * @Date 2018-09-03 09:00
+	 */
     public void trace(final boolean doLogging, final Object message)
     {
         log(doLogging, LogChute.TRACE_ID, message);
     }
 
     /**
-     * Log a trace message and accompanying Throwable.
-     * @param doLogging Log only if this parameter is true.
-     * @param message
-     * @param t
-     */
+	 * Log a trace message and accompanying Throwable.
+	 *
+	 * @author mqfdy
+	 * @param doLogging
+	 *            Log only if this parameter is true.
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @Date 2018-09-03 09:00
+	 */
     public void trace(final boolean doLogging, final Object message, final Throwable t)
     {
         log(doLogging, LogChute.TRACE_ID, message, t);
     }
 
     /**
-     * Log a debug message.
-     * @param doLogging Log only if this parameter is true.
-     * @param message
-     */
+	 * Log a debug message.
+	 *
+	 * @author mqfdy
+	 * @param doLogging
+	 *            Log only if this parameter is true.
+	 * @param message
+	 *            the message
+	 * @Date 2018-09-03 09:00
+	 */
     public void debug(final boolean doLogging, final Object message)
     {
         log(doLogging, LogChute.DEBUG_ID, message);
     }
 
     /**
-     * Log a debug message and accompanying Throwable.
-     * @param doLogging Log only if this parameter is true.
-     * @param message
-     * @param t
-     */
+	 * Log a debug message and accompanying Throwable.
+	 *
+	 * @author mqfdy
+	 * @param doLogging
+	 *            Log only if this parameter is true.
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @Date 2018-09-03 09:00
+	 */
     public void debug(final boolean doLogging, final Object message, final Throwable t)
     {
         log(doLogging, LogChute.DEBUG_ID, message, t);
     }
 
     /**
-     * Log an info message.
-     * @param doLogging Log only if this parameter is true.
-     * @param message
-     */
+	 * Log an info message.
+	 *
+	 * @author mqfdy
+	 * @param doLogging
+	 *            Log only if this parameter is true.
+	 * @param message
+	 *            the message
+	 * @Date 2018-09-03 09:00
+	 */
     public void info(final boolean doLogging, final Object message)
     {
         log(doLogging, LogChute.INFO_ID, message);
     }
 
     /**
-     * Log an info message and accompanying Throwable.
-     * @param doLogging Log only if this parameter is true.
-     * @param message
-     * @param t
-     */
+	 * Log an info message and accompanying Throwable.
+	 *
+	 * @author mqfdy
+	 * @param doLogging
+	 *            Log only if this parameter is true.
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @Date 2018-09-03 09:00
+	 */
     public void info(final boolean doLogging, final Object message, final Throwable t)
     {
         log(doLogging, LogChute.INFO_ID, message, t);
     }
 
     /**
-     * Log a warning message.
-     * @param doLogging Log only if this parameter is true.
-     * @param message
-     */
+	 * Log a warning message.
+	 *
+	 * @author mqfdy
+	 * @param doLogging
+	 *            Log only if this parameter is true.
+	 * @param message
+	 *            the message
+	 * @Date 2018-09-03 09:00
+	 */
     public void warn(final boolean doLogging, final Object message)
     {
         log(doLogging, LogChute.WARN_ID, message);
     }
 
     /**
-     * Log a warning message and accompanying Throwable.
-     * @param doLogging Log only if this parameter is true.
-     * @param message
-     * @param t
-     */
+	 * Log a warning message and accompanying Throwable.
+	 *
+	 * @author mqfdy
+	 * @param doLogging
+	 *            Log only if this parameter is true.
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @Date 2018-09-03 09:00
+	 */
     public void warn(final boolean doLogging, final Object message, final Throwable t)
     {
         log(doLogging, LogChute.WARN_ID, message, t);
     }
 
     /**
-     * Log an error message.
-     * @param doLogging Log only if this parameter is true.
-     * @param message
-     */
+	 * Log an error message.
+	 *
+	 * @author mqfdy
+	 * @param doLogging
+	 *            Log only if this parameter is true.
+	 * @param message
+	 *            the message
+	 * @Date 2018-09-03 09:00
+	 */
     public void error(final boolean doLogging, final Object message)
     {
         log(doLogging, LogChute.ERROR_ID, message);
     }
 
     /**
-     * Log an error message and accompanying Throwable.
-     * @param doLogging Log only if this parameter is true.
-     * @param message
-     * @param t
-     */
+	 * Log an error message and accompanying Throwable.
+	 *
+	 * @author mqfdy
+	 * @param doLogging
+	 *            Log only if this parameter is true.
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @Date 2018-09-03 09:00
+	 */
     public void error(final boolean doLogging, final Object message, final Throwable t)
     {
         log(doLogging, LogChute.ERROR_ID, message, t);

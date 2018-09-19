@@ -19,6 +19,7 @@ import com.mqfdy.code.springboot.utilities.JavaType;
 import com.mqfdy.code.springboot.utilities.MethodSignature;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Straightforward implementation of the MethodSignature interface.
  */
@@ -35,22 +36,30 @@ public final class SimpleMethodSignature
 
 	private static final long serialVersionUID = 1L;
 
+	/** The Constant EMPTY_PARAMETER_TYPES. */
 	public static final JavaType[] EMPTY_PARAMETER_TYPES = new JavaType[0];
 
 
 	// ********** constructors **********
 
 	/**
-	 * Construct a method signature with the specified name and
-	 * no parameter types.
+	 * Construct a method signature with the specified name and no parameter
+	 * types.
+	 *
+	 * @param name
+	 *            the name
 	 */
 	public SimpleMethodSignature(String name) {
 		this(name, EMPTY_PARAMETER_TYPES);
 	}
 
 	/**
-	 * Construct a method signature with the specified name and parameter
-	 * types.
+	 * Construct a method signature with the specified name and parameter types.
+	 *
+	 * @param name
+	 *            the name
+	 * @param parameterTypes
+	 *            the parameter types
 	 */
 	public SimpleMethodSignature(String name, JavaType... parameterTypes) {
 		super();
@@ -77,8 +86,12 @@ public final class SimpleMethodSignature
 	}
 
 	/**
-	 * Construct a method signature with the specified name and parameter
-	 * types.
+	 * Construct a method signature with the specified name and parameter types.
+	 *
+	 * @param name
+	 *            the name
+	 * @param parameterTypeNames
+	 *            the parameter type names
 	 */
 	public SimpleMethodSignature(String name, String... parameterTypeNames) {
 		this(name, buildParameterTypes(parameterTypeNames));
@@ -99,8 +112,12 @@ public final class SimpleMethodSignature
 	}
 
 	/**
-	 * Construct a method signature with the specified name and parameter
-	 * types.
+	 * Construct a method signature with the specified name and parameter types.
+	 *
+	 * @param name
+	 *            the name
+	 * @param parameterJavaClasses
+	 *            the parameter java classes
 	 */
 	public SimpleMethodSignature(String name, Class<?>... parameterJavaClasses) {
 		this(name, buildParameterTypeNames(parameterJavaClasses));
@@ -122,6 +139,9 @@ public final class SimpleMethodSignature
 
 	/**
 	 * Construct a method signature for the specified Java method.
+	 *
+	 * @param method
+	 *            the method
 	 */
 	public SimpleMethodSignature(Method method) {
 		this(method.getName(), method.getParameterTypes());

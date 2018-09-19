@@ -21,30 +21,39 @@ package org.apache.velocity.app.event.implement;
 
 import org.apache.commons.lang.StringEscapeUtils;
 
+// TODO: Auto-generated Javadoc
 /**
  * Escape all HTML entities.
- * @see <a href="http://jakarta.apache.org/commons/lang/api/org/apache/commons/lang/StringEscapeUtils.html#escapeHtml(java.lang.String)">StringEscapeUtils</a>
+ *
  * @author wglass
+ * @see <a href=
+ *      "http://jakarta.apache.org/commons/lang/api/org/apache/commons/lang/StringEscapeUtils.html#escapeHtml(java.lang.String)">StringEscapeUtils</a>
  * @since 1.5
  */
 public class EscapeHtmlReference extends EscapeReference
 {
 
     /**
-     * Escape all HTML entities.
-     * 
-     * @param text
-     * @return An escaped String.
-     * @see <a href="http://jakarta.apache.org/commons/lang/api/org/apache/commons/lang/StringEscapeUtils.html#escapeHtml(java.lang.String)">StringEscapeUtils</a>
-     */
+	 * Escape all HTML entities.
+	 *
+	 * @param text
+	 *            the text
+	 * @return An escaped String.
+	 * @see <a href=
+	 *      "http://jakarta.apache.org/commons/lang/api/org/apache/commons/lang/StringEscapeUtils.html#escapeHtml(java.lang.String)">StringEscapeUtils</a>
+	 */
     protected String escape(Object text)
     {
         return StringEscapeUtils.escapeHtml(text.toString());
     }
 
     /**
-     * @return attribute "eventhandler.escape.html.match"
-     */
+	 * Gets the match attribute.
+	 *
+	 * @author mqfdy
+	 * @return attribute "eventhandler.escape.html.match"
+	 * @Date 2018-9-3 11:38:40
+	 */
     protected String getMatchAttribute()
     {
         return "eventhandler.escape.html.match";

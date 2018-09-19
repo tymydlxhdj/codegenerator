@@ -21,8 +21,12 @@ public class LocalSample extends SampleProject {
 	private File copyFrom;
 
 	/**
-	 * @param distribution The URI of an official Gradle distribution.
-	 * @param location The location of the sample inside the distribution zip.
+	 * Instantiates a new local sample.
+	 *
+	 * @param name
+	 *            the name
+	 * @param copyFrom
+	 *            the copy from
 	 */
 	public LocalSample(String name, File copyFrom) {
 		Assert.isNotNull(name);

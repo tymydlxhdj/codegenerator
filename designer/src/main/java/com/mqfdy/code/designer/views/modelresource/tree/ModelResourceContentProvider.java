@@ -12,9 +12,24 @@ import com.mqfdy.code.model.Association;
 import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.model.SolidifyPackage;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ModelResourceContentProvider.
+ *
+ * @author mqfdy
+ */
 public class ModelResourceContentProvider implements ITreeContentProvider {
 
 	
+	/**
+	 * Gets the children.
+	 *
+	 * @author mqfdy
+	 * @param parentElement
+	 *            the parent element
+	 * @return the children
+	 * @Date 2018-09-03 09:00
+	 */
 	@SuppressWarnings({ "rawtypes" })
 	public Object[] getChildren(Object parentElement) {
 		if((parentElement instanceof SolidifyPackage)&&
@@ -48,11 +63,29 @@ public class ModelResourceContentProvider implements ITreeContentProvider {
 		return null;
 	}
 
+	/**
+	 * Gets the parent.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @return the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getParent(Object element) {
 		AbstractModelElement modelElement = (AbstractModelElement) element;
 		return modelElement.getParent();
 	}
 
+	/**
+	 * Checks for children.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean hasChildren(Object element) {
 		if (getChildren(element) != null && getChildren(element).length > 0) {
 			return true;
@@ -61,16 +94,40 @@ public class ModelResourceContentProvider implements ITreeContentProvider {
 		return false;
 	}
 
+	/**
+	 * 
+	 */
 	public void dispose() {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * Input changed.
+	 *
+	 * @author mqfdy
+	 * @param viewer
+	 *            the viewer
+	 * @param oldInput
+	 *            the old input
+	 * @param newInput
+	 *            the new input
+	 * @Date 2018-09-03 09:00
+	 */
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * Gets the elements.
+	 *
+	 * @author mqfdy
+	 * @param inputElement
+	 *            the input element
+	 * @return the elements
+	 * @Date 2018-09-03 09:00
+	 */
 	@SuppressWarnings("unchecked")
 	public Object[] getElements(Object inputElement) {
 		if (inputElement instanceof List) {

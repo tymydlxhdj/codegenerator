@@ -9,47 +9,78 @@ import com.mqfdy.code.model.ModelPackage;
 import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * 模型校验校验器模型
- * 
+ * 模型校验校验器模型.
+ *
  * @author mqfdy
- * 
  */
 public class Validator {
 
+	/** The id model. */
 	public static int ID_MODEL = 1;
 
+	/** The id package. */
 	public static int ID_PACKAGE = 2;
 
+	/** The id diagram. */
 	public static int ID_DIAGRAM = 3;
 
+	/** The id diagrame element. */
 	public static int ID_DIAGRAME_ELEMENT = 4;
 
+	/** The id businessclass. */
 	public static int ID_BUSINESSCLASS = 5;
 
+	/** The id businessclass property. */
 	public static int ID_BUSINESSCLASS_PROPERTY = 6;
 
+	/** The id property group. */
 	public static int ID_PROPERTY_GROUP = 7;
 
+	/** The id property editor. */
 	public static int ID_PROPERTY_EDITOR = 8;
 
+	/** The id enumeration. */
 	public static int ID_ENUMERATION = 9;
 
+	/** The id dto. */
 	public static int ID_DTO = 10;
 
+	/** The id association. */
 	public static int ID_ASSOCIATION = 11;
 
+	/** The id inheritance. */
 	public static int ID_INHERITANCE = 12;
 
+	/** The id operation. */
 	public static int ID_OPERATION = 13;
 
+	/** The id. */
 	private int id;
+	
+	/** The name. */
 	private String name;
+	
+	/** The is selection valid. */
 	private boolean isSelectionValid;
+	
+	/** The validate rules. */
 	private List<ValidatorRules> validateRules = new ArrayList<ValidatorRules>();
 
+	/** The result list. */
 	private List<ValiResult> resultList = new ArrayList<ValiResult>();
 
+	/**
+	 * Instantiates a new validator.
+	 *
+	 * @param id
+	 *            the id
+	 * @param name
+	 *            the name
+	 * @param isSelectionValid
+	 *            the is selection valid
+	 */
 	public Validator(int id, String name, boolean isSelectionValid) {
 		this.setId(id);
 		this.setName(name);
@@ -57,6 +88,14 @@ public class Validator {
 		this.initValidateRules();
 	}
 
+	/**
+	 * Instantiates a new validator.
+	 *
+	 * @param id
+	 *            the id
+	 * @param name
+	 *            the name
+	 */
 	public Validator(int id, String name) {
 		this.setId(id);
 		this.setName(name);
@@ -64,16 +103,31 @@ public class Validator {
 		this.initValidateRules();
 	}
 
+	/**
+	 * Instantiates a new validator.
+	 *
+	 * @param id
+	 *            the id
+	 */
 	public Validator(int id) {
 		this.setId(id);
 		this.setSelectionValid(true);
 		this.initValidateRules();
 	}
 
+	/**
+	 * Instantiates a new validator.
+	 */
 	public Validator() {
 
 	}
 
+	/**
+	 * Instantiates a new validator.
+	 *
+	 * @param abe
+	 *            the abe
+	 */
 	public Validator(AbstractModelElement abe) {
 
 		if (abe instanceof ModelPackage) {
@@ -89,6 +143,13 @@ public class Validator {
 		this.initValidateRules();
 	}
 
+	/**
+	 * Gets the rules.
+	 *
+	 * @author mqfdy
+	 * @return the rules
+	 * @Date 2018-09-03 09:00
+	 */
 	public static List<Validator> getRules() {
 		List<Validator> rules = new ArrayList<Validator>();
 		Validator va;
@@ -110,6 +171,13 @@ public class Validator {
 		return rules;
 	}
 
+	/**
+	 * Gets the all rules.
+	 *
+	 * @author mqfdy
+	 * @return the all rules
+	 * @Date 2018-09-03 09:00
+	 */
 	public static List<Validator> getAllRules() {
 		List<Validator> rules = new ArrayList<Validator>();
 		Validator va;
@@ -155,6 +223,21 @@ public class Validator {
 		return rules;
 	}
 
+	/**
+	 * Validate all rule.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @param abe
+	 *            the abe
+	 * @param con
+	 *            the con
+	 * @param resultList
+	 *            the result list
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean validateAllRule(BusinessObjectModel businessObjectModel,
 			AbstractModelElement abe, ValidatorContext con,
 			List<ValiResult> resultList) {
@@ -186,6 +269,21 @@ public class Validator {
 		return flag;
 	}
 
+	/**
+	 * Validate.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @param ele
+	 *            the ele
+	 * @param con
+	 *            the con
+	 * @param resultList
+	 *            the result list
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean validate(BusinessObjectModel businessObjectModel,
 			AbstractModelElement ele, ValidatorContext con,
 			List<ValiResult> resultList) {
@@ -202,6 +300,12 @@ public class Validator {
 		return flag;
 	}
 
+	/**
+	 * Inits the validate rules.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void initValidateRules() {
 		for (ValidatorRules r : ValidatorRules.getRules(this)) {
 			if (r.getValidator() == this)
@@ -209,34 +313,94 @@ public class Validator {
 		}
 	}
 
+	/**
+	 * Gets the id.
+	 *
+	 * @author mqfdy
+	 * @return the id
+	 * @Date 2018-09-03 09:00
+	 */
 	public int getId() {
 		return id;
 	}
 
+	/**
+	 * Sets the id.
+	 *
+	 * @author mqfdy
+	 * @param id
+	 *            the new id
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * Gets the name.
+	 *
+	 * @author mqfdy
+	 * @return the name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Sets the name.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the new name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * Checks if is selection valid.
+	 *
+	 * @author mqfdy
+	 * @return true, if is selection valid
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isSelectionValid() {
 		return isSelectionValid;
 	}
 
+	/**
+	 * Sets the selection valid.
+	 *
+	 * @author mqfdy
+	 * @param isSelectionValid
+	 *            the new selection valid
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setSelectionValid(boolean isSelectionValid) {
 		this.isSelectionValid = isSelectionValid;
 	}
 
+	/**
+	 * Gets the validate rules.
+	 *
+	 * @author mqfdy
+	 * @return the validate rules
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<ValidatorRules> getValidateRules() {
 		return validateRules;
 	}
 
+	/**
+	 * Sets the validate rules.
+	 *
+	 * @author mqfdy
+	 * @param validateRules
+	 *            the new validate rules
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setValidateRules(List<ValidatorRules> validateRules) {
 		this.validateRules = validateRules;
 	}

@@ -47,6 +47,7 @@ import com.mqfdy.code.model.DTOProperty;
 import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.graph.DiagramElement;
 
+// TODO: Auto-generated Javadoc
 /**
  * <code>PropertySheetEntry</code> is an implementation of
  * <code>IPropertySheetEntry</code> which uses <code>IPropertySource</code> and
@@ -83,20 +84,26 @@ public class BusinessPropertySheetEntry extends EventManager implements
 	/**
 	 * The value of this entry is defined as the the first object in its value
 	 * array or, if that object is an <code>IPropertySource</code>, the value it
-	 * returns when sent <code>getEditableValue</code>
+	 * returns when sent <code>getEditableValue</code>.
 	 */
 	private Object editValue;
 
+	/** The parent. */
 	private BusinessPropertySheetEntry parent;
 
+	/** The property source provider. */
 	private IPropertySourceProvider propertySourceProvider;
 
+	/** The descriptor. */
 	private IPropertyDescriptor descriptor;
 
+	/** The editor. */
 	private CellEditor editor;
 
+	/** The error text. */
 	private String errorText;
 
+	/** The child entries. */
 	private BusinessPropertySheetEntry[] childEntries = null;
 
 	/**
@@ -123,13 +130,29 @@ public class BusinessPropertySheetEntry extends EventManager implements
 			BusinessPropertySheetEntry.this.applyEditorValue();
 		}
 	};
+	
+	/** The business model manager. */
 	private BusinessModelManager businessModelManager;
 
+	/**
+	 * Instantiates a new business property sheet entry.
+	 *
+	 * @param businessModelManager
+	 *            the business model manager
+	 */
 	public BusinessPropertySheetEntry(BusinessModelManager businessModelManager) {
 		super();
 		this.businessModelManager = businessModelManager;
 	}
 
+	/**
+	 * Adds the property sheet entry listener.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * (non-Javadoc) Method declared on IPropertySheetEntry.
 	 */
@@ -138,6 +161,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 		addListenerObject(listener);
 	}
 
+	/**
+	 * 
+	 */
 	/*
 	 * (non-Javadoc) Method declared on IPropertySheetEntry.
 	 */
@@ -176,8 +202,10 @@ public class BusinessPropertySheetEntry extends EventManager implements
 	/**
 	 * Return the unsorted intersection of all the
 	 * <code>IPropertyDescriptor</code>s for the objects.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return List
+	 * @Date 2018-09-03 09:00
 	 */
 	private List computeMergedPropertyDescriptors() {
 		if (values.length == 0) {
@@ -240,10 +268,12 @@ public class BusinessPropertySheetEntry extends EventManager implements
 	/**
 	 * Returns an map of property descritptors (keyed on id) for the given
 	 * property source.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param source
 	 *            a property source for which to obtain descriptors
 	 * @return a table of decriptors keyed on their id
+	 * @Date 2018-09-03 09:00
 	 */
 	private Map computePropertyDescriptorsFor(IPropertySource source) {
 		IPropertyDescriptor[] descriptors = source.getPropertyDescriptors();
@@ -256,6 +286,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 
 	/**
 	 * Create our child entries.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createChildEntries() {
 		// get the current descriptors
@@ -293,6 +326,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 		return new BusinessPropertySheetEntry(businessModelManager);
 	}
 
+	/**
+	 * 
+	 */
 	/*
 	 * (non-Javadoc) Method declared on IPropertySheetEntry.
 	 */
@@ -319,6 +355,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 	/**
 	 * The child entries of this entry have changed (children added or removed).
 	 * Notify all listeners of the change.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void fireChildEntriesChanged() {
 		Object[] array = getListeners();
@@ -331,6 +370,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 	/**
 	 * The error message of this entry has changed. Notify all listeners of the
 	 * change.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void fireErrorMessageChanged() {
 		Object[] array = getListeners();
@@ -343,6 +385,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 	/**
 	 * The values of this entry have changed. Notify all listeners of the
 	 * change.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void fireValueChanged() {
 		Object[] array = getListeners();
@@ -352,6 +397,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	/*
 	 * (non-Javadoc) Method declared on IPropertySheetEntry.
 	 */
@@ -359,6 +407,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 		return descriptor.getCategory();
 	}
 
+	/**
+	 * @return
+	 */
 	/*
 	 * (non-Javadoc) Method declared on IPropertySheetEntry.
 	 */
@@ -369,6 +420,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 		return childEntries;
 	}
 
+	/**
+	 * @return
+	 */
 	/*
 	 * (non-Javadoc) Method declared on IPropertySheetEntry.
 	 */
@@ -386,6 +440,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 		return descriptor;
 	}
 
+	/**
+	 * @return
+	 */
 	/*
 	 * (non-Javadoc) Method declared on IPropertySheetEntry.
 	 */
@@ -393,6 +450,15 @@ public class BusinessPropertySheetEntry extends EventManager implements
 		return descriptor.getDisplayName();
 	}
 
+	/**
+	 * Gets the editor.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the editor
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -417,10 +483,12 @@ public class BusinessPropertySheetEntry extends EventManager implements
 
 	/**
 	 * Returns the edit value for the object at the given index.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param index
 	 *            the value object index
 	 * @return the edit value for the object at the given index
+	 * @Date 2018-09-03 09:00
 	 */
 	protected Object getEditValue(int index) {
 		Object value = values[index];
@@ -431,6 +499,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 		return value;
 	}
 
+	/**
+	 * @return
+	 */
 	/*
 	 * (non-Javadoc) Method declared on IPropertySheetEntry.
 	 */
@@ -438,6 +509,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 		return errorText;
 	}
 
+	/**
+	 * @return
+	 */
 	/*
 	 * (non-Javadoc) Method declared on IPropertySheetEntry.
 	 */
@@ -445,6 +519,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 		return descriptor.getFilterFlags();
 	}
 
+	/**
+	 * @return
+	 */
 	/*
 	 * (non-Javadoc) Method declared on IPropertySheetEntry.
 	 */
@@ -452,6 +529,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 		return descriptor.getHelpContextIds();
 	}
 
+	/**
+	 * @return
+	 */
 	/*
 	 * (non-Javadoc) Method declared on IPropertySheetEntry.
 	 */
@@ -505,6 +585,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 		return result;
 	}
 
+	/**
+	 * @return
+	 */
 	/*
 	 * (non-Javadoc) Method declared on IPropertySheetEntry.
 	 */
@@ -533,6 +616,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 		return values;
 	}
 
+	/**
+	 * @return
+	 */
 	/*
 	 * (non-Javadoc) Method declared on IPropertySheetEntry.
 	 */
@@ -548,6 +634,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 	 * Update our child entries. This implementation tries to reuse child
 	 * entries if possible (if the id of the new descriptor matches the
 	 * descriptor id of the old entry).
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void refreshChildEntries() {
 		if (childEntries == null) {
@@ -627,6 +716,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 	/**
 	 * Update our value objects. We ask our parent for the property values based
 	 * on our descriptor.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void refreshValues() {
 		// get our parent's value objects
@@ -644,6 +736,14 @@ public class BusinessPropertySheetEntry extends EventManager implements
 		setValues(newValues);
 	}
 
+	/**
+	 * Removes the property sheet entry listener.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * (non-Javadoc) Method declared on IPropertySheetEntry.
 	 */
@@ -652,6 +752,9 @@ public class BusinessPropertySheetEntry extends EventManager implements
 		removeListenerObject(listener);
 	}
 
+	/**
+	 * 
+	 */
 	/*
 	 * (non-Javadoc) Method declared on IPropertySheetEntry.
 	 */
@@ -687,8 +790,11 @@ public class BusinessPropertySheetEntry extends EventManager implements
 
 	/**
 	 * Set the descriptor.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param newDescriptor
+	 *            the new descriptor
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setDescriptor(IPropertyDescriptor newDescriptor) {
 		// if our descriptor is changing, we have to get rid
@@ -703,6 +809,11 @@ public class BusinessPropertySheetEntry extends EventManager implements
 	/**
 	 * Set the error text. This should be set to null when the current value is
 	 * valid, otherwise it should be set to a error string
+	 *
+	 * @author mqfdy
+	 * @param newErrorText
+	 *            the new error text
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setErrorText(String newErrorText) {
 		errorText = newErrorText;
@@ -712,8 +823,11 @@ public class BusinessPropertySheetEntry extends EventManager implements
 
 	/**
 	 * Sets the parent of the entry to be propertySheetEntry.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param propertySheetEntry
+	 *            the new parent
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setParent(BusinessPropertySheetEntry propertySheetEntry) {
 		parent = propertySheetEntry;
@@ -723,9 +837,11 @@ public class BusinessPropertySheetEntry extends EventManager implements
 	 * Sets a property source provider for this entry. This provider is used to
 	 * obtain an <code>IPropertySource</code> for each of this entries objects.
 	 * If no provider is set then a default provider is used.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param provider
 	 *            IPropertySourceProvider
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setPropertySourceProvider(IPropertySourceProvider provider) {
 		propertySourceProvider = provider;
@@ -738,9 +854,11 @@ public class BusinessPropertySheetEntry extends EventManager implements
 	 * call our parent to update the property we represent with the given value.
 	 * We then trigger a model refresh.
 	 * <p>
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param newValue
 	 *            the new value
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setValue(Object newValue) {
 		// Set the value
@@ -763,9 +881,11 @@ public class BusinessPropertySheetEntry extends EventManager implements
 	 * Updating the child entries will typically call this method on the child
 	 * entries and thus the entire entry tree is updated
 	 * </p>
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param objects
 	 *            the new values for this entry
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setValues(Object[] objects) {
 		values = objects;
@@ -803,9 +923,11 @@ public class BusinessPropertySheetEntry extends EventManager implements
 	 * <p>
 	 * Subclasses may override to set the property value in some custom way.
 	 * </p>
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param child
 	 *            the child entry that changed its value
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void valueChanged(BusinessPropertySheetEntry child) {
 		AbstractModelElement newEle = null;

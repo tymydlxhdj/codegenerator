@@ -31,12 +31,32 @@ import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramElement;
 import com.mqfdy.code.model.graph.ElementStyle;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SelfConnectRouter.
+ *
+ * @author mqfdy
+ */
 public class SelfConnectRouter extends BendpointConnectionRouter {
+	
+	/** The Constant A_POINT. */
 	private static final PrecisionPoint A_POINT = new PrecisionPoint();
+	
+	/** The business object model. */
 	private BusinessObjectModel businessObjectModel;
+	
+	/** The diagram. */
 	private Diagram diagram;
+	
+	/** The as list. */
 	private List<AbstractModelElement> asList = new ArrayList<AbstractModelElement>();
 
+	/**
+	 * Instantiates a new self connect router.
+	 *
+	 * @param bm
+	 *            the bm
+	 */
 	public SelfConnectRouter(Diagram bm) {
 		super();
 		asList.clear();
@@ -49,6 +69,14 @@ public class SelfConnectRouter extends BendpointConnectionRouter {
 
 	}
 
+	/**
+	 * Route.
+	 *
+	 * @author mqfdy
+	 * @param conn
+	 *            the conn
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public void route(Connection conn) {
 		List<OmConnectionEditPart> partList = new ArrayList<OmConnectionEditPart>();
@@ -256,9 +284,30 @@ public class SelfConnectRouter extends BendpointConnectionRouter {
 		}
 	}
 
+	/**
+	 * Checks if is equal.
+	 *
+	 * @author mqfdy
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @return true, if is equal
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isEqual(int x, int y) {
 		return (x - y > -3 && x - y < 3);
 	}
+	
+	/**
+	 * Gets the self points.
+	 *
+	 * @author mqfdy
+	 * @param conn
+	 *            the conn
+	 * @return the self points
+	 * @Date 2018-09-03 09:00
+	 */
 	public PointList getSelfPoints(Connection conn) {
 		if (conn.getSourceAnchor().getOwner() != null) {
 			Rectangle bounds = conn.getSourceAnchor().getOwner().getBounds();
@@ -540,6 +589,25 @@ public class SelfConnectRouter extends BendpointConnectionRouter {
 		return null;
 	}
 
+	/**
+	 * Gets the SE points.
+	 *
+	 * @author mqfdy
+	 * @param conn
+	 *            the conn
+	 * @param partList
+	 *            the part list
+	 * @param point
+	 *            the point
+	 * @param point2
+	 *            the point 2
+	 * @param classA
+	 *            the class A
+	 * @param classB
+	 *            the class B
+	 * @return the SE points
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Point> getSEPoints(Connection conn,
 			List<OmConnectionEditPart> partList, Point point, Point point2, AbstractModelElement classA, AbstractModelElement classB) {
 		AbstractModelElement connection = null;

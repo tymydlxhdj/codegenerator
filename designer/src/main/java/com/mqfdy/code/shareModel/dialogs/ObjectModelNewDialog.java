@@ -41,27 +41,78 @@ import com.mqfdy.code.resource.BomManager;
 import com.mqfdy.code.resource.validator.KeyWordsChecker;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ObjectModelNewDialog.
+ *
+ * @author mqfdy
+ */
 public class ObjectModelNewDialog extends TitleAreaDialog {
+	
+	/** The Constant OM_FILE_TYPE. */
 	public static final String OM_FILE_TYPE = ".om";
+	
+	/** The Constant MODEL_DEFAULT_NAME. */
 	public static final String MODEL_DEFAULT_NAME = "com.orgname.projectname";
+	
+	/** The Constant PACKAGE_DEFAULT_NAME. */
 	public static final String PACKAGE_DEFAULT_NAME = "demo";
+	
+	/** The error message. */
 	public String errorMessage = null;
 
+	/** The selection. */
 	private ISelection selection;
+    
+    /** The parent dialog. */
     public FindModelDialog parentDialog;
+	
+	/** The file path text. */
 	private Text filePathText;
+	
+	/** The namespace text. */
 	private Text namespaceText;
+	
+	/** The model name text. */
 	private Text modelNameText;
+	
+	/** The model display name text. */
 	private Text modelDisplayNameText;
+	
+	/** The model display name. */
 	private String modelDisplayName;
+	
+	/** The project. */
 	private IProject project = null;
+	
+	/** The obj. */
 	private BusinessObjectModel obj;
+	
+	/**
+	 * Instantiates a new object model new dialog.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param parentDialog
+	 *            the parent dialog
+	 * @param obj
+	 *            the obj
+	 */
 	public ObjectModelNewDialog(Shell parent,FindModelDialog parentDialog, BusinessObjectModel obj) {
 		super(parent);
 		this.parentDialog=parentDialog;
 		this.obj=obj;
 	}
 
+		/**
+		 * Creates the dialog area.
+		 *
+		 * @author mqfdy
+		 * @param parent
+		 *            the parent
+		 * @return the control
+		 * @Date 2018-09-03 09:00
+		 */
 		public Control createDialogArea(Composite parent) {
 			Composite area = (Composite) super.createDialogArea(parent);
 			Composite container = new Composite(area, SWT.NONE);
@@ -146,7 +197,10 @@ public class ObjectModelNewDialog extends TitleAreaDialog {
 		}
 
 		/**
-		 * 浏览文件夹
+		 * 浏览文件夹.
+		 *
+		 * @author mqfdy
+		 * @Date 2018-09-03 09:00
 		 */
 		private void handleBrowse() {
 			ContainerSelectionDialog dialog = new ContainerSelectionDialog(
@@ -164,7 +218,10 @@ public class ObjectModelNewDialog extends TitleAreaDialog {
 		}
 
 		/**
-		 * 初始化监听器
+		 * 初始化监听器.
+		 *
+		 * @author mqfdy
+		 * @Date 2018-09-03 09:00
 		 */
 		private void initializeListener() {
 			filePathText.addModifyListener(new DataValidateListener());
@@ -173,22 +230,57 @@ public class ObjectModelNewDialog extends TitleAreaDialog {
 			modelDisplayNameText.addModifyListener(new DataValidateListener());
 		}
 
+		/**
+		 * Gets the model name.
+		 *
+		 * @author mqfdy
+		 * @return the model name
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getModelName() {
 			return modelNameText.getText();
 		}
 
+		/**
+		 * Gets the namespace.
+		 *
+		 * @author mqfdy
+		 * @return the namespace
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getNamespace() {
 			return namespaceText.getText();
 		}
 
+		/**
+		 * Gets the model display name.
+		 *
+		 * @author mqfdy
+		 * @return the model display name
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getModelDisplayName() {
 			return modelDisplayNameText.getText();
 		}
 
+		/**
+		 * Gets the file path.
+		 *
+		 * @author mqfdy
+		 * @return the file path
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getFilePath() {
 			return filePathText.getText();
 		}
 
+		/**
+		 * Gets the full file path.
+		 *
+		 * @author mqfdy
+		 * @return the full file path
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getFullFilePath() {
 			if (project != null) {
 				String[] path = filePathText.getText().split("/");
@@ -202,14 +294,32 @@ public class ObjectModelNewDialog extends TitleAreaDialog {
 				return "";
 		}
 
+		/**
+		 * Gets the full file name.
+		 *
+		 * @author mqfdy
+		 * @return the full file name
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getFullFileName() {
 			return getNamespace() + "." + getModelName() + OM_FILE_TYPE;
 		}
 
 		/**
-		 * 数据校验监听器
+		 * 数据校验监听器.
+		 *
+		 * @see DataValidateEvent
 		 */
 		class DataValidateListener implements ModifyListener {
+			
+			/**
+			 * Modify text.
+			 *
+			 * @author mqfdy
+			 * @param e
+			 *            the e
+			 * @Date 2018-09-03 09:00
+			 */
 			public void modifyText(ModifyEvent e) {
 				validateData();
 			}
@@ -217,7 +327,10 @@ public class ObjectModelNewDialog extends TitleAreaDialog {
 		}
 
 		/**
-		 * 校验设置是否正确
+		 * 校验设置是否正确.
+		 *
+		 * @author mqfdy
+		 * @Date 2018-09-03 09:00
 		 */
 		private void validateData() {
 			errorMessage=null;
@@ -281,6 +394,9 @@ public class ObjectModelNewDialog extends TitleAreaDialog {
 		}
 
 		
+		/**
+		 * 
+		 */
 		@Override
 		protected void okPressed() {
 			if(errorMessage!=null){
@@ -297,20 +413,37 @@ public class ObjectModelNewDialog extends TitleAreaDialog {
 			super.okPressed();			
 		}
 		
+		/**
+		 * @return
+		 */
 		@Override
 		protected Point getInitialSize() {
 			return new Point(400, 300);
 		}
 		
+		/**
+		 * Configure shell.
+		 *
+		 * @author mqfdy
+		 * @param newShell
+		 *            the new shell
+		 * @Date 2018-09-03 09:00
+		 */
 		protected void configureShell(Shell newShell) {
 			super.configureShell(newShell);
 			newShell.setText("创建业务对象模型");
 		}
 		
+		/**
+		 * @return
+		 */
 		protected int getShellStyle() {
 			return super.getShellStyle() | SWT.RESIZE | SWT.MAX |SWT.MIN ;
 		}
 		
+		/**
+		 * @return
+		 */
 		@Override
 		public boolean isHelpAvailable() {
 			return false;

@@ -31,15 +31,31 @@ import com.mqfdy.code.designer.views.modelresource.tree.ModelResourceContentProv
 import com.mqfdy.code.designer.views.modelresource.tree.ModelResourceLabelProvider;
 import com.mqfdy.code.designer.views.modelresource.tree.ModelResourceTreeSorter;
 import com.mqfdy.code.model.BusinessClass;
+// TODO: Auto-generated Javadoc
+
 /**
- * 
- * @author mqfdy
+ * The Class ReconstructionDialog.
  *
+ * @author mqfdy
  */
 public class ReconstructionDialog extends TitleAreaDialog {
+	
+	/** The old business class. */
 	BusinessClass oldBusinessClass;
+	
+	/** The new business class. */
 	BusinessClass newBusinessClass;
 
+	/**
+	 * Instantiates a new reconstruction dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param oldBusinessClass
+	 *            the old business class
+	 * @param newBusinessClass
+	 *            the new business class
+	 */
 	public ReconstructionDialog(Shell parentShell,
 			BusinessClass oldBusinessClass, BusinessClass newBusinessClass) {
 		super(parentShell);
@@ -47,6 +63,14 @@ public class ReconstructionDialog extends TitleAreaDialog {
 		this.newBusinessClass = newBusinessClass;
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void configureShell(Shell newShell) {
 		// TODO Auto-generated method stub
@@ -58,6 +82,15 @@ public class ReconstructionDialog extends TitleAreaDialog {
 		newShell.setImage(icon);
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		GridLayout gridLayout = new GridLayout(1, true);
@@ -77,6 +110,14 @@ public class ReconstructionDialog extends TitleAreaDialog {
 		return composite;
 	}
 
+	/**
+	 * Creates the tree.
+	 *
+	 * @author mqfdy
+	 * @param treeComposite
+	 *            the tree composite
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createTree(Composite treeComposite) {
 		TreeViewer treeViewer = new TreeViewer(treeComposite, SWT.NONE
 				| SWT.V_SCROLL);
@@ -89,6 +130,14 @@ public class ReconstructionDialog extends TitleAreaDialog {
 		treeViewer.refresh();
 	}
 
+	/**
+	 * Creates the tree 1.
+	 *
+	 * @author mqfdy
+	 * @param treeComposite
+	 *            the tree composite
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createTree1(Composite treeComposite) {
 		TreeViewer treeViewer = new TreeViewer(treeComposite, SWT.CHECK
 				| SWT.V_SCROLL);
@@ -112,7 +161,12 @@ public class ReconstructionDialog extends TitleAreaDialog {
 	// return parent;
 	// }
 	/**
-	 * 操作按钮
+	 * 操作按钮.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void createButtonsForButtonBar(Composite parent) {
 		createButton(parent, IDialogConstants.BACK_ID,
@@ -123,6 +177,14 @@ public class ReconstructionDialog extends TitleAreaDialog {
 				IDialogConstants.CANCEL_LABEL, false);
 	}
 
+	/**
+	 * Button pressed.
+	 *
+	 * @author mqfdy
+	 * @param buttonId
+	 *            the button id
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void buttonPressed(int buttonId) {
 		if (IDialogConstants.BACK_ID == buttonId) {
@@ -154,14 +216,24 @@ public class ReconstructionDialog extends TitleAreaDialog {
 	}
 
 	/**
-	 * ContentProvider
-	 * 
+	 * ContentProvider.
+	 *
 	 * @author mqfdy
-	 * 
 	 */
 	static class TreeContentProvider implements ITreeContentProvider {
+		
+		/** The rule. */
 		OperationInfo rule;
 
+		/**
+		 * Gets the children.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @return the children
+		 * @Date 2018-09-03 09:00
+		 */
 		public Object[] getChildren(Object element) {
 			// 返回树的下一级节点
 			// if(element instanceof OperationInfo){
@@ -177,11 +249,29 @@ public class ReconstructionDialog extends TitleAreaDialog {
 			return new Object[] {};
 		}
 
+		/**
+		 * Gets the parent.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @return the parent
+		 * @Date 2018-09-03 09:00
+		 */
 		public Object getParent(Object element) {
 
 			return null;
 		}
 
+		/**
+		 * Checks for children.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @return true, if successful
+		 * @Date 2018-09-03 09:00
+		 */
 		public boolean hasChildren(Object element) {
 			// if(element instanceof Validator){
 			// if(((Validator)element).getValidateRules().size()>0)
@@ -191,6 +281,15 @@ public class ReconstructionDialog extends TitleAreaDialog {
 			return false;
 		}
 
+		/**
+		 * Gets the elements.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @return the elements
+		 * @Date 2018-09-03 09:00
+		 */
 		public Object[] getElements(Object element) {
 			// 打印出树的输入信息，通常用户可以通过输入信息构建树
 			if (element instanceof List) {
@@ -200,26 +299,58 @@ public class ReconstructionDialog extends TitleAreaDialog {
 			return new Object[] {};
 		}
 
+		/**
+		 * 
+		 */
 		public void dispose() {
 			// 销毁
 		}
 
+		/**
+		 * Input changed.
+		 *
+		 * @author mqfdy
+		 * @param viewer
+		 *            the viewer
+		 * @param oldInput
+		 *            the old input
+		 * @param newInput
+		 *            the new input
+		 * @Date 2018-09-03 09:00
+		 */
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		}
 	}
 
 	/**
-	 * LabelProvider
-	 * 
+	 * LabelProvider.
+	 *
 	 * @author mqfdy
-	 * 
 	 */
 	class TreeLabelProvider implements ILabelProvider {
 
+		/**
+		 * Gets the image.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @return the image
+		 * @Date 2018-09-03 09:00
+		 */
 		public Image getImage(Object element) {
 			return null;
 		}
 
+		/**
+		 * Gets the text.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @return the text
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getText(Object element) {
 			if (element instanceof OperationInfo) {
 				return ((OperationInfo) element).getOperationTarget();
@@ -230,21 +361,51 @@ public class ReconstructionDialog extends TitleAreaDialog {
 			return "";
 		}
 
+		/**
+		 * Adds the listener.
+		 *
+		 * @author mqfdy
+		 * @param arg0
+		 *            the arg 0
+		 * @Date 2018-09-03 09:00
+		 */
 		public void addListener(ILabelProviderListener arg0) {
 			// TODO Auto-generated method stub
 
 		}
 
+		/**
+		 * 
+		 */
 		public void dispose() {
 			// TODO Auto-generated method stub
 
 		}
 
+		/**
+		 * Checks if is label property.
+		 *
+		 * @author mqfdy
+		 * @param arg0
+		 *            the arg 0
+		 * @param arg1
+		 *            the arg 1
+		 * @return true, if is label property
+		 * @Date 2018-09-03 09:00
+		 */
 		public boolean isLabelProperty(Object arg0, String arg1) {
 			// TODO Auto-generated method stub
 			return false;
 		}
 
+		/**
+		 * Removes the listener.
+		 *
+		 * @author mqfdy
+		 * @param arg0
+		 *            the arg 0
+		 * @Date 2018-09-03 09:00
+		 */
 		public void removeListener(ILabelProviderListener arg0) {
 			// TODO Auto-generated method stub
 

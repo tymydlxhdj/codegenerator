@@ -46,18 +46,22 @@ import com.mqfdy.code.model.BusinessOperation;
 import com.mqfdy.code.model.utils.DataType;
 import com.mqfdy.code.model.utils.TransactionType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务实体权限编辑页
- * 
+ * 业务实体权限编辑页.
+ *
  * @author mqfdy
- * 
  */
 public class BusinessClassOperationsPage extends Composite implements
 		IBusinessClassEditorPage {
 
+	/** The Constant GROUP_STANDARD_TEXT. */
 	public static final String GROUP_STANDARD_TEXT = "标准操作";
+	
+	/** The Constant GROUP_CUSTOM_TEXT. */
 	public static final String GROUP_CUSTOM_TEXT = "自定义操作";
 
+	/** The parent dialog. */
 	private BusinessClassEditorDialog parentDialog;
 
 	// private Group group_standard;
@@ -66,33 +70,83 @@ public class BusinessClassOperationsPage extends Composite implements
 	// private Table standardTable;
 	// private TableViewer standardTableViewer;
 
+	/** The custom table. */
 	private Table customTable;
+	
+	/** The custom table viewer. */
 	private TableViewer customTableViewer;
+	
+	/** The op button list. */
 	private List<Button> opButtonList = new ArrayList<Button>();
 	// private List<BusinessOperation> selectedOpList = new
+	/** The op list. */
 	// ArrayList<BusinessOperation>();
 	private List<BusinessOperation> opList = BusinessOperation
 			.getStandardOperations();
+	
+	/** The tool bar. */
 	private ToolBar toolBar;
 
+	/** The add operation action. */
 	private Action addOperationAction;// 新增
+	
+	/** The delete operation action. */
 	private Action deleteOperationAction;// 删除
+	
+	/** The up action. */
 	private Action upAction;
+	
+	/** The down action. */
 	private Action downAction;
+	
+	/** The top action. */
 	private Action topAction;
+	
+	/** The bottom action. */
 	private Action bottomAction;
 	// private Action saveOperationAction;//保存
 
+	/** The table items. */
 	private List<BusinessOperation> tableItems = new ArrayList<BusinessOperation>();
 
+	/**
+	 * The Class CustomOperationConentProvider.
+	 *
+	 * @author mqfdy
+	 */
 	private class CustomOperationConentProvider implements
 			IStructuredContentProvider {
+		
+		/**
+		 * 
+		 */
 		public void dispose() {
 		}
 
+		/**
+		 * Input changed.
+		 *
+		 * @author mqfdy
+		 * @param viewer
+		 *            the viewer
+		 * @param oldInput
+		 *            the old input
+		 * @param newInput
+		 *            the new input
+		 * @Date 2018-09-03 09:00
+		 */
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		}
 
+		/**
+		 * Gets the elements.
+		 *
+		 * @author mqfdy
+		 * @param inputElement
+		 *            the input element
+		 * @return the elements
+		 * @Date 2018-09-03 09:00
+		 */
 		@SuppressWarnings("rawtypes")
 		public Object[] getElements(Object inputElement) {
 			if (inputElement instanceof Collection) {
@@ -109,13 +163,40 @@ public class BusinessClassOperationsPage extends Composite implements
 		}
 	}
 
+	/**
+	 * The Class CustomOperationLabelProvider.
+	 *
+	 * @author mqfdy
+	 */
 	private class CustomOperationLabelProvider extends LabelProvider implements
 			ITableLabelProvider {
 
+		/**
+		 * Gets the column image.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param columnIndex
+		 *            the column index
+		 * @return the column image
+		 * @Date 2018-09-03 09:00
+		 */
 		public Image getColumnImage(Object element, int columnIndex) {
 			return null;
 		}
 
+		/**
+		 * Gets the column text.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param columnIndex
+		 *            the column index
+		 * @return the column text
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getColumnText(Object element, int columnIndex) {
 			BusinessOperation operation = (BusinessOperation) element;
 			switch (columnIndex) {
@@ -144,6 +225,16 @@ public class BusinessClassOperationsPage extends Composite implements
 		}
 	}
 
+	/**
+	 * Instantiates a new business class operations page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param parentDialog
+	 *            the parent dialog
+	 */
 	public BusinessClassOperationsPage(Composite parent, int style,
 			BusinessClassEditorDialog parentDialog) {
 		super(parent, style);
@@ -153,8 +244,12 @@ public class BusinessClassOperationsPage extends Composite implements
 	}
 
 	/**
-	 * This method initializes this
-	 * 
+	 * This method initializes this.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createContent(Composite composite) {
 		GridLayout gridLayout = new GridLayout();
@@ -266,6 +361,12 @@ public class BusinessClassOperationsPage extends Composite implements
 		});
 	}
 
+	/**
+	 * Make actions.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void makeActions() {
 		addOperationAction = new AddOperationAction(parentDialog);
 		deleteOperationAction = new Action(ActionTexts.MODEL_ELEMENT_DELETE,
@@ -433,6 +534,9 @@ public class BusinessClassOperationsPage extends Composite implements
 		manager.update(true);
 	}
 
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		List<BusinessOperation> temp = parentDialog.getBusinessClassCopy()
 				.getOperations();
@@ -468,11 +572,17 @@ public class BusinessClassOperationsPage extends Composite implements
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 		for (int i = 0; i < tableItems.size(); i++) {
 			BusinessOperation temp = tableItems.get(i);
@@ -496,6 +606,16 @@ public class BusinessClassOperationsPage extends Composite implements
 	// return selectedOpList;
 	// }
 
+	/**
+	 * Reset order num.
+	 *
+	 * @author mqfdy
+	 * @param operation
+	 *            the operation
+	 * @param type
+	 *            the type
+	 * @Date 2018-09-03 09:00
+	 */
 	private void resetOrderNum(BusinessOperation operation, String type) {
 		if ("up".equals(type)) {
 			for (int i = 0; i < tableItems.size(); i++) {
@@ -539,16 +659,21 @@ public class BusinessClassOperationsPage extends Composite implements
 	}
 
 	/**
-	 * 刷新表格
+	 * 刷新表格.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void refreshTable() {
 		customTableViewer.refresh();
 	}
 
 	/**
-	 * 获取当前表格的数据
-	 * 
-	 * @return
+	 * 获取当前表格的数据.
+	 *
+	 * @author mqfdy
+	 * @return the table items
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<BusinessOperation> getTableItems() {
 		return tableItems;

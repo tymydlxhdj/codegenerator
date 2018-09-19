@@ -14,82 +14,109 @@ import com.mqfdy.code.designer.editor.part.OmConnectionEditPart;
 import com.mqfdy.code.designer.editor.utils.IConstants;
 import com.mqfdy.code.model.Association;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * 关系连线对象的显示Figure
- * 
+ * 关系连线对象的显示Figure.
+ *
  * @author mqfdy
- * 
  */
 public class RelationFigure extends ConnectionFigure {
 	// 箭头大小设置
 	// private static final int ARROW_SIZE = 2;
 
+	/** The start mult U dist. */
 	// distance of startMultiplicity from startFigure
 	private int startMultUDist = 8;
 
+	/** The start mult V dist. */
 	private int startMultVDist = -5;
 
+	/** The start role name U dist. */
 	private int startRoleNameUDist = 8;
 
+	/** The start role name V dist. */
 	private int startRoleNameVDist = 5;
 
+	/** The end role name U dist. */
 	private int endRoleNameUDist = 0;
 
+	/** The end role name V dist. */
 	private int endRoleNameVDist = 5;
 
+	/** The start mult desc U dist. */
 	// distance of startMultiplicityDescription from startFigure
 	private int startMultDescUDist = 0;
 
+	/** The start mult desc V dist. */
 	private int startMultDescVDist = 5;
 
+	/** The end mult U dist. */
 	// distance of endMultiplicity from endFigure, depends on type
 	private int endMultUDist = 8;
 
+	/** The end mult V dist. */
 	private int endMultVDist = -5;
 
+	/** The end mult desc U dist. */
 	// distance of endMultiplicityDescription from endFigure, depends on type
 	private int endMultDescUDist = 0;
 
+	/** The end mult label V dist. */
 	private int endMultLabelVDist = 5;
 
 	// possible Labels owned by connection (not all may be used)
+	/** The start multiplicity label. */
 	// multiplicity Labels
 	private Label startMultiplicityLabel = new Label();
+	
+	/** The start role name label. */
 	private Label startRoleNameLabel = new Label();
+	
+	/** The end role name label. */
 	private Label endRoleNameLabel = new Label();
 
+	/** The start multiplicity description label. */
 	private Label startMultiplicityDescriptionLabel = new Label();
 
+	/** The end multiplicity label. */
 	private Label endMultiplicityLabel = new Label();
 
+	/** The end multiplicity description label. */
 	private Label endMultiplicityDescriptionLabel = new Label();
 
+	/** The caption label. */
 	// caption of connection
 	private Label captionLabel = new Label();
 
+	/** The arrow decoration. */
 	// decorations for connection
 	private PolylineDecoration arrowDecoration;
+	
+	/** The arrow decoration 2. */
 	private PolylineDecoration arrowDecoration2;
 
+	/** The aggregation decoration. */
 	private PolygonDecoration aggregationDecoration;
 
+	/** The composition decoration. */
 	private PolygonDecoration compositionDecoration;
 
+	/** The error decoration. */
 	private PolygonDecoration errorDecoration;
+	
+	/** The as. */
 	private Association as;
 
 	/**
 	 * Simple constructor to create a directed association, aggregation or
 	 * composition with any labels.
-	 * 
-	 * @param isDirected
-	 * @param b
-	 * 
+	 *
 	 * @param type
 	 *            连线类型
 	 * @param as
+	 *            the as
 	 * @param relationEditPart
+	 *            the relation edit part
 	 * @see IConstants
 	 */
 	public RelationFigure(String type, Association as,
@@ -115,10 +142,7 @@ public class RelationFigure extends ConnectionFigure {
 	/**
 	 * Constructor of a new RelationFigure. Creates a new PolylineConnetion,
 	 * adds a decoration corresponding to the uml2-type to the connection
-	 * 
-	 * @param isDirected
-	 *            indicates connection is directed. If so an arrow is added to
-	 *            its end point.
+	 *
 	 * @param type
 	 *            indicate the RelationFigureType : aggregation, association or
 	 *            composition
@@ -136,7 +160,8 @@ public class RelationFigure extends ConnectionFigure {
 	 *            连接描述
 	 * @param hasQualifier
 	 *            目前未使用
-	 * @param relationEditPart 
+	 * @param relationEditPart
+	 *            the relation edit part
 	 */
 	public RelationFigure(String type, String startMultiplicity,
 			String endMultiplicity, String startMultCaption,
@@ -214,10 +239,12 @@ public class RelationFigure extends ConnectionFigure {
 	 * Sets the type of the connection : aggregation, association or composition
 	 * The corresponding decoration (nothing or a rhombus) is set in a certain
 	 * distance.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param type
 	 *            the type of RelationFigure : aggreagtion, association or
 	 *            composition (uml2)
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setType(String type) {
 		if (type.equals(IConstants.ASSOCIATION_STR)) {
@@ -261,11 +288,14 @@ public class RelationFigure extends ConnectionFigure {
 	}
 
 	/**
-	 * 设置外键连线的箭头
-	 * 
-	 * @param directed
-	 *            true：外键单向关联，只有终点有箭头；false：外键双向关联，源点和终点都有箭头
-	 * 
+	 * 设置外键连线的箭头.
+	 *
+	 * @author mqfdy
+	 * @param isDirectedA
+	 *            the is directed A
+	 * @param isDirectedB
+	 *            the is directed B
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setDirected(boolean isDirectedA, boolean isDirectedB) {
 		if (isDirectedA == isDirectedB) {
@@ -283,8 +313,11 @@ public class RelationFigure extends ConnectionFigure {
 	 * Set the description of the RelationFigure. A Label is added in the middle
 	 * of the connection. Attention: Should be called after all other set*()
 	 * methods!
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param caption
+	 *            the new caption
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setCaption(String caption) {
 		// create Label
@@ -317,9 +350,11 @@ public class RelationFigure extends ConnectionFigure {
 
 	/**
 	 * Set multiplicity at end point of connection.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param endMultiplicity
 	 *            the multiplicity type to be set.
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setEndMultiplicity(String endMultiplicity) {
 		if (!endMultiplicity.equals("")) {
@@ -330,9 +365,11 @@ public class RelationFigure extends ConnectionFigure {
 
 	/**
 	 * Set multiplicity type at start point of the connection.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param startMultiplicity
 	 *            the type of multiplicity to be set.
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setStartMultiplicity(String startMultiplicity) {
 		if (!startMultiplicity.equals("")) {
@@ -341,6 +378,14 @@ public class RelationFigure extends ConnectionFigure {
 		}
 	}
 
+	/**
+	 * Sets the start role name.
+	 *
+	 * @author mqfdy
+	 * @param startRoleName
+	 *            the new start role name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setStartRoleName(String startRoleName) {
 		if (startRoleName != null /* && !startRoleName.equals("") */) {
 			addDecoration(startRoleNameLabel, startRoleName,
@@ -348,6 +393,14 @@ public class RelationFigure extends ConnectionFigure {
 		}
 	}
 
+	/**
+	 * Sets the end role name.
+	 *
+	 * @author mqfdy
+	 * @param endRoleName
+	 *            the new end role name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setEndRoleName(String endRoleName) {
 		if (endRoleName != null /* && !endRoleName.equals("") */) {
 			addDecoration(endRoleNameLabel, endRoleName, endRoleNameUDist,
@@ -357,9 +410,11 @@ public class RelationFigure extends ConnectionFigure {
 
 	/**
 	 * Set description of multiplicity at end point of the connection.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param endMultiplicityDescription
 	 *            the description to be set.
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setEndMultiplicityDescription(String endMultiplicityDescription) {
 		if (!endMultiplicityDescription.equals("")) {
@@ -370,10 +425,12 @@ public class RelationFigure extends ConnectionFigure {
 	}
 
 	/**
-	 * Set description of multiplicity at start point of the connection
-	 * 
+	 * Set description of multiplicity at start point of the connection.
+	 *
+	 * @author mqfdy
 	 * @param startMultiplicityDescription
 	 *            the description to be set.
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setStartMultiplicityDescription(
 			String startMultiplicityDescription) {
@@ -384,6 +441,9 @@ public class RelationFigure extends ConnectionFigure {
 
 	/**
 	 * Construct an empty figure : a connection line without any decoration.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void emptyFigure() {
 		setSourceDecoration(null);
@@ -391,11 +451,11 @@ public class RelationFigure extends ConnectionFigure {
 	}
 
 	/**
-	 * add text-decoration to connection
-	 * 
+	 * add text-decoration to connection.
+	 *
+	 * @author mqfdy
 	 * @param label
 	 *            The label which should be (re)used.
-	 * 
 	 * @param caption
 	 *            the string to be added to connection
 	 * @param uDist
@@ -406,6 +466,7 @@ public class RelationFigure extends ConnectionFigure {
 	 *            determines if decoration is added to the end point or the
 	 *            start point of the connection true - end point false - start
 	 *            point
+	 * @Date 2018-09-03 09:00
 	 */
 	private void addDecoration(Label label, String caption, int uDist,
 			int vDist, boolean end) {
@@ -423,6 +484,13 @@ public class RelationFigure extends ConnectionFigure {
 		add(label, endpointLocator);
 	}
 
+	/**
+	 * Gets the ass.
+	 *
+	 * @author mqfdy
+	 * @return the ass
+	 * @Date 2018-09-03 09:00
+	 */
 	public Association getAss() {
 		return as;
 	}

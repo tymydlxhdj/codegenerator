@@ -12,29 +12,26 @@ import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 
+// TODO: Auto-generated Javadoc
 /**
- * 枚举对象
- * 
+ * 枚举对象.
+ *
  * @author mqfdy
- * 
  */
 public class Enumeration extends AbstractModelElement {
 
-	/**
-	 * 所属包
-	 */
+	/** 所属包. */
 	private ModelPackage belongPackage;
 
-	/**
-	 * 枚举信息
-	 */
+	/** 枚举信息. */
 	private List<EnumElement> elements;
 
-	/**
-	 * 版本信息
-	 */
+	/** 版本信息. */
 	private VersionInfo versionInfo;
 
+	/**
+	 * Instantiates a new enumeration.
+	 */
 	public Enumeration() {
 		super();
 		elements = new ArrayList<EnumElement>();
@@ -42,9 +39,10 @@ public class Enumeration extends AbstractModelElement {
 	}
 
 	/**
-	 * 通过 XML 对象构造 Enumeration
-	 * 
+	 * 通过 XML 对象构造 Enumeration.
+	 *
 	 * @param enumerationElement
+	 *            the enumeration element
 	 */
 	@SuppressWarnings("unchecked")
 	public Enumeration(Element enumerationElement) {
@@ -74,6 +72,10 @@ public class Enumeration extends AbstractModelElement {
 		}
 	}
 
+	/**
+	 * @param enumerationsElement
+	 * @return
+	 */
 	public Element generateXmlElement(Element enumerationsElement) {
 		Element enumerationElement = enumerationsElement
 				.addElement("Enumeration");
@@ -97,6 +99,13 @@ public class Enumeration extends AbstractModelElement {
 		return enumerationElement;
 	}
 	
+	/**
+	 * Generate xml element.
+	 *
+	 * @author mqfdy
+	 * @return the document
+	 * @Date 2018-09-03 09:00
+	 */
 	public Document generateXmlElement() {
 		Document document = DocumentHelper.createDocument();
 		Element enumerationElement = document.addElement("Enumeration");
@@ -120,6 +129,13 @@ public class Enumeration extends AbstractModelElement {
 		return document;
 	}
 	
+	/**
+	 * To xml.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public String toXml(){
         String faceXml = "";
         
@@ -163,51 +179,120 @@ public class Enumeration extends AbstractModelElement {
 	
 	
 
+	/**
+	 * @return
+	 */
 	public int getPriority() {
 		return IModelElement.PRIORITY_ENUMERATION;
 	}
 
+	/**
+	 * Gets the elements.
+	 *
+	 * @author mqfdy
+	 * @return the elements
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<EnumElement> getElements() {
 		return elements;
 	}
 
+	/**
+	 * Sets the elements.
+	 *
+	 * @author mqfdy
+	 * @param elements
+	 *            the new elements
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setElements(List<EnumElement> elements) {
 		this.elements = elements;
 	}
 
+	/**
+	 * Adds the element.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addElement(EnumElement element) {
 		this.elements.add(element);
 	}
 
+	/**
+	 * Gets the belong package.
+	 *
+	 * @author mqfdy
+	 * @return the belong package
+	 * @Date 2018-09-03 09:00
+	 */
 	public ModelPackage getBelongPackage() {
 		return belongPackage;
 	}
 
+	/**
+	 * Sets the belong package.
+	 *
+	 * @author mqfdy
+	 * @param belongPackage
+	 *            the new belong package
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBelongPackage(ModelPackage belongPackage) {
 		this.belongPackage = belongPackage;
 	}
 
+	/**
+	 * @return
+	 */
 	public AbstractModelElement getParent() {
 		return this.belongPackage.getEntityPackage();
 	}
 
+	/**
+	 * @return
+	 */
 	public List<EnumElement> getChildren() {
 		return this.elements;
 	}
 
+	/**
+	 * Gets the version info.
+	 *
+	 * @author mqfdy
+	 * @return the version info
+	 * @Date 2018-09-03 09:00
+	 */
 	public VersionInfo getVersionInfo() {
 		return versionInfo;
 	}
 
+	/**
+	 * Sets the version info.
+	 *
+	 * @author mqfdy
+	 * @param versionInfo
+	 *            the new version info
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setVersionInfo(VersionInfo versionInfo) {
 		this.versionInfo = versionInfo;
 	}
+	
+	/**
+	 * @return
+	 */
 	public Enumeration cloneChangeId() {
 		Enumeration bc = new Enumeration();
 		copyChangeId(bc);
 		return bc;
 	}
 
+	/**
+	 * @param dest
+	 */
 	protected void copyChangeId(AbstractModelElement dest) {
 		super.copyChangeId(dest);
 		Enumeration destBc = ((Enumeration) dest);

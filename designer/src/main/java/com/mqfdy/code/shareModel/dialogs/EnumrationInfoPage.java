@@ -49,15 +49,27 @@ import com.mqfdy.code.model.BusinessOperation;
 import com.mqfdy.code.model.Enumeration;
 import com.mqfdy.code.shareModel.providers.DataGridLabelProvider;
 import com.mqfdy.code.shareModel.providers.DataGridTableContentProvider;
+// TODO: Auto-generated Javadoc
+
 /**
- * 显示业务实体文件包含的所有枚举类型
- * @author mqfdy
+ * 显示业务实体文件包含的所有枚举类型.
  *
+ * @author mqfdy
  */
 public class EnumrationInfoPage extends Composite{
+	
+	/** The table viewer. */
 	private TableViewer tableViewer;
+	
+	/** The table. */
 	public Table table;
 
+	/**
+	 * Instantiates a new enumration info page.
+	 *
+	 * @param parent
+	 *            the parent
+	 */
 	public EnumrationInfoPage(Composite parent) {
 		super(parent, SWT.NONE);
 		createContents(this);
@@ -65,8 +77,12 @@ public class EnumrationInfoPage extends Composite{
 	
 
 	/**
-	 * 创建界面
+	 * 创建界面.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createContents(Composite composite) {
 			composite.setLayout(new GridLayout(1,false));			
@@ -116,8 +132,12 @@ public class EnumrationInfoPage extends Composite{
 	}
 	
 	/**
-	 * 初始化表格数据(根据业务模型文件)
+	 * 初始化表格数据(根据业务模型文件).
+	 *
+	 * @author mqfdy
 	 * @param obj
+	 *            the obj
+	 * @Date 2018-09-03 09:00
 	 */
 	public void initData(Object obj){
 		BusinessObjectModel model=(BusinessObjectModel)obj;

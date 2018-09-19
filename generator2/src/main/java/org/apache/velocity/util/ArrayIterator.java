@@ -24,6 +24,7 @@ import java.util.NoSuchElementException;
 import java.lang.reflect.Array;
 
 
+// TODO: Auto-generated Javadoc
 /**
  *  <p>
  *  An Iterator wrapper for an Object[]. This will
@@ -53,6 +54,8 @@ public class ArrayIterator implements Iterator
      * The current position and size in the array.
      */
     private int pos;
+    
+    /** The size. */
     private int size;
 
     /**
@@ -80,10 +83,12 @@ public class ArrayIterator implements Iterator
     }
 
     /**
-     * Move to next element in the array.
-     *
-     * @return The next object in the array.
-     */
+	 * Move to next element in the array.
+	 *
+	 * @author mqfdy
+	 * @return The next object in the array.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public Object next()
     {
         if (pos < size )
@@ -98,18 +103,23 @@ public class ArrayIterator implements Iterator
     }
 
     /**
-     * Check to see if there is another element in the array.
-     *
-     * @return Whether there is another element.
-     */
+	 * Check to see if there is another element in the array.
+	 *
+	 * @author mqfdy
+	 * @return Whether there is another element.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public boolean hasNext()
     {
         return (pos < size );
     }
 
     /**
-     * No op--merely added to satify the <code>Iterator</code> interface.
-     */
+	 * No op--merely added to satify the <code>Iterator</code> interface.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:32
+	 */
     public void remove()
     {
         throw new UnsupportedOperationException();

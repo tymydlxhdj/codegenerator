@@ -15,11 +15,26 @@ import com.mqfdy.code.springboot.core.util.ExceptionUtil;
 import com.mqfdy.code.springboot.core.util.Operation2Runnable;
 
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class UIJobUtil.
+ *
  * @author lenovo
  */
 public class UIJobUtil {
 
+	/**
+	 * Busy cursor while.
+	 *
+	 * @author mqfdy
+	 * @param runnable
+	 *            the runnable
+	 * @throws InvocationTargetException
+	 *             the invocation target exception
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void busyCursorWhile(Operation2Runnable runnable) throws InvocationTargetException, InterruptedException {
 		IWorkbench wb = PlatformUI.getWorkbench();
 		IProgressService ps = wb.getProgressService();
@@ -27,10 +42,18 @@ public class UIJobUtil {
 	}
 
 	/**
-	 * Execute a runable while showing a modal progress dialog. Note that it is preferred in general to
-	 * use "busyCursorWhile". Use this method only in the context of modal
-	 * dialog, where busyCursorwhile will not switch to showing a progress dialog (because the dialog is
-	 * suppressed when another modal dialog is already open).
+	 * Execute a runable while showing a modal progress dialog. Note that it is
+	 * preferred in general to use "busyCursorWhile". Use this method only in
+	 * the context of modal dialog, where busyCursorwhile will not switch to
+	 * showing a progress dialog (because the dialog is suppressed when another
+	 * modal dialog is already open).
+	 *
+	 * @author mqfdy
+	 * @param shell
+	 *            the shell
+	 * @param runnable
+	 *            the runnable
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void withProgressDialog(Shell shell, final Operation2Runnable runnable) {
 		ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(shell);

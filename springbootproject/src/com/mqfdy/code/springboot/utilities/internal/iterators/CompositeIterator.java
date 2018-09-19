@@ -16,10 +16,14 @@ import java.util.NoSuchElementException;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * A <code>CompositeIterator</code> wraps a collection
- * of <code>Iterator</code>s and makes them appear to be a single
- * <code>Iterator</code>.
+ * A <code>CompositeIterator</code> wraps a collection of <code>Iterator</code>s
+ * and makes them appear to be a single <code>Iterator</code>.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class CompositeIterator<E>
 	implements Iterator<E>
@@ -33,6 +37,9 @@ public class CompositeIterator<E>
 
 	/**
 	 * Construct an iterator with the specified collection of iterators.
+	 *
+	 * @param iterators
+	 *            the iterators
 	 */
 	public CompositeIterator(Collection<? extends Iterator<? extends E>> iterators) {
 		this(iterators.iterator());
@@ -40,6 +47,9 @@ public class CompositeIterator<E>
 
 	/**
 	 * Construct an iterator with the specified collection of iterators.
+	 *
+	 * @param iterators
+	 *            the iterators
 	 */
 	public CompositeIterator(Iterator<? extends Iterator<? extends E>> iterators) {
 		super();
@@ -47,8 +57,13 @@ public class CompositeIterator<E>
 	}
 
 	/**
-	 * Construct an iterator with the specified object prepended
-	 * to the specified iterator.
+	 * Construct an iterator with the specified object prepended to the
+	 * specified iterator.
+	 *
+	 * @param object
+	 *            the object
+	 * @param iterator
+	 *            the iterator
 	 */
 	@SuppressWarnings("unchecked")
 	public CompositeIterator(E object, Iterator<? extends E> iterator) {
@@ -56,8 +71,13 @@ public class CompositeIterator<E>
 	}
 
 	/**
-	 * Construct an iterator with the specified object appended
-	 * to the specified iterator.
+	 * Construct an iterator with the specified object appended to the specified
+	 * iterator.
+	 *
+	 * @param iterator
+	 *            the iterator
+	 * @param object
+	 *            the object
 	 */
 	@SuppressWarnings("unchecked")
 	public CompositeIterator(Iterator<? extends E> iterator, E object) {
@@ -66,6 +86,9 @@ public class CompositeIterator<E>
 
 	/**
 	 * Construct an iterator with the specified iterators.
+	 *
+	 * @param iterators
+	 *            the iterators
 	 */
 	public CompositeIterator(Iterator<? extends E>... iterators) {
 		this(new ArrayIterator<Iterator<? extends E>>(iterators));

@@ -14,21 +14,25 @@ import java.util.Iterator;
 
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
+// TODO: Auto-generated Javadoc
 /**
- * A <code>CloneIterator</code> iterates over a copy of a collection,
- * allowing for concurrent access to the original collection.
+ * A <code>CloneIterator</code> iterates over a copy of a collection, allowing
+ * for concurrent access to the original collection.
  * <p>
  * The original collection passed to the <code>CloneIterator</code>'s
- * constructor should be synchronized; otherwise you run the risk of
- * a corrupted collection.
+ * constructor should be synchronized; otherwise you run the risk of a corrupted
+ * collection.
  * <p>
  * By default, a <code>CloneIterator</code> does not support the
- * <code>#remove()</code> operation; this is because it does not have
- * access to the original collection. But if the <code>CloneIterator</code>
- * is supplied with an <code>Mutator</code> it will delegate the
- * <code>#remove()</code> operation to the <code>Mutator</code>.
- * Alternatively, a subclass can override the <code>#remove(Object)</code>
- * method.
+ * <code>#remove()</code> operation; this is because it does not have access to
+ * the original collection. But if the <code>CloneIterator</code> is supplied
+ * with an <code>Mutator</code> it will delegate the <code>#remove()</code>
+ * operation to the <code>Mutator</code>. Alternatively, a subclass can override
+ * the <code>#remove(Object)</code> method.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class CloneIterator<E>
 	implements Iterator<E>
@@ -42,18 +46,25 @@ public class CloneIterator<E>
 	// ********** constructors **********
 
 	/**
-	 * Construct an iterator on a copy of the specified collection.
-	 * The <code>#remove()</code> method will not be supported,
-	 * unless a subclass overrides the <code>#remove(Object)</code>.
+	 * Construct an iterator on a copy of the specified collection. The
+	 * <code>#remove()</code> method will not be supported, unless a subclass
+	 * overrides the <code>#remove(Object)</code>.
+	 *
+	 * @param c
+	 *            the c
 	 */
 	public CloneIterator(Collection<? extends E> c) {
 		this(c, Mutator.ReadOnly.<E>instance());
 	}
 
 	/**
-	 * Construct an iterator on a copy of the specified collection.
-	 * Use the specified mutator to remove objects from the
-	 * original collection.
+	 * Construct an iterator on a copy of the specified collection. Use the
+	 * specified mutator to remove objects from the original collection.
+	 *
+	 * @param c
+	 *            the c
+	 * @param mutator
+	 *            the mutator
 	 */
 	public CloneIterator(Collection<? extends E> c, Mutator<E> mutator) {
 		super();
@@ -88,10 +99,13 @@ public class CloneIterator<E>
 	// ********** internal methods **********
 
 	/**
-	 * The collection passed in during construction held Es,
-	 * so this cast is not a problem. We need this cast because
-	 * all the elements of the original collection were copied into
-	 * an object array (Object[]).
+	 * The collection passed in during construction held Es, so this cast is not
+	 * a problem. We need this cast because all the elements of the original
+	 * collection were copied into an object array (Object[]).
+	 *
+	 * @author mqfdy
+	 * @return the e
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	protected E nestedNext() {
@@ -101,8 +115,13 @@ public class CloneIterator<E>
 	/**
 	 * Remove the specified element from the original collection.
 	 * <p>
-	 * This method can be overridden by a subclass as an
-	 * alternative to building an <code>Mutator</code>.
+	 * This method can be overridden by a subclass as an alternative to building
+	 * an <code>Mutator</code>.
+	 *
+	 * @author mqfdy
+	 * @param e
+	 *            the e
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void remove(E e) {
 		this.mutator.remove(e);
@@ -117,9 +136,13 @@ public class CloneIterator<E>
 	//********** member interface **********
 
 	/**
-	 * Used by <code>CloneIterator</code> to remove
-	 * elements from the original collection; since the iterator
-	 * does not have direct access to the original collection.
+	 * Used by <code>CloneIterator</code> to remove elements from the original
+	 * collection; since the iterator does not have direct access to the
+	 * original collection.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
 	 */
 	public interface Mutator<T> {
 

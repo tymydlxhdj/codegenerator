@@ -18,6 +18,7 @@ import org.eclipse.gef.KeyHandler;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;
 
+// TODO: Auto-generated Javadoc
 /**
  * An extended KeyHandler which processes default keystrokes for common
  * navigation in a GraphicalViewer. This class can be used as a KeyHandler too;
@@ -39,6 +40,7 @@ import org.eclipse.swt.events.KeyEvent;
  */
 public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 
+	/** The counter. */
 	int counter;
 
 	/**
@@ -46,6 +48,8 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	 * reference.
 	 */
 	private WeakReference cachedNode;
+	
+	/** The viewer. */
 	private GraphicalViewer viewer;
 
 	/**
@@ -59,8 +63,14 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	}
 
 	/**
+	 * Accept connection.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
 	 * @return <code>true</code> if key pressed indicates a connection
 	 *         traversal/selection
+	 * @Date 2018-09-03 09:00
 	 */
 	boolean acceptConnection(KeyEvent event) {
 		return event.character == '/' || event.character == '?'
@@ -69,8 +79,14 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	}
 
 	/**
+	 * Accept into container.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
 	 * @return <code>true</code> if the keys pressed indicate to traverse inside
 	 *         a container
+	 * @Date 2018-09-03 09:00
 	 */
 	boolean acceptIntoContainer(KeyEvent event) {
 		return ((event.stateMask & SWT.ALT) != 0)
@@ -78,8 +94,14 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	}
 
 	/**
+	 * Accept leave connection.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
 	 * @return <code>true</code> if the keys pressed indicate to stop
 	 *         traversing/selecting connection
+	 * @Date 2018-09-03 09:00
 	 */
 	boolean acceptLeaveConnection(KeyEvent event) {
 		//int key = event.keyCode;
@@ -91,8 +113,14 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	}
 
 	/**
+	 * Accept leave contents.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
 	 * @return <code>true</code> if the viewer's contents has focus and one of
 	 *         the arrow keys is pressed
+	 * @Date 2018-09-03 09:00
 	 */
 	boolean acceptLeaveContents(KeyEvent event) {
 //		int key = event.keyCode;
@@ -103,14 +131,29 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	}
 
 	/**
+	 * Accept out of.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
 	 * @return <code>true</code> if the keys pressed indicate to traverse to the
 	 *         parent of the currently focused EditPart
+	 * @Date 2018-09-03 09:00
 	 */
 	boolean acceptOutOf(KeyEvent event) {
 		return ((event.stateMask & SWT.ALT) != 0)
 				&& (event.keyCode == SWT.ARROW_UP);
 	}
 
+	/**
+	 * Accept scroll.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	boolean acceptScroll(KeyEvent event) {
 		return false;
 		// ((event.stateMask & SWT.CTRL) != 0
@@ -124,7 +167,8 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	/**
 	 * Given a connection on a node, this method finds the next (or the
 	 * previous) connection of that node.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param node
 	 *            The EditPart whose connections are being traversed
 	 * @param current
@@ -133,6 +177,8 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	 * @param forward
 	 *            <code>true</code> if the next connection has to be found;
 	 *            false otherwise
+	 * @return the connection edit part
+	 * @Date 2018-09-03 09:00
 	 */
 	ConnectionEditPart findConnection(GraphicalEditPart node,
 			ConnectionEditPart current, boolean forward) {
@@ -152,6 +198,15 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 				% connections.size());
 	}
 
+	/**
+	 * Gets the valid navigation targets.
+	 *
+	 * @author mqfdy
+	 * @param candidateEditParts
+	 *            the candidate edit parts
+	 * @return the valid navigation targets
+	 * @Date 2018-09-03 09:00
+	 */
 	private List getValidNavigationTargets(List candidateEditParts) {
 		List validNavigationTargetEditParts = new ArrayList();
 		for (int i = 0; i < candidateEditParts.size(); i++) {
@@ -167,7 +222,8 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	 * Given an absolute point (pStart) and a list of EditParts, this method
 	 * finds the closest EditPart (except for the one to be excluded) in the
 	 * given direction.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param siblings
 	 *            List of sibling EditParts
 	 * @param pStart
@@ -177,7 +233,8 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	 *            PositionConstants
 	 * @param exclude
 	 *            The EditPart to be excluded from the search
-	 * 
+	 * @return the graphical edit part
+	 * @Date 2018-09-03 09:00
 	 */
 	GraphicalEditPart findSibling(List siblings, Point pStart, int direction,
 			EditPart exclude) {
@@ -210,8 +267,12 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	/**
 	 * Figures' navigation points are used to determine their direction compared
 	 * to one another, and the distance between them.
-	 * 
+	 *
+	 * @author mqfdy
+	 * @param figure
+	 *            the figure
 	 * @return the center of the given figure
+	 * @Date 2018-09-03 09:00
 	 */
 	Point getNavigationPoint(IFigure figure) {
 		return figure.getBounds().getCenter();
@@ -220,6 +281,10 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	/**
 	 * Returns the cached node. It is possible that the node is not longer in
 	 * the viewer but has not been garbage collected yet.
+	 *
+	 * @author mqfdy
+	 * @return the cached node
+	 * @Date 2018-09-03 09:00
 	 */
 	private GraphicalEditPart getCachedNode() {
 		if (cachedNode == null)
@@ -230,7 +295,11 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	}
 
 	/**
+	 * Gets the focus edit part.
+	 *
+	 * @author mqfdy
 	 * @return the EditPart that has focus
+	 * @Date 2018-09-03 09:00
 	 */
 	protected GraphicalEditPart getFocusEditPart() {
 		return (GraphicalEditPart) getViewer().getFocusEditPart();
@@ -259,14 +328,18 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 
 	/**
 	 * Returns the viewer on which this key handler was created.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return the viewer
+	 * @Date 2018-09-03 09:00
 	 */
 	protected GraphicalViewer getViewer() {
 		return viewer;
 	}
 
 	/**
+	 * Checks if is viewer mirrored.
+	 *
 	 * @return <code>true</code> if the viewer is mirrored
 	 * @since 3.4
 	 */
@@ -276,7 +349,10 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 
 	/**
 	 * Extended to process key events described above.
-	 * 
+	 *
+	 * @param event
+	 *            the event
+	 * @return true, if successful
 	 * @see org.eclipse.gef.KeyHandler#keyPressed(org.eclipse.swt.events.KeyEvent)
 	 */
 	public boolean keyPressed(KeyEvent event) {
@@ -349,6 +425,11 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 
 	/**
 	 * This method navigates through connections based on the keys pressed.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	void navigateConnections(KeyEvent event) {
 		GraphicalEditPart focus = getFocusEditPart();
@@ -372,6 +453,15 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 		navigateTo(next, event);
 	}
 
+	/**
+	 * Checks if is valid navigation target.
+	 *
+	 * @author mqfdy
+	 * @param editPart
+	 *            the edit part
+	 * @return true, if is valid navigation target
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean isValidNavigationTarget(EditPart editPart) {
 		return editPart.isSelectable();
 	}
@@ -379,6 +469,11 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	/**
 	 * This method traverses to the closest child of the currently focused
 	 * EditPart, if it has one.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	void navigateIntoContainer(KeyEvent event) {
 		GraphicalEditPart focus = getFocusEditPart();
@@ -405,6 +500,14 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 
 	/**
 	 * Not yet implemented.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @param direction
+	 *            the direction
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	boolean navigateJumpSibling(KeyEvent event, int direction) {
 		// TODO: Implement navigateJumpSibling() (for PGUP, PGDN, HOME and END
@@ -414,13 +517,16 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 
 	/**
 	 * Traverses to the next sibling in the given direction.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param event
 	 *            the KeyEvent for the keys that were pressed to trigger this
 	 *            traversal
 	 * @param direction
 	 *            PositionConstants.* indicating the direction in which to
 	 *            traverse
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	boolean navigateNextSibling(KeyEvent event, int direction) {
 		return navigateNextSibling(event, direction, getNavigationSiblings());
@@ -429,13 +535,18 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	/**
 	 * Traverses to the closest EditPart in the given list that is also in the
 	 * given direction.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param event
 	 *            the KeyEvent for the keys that were pressed to trigger this
 	 *            traversal
 	 * @param direction
 	 *            PositionConstants.* indicating the direction in which to
 	 *            traverse
+	 * @param list
+	 *            the list
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	boolean navigateNextSibling(KeyEvent event, int direction, List list) {
 		GraphicalEditPart epStart = getFocusEditPart();
@@ -451,6 +562,11 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 
 	/**
 	 * Navigates to the parent of the currently focused EditPart.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	void navigateOut(KeyEvent event) {
 		if (getFocusEditPart() == null
@@ -471,6 +587,11 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	/**
 	 * Navigates to the source or target of the currently focused
 	 * ConnectionEditPart.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	void navigateOutOfConnection(KeyEvent event) {
 		GraphicalEditPart cached = getCachedNode();
@@ -483,12 +604,14 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	}
 
 	/**
-	 * Navigates to the given EditPart
-	 * 
+	 * Navigates to the given EditPart.
+	 *
+	 * @author mqfdy
 	 * @param part
 	 *            the EditPart to navigate to
 	 * @param event
 	 *            the KeyEvent that triggered this traversal
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void navigateTo(EditPart part, KeyEvent event) {
 		if (part == null)
@@ -506,9 +629,11 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 	/**
 	 * This method is invoked when the user presses the space bar. It toggles
 	 * the selection of the EditPart that currently has focus.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param event
 	 *            the key event received
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void processSelect(KeyEvent event) {
 		EditPart part = getViewer().getFocusEditPart();
@@ -523,6 +648,14 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 		}
 	}
 
+	/**
+	 * Scroll viewer.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	void scrollViewer(KeyEvent event) {
 		if (!(getViewer().getControl() instanceof FigureCanvas))
 			return;
@@ -551,6 +684,14 @@ public class BusinessModelGraphicalViewerKeyHandler extends KeyHandler {
 		}
 	}
 
+	/**
+	 * Sets the cached node.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the new cached node
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setCachedNode(GraphicalEditPart node) {
 		if (node == null)
 			cachedNode = null;

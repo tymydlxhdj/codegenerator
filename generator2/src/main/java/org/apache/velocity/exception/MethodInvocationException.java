@@ -2,6 +2,7 @@ package org.apache.velocity.exception;
 
 import org.apache.velocity.runtime.log.Log;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -36,28 +37,41 @@ import org.apache.velocity.runtime.log.Log;
  */
 public class MethodInvocationException extends VelocityException implements ExtendedParseException
 {
-    /**
-     * Version Id for serializable
-     */
+    
+    /** Version Id for serializable. */
     private static final long serialVersionUID = 7305685093478106342L;
 
+    /** The reference name. */
     private String referenceName = "";
 
+    /** The method name. */
     private final String methodName;
     
+    /** The line number. */
     private final int lineNumber;
+    
+    /** The column number. */
     private final int columnNumber;
+    
+    /** The template name. */
     private final String templateName;
 
     /**
-     *  CTOR - wraps the passed in exception for
-     *  examination later
-     *
-     *  @param message
-     *  @param e Throwable that we are wrapping
-     *  @param methodName name of method that threw the exception
-     *  @param templateName The name of the template where the exception occured.
-     */
+	 * CTOR - wraps the passed in exception for examination later.
+	 *
+	 * @param message
+	 *            the message
+	 * @param e
+	 *            Throwable that we are wrapping
+	 * @param methodName
+	 *            name of method that threw the exception
+	 * @param templateName
+	 *            The name of the template where the exception occured.
+	 * @param lineNumber
+	 *            the line number
+	 * @param columnNumber
+	 *            the column number
+	 */
     public MethodInvocationException(final String message, final Throwable e, final String methodName, final String templateName, final int lineNumber, final int columnNumber)
     {
         super(message, e);
@@ -69,68 +83,85 @@ public class MethodInvocationException extends VelocityException implements Exte
     }
 
     /**
-     *  Returns the name of the method that threw the
-     *  exception.
-     *
-     *  @return String name of method
-     */
+	 * Returns the name of the method that threw the exception.
+	 *
+	 * @author mqfdy
+	 * @return String name of method
+	 * @Date 2018-9-3 11:38:33
+	 */
     public String getMethodName()
     {
         return methodName;
     }
 
     /**
-     *  Sets the reference name that threw this exception.
-     *
-     *  @param ref name of reference
-     */
+	 * Sets the reference name that threw this exception.
+	 *
+	 * @author mqfdy
+	 * @param ref
+	 *            name of reference
+	 * @Date 2018-9-3 11:38:33
+	 */
     public void setReferenceName(String ref)
     {
         referenceName = ref;
     }
 
     /**
-     *  Retrieves the name of the reference that caused the
-     *  exception.
-     *
-     *  @return name of reference.
-     */
+	 * Retrieves the name of the reference that caused the exception.
+	 *
+	 * @author mqfdy
+	 * @return name of reference.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public String getReferenceName()
     {
         return referenceName;
     }
 
     /**
-     * @see ExtendedParseException#getColumnNumber()
-     * @since 1.5
-     */
+	 * Gets the column number.
+	 *
+	 * @return the column number
+	 * @see ExtendedParseException#getColumnNumber()
+	 * @since 1.5
+	 */
     public int getColumnNumber()
     {
 	    return columnNumber;
     }
 
     /**
-     * @see ExtendedParseException#getLineNumber()
-     * @since 1.5
-     */
+	 * Gets the line number.
+	 *
+	 * @return the line number
+	 * @see ExtendedParseException#getLineNumber()
+	 * @since 1.5
+	 */
     public int getLineNumber()
     {
 	    return lineNumber;
     }
 
     /**
-     * @see ExtendedParseException#getTemplateName()
-     * @since 1.5
-     */
+	 * Gets the template name.
+	 *
+	 * @return the template name
+	 * @see ExtendedParseException#getTemplateName()
+	 * @since 1.5
+	 */
     public String getTemplateName()
     {
 	    return templateName;
     }
 
     /**
-     * @see Exception#getMessage()
-     * @since 1.5
-     */
+	 * Gets the message.
+	 *
+	 * @return the message
+	 * @see Exception#getMessage()
+	 * @since 1.5
+	 */
     public String getMessage()
     {
         StringBuffer message = new StringBuffer();

@@ -10,8 +10,23 @@ import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.reverse.views.beans.TreeNode;
 import com.mqfdy.code.reverse.views.constant.IViewConstant;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SingleTreeLabelProvider.
+ *
+ * @author mqfdy
+ */
 public class SingleTreeLabelProvider extends LabelProvider implements ILabelProvider {
 
+	/**
+	 * Gets the image.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @return the image
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public Image getImage(Object element) {
 		if (element instanceof TreeNode) {
@@ -101,6 +116,15 @@ public class SingleTreeLabelProvider extends LabelProvider implements ILabelProv
 		return null;
 	}
 	
+	/**
+	 * Gets the text.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @return the text
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public String getText(Object element) {
 		if (element instanceof TreeNode) {
@@ -110,16 +134,46 @@ public class SingleTreeLabelProvider extends LabelProvider implements ILabelProv
 		return null;
 	}
 
+	/**
+	 * 
+	 */
 	public void dispose() {
 	}
 
+	/**
+	 * Checks if is label property.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @param property
+	 *            the property
+	 * @return true, if is label property
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isLabelProperty(Object element, String property) {
 		return false;
 	}
 
+	/**
+	 * Adds the listener.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addListener(ILabelProviderListener listener) {
 	}
 
+	/**
+	 * Removes the listener.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removeListener(ILabelProviderListener listener) {
 	}
 }

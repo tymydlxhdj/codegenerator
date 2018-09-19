@@ -25,6 +25,7 @@ import org.apache.velocity.context.InternalContextAdapter;
 import org.apache.velocity.exception.TemplateInitException;
 import org.apache.velocity.runtime.parser.Parser;
 
+// TODO: Auto-generated Javadoc
 /**
  * Handles integer numbers.  The value will be either an Integer, a Long, or a BigInteger.
  *
@@ -34,21 +35,29 @@ import org.apache.velocity.runtime.parser.Parser;
 public class ASTIntegerLiteral extends SimpleNode
 {
 
+    /** The value. */
     // This may be of type Integer, Long or BigInteger
     private Number value = null;
 
     /**
-     * @param id
-     */
+	 * Instantiates a new AST integer literal.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTIntegerLiteral(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST integer literal.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTIntegerLiteral(Parser p, int id)
     {
         super(p, id);
@@ -56,16 +65,34 @@ public class ASTIntegerLiteral extends SimpleNode
 
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#init(org.apache.velocity.context.InternalContextAdapter, java.lang.Object)
-     */
+	 * Inits the.
+	 *
+	 * @param context
+	 *            the context
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#init(org.apache.velocity.context.InternalContextAdapter,
+	 *      java.lang.Object)
+	 */
     public Object init( InternalContextAdapter context, Object data)
         throws TemplateInitException
     {
@@ -103,8 +130,13 @@ public class ASTIntegerLiteral extends SimpleNode
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#value(org.apache.velocity.context.InternalContextAdapter)
-     */
+	 * Value.
+	 *
+	 * @param context
+	 *            the context
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#value(org.apache.velocity.context.InternalContextAdapter)
+	 */
     public Object value( InternalContextAdapter context)
     {
         return value;

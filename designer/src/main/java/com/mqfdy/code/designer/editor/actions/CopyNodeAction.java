@@ -14,19 +14,29 @@ import org.eclipse.ui.actions.ActionFactory;
 import com.mqfdy.code.designer.editor.commands.CopyNodeCommand;
 import com.mqfdy.code.designer.utils.BusinessModelUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 复制图形
- * 
+ * 复制图形.
+ *
  * @author mqfdy
- * 
  */
 public class CopyNodeAction extends SelectionAction {
+	
+	/**
+	 * Instantiates a new copy node action.
+	 *
+	 * @param part
+	 *            the part
+	 */
 	public CopyNodeAction(IWorkbenchPart part) {
 		super(part);
 		// force calculateEnabled() to be called in every context
 		setLazyEnablementCalculation(true);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void init() {
 		super.init();
@@ -44,6 +54,15 @@ public class CopyNodeAction extends SelectionAction {
 		setEnabled(false);
 	}
 
+	/**
+	 * Creates the copy command.
+	 *
+	 * @author mqfdy
+	 * @param selectedObjects
+	 *            the selected objects
+	 * @return the command
+	 * @Date 2018-09-03 09:00
+	 */
 	private Command createCopyCommand(
 			List<AbstractGraphicalEditPart> selectedObjects) {
 		if (selectedObjects == null || selectedObjects.isEmpty()) {
@@ -53,6 +72,9 @@ public class CopyNodeAction extends SelectionAction {
 		return cmd;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected boolean calculateEnabled() {
 		Command cmd = createCopyCommand(getSelectedObjects());
@@ -61,6 +83,9 @@ public class CopyNodeAction extends SelectionAction {
 		return cmd.canExecute();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void run() {
 		Command cmd = createCopyCommand(getSelectedObjects());
@@ -69,6 +94,9 @@ public class CopyNodeAction extends SelectionAction {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected List getSelectedObjects() {
 		List<AbstractGraphicalEditPart> list = new ArrayList<AbstractGraphicalEditPart>();

@@ -24,6 +24,12 @@ public class AWTTreeChangeListenerWrapper
 {
 	private final TreeChangeListener listener;
 
+	/**
+	 * Instantiates a new AWT tree change listener wrapper.
+	 *
+	 * @param listener
+	 *            the listener
+	 */
 	public AWTTreeChangeListenerWrapper(TreeChangeListener listener) {
 		super();
 		if (listener == null) {

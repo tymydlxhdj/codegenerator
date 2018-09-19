@@ -21,23 +21,48 @@ import com.mqfdy.code.model.Association;
 import com.mqfdy.code.model.graph.DiagramElement;
 import com.mqfdy.code.model.utils.AssociationType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class RelationEditPart.
+ *
+ * @author mqfdy
  * @title:关系控制器
  * @description:控制业务实体间关联关系的模型与界面之间的交互
- * @author mqfdy
  */
 public class RelationEditPart extends OmConnectionEditPart {
+	
+	/** The as. */
 	Association as = null;
+	
+	/** The model element. */
 	private DiagramElement modelElement;
 
+	/** The relation type. */
 	// relation type can be association, aggregation or composition
 	private String relationType;
+	
+	/**
+	 * Instantiates a new relation edit part.
+	 *
+	 * @param as
+	 *            the as
+	 * @param modelElement
+	 *            the model element
+	 */
 	public RelationEditPart(Association as, DiagramElement modelElement) {
 		super();
 		this.as = as;
 		this.setModelElement(modelElement);
 	}
 
+	/**
+	 * Perform request.
+	 *
+	 * @author mqfdy
+	 * @param req
+	 *            the req
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public void performRequest(Request req) {
 		Shell shell = getViewer().getControl().getShell();
@@ -69,7 +94,8 @@ public class RelationEditPart extends OmConnectionEditPart {
 	/**
 	 * Create a new RelationFigure to be used as the EditParts graphical
 	 * representation. Only called if Figure has not been created.
-	 * 
+	 *
+	 * @return the i figure
 	 * @see org.eclipse.gef.editparts.AbstractGraphicalEditPart#createFigure()
 	 */
 	@Override
@@ -86,6 +112,9 @@ public class RelationEditPart extends OmConnectionEditPart {
 		return figure;
 	}
 
+	/**
+	 * @return
+	 */
 	/*
 	 * Casts primary model to AbstractModelElement
 	 * Association
@@ -95,6 +124,9 @@ public class RelationEditPart extends OmConnectionEditPart {
 		return (AbstractModelElement) getModel();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void repaintFigure() {
 
@@ -137,14 +169,36 @@ public class RelationEditPart extends OmConnectionEditPart {
 		r.setDirected(as.isNavigateToClassA(), as.isNavigateToClassB());
 	}
 
+	/**
+	 * Gets the association.
+	 *
+	 * @author mqfdy
+	 * @return the association
+	 * @Date 2018-09-03 09:00
+	 */
 	public Association getAssociation() {
 		return as;
 	}
 
+	/**
+	 * Gets the model element.
+	 *
+	 * @author mqfdy
+	 * @return the model element
+	 * @Date 2018-09-03 09:00
+	 */
 	public DiagramElement getModelElement() {
 		return modelElement;
 	}
 
+	/**
+	 * Sets the model element.
+	 *
+	 * @author mqfdy
+	 * @param modelElement
+	 *            the new model element
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setModelElement(DiagramElement modelElement) {
 		this.modelElement = modelElement;
 	}

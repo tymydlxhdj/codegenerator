@@ -13,12 +13,14 @@ import org.osgi.framework.Bundle;
 import com.mqfdy.code.springboot.core.MicroProjectPlugin;
 
 
+// TODO: Auto-generated Javadoc
 /**
  *新建Springboot项目向导第一页的项目类型
  * @author mqfdy
  */
 public class SampleProjectRegistry {
 	
+	/** The serverpath. */
 	public static String serverpath = null; 
 	
 	private static final FilenameFilter IGNORED_NAMES = new FilenameFilter() {
@@ -29,6 +31,14 @@ public class SampleProjectRegistry {
 	};
 
 	private static SampleProjectRegistry instance = null;
+	
+	/**
+	 * Gets the single instance of SampleProjectRegistry.
+	 *
+	 * @author mqfdy
+	 * @return single instance of SampleProjectRegistry
+	 * @Date 2018-09-03 09:00
+	 */
 	public static synchronized SampleProjectRegistry getInstance() {
 		instance = null;
 		if (instance==null) {
@@ -42,6 +52,13 @@ public class SampleProjectRegistry {
 	
 	private ArrayList<SampleProject> samples = null; //Lazy initialised.
 	
+	/**
+	 * Gets the all.
+	 *
+	 * @author mqfdy
+	 * @return the all
+	 * @Date 2018-09-03 09:00
+	 */
 	public synchronized List<SampleProject> getAll() {
 		if (samples==null) {
 			samples = new ArrayList<SampleProject>();
@@ -88,6 +105,15 @@ public class SampleProjectRegistry {
 		}
 	}
 
+	/**
+	 * Gets the.
+	 *
+	 * @author mqfdy
+	 * @param sampleProjectName
+	 *            the sample project name
+	 * @return the sample project
+	 * @Date 2018-09-03 09:00
+	 */
 	public SampleProject get(String sampleProjectName) {
 		for (SampleProject candidate : getAll()) {
 			if (candidate.getName().equals(sampleProjectName)) {

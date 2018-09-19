@@ -26,6 +26,12 @@ import com.mqfdy.code.springboot.core.util.expression.ValueListener;
 import com.mqfdy.code.springboot.core.validators.ValidationResult;
 import com.mqfdy.code.springboot.core.validators.Validator;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ProjectLocationSection.
+ *
+ * @author mqfdy
+ */
 public class ProjectLocationSection extends WizardPageSection {
 	
 	private static final int SIZING_TEXT_FIELD_WIDTH = 250;
@@ -49,6 +55,12 @@ public class ProjectLocationSection extends WizardPageSection {
 	
 	private final Validator validator;
 
+	/**
+	 * Instantiates a new project location section.
+	 *
+	 * @param owner
+	 *            the owner
+	 */
 	public ProjectLocationSection(BaseInfoWizardPage owner) {
 		super(owner);
 		owner.operation.setLocationField(locationExp);
@@ -68,6 +80,13 @@ public class ProjectLocationSection extends WizardPageSection {
 		return true;
 	}
 
+	/**
+	 * Gets the location.
+	 *
+	 * @author mqfdy
+	 * @return the location
+	 * @Date 2018-09-03 09:00
+	 */
 	public LiveExpression<String> getLocation() {
 		return locationExp;
 	}

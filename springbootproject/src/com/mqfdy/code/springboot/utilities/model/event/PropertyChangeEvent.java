@@ -11,6 +11,7 @@ package com.mqfdy.code.springboot.utilities.model.event;
 
 import com.mqfdy.code.springboot.utilities.model.Model;
 
+// TODO: Auto-generated Javadoc
 /**
  * A "property change" event gets delivered whenever a model changes a "bound"
  * or "constrained" property. A PropertyChangeEvent is sent as an
@@ -61,6 +62,10 @@ public class PropertyChangeEvent extends ChangeEvent {
 
 	/**
 	 * Return the programmatic name of the property that was changed.
+	 *
+	 * @author mqfdy
+	 * @return the property name
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getPropertyName() {
 		return this.propertyName;
@@ -73,6 +78,10 @@ public class PropertyChangeEvent extends ChangeEvent {
 
 	/**
 	 * Return the old value of the property.
+	 *
+	 * @author mqfdy
+	 * @return the old value
+	 * @Date 2018-09-03 09:00
 	 */
 	public Object getOldValue() {
 		return this.oldValue;
@@ -80,6 +89,10 @@ public class PropertyChangeEvent extends ChangeEvent {
 
 	/**
 	 * Return the new value of the property.
+	 *
+	 * @author mqfdy
+	 * @return the new value
+	 * @Date 2018-09-03 09:00
 	 */
 	public Object getNewValue() {
 		return this.newValue;
@@ -94,8 +107,16 @@ public class PropertyChangeEvent extends ChangeEvent {
 	}
 
 	/**
-	 * Return a copy of the event with the specified source
-	 * replacing the current source and the property name.
+	 * Return a copy of the event with the specified source replacing the
+	 * current source and the property name.
+	 *
+	 * @author mqfdy
+	 * @param newSource
+	 *            the new source
+	 * @param newPropertyName
+	 *            the new property name
+	 * @return the property change event
+	 * @Date 2018-09-03 09:00
 	 */
 	public PropertyChangeEvent cloneWithSource(Model newSource, String newPropertyName) {
 		return new PropertyChangeEvent(newSource, newPropertyName, this.oldValue, this.newValue);

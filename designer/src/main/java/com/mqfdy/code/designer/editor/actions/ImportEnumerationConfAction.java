@@ -35,21 +35,44 @@ import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramElement;
 import com.mqfdy.code.model.graph.ElementStyle;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ImportEnumerationConfAction.
+ *
+ * @author mqfdy
+ */
 public class ImportEnumerationConfAction extends SelectionAction {
 
+	/** The Constant ENUMER. */
 	public static final String ENUMER = "enumerId";
+	
+	/** The new node. */
 	private Enumeration newNode;
 	
+	/** The container. */
 	private AbstractModelElement container;
+	
+	/** The i editor part. */
 	private IEditorPart iEditorPart;
+	
+	/** The edit part. */
 	private EditPart editPart;
 	
+	/**
+	 * Instantiates a new import enumeration conf action.
+	 *
+	 * @param part
+	 *            the part
+	 */
 	public ImportEnumerationConfAction(IWorkbenchPart part) {
 		super(part);
 		setLazyEnablementCalculation(true);
 		this.newNode = new Enumeration();
 	}
 
+	/**
+	 * 
+	 */
 	protected void init() {
 		ISharedImages sharedImages = PlatformUI.getWorkbench().getSharedImages();
 		setText("导入枚举");
@@ -63,11 +86,17 @@ public class ImportEnumerationConfAction extends SelectionAction {
 	}
 
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected boolean calculateEnabled() {
 		return true;
 	}
 	
+	/**
+	 * 
+	 */
 	public void run() {
 		IWorkbenchWindow workbenchWindow=PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 		iEditorPart= (workbenchWindow.getActivePage().getActiveEditor());
@@ -102,10 +131,16 @@ public class ImportEnumerationConfAction extends SelectionAction {
 
 
 	/**
-	 * 将Enumeration用图形的方式显示到编辑器
-	 * @param newNode Enumeration
-	 * @param point 偏移量大小
-	 * @param num 指定范围的随机数
+	 * 将Enumeration用图形的方式显示到编辑器.
+	 *
+	 * @author mqfdy
+	 * @param newNode
+	 *            Enumeration
+	 * @param point
+	 *            偏移量大小
+	 * @param num
+	 *            指定范围的随机数
+	 * @Date 2018-09-03 09:00
 	 */
 	public void addEnum(Enumeration newNode,int point,int num) {
 		DiagramElement ele = new  DiagramElement();
@@ -138,11 +173,17 @@ public class ImportEnumerationConfAction extends SelectionAction {
 			((DiagramEditPart) editPart).firePropertyChange(
 					NodeModelElement.CHILD_ADDED_PROP, null, newNode);
 	}
+	
 	/**
-	 * 获取指定范围的随机数
-	 * @param begin 开始数值
-	 * @param end   结束数值
-	 * @return
+	 * 获取指定范围的随机数.
+	 *
+	 * @author mqfdy
+	 * @param min
+	 *            the min
+	 * @param max
+	 *            the max
+	 * @return the random
+	 * @Date 2018-09-03 09:00
 	 */
 	public int getRandom(int min,int max){
 		SecureRandom random = new SecureRandom();

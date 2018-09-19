@@ -15,17 +15,32 @@ import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.model.EnumElement;
 import com.mqfdy.code.model.Enumeration;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class EnumerationFigure.
+ *
+ * @author mqfdy
  * @title:枚举对象的界面
  * @description:
- * @author mqfdy
  */
 
 public class EnumerationFigure extends NodeFigure {
+	
+	/** The name label. */
 	protected Label nameLabel;
+	
+	/** The columns figure. */
 	// protected Color bgColor;
 	protected Figure columnsFigure;
 
+	/**
+	 * Instantiates a new enumeration figure.
+	 *
+	 * @param name
+	 *            the name
+	 * @param ele
+	 *            the ele
+	 */
 	public EnumerationFigure(String name, Enumeration ele) {
 
 		super();
@@ -37,6 +52,14 @@ public class EnumerationFigure extends NodeFigure {
 		paintFigure(name, ele);
 	}
 
+	/**
+	 * Paint figure.
+	 *
+	 * @author mqfdy
+	 * @param g
+	 *            the g
+	 * @Date 2018-09-03 09:00
+	 */
 	public void paintFigure(Graphics g) {
 		super.paintFigure(g);
 		Color oldForeground = g.getForegroundColor();
@@ -54,9 +77,11 @@ public class EnumerationFigure extends NodeFigure {
 
 	/**
 	 * Set the name of the class or interface.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param newName
 	 *            The new name.
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setName(String newName) {
 		if (nameLabel == null) {
@@ -67,6 +92,16 @@ public class EnumerationFigure extends NodeFigure {
 		}
 	}
 
+	/**
+	 * Paint figure.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @param ele
+	 *            the ele
+	 * @Date 2018-09-03 09:00
+	 */
 	public void paintFigure(String name, Enumeration ele) {
 		nameLabel = new Label(name);
 		// 把名称设置成黑体
@@ -110,23 +145,27 @@ public class EnumerationFigure extends NodeFigure {
 	}
 
 	/**
-	 * Return the name of class or interface
-	 * 
+	 * Return the name of class or interface.
+	 *
+	 * @author mqfdy
 	 * @return the text of the nameLabel
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getName() {
 		return nameLabel.getText();
 	}
 
 	/**
-	 * Adds a new Figure with the given constraints to the TableFigure
-	 * 
+	 * Adds a new Figure with the given constraints to the TableFigure.
+	 *
+	 * @author mqfdy
 	 * @param figure
 	 *            the figure to be added
 	 * @param constraint
 	 *            the constraint used on the figure
 	 * @param index
 	 *            index of insertion
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void add(IFigure figure, Object constraint, int index) {
@@ -143,9 +182,11 @@ public class EnumerationFigure extends NodeFigure {
 	 * Remove a subfigure from its parent. If subfigure is ColumnFigure
 	 * remove-action is performed here. Otherwise the remove action is performed
 	 * in NodeFigure.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param figure
 	 *            the figure to be removed
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void remove(IFigure figure) {
@@ -159,13 +200,18 @@ public class EnumerationFigure extends NodeFigure {
 
 	/**
 	 * Return nameLabel of the TableFigure.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return Returns the nameLabel.
+	 * @Date 2018-09-03 09:00
 	 */
 	public Label getNameLabel() {
 		return nameLabel;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void emptyFigure() {
 

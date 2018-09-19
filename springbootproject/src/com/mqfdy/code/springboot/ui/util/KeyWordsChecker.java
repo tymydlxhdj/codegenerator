@@ -13,6 +13,7 @@ import java.util.Locale;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
 
+// TODO: Auto-generated Javadoc
 /**
  * 校验是否关键字 保留字(java、sql、sguap 三类)
  * 
@@ -65,14 +66,41 @@ public class KeyWordsChecker {
 		return keyList;
 	}
 
+	/**
+	 * Do check sql.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean doCheckSql(String key) {
 		return sqlKeyList.contains(key.toLowerCase(Locale.getDefault()));
 	}
 
+	/**
+	 * Do check sguap.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean doCheckSguap(String key) {
 		return sguapKeyList.contains(key.toLowerCase(Locale.getDefault()));
 	}
 
+	/**
+	 * Do check java.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean doCheckJava(String key) {
 		return javaKeyList.contains(key.toLowerCase(Locale.getDefault()));
 	}

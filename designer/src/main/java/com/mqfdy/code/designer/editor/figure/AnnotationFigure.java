@@ -12,17 +12,30 @@ import org.eclipse.swt.graphics.Color;
 
 import com.mqfdy.code.model.Annotation;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class AnnotationFigure.
+ *
+ * @author mqfdy
  * @title:Annotation对象的界面
  * @description:
- * @author mqfdy
  */
 
 public class AnnotationFigure extends NodeFigure {
+	
+	/** The name label. */
 	protected Label nameLabel;
+	
+	/** The annotation. */
 	// protected Color bgColor;
 	private Annotation annotation;
 
+	/**
+	 * Instantiates a new annotation figure.
+	 *
+	 * @param annotation
+	 *            the annotation
+	 */
 	public AnnotationFigure(Annotation annotation) {
 
 		// super();
@@ -37,6 +50,14 @@ public class AnnotationFigure extends NodeFigure {
 		paintFigure(annotation);
 	}
 
+	/**
+	 * Paint border.
+	 *
+	 * @author mqfdy
+	 * @param graphics
+	 *            the graphics
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void paintBorder(Graphics graphics) {
 		// TODO Auto-generated method stub
@@ -44,6 +65,16 @@ public class AnnotationFigure extends NodeFigure {
 			getBorder().paint(this, graphics, NO_INSETS);
 		}
 	}
+	
+	/**
+	 * Fill points 1.
+	 *
+	 * @author mqfdy
+	 * @param figure
+	 *            the figure
+	 * @return the point list
+	 * @Date 2018-09-03 09:00
+	 */
 	private PointList fillPoints1(Polygon figure)
     {
 		figure.getPoints().removeAllPoints();
@@ -63,6 +94,16 @@ public class AnnotationFigure extends NodeFigure {
         figure.getPoints().addPoint(x, y+h-1);
         return figure.getPoints();
     }
+	
+	/**
+	 * Fill points.
+	 *
+	 * @author mqfdy
+	 * @param figure
+	 *            the figure
+	 * @return the point list
+	 * @Date 2018-09-03 09:00
+	 */
 	private PointList fillPoints(Polygon figure)
     {
 		figure.getPoints().removeAllPoints();
@@ -82,6 +123,15 @@ public class AnnotationFigure extends NodeFigure {
         figure.getPoints().addPoint(x, y+h-1);
         return figure.getPoints();
     }
+	
+	/**
+	 * Paint figure.
+	 *
+	 * @author mqfdy
+	 * @param g
+	 *            the g
+	 * @Date 2018-09-03 09:00
+	 */
 	public void paintFigure(Graphics g) {
 //		super.paintFigure(g);
 		Color oldForeground = g.getForegroundColor();
@@ -98,6 +148,14 @@ public class AnnotationFigure extends NodeFigure {
 		
 	}
 
+	/**
+	 * Paint figure.
+	 *
+	 * @author mqfdy
+	 * @param annotation
+	 *            the annotation
+	 * @Date 2018-09-03 09:00
+	 */
 	public void paintFigure(Annotation annotation) {
 		nameLabel = new Label("");
 		nameLabel.setVisible(false);
@@ -117,23 +175,27 @@ public class AnnotationFigure extends NodeFigure {
 	}
 
 	/**
-	 * Return the name of class or interface
-	 * 
+	 * Return the name of class or interface.
+	 *
+	 * @author mqfdy
 	 * @return the text of the nameLabel
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getName() {
 		return nameLabel.getText();
 	}
 
 	/**
-	 * Adds a new Figure with the given constraints to the TableFigure
-	 * 
+	 * Adds a new Figure with the given constraints to the TableFigure.
+	 *
+	 * @author mqfdy
 	 * @param figure
 	 *            the figure to be added
 	 * @param constraint
 	 *            the constraint used on the figure
 	 * @param index
 	 *            index of insertion
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void add(IFigure figure, Object constraint, int index) {
@@ -150,9 +212,11 @@ public class AnnotationFigure extends NodeFigure {
 	 * Remove a subfigure from its parent. If subfigure is ColumnFigure
 	 * remove-action is performed here. Otherwise the remove action is performed
 	 * in NodeFigure.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param figure
 	 *            the figure to be removed
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void remove(IFigure figure) {
@@ -166,13 +230,18 @@ public class AnnotationFigure extends NodeFigure {
 
 	/**
 	 * Return nameLabel of the TableFigure.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return Returns the nameLabel.
+	 * @Date 2018-09-03 09:00
 	 */
 	public Label getNameLabel() {
 		return nameLabel;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void emptyFigure() {
 

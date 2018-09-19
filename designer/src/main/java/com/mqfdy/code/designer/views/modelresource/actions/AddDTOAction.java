@@ -11,22 +11,35 @@ import com.mqfdy.code.designer.models.ImageKeys;
 import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.model.AbstractModelElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * 新增业务类属性动作
- * 
+ * 新增业务类属性动作.
+ *
  * @author mqfdy
- * 
  */
 public class AddDTOAction extends TreeAction {
 
+	/** The business class editor dialog. */
 	private BusinessClassEditorDialog businessClassEditorDialog;
 
+	/**
+	 * Instantiates a new adds the DTO action.
+	 *
+	 * @param treeViewer
+	 *            the tree viewer
+	 */
 	public AddDTOAction(TreeViewer treeViewer) {
 		super(ActionTexts.DTO_ADD, treeViewer);
 		this.setImageDescriptor(ImageManager.getInstance().getImageDescriptor(
 				ImageKeys.IMG_MODEL_TYPE_DTO));
 	}
 
+	/**
+	 * Instantiates a new adds the DTO action.
+	 *
+	 * @param businessClassEditorDialog
+	 *            the business class editor dialog
+	 */
 	public AddDTOAction(BusinessClassEditorDialog businessClassEditorDialog) {
 		super(ActionTexts.DTO_ADD);
 		this.setImageDescriptor(ImageManager.getInstance().getImageDescriptor(
@@ -34,17 +47,40 @@ public class AddDTOAction extends TreeAction {
 		this.businessClassEditorDialog = businessClassEditorDialog;
 	}
 
+	/**
+	 * Instantiates a new adds the DTO action.
+	 *
+	 * @param text
+	 *            the text
+	 * @param imageDescriptor
+	 *            the image descriptor
+	 * @param treeViewer
+	 *            the tree viewer
+	 */
 	public AddDTOAction(String text, ImageDescriptor imageDescriptor,
 			TreeViewer treeViewer) {
 		super(text, imageDescriptor, treeViewer);
 	}
 
+	/**
+	 * Instantiates a new adds the DTO action.
+	 *
+	 * @param text
+	 *            the text
+	 * @param imageDescriptor
+	 *            the image descriptor
+	 * @param businessClassEditorDialog
+	 *            the business class editor dialog
+	 */
 	public AddDTOAction(String text, ImageDescriptor imageDescriptor,
 			BusinessClassEditorDialog businessClassEditorDialog) {
 		super(text, imageDescriptor);
 		this.businessClassEditorDialog = businessClassEditorDialog;
 	}
 
+	/**
+	 * 
+	 */
 	public void run() {
 
 		if (treeViewer != null && treeViewer.getSelection() != null) {

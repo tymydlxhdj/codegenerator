@@ -23,6 +23,7 @@ import org.jdom.Element;
 import org.jdom.Namespace;
 import org.jdom.DefaultJDOMFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  * A customized JDOMFactory for Anakia that produces {@link AnakiaElement}
  * instances instead of ordinary JDOM {@link Element} instances.
@@ -32,40 +33,72 @@ import org.jdom.DefaultJDOMFactory;
  */
 public class AnakiaJDOMFactory extends DefaultJDOMFactory
 {
+    
     /**
-     *
-     */
+	 * Instantiates a new anakia JDOM factory.
+	 */
     public AnakiaJDOMFactory()
     {
     }
 
     /**
-     * @see org.jdom.DefaultJDOMFactory#element(java.lang.String, org.jdom.Namespace)
-     */
+	 * Element.
+	 *
+	 * @param name
+	 *            the name
+	 * @param namespace
+	 *            the namespace
+	 * @return the element
+	 * @see org.jdom.DefaultJDOMFactory#element(java.lang.String,
+	 *      org.jdom.Namespace)
+	 */
     public Element element(String name, Namespace namespace)
     {
         return new AnakiaElement(name, namespace);
     }
 
     /**
-     * @see org.jdom.DefaultJDOMFactory#element(java.lang.String)
-     */
+	 * Element.
+	 *
+	 * @param name
+	 *            the name
+	 * @return the element
+	 * @see org.jdom.DefaultJDOMFactory#element(java.lang.String)
+	 */
     public Element element(String name)
     {
         return new AnakiaElement(name);
     }
 
     /**
-     * @see org.jdom.DefaultJDOMFactory#element(java.lang.String, java.lang.String)
-     */
+	 * Element.
+	 *
+	 * @param name
+	 *            the name
+	 * @param uri
+	 *            the uri
+	 * @return the element
+	 * @see org.jdom.DefaultJDOMFactory#element(java.lang.String,
+	 *      java.lang.String)
+	 */
     public Element element(String name, String uri)
     {
         return new AnakiaElement(name, uri);
     }
 
     /**
-     * @see org.jdom.DefaultJDOMFactory#element(java.lang.String, java.lang.String, java.lang.String)
-     */
+	 * Element.
+	 *
+	 * @param name
+	 *            the name
+	 * @param prefix
+	 *            the prefix
+	 * @param uri
+	 *            the uri
+	 * @return the element
+	 * @see org.jdom.DefaultJDOMFactory#element(java.lang.String,
+	 *      java.lang.String, java.lang.String)
+	 */
     public Element element(String name, String prefix, String uri)
     {
         return new AnakiaElement(name, prefix, uri);

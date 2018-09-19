@@ -15,18 +15,22 @@ import java.util.NoSuchElementException;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * A <code>SingleElementListIterator</code> holds a single element
- * and returns it with the first call to <code>next()</code>, at
- * which point it will return <code>false</code> to any subsequent
- * call to <code>hasNext()</code>. Likewise, it will return <code>false</code>
- * to a call to <code>hasPrevious()</code> until a call to <code>next()</code>,
- * at which point a call to <code>previous()</code> will return the
- * single element.
+ * A <code>SingleElementListIterator</code> holds a single element and returns
+ * it with the first call to <code>next()</code>, at which point it will return
+ * <code>false</code> to any subsequent call to <code>hasNext()</code>.
+ * Likewise, it will return <code>false</code> to a call to
+ * <code>hasPrevious()</code> until a call to <code>next()</code>, at which
+ * point a call to <code>previous()</code> will return the single element.
  * <p>
  * A <code>SingleElementListIterator</code> is equivalent to the
  * <code>Iterator</code> returned by:
- * 	<code>java.util.Collections.singletonList(element).listIterator()</code>
+ * <code>java.util.Collections.singletonList(element).listIterator()</code>
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class SingleElementListIterator<E>
 	implements ListIterator<E>
@@ -37,6 +41,9 @@ public class SingleElementListIterator<E>
 
 	/**
 	 * Construct a list iterator that returns only the specified element.
+	 *
+	 * @param element
+	 *            the element
 	 */
 	public SingleElementListIterator(E element) {
 		super();

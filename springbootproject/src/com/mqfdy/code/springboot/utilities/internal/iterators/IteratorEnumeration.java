@@ -15,10 +15,14 @@ import java.util.Iterator;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * An <code>IteratorEnumeration</code> wraps an
- * <code>Iterator</code> so that it can be treated like an
- * <code>Enumeration</code>.
+ * An <code>IteratorEnumeration</code> wraps an <code>Iterator</code> so that it
+ * can be treated like an <code>Enumeration</code>.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class IteratorEnumeration<E>
 	implements Enumeration<E>
@@ -27,6 +31,9 @@ public class IteratorEnumeration<E>
 
 	/**
 	 * Construct an enumeration that wraps the specified iterator.
+	 *
+	 * @param iterator
+	 *            the iterator
 	 */
 	public IteratorEnumeration(Iterator<? extends E> iterator) {
 		super();

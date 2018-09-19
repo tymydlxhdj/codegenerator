@@ -11,6 +11,7 @@ import org.eclipse.draw2d.geometry.PointList;
 import com.mqfdy.code.designer.editor.utils.IConstants;
 import com.mqfdy.code.model.Inheritance;
 
+// TODO: Auto-generated Javadoc
 /**
  * 
  * 关系连线对象的显示Figure
@@ -32,51 +33,71 @@ import com.mqfdy.code.model.Inheritance;
  * 
  */
 public class InheritanceFigure extends ConnectionFigure {
+	
+	/** The Constant ARROW_SIZE. */
 	// 箭头大小设置
 	private static final int ARROW_SIZE = 2;
 
+	/** The start mult U dist. */
 	// distance of startMultiplicity from startFigure
 	private int startMultUDist = 8;
 
+	/** The start mult V dist. */
 	private int startMultVDist = -5;
 
+	/** The start mult desc U dist. */
 	// distance of startMultiplicityDescription from startFigure
 	private int startMultDescUDist = 0;
 
+	/** The start mult desc V dist. */
 	private int startMultDescVDist = 5;
 
+	/** The end mult U dist. */
 	// distance of endMultiplicity from endFigure, depends on type
 	private int endMultUDist = 8;
 
+	/** The end mult V dist. */
 	private int endMultVDist = -5;
 
+	/** The end mult desc U dist. */
 	// distance of endMultiplicityDescription from endFigure, depends on type
 	private int endMultDescUDist = 0;
 
+	/** The end mult label V dist. */
 	private int endMultLabelVDist = 5;
 
 	// possible Labels owned by connection (not all may be used)
+	/** The start multiplicity label. */
 	// multiplicity Labels
 	private Label startMultiplicityLabel = new Label();
 
+	/** The start multiplicity description label. */
 	private Label startMultiplicityDescriptionLabel = new Label();
 
+	/** The end multiplicity label. */
 	private Label endMultiplicityLabel = new Label();
 
+	/** The end multiplicity description label. */
 	private Label endMultiplicityDescriptionLabel = new Label();
 
+	/** The caption label. */
 	// caption of connection
 	private Label captionLabel = new Label();
 
+	/** The arrow decoration. */
 	// decorations for connection
 	private PolygonDecoration arrowDecoration;
 
+	/** The aggregation decoration. */
 	private PolygonDecoration aggregationDecoration;
 
+	/** The composition decoration. */
 	private PolygonDecoration compositionDecoration;
 
+	/** The error decoration. */
 	private PolygonDecoration errorDecoration;
 	
+	/** The inheritance. */
 	private Inheritance inheritance;
 
 	/**
@@ -193,10 +214,12 @@ public class InheritanceFigure extends ConnectionFigure {
 	 * Sets the type of the connection : aggregation, inheritance or composition
 	 * The corresponding decoration (nothing or a rhombus) is set in a certain
 	 * distance.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param type
 	 *            the type of InheritanceFigure : aggreagtion, inheritance or
 	 *            composition (uml2)
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setType(String type) {
 		if (type.equals(IConstants.INHERITANCE)) {
@@ -233,11 +256,12 @@ public class InheritanceFigure extends ConnectionFigure {
 	}
 
 	/**
-	 * 设置外键连线的箭头
-	 * 
+	 * 设置外键连线的箭头.
+	 *
+	 * @author mqfdy
 	 * @param directed
 	 *            true：外键单向关联，只有终点有箭头；false：外键双向关联，源点和终点都有箭头
-	 * 
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setDirected(boolean directed) {
 
@@ -256,8 +280,11 @@ public class InheritanceFigure extends ConnectionFigure {
 	 * Set the description of the InheritanceFigure. A Label is added in the
 	 * middle of the connection. Attention: Should be called after all other
 	 * set*() methods!
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param caption
+	 *            the new caption
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setCaption(String caption) {
 		// create Label
@@ -290,9 +317,11 @@ public class InheritanceFigure extends ConnectionFigure {
 
 	/**
 	 * Set multiplicity at end point of connection.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param endMultiplicity
 	 *            the multiplicity type to be set.
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setEndMultiplicity(String endMultiplicity) {
 		if (!endMultiplicity.equals("")) {
@@ -303,9 +332,11 @@ public class InheritanceFigure extends ConnectionFigure {
 
 	/**
 	 * Set multiplicity type at start point of the connection.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param startMultiplicity
 	 *            the type of multiplicity to be set.
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setStartMultiplicity(String startMultiplicity) {
 		if (!startMultiplicity.equals("")) {
@@ -316,9 +347,11 @@ public class InheritanceFigure extends ConnectionFigure {
 
 	/**
 	 * Set description of multiplicity at end point of the connection.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param endMultiplicityDescription
 	 *            the description to be set.
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setEndMultiplicityDescription(String endMultiplicityDescription) {
 		if (!endMultiplicityDescription.equals("")) {
@@ -329,10 +362,12 @@ public class InheritanceFigure extends ConnectionFigure {
 	}
 
 	/**
-	 * Set description of multiplicity at start point of the connection
-	 * 
+	 * Set description of multiplicity at start point of the connection.
+	 *
+	 * @author mqfdy
 	 * @param startMultiplicityDescription
 	 *            the description to be set.
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setStartMultiplicityDescription(
 			String startMultiplicityDescription) {
@@ -343,6 +378,9 @@ public class InheritanceFigure extends ConnectionFigure {
 
 	/**
 	 * Construct an empty figure : a connection line without any decoration.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void emptyFigure() {
 		setSourceDecoration(null);
@@ -352,16 +390,23 @@ public class InheritanceFigure extends ConnectionFigure {
 	
 	
 
+	/**
+	 * Gets the inheritance.
+	 *
+	 * @author mqfdy
+	 * @return the inheritance
+	 * @Date 2018-09-03 09:00
+	 */
 	public Inheritance getInheritance() {
 		return inheritance;
 	}
 
 	/**
-	 * add text-decoration to connection
-	 * 
+	 * add text-decoration to connection.
+	 *
+	 * @author mqfdy
 	 * @param label
 	 *            The label which should be (re)used.
-	 * 
 	 * @param caption
 	 *            the string to be added to connection
 	 * @param uDist
@@ -372,6 +417,7 @@ public class InheritanceFigure extends ConnectionFigure {
 	 *            determines if decoration is added to the end point or the
 	 *            start point of the connection true - end point false - start
 	 *            point
+	 * @Date 2018-09-03 09:00
 	 */
 	private void addDecoration(Label label, String caption, int uDist,
 			int vDist, boolean end) {

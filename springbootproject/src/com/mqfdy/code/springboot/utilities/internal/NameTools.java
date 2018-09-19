@@ -17,6 +17,7 @@ import java.util.Set;
 import com.mqfdy.code.springboot.utilities.internal.iterators.ArrayIterator;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Various helper methods for generating names.
  */
@@ -24,9 +25,16 @@ public final class NameTools {
 
 	/**
 	 * Given a "root" name and a set of existing names, generate a unique,
-	 * Java-legal name that is either the "root" name or some variation on
-	 * the "root" name (e.g. "root2", "root3",...).
-	 * The names are case-sensitive.
+	 * Java-legal name that is either the "root" name or some variation on the
+	 * "root" name (e.g. "root2", "root3",...). The names are case-sensitive.
+	 *
+	 * @author mqfdy
+	 * @param rootName
+	 *            the root name
+	 * @param existingNames
+	 *            the existing names
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String uniqueJavaNameFor(String rootName, Iterator<String> existingNames) {
 		Collection<String> existingNames2 = CollectionTools.set(existingNames);
@@ -36,9 +44,16 @@ public final class NameTools {
 	
 	/**
 	 * Given a "root" name and a set of existing names, generate a unique,
-	 * Java-legal name that is either the "root" name or some variation on
-	 * the "root" name (e.g. "root2", "root3",...).
-	 * The names are case-sensitive.
+	 * Java-legal name that is either the "root" name or some variation on the
+	 * "root" name (e.g. "root2", "root3",...). The names are case-sensitive.
+	 *
+	 * @author mqfdy
+	 * @param rootName
+	 *            the root name
+	 * @param existingNames
+	 *            the existing names
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String uniqueJavaNameFor(String rootName, Collection<String> existingNames) {
 		Collection<String> existingNames2 = new HashSet<String>(existingNames);
@@ -47,36 +62,68 @@ public final class NameTools {
 	}
 
 	/**
-	 * Given a "root" name and a set of existing names, generate a unique
-	 * name that is either the "root" name or some variation on the "root"
-	 * name (e.g. "root2", "root3",...). The names are case-sensitive.
+	 * Given a "root" name and a set of existing names, generate a unique name
+	 * that is either the "root" name or some variation on the "root" name (e.g.
+	 * "root2", "root3",...). The names are case-sensitive.
+	 *
+	 * @author mqfdy
+	 * @param rootName
+	 *            the root name
+	 * @param existingNames
+	 *            the existing names
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String uniqueNameFor(String rootName, Iterator<String> existingNames) {
 		return uniqueNameFor(rootName, CollectionTools.set(existingNames));
 	}
 	
 	/**
-	 * Given a "root" name and a set of existing names, generate a unique
-	 * name that is either the "root" name or some variation on the "root"
-	 * name (e.g. "root2", "root3",...). The names are case-sensitive.
+	 * Given a "root" name and a set of existing names, generate a unique name
+	 * that is either the "root" name or some variation on the "root" name (e.g.
+	 * "root2", "root3",...). The names are case-sensitive.
+	 *
+	 * @author mqfdy
+	 * @param rootName
+	 *            the root name
+	 * @param existingNames
+	 *            the existing names
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String uniqueNameFor(String rootName, Collection<String> existingNames) {
 		return uniqueNameFor(rootName, existingNames, rootName);
 	}
 
 	/**
-	 * Given a "root" name and a set of existing names, generate a unique
-	 * name that is either the "root" name or some variation on the "root"
-	 * name (e.g. "root2", "root3",...). The names are NOT case-sensitive.
+	 * Given a "root" name and a set of existing names, generate a unique name
+	 * that is either the "root" name or some variation on the "root" name (e.g.
+	 * "root2", "root3",...). The names are NOT case-sensitive.
+	 *
+	 * @author mqfdy
+	 * @param rootName
+	 *            the root name
+	 * @param existingNames
+	 *            the existing names
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String uniqueNameForIgnoreCase(String rootName, Iterator<String> existingNames) {
 		return uniqueNameForIgnoreCase(rootName, CollectionTools.set(existingNames));
 	}
 
 	/**
-	 * Given a "root" name and a set of existing names, generate a unique
-	 * name that is either the "root" name or some variation on the "root"
-	 * name (e.g. "root2", "root3",...). The names are NOT case-sensitive.
+	 * Given a "root" name and a set of existing names, generate a unique name
+	 * that is either the "root" name or some variation on the "root" name (e.g.
+	 * "root2", "root3",...). The names are NOT case-sensitive.
+	 *
+	 * @author mqfdy
+	 * @param rootName
+	 *            the root name
+	 * @param existingNames
+	 *            the existing names
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String uniqueNameForIgnoreCase(String rootName, Collection<String> existingNames) {
 		return uniqueNameFor(rootName, convertToLowerCase(existingNames), rootName.toLowerCase());
@@ -115,11 +162,17 @@ public final class NameTools {
 
 	/**
 	 * Build a fully-qualified name for the specified database object.
-	 * Variations:
-	 *     catalog.schema.name
-	 *     catalog..name
-	 *     schema.name
-	 *     name
+	 * Variations: catalog.schema.name catalog..name schema.name name
+	 *
+	 * @author mqfdy
+	 * @param catalog
+	 *            the catalog
+	 * @param schema
+	 *            the schema
+	 * @param name
+	 *            the name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String buildQualifiedDatabaseObjectName(String catalog, String schema, String name) {
 		if (name == null) {
@@ -211,29 +264,46 @@ public final class NameTools {
 	public static final Set<String> JAVA_RESERVED_WORDS_SET = CollectionTools.set(JAVA_RESERVED_WORDS);
 
 	/**
-	 * Return the set of Java programming language reserved words.
-	 * These words cannot be used as identifiers (i.e. names).
+	 * Return the set of Java programming language reserved words. These words
+	 * cannot be used as identifiers (i.e. names).
 	 * http://java.sun.com/docs/books/tutorial/java/nutsandbolts/_keywords.html
+	 *
+	 * @author mqfdy
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<String> javaReservedWords() {
 		return new ArrayIterator<String>(JAVA_RESERVED_WORDS);
 	}
 
 	/**
-	 * Convert the specified string to a valid Java identifier
-	 * by substituting an underscore '_' for any invalid characters
-	 * in the string and appending an underscore '_' to the string if
-	 * it is a Java reserved word.
+	 * Convert the specified string to a valid Java identifier by substituting
+	 * an underscore '_' for any invalid characters in the string and appending
+	 * an underscore '_' to the string if it is a Java reserved word.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToJavaIdentifier(String string) {
 		return convertToJavaIdentifier(string, '_');
 	}
 
 	/**
-	 * Convert the specified string to a valid Java identifier
-	 * by substituting the specified character for any invalid characters
-	 * in the string and, if necessary, appending the specified character
-	 * to the string until it is not a Java reserved word.
+	 * Convert the specified string to a valid Java identifier by substituting
+	 * the specified character for any invalid characters in the string and, if
+	 * necessary, appending the specified character to the string until it is
+	 * not a Java reserved word.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToJavaIdentifier(String string, char c) {
 		if (string.length() == 0) {
@@ -249,20 +319,33 @@ public final class NameTools {
 	}
 
 	/**
-	 * Convert the specified string to a valid Java identifier
-	 * by substituting an underscore '_' for any invalid characters
-	 * in the string and appending an underscore '_' to the string if
-	 * it is a Java reserved word.
+	 * Convert the specified string to a valid Java identifier by substituting
+	 * an underscore '_' for any invalid characters in the string and appending
+	 * an underscore '_' to the string if it is a Java reserved word.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] convertToJavaIdentifier(char[] string) {
 		return convertToJavaIdentifier(string, '_');
 	}
 
 	/**
-	 * Convert the specified string to a valid Java identifier
-	 * by substituting the specified character for any invalid characters
-	 * in the string and, if necessary, appending the specified character
-	 * to the string until it is not a Java reserved word.
+	 * Convert the specified string to a valid Java identifier by substituting
+	 * the specified character for any invalid characters in the string and, if
+	 * necessary, appending the specified character to the string until it is
+	 * not a Java reserved word.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] convertToJavaIdentifier(char[] string, char c) {
 		int length = string.length;

@@ -7,7 +7,10 @@ import org.eclipse.jface.resource.ImageDescriptor;
 
 import com.mqfdy.code.springboot.core.NewMicroProjectOperation;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BaseInfoWizardPage.
+ *
  * @author zjing
  */
 public class BaseInfoWizardPage extends WizardPageWithSections {
@@ -15,8 +18,15 @@ public class BaseInfoWizardPage extends WizardPageWithSections {
 	private static final ImageDescriptor WIZBAN_IMAGE = ImageDescriptor.createFromURL(
 			BaseInfoWizardPage.class.getClassLoader().getResource("icons/wizban/boot_wizard.png"));
 	
+	/** The operation. */
 	public final NewMicroProjectOperation operation;
 	
+	/**
+	 * Instantiates a new base info wizard page.
+	 *
+	 * @param operation
+	 *            the operation
+	 */
 	public BaseInfoWizardPage(NewMicroProjectOperation operation) {
 		super("BaseInfoWizardPage", "项目基本信息配置", WIZBAN_IMAGE);
 		this.operation = operation;

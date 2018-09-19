@@ -27,6 +27,7 @@ import org.apache.velocity.runtime.resource.loader.ResourceLoader;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.exception.ParseErrorException;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class represent a general text resource that
  * may have been retrieved from any number of possible
@@ -38,6 +39,8 @@ import org.apache.velocity.exception.ParseErrorException;
  */
 public abstract class Resource
 {
+    
+    /** The rsvc. */
     protected RuntimeServices rsvc = null;
 
     /**
@@ -69,80 +72,89 @@ public abstract class Resource
      */
     protected long nextCheck = 0;
 
-    /**
-     *  Name of the resource
-     */
+    /** Name of the resource. */
     protected String name;
 
-    /**
-     *  Character encoding of this resource
-     */
+    /** Character encoding of this resource. */
     protected String encoding = RuntimeConstants.ENCODING_DEFAULT;
 
-    /**
-     *  Resource might require ancillary storage of some kind
-     */
+    /** Resource might require ancillary storage of some kind. */
     protected Object data = null;
 
-    /**
-     *  Resource type (RESOURCE_TEMPLATE or RESOURCE_CONTENT)
-     */
+    /** Resource type (RESOURCE_TEMPLATE or RESOURCE_CONTENT). */
     protected int type;
 
     /**
-     *  Default constructor
-     */
+	 * Default constructor.
+	 */
     public Resource()
     {
     }
 
     /**
-     * @param rs
-     */
+	 * Sets the runtime services.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the new runtime services
+	 * @Date 2018-09-03 09:00
+	 */
     public void setRuntimeServices( RuntimeServices rs )
     {
         rsvc = rs;
     }
 
     /**
-     * Perform any subsequent processing that might need
-     * to be done by a resource. In the case of a template
-     * the actual parsing of the input stream needs to be
-     * performed.
-     *
-     * @return Whether the resource could be processed successfully.
-     * For a {@link org.apache.velocity.Template} or {@link
-     * org.apache.velocity.runtime.resource.ContentResource}, this
-     * indicates whether the resource could be read.
-     * @exception ResourceNotFoundException Similar in semantics as
-     * returning <code>false</code>.
-     * @throws ParseErrorException
-     */
+	 * Perform any subsequent processing that might need to be done by a
+	 * resource. In the case of a template the actual parsing of the input
+	 * stream needs to be performed.
+	 *
+	 * @author mqfdy
+	 * @return Whether the resource could be processed successfully. For a
+	 *         {@link org.apache.velocity.Template} or
+	 *         {@link org.apache.velocity.runtime.resource.ContentResource},
+	 *         this indicates whether the resource could be read.
+	 * @exception ResourceNotFoundException
+	 *                Similar in semantics as returning <code>false</code>.
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @Date 2018-09-03 09:00
+	 */
     public abstract boolean process()
         throws ResourceNotFoundException, ParseErrorException;
 
     /**
-     * @return True if source has been modified.
-     */
+	 * Checks if is source modified.
+	 *
+	 * @author mqfdy
+	 * @return True if source has been modified.
+	 * @Date 2018-09-03 09:00
+	 */
     public boolean isSourceModified()
     {
         return resourceLoader.isSourceModified(this);
     }
 
     /**
-     * Set the modification check interval.
-     * @param modificationCheckInterval The interval (in seconds).
-     */
+	 * Set the modification check interval.
+	 *
+	 * @author mqfdy
+	 * @param modificationCheckInterval
+	 *            The interval (in seconds).
+	 * @Date 2018-9-3 11:38:32
+	 */
     public void setModificationCheckInterval(long modificationCheckInterval)
     {
         this.modificationCheckInterval = modificationCheckInterval;
     }
 
     /**
-     * Is it time to check to see if the resource
-     * source has been updated?
-     * @return True if resource must be checked.
-     */
+	 * Is it time to check to see if the resource source has been updated?.
+	 *
+	 * @author mqfdy
+	 * @return True if resource must be checked.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public boolean requiresChecking()
     {
         /*
@@ -163,48 +175,61 @@ public abstract class Resource
     }
 
     /**
-     * 'Touch' this template and thereby resetting
-     * the nextCheck field.
-     */
+	 * 'Touch' this template and thereby resetting the nextCheck field.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:32
+	 */
     public void touch()
     {
         nextCheck = System.currentTimeMillis() + ( MILLIS_PER_SECOND *  modificationCheckInterval);
     }
 
     /**
-     * Set the name of this resource, for example
-     * test.vm.
-     * @param name
-     */
+	 * Set the name of this resource, for example test.vm.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the new name
+	 * @Date 2018-09-03 09:00
+	 */
     public void setName(String name)
     {
         this.name = name;
     }
 
     /**
-     * Get the name of this template.
-     * @return The name of this template.
-     */
+	 * Get the name of this template.
+	 *
+	 * @author mqfdy
+	 * @return The name of this template.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public String getName()
     {
         return name;
     }
 
     /**
-     *  set the encoding of this resource
-     *  for example, "ISO-8859-1"
-     * @param encoding
-     */
+	 * set the encoding of this resource for example, "ISO-8859-1".
+	 *
+	 * @author mqfdy
+	 * @param encoding
+	 *            the new encoding
+	 * @Date 2018-09-03 09:00
+	 */
     public void setEncoding( String encoding )
     {
         this.encoding = encoding;
     }
 
     /**
-     *  get the encoding of this resource
-     *  for example, "ISO-8859-1"
-     * @return The encoding of this resource.
-     */
+	 * get the encoding of this resource for example, "ISO-8859-1".
+	 *
+	 * @author mqfdy
+	 * @return The encoding of this resource.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public String getEncoding()
     {
         return encoding;
@@ -212,79 +237,99 @@ public abstract class Resource
 
 
     /**
-     * Return the lastModifed time of this
-     * resource.
-     * @return The lastModifed time of this resource.
-     */
+	 * Return the lastModifed time of this resource.
+	 *
+	 * @author mqfdy
+	 * @return The lastModifed time of this resource.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public long getLastModified()
     {
         return lastModified;
     }
 
     /**
-     * Set the last modified time for this
-     * resource.
-     * @param lastModified
-     */
+	 * Set the last modified time for this resource.
+	 *
+	 * @author mqfdy
+	 * @param lastModified
+	 *            the new last modified
+	 * @Date 2018-09-03 09:00
+	 */
     public void setLastModified(long lastModified)
     {
         this.lastModified = lastModified;
     }
 
     /**
-     * Return the template loader that pulled
-     * in the template stream
-     * @return The resource loader for this resource.
-     */
+	 * Return the template loader that pulled in the template stream.
+	 *
+	 * @author mqfdy
+	 * @return The resource loader for this resource.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public ResourceLoader getResourceLoader()
     {
         return resourceLoader;
     }
 
     /**
-     * Set the template loader for this template. Set
-     * when the Runtime determines where this template
-     * came from the list of possible sources.
-     * @param resourceLoader
-     */
+	 * Set the template loader for this template. Set when the Runtime
+	 * determines where this template came from the list of possible sources.
+	 *
+	 * @author mqfdy
+	 * @param resourceLoader
+	 *            the new resource loader
+	 * @Date 2018-09-03 09:00
+	 */
     public void setResourceLoader(ResourceLoader resourceLoader)
     {
         this.resourceLoader = resourceLoader;
     }
 
     /**
-     * Set arbitrary data object that might be used
-     * by the resource.
-     * @param data
-     */
+	 * Set arbitrary data object that might be used by the resource.
+	 *
+	 * @author mqfdy
+	 * @param data
+	 *            the new data
+	 * @Date 2018-09-03 09:00
+	 */
     public void setData(Object data)
     {
         this.data = data;
     }
 
     /**
-     * Get arbitrary data object that might be used
-     * by the resource.
-     * @return The data object for this resource.
-     */
+	 * Get arbitrary data object that might be used by the resource.
+	 *
+	 * @author mqfdy
+	 * @return The data object for this resource.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public Object getData()
     {
         return data;
     }
     
     /**
-     * Sets the type of this Resource (RESOURCE_TEMPLATE or RESOURCE_CONTENT)
-     * @since 1.6
-     */
+	 * Sets the type of this Resource (RESOURCE_TEMPLATE or RESOURCE_CONTENT).
+	 *
+	 * @param type
+	 *            the new type
+	 * @since 1.6
+	 */
     public void setType(int type)
     {
         this.type = type;
     }
     
     /**
-     * @return type code of the Resource
-     * @since 1.6
-     */
+	 * Gets the type.
+	 *
+	 * @return type code of the Resource
+	 * @since 1.6
+	 */
     public int getType()
     {
         return type;

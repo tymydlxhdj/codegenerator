@@ -21,6 +21,7 @@ package org.apache.velocity.util.introspection;
 
 import java.util.Iterator;
 
+// TODO: Auto-generated Javadoc
 /**
  * 'Federated' introspection/reflection interface to allow the introspection
  *  behavior in Velocity to be customized.
@@ -30,45 +31,84 @@ import java.util.Iterator;
  */
 public interface Uberspect
 {
+    
     /**
-     *  Initializer - will be called before use
-     */
+	 * Initializer - will be called before use.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:25
+	 */
     public void init();
 
     /**
-     *  To support iteratives - #foreach()
-     * @param obj
-     * @param info
-     * @return An Iterator.
-     */
+	 * To support iteratives - #foreach().
+	 *
+	 * @author mqfdy
+	 * @param obj
+	 *            the obj
+	 * @param info
+	 *            the info
+	 * @return An Iterator.
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:25
+	 */
     public Iterator getIterator(Object obj, Info info) throws Exception;
 
     /**
-     *  Returns a general method, corresponding to $foo.bar( $woogie )
-     * @param obj
-     * @param method
-     * @param args
-     * @param info
-     * @return A Velocity Method.
-     */
+	 * Returns a general method, corresponding to $foo.bar( $woogie )
+	 *
+	 * @author mqfdy
+	 * @param obj
+	 *            the obj
+	 * @param method
+	 *            the method
+	 * @param args
+	 *            the args
+	 * @param info
+	 *            the info
+	 * @return A Velocity Method.
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:25
+	 */
     public VelMethod getMethod(Object obj, String method, Object[] args, Info info) throws Exception;
 
     /**
-     * Property getter - returns VelPropertyGet appropos for #set($foo = $bar.woogie)
-     * @param obj
-     * @param identifier
-     * @param info
-     * @return A Velocity Getter.
-     */
+	 * Property getter - returns VelPropertyGet appropos for #set($foo =
+	 * $bar.woogie)
+	 *
+	 * @author mqfdy
+	 * @param obj
+	 *            the obj
+	 * @param identifier
+	 *            the identifier
+	 * @param info
+	 *            the info
+	 * @return A Velocity Getter.
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:25
+	 */
     public VelPropertyGet getPropertyGet(Object obj, String identifier, Info info) throws Exception;
 
     /**
-     * Property setter - returns VelPropertySet appropos for #set($foo.bar = "geir")
-     * @param obj
-     * @param identifier
-     * @param arg
-     * @param info
-     * @return A Velocity Setter.
-     */
+	 * Property setter - returns VelPropertySet appropos for #set($foo.bar =
+	 * "geir")
+	 *
+	 * @author mqfdy
+	 * @param obj
+	 *            the obj
+	 * @param identifier
+	 *            the identifier
+	 * @param arg
+	 *            the arg
+	 * @param info
+	 *            the info
+	 * @return A Velocity Setter.
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:25
+	 */
     public VelPropertySet getPropertySet(Object obj, String identifier, Object arg, Info info) throws Exception;
 }

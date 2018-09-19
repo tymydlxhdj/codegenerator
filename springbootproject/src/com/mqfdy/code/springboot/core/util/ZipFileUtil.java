@@ -20,7 +20,10 @@ import com.mqfdy.code.springboot.core.MicroProjectPlugin;
 import com.mqfdy.code.springboot.core.generator.utils.StringUtils;
 import com.mqfdy.code.springboot.dbs.ConnectionProfile;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ZipFileUtil.
+ *
  * @author zjing
  */
 public class ZipFileUtil {
@@ -42,12 +45,24 @@ public class ZipFileUtil {
 	 */
 	private static final String ENC_PWD = "jasypt.encryptor.password=";
 
+	/**
+	 * The Class PermissionSetter.
+	 *
+	 * @author mqfdy
+	 */
 	public static abstract class PermissionSetter {
 
 		/**
 		 * Called after a file was succesfully extracted from the zip archive.
-		 * 
+		 *
+		 * @author mqfdy
+		 * @param entry
+		 *            the entry
+		 * @param entryFile
+		 *            the entry file
 		 * @throws IOException
+		 *             Signals that an I/O exception has occurred.
+		 * @Date 2018-09-03 09:00
 		 */
 		public abstract void fileUnzipped(ZipEntry entry, File entryFile)
 				throws IOException;
@@ -67,6 +82,12 @@ public class ZipFileUtil {
 		 * extensions.
 		 * <p>
 		 * Any file ending with the extension will be made executable.
+		 *
+		 * @author mqfdy
+		 * @param exts
+		 *            the exts
+		 * @return the permission setter
+		 * @Date 2018-09-03 09:00
 		 */
 		public static PermissionSetter executableExtensions(
 				final String... exts) {
@@ -96,7 +117,20 @@ public class ZipFileUtil {
 
 
 	/**
-	 * 将模板项目解压拷贝到向导第一页中的LOCATION位置
+	 * 将模板项目解压拷贝到向导第一页中的LOCATION位置.
+	 *
+	 * @author mqfdy
+	 * @param source
+	 *            the source
+	 * @param targetFile
+	 *            the target file
+	 * @param prefix
+	 *            the prefix
+	 * @param connectName
+	 *            the connect name
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void unzip(URL source, File targetFile, String prefix,String connectName)
 			throws IOException {
@@ -105,12 +139,20 @@ public class ZipFileUtil {
 
 	
 	/**
-	 * 将模板项目解压拷贝到向导第一页中的LOCATION位置
+	 * 将模板项目解压拷贝到向导第一页中的LOCATION位置.
+	 *
+	 * @author mqfdy
 	 * @param source
-	 * @param targetFile F:\runtime-New_configuration\aa
+	 *            the source
+	 * @param targetFile
+	 *            F:\runtime-New_configuration\aa
 	 * @param prefix
+	 *            the prefix
 	 * @param permsetter
-	 * @throws IOException
+	 *            the permsetter
+	 * @param connectName
+	 *            the connect name
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void unzip(URL source, File targetFile, String prefix,
 			PermissionSetter permsetter,String connectName) {
@@ -273,6 +315,13 @@ public class ZipFileUtil {
 		}
 	}
 	
+	/**
+	 * Gets the studio install location.
+	 *
+	 * @author mqfdy
+	 * @return the studio install location
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getStudioInstallLocation() {
 		final Location location = Platform.getInstallLocation();
 		return new File(location.getURL().getPath()).getParent();

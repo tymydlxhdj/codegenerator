@@ -14,18 +14,28 @@ import org.eclipse.ui.actions.ActionFactory;
 import com.mqfdy.code.designer.editor.commands.CutNodeCommand;
 import com.mqfdy.code.designer.utils.BusinessModelUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 剪切图形
- * 
+ * 剪切图形.
+ *
  * @author mqfdy
- * 
  */
 public class CutNodeAction extends SelectionAction {
+	
+	/**
+	 * Instantiates a new cut node action.
+	 *
+	 * @param part
+	 *            the part
+	 */
 	public CutNodeAction(IWorkbenchPart part) {
 		super(part);
 		setLazyEnablementCalculation(true);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void init() {
 		super.init();
@@ -43,6 +53,15 @@ public class CutNodeAction extends SelectionAction {
 		setEnabled(false);
 	}
 
+	/**
+	 * Creates the cut command.
+	 *
+	 * @author mqfdy
+	 * @param selectedObjects
+	 *            the selected objects
+	 * @return the command
+	 * @Date 2018-09-03 09:00
+	 */
 	private Command createCutCommand(
 			List<AbstractGraphicalEditPart> selectedObjects) {
 		if (selectedObjects == null || selectedObjects.isEmpty()) {
@@ -53,6 +72,9 @@ public class CutNodeAction extends SelectionAction {
 		return cmd;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected boolean calculateEnabled() {
 		Command cmd = createCutCommand(getSelectedObjects());
@@ -61,6 +83,9 @@ public class CutNodeAction extends SelectionAction {
 		return cmd.canExecute();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void run() {
 		Command cmd = createCutCommand(getSelectedObjects());
@@ -69,6 +94,9 @@ public class CutNodeAction extends SelectionAction {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected List getSelectedObjects() {
 		List<AbstractGraphicalEditPart> list = new ArrayList<AbstractGraphicalEditPart>();

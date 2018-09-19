@@ -15,6 +15,7 @@ import java.util.HashMap;
 import com.mqfdy.code.springboot.utilities.JavaType;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Helper methods for dealing with the JDBC API.
  */
@@ -23,6 +24,10 @@ public final class JDBCTools {
 
 	/**
 	 * Return the JDBC type corresponding to the specified class.
+	 *
+	 * @param className
+	 *            the class name
+	 * @return the JDBC type
 	 * @see java.sql.Types
 	 */
 	public static JDBCType jdbcTypeForClassNamed(String className) {
@@ -32,6 +37,10 @@ public final class JDBCTools {
 
 	/**
 	 * Return the JDBC type corresponding to the specified class.
+	 *
+	 * @param javaClass
+	 *            the java class
+	 * @return the JDBC type
 	 * @see java.sql.Types
 	 */
 	public static JDBCType jdbcTypeFor(Class<?> javaClass) {
@@ -40,6 +49,10 @@ public final class JDBCTools {
 
 	/**
 	 * Return the JDBC type corresponding to the specified class.
+	 *
+	 * @param javaType
+	 *            the java type
+	 * @return the JDBC type
 	 * @see java.sql.Types
 	 */
 	public static JDBCType jdbcTypeFor(JavaType javaType) {
@@ -48,6 +61,10 @@ public final class JDBCTools {
 
 	/**
 	 * Return the Java type corresponding to the specified JDBC type.
+	 *
+	 * @param jdbcTypeName
+	 *            the jdbc type name
+	 * @return the java type
 	 * @see java.sql.Types
 	 */
 	public static JavaType javaTypeForJDBCTypeNamed(String jdbcTypeName) {
@@ -57,6 +74,10 @@ public final class JDBCTools {
 
 	/**
 	 * Return the Java type corresponding to the specified JDBC type.
+	 *
+	 * @param jdbcType
+	 *            the jdbc type
+	 * @return the java type
 	 * @see java.sql.Types
 	 */
 	public static JavaType javaTypeFor(JDBCType jdbcType) {
@@ -65,6 +86,10 @@ public final class JDBCTools {
 
 	/**
 	 * Return the Java type corresponding to the specified JDBC type.
+	 *
+	 * @param jdbcTypeCode
+	 *            the jdbc type code
+	 * @return the java type
 	 * @see java.sql.Types
 	 */
 	public static JavaType javaTypeForJDBCTypeCode(int jdbcTypeCode) {

@@ -11,6 +11,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 
+// TODO: Auto-generated Javadoc
 /**
  * Wrapper for long running operations, provides a way to turn the operation into
  * different types of "runnables" that exist within eclipse.
@@ -19,18 +20,42 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
  */
 public abstract class Operation2Runnable implements IRunnableWithProgress {
 	
+	/** The job name. */
 	protected String jobName = "Gradle Job "+generateId();
 	private int jobCtr = 0;
 	private synchronized int generateId() {
 		return jobCtr++;
 	}
 	
+	/**
+	 * Instantiates a new operation 2 runnable.
+	 *
+	 * @param jobName
+	 *            the job name
+	 */
 	public Operation2Runnable(String jobName) {
 		this.jobName = jobName;
 	}
 
+	/**
+	 * Doit.
+	 *
+	 * @author mqfdy
+	 * @param mon
+	 *            the mon
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
+	 */
 	public abstract void doit(IProgressMonitor mon) throws Exception;
 
+	/**
+	 * As job.
+	 *
+	 * @author mqfdy
+	 * @return the job
+	 * @Date 2018-09-03 09:00
+	 */
 	public Job asJob() {
 		return new Job(jobName) {
 			@Override
@@ -50,6 +75,13 @@ public abstract class Operation2Runnable implements IRunnableWithProgress {
 		};
 	}
 
+	/**
+	 * As workspace job.
+	 *
+	 * @author mqfdy
+	 * @return the workspace job
+	 * @Date 2018-09-03 09:00
+	 */
 	public WorkspaceJob asWorkspaceJob() {
 		return new WorkspaceJob(jobName) {
 			@Override

@@ -21,10 +21,13 @@ import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
 
 /**
- * An empty list value model for when you don't
- * need to support a list.
+ * An empty list value model for when you don't need to support a list.
  * 
  * We don't use a singleton because we hold on to listeners.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public final class NullListValueModel<E>
 	extends AbstractModel

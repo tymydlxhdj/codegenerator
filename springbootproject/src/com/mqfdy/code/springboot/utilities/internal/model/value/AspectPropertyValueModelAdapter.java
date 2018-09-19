@@ -15,17 +15,18 @@ import com.mqfdy.code.springboot.utilities.internal.model.SingleAspectChangeSupp
 import com.mqfdy.code.springboot.utilities.model.listener.PropertyChangeListener;
 import com.mqfdy.code.springboot.utilities.model.value.PropertyValueModel;
 
+// TODO: Auto-generated Javadoc
 /**
- * This abstract class provides the infrastructure needed to wrap
- * a value model, "lazily" listen to it, and convert
- * its change notifications into property value model change
- * notifications.
+ * This abstract class provides the infrastructure needed to wrap a value model,
+ * "lazily" listen to it, and convert its change notifications into property
+ * value model change notifications.
  * 
- * Subclasses must override:
- * - #buildValue()
- *     to return the current property value, as derived from the
- *     current model value
- * 
+ * Subclasses must override: - #buildValue() to return the current property
+ * value, as derived from the current model value
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
  */
 public abstract class AspectPropertyValueModelAdapter<T>
 	extends AbstractModel
@@ -43,6 +44,9 @@ public abstract class AspectPropertyValueModelAdapter<T>
 
 	// ********** constructor/initialization **********
 
+	/**
+	 * Instantiates a new aspect property value model adapter.
+	 */
 	protected AspectPropertyValueModelAdapter() {
 		super();
 		// our value is null when we are not listening to the collection holder
@@ -116,6 +120,10 @@ public abstract class AspectPropertyValueModelAdapter<T>
 
 	/**
 	 * Return whether there are any listeners for the aspect.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	protected boolean hasListeners() {
 		return this.hasAnyPropertyChangeListeners(VALUE);
@@ -123,6 +131,10 @@ public abstract class AspectPropertyValueModelAdapter<T>
 
 	/**
 	 * Return whether there are any listeners for the aspect.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	protected boolean hasNoListeners() {
 		return ! this.hasListeners();
@@ -147,8 +159,12 @@ public abstract class AspectPropertyValueModelAdapter<T>
 	protected abstract void engageModel_();
 
 	/**
-	 * Build and return the current value, as derived from the
-	 * current state of the wrapped model.
+	 * Build and return the current value, as derived from the current state of
+	 * the wrapped model.
+	 *
+	 * @author mqfdy
+	 * @return the t
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract T buildValue();
 

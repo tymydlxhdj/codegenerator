@@ -1,5 +1,6 @@
 package org.apache.velocity.util.introspection;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -30,34 +31,49 @@ package org.apache.velocity.util.introspection;
  */
 public interface VelMethod
 {
+    
     /**
-     *  invocation method - called when the method invocation should be
-     *  performed and a value returned
-     * @param o
-     * @param params
-     * @return The resulting object.
-     * @throws Exception
-     */
+	 * invocation method - called when the method invocation should be performed
+	 * and a value returned.
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @param params
+	 *            the params
+	 * @return The resulting object.
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:38
+	 */
     public Object invoke(Object o, Object[] params)
         throws Exception;
 
     /**
-     *  specifies if this VelMethod is cacheable and able to be
-     *  reused for this class of object it was returned for
-     *
-     *  @return true if can be reused for this class, false if not
-     */
+	 * specifies if this VelMethod is cacheable and able to be reused for this
+	 * class of object it was returned for.
+	 *
+	 * @author mqfdy
+	 * @return true if can be reused for this class, false if not
+	 * @Date 2018-9-3 11:38:38
+	 */
     public boolean isCacheable();
 
     /**
-     *  returns the method name used
-     * @return The method name used
-     */
+	 * returns the method name used.
+	 *
+	 * @author mqfdy
+	 * @return The method name used
+	 * @Date 2018-9-3 11:38:38
+	 */
     public String getMethodName();
 
     /**
-     *  returns the return type of the method invoked
-     * @return The return type of the method invoked
-     */
+	 * returns the return type of the method invoked.
+	 *
+	 * @author mqfdy
+	 * @return The return type of the method invoked
+	 * @Date 2018-9-3 11:38:38
+	 */
     public Class getReturnType();
 }

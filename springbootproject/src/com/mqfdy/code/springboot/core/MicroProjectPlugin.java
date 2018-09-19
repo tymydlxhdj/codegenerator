@@ -28,30 +28,45 @@ import com.mqfdy.code.springboot.dbs.internal.DTPConnectionProfileRepository;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
  * The activator class controls the plug-in life cycle
  * @author Kris De Volder
  */
 public class MicroProjectPlugin extends AbstractUIPlugin {
 
+	/** The Constant PLUGIN_ID. */
 	// The plug-in ID
 	public static final String PLUGIN_ID = "com.mqfdy.code.springboot.project"; 
 	
+	/** The Constant IMAGE_TARGET. */
 	public static final String IMAGE_TARGET = "target"; 
+	
+	/** The Constant IMAGE_PROJECT_FOLDER. */
 	public static final String IMAGE_PROJECT_FOLDER = "projectFolder"; 
+	
+	/** The Constant IMAGE_MULTIPROJECT_FOLDER. */
 	public static final String IMAGE_MULTIPROJECT_FOLDER = "multiProjectFolder"; 
+	
+	/** The Constant IMAGE_MULTIPROJECT_FOLDER_DISABLED. */
 	public static final String IMAGE_MULTIPROJECT_FOLDER_DISABLED = "multiProjectFolderDisabled"; 
+	
+	/** The Constant IMAGE_LAUNCH. */
 	public static final String IMAGE_LAUNCH = "launch"; 
 	
+	/** The Constant TOOL_PLUGIN_ID. */
 	public static final String TOOL_PLUGIN_ID = "com.mqfdy.code.springboot.project";
 
+	/** The Constant RESOURCESPATH. */
 	public static final String RESOURCESPATH = "template";
 	
+	/** The Constant CONTINERPATH. */
 	public static final String CONTINERPATH = "lib";
 	
 	
 	private static final Map<String, String> IMAGE_DESCRIPTOR_MAP = new HashMap<String, String>();
 	
+	/** The context. */
 	public static BundleContext context;
 	
 	private DTPConnectionProfileRepository connectionProfileRepository;
@@ -76,6 +91,10 @@ public class MicroProjectPlugin extends AbstractUIPlugin {
 	
 	/**
 	 * Return the singleton JPT DB plug-in.
+	 *
+	 * @author mqfdy
+	 * @return the micro project plugin
+	 * @Date 2018-09-03 09:00
 	 */
 	public static MicroProjectPlugin instance() {
 		return INSTANCE;
@@ -99,10 +118,27 @@ public class MicroProjectPlugin extends AbstractUIPlugin {
 
 	}
 
+	/**
+	 * Gets the connection profile repository.
+	 *
+	 * @author mqfdy
+	 * @return the connection profile repository
+	 * @Date 2018-09-03 09:00
+	 */
 	public ConnectionProfileRepository getConnectionProfileRepository() {
 		return this.connectionProfileRepository;
 	}
 	
+	/**
+	 * Log message.
+	 *
+	 * @author mqfdy
+	 * @param severity
+	 *            the severity
+	 * @param message
+	 *            the message
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void logMessage(int severity, String message) {
 		log(new Status(severity, PLUGIN_ID, message));
     }
@@ -174,14 +210,27 @@ public class MicroProjectPlugin extends AbstractUIPlugin {
 	
 	
 
+	/**
+	 * Gets the project manager.
+	 *
+	 * @author mqfdy
+	 * @return the project manager
+	 * @Date 2018-09-03 09:00
+	 */
 	public static MicroProjectManager getProjectManager() {
 		return projectManager;
 	}
 
 	/**
-	 * Gets GradleProject associated with given IProject, if it exists. 
-	 * May return null if the project itself doesn't exist (has no location) or the GradleProject 
-	 * instance associated with thay project wasn't created yet.
+	 * Gets GradleProject associated with given IProject, if it exists. May
+	 * return null if the project itself doesn't exist (has no location) or the
+	 * GradleProject instance associated with thay project wasn't created yet.
+	 *
+	 * @author mqfdy
+	 * @param project
+	 *            the project
+	 * @return the gradle project
+	 * @Date 2018-09-03 09:00
 	 */
 	public static MicroProject getGradleProject(IProject project) {
 		IPath location = project.getLocation();
@@ -191,13 +240,26 @@ public class MicroProjectPlugin extends AbstractUIPlugin {
 		return null;
 	}
 
+	/**
+	 * Warn.
+	 *
+	 * @author mqfdy
+	 * @param message
+	 *            the message
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void warn(String message) {
 		log(new Status(IStatus.WARNING, PLUGIN_ID, message));
 	}
+	
 	/**
-	 * @param filepath
-	 *            releative path
+	 * Gets the resource file.
+	 *
+	 * @author mqfdy
+	 * @param relatepath
+	 *            the relatepath
 	 * @return file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String getResourceFile(String relatepath) {
 		URL url = context.getBundle().getEntry(relatepath);
@@ -215,20 +277,52 @@ public class MicroProjectPlugin extends AbstractUIPlugin {
 		return null;
 	}
 	
+	/**
+	 * Log.
+	 *
+	 * @author mqfdy
+	 * @param e
+	 *            the e
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void log(Throwable e) {
 		IStatus s = ExceptionUtil.status(IStatus.ERROR, e);
 		log(s);
 	}
 	
+	/**
+	 * Log info.
+	 *
+	 * @author mqfdy
+	 * @param e
+	 *            the e
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void logInfo(Throwable e) {
 		IStatus s = ExceptionUtil.status(IStatus.INFO, e);
 		log(s);
 	}
 
+	/**
+	 * Log.
+	 *
+	 * @author mqfdy
+	 * @param s
+	 *            the s
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void log(IStatus s) {
 		plugin.getLog().log(s);
 	}
 	
+	/**
+	 * Log.
+	 *
+	 * @author mqfdy
+	 * @param msg
+	 *            the msg
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void log(String msg) {
 		log(ExceptionUtil.coreException(msg));
 	}

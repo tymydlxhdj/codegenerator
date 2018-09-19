@@ -33,6 +33,7 @@ import org.apache.log.output.io.FileTarget;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.RuntimeServices;
 
+// TODO: Auto-generated Javadoc
 /**
  * Implementation of a Avalon logger.
  *
@@ -44,15 +45,23 @@ import org.apache.velocity.runtime.RuntimeServices;
  */
 public class AvalonLogChute implements LogChute
 {
+    
+    /** The Constant AVALON_LOGGER. */
     public static final String AVALON_LOGGER = "runtime.log.logsystem.avalon.logger";
  
+    /** The Constant AVALON_LOGGER_FORMAT. */
     public static final String AVALON_LOGGER_FORMAT = "runtime.log.logsystem.avalon.format";
     
+    /** The Constant AVALON_LOGGER_LEVEL. */
     public static final String AVALON_LOGGER_LEVEL = "runtime.log.logsystem.avalon.level";
 
+    /** The logger. */
     private Logger logger = null;
+    
+    /** The rsvc. */
     private RuntimeServices rsvc = null;
     
+    /** The Constant logLevels. */
     private static final Map logLevels = new HashMap();
     
     static
@@ -65,8 +74,14 @@ public class AvalonLogChute implements LogChute
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
-     */
+	 * Inits the.
+	 *
+	 * @param rs
+	 *            the rs
+	 * @throws Exception
+	 *             the exception
+	 * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
+	 */
     public void init(RuntimeServices rs) throws Exception
     {
         this.rsvc = rs;
@@ -91,6 +106,18 @@ public class AvalonLogChute implements LogChute
         }
     }
 
+    /**
+	 * Inits the target.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @param rsvc
+	 *            the rsvc
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:37
+	 */
     // creates a file target using the specified file name
     private void initTarget(final String file, final RuntimeServices rsvc) throws Exception
     {
@@ -121,12 +148,16 @@ public class AvalonLogChute implements LogChute
     }
 
     /**
-     * @param file
-     * @throws Exception
-     * @deprecated This method should not be used. It is here only to provide
-     *             backwards compatibility for the deprecated AvalonLogSystem
-     *             class, in case anyone used it and this method directly.
-     */
+	 * Inits the.
+	 *
+	 * @param file
+	 *            the file
+	 * @throws Exception
+	 *             the exception
+	 * @deprecated This method should not be used. It is here only to provide
+	 *             backwards compatibility for the deprecated AvalonLogSystem
+	 *             class, in case anyone used it and this method directly.
+	 */
     public void init(String file) throws Exception
     {
         logger = Hierarchy.getDefaultHierarchy().getLoggerFor(rsvc.toString());
@@ -136,11 +167,15 @@ public class AvalonLogChute implements LogChute
     }
 
     /**
-     *  logs messages
-     *
-     *  @param level severity level
-     *  @param message complete error message
-     */
+	 * logs messages.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            severity level
+	 * @param message
+	 *            complete error message
+	 * @Date 2018-9-3 11:38:37
+	 */
     public void log(int level, String message)
     {
         /*
@@ -171,12 +206,17 @@ public class AvalonLogChute implements LogChute
     }
 
     /**
-     *  logs messages and error
-     *
-     *  @param level severity level
-     *  @param message complete error message
-     * @param t
-     */
+	 * logs messages and error.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            severity level
+	 * @param message
+	 *            complete error message
+	 * @param t
+	 *            the t
+	 * @Date 2018-9-3 11:38:37
+	 */
     public void log(int level, String message, Throwable t)
     {
         switch (level)
@@ -203,10 +243,14 @@ public class AvalonLogChute implements LogChute
     }
 
     /**
-     * Checks to see whether the specified level is enabled.
-     * @param level
-     * @return True if the specified level is enabled.
-     */
+	 * Checks to see whether the specified level is enabled.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the level
+	 * @return True if the specified level is enabled.
+	 * @Date 2018-9-3 11:38:37
+	 */
     public boolean isLevelEnabled(int level)
     {
         switch (level)
@@ -227,15 +271,24 @@ public class AvalonLogChute implements LogChute
     }
 
     /**
-     * Also do a shutdown if the object is destroy()'d.
-     * @throws Throwable
-     */
+	 * Also do a shutdown if the object is destroy()'d.
+	 *
+	 * @author mqfdy
+	 * @throws Throwable
+	 *             the throwable
+	 * @Date 2018-9-3 11:38:37
+	 */
     protected void finalize() throws Throwable
     {
         shutdown();
     }
 
-    /** Close all destinations*/
+    /**
+	 * Close all destinations.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:37
+	 */
     public void shutdown()
     {
         logger.unsetLogTargets();

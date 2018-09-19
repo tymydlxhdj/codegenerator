@@ -6,13 +6,22 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DateTimeUtil.
+ *
+ * @author mqfdy
+ */
 public class DateTimeUtil {
 
 	/**
-	 * 时间格式字符串转时间
-	 * 
+	 * 时间格式字符串转时间.
+	 *
+	 * @author mqfdy
 	 * @param dateStr
-	 * @return
+	 *            the date str
+	 * @return the date
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Date string2Date(String dateStr) {
 		if (StringUtils.isEmpty(dateStr)) {
@@ -30,10 +39,13 @@ public class DateTimeUtil {
 	}
 
 	/**
-	 * 时间转字符串
-	 * 
-	 * @param dateStr
-	 * @return
+	 * 时间转字符串.
+	 *
+	 * @author mqfdy
+	 * @param date
+	 *            the date
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String date2String(Date date) {
 		if (date == null) {
@@ -52,10 +64,15 @@ public class DateTimeUtil {
 	}
 
 	/**
-	 * 时间格式字符串转时间
-	 * 
+	 * 时间格式字符串转时间.
+	 *
+	 * @author mqfdy
 	 * @param dateStr
-	 * @return
+	 *            the date str
+	 * @param format
+	 *            the format
+	 * @return the date
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Date string2Date(String dateStr, String format) {
 		if (StringUtils.isEmpty(dateStr)) {
@@ -73,9 +90,13 @@ public class DateTimeUtil {
 	}
 
 	/**
-	 * 将日期按照 yyyy-MM-dd 格式转换为字符串
-	 * 
-	 * @return
+	 * 将日期按照 yyyy-MM-dd 格式转换为字符串.
+	 *
+	 * @author mqfdy
+	 * @param date
+	 *            the date
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String date2String2(Date date) {
 		if (date == null) {

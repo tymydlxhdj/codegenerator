@@ -30,6 +30,7 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * This class provides some methods for dynamically
  * invoking methods in objects, and some string
@@ -49,11 +50,14 @@ public class StringUtils
     private static final String EOL = System.getProperty("line.separator");
 
     /**
-     * Concatenates a list of objects as a String.
-     *
-     * @param list The list of objects to concatenate.
-     * @return     A text representation of the concatenated objects.
-     */
+	 * Concatenates a list of objects as a String.
+	 *
+	 * @author mqfdy
+	 * @param list
+	 *            The list of objects to concatenate.
+	 * @return A text representation of the concatenated objects.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public String concat(List list)
     {
         StringBuffer sb = new StringBuffer();
@@ -67,11 +71,14 @@ public class StringUtils
     }
 
     /**
-     * Return a package name as a relative path name
-     *
-     * @param pckge package name to convert to a directory.
-     * @return String directory path.
-     */
+	 * Return a package name as a relative path name.
+	 *
+	 * @author mqfdy
+	 * @param pckge
+	 *            package name to convert to a directory.
+	 * @return String directory path.
+	 * @Date 2018-9-3 11:38:31
+	 */
     static public String getPackageAsPath(String pckge)
     {
         return pckge.replace( '.', File.separator.charAt(0) ) + File.separator;
@@ -112,45 +119,53 @@ public class StringUtils
     }
 
     /**
-     * <p>
-     *  'Camels Hump' replacement of underscores.
-     * </p>
-     *
-     * <p>
-     * Remove underscores from a string but leave the capitalization of the
-     * other letters unchanged.
-     * </p>
-     *
-     * <p>
-     * For example <code>foo_barBar</code> becomes <code>FooBarBar</code>.
-     * </p>
-     *
-     * @param data string to hump
-     * @return String
-     */
+	 * <p>
+	 * 'Camels Hump' replacement of underscores.
+	 * </p>
+	 * 
+	 * <p>
+	 * Remove underscores from a string but leave the capitalization of the
+	 * other letters unchanged.
+	 * </p>
+	 * 
+	 * <p>
+	 * For example <code>foo_barBar</code> becomes <code>FooBarBar</code>.
+	 * </p>
+	 *
+	 * @author mqfdy
+	 * @param data
+	 *            string to hump
+	 * @return String
+	 * @Date 2018-9-3 11:38:31
+	 */
     static public String removeAndHump (String data)
     {
         return removeAndHump(data,"_");
     }
 
     /**
-     * <p>
-     * 'Camels Hump' replacement.
-     * </p>
-     *
-     * <p>
-     * Remove one string from another string but leave the capitalization of the
-     * other letters unchanged.
-     * </p>
-     *
-     * <p>
-     * For example, removing "_" from <code>foo_barBar</code> becomes <code>FooBarBar</code>.
-     * </p>
-     *
-     * @param data string to hump
-     * @param replaceThis string to be replaced
-     * @return String
-     */
+	 * <p>
+	 * 'Camels Hump' replacement.
+	 * </p>
+	 * 
+	 * <p>
+	 * Remove one string from another string but leave the capitalization of the
+	 * other letters unchanged.
+	 * </p>
+	 * 
+	 * <p>
+	 * For example, removing "_" from <code>foo_barBar</code> becomes
+	 * <code>FooBarBar</code>.
+	 * </p>
+	 *
+	 * @author mqfdy
+	 * @param data
+	 *            string to hump
+	 * @param replaceThis
+	 *            string to be replaced
+	 * @return String
+	 * @Date 2018-9-3 11:38:31
+	 */
     static public String removeAndHump (String data,String replaceThis)
     {
         String temp = null;
@@ -169,17 +184,20 @@ public class StringUtils
     }
 
     /**
-     * <p>
-     *  Makes the first letter caps and the rest lowercase.
-     * </p>
-     *
-     * <p>
-     *  For example <code>fooBar</code> becomes <code>Foobar</code>.
-     * </p>
-     *
-     * @param data capitalize this
-     * @return String
-     */
+	 * <p>
+	 * Makes the first letter caps and the rest lowercase.
+	 * </p>
+	 * 
+	 * <p>
+	 * For example <code>fooBar</code> becomes <code>Foobar</code>.
+	 * </p>
+	 *
+	 * @author mqfdy
+	 * @param data
+	 *            capitalize this
+	 * @return String
+	 * @Date 2018-9-3 11:38:31
+	 */
     static public String firstLetterCaps ( String data )
     {
         String firstLetter = data.substring(0,1).toUpperCase();
@@ -188,17 +206,20 @@ public class StringUtils
     }
 
     /**
-     * <p>
-     * Capitalize the first letter but leave the rest as they are.
-     * </p>
-     *
-     * <p>
-     *  For example <code>fooBar</code> becomes <code>FooBar</code>.
-     * </p>
-     *
-     * @param data capitalize this
-     * @return String
-     */
+	 * <p>
+	 * Capitalize the first letter but leave the rest as they are.
+	 * </p>
+	 * 
+	 * <p>
+	 * For example <code>fooBar</code> becomes <code>FooBar</code>.
+	 * </p>
+	 *
+	 * @author mqfdy
+	 * @param data
+	 *            capitalize this
+	 * @return String
+	 * @Date 2018-9-3 11:38:31
+	 */
     static public String capitalizeFirstLetter ( String data )
     {
         String firstLetter = data.substring(0,1).toUpperCase();
@@ -207,12 +228,16 @@ public class StringUtils
     }
 
     /**
-     * Create a string array from a string separated by delim
-     *
-     * @param line the line to split
-     * @param delim the delimter to split by
-     * @return a string array of the split fields
-     */
+	 * Create a string array from a string separated by delim.
+	 *
+	 * @author mqfdy
+	 * @param line
+	 *            the line to split
+	 * @param delim
+	 *            the delimter to split by
+	 * @return a string array of the split fields
+	 * @Date 2018-9-3 11:38:31
+	 */
     public static String [] split(String line, String delim)
     {
         List list = new ArrayList();
@@ -225,29 +250,37 @@ public class StringUtils
     }
 
     /**
-     * Chop i characters off the end of a string.
-     * This method assumes that any EOL characters in String s
-     * and the platform EOL will be the same.
-     * A 2 character EOL will count as 1 character.
-     *
-     * @param s String to chop.
-     * @param i Number of characters to chop.
-     * @return String with processed answer.
-     */
+	 * Chop i characters off the end of a string. This method assumes that any
+	 * EOL characters in String s and the platform EOL will be the same. A 2
+	 * character EOL will count as 1 character.
+	 *
+	 * @author mqfdy
+	 * @param s
+	 *            String to chop.
+	 * @param i
+	 *            Number of characters to chop.
+	 * @return String with processed answer.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public static String chop(String s, int i)
     {
         return chop(s, i, EOL);
     }
 
     /**
-     * Chop i characters off the end of a string.
-     * A 2 character EOL will count as 1 character.
-     *
-     * @param s String to chop.
-     * @param i Number of characters to chop.
-     * @param eol A String representing the EOL (end of line).
-     * @return String with processed answer.
-     */
+	 * Chop i characters off the end of a string. A 2 character EOL will count
+	 * as 1 character.
+	 *
+	 * @author mqfdy
+	 * @param s
+	 *            String to chop.
+	 * @param i
+	 *            Number of characters to chop.
+	 * @param eol
+	 *            A String representing the EOL (end of line).
+	 * @return String with processed answer.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public static String chop(String s, int i, String eol)
     {
         if ( i == 0 || s == null || eol == null )
@@ -281,10 +314,16 @@ public class StringUtils
     }
 
     /**
-     * @param argStr
-     * @param vars
-     * @return Substituted String.
-     */
+	 * String substitution.
+	 *
+	 * @author mqfdy
+	 * @param argStr
+	 *            the arg str
+	 * @param vars
+	 *            the vars
+	 * @return Substituted String.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public static StringBuffer stringSubstitution( String argStr,
                                                    Hashtable vars )
     {
@@ -292,15 +331,18 @@ public class StringUtils
     }
 
     /**
-     * Perform a series of substitutions. The substitions
-     * are performed by replacing $variable in the target
-     * string with the value of provided by the key "variable"
-     * in the provided hashtable.
-     *
-     * @param argStr target string
-     * @param vars name/value pairs used for substitution
-     * @return String target string with replacements.
-     */
+	 * Perform a series of substitutions. The substitions are performed by
+	 * replacing $variable in the target string with the value of provided by
+	 * the key "variable" in the provided hashtable.
+	 *
+	 * @author mqfdy
+	 * @param argStr
+	 *            target string
+	 * @param vars
+	 *            name/value pairs used for substitution
+	 * @return String target string with replacements.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public static StringBuffer stringSubstitution(String argStr,
             Map vars)
     {
@@ -346,12 +388,14 @@ public class StringUtils
     }
 
     /**
-     * Read the contents of a file and place them in
-     * a string object.
-     *
-     * @param file path to file.
-     * @return String contents of the file.
-     */
+	 * Read the contents of a file and place them in a string object.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            path to file.
+	 * @return String contents of the file.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public static String fileContentsToString(String file)
     {
         String contents = "";
@@ -392,11 +436,14 @@ public class StringUtils
     }
 
     /**
-     * Remove/collapse multiple newline characters.
-     *
-     * @param argStr string to collapse newlines in.
-     * @return String
-     */
+	 * Remove/collapse multiple newline characters.
+	 *
+	 * @author mqfdy
+	 * @param argStr
+	 *            string to collapse newlines in.
+	 * @return String
+	 * @Date 2018-9-3 11:38:31
+	 */
     public static String collapseNewlines(String argStr)
     {
         char last = argStr.charAt(0);
@@ -416,11 +463,14 @@ public class StringUtils
     }
 
     /**
-     * Remove/collapse multiple spaces.
-     *
-     * @param argStr string to remove multiple spaces from.
-     * @return String
-     */
+	 * Remove/collapse multiple spaces.
+	 *
+	 * @author mqfdy
+	 * @param argStr
+	 *            string to remove multiple spaces from.
+	 * @return String
+	 * @Date 2018-9-3 11:38:31
+	 */
     public static String collapseSpaces(String argStr)
     {
         char last = argStr.charAt(0);
@@ -440,14 +490,19 @@ public class StringUtils
     }
 
     /**
-      * Replaces all instances of oldString with newString in line.
-      * Taken from the Jive forum package.
-      *
-      * @param line original string.
-      * @param oldString string in line to replace.
-      * @param newString replace oldString with this.
-      * @return String string with replacements.
-      */
+	 * Replaces all instances of oldString with newString in line. Taken from
+	 * the Jive forum package.
+	 *
+	 * @author mqfdy
+	 * @param line
+	 *            original string.
+	 * @param oldString
+	 *            string in line to replace.
+	 * @param newString
+	 *            replace oldString with this.
+	 * @return String string with replacements.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public static final String sub(String line, String oldString,
             String newString)
     {
@@ -474,11 +529,14 @@ public class StringUtils
     }
 
     /**
-     * Returns the output of printStackTrace as a String.
-     *
-     * @param e A Throwable.
-     * @return A String.
-     */
+	 * Returns the output of printStackTrace as a String.
+	 *
+	 * @author mqfdy
+	 * @param e
+	 *            A Throwable.
+	 * @return A String.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public static final String stackTrace(Throwable e)
     {
         String foo = null;
@@ -497,15 +555,18 @@ public class StringUtils
     }
 
     /**
-     * Return a context-relative path, beginning with a "/", that represents
-     * the canonical version of the specified path after ".." and "." elements
-     * are resolved out.  If the specified path attempts to go outside the
-     * boundaries of the current context (i.e. too many ".." path elements
-     * are present), return <code>null</code> instead.
-     *
-     * @param path Path to be normalized
-     * @return String normalized path
-     */
+	 * Return a context-relative path, beginning with a "/", that represents the
+	 * canonical version of the specified path after ".." and "." elements are
+	 * resolved out. If the specified path attempts to go outside the boundaries
+	 * of the current context (i.e. too many ".." path elements are present),
+	 * return <code>null</code> instead.
+	 *
+	 * @author mqfdy
+	 * @param path
+	 *            Path to be normalized
+	 * @return String normalized path
+	 * @Date 2018-9-3 11:38:31
+	 */
     public static final String normalizePath(String path)
     {
         // Normalize the slashes and add leading slash if necessary
@@ -568,14 +629,18 @@ public class StringUtils
     }
 
     /**
-     * If state is true then return the trueString, else
-     * return the falseString.
-     *
-     * @param state
-     * @param trueString
-     * @param falseString
-     * @return Selected result.
-     */
+	 * If state is true then return the trueString, else return the falseString.
+	 *
+	 * @author mqfdy
+	 * @param state
+	 *            the state
+	 * @param trueString
+	 *            the true string
+	 * @param falseString
+	 *            the false string
+	 * @return Selected result.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public String select(boolean state, String trueString, String falseString)
     {
         if (state)
@@ -589,12 +654,14 @@ public class StringUtils
     }
 
     /**
-     * Check to see if all the string objects passed
-     * in are empty.
-     *
-     * @param list A list of {@link java.lang.String} objects.
-     * @return     Whether all strings are empty.
-     */
+	 * Check to see if all the string objects passed in are empty.
+	 *
+	 * @author mqfdy
+	 * @param list
+	 *            A list of {@link java.lang.String} objects.
+	 * @return Whether all strings are empty.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public boolean allEmpty(List list)
     {
         int size = list.size();
@@ -610,11 +677,13 @@ public class StringUtils
     }
 
     /**
-     * Trim all strings in a List.  Changes the strings in the existing list.
-     * @param list
-     * @return List of trimmed strings.
-     * @since 1.5
-     */
+	 * Trim all strings in a List. Changes the strings in the existing list.
+	 *
+	 * @param list
+	 *            the list
+	 * @return List of trimmed strings.
+	 * @since 1.5
+	 */
     public static List trimStrings(List list)
     {
         if (list == null)
@@ -627,11 +696,13 @@ public class StringUtils
     }
 
     /**
-     * Trim the string, but pass a null through.
-     * @param s
-     * @return List of trimmed Strings.
-     * @since 1.5
-     */
+	 * Trim the string, but pass a null through.
+	 *
+	 * @param s
+	 *            the s
+	 * @return List of trimmed Strings.
+	 * @since 1.5
+	 */
     public static String nullTrim(String s)
     {
         if (s == null)

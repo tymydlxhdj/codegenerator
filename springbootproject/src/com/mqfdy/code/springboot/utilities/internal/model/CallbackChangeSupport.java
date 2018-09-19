@@ -11,6 +11,7 @@ package com.mqfdy.code.springboot.utilities.internal.model;
 
 import com.mqfdy.code.springboot.utilities.model.Model;
 
+// TODO: Auto-generated Javadoc
 /**
  * This change support class will notify the source when one of the source's
  * aspects has changed.
@@ -18,10 +19,23 @@ import com.mqfdy.code.springboot.utilities.model.Model;
 public class CallbackChangeSupport extends ChangeSupport {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Instantiates a new callback change support.
+	 *
+	 * @param source
+	 *            the source
+	 */
 	public CallbackChangeSupport(Source source) {
 		super(source);
 	}
 
+	/**
+	 * Source.
+	 *
+	 * @author mqfdy
+	 * @return the source
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Source source() {
 		return (Source) this.source;
 	}
@@ -48,10 +62,23 @@ public class CallbackChangeSupport extends ChangeSupport {
 	protected static class Child extends ChangeSupport {
 		private static final long serialVersionUID = 1L;
 
+		/**
+		 * Instantiates a new child.
+		 *
+		 * @param source
+		 *            the source
+		 */
 		public Child(Source source) {
 			super(source);
 		}
 
+		/**
+		 * Source.
+		 *
+		 * @author mqfdy
+		 * @return the source
+		 * @Date 2018-09-03 09:00
+		 */
 		protected Source source() {
 			return (Source) this.source;
 		}

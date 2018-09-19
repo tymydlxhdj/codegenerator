@@ -1,5 +1,6 @@
 package org.apache.velocity.util.introspection;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -28,10 +29,14 @@ package org.apache.velocity.util.introspection;
  */
 public interface ChainableUberspector extends Uberspect
 {
+    
     /**
-     * Specify the decorated Uberspector
-     * 
-     * @param inner The decorated uberspector.
-     */
+	 * Specify the decorated Uberspector.
+	 *
+	 * @author mqfdy
+	 * @param inner
+	 *            The decorated uberspector.
+	 * @Date 2018-9-3 11:38:35
+	 */
     public void wrap(Uberspect inner);
 }

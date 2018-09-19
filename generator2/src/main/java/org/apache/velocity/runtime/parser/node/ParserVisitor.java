@@ -1,5 +1,6 @@
 package org.apache.velocity.runtime.parser.node;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -29,284 +30,525 @@ package org.apache.velocity.runtime.parser.node;
  */
 public interface ParserVisitor
 {
+  
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(SimpleNode node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTprocess node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTEscapedDirective node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTEscape node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTComment node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTFloatingPointLiteral node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTIntegerLiteral node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTStringLiteral node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTIdentifier node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTWord node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTDirective node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTBlock node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTMap node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTObjectArray node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTIntegerRange node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTMethod node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTReference node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTTrue node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTFalse node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTText node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTIfStatement node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTElseStatement node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTElseIfStatement node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTSetDirective node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTExpression node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTAssignment node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTOrNode node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTAndNode node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTEQNode node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTNENode node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTLTNode node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTGTNode node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTLENode node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTGENode node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTAddNode node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTSubtractNode node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTMulNode node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTDivNode node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTModNode node, Object data);
 
   /**
-   * @param node
-   * @param data
-   * @return The object rendered by this node.
-   */
+	 * Visit.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param data
+	 *            the data
+	 * @return The object rendered by this node.
+	 * @Date 2018-09-03 09:00
+	 */
   public Object visit(ASTNotNode node, Object data);
 
   /**

@@ -12,31 +12,51 @@ import org.apache.velocity.util.StringUtils;
 import org.apache.commons.lang.text.StrBuilder;
 import org.apache.velocity.runtime.RuntimeConstants;
 
-/** Token Manager. */
+// TODO: Auto-generated Javadoc
+/**
+ * Token Manager.
+ *
+ * @author mqfdy
+ */
 public class ParserTokenManager implements ParserConstants
 {
+    
+    /** The file depth. */
     private int fileDepth = 0;
 
+    /** The lparen. */
     private int lparen = 0;
+    
+    /** The rparen. */
     private int rparen = 0;
 
+    /** The state stack. */
     List stateStack = new ArrayList(50);
 
+    /** The debug print. */
     public boolean debugPrint = false;
 
+    /** The in reference. */
     private boolean inReference;
+    
+    /** The in directive. */
     public boolean inDirective;
+    
+    /** The in comment. */
     private boolean inComment;
+    
+    /** The in set. */
     public  boolean inSet;
 
     /**
-     *  pushes the current state onto the 'state stack',
-     *  and maintains the parens counts
-     *  public because we need it in PD & VM handling
-     *
-     *  @return boolean : success.  It can fail if the state machine
-     *     gets messed up (do don't mess it up :)
-     */
+	 * pushes the current state onto the 'state stack', and maintains the parens
+	 * counts public because we need it in PD & VM handling.
+	 *
+	 * @author mqfdy
+	 * @return boolean : success. It can fail if the state machine gets messed
+	 *         up (do don't mess it up :)
+	 * @Date 2018-9-3 11:38:39
+	 */
     public boolean stateStackPop()
     {
         ParserState s;
@@ -67,10 +87,12 @@ public class ParserTokenManager implements ParserConstants
     }
 
     /**
-     *  pops a state off the stack, and restores paren counts
-     *
-     *  @return boolean : success of operation
-     */
+	 * pops a state off the stack, and restores paren counts.
+	 *
+	 * @author mqfdy
+	 * @return boolean : success of operation
+	 * @Date 2018-9-3 11:38:39
+	 */
     public boolean stateStackPush()
     {
         if( debugPrint )
@@ -89,10 +111,12 @@ public class ParserTokenManager implements ParserConstants
     }
 
     /**
-     *  Clears all state variables, resets to
-     *  start values, clears stateStack.  Call
-     *  before parsing.
-     */
+	 * Clears all state variables, resets to start values, clears stateStack.
+	 * Call before parsing.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:39
+	 */
     public void clearStateVars()
     {
         stateStack.clear();
@@ -108,18 +132,29 @@ public class ParserTokenManager implements ParserConstants
     }
 
     /**
-     * Holds the state of the parsing process.
-     */
+	 * Holds the state of the parsing process.
+	 *
+	 * @author mqfdy
+	 */
     private static class ParserState
     {
+        
+        /** The lparen. */
         int lparen;
+        
+        /** The rparen. */
         int rparen;
+        
+        /** The lexstate. */
         int lexstate;
     }
 
     /**
-     *  handles the dropdown logic when encountering a RPAREN
-     */
+	 * handles the dropdown logic when encountering a RPAREN.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:39
+	 */
     private void RPARENHandler()
     {
         /*
@@ -173,8 +208,28 @@ public class ParserTokenManager implements ParserConstants
 
   /** Debug output. */
   public  java.io.PrintStream debugStream = System.out;
-  /** Set debug output. */
+  
+  /**
+	 * Set debug output.
+	 *
+	 * @author mqfdy
+	 * @param ds
+	 *            the new debug stream
+	 * @Date 2018-09-03 09:00
+	 */
   public  void setDebugStream(java.io.PrintStream ds) { debugStream = ds; }
+
+/**
+ * Jj stop string literal dfa 3.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStopStringLiteralDfa_3(int pos, long active0)
 {
    switch (pos)
@@ -228,16 +283,48 @@ private final int jjStopStringLiteralDfa_3(int pos, long active0)
          return -1;
    }
 }
+
+/**
+ * Jj start nfa 3.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStartNfa_3(int pos, long active0)
 {
    return jjMoveNfa_3(jjStopStringLiteralDfa_3(pos, active0), pos + 1);
 }
+
+/**
+ * Jj stop at pos.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param kind
+ *            the kind
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjStopAtPos(int pos, int kind)
 {
    jjmatchedKind = kind;
    jjmatchedPos = pos;
    return pos + 1;
 }
+
+/**
+ * Jj move string literal dfa 0 3.
+ *
+ * @author mqfdy
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa0_3()
 {
    switch(curChar)
@@ -281,6 +368,16 @@ private int jjMoveStringLiteralDfa0_3()
          return jjMoveNfa_3(0, 0);
    }
 }
+
+/**
+ * Jj move string literal dfa 1 3.
+ *
+ * @author mqfdy
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa1_3(long active0)
 {
    try { curChar = input_stream.readChar(); }
@@ -313,6 +410,18 @@ private int jjMoveStringLiteralDfa1_3(long active0)
    }
    return jjStartNfa_3(0, active0);
 }
+
+/**
+ * Jj move string literal dfa 2 3.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa2_3(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -337,6 +446,18 @@ private int jjMoveStringLiteralDfa2_3(long old0, long active0)
    }
    return jjStartNfa_3(1, active0);
 }
+
+/**
+ * Jj move string literal dfa 3 3.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa3_3(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -359,6 +480,18 @@ private int jjMoveStringLiteralDfa3_3(long old0, long active0)
    }
    return jjStartNfa_3(2, active0);
 }
+
+/**
+ * Jj move string literal dfa 4 3.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa4_3(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -379,6 +512,20 @@ private int jjMoveStringLiteralDfa4_3(long old0, long active0)
    }
    return jjStartNfa_3(3, active0);
 }
+
+/**
+ * Jj start nfa with states 3.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param kind
+ *            the kind
+ * @param state
+ *            the state
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjStartNfaWithStates_3(int pos, int kind, int state)
 {
    jjmatchedKind = kind;
@@ -387,12 +534,28 @@ private int jjStartNfaWithStates_3(int pos, int kind, int state)
    catch(java.io.IOException e) { return pos + 1; }
    return jjMoveNfa_3(state, pos + 1);
 }
+
+/** The Constant jjbitVec0. */
 static final long[] jjbitVec0 = {
    0xfffffffffffffffeL, 0xffffffffffffffffL, 0xffffffffffffffffL, 0xffffffffffffffffL
 };
+
+/** The Constant jjbitVec2. */
 static final long[] jjbitVec2 = {
    0x0L, 0x0L, 0xffffffffffffffffL, 0xffffffffffffffffL
 };
+
+/**
+ * Jj move nfa 3.
+ *
+ * @author mqfdy
+ * @param startState
+ *            the start state
+ * @param curPos
+ *            the cur pos
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveNfa_3(int startState, int curPos)
 {
    int startsAt = 0;
@@ -1051,6 +1214,18 @@ private int jjMoveNfa_3(int startState, int curPos)
       catch(java.io.IOException e) { return curPos; }
    }
 }
+
+/**
+ * Jj stop string literal dfa 11.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStopStringLiteralDfa_11(int pos, long active0)
 {
    switch (pos)
@@ -1067,10 +1242,30 @@ private final int jjStopStringLiteralDfa_11(int pos, long active0)
          return -1;
    }
 }
+
+/**
+ * Jj start nfa 11.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStartNfa_11(int pos, long active0)
 {
    return jjMoveNfa_11(jjStopStringLiteralDfa_11(pos, active0), pos + 1);
 }
+
+/**
+ * Jj move string literal dfa 0 11.
+ *
+ * @author mqfdy
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa0_11()
 {
    switch(curChar)
@@ -1082,6 +1277,16 @@ private int jjMoveStringLiteralDfa0_11()
          return jjMoveNfa_11(3, 0);
    }
 }
+
+/**
+ * Jj move string literal dfa 1 11.
+ *
+ * @author mqfdy
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa1_11(long active0)
 {
    try { curChar = input_stream.readChar(); }
@@ -1106,6 +1311,18 @@ private int jjMoveStringLiteralDfa1_11(long active0)
    }
    return jjStartNfa_11(0, active0);
 }
+
+/**
+ * Jj move string literal dfa 2 11.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa2_11(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -1126,6 +1343,20 @@ private int jjMoveStringLiteralDfa2_11(long old0, long active0)
    }
    return jjStartNfa_11(1, active0);
 }
+
+/**
+ * Jj start nfa with states 11.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param kind
+ *            the kind
+ * @param state
+ *            the state
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjStartNfaWithStates_11(int pos, int kind, int state)
 {
    jjmatchedKind = kind;
@@ -1134,6 +1365,18 @@ private int jjStartNfaWithStates_11(int pos, int kind, int state)
    catch(java.io.IOException e) { return pos + 1; }
    return jjMoveNfa_11(state, pos + 1);
 }
+
+/**
+ * Jj move nfa 11.
+ *
+ * @author mqfdy
+ * @param startState
+ *            the start state
+ * @param curPos
+ *            the cur pos
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveNfa_11(int startState, int curPos)
 {
    int startsAt = 0;
@@ -1613,6 +1856,18 @@ private int jjMoveNfa_11(int startState, int curPos)
       catch(java.io.IOException e) { return curPos; }
    }
 }
+
+/**
+ * Jj stop string literal dfa 8.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStopStringLiteralDfa_8(int pos, long active0)
 {
    switch (pos)
@@ -1629,10 +1884,30 @@ private final int jjStopStringLiteralDfa_8(int pos, long active0)
          return -1;
    }
 }
+
+/**
+ * Jj start nfa 8.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStartNfa_8(int pos, long active0)
 {
    return jjMoveNfa_8(jjStopStringLiteralDfa_8(pos, active0), pos + 1);
 }
+
+/**
+ * Jj move string literal dfa 0 8.
+ *
+ * @author mqfdy
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa0_8()
 {
    switch(curChar)
@@ -1646,6 +1921,16 @@ private int jjMoveStringLiteralDfa0_8()
          return jjMoveNfa_8(3, 0);
    }
 }
+
+/**
+ * Jj move string literal dfa 1 8.
+ *
+ * @author mqfdy
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa1_8(long active0)
 {
    try { curChar = input_stream.readChar(); }
@@ -1670,6 +1955,18 @@ private int jjMoveStringLiteralDfa1_8(long active0)
    }
    return jjStartNfa_8(0, active0);
 }
+
+/**
+ * Jj move string literal dfa 2 8.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa2_8(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -1690,6 +1987,20 @@ private int jjMoveStringLiteralDfa2_8(long old0, long active0)
    }
    return jjStartNfa_8(1, active0);
 }
+
+/**
+ * Jj start nfa with states 8.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param kind
+ *            the kind
+ * @param state
+ *            the state
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjStartNfaWithStates_8(int pos, int kind, int state)
 {
    jjmatchedKind = kind;
@@ -1698,6 +2009,18 @@ private int jjStartNfaWithStates_8(int pos, int kind, int state)
    catch(java.io.IOException e) { return pos + 1; }
    return jjMoveNfa_8(state, pos + 1);
 }
+
+/**
+ * Jj move nfa 8.
+ *
+ * @author mqfdy
+ * @param startState
+ *            the start state
+ * @param curPos
+ *            the cur pos
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveNfa_8(int startState, int curPos)
 {
    int startsAt = 0;
@@ -1824,6 +2147,18 @@ private int jjMoveNfa_8(int startState, int curPos)
       catch(java.io.IOException e) { return curPos; }
    }
 }
+
+/**
+ * Jj stop string literal dfa 6.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStopStringLiteralDfa_6(int pos, long active0)
 {
    switch (pos)
@@ -1840,10 +2175,30 @@ private final int jjStopStringLiteralDfa_6(int pos, long active0)
          return -1;
    }
 }
+
+/**
+ * Jj start nfa 6.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStartNfa_6(int pos, long active0)
 {
    return jjMoveNfa_6(jjStopStringLiteralDfa_6(pos, active0), pos + 1);
 }
+
+/**
+ * Jj move string literal dfa 0 6.
+ *
+ * @author mqfdy
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa0_6()
 {
    switch(curChar)
@@ -1855,6 +2210,16 @@ private int jjMoveStringLiteralDfa0_6()
          return jjMoveNfa_6(3, 0);
    }
 }
+
+/**
+ * Jj move string literal dfa 1 6.
+ *
+ * @author mqfdy
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa1_6(long active0)
 {
    try { curChar = input_stream.readChar(); }
@@ -1875,6 +2240,18 @@ private int jjMoveStringLiteralDfa1_6(long active0)
    }
    return jjStartNfa_6(0, active0);
 }
+
+/**
+ * Jj move string literal dfa 2 6.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa2_6(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -1895,6 +2272,20 @@ private int jjMoveStringLiteralDfa2_6(long old0, long active0)
    }
    return jjStartNfa_6(1, active0);
 }
+
+/**
+ * Jj start nfa with states 6.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param kind
+ *            the kind
+ * @param state
+ *            the state
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjStartNfaWithStates_6(int pos, int kind, int state)
 {
    jjmatchedKind = kind;
@@ -1903,6 +2294,18 @@ private int jjStartNfaWithStates_6(int pos, int kind, int state)
    catch(java.io.IOException e) { return pos + 1; }
    return jjMoveNfa_6(state, pos + 1);
 }
+
+/**
+ * Jj move nfa 6.
+ *
+ * @author mqfdy
+ * @param startState
+ *            the start state
+ * @param curPos
+ *            the cur pos
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveNfa_6(int startState, int curPos)
 {
    int startsAt = 0;
@@ -2029,6 +2432,18 @@ private int jjMoveNfa_6(int startState, int curPos)
       catch(java.io.IOException e) { return curPos; }
    }
 }
+
+/**
+ * Jj stop string literal dfa 5.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStopStringLiteralDfa_5(int pos, long active0)
 {
    switch (pos)
@@ -2049,10 +2464,30 @@ private final int jjStopStringLiteralDfa_5(int pos, long active0)
          return -1;
    }
 }
+
+/**
+ * Jj start nfa 5.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStartNfa_5(int pos, long active0)
 {
    return jjMoveNfa_5(jjStopStringLiteralDfa_5(pos, active0), pos + 1);
 }
+
+/**
+ * Jj move string literal dfa 0 5.
+ *
+ * @author mqfdy
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa0_5()
 {
    switch(curChar)
@@ -2067,6 +2502,16 @@ private int jjMoveStringLiteralDfa0_5()
          return jjMoveNfa_5(13, 0);
    }
 }
+
+/**
+ * Jj move string literal dfa 1 5.
+ *
+ * @author mqfdy
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa1_5(long active0)
 {
    try { curChar = input_stream.readChar(); }
@@ -2095,6 +2540,18 @@ private int jjMoveStringLiteralDfa1_5(long active0)
    }
    return jjStartNfa_5(0, active0);
 }
+
+/**
+ * Jj move string literal dfa 2 5.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa2_5(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -2115,6 +2572,20 @@ private int jjMoveStringLiteralDfa2_5(long old0, long active0)
    }
    return jjStartNfa_5(1, active0);
 }
+
+/**
+ * Jj start nfa with states 5.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param kind
+ *            the kind
+ * @param state
+ *            the state
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjStartNfaWithStates_5(int pos, int kind, int state)
 {
    jjmatchedKind = kind;
@@ -2123,6 +2594,18 @@ private int jjStartNfaWithStates_5(int pos, int kind, int state)
    catch(java.io.IOException e) { return pos + 1; }
    return jjMoveNfa_5(state, pos + 1);
 }
+
+/**
+ * Jj move nfa 5.
+ *
+ * @author mqfdy
+ * @param startState
+ *            the start state
+ * @param curPos
+ *            the cur pos
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveNfa_5(int startState, int curPos)
 {
    int startsAt = 0;
@@ -2447,6 +2930,18 @@ private int jjMoveNfa_5(int startState, int curPos)
       catch(java.io.IOException e) { return curPos; }
    }
 }
+
+/**
+ * Jj stop string literal dfa 9.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStopStringLiteralDfa_9(int pos, long active0)
 {
    switch (pos)
@@ -2463,10 +2958,30 @@ private final int jjStopStringLiteralDfa_9(int pos, long active0)
          return -1;
    }
 }
+
+/**
+ * Jj start nfa 9.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStartNfa_9(int pos, long active0)
 {
    return jjMoveNfa_9(jjStopStringLiteralDfa_9(pos, active0), pos + 1);
 }
+
+/**
+ * Jj move string literal dfa 0 9.
+ *
+ * @author mqfdy
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa0_9()
 {
    switch(curChar)
@@ -2480,6 +2995,16 @@ private int jjMoveStringLiteralDfa0_9()
          return jjMoveNfa_9(3, 0);
    }
 }
+
+/**
+ * Jj move string literal dfa 1 9.
+ *
+ * @author mqfdy
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa1_9(long active0)
 {
    try { curChar = input_stream.readChar(); }
@@ -2504,6 +3029,18 @@ private int jjMoveStringLiteralDfa1_9(long active0)
    }
    return jjStartNfa_9(0, active0);
 }
+
+/**
+ * Jj move string literal dfa 2 9.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa2_9(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -2524,6 +3061,20 @@ private int jjMoveStringLiteralDfa2_9(long old0, long active0)
    }
    return jjStartNfa_9(1, active0);
 }
+
+/**
+ * Jj start nfa with states 9.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param kind
+ *            the kind
+ * @param state
+ *            the state
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjStartNfaWithStates_9(int pos, int kind, int state)
 {
    jjmatchedKind = kind;
@@ -2532,6 +3083,18 @@ private int jjStartNfaWithStates_9(int pos, int kind, int state)
    catch(java.io.IOException e) { return pos + 1; }
    return jjMoveNfa_9(state, pos + 1);
 }
+
+/**
+ * Jj move nfa 9.
+ *
+ * @author mqfdy
+ * @param startState
+ *            the start state
+ * @param curPos
+ *            the cur pos
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveNfa_9(int startState, int curPos)
 {
    int startsAt = 0;
@@ -2658,6 +3221,18 @@ private int jjMoveNfa_9(int startState, int curPos)
       catch(java.io.IOException e) { return curPos; }
    }
 }
+
+/**
+ * Jj stop string literal dfa 2.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStopStringLiteralDfa_2(int pos, long active0)
 {
    switch (pos)
@@ -2674,10 +3249,30 @@ private final int jjStopStringLiteralDfa_2(int pos, long active0)
          return -1;
    }
 }
+
+/**
+ * Jj start nfa 2.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStartNfa_2(int pos, long active0)
 {
    return jjMoveNfa_2(jjStopStringLiteralDfa_2(pos, active0), pos + 1);
 }
+
+/**
+ * Jj move string literal dfa 0 2.
+ *
+ * @author mqfdy
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa0_2()
 {
    switch(curChar)
@@ -2695,6 +3290,16 @@ private int jjMoveStringLiteralDfa0_2()
          return jjMoveNfa_2(3, 0);
    }
 }
+
+/**
+ * Jj move string literal dfa 1 2.
+ *
+ * @author mqfdy
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa1_2(long active0)
 {
    try { curChar = input_stream.readChar(); }
@@ -2719,6 +3324,18 @@ private int jjMoveStringLiteralDfa1_2(long active0)
    }
    return jjStartNfa_2(0, active0);
 }
+
+/**
+ * Jj move string literal dfa 2 2.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa2_2(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -2743,6 +3360,18 @@ private int jjMoveStringLiteralDfa2_2(long old0, long active0)
    }
    return jjStartNfa_2(1, active0);
 }
+
+/**
+ * Jj move string literal dfa 3 2.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa3_2(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -2765,6 +3394,18 @@ private int jjMoveStringLiteralDfa3_2(long old0, long active0)
    }
    return jjStartNfa_2(2, active0);
 }
+
+/**
+ * Jj move string literal dfa 4 2.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa4_2(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -2785,6 +3426,20 @@ private int jjMoveStringLiteralDfa4_2(long old0, long active0)
    }
    return jjStartNfa_2(3, active0);
 }
+
+/**
+ * Jj start nfa with states 2.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param kind
+ *            the kind
+ * @param state
+ *            the state
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjStartNfaWithStates_2(int pos, int kind, int state)
 {
    jjmatchedKind = kind;
@@ -2793,6 +3448,18 @@ private int jjStartNfaWithStates_2(int pos, int kind, int state)
    catch(java.io.IOException e) { return pos + 1; }
    return jjMoveNfa_2(state, pos + 1);
 }
+
+/**
+ * Jj move nfa 2.
+ *
+ * @author mqfdy
+ * @param startState
+ *            the start state
+ * @param curPos
+ *            the cur pos
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveNfa_2(int startState, int curPos)
 {
    int startsAt = 0;
@@ -3178,6 +3845,18 @@ private int jjMoveNfa_2(int startState, int curPos)
       catch(java.io.IOException e) { return curPos; }
    }
 }
+
+/**
+ * Jj stop string literal dfa 10.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStopStringLiteralDfa_10(int pos, long active0)
 {
    switch (pos)
@@ -3194,10 +3873,30 @@ private final int jjStopStringLiteralDfa_10(int pos, long active0)
          return -1;
    }
 }
+
+/**
+ * Jj start nfa 10.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStartNfa_10(int pos, long active0)
 {
    return jjMoveNfa_10(jjStopStringLiteralDfa_10(pos, active0), pos + 1);
 }
+
+/**
+ * Jj move string literal dfa 0 10.
+ *
+ * @author mqfdy
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa0_10()
 {
    switch(curChar)
@@ -3209,6 +3908,16 @@ private int jjMoveStringLiteralDfa0_10()
          return jjMoveNfa_10(3, 0);
    }
 }
+
+/**
+ * Jj move string literal dfa 1 10.
+ *
+ * @author mqfdy
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa1_10(long active0)
 {
    try { curChar = input_stream.readChar(); }
@@ -3229,6 +3938,18 @@ private int jjMoveStringLiteralDfa1_10(long active0)
    }
    return jjStartNfa_10(0, active0);
 }
+
+/**
+ * Jj move string literal dfa 2 10.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa2_10(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -3249,6 +3970,20 @@ private int jjMoveStringLiteralDfa2_10(long old0, long active0)
    }
    return jjStartNfa_10(1, active0);
 }
+
+/**
+ * Jj start nfa with states 10.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param kind
+ *            the kind
+ * @param state
+ *            the state
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjStartNfaWithStates_10(int pos, int kind, int state)
 {
    jjmatchedKind = kind;
@@ -3257,6 +3992,18 @@ private int jjStartNfaWithStates_10(int pos, int kind, int state)
    catch(java.io.IOException e) { return pos + 1; }
    return jjMoveNfa_10(state, pos + 1);
 }
+
+/**
+ * Jj move nfa 10.
+ *
+ * @author mqfdy
+ * @param startState
+ *            the start state
+ * @param curPos
+ *            the cur pos
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveNfa_10(int startState, int curPos)
 {
    int startsAt = 0;
@@ -3402,6 +4149,20 @@ private int jjMoveNfa_10(int startState, int curPos)
       catch(java.io.IOException e) { return curPos; }
    }
 }
+
+/**
+ * Jj stop string literal dfa 0.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @param active1
+ *            the active 1
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStopStringLiteralDfa_0(int pos, long active0, long active1)
 {
    switch (pos)
@@ -3447,10 +4208,32 @@ private final int jjStopStringLiteralDfa_0(int pos, long active0, long active1)
          return -1;
    }
 }
+
+/**
+ * Jj start nfa 0.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @param active1
+ *            the active 1
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStartNfa_0(int pos, long active0, long active1)
 {
    return jjMoveNfa_0(jjStopStringLiteralDfa_0(pos, active0, active1), pos + 1);
 }
+
+/**
+ * Jj move string literal dfa 0 0.
+ *
+ * @author mqfdy
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa0_0()
 {
    switch(curChar)
@@ -3472,6 +4255,16 @@ private int jjMoveStringLiteralDfa0_0()
          return jjMoveNfa_0(12, 0);
    }
 }
+
+/**
+ * Jj move string literal dfa 1 0.
+ *
+ * @author mqfdy
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa1_0(long active0)
 {
    try { curChar = input_stream.readChar(); }
@@ -3500,6 +4293,18 @@ private int jjMoveStringLiteralDfa1_0(long active0)
    }
    return jjStartNfa_0(0, active0, 0L);
 }
+
+/**
+ * Jj move string literal dfa 2 0.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa2_0(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -3524,6 +4329,18 @@ private int jjMoveStringLiteralDfa2_0(long old0, long active0)
    }
    return jjStartNfa_0(1, active0, 0L);
 }
+
+/**
+ * Jj move string literal dfa 3 0.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa3_0(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -3546,6 +4363,18 @@ private int jjMoveStringLiteralDfa3_0(long old0, long active0)
    }
    return jjStartNfa_0(2, active0, 0L);
 }
+
+/**
+ * Jj move string literal dfa 4 0.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa4_0(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -3566,6 +4395,20 @@ private int jjMoveStringLiteralDfa4_0(long old0, long active0)
    }
    return jjStartNfa_0(3, active0, 0L);
 }
+
+/**
+ * Jj start nfa with states 0.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param kind
+ *            the kind
+ * @param state
+ *            the state
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjStartNfaWithStates_0(int pos, int kind, int state)
 {
    jjmatchedKind = kind;
@@ -3574,6 +4417,18 @@ private int jjStartNfaWithStates_0(int pos, int kind, int state)
    catch(java.io.IOException e) { return pos + 1; }
    return jjMoveNfa_0(state, pos + 1);
 }
+
+/**
+ * Jj move nfa 0.
+ *
+ * @author mqfdy
+ * @param startState
+ *            the start state
+ * @param curPos
+ *            the cur pos
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveNfa_0(int startState, int curPos)
 {
    int startsAt = 0;
@@ -3817,6 +4672,18 @@ private int jjMoveNfa_0(int startState, int curPos)
       catch(java.io.IOException e) { return curPos; }
    }
 }
+
+/**
+ * Jj stop string literal dfa 4.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStopStringLiteralDfa_4(int pos, long active0)
 {
    switch (pos)
@@ -3864,10 +4731,30 @@ private final int jjStopStringLiteralDfa_4(int pos, long active0)
          return -1;
    }
 }
+
+/**
+ * Jj start nfa 4.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStartNfa_4(int pos, long active0)
 {
    return jjMoveNfa_4(jjStopStringLiteralDfa_4(pos, active0), pos + 1);
 }
+
+/**
+ * Jj move string literal dfa 0 4.
+ *
+ * @author mqfdy
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa0_4()
 {
    switch(curChar)
@@ -3899,6 +4786,16 @@ private int jjMoveStringLiteralDfa0_4()
          return jjMoveNfa_4(13, 0);
    }
 }
+
+/**
+ * Jj move string literal dfa 1 4.
+ *
+ * @author mqfdy
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa1_4(long active0)
 {
    try { curChar = input_stream.readChar(); }
@@ -3927,6 +4824,18 @@ private int jjMoveStringLiteralDfa1_4(long active0)
    }
    return jjStartNfa_4(0, active0);
 }
+
+/**
+ * Jj move string literal dfa 2 4.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa2_4(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -3951,6 +4860,18 @@ private int jjMoveStringLiteralDfa2_4(long old0, long active0)
    }
    return jjStartNfa_4(1, active0);
 }
+
+/**
+ * Jj move string literal dfa 3 4.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa3_4(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -3973,6 +4894,18 @@ private int jjMoveStringLiteralDfa3_4(long old0, long active0)
    }
    return jjStartNfa_4(2, active0);
 }
+
+/**
+ * Jj move string literal dfa 4 4.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa4_4(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -3993,6 +4926,20 @@ private int jjMoveStringLiteralDfa4_4(long old0, long active0)
    }
    return jjStartNfa_4(3, active0);
 }
+
+/**
+ * Jj start nfa with states 4.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param kind
+ *            the kind
+ * @param state
+ *            the state
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjStartNfaWithStates_4(int pos, int kind, int state)
 {
    jjmatchedKind = kind;
@@ -4001,6 +4948,18 @@ private int jjStartNfaWithStates_4(int pos, int kind, int state)
    catch(java.io.IOException e) { return pos + 1; }
    return jjMoveNfa_4(state, pos + 1);
 }
+
+/**
+ * Jj move nfa 4.
+ *
+ * @author mqfdy
+ * @param startState
+ *            the start state
+ * @param curPos
+ *            the cur pos
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveNfa_4(int startState, int curPos)
 {
    int startsAt = 0;
@@ -4479,6 +5438,20 @@ private int jjMoveNfa_4(int startState, int curPos)
       catch(java.io.IOException e) { return curPos; }
    }
 }
+
+/**
+ * Jj stop string literal dfa 1.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @param active1
+ *            the active 1
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStopStringLiteralDfa_1(int pos, long active0, long active1)
 {
    switch (pos)
@@ -4524,10 +5497,32 @@ private final int jjStopStringLiteralDfa_1(int pos, long active0, long active1)
          return -1;
    }
 }
+
+/**
+ * Jj start nfa 1.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @param active1
+ *            the active 1
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStartNfa_1(int pos, long active0, long active1)
 {
    return jjMoveNfa_1(jjStopStringLiteralDfa_1(pos, active0, active1), pos + 1);
 }
+
+/**
+ * Jj move string literal dfa 0 1.
+ *
+ * @author mqfdy
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa0_1()
 {
    switch(curChar)
@@ -4551,6 +5546,16 @@ private int jjMoveStringLiteralDfa0_1()
          return jjMoveNfa_1(12, 0);
    }
 }
+
+/**
+ * Jj move string literal dfa 1 1.
+ *
+ * @author mqfdy
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa1_1(long active0)
 {
    try { curChar = input_stream.readChar(); }
@@ -4575,6 +5580,18 @@ private int jjMoveStringLiteralDfa1_1(long active0)
    }
    return jjStartNfa_1(0, active0, 0L);
 }
+
+/**
+ * Jj move string literal dfa 2 1.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa2_1(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -4599,6 +5616,18 @@ private int jjMoveStringLiteralDfa2_1(long old0, long active0)
    }
    return jjStartNfa_1(1, active0, 0L);
 }
+
+/**
+ * Jj move string literal dfa 3 1.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa3_1(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -4621,6 +5650,18 @@ private int jjMoveStringLiteralDfa3_1(long old0, long active0)
    }
    return jjStartNfa_1(2, active0, 0L);
 }
+
+/**
+ * Jj move string literal dfa 4 1.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa4_1(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -4641,6 +5682,20 @@ private int jjMoveStringLiteralDfa4_1(long old0, long active0)
    }
    return jjStartNfa_1(3, active0, 0L);
 }
+
+/**
+ * Jj start nfa with states 1.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param kind
+ *            the kind
+ * @param state
+ *            the state
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjStartNfaWithStates_1(int pos, int kind, int state)
 {
    jjmatchedKind = kind;
@@ -4649,6 +5704,18 @@ private int jjStartNfaWithStates_1(int pos, int kind, int state)
    catch(java.io.IOException e) { return pos + 1; }
    return jjMoveNfa_1(state, pos + 1);
 }
+
+/**
+ * Jj move nfa 1.
+ *
+ * @author mqfdy
+ * @param startState
+ *            the start state
+ * @param curPos
+ *            the cur pos
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveNfa_1(int startState, int curPos)
 {
    int startsAt = 0;
@@ -4869,6 +5936,18 @@ private int jjMoveNfa_1(int startState, int curPos)
       catch(java.io.IOException e) { return curPos; }
    }
 }
+
+/**
+ * Jj stop string literal dfa 7.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStopStringLiteralDfa_7(int pos, long active0)
 {
    switch (pos)
@@ -4885,10 +5964,30 @@ private final int jjStopStringLiteralDfa_7(int pos, long active0)
          return -1;
    }
 }
+
+/**
+ * Jj start nfa 7.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private final int jjStartNfa_7(int pos, long active0)
 {
    return jjMoveNfa_7(jjStopStringLiteralDfa_7(pos, active0), pos + 1);
 }
+
+/**
+ * Jj move string literal dfa 0 7.
+ *
+ * @author mqfdy
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa0_7()
 {
    switch(curChar)
@@ -4902,6 +6001,16 @@ private int jjMoveStringLiteralDfa0_7()
          return jjMoveNfa_7(3, 0);
    }
 }
+
+/**
+ * Jj move string literal dfa 1 7.
+ *
+ * @author mqfdy
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa1_7(long active0)
 {
    try { curChar = input_stream.readChar(); }
@@ -4924,6 +6033,18 @@ private int jjMoveStringLiteralDfa1_7(long active0)
    }
    return jjStartNfa_7(0, active0);
 }
+
+/**
+ * Jj move string literal dfa 2 7.
+ *
+ * @author mqfdy
+ * @param old0
+ *            the old 0
+ * @param active0
+ *            the active 0
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveStringLiteralDfa2_7(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
@@ -4948,6 +6069,20 @@ private int jjMoveStringLiteralDfa2_7(long old0, long active0)
    }
    return jjStartNfa_7(1, active0);
 }
+
+/**
+ * Jj start nfa with states 7.
+ *
+ * @author mqfdy
+ * @param pos
+ *            the pos
+ * @param kind
+ *            the kind
+ * @param state
+ *            the state
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjStartNfaWithStates_7(int pos, int kind, int state)
 {
    jjmatchedKind = kind;
@@ -4956,6 +6091,18 @@ private int jjStartNfaWithStates_7(int pos, int kind, int state)
    catch(java.io.IOException e) { return pos + 1; }
    return jjMoveNfa_7(state, pos + 1);
 }
+
+/**
+ * Jj move nfa 7.
+ *
+ * @author mqfdy
+ * @param startState
+ *            the start state
+ * @param curPos
+ *            the cur pos
+ * @return the int
+ * @Date 2018-9-3 11:38:39
+ */
 private int jjMoveNfa_7(int startState, int curPos)
 {
    int startsAt = 0;
@@ -5082,6 +6229,8 @@ private int jjMoveNfa_7(int startState, int curPos)
       catch(java.io.IOException e) { return curPos; }
    }
 }
+
+/** The Constant jjnextStates. */
 static final int[] jjnextStates = {
    91, 93, 94, 95, 100, 101, 91, 94, 61, 100, 29, 31, 32, 35, 11, 13, 
    14, 15, 1, 2, 4, 11, 18, 13, 14, 15, 26, 27, 33, 34, 70, 71, 
@@ -5099,6 +6248,24 @@ static final int[] jjnextStates = {
    17, 18, 29, 30, 36, 37, 42, 43, 44, 45, 19, 20, 22, 24, 29, 30, 
    46, 47, 61, 62, 66, 67, 6, 11, 27, 17, 18, 19, 20, 
 };
+
+/**
+ * Jj can move 0.
+ *
+ * @author mqfdy
+ * @param hiByte
+ *            the hi byte
+ * @param i1
+ *            the i 1
+ * @param i2
+ *            the i 2
+ * @param l1
+ *            the l 1
+ * @param l2
+ *            the l 2
+ * @return true, if successful
+ * @Date 2018-9-3 11:38:39
+ */
 private static final boolean jjCanMove_0(int hiByte, int i1, int i2, long l1, long l2)
 {
    switch(hiByte)
@@ -5143,38 +6310,82 @@ public static final int[] jjnewLexState = {
    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
 };
+
+/** The Constant jjtoToken. */
 static final long[] jjtoToken = {
    0x637fffff9fe07fffL, 0x13cL, 
 };
+
+/** The Constant jjtoSkip. */
 static final long[] jjtoSkip = {
    0x20000000L, 0xc0L, 
 };
+
+/** The Constant jjtoSpecial. */
 static final long[] jjtoSpecial = {
    0x0L, 0xc0L, 
 };
+
+/** The Constant jjtoMore. */
 static final long[] jjtoMore = {
    0x401f8000L, 0x0L, 
 };
+
+/** The input stream. */
 protected CharStream input_stream;
+
+/** The jjrounds. */
 private final int[] jjrounds = new int[105];
+
+/** The jjstate set. */
 private final int[] jjstateSet = new int[210];
+
+/** The jjimage. */
 private final StrBuilder jjimage = new StrBuilder();
+
+/** The image. */
 private StrBuilder image = jjimage;
+
+/** The jjimage len. */
 private int jjimageLen;
+
+/** The length of match. */
 private int lengthOfMatch;
+
+/** The cur char. */
 protected char curChar;
-/** Constructor. */
+
+/**
+ * Constructor.
+ *
+ * @param stream
+ *            the stream
+ */
 public ParserTokenManager(CharStream stream){
    input_stream = stream;
 }
 
-/** Constructor. */
+/**
+ * Constructor.
+ *
+ * @param stream
+ *            the stream
+ * @param lexState
+ *            the lex state
+ */
 public ParserTokenManager(CharStream stream, int lexState){
    this(stream);
    SwitchTo(lexState);
 }
 
-/** Reinitialise parser. */
+/**
+ * Reinitialise parser.
+ *
+ * @author mqfdy
+ * @param stream
+ *            the stream
+ * @Date 2018-09-03 09:00
+ */
 public void ReInit(CharStream stream)
 {
    jjmatchedPos = jjnewStateCnt = 0;
@@ -5182,6 +6393,13 @@ public void ReInit(CharStream stream)
    input_stream = stream;
    ReInitRounds();
 }
+
+/**
+ * Re init rounds.
+ *
+ * @author mqfdy
+ * @Date 2018-9-3 11:38:39
+ */
 private void ReInitRounds()
 {
    int i;
@@ -5190,14 +6408,30 @@ private void ReInitRounds()
       jjrounds[i] = 0x80000000;
 }
 
-/** Reinitialise parser. */
+/**
+ * Reinitialise parser.
+ *
+ * @author mqfdy
+ * @param stream
+ *            the stream
+ * @param lexState
+ *            the lex state
+ * @Date 2018-09-03 09:00
+ */
 public void ReInit(CharStream stream, int lexState)
 {
    ReInit(stream);
    SwitchTo(lexState);
 }
 
-/** Switch to specified lex state. */
+/**
+ * Switch to specified lex state.
+ *
+ * @author mqfdy
+ * @param lexState
+ *            the lex state
+ * @Date 2018-09-03 09:00
+ */
 public void SwitchTo(int lexState)
 {
    if (lexState >= 12 || lexState < 0)
@@ -5206,6 +6440,13 @@ public void SwitchTo(int lexState)
       curLexState = lexState;
 }
 
+/**
+ * Jj fill token.
+ *
+ * @author mqfdy
+ * @return the token
+ * @Date 2018-09-03 09:00
+ */
 protected Token jjFillToken()
 {
    final Token t;
@@ -5232,14 +6473,31 @@ protected Token jjFillToken()
    return t;
 }
 
+/** The cur lex state. */
 int curLexState = 5;
+
+/** The default lex state. */
 int defaultLexState = 5;
+
+/** The jjnew state cnt. */
 int jjnewStateCnt;
+
+/** The jjround. */
 int jjround;
+
+/** The jjmatched pos. */
 int jjmatchedPos;
+
+/** The jjmatched kind. */
 int jjmatchedKind;
 
-/** Get the next Token. */
+/**
+ * Get the next Token.
+ *
+ * @author mqfdy
+ * @return the next token
+ * @Date 2018-09-03 09:00
+ */
 public Token getNextToken() 
 {
   Token specialToken = null;
@@ -5429,6 +6687,14 @@ public Token getNextToken()
   }
 }
 
+/**
+ * Skip lexical actions.
+ *
+ * @author mqfdy
+ * @param matchedToken
+ *            the matched token
+ * @Date 2018-9-3 11:38:39
+ */
 void SkipLexicalActions(Token matchedToken)
 {
    switch(jjmatchedKind)
@@ -5461,6 +6727,13 @@ void SkipLexicalActions(Token matchedToken)
          break;
    }
 }
+
+/**
+ * More lexical actions.
+ *
+ * @author mqfdy
+ * @Date 2018-9-3 11:38:39
+ */
 void MoreLexicalActions()
 {
    jjimageLen += (lengthOfMatch = jjmatchedPos + 1);
@@ -5578,6 +6851,15 @@ void MoreLexicalActions()
          break;
    }
 }
+
+/**
+ * Token lexical actions.
+ *
+ * @author mqfdy
+ * @param matchedToken
+ *            the matched token
+ * @Date 2018-9-3 11:38:39
+ */
 void TokenLexicalActions(Token matchedToken)
 {
    switch(jjmatchedKind)
@@ -5788,6 +7070,15 @@ void TokenLexicalActions(Token matchedToken)
          break;
    }
 }
+
+/**
+ * Jj check N add.
+ *
+ * @author mqfdy
+ * @param state
+ *            the state
+ * @Date 2018-9-3 11:38:39
+ */
 private void jjCheckNAdd(int state)
 {
    if (jjrounds[state] != jjround)
@@ -5796,18 +7087,50 @@ private void jjCheckNAdd(int state)
       jjrounds[state] = jjround;
    }
 }
+
+/**
+ * Jj add states.
+ *
+ * @author mqfdy
+ * @param start
+ *            the start
+ * @param end
+ *            the end
+ * @Date 2018-9-3 11:38:39
+ */
 private void jjAddStates(int start, int end)
 {
    do {
       jjstateSet[jjnewStateCnt++] = jjnextStates[start];
    } while (start++ != end);
 }
+
+/**
+ * Jj check N add two states.
+ *
+ * @author mqfdy
+ * @param state1
+ *            the state 1
+ * @param state2
+ *            the state 2
+ * @Date 2018-9-3 11:38:39
+ */
 private void jjCheckNAddTwoStates(int state1, int state2)
 {
    jjCheckNAdd(state1);
    jjCheckNAdd(state2);
 }
 
+/**
+ * Jj check N add states.
+ *
+ * @author mqfdy
+ * @param start
+ *            the start
+ * @param end
+ *            the end
+ * @Date 2018-9-3 11:38:39
+ */
 private void jjCheckNAddStates(int start, int end)
 {
    do {

@@ -27,6 +27,7 @@ import com.mqfdy.code.springboot.utilities.internal.model.CallbackChangeSupport;
 import com.mqfdy.code.springboot.utilities.internal.model.ChangeSupport;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Base class for Node classes.
  * Provides support for the following:
@@ -106,8 +107,11 @@ public abstract class AbstractNode
 	// ********** constructors **********
 
 	/**
-	 * Most objects must have a parent.
-	 * Use this constructor to create a new node.
+	 * Most objects must have a parent. Use this constructor to create a new
+	 * node.
+	 *
+	 * @param parent
+	 *            the parent
 	 * @see #initialize(Node)
 	 */
 	protected AbstractNode(Node parent) {
@@ -140,6 +144,9 @@ public abstract class AbstractNode
 
 	/**
 	 * Initialize a newly-created instance.
+	 *
+	 * @param parentNode
+	 *            the parent node
 	 * @see #initialize()
 	 */
 	protected void initialize(Node parentNode) {
@@ -191,11 +198,15 @@ public abstract class AbstractNode
 	}
 
 	/**
-	 * Throw an IllegalArgumentException if the parent is not valid
-	 * for the node.
-	 * By default require a non-null parent. Override if other restrictions exist
-	 * or the parent should be null.
-	 * NB: Root node model implementations will need to override this method.
+	 * Throw an IllegalArgumentException if the parent is not valid for the
+	 * node. By default require a non-null parent. Override if other
+	 * restrictions exist or the parent should be null. NB: Root node model
+	 * implementations will need to override this method.
+	 *
+	 * @author mqfdy
+	 * @param parentNode
+	 *            the parent node
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void checkParent(Node parentNode) {
 		if (parentNode == null) {
@@ -218,8 +229,11 @@ public abstract class AbstractNode
 	}
 
 	/**
-	 * Subclasses should override this method to add their children
-	 * to the specified list.
+	 * Subclasses should override this method to add their children to the
+	 * specified list.
+	 *
+	 * @param list
+	 *            the list
 	 * @see #children()
 	 */
 	protected void addChildrenTo(List<Node> list) {
@@ -248,15 +262,27 @@ public abstract class AbstractNode
 		return (this == node) || this.parentIsDescendantOf(node);
 	}
 
+	/**
+	 * Parent is descendant of.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	protected boolean parentIsDescendantOf(Node node) {
 		return (this.parent != null) && this.parent.isDescendantOf(node);
 	}
 
 	/**
-	 * Return a collection holding all the node's "references", and all
-	 * the node's descendants' "references". "References" are
-	 * objects that are "referenced" by another object, as opposed
-	 * to "owned" by another object.
+	 * Return a collection holding all the node's "references", and all the
+	 * node's descendants' "references". "References" are objects that are
+	 * "referenced" by another object, as opposed to "owned" by another object.
+	 *
+	 * @author mqfdy
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public Iterator<Node.Reference> branchReferences() {
 		Collection<Node.Reference> branchReferences = new ArrayList<Node.Reference>(1000);		// start big
@@ -283,10 +309,13 @@ public abstract class AbstractNode
 	}
 
 	/**
-	 * Return all the nodes in the object's branch of the tree,
-	 * including the node itself. The nodes will probably returned
-	 * in "depth-first" order.
+	 * Return all the nodes in the object's branch of the tree, including the
+	 * node itself. The nodes will probably returned in "depth-first" order.
 	 * Only really used for testing and debugging.
+	 *
+	 * @author mqfdy
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public Iterator<Node> allNodes() {
 		Collection<Node> nodes = new ArrayList<Node>(1000);		// start big
@@ -330,9 +359,16 @@ public abstract class AbstractNode
 	}
 
 	/**
-	 * convenience method
-	 * return whether node1 is a descendant of node2;
-	 * node1 can be null
+	 * convenience method return whether node1 is a descendant of node2; node1
+	 * can be null.
+	 *
+	 * @author mqfdy
+	 * @param node1
+	 *            the node 1
+	 * @param node2
+	 *            the node 2
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	protected boolean nodeIsDescendantOf(Node node1, Node node2) {
 		return (node1 != null) && node1.isDescendantOf(node2);
@@ -394,6 +430,12 @@ public abstract class AbstractNode
 		}
 	}
 
+	/**
+	 * Validate.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void validate() {
 		this.getValidator().validate();
 	}
@@ -429,9 +471,13 @@ public abstract class AbstractNode
 	// ********** dirty flag support **********
 
 	/**
-	 * Return whether any persistent aspects of the object
-	 * have changed since the object was last read or saved.
-	 * This does NOT include changes to the object's descendants.
+	 * Return whether any persistent aspects of the object have changed since
+	 * the object was last read or saved. This does NOT include changes to the
+	 * object's descendants.
+	 *
+	 * @author mqfdy
+	 * @return true, if is dirty
+	 * @Date 2018-09-03 09:00
 	 */
 	public final boolean isDirty() {
 		return this.dirty;
@@ -447,18 +493,24 @@ public abstract class AbstractNode
 	}
 
 	/**
-	 * Return whether the object is unmodified
-	 * since it was last read or saved.
+	 * Return whether the object is unmodified since it was last read or saved.
 	 * This does NOT include changes to the object's descendants.
+	 *
+	 * @author mqfdy
+	 * @return true, if is clean
+	 * @Date 2018-09-03 09:00
 	 */
 	public final boolean isClean() {
 		return ! this.dirty;
 	}
 
 	/**
-	 * Return whether the object and all of its descendants
-	 * are unmodified since the object and
-	 * its descendants were last read or saved.
+	 * Return whether the object and all of its descendants are unmodified since
+	 * the object and its descendants were last read or saved.
+	 *
+	 * @author mqfdy
+	 * @return true, if is clean branch
+	 * @Date 2018-09-03 09:00
 	 */
 	public final boolean isCleanBranch() {
 		return ! this.dirtyBranch;
@@ -501,6 +553,12 @@ public abstract class AbstractNode
 		this.markParentBranchDirty();
 	}
 
+	/**
+	 * Mark parent branch dirty.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void markParentBranchDirty() {
 		if (this.parent != null) {
 			this.parent.markBranchDirty();
@@ -534,6 +592,12 @@ public abstract class AbstractNode
 		this.markParentBranchCleanIfPossible();
 	}
 
+	/**
+	 * Mark parent branch clean if possible.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void markParentBranchCleanIfPossible() {
 		if (this.parent != null) {
 			this.parent.markBranchCleanIfPossible();
@@ -594,12 +658,15 @@ public abstract class AbstractNode
 	}
 
 	/**
-	 * Return a set of the object's transient aspect names.
-	 * These are the aspects that, when they change, will NOT cause the
-	 * object to be marked dirty.
-	 * If you need instance-based calculation of your transient aspects,
-	 * override this method. If class-based calculation is sufficient,
-	 * override #addTransientAspectNamesTo(Set).
+	 * Return a set of the object's transient aspect names. These are the
+	 * aspects that, when they change, will NOT cause the object to be marked
+	 * dirty. If you need instance-based calculation of your transient aspects,
+	 * override this method. If class-based calculation is sufficient, override
+	 * #addTransientAspectNamesTo(Set).
+	 *
+	 * @author mqfdy
+	 * @return the sets the
+	 * @Date 2018-09-03 09:00
 	 */
 	protected final Set<String> transientAspectNames() {
 		synchronized (transientAspectNameSets) {
@@ -614,12 +681,16 @@ public abstract class AbstractNode
 	}
 
 	/**
-	 * Add the object's transient aspect names to the specified set.
-	 * These are the aspects that, when they change, will NOT cause the
-	 * object to be marked dirty.
-	 * If class-based calculation of your transient aspects is sufficient,
-	 * override this method. If you need instance-based calculation,
+	 * Add the object's transient aspect names to the specified set. These are
+	 * the aspects that, when they change, will NOT cause the object to be
+	 * marked dirty. If class-based calculation of your transient aspects is
+	 * sufficient, override this method. If you need instance-based calculation,
 	 * override #transientAspectNames().
+	 *
+	 * @author mqfdy
+	 * @param transientAspectNames
+	 *            the transient aspect names
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void addTransientAspectNamesTo(Set<String> transientAspectNames) {
 		transientAspectNames.add(DIRTY_BRANCH_PROPERTY);
@@ -630,9 +701,12 @@ public abstract class AbstractNode
 	}
 
 	/**
-	 * Return the dirty nodes in the object's branch of the tree,
-	 * including the node itself (if appropriate).
-	 * Only really used for testing and debugging.
+	 * Return the dirty nodes in the object's branch of the tree, including the
+	 * node itself (if appropriate). Only really used for testing and debugging.
+	 *
+	 * @author mqfdy
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public final Iterator<Node> allDirtyNodes() {
 		return new FilteringIterator<Node, Node>(this.allNodes()) {
@@ -647,8 +721,10 @@ public abstract class AbstractNode
 	// ********** problems **********
 
 	/**
-	 * Return the node's problems.
-	 * This does NOT include the problems of the node's descendants.
+	 * Return the node's problems. This does NOT include the problems of the
+	 * node's descendants.
+	 *
+	 * @return the iterator
 	 * @see #branchProblems()
 	 */
 	public final Iterator<Problem> problems() {
@@ -656,8 +732,10 @@ public abstract class AbstractNode
 	}
 
 	/**
-	 * Return the size of the node's problems.
-	 * This does NOT include the problems of the node's descendants.
+	 * Return the size of the node's problems. This does NOT include the
+	 * problems of the node's descendants.
+	 *
+	 * @return the int
 	 * @see #branchProblemsSize()
 	 */
 	public final int problemsSize() {
@@ -665,8 +743,10 @@ public abstract class AbstractNode
 	}
 
 	/**
-	 * Return whether the node has problems
-	 * This does NOT include the problems of the node's descendants.
+	 * Return whether the node has problems This does NOT include the problems
+	 * of the node's descendants.
+	 *
+	 * @return true, if successful
 	 * @see #hasBranchProblems()
 	 */
 	public final boolean hasProblems() {
@@ -700,10 +780,30 @@ public abstract class AbstractNode
 		return this.branchProblems.contains(problem);
 	}
 
+	/**
+	 * Builds the problem.
+	 *
+	 * @author mqfdy
+	 * @param messageKey
+	 *            the message key
+	 * @param messageArguments
+	 *            the message arguments
+	 * @return the problem
+	 * @Date 2018-09-03 09:00
+	 */
 	protected final Problem buildProblem(String messageKey, Object... messageArguments) {
 		return new DefaultProblem(this, messageKey, messageArguments);
 	}
 
+	/**
+	 * Builds the problem.
+	 *
+	 * @author mqfdy
+	 * @param messageKey
+	 *            the message key
+	 * @return the problem
+	 * @Date 2018-09-03 09:00
+	 */
 	protected final Problem buildProblem(String messageKey) {
 		return this.buildProblem(messageKey, EMPTY_PROBLEM_MESSAGE_ARGUMENTS);
 	}
@@ -722,6 +822,12 @@ public abstract class AbstractNode
 		}
 	}
 
+	/**
+	 * Rebuild parent branch problems.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void rebuildParentBranchProblems() {
 		if (this.parent != null) {
 			this.parent.rebuildBranchProblems();
@@ -752,15 +858,20 @@ public abstract class AbstractNode
 	}
 
 	/**
-	 * Check for any problems and add them to the specified list.
-	 * This method should ONLY add problems for this particular node;
-	 * it should NOT add problems for any of this node's descendants
-	 * or ancestors. (Although there will be times when it is debatable
-	 * as to which node a problem "belongs" to....)
+	 * Check for any problems and add them to the specified list. This method
+	 * should ONLY add problems for this particular node; it should NOT add
+	 * problems for any of this node's descendants or ancestors. (Although there
+	 * will be times when it is debatable as to which node a problem "belongs"
+	 * to....)
 	 * 
-	 * NB: This method should NOT modify ANY part of the node's state!
-	 * It is a READ-ONLY behavior. ONLY the list of current problems
-	 * passed in to the method should be modified.
+	 * NB: This method should NOT modify ANY part of the node's state! It is a
+	 * READ-ONLY behavior. ONLY the list of current problems passed in to the
+	 * method should be modified.
+	 *
+	 * @author mqfdy
+	 * @param currentProblems
+	 *            the current problems
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void addProblemsTo(List<Problem> currentProblems) {
 		// The default is to do nothing.
@@ -879,12 +990,16 @@ public abstract class AbstractNode
 	}
 
 	/**
-	 * Return a set of the object's "non-validated" aspect names.
-	 * These are the aspects that, when they change, will NOT cause the
-	 * object (or its containing tree) to be validated, i.e. checked for problems.
-	 * If you need instance-based calculation of your "non-validated" aspects,
-	 * override this method. If class-based calculation is sufficient,
-	 * override #addNonValidatedAspectNamesTo(Set).
+	 * Return a set of the object's "non-validated" aspect names. These are the
+	 * aspects that, when they change, will NOT cause the object (or its
+	 * containing tree) to be validated, i.e. checked for problems. If you need
+	 * instance-based calculation of your "non-validated" aspects, override this
+	 * method. If class-based calculation is sufficient, override
+	 * #addNonValidatedAspectNamesTo(Set).
+	 *
+	 * @author mqfdy
+	 * @return the sets the
+	 * @Date 2018-09-03 09:00
 	 */
 	protected final Set<String> nonValidatedAspectNames() {
 		synchronized (nonValidatedAspectNameSets) {
@@ -899,12 +1014,17 @@ public abstract class AbstractNode
 	}
 
 	/**
-	 * Add the object's "non-validated" aspect names to the specified set.
-	 * These are the aspects that, when they change, will NOT cause the
-	 * object (or its containing tree) to be validated, i.e. checked for problems.
-	 * If class-based calculation of your "non-validated" aspects is sufficient,
-	 * override this method. If you need instance-based calculation,
-	 * override #nonValidatedAspectNames().
+	 * Add the object's "non-validated" aspect names to the specified set. These
+	 * are the aspects that, when they change, will NOT cause the object (or its
+	 * containing tree) to be validated, i.e. checked for problems. If
+	 * class-based calculation of your "non-validated" aspects is sufficient,
+	 * override this method. If you need instance-based calculation, override
+	 * #nonValidatedAspectNames().
+	 *
+	 * @author mqfdy
+	 * @param nonValidatedAspectNames
+	 *            the non validated aspect names
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void addNonValidatedAspectNamesTo(Set<String> nonValidatedAspectNames) {
 		nonValidatedAspectNames.add(COMMENT_PROPERTY);

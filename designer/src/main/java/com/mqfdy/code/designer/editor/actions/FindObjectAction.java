@@ -13,10 +13,23 @@ import com.mqfdy.code.designer.models.ImageKeys;
 import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.model.BusinessObjectModel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FindObjectAction.
+ *
+ * @author mqfdy
+ */
 public class FindObjectAction extends SelectionAction {
 
+	/** The business model manager. */
 	private BusinessModelManager businessModelManager;
 
+	/**
+	 * Instantiates a new find object action.
+	 *
+	 * @param businessModelManager
+	 *            the business model manager
+	 */
 	public FindObjectAction(BusinessModelManager businessModelManager) {
 		super(null);
 		// force calculateEnabled() to be called in every context
@@ -24,6 +37,9 @@ public class FindObjectAction extends SelectionAction {
 		this.businessModelManager = businessModelManager;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void init() {
 		super.init();
@@ -39,11 +55,17 @@ public class FindObjectAction extends SelectionAction {
 		setEnabled(false);
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected boolean calculateEnabled() {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void run() {
 		Shell shell = BusinessModelEditorPlugin.getActiveWorkbenchWindow()

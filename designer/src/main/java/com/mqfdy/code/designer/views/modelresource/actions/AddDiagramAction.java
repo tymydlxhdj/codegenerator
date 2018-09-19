@@ -15,18 +15,19 @@ import com.mqfdy.code.model.AbstractModelElement;
 import com.mqfdy.code.model.ModelPackage;
 import com.mqfdy.code.model.graph.Diagram;
 
+// TODO: Auto-generated Javadoc
 /**
- * 新增图动作
- * 
+ * 新增图动作.
+ *
  * @author mqfdy
- * 
  */
 public class AddDiagramAction extends TreeAction {
 
 	/**
-	 * 构造函数(采用默认名称和图标，通过树来创建，通过树来查找上级节点)
-	 * 
-	 * @param parent
+	 * 构造函数(采用默认名称和图标，通过树来创建，通过树来查找上级节点).
+	 *
+	 * @param treeViewer
+	 *            the tree viewer
 	 */
 	public AddDiagramAction(TreeViewer treeViewer) {
 		super(ActionTexts.DIAGRAM_ADD, treeViewer);
@@ -36,15 +37,23 @@ public class AddDiagramAction extends TreeAction {
 	}
 
 	/**
-	 * 构造函数(采用自定义的名称和图标，通过树来创建，通过树来查找上级节点)
-	 * 
-	 * @param parent
+	 * 构造函数(采用自定义的名称和图标，通过树来创建，通过树来查找上级节点).
+	 *
+	 * @param text
+	 *            the text
+	 * @param imageDescriptor
+	 *            the image descriptor
+	 * @param treeViewer
+	 *            the tree viewer
 	 */
 	public AddDiagramAction(String text, ImageDescriptor imageDescriptor,
 			TreeViewer treeViewer) {
 		super(text, imageDescriptor, treeViewer);
 	}
 
+	/**
+	 * 
+	 */
 	public void run() {
 		if (treeViewer != null && treeViewer.getSelection() != null) {
 			TreeItem item = treeViewer.getTree().getSelection()[0];

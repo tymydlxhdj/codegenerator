@@ -27,6 +27,7 @@ import org.apache.commons.lang.text.StrBuilder;
 import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.util.MapFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  * A cache of introspection information for a specific class instance.
  * Keys {@link java.lang.reflect.Method} objects by a concatenation of the
@@ -42,10 +43,11 @@ import org.apache.velocity.util.MapFactory;
  */
 public class ClassMap
 {
-    /** Set true if you want to debug the reflection code */
+    
+    /** Set true if you want to debug the reflection code. */
     private static final boolean debugReflection = false;
 
-    /** Class logger */
+    /** Class logger. */
     private final Log log;
     
     /**
@@ -54,12 +56,17 @@ public class ClassMap
      */
     private final Class clazz;
 
+    /** The method cache. */
     private final MethodCache methodCache;
 
     /**
-     * Standard constructor
-     * @param clazz The class for which this ClassMap gets constructed.
-     */
+	 * Standard constructor.
+	 *
+	 * @param clazz
+	 *            The class for which this ClassMap gets constructed.
+	 * @param log
+	 *            the log
+	 */
     public ClassMap(final Class clazz, final Log log)
     {
         this.clazz = clazz;
@@ -80,23 +87,32 @@ public class ClassMap
     }
 
     /**
-     * Returns the class object whose methods are cached by this map.
-     *
-     * @return The class object whose methods are cached by this map.
-     */
+	 * Returns the class object whose methods are cached by this map.
+	 *
+	 * @author mqfdy
+	 * @return The class object whose methods are cached by this map.
+	 * @Date 2018-9-3 11:38:37
+	 */
     public Class getCachedClass()
     {
         return clazz;
     }
 
     /**
-     * Find a Method using the method name and parameter objects.
-     *
-     * @param name The method name to look up.
-     * @param params An array of parameters for the method.
-     * @return A Method object representing the method to invoke or null.
-     * @throws MethodMap.AmbiguousException When more than one method is a match for the parameters.
-     */
+	 * Find a Method using the method name and parameter objects.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            The method name to look up.
+	 * @param params
+	 *            An array of parameters for the method.
+	 * @return A Method object representing the method to invoke or null.
+	 * @throws AmbiguousException
+	 *             the ambiguous exception
+	 * @throws MethodMap.AmbiguousException
+	 *             When more than one method is a match for the parameters.
+	 * @Date 2018-9-3 11:38:37
+	 */
     public Method findMethod(final String name, final Object[] params)
             throws MethodMap.AmbiguousException
     {
@@ -104,10 +120,14 @@ public class ClassMap
     }
 
     /**
-     * Populate the Map of direct hits. These
-     * are taken from all the public methods
-     * that our class, its parents and their implemented interfaces provide.
-     */
+	 * Populate the Map of direct hits. These are taken from all the public
+	 * methods that our class, its parents and their implemented interfaces
+	 * provide.
+	 *
+	 * @author mqfdy
+	 * @return the method cache
+	 * @Date 2018-9-3 11:38:37
+	 */
     private MethodCache createMethodCache()
     {
         MethodCache methodCache = new MethodCache(log);
@@ -141,6 +161,16 @@ public class ClassMap
         return methodCache;
     }
 
+    /**
+	 * Populate method cache with interface.
+	 *
+	 * @author mqfdy
+	 * @param methodCache
+	 *            the method cache
+	 * @param iface
+	 *            the iface
+	 * @Date 2018-9-3 11:38:37
+	 */
     /* recurses up interface heirarchy to get all super interfaces (VELOCITY-689) */
     private void populateMethodCacheWithInterface(MethodCache methodCache, Class iface)
     {
@@ -155,6 +185,16 @@ public class ClassMap
         }
     }
 
+    /**
+	 * Populate method cache with.
+	 *
+	 * @author mqfdy
+	 * @param methodCache
+	 *            the method cache
+	 * @param classToReflect
+	 *            the class to reflect
+	 * @Date 2018-9-3 11:38:37
+	 */
     private void populateMethodCacheWith(MethodCache methodCache, Class classToReflect)
     {
         if (debugReflection && log.isDebugEnabled())
@@ -191,10 +231,14 @@ public class ClassMap
      */
     private static final class MethodCache
     {
+        
+        /** The Constant CACHE_MISS. */
         private static final Object CACHE_MISS = new Object();
 
+        /** The Constant NULL_ARG. */
         private static final String NULL_ARG = Object.class.getName();
 
+        /** The Constant convertPrimitives. */
         private static final Map convertPrimitives = new HashMap();
 
         static
@@ -209,7 +253,7 @@ public class ClassMap
             convertPrimitives.put(Short.TYPE,     Short.class.getName());
         }
 
-    	/** Class logger */
+    	/** Class logger. */
 	    private final Log log;
 
         /**
@@ -218,30 +262,45 @@ public class ClassMap
          */
         private final Map cache = MapFactory.create(false);
 
-        /** Map of methods that are searchable according to method parameters to find a match */
+        /**
+		 * Map of methods that are searchable according to method parameters to
+		 * find a match.
+		 */
         private final MethodMap methodMap = new MethodMap();
 
+        /**
+		 * Instantiates a new method cache.
+		 *
+		 * @param log
+		 *            the log
+		 */
         private MethodCache(Log log)
         {
             this.log = log;
         }
 
         /**
-         * Find a Method using the method name and parameter objects.
-         *
-         * Look in the methodMap for an entry.  If found,
-         * it'll either be a CACHE_MISS, in which case we
-         * simply give up, or it'll be a Method, in which
-         * case, we return it.
-         *
-         * If nothing is found, then we must actually go
-         * and introspect the method from the MethodMap.
-         *
-         * @param name The method name to look up.
-         * @param params An array of parameters for the method.
-         * @return A Method object representing the method to invoke or null.
-         * @throws MethodMap.AmbiguousException When more than one method is a match for the parameters.
-         */
+		 * Find a Method using the method name and parameter objects.
+		 * 
+		 * Look in the methodMap for an entry. If found, it'll either be a
+		 * CACHE_MISS, in which case we simply give up, or it'll be a Method, in
+		 * which case, we return it.
+		 * 
+		 * If nothing is found, then we must actually go and introspect the
+		 * method from the MethodMap.
+		 *
+		 * @author mqfdy
+		 * @param name
+		 *            The method name to look up.
+		 * @param params
+		 *            An array of parameters for the method.
+		 * @return A Method object representing the method to invoke or null.
+		 * @throws AmbiguousException
+		 *             the ambiguous exception
+		 * @throws MethodMap.AmbiguousException
+		 *             When more than one method is a match for the parameters.
+		 * @Date 2018-9-3 11:38:37
+		 */
         public Method get(final String name, final Object [] params)
                 throws MethodMap.AmbiguousException
         {
@@ -278,6 +337,14 @@ public class ClassMap
             return (Method) cacheEntry;
         }
 
+        /**
+		 * Put.
+		 *
+		 * @author mqfdy
+		 * @param method
+		 *            the method
+		 * @Date 2018-9-3 11:38:37
+		 */
         private void put(Method method)
         {
             String methodKey = makeMethodKey(method);
@@ -298,13 +365,15 @@ public class ClassMap
         }
 
         /**
-         * Make a methodKey for the given method using
-         * the concatenation of the name and the
-         * types of the method parameters.
-         * 
-         * @param method to be stored as key
-         * @return key for ClassMap
-         */
+		 * Make a methodKey for the given method using the concatenation of the
+		 * name and the types of the method parameters.
+		 *
+		 * @author mqfdy
+		 * @param method
+		 *            to be stored as key
+		 * @return key for ClassMap
+		 * @Date 2018-9-3 11:38:37
+		 */
         private String makeMethodKey(final Method method)
         {
             Class[] parameterTypes = method.getParameterTypes();
@@ -341,6 +410,17 @@ public class ClassMap
             return methodKey.toString();
         }
 
+        /**
+		 * Make method key.
+		 *
+		 * @author mqfdy
+		 * @param method
+		 *            the method
+		 * @param params
+		 *            the params
+		 * @return the string
+		 * @Date 2018-9-3 11:38:37
+		 */
         private String makeMethodKey(String method, Object[] params)
         {
             int args = params.length;

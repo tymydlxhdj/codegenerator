@@ -31,28 +31,46 @@ import com.mqfdy.code.designer.models.ImageKeys;
 import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.designer.utils.BusinessModelUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 重复BOM对话框
- * 
+ * 重复BOM对话框.
+ *
  * @author mqfdy
- * 
  */
 public class ReModelListDialog extends TitleAreaDialog {
-	/**
-	 * 标签页对象
-	 */
+	
+	/** 标签页对象. */
 	private TableViewer tableViewer;
+	
+	/** The ok button. */
 	private Button okButton;
+	
+	/** The om list. */
 	private List<IResource> omList;
+	
+	/** The table. */
 	private Table table;
 
+	/**
+	 * Instantiates a new re model list dialog.
+	 *
+	 * @param shell
+	 *            the shell
+	 * @param omList
+	 *            the om list
+	 */
 	public ReModelListDialog(Shell shell,List<IResource> omList) {
 		super(shell);
 		this.omList = omList;
 	}
 
 	/**
-	 * 操作按钮
+	 * 操作按钮.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void createButtonsForButtonBar(Composite parent) {
 		okButton = createButton(parent, IDialogConstants.OK_ID,
@@ -62,6 +80,14 @@ public class ReModelListDialog extends TitleAreaDialog {
 				IDialogConstants.CANCEL_LABEL, false);
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void configureShell(Shell newShell) {
 		// TODO Auto-generated method stub
@@ -73,6 +99,15 @@ public class ReModelListDialog extends TitleAreaDialog {
 		newShell.setImage(icon);
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createDialogArea(Composite parent) {
 		// 初始化窗口
 		GridLayout gridLayout = new GridLayout(1, true);
@@ -109,6 +144,9 @@ public class ReModelListDialog extends TitleAreaDialog {
 		return parent;
 	}
 	
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		if(table.getSelection() == null || table.getSelection().length == 0){
@@ -129,6 +167,18 @@ public class ReModelListDialog extends TitleAreaDialog {
 		super.okPressed();
 	}
 	
+	/**
+	 * Replace id.
+	 *
+	 * @author mqfdy
+	 * @param f
+	 *            the f
+	 * @param manager
+	 *            the manager
+	 * @param curModelId
+	 *            the cur model id
+	 * @Date 2018-09-03 09:00
+	 */
 	public void replaceId(IResource f, BusinessModelManager manager, CharSequence curModelId){
 		String location = f.getLocation().toString();
 		String uuid = UUID.randomUUID().toString().replaceAll("-", "");
@@ -151,9 +201,26 @@ public class ReModelListDialog extends TitleAreaDialog {
 		}
 	}
 	
+	/**
+	 * Gets the ok button.
+	 *
+	 * @author mqfdy
+	 * @return the ok button
+	 * @Date 2018-09-03 09:00
+	 */
 	public Button getOkButton() {
 		return okButton;
 	}
+	
+	/**
+	 * Read.
+	 *
+	 * @author mqfdy
+	 * @param path
+	 *            the path
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String read(String path) {
 		File file = new File(path);
 		StringBuffer res = new StringBuffer();
@@ -192,7 +259,18 @@ public class ReModelListDialog extends TitleAreaDialog {
 		  return res.toString();
 	 }
 
-	 public static boolean write(String cont, File dist) {
+	 /**
+	 * Write.
+	 *
+	 * @author mqfdy
+	 * @param cont
+	 *            the cont
+	 * @param dist
+	 *            the dist
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
+ 	public static boolean write(String cont, File dist) {
 		 BufferedWriter writer = null;
 		 FileWriter fr = null;
 		 try {

@@ -42,23 +42,54 @@ import com.mqfdy.code.resource.validator.KeyWordsChecker;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 import com.mqfdy.code.utils.ProjectUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MicroObjectModelNewWizardPage.
+ *
+ * @author mqfdy
+ */
 public class MicroObjectModelNewWizardPage extends WizardPage {
 
+	/** The Constant OM_FILE_TYPE. */
 	public static final String OM_FILE_TYPE = ".bom";
+	
+	/** The Constant MODEL_DEFAULT_NAME. */
 	// public static final String OM_FILE_DEFAULT_NAME = "md-om";
 	public static final String MODEL_DEFAULT_NAME = "com.orgname.projectname";
+	
+	/** The Constant PACKAGE_DEFAULT_NAME. */
 	public static final String PACKAGE_DEFAULT_NAME = "demo";
 
+	/** The selection. */
 	private ISelection selection;
 
+	/** The file path text. */
 	private Text filePathText;
+	
+	/** The namespace text. */
 	private Text namespaceText;
+	
+	/** The model name text. */
 	private Text modelNameText;
+	
+	/** The model display name text. */
 	private Text modelDisplayNameText;
+	
+	/** The model display name. */
 	private String modelDisplayName;
+	
+	/** The project. */
 	private IProject project = null;
+	
+	/** The des project. */
 	private IProject desProject = null;
 
+	/**
+	 * Instantiates a new micro object model new wizard page.
+	 *
+	 * @param selection
+	 *            the selection
+	 */
 	protected MicroObjectModelNewWizardPage(ISelection selection) {
 		super("omNewWizardPage");
 		setTitle("BOM文件");
@@ -66,6 +97,14 @@ public class MicroObjectModelNewWizardPage extends WizardPage {
 		this.selection = selection;
 	}
 
+	/**
+	 * Creates the control.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
@@ -148,7 +187,10 @@ public class MicroObjectModelNewWizardPage extends WizardPage {
 	}
 	
 	/**
-	 * 处理选择模块
+	 * 处理选择模块.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void handleSelect() {
 		
@@ -196,9 +238,12 @@ public class MicroObjectModelNewWizardPage extends WizardPage {
 
 
 	}
+	
 	/**
-	 * 检测目标文件夹是否存在 
-	 * 不存在则创建
+	 * 检测目标文件夹是否存在 不存在则创建.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void autoSetOmModelPath(/*IProject project*/){
 		if(desProject==null) return;		
@@ -214,8 +259,12 @@ public class MicroObjectModelNewWizardPage extends WizardPage {
 			}
 		}
 	}
+	
 	/**
-	 * 初始化监听器
+	 * 初始化监听器.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initializeListener() {
 		filePathText.addModifyListener(new DataValidateListener());
@@ -224,22 +273,57 @@ public class MicroObjectModelNewWizardPage extends WizardPage {
 		modelDisplayNameText.addModifyListener(new DataValidateListener());
 	}
 
+	/**
+	 * Gets the model name.
+	 *
+	 * @author mqfdy
+	 * @return the model name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getModelName() {
 		return modelNameText.getText();
 	}
 
+	/**
+	 * Gets the namespace.
+	 *
+	 * @author mqfdy
+	 * @return the namespace
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getNamespace() {
 		return namespaceText.getText();
 	}
 
+	/**
+	 * Gets the model display name.
+	 *
+	 * @author mqfdy
+	 * @return the model display name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getModelDisplayName() {
 		return modelDisplayNameText.getText();
 	}
 
+	/**
+	 * Gets the file path.
+	 *
+	 * @author mqfdy
+	 * @return the file path
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getFilePath() {
 		return filePathText.getText();
 	}
 
+	/**
+	 * Gets the full file path.
+	 *
+	 * @author mqfdy
+	 * @return the full file path
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getFullFilePath() {
 		if (project != null) {
 			String[] path = filePathText.getText().split("/");
@@ -253,19 +337,43 @@ public class MicroObjectModelNewWizardPage extends WizardPage {
 			return "";
 	}
 
+	/**
+	 * Gets the full file name.
+	 *
+	 * @author mqfdy
+	 * @return the full file name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getFullFileName() {
 		return getNamespace() + "." + getModelName() + OM_FILE_TYPE;
 	}
 
 	/**
-	 * 数据校验监听器
+	 * 数据校验监听器.
+	 *
+	 * @see DataValidateEvent
 	 */
 	class DataValidateListener implements ModifyListener {
+		
+		/**
+		 * Modify text.
+		 *
+		 * @author mqfdy
+		 * @param e
+		 *            the e
+		 * @Date 2018-09-03 09:00
+		 */
 		public void modifyText(ModifyEvent e) {
 			validateData();
 		}
 	}
 
+	/**
+	 * Validate data.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	@SuppressWarnings("static-access")
 	private void validateData() {
 		String errorMessage = null;
@@ -315,6 +423,13 @@ public class MicroObjectModelNewWizardPage extends WizardPage {
 		setPageComplete(errorMessage == null);
 	}
 
+	/**
+	 * Gets the project.
+	 *
+	 * @author mqfdy
+	 * @return the project
+	 * @Date 2018-09-03 09:00
+	 */
 	public IProject getProject() {
 		// TODO Auto-generated method stub
 		return project;

@@ -40,106 +40,190 @@ import com.mqfdy.code.model.utils.StringUtil;
 import com.mqfdy.code.model.utils.ValidatorType;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 校验器编辑弹出框(用于新增和编辑)
- * 
+ * 校验器编辑弹出框(用于新增和编辑).
+ *
  * @author mqfdy
- * 
  */
 public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 
+	/** The Constant GROUP_VALIDATOREDITOR_TEXT. */
 	public static final String GROUP_VALIDATOREDITOR_TEXT = "校验器编辑";
+	
+	/** The Constant GROUP_VALIDATORPARAM_TEXT. */
 	public static final String GROUP_VALIDATORPARAM_TEXT = "校验参数";
 
+	/** The Constant VALIDATORNAME_LABEL_TEXT. */
 	public static final String VALIDATORNAME_LABEL_TEXT = "策略名称：";
+	
+	/** The Constant VALIDATORTYPE_LABEL_TEXT. */
 	public static final String VALIDATORTYPE_LABEL_TEXT = "校验器类型";
+	
+	/** The Constant ERRORMESSAGE_LABEL_TEXT. */
 	public static final String ERRORMESSAGE_LABEL_TEXT = "失败提示：";
 
+	/** The Constant MIN_LENGTH_LABEL_TEXT. */
 	public static final String MIN_LENGTH_LABEL_TEXT = ParamType.minLength
 			.getDisplayValue() + "：";
+	
+	/** The Constant MAX_LENGTH_LABEL_TEXT. */
 	public static final String MAX_LENGTH_LABEL_TEXT = ParamType.maxLength
 			.getDisplayValue() + "：";
 
+	/** The Constant MIN_VALUE_LABEL_TEXT. */
 	public static final String MIN_VALUE_LABEL_TEXT = ParamType.minValue
 			.getDisplayValue() + "：";
+	
+	/** The Constant MAX_VALUE_LABEL_TEXT. */
 	public static final String MAX_VALUE_LABEL_TEXT = ParamType.maxValue
 			.getDisplayValue() + "：";
 
+	/** The Constant MIN_DATE_LABEL_TEXT. */
 	public static final String MIN_DATE_LABEL_TEXT = ParamType.minDate
 			.getDisplayValue() + "：";
+	
+	/** The Constant MAX_DATE_LABEL_TEXT. */
 	public static final String MAX_DATE_LABEL_TEXT = ParamType.maxDate
 			.getDisplayValue() + "：";
 
+	/** The Constant DATE_LABEL_DEMO. */
 	public static final String DATE_LABEL_DEMO = "日期填写样例：";
+	
+	/** The Constant DATE_LABEL_DEMO1. */
 	public static final String DATE_LABEL_DEMO1 = "2001-01-01";
+	
+	/** The Constant DATE_LABEL_DEMO2. */
 	public static final String DATE_LABEL_DEMO2 = "2001-01-01 16:16:16";
+	
+	/** The Constant DATE_LABEL_DEMO4. */
 	// public static final String DATE_LABEL_DEMO3 = "2001-01-01 16:16:16.123";
 	public static final String DATE_LABEL_DEMO4 = "16:16:16";
 
+	/** The Constant REG_EXP_LABEL_TEXT. */
 	public static final String REG_EXP_LABEL_TEXT = ParamType.expression
 			.getDisplayValue() + "：";
+	
+	/** The Constant CUSTOM_BEAN_LABEL_TEXT. */
 	public static final String CUSTOM_BEAN_LABEL_TEXT = ParamType.customValidatorClassName
 			.getDisplayValue() + "：";
 
+	/** The group. */
 	private Composite group;
+	
+	/** The right. */
 	private Composite right;
+	
+	/** The label validate param. */
 	private Label label_validateParam;
+	
+	/** The label validator type. */
 	private Label label_validatorType;
+	
+	/** The list validator type. */
 	private List list_validatorType;
 
+	/** The label error message. */
 	private Label label_errorMessage;
+	
+	/** The text error message. */
 	private NullToEmptyText text_errorMessage;
 
+	/** The label min length. */
 	private Label label_MinLength;
+	
+	/** The text min length. */
 	private NullToEmptyText text_MinLength;
+	
+	/** The label max length. */
 	private Label label_MaxLength;
+	
+	/** The text max length. */
 	private NullToEmptyText text_MaxLength;
 
+	/** The label min value. */
 	private Label label_MinValue;
+	
+	/** The text min value. */
 	private NullToEmptyText text_MinValue;
+	
+	/** The label max value. */
 	private Label label_MaxValue;
+	
+	/** The text max value. */
 	private NullToEmptyText text_MaxValue;
 
+	/** The label min date. */
 	private Label label_MinDate;
+	
+	/** The text min date. */
 	private NullToEmptyText text_MinDate;
+	
+	/** The label max date. */
 	private Label label_MaxDate;
+	
+	/** The text max date. */
 	private NullToEmptyText text_MaxDate;
 
+	/** The label date demo block. */
 	private Label label_DateDemoBlock;
+	
+	/** The label date demo block 1. */
 	private Label label_DateDemoBlock1;
+	
+	/** The label date demo block 2. */
 	private Label label_DateDemoBlock2;
+	
+	/** The label date demo block 4. */
 	// private Label label_DateDemoBlock3;
 	private Label label_DateDemoBlock4;
+	
+	/** The label date demo. */
 	private Label label_DateDemo;
+	
+	/** The label date demo 1. */
 	private Label label_DateDemo1;
+	
+	/** The label date demo 2. */
 	private Label label_DateDemo2;
+	
+	/** The label date demo 4. */
 	// private Label label_DateDemo3;
 	private Label label_DateDemo4;
 
+	/** The label reg exp. */
 	private Label label_RegExp;
+	
+	/** The text reg exp. */
 	private NullToEmptyText text_RegExp;
 
+	/** The label custom bean. */
 	private Label label_CustomBean;
+	
+	/** The text custom bean. */
 	private NullToEmptyText text_CustomBean;
-	/**
-	 * 当前编辑的校验器
-	 */
+	
+	/** 当前编辑的校验器. */
 	private Validator editingValidator;
-	/**
-	 * 校验器参数
-	 */
+	
+	/** 校验器参数. */
 	private Map<String, String> validatorParams = new HashMap<String, String>();
+	
+	/** The page. */
 	private PropertyValidatorPage page;
+	
+	/** The map error message. */
 	private Map<ValidatorType,String> mapErrorMessage = new HashMap();
 
 	/**
-	 * 新增业务类时构造函数
-	 * 
+	 * 新增业务类时构造函数.
+	 *
 	 * @param page
+	 *            the page
 	 * @param parentShell
+	 *            the parent shell
 	 * @param parent
 	 *            父节点
-	 * @param property
 	 */
 	public PropertyValidatorEditDialog(PropertyValidatorPage page,
 			Shell parentShell, AbstractModelElement parent) {
@@ -150,10 +234,12 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 编辑业务类时构造函数
-	 * 
-	 * @param i
+	 * 编辑业务类时构造函数.
+	 *
+	 * @param page
+	 *            the page
 	 * @param parentShell
+	 *            the parent shell
 	 * @param editingValidator
 	 *            编辑的对象
 	 * @param parent
@@ -170,10 +256,24 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		mapErrorMessage.clear();
 	}
 
+	/**
+	 * Instantiates a new property validator edit dialog.
+	 *
+	 * @param shell
+	 *            the shell
+	 */
 	public PropertyValidatorEditDialog(Shell shell) {
 		super(shell);
 	}
 
+	/**
+	 * Creates the buttons for button bar.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void createButtonsForButtonBar(Composite composite) {
 		// if(operationType.equals(OPERATION_TYPE_EDIT))
 		// createButton(composite, 12000, "重构", true);
@@ -185,6 +285,14 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 //		createButton(composite, APPLY_ID, APPLY_LABEL, true);
 	}
 
+	/**
+	 * Button pressed.
+	 *
+	 * @author mqfdy
+	 * @param buttonId
+	 *            the button id
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void buttonPressed(int buttonId) {
 //		if (ModelElementEditorDialog.APPLY_ID == buttonId) {
 //			applylPressed();
@@ -193,6 +301,9 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 //		}
 	}
 
+	/**
+	 * 
+	 */
 	protected void okPressed() {
 		if (validateAllInput() == true) {
 			updateTheeditingValidator();
@@ -200,6 +311,12 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		}
 	}
 
+	/**
+	 * Applyl pressed.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void applylPressed() {
 		if (validateAllInput() == true) {
 			updateTheeditingValidator();
@@ -208,6 +325,15 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 
 	}
 
+	/**
+	 * Checks if is allow add.
+	 *
+	 * @author mqfdy
+	 * @param validatorType
+	 *            the validator type
+	 * @return true, if is allow add
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean isAllowAdd(ValidatorType validatorType) {
 		Vector<Validator> list = page.getTableItems();
 		if (list != null) {
@@ -223,6 +349,15 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		return true;
 	}
 	
+	/**
+	 * Checks if is allow edit.
+	 *
+	 * @author mqfdy
+	 * @param validatorType
+	 *            the validator type
+	 * @return true, if is allow edit
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean isAllowEdit(ValidatorType validatorType) {
 		Vector<Validator> list = page.getTableItems();
 		if (list != null) {
@@ -241,6 +376,13 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		return true;
 	}
 
+	/**
+	 * Validate all input.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean validateAllInput() {
 		ValidatorType validatorType = ValidatorType
 				.getValidatorType(list_validatorType.getSelectionIndex());
@@ -401,9 +543,13 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 校验是否匹配
-	 * 
-	 * @return
+	 * 校验是否匹配.
+	 *
+	 * @author mqfdy
+	 * @param validatorType
+	 *            the validator type
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean checkValidatorType(ValidatorType validatorType) {
 		String curDataType = page.getParentDialog().getPropertyBasicInfoPage()
@@ -423,6 +569,15 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		return true;
 	}
 
+	/**
+	 * Validate class name.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean validateClassName(String name) {
 		IStatus status = JavaConventions.validateFieldName(name,
 				JavaCore.VERSION_1_4, JavaCore.VERSION_1_4);
@@ -435,6 +590,15 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		return true;
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Control createDialogArea(Composite composite) {
 		setTitleAndMessage();
@@ -458,6 +622,24 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 
 	}
 
+	/**
+	 * Sets the visable.
+	 *
+	 * @author mqfdy
+	 * @param b_label
+	 *            the b label
+	 * @param b_length
+	 *            the b length
+	 * @param b_value
+	 *            the b value
+	 * @param b_date
+	 *            the b date
+	 * @param b_reg
+	 *            the b reg
+	 * @param b_custom
+	 *            the b custom
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setVisable(boolean b_label, boolean b_length, boolean b_value,
 			boolean b_date, boolean b_reg, boolean b_custom) {
 		setVisableLable(b_label);
@@ -468,11 +650,27 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		setVisableCustom(b_custom);
 	}
 
+	/**
+	 * Sets the visable lable.
+	 *
+	 * @author mqfdy
+	 * @param b
+	 *            the new visable lable
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setVisableLable(boolean b) {
 		((GridData) label_validateParam.getLayoutData()).exclude = !b;
 		label_validateParam.setVisible(b);
 	}
 
+	/**
+	 * Sets the visable length.
+	 *
+	 * @author mqfdy
+	 * @param b
+	 *            the new visable length
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setVisableLength(boolean b) {
 		((GridData) label_MinLength.getLayoutData()).exclude = !b;
 		label_MinLength.setVisible(b);
@@ -485,6 +683,14 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		text_MaxLength.setVisible(b);
 	}
 
+	/**
+	 * Sets the visable value.
+	 *
+	 * @author mqfdy
+	 * @param b
+	 *            the new visable value
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setVisableValue(boolean b) {
 		((GridData) label_MinValue.getLayoutData()).exclude = !b;
 		label_MinValue.setVisible(b);
@@ -497,6 +703,14 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		text_MaxValue.setVisible(b);
 	}
 
+	/**
+	 * Sets the visable date.
+	 *
+	 * @author mqfdy
+	 * @param b
+	 *            the new visable date
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setVisableDate(boolean b) {
 		((GridData) label_MinDate.getLayoutData()).exclude = !b;
 		label_MinDate.setVisible(b);
@@ -539,6 +753,14 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		label_DateDemoBlock4.setVisible(b);
 	}
 
+	/**
+	 * Sets the visable reg.
+	 *
+	 * @author mqfdy
+	 * @param b
+	 *            the new visable reg
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setVisableReg(boolean b) {
 		((GridData) label_RegExp.getLayoutData()).exclude = !b;
 		label_RegExp.setVisible(b);
@@ -546,6 +768,14 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		text_RegExp.setVisible(b);
 	}
 
+	/**
+	 * Sets the visable custom.
+	 *
+	 * @author mqfdy
+	 * @param b
+	 *            the new visable custom
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setVisableCustom(boolean b) {
 		((GridData) label_CustomBean.getLayoutData()).exclude = !b;
 		label_CustomBean.setVisible(b);
@@ -553,6 +783,12 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		text_CustomBean.setVisible(b);
 	}
 
+	/**
+	 * Adds the listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void addListeners() {
 		list_validatorType.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -599,6 +835,14 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		});
 	}
 
+	/**
+	 * Creates the left area.
+	 *
+	 * @author mqfdy
+	 * @param group
+	 *            the group
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createLeftArea(Composite group) {
 		GridData layoutData = new GridData(GridData.FILL_BOTH);
 		layoutData.horizontalAlignment = SWT.FILL;
@@ -617,6 +861,14 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		//list_validatorType.remove(ValidatorType.getIndex(ValidatorType.Custom.getValue()));
 	}
 
+	/**
+	 * Creates the right area.
+	 *
+	 * @author mqfdy
+	 * @param group
+	 *            the group
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createRightArea(Composite group) {
 		right = new Composite(group, SWT.NONE);
 		right.setLayout(new GridLayout(2, false));
@@ -742,9 +994,12 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 重置右边校验器明细
-	 * 
+	 * 重置右边校验器明细.
+	 *
+	 * @author mqfdy
 	 * @param validator
+	 *            the validator
+	 * @Date 2018-09-03 09:00
 	 */
 	private void resetValidatorDetail(Validator validator) {
 		if (validator == null) {
@@ -761,7 +1016,12 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 重新设置校验参数
+	 * 重新设置校验参数.
+	 *
+	 * @author mqfdy
+	 * @param validator
+	 *            the validator
+	 * @Date 2018-09-03 09:00
 	 */
 	private void resetValidatorParam(Validator validator) {
 		int index = list_validatorType.getSelectionIndex();
@@ -842,6 +1102,12 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		}
 	}
 
+	/**
+	 * Update theediting validator.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void updateTheeditingValidator() {
 		updateParams();
 
@@ -889,6 +1155,12 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 
 	}
 
+	/**
+	 * Update params.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void updateParams() {
 		validatorParams.clear();
 		// 根据左侧选择，保存右侧校验信息
@@ -963,12 +1235,22 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		}
 	}
 
+	/**
+	 * Gets the editing validator.
+	 *
+	 * @author mqfdy
+	 * @return the editing validator
+	 * @Date 2018-09-03 09:00
+	 */
 	public Validator getEditingValidator() {
 		return (Validator) editingValidator;
 	}
 
 	/**
-	 * 设置标题和信息
+	 * 设置标题和信息.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setTitleAndMessage() {
 		setTitle("校验器");
@@ -983,11 +1265,22 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected Point getInitialSize() {
 		return new Point(700, 600);
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		if (operationType.equals(ModelElementEditorDialog.OPERATION_TYPE_ADD)) {
@@ -999,6 +1292,14 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		newShell.setImage(ImageManager.getInstance().getImage(
 				ImageKeys.IMG_MODEL_TYPE_BUSINESSCLASS));
 	}
+	
+	/**
+	 * Vali min date.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	protected boolean valiMinDate(){
 		setErrorMessage(null);
 		if (!"".equals(text_MinDate.getText())) {
@@ -1024,6 +1325,14 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		}
 		return true;
 	}
+	
+	/**
+	 * Vali max date.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	protected boolean valiMaxDate(){
 		setErrorMessage(null);
 		if (!"".equals(text_MaxDate.getText())) {
@@ -1050,6 +1359,13 @@ public class PropertyValidatorEditDialog extends ModelElementEditorDialog {
 		return true;
 	}
 	
+	/**
+	 * Vali min max date.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean valiMinMaxDate(){
 		if (!"".equals(text_MinDate.getText()) && !"".equals(text_MaxDate.getText())) {
 			//都不为空的时候进行大小比对

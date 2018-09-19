@@ -33,12 +33,32 @@ import com.mqfdy.code.designer.utils.BusinessModelUtil;
 import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramStyle;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LayoutAlgorithmSelectMenuCreator.
+ *
+ * @author mqfdy
+ */
 public class LayoutAlgorithmSelectMenuCreator implements IMenuCreator ,ZoomListener {
 
+	/** The view list menu. */
 	private Menu viewListMenu;
+	
+	/** The service. */
 	private IPartService service;
+	
+	/** The part listener. */
 	private IPartListener partListener;
+	
+	/** The business model diagram editor. */
 	private BusinessModelDiagramEditor businessModelDiagramEditor;
+	
+	/**
+	 * Instantiates a new layout algorithm select menu creator.
+	 *
+	 * @param businessModelDiagramEditor
+	 *            the business model diagram editor
+	 */
 	public LayoutAlgorithmSelectMenuCreator(
 			BusinessModelDiagramEditor businessModelDiagramEditor) {
 		setWebletVisualEditor(businessModelDiagramEditor);
@@ -48,18 +68,53 @@ public class LayoutAlgorithmSelectMenuCreator implements IMenuCreator ,ZoomListe
 		Assert.isNotNull(this.service);
 	}
 
+	/**
+	 * Sets the weblet visual editor.
+	 *
+	 * @author mqfdy
+	 * @param editor
+	 *            the new weblet visual editor
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setWebletVisualEditor(BusinessModelDiagramEditor editor) {
 		this.businessModelDiagramEditor = editor;
 	}
 
+	/**
+	 * Gets the menu.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the menu
+	 * @Date 2018-09-03 09:00
+	 */
 	public Menu getMenu(Control parent) {
 		return sharedGetMenu(parent);
 	}
 
+	/**
+	 * Gets the menu.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the menu
+	 * @Date 2018-09-03 09:00
+	 */
 	public Menu getMenu(Menu parent) {
 		return sharedGetMenu(parent);
 	}
 
+	/**
+	 * Shared get menu.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the menu
+	 * @Date 2018-09-03 09:00
+	 */
 	private Menu sharedGetMenu(Widget parent) {
 		if (this.viewListMenu != null) {
 			this.viewListMenu.dispose();
@@ -115,6 +170,17 @@ public class LayoutAlgorithmSelectMenuCreator implements IMenuCreator ,ZoomListe
 		return this.viewListMenu;
 	}
 	
+	/**
+	 * Creates the auto layout command.
+	 *
+	 * @author mqfdy
+	 * @param diae
+	 *            the diae
+	 * @param style
+	 *            the style
+	 * @return the command
+	 * @Date 2018-09-03 09:00
+	 */
 	private Command createAutoLayoutCommand(
 			DiagramEditPart diae,int style) {
 		if (diae == null) {
@@ -123,6 +189,10 @@ public class LayoutAlgorithmSelectMenuCreator implements IMenuCreator ,ZoomListe
 		DiagramAutoLayoutCommand cmd = new DiagramAutoLayoutCommand(diae,style);
 		return cmd;
 	}
+	
+	/**
+	 * 
+	 */
 	public void dispose() {
 		if (partListener == null)
 			return;
@@ -131,6 +201,10 @@ public class LayoutAlgorithmSelectMenuCreator implements IMenuCreator ,ZoomListe
 	}
 
 	/**
+	 * Zoom changed.
+	 *
+	 * @param zoom
+	 *            the zoom
 	 * @see ZoomListener#zoomChanged(double)
 	 */
 	public void zoomChanged(double zoom) {

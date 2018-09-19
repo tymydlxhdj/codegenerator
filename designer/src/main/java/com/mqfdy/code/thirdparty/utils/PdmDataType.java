@@ -8,7 +8,15 @@ import java.util.regex.Pattern;
 
 import com.mqfdy.code.model.utils.DataType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PdmDataType.
+ *
+ * @author mqfdy
+ */
 public class PdmDataType {
+	
+	/** The map data type. */
 	private static Map<String,String> mapDataType = new HashMap();
 	
 	static {
@@ -36,6 +44,15 @@ public class PdmDataType {
 		mapDataType.put("SET",  DataType.Set.getValue_hibernet());
 	}
 	
+	/**
+	 * Gets the om data type.
+	 *
+	 * @author mqfdy
+	 * @param pdmType
+	 *            the pdm type
+	 * @return the om data type
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getOmDataType(String pdmType){
 		
 		if(pdmType!=null){

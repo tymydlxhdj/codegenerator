@@ -20,37 +20,78 @@ import com.mqfdy.code.model.utils.DataType;
 import com.mqfdy.code.model.utils.EditorType;
 import com.mqfdy.code.model.utils.ValidatorType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 校验工具类
- * 
+ * 校验工具类.
+ *
  * @author mqfdy
- * 
  */
 public class ValidatorUtil {
 
 	
+	/** The Constant DISPLAYNAMEREGEX. */
 	public final static String DISPLAYNAMEREGEX = "[a-z A-Z_0-9(){}\u4E00-\u9FA5]*$";
+	
+	/** The Constant NAMEREGEX. */
 	public final static String NAMEREGEX = "^[a-z_A-Z][a-zA-Z_0-9]*$";
+	
+	/** The Constant PACKAGE_NAME. */
 	public final static String PACKAGE_NAME="[a-z]+[[.][a-z]+]+$";
+	
+	/** The Constant FIRSTNO_NAMEREGEX. */
 	public final static String FIRSTNO_NAMEREGEX = "^[a-zA-Z][a-zA-Z_0-9]*$";
+	
+	/** The Constant FIRSTLETTERUPPERCASE. */
 	public final static String FIRSTLETTERUPPERCASE = "^[A-Z_][a-zA-Z_0-9]*$";
+	
+	/** The Constant FIRSTLETTERLOWERCASE. */
 	public final static String FIRSTLETTERLOWERCASE = "^[a-z_][a-zA-Z_0-9]*$";
+	
+	/** The Constant PACKAGENAME. */
 	public final static String PACKAGENAME = "^[a-z_][a-z._0-9]*$";
+	
+	/** The Constant PACKAGENAME1. */
 	public final static String PACKAGENAME1 = "^[a-z_][a-z_0-9]*$";
+	
+	/** The Constant DATETIME. */
 	public final static String DATETIME = "^((\\d{2}(([02468][048])|([13579][26]))[\\-]((((0?[13578])|(1[02]))[\\-]((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-]((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-]((0?[1-9])|([1-2][0-9])))))|(\\d{2}(([02468][1235679])|([13579][01345789]))[\\-]((((0?[13578])|(1[02]))[\\-]((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-]((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-]((0?[1-9])|(1[0-9])|(2[0-8]))))))(\\s(((0?[0-9])|(1[0-9])|(2[0-3]))\\:([0-5]?[0-9])((\\s)|(\\:([0-5]?[0-9])))))?$";
+	
+	/** The Constant TIME. */
 	public final static String TIME = "^(\\d|[0-1]\\d|2[0-3]):[0-5][0-9]:[0-5][0-9]$";
+	
+	/** The Constant CHINESE. */
 	public final static String CHINESE= "^[\u4e00-\u9fa5]*$"; 
+	
+	/** The Constant DIRECTORY. */
 	public final static String DIRECTORY = "[0-9a-zA-Z][0-9a-zA-Z/{1}0-9a-zA-Z]*$";
 
+	/** The Constant pDateTime. */
 	public final static Pattern pDateTime = Pattern.compile(DATETIME);
+	
+	/** The Constant pTime. */
 	public final static Pattern pTime = Pattern.compile(TIME);
 	
+	/** The Constant DOT. */
 	private static final char DOT = '.';
+	
+	/** The Constant MAX_OBVIOUS. */
 	public final static int MAX_OBVIOUS = 128;
+	
+	/** The Constant OBVIOUS_IDENT_CHAR_NATURES. */
 	public final static int[] OBVIOUS_IDENT_CHAR_NATURES = new int[MAX_OBVIOUS];
 
+	/** The Constant C_JLS_SPACE. */
 	public final static int C_JLS_SPACE = 0x100;
 
+	/**
+	 * Checks if is valid model name.
+	 *
+	 * @author mqfdy
+	 * @param str
+	 *            the str
+	 * @return true, if is valid model name
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean isValidModelName(String str) {
 		if (str.length() == 0
 				|| !Character.isJavaIdentifierStart(str.charAt(0)))
@@ -62,6 +103,20 @@ public class ValidatorUtil {
 				return false;
 		return true;
 	}
+	
+	/**
+	 * Vali table name.
+	 *
+	 * @author mqfdy
+	 * @param tableName
+	 *            the table name
+	 * @param curModel
+	 *            the cur model
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * 数据库表名重复
 	 */
@@ -86,6 +141,17 @@ public class ValidatorUtil {
 		return true;
 	}
 	
+	/**
+	 * Check role name property mult.
+	 *
+	 * @author mqfdy
+	 * @param curBusinessClass
+	 *            the cur business class
+	 * @param newColumnName
+	 *            the new column name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean checkRoleNamePropertyMult(BusinessClass curBusinessClass,
 			String newColumnName) {
 		if (curBusinessClass != null) {
@@ -106,10 +172,19 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 校验导航属性名称是否已经存在（对应实体属性名称以及本实体的所有关联关系的导航属性名称）
+	 * 校验导航属性名称是否已经存在（对应实体属性名称以及本实体的所有关联关系的导航属性名称）.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @param ele
+	 *            the ele
 	 * @param curBusinessClass
+	 *            the cur business class
 	 * @param newColumnName
-	 * @return
+	 *            the new column name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean checkRoleNameMult(BusinessObjectModel businessObjectModel,
 			Association ele, BusinessClass curBusinessClass,
@@ -148,11 +223,17 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 判断外键名称与对应实体所有属性的数据库字段名是否重复
+	 * 判断外键名称与对应实体所有属性的数据库字段名是否重复.
+	 *
+	 * @author mqfdy
 	 * @param curBusinessClass
+	 *            the cur business class
 	 * @param newColumnName
-	 * @param associationType 关联关系类型
-	 * @return
+	 *            the new column name
+	 * @param associationType
+	 *            关联关系类型
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean checkFKMult(BusinessClass curBusinessClass,
 			String newColumnName,String associationType) {
@@ -176,6 +257,18 @@ public class ValidatorUtil {
 		}
 		return true;
 	}
+	
+	/**
+	 * Checks if is FK exist in bu.
+	 *
+	 * @author mqfdy
+	 * @param curBusinessClass
+	 *            the cur business class
+	 * @param newColumnName
+	 *            the new column name
+	 * @return true, if is FK exist in bu
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean isFKExistInBu(BusinessClass curBusinessClass,
 			String newColumnName) {
 		if (curBusinessClass != null) {
@@ -195,12 +288,21 @@ public class ValidatorUtil {
 		}
 		return false;
 	}
+	
 	/**
-	 * 判断外键名称与本实体的所有关联关系的外键名称是否重复
-	 * @param ele 
+	 * 判断外键名称与本实体的所有关联关系的外键名称是否重复.
+	 *
+	 * @author mqfdy
+	 * @param ele
+	 *            the ele
 	 * @param curBusinessClass
+	 *            the cur business class
 	 * @param newColumnName
-	 * @return
+	 *            the new column name
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean checkFKMultInAll(Association ele, BusinessClass curBusinessClass,
 			String newColumnName, BusinessObjectModel businessObjectModel) {
@@ -234,6 +336,15 @@ public class ValidatorUtil {
 		return true;
 	}
 
+	/**
+	 * Vali package name.
+	 *
+	 * @author mqfdy
+	 * @param pkgName
+	 *            the pkg name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean valiPackageName(String pkgName) {
 		if (!pkgName.matches(PACKAGENAME)) {
 			return false;
@@ -245,9 +356,13 @@ public class ValidatorUtil {
 	}
 	
 	/**
-	 * 校验命名空间名
-	 * @param pkgName
-	 * @return
+	 * 校验命名空间名.
+	 *
+	 * @author mqfdy
+	 * @param nameSpaceName
+	 *            the name space name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiNameSpaceName(String nameSpaceName) {
 		if(nameSpaceName.startsWith("com")&&nameSpaceName.length()>3){
@@ -261,10 +376,13 @@ public class ValidatorUtil {
 	
 	
 	/**
-	 * 校验包名
-	 * 
+	 * 校验包名.
+	 *
+	 * @author mqfdy
 	 * @param name
-	 * @return
+	 *            the name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean validatePackageName(String name) {
 
@@ -302,11 +420,15 @@ public class ValidatorUtil {
 		}
 		return true;
 	}
+	
 	/**
-	 * 是否空格
-	 * 
+	 * 是否空格.
+	 *
+	 * @author mqfdy
 	 * @param c
-	 * @return
+	 *            the c
+	 * @return true, if is whitespace
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isWhitespace(char c) {
 		return c < MAX_OBVIOUS
@@ -315,14 +437,41 @@ public class ValidatorUtil {
 	
 	
 
+	/**
+	 * Vali name.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean valiName(String name) {
 		return name.matches(NAMEREGEX);
 	}
 	
+	/**
+	 * Vali pacakge.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean valiPacakge(String name) {
 		return name.matches(PACKAGE_NAME);
 	}
 
+	/**
+	 * Validate chinese.
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean validateChinese(String value){
         Pattern p=Pattern.compile(CHINESE);  
         Matcher result=p.matcher(value);                  
@@ -330,38 +479,105 @@ public class ValidatorUtil {
 	}
 	
 	/**
-	 * 开头不能是下划线的名称格式
+	 * 开头不能是下划线的名称格式.
+	 *
+	 * @author mqfdy
 	 * @param name
-	 * @return
+	 *            the name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiFirstNo_Name(String name) {
 		return name.matches(FIRSTNO_NAMEREGEX);
 	}
 
+	/**
+	 * Checks if is first uppercase.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return true, if is first uppercase
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean isFirstUppercase(String name) {
 		return name.matches(FIRSTLETTERUPPERCASE);
 	}
 
+	/**
+	 * Checks if is first lowercase.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return true, if is first lowercase
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean isFirstLowercase(String name) {
 		return name.matches(FIRSTLETTERLOWERCASE);
 	}
 
+	/**
+	 * Vali display name.
+	 *
+	 * @author mqfdy
+	 * @param displayName
+	 *            the display name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean valiDisplayName(String displayName) {
 		return displayName.matches(DISPLAYNAMEREGEX);
 	}
 
+	/**
+	 * Vali name length.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean valiNameLength(String name) {
 		return valiStringLength(name, 30);
 	}
 
+	/**
+	 * Vali display name length.
+	 *
+	 * @author mqfdy
+	 * @param displayName
+	 *            the display name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean valiDisplayNameLength(String displayName) {
 		return valiStringLength(displayName, 30);
 	}
 
+	/**
+	 * Vali remark length.
+	 *
+	 * @author mqfdy
+	 * @param remark
+	 *            the remark
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean valiRemarkLength(String remark) {
 		return valiStringLength(remark, 128);
 	}
 	
+	/**
+	 * Validate reg.
+	 *
+	 * @author mqfdy
+	 * @param reg
+	 *            the reg
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean validateReg(String reg) {
 		if (reg == null) {
 			return false;
@@ -412,10 +628,13 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 用于校验日期
-	 * 
+	 * 用于校验日期.
+	 *
+	 * @author mqfdy
 	 * @param value
-	 * @return
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiDate(String value) {
 		if (value == null) {
@@ -431,10 +650,13 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 用于校验日期时间
-	 * 
+	 * 用于校验日期时间.
+	 *
+	 * @author mqfdy
 	 * @param value
-	 * @return
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiDateTime(String value) {
 		if (value == null) {
@@ -451,10 +673,13 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 用于校验时间
-	 * 
+	 * 用于校验时间.
+	 *
+	 * @author mqfdy
 	 * @param value
-	 * @return
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiTime(String value) {
 		if (value == null) {
@@ -491,11 +716,14 @@ public class ValidatorUtil {
 //	}
 
 	/**
-	 * 用于校验数字
-	 * 
-	 * @param value
-	 * @return
-	 */
+ * 用于校验数字.
+ *
+ * @author mqfdy
+ * @param value
+ *            the value
+ * @return true, if successful
+ * @Date 2018-09-03 09:00
+ */
 	public static boolean valiLong(String value) {
 		try {
 			Long.parseLong(value);
@@ -506,10 +734,13 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 用于校验数字
-	 * 
+	 * 用于校验数字.
+	 *
+	 * @author mqfdy
 	 * @param value
-	 * @return
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiInteger(String value) {
 		try {
@@ -521,10 +752,13 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 用于校验数字
-	 * 
+	 * 用于校验数字.
+	 *
+	 * @author mqfdy
 	 * @param value
-	 * @return
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiShort(String value) {
 		try {
@@ -536,10 +770,13 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 用于校验数字
-	 * 
+	 * 用于校验数字.
+	 *
+	 * @author mqfdy
 	 * @param value
-	 * @return
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiFloat(String value) {
 		try {
@@ -551,10 +788,13 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 用于校验数字
-	 * 
+	 * 用于校验数字.
+	 *
+	 * @author mqfdy
 	 * @param value
-	 * @return
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiDouble(String value) {
 		try {
@@ -565,6 +805,17 @@ public class ValidatorUtil {
 		return true;
 	}
 
+	/**
+	 * Vali string length.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @param length
+	 *            the length
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean valiStringLength(String name, int length) {
 		if (name.length() > length)
 			return false;
@@ -572,9 +823,11 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 校验规则Map
-	 * 
-	 * @return
+	 * 校验规则Map.
+	 *
+	 * @author mqfdy
+	 * @return the editor map
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Map<String, Map<EditorType, Object>> getEditorMap() {
 		Map<String, Map<EditorType, Object>> map = new HashMap();
@@ -779,9 +1032,11 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 校验规则Map
-	 * 
-	 * @return
+	 * 校验规则Map.
+	 *
+	 * @author mqfdy
+	 * @return the validator map
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Map<String, Map<ValidatorType, Object>> getValidatorMap() {
 		Map<String, Map<ValidatorType, Object>> map = new HashMap();
@@ -918,6 +1173,16 @@ public class ValidatorUtil {
 
 		return map;
 	}
+	
+	/**
+	 * Del error string.
+	 *
+	 * @author mqfdy
+	 * @param displayName
+	 *            the display name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String delErrorString(String displayName){
 		String newString = "";
 		if(valiDisplayName(displayName) && valiDisplayNameLength(displayName))
@@ -934,9 +1199,13 @@ public class ValidatorUtil {
 	}
 	
 	/**
-	 * 校验IP是否输入正确
+	 * 校验IP是否输入正确.
+	 *
+	 * @author mqfdy
 	 * @param ip
-	 * @return
+	 *            the ip
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean validateIP(String ip){
 		if(ip.trim().split("\\.").length!=4){
@@ -957,9 +1226,13 @@ public class ValidatorUtil {
 	
 	
 	/**
-	 * 校验端口是否输入正确
+	 * 校验端口是否输入正确.
+	 *
+	 * @author mqfdy
 	 * @param port
-	 * @return
+	 *            the port
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean validatePort(String port){
 		try {
@@ -973,6 +1246,16 @@ public class ValidatorUtil {
 		}
 		return true;		
 	}
+	
+	/**
+	 * Validate dirctory.
+	 *
+	 * @author mqfdy
+	 * @param dir
+	 *            the dir
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean validateDirctory(String dir){
 		if (!dir.matches(DIRECTORY)) {
 			return false;

@@ -37,6 +37,7 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.RuntimeSingleton;
 import org.apache.velocity.runtime.log.Log;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class provides  services to the application
  * developer, such as :
@@ -65,113 +66,145 @@ import org.apache.velocity.runtime.log.Log;
  */
 public class Velocity implements RuntimeConstants
 {
+    
     /**
-     *  initialize the Velocity runtime engine, using the default
-     *  properties of the Velocity distribution
-     */
+	 * initialize the Velocity runtime engine, using the default properties of
+	 * the Velocity distribution.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:34
+	 */
     public static void init()
     {
         RuntimeSingleton.init();
     }
 
     /**
-     *  initialize the Velocity runtime engine, using default properties
-     *  plus the properties in the properties file passed in as the arg
-     *
-     *  @param propsFilename file containing properties to use to initialize
-     *         the Velocity runtime
-     */
+	 * initialize the Velocity runtime engine, using default properties plus the
+	 * properties in the properties file passed in as the arg.
+	 *
+	 * @author mqfdy
+	 * @param propsFilename
+	 *            file containing properties to use to initialize the Velocity
+	 *            runtime
+	 * @Date 2018-9-3 11:38:34
+	 */
     public static void init( String propsFilename )
     {
         RuntimeSingleton.init(propsFilename);
     }
 
     /**
-     *  initialize the Velocity runtime engine, using default properties
-     *  plus the properties in the passed in java.util.Properties object
-     *
-     *  @param p  Properties object containing initialization properties
-     */
+	 * initialize the Velocity runtime engine, using default properties plus the
+	 * properties in the passed in java.util.Properties object
+	 *
+	 * @author mqfdy
+	 * @param p
+	 *            Properties object containing initialization properties
+	 * @Date 2018-9-3 11:38:34
+	 */
     public static void init( Properties p )
     {
         RuntimeSingleton.init( p );
     }
 
     /**
-     * Set a Velocity Runtime property.
-     *
-     * @param key The property key.
-     * @param value The property value.
-     */
+	 * Set a Velocity Runtime property.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            The property key.
+	 * @param value
+	 *            The property value.
+	 * @Date 2018-9-3 11:38:34
+	 */
     public static void setProperty(String key, Object value)
     {
         RuntimeSingleton.setProperty(key,value);
     }
 
     /**
-     * Add a Velocity Runtime property.
-     *
-     * @param key The property key.
-     * @param value The property value.
-     */
+	 * Add a Velocity Runtime property.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            The property key.
+	 * @param value
+	 *            The property value.
+	 * @Date 2018-9-3 11:38:34
+	 */
     public static void addProperty(String key, Object value)
     {
         RuntimeSingleton.addProperty(key,value);
     }
 
     /**
-     * Clear a Velocity Runtime property.
-     *
-     * @param key of property to clear
-     */
+	 * Clear a Velocity Runtime property.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            of property to clear
+	 * @Date 2018-9-3 11:38:34
+	 */
     public static void clearProperty(String key)
     {
         RuntimeSingleton.clearProperty(key);
     }
 
     /**
-     * Set an entire configuration at once. This is
-     * useful in cases where the parent application uses
-     * the ExtendedProperties class and the velocity configuration
-     * is a subset of the parent application's configuration.
-     *
-     * @param configuration A configuration object.
-     *
-     */
+	 * Set an entire configuration at once. This is useful in cases where the
+	 * parent application uses the ExtendedProperties class and the velocity
+	 * configuration is a subset of the parent application's configuration.
+	 *
+	 * @author mqfdy
+	 * @param configuration
+	 *            A configuration object.
+	 * @Date 2018-9-3 11:38:34
+	 */
     public static void setExtendedProperties( ExtendedProperties configuration)
     {
         RuntimeSingleton.setConfiguration( configuration );
     }
 
     /**
-     *  Get a Velocity Runtime property.
-     *
-     *  @param key property to retrieve
-     *  @return property value or null if the property
-     *        not currently set
-     */
+	 * Get a Velocity Runtime property.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            property to retrieve
+	 * @return property value or null if the property not currently set
+	 * @Date 2018-9-3 11:38:34
+	 */
     public static Object getProperty( String key )
     {
         return RuntimeSingleton.getProperty( key );
     }
 
     /**
-     *  renders the input string using the context into the output writer.
-     *  To be used when a template is dynamically constructed, or want to use
-     *  Velocity as a token replacer.
-     *
-     *  @param context context to use in rendering input string
-     *  @param out  Writer in which to render the output
-     *  @param logTag  string to be used as the template name for log
-     *                 messages in case of error
-     *  @param instring input string containing the VTL to be rendered
-     *
-     *  @return true if successful, false otherwise.  If false, see
-     *             Velocity runtime log
-     * @throws ParseErrorException The template could not be parsed.
-     * @throws MethodInvocationException A method on a context object could not be invoked.
-     * @throws ResourceNotFoundException A referenced resource could not be loaded.
-     */
+	 * renders the input string using the context into the output writer. To be
+	 * used when a template is dynamically constructed, or want to use Velocity
+	 * as a token replacer.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            context to use in rendering input string
+	 * @param out
+	 *            Writer in which to render the output
+	 * @param logTag
+	 *            string to be used as the template name for log messages in
+	 *            case of error
+	 * @param instring
+	 *            input string containing the VTL to be rendered
+	 * @return true if successful, false otherwise. If false, see Velocity
+	 *         runtime log
+	 * @throws ParseErrorException
+	 *             The template could not be parsed.
+	 * @throws MethodInvocationException
+	 *             A method on a context object could not be invoked.
+	 * @throws ResourceNotFoundException
+	 *             A referenced resource could not be loaded.
+	 * @Date 2018-9-3 11:38:34
+	 */
     public static  boolean evaluate( Context context,  Writer out,
                                      String logTag, String instring )
         throws ParseErrorException, MethodInvocationException,
@@ -182,26 +215,30 @@ public class Velocity implements RuntimeConstants
     }
 
     /**
-     *  Renders the input stream using the context into the output writer.
-     *  To be used when a template is dynamically constructed, or want to
-     *  use Velocity as a token replacer.
-     *
-     *  @param context context to use in rendering input string
-     *  @param writer  Writer in which to render the output
-     *  @param logTag  string to be used as the template name for log messages
-     *                 in case of error
-     *  @param instream input stream containing the VTL to be rendered
-     *
-     *  @return true if successful, false otherwise.  If false, see
-     *               Velocity runtime log
-     *  @deprecated Use
-     *  {@link #evaluate( Context context, Writer writer,
-     *      String logTag, Reader reader ) }
-     * @throws ParseErrorException The template could not be parsed.
-     * @throws MethodInvocationException A method on a context object could not be invoked.
-     * @throws ResourceNotFoundException A referenced resource could not be loaded.
-     * @throws IOException While loading a reference, an I/O problem occured.
-     */
+	 * Renders the input stream using the context into the output writer. To be
+	 * used when a template is dynamically constructed, or want to use Velocity
+	 * as a token replacer.
+	 *
+	 * @param context
+	 *            context to use in rendering input string
+	 * @param writer
+	 *            Writer in which to render the output
+	 * @param logTag
+	 *            string to be used as the template name for log messages in
+	 *            case of error
+	 * @param instream
+	 *            input stream containing the VTL to be rendered
+	 * @return true if successful, false otherwise. If false, see Velocity
+	 *         runtime log
+	 * @throws ParseErrorException
+	 *             The template could not be parsed.
+	 * @throws MethodInvocationException
+	 *             A method on a context object could not be invoked.
+	 * @throws ResourceNotFoundException
+	 *             A referenced resource could not be loaded.
+	 * @deprecated Use
+	 *             {@link #evaluate( Context context, Writer writer, String logTag, Reader reader ) }
+	 */
     public static boolean evaluate( Context context, Writer writer,
                                     String logTag, InputStream instream )
         throws ParseErrorException, MethodInvocationException,
@@ -256,20 +293,28 @@ public class Velocity implements RuntimeConstants
     }
 
     /**
-     * Invokes a currently registered Velocimacro with the params provided
-     * and places the rendered stream into the writer.
-     * <br>
-     * Note : currently only accepts args to the VM if they are in the context.
-     *
-     * @param vmName name of Velocimacro to call
-     * @param logTag string to be used for template name in case of error. if null,
-     *               the vmName will be used
-     * @param params keys for args used to invoke Velocimacro, in java format
-     *               rather than VTL (eg  "foo" or "bar" rather than "$foo" or "$bar")
-     * @param context Context object containing data/objects used for rendering.
-     * @param writer  Writer for output stream
-     * @return true if Velocimacro exists and successfully invoked, false otherwise.
-     */
+	 * Invokes a currently registered Velocimacro with the params provided and
+	 * places the rendered stream into the writer. <br>
+	 * Note : currently only accepts args to the VM if they are in the context.
+	 *
+	 * @author mqfdy
+	 * @param vmName
+	 *            name of Velocimacro to call
+	 * @param logTag
+	 *            string to be used for template name in case of error. if null,
+	 *            the vmName will be used
+	 * @param params
+	 *            keys for args used to invoke Velocimacro, in java format
+	 *            rather than VTL (eg "foo" or "bar" rather than "$foo" or
+	 *            "$bar")
+	 * @param context
+	 *            Context object containing data/objects used for rendering.
+	 * @param writer
+	 *            Writer for output stream
+	 * @return true if Velocimacro exists and successfully invoked, false
+	 *         otherwise.
+	 * @Date 2018-9-3 11:38:34
+	 */
     public static  boolean invokeVelocimacro( String vmName, String logTag,
                                               String params[], Context context,
                                               Writer writer )
@@ -279,23 +324,27 @@ public class Velocity implements RuntimeConstants
     }
 
     /**
-     *  Merges a template and puts the rendered stream into the writer.
-     *  The default encoding that Velocity uses to read template files is defined in
-     *  the property input.encoding and defaults to ISO-8859-1.
-     *
-     *  @param templateName name of template to be used in merge
-     *  @param context  filled context to be used in merge
-     *  @param  writer  writer to write template into
-     *
-     *  @return true if successful, false otherwise.  Errors
-     *           logged to velocity log.
-     *  @deprecated Use
-     *  {@link #mergeTemplate( String templateName, String encoding,
-     *                Context context, Writer writer )}
-     * @throws ParseErrorException The template could not be parsed.
-     * @throws MethodInvocationException A method on a context object could not be invoked.
-     * @throws ResourceNotFoundException A referenced resource could not be loaded.
-     */
+	 * Merges a template and puts the rendered stream into the writer. The
+	 * default encoding that Velocity uses to read template files is defined in
+	 * the property input.encoding and defaults to ISO-8859-1.
+	 *
+	 * @param templateName
+	 *            name of template to be used in merge
+	 * @param context
+	 *            filled context to be used in merge
+	 * @param writer
+	 *            the writer
+	 * @return true if successful, false otherwise. Errors logged to velocity
+	 *         log.
+	 * @throws ResourceNotFoundException
+	 *             A referenced resource could not be loaded.
+	 * @throws ParseErrorException
+	 *             The template could not be parsed.
+	 * @throws MethodInvocationException
+	 *             A method on a context object could not be invoked.
+	 * @deprecated Use
+	 *             {@link #mergeTemplate( String templateName, String encoding, Context context, Writer writer )}
+	 */
     public static boolean mergeTemplate( String templateName,
                                          Context context, Writer writer )
         throws ResourceNotFoundException, ParseErrorException, MethodInvocationException
@@ -305,22 +354,26 @@ public class Velocity implements RuntimeConstants
     }
 
     /**
-     *  merges a template and puts the rendered stream into the writer
-     *
-     *  @param templateName name of template to be used in merge
-     *  @param encoding encoding used in template
-     *  @param context  filled context to be used in merge
-     *  @param  writer  writer to write template into
-     *
-     *  @return true if successful, false otherwise.  Errors
-     *           logged to velocity log
-     *
-     * @throws ParseErrorException The template could not be parsed.
-     * @throws MethodInvocationException A method on a context object could not be invoked.
-     * @throws ResourceNotFoundException A referenced resource could not be loaded.
-     *
-     * @since Velocity v1.1
-     */
+	 * merges a template and puts the rendered stream into the writer.
+	 *
+	 * @param templateName
+	 *            name of template to be used in merge
+	 * @param encoding
+	 *            encoding used in template
+	 * @param context
+	 *            filled context to be used in merge
+	 * @param writer
+	 *            the writer
+	 * @return true if successful, false otherwise. Errors logged to velocity
+	 *         log
+	 * @throws ResourceNotFoundException
+	 *             A referenced resource could not be loaded.
+	 * @throws ParseErrorException
+	 *             The template could not be parsed.
+	 * @throws MethodInvocationException
+	 *             A method on a context object could not be invoked.
+	 * @since Velocity v1.1
+	 */
     public static boolean mergeTemplate( String templateName, String encoding,
                                       Context context, Writer writer )
         throws ResourceNotFoundException, ParseErrorException, MethodInvocationException
@@ -342,16 +395,19 @@ public class Velocity implements RuntimeConstants
     }
 
     /**
-     *  Returns a <code>Template</code> from the Velocity
-     *  resource management system.
-     *
-     * @param name The file name of the desired template.
-     * @return     The template.
-     * @throws ResourceNotFoundException if template not found
-     *          from any available source.
-     * @throws ParseErrorException if template cannot be parsed due
-     *          to syntax (or other) error.
-     */
+	 * Returns a <code>Template</code> from the Velocity resource management
+	 * system.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            The file name of the desired template.
+	 * @return The template.
+	 * @throws ResourceNotFoundException
+	 *             if template not found from any available source.
+	 * @throws ParseErrorException
+	 *             if template cannot be parsed due to syntax (or other) error.
+	 * @Date 2018-9-3 11:38:34
+	 */
     public static Template getTemplate(String name)
         throws ResourceNotFoundException, ParseErrorException
     {
@@ -379,19 +435,24 @@ public class Velocity implements RuntimeConstants
     }
 
     /**
-     * <p>Determines whether a resource is accessable via the
-     * currently configured resource loaders.  {@link
-     * org.apache.velocity.runtime.resource.Resource} is the generic
-     * description of templates, static content, etc.</p>
-     *
-     * <p>Note that the current implementation will <b>not</b> change
-     * the state of the system in any real way - so this cannot be
-     * used to pre-load the resource cache, as the previous
-     * implementation did as a side-effect.</p>
-     *
-     * @param resourceName The name of the resource to search for.
-     * @return Whether the resource was located.
-     */
+	 * <p>
+	 * Determines whether a resource is accessable via the currently configured
+	 * resource loaders. {@link org.apache.velocity.runtime.resource.Resource}
+	 * is the generic description of templates, static content, etc.
+	 * </p>
+	 * 
+	 * <p>
+	 * Note that the current implementation will <b>not</b> change the state of
+	 * the system in any real way - so this cannot be used to pre-load the
+	 * resource cache, as the previous implementation did as a side-effect.
+	 * </p>
+	 *
+	 * @author mqfdy
+	 * @param resourceName
+	 *            The name of the resource to search for.
+	 * @return Whether the resource was located.
+	 * @Date 2018-9-3 11:38:34
+	 */
     public static boolean resourceExists(String resourceName)
     {
         return (RuntimeSingleton.getLoaderNameForResource(resourceName) != null);
@@ -410,97 +471,120 @@ public class Velocity implements RuntimeConstants
     }
 
     /**
-     * @deprecated Use getLog() and call warn() on it.
-     * @see Log#warn(Object)
-     * @param message The message to log.
-     */
+	 * Warn.
+	 *
+	 * @param message
+	 *            The message to log.
+	 * @see Log#warn(Object)
+	 * @deprecated Use getLog() and call warn() on it.
+	 */
     public static void warn(Object message)
     {
         getLog().warn( message );
     }
 
     /**
-     * @deprecated Use getLog() and call info() on it.
-     * @see Log#info(Object)
-     * @param message The message to log.
-     */
+	 * Info.
+	 *
+	 * @param message
+	 *            The message to log.
+	 * @see Log#info(Object)
+	 * @deprecated Use getLog() and call info() on it.
+	 */
     public static void info(Object message)
     {
         getLog().info( message );
     }
 
     /**
-     * @deprecated Use getLog() and call error() on it.
-     * @see Log#error(Object)
-     * @param message The message to log.
-     */
+	 * Error.
+	 *
+	 * @param message
+	 *            The message to log.
+	 * @see Log#error(Object)
+	 * @deprecated Use getLog() and call error() on it.
+	 */
     public static void error(Object message)
     {
         getLog().error( message );
     }
 
     /**
-     * @deprecated Use getLog() and call debug() on it.
-     * @see Log#debug(Object)
-     * @param message The message to log.
-     */
+	 * Debug.
+	 *
+	 * @param message
+	 *            The message to log.
+	 * @see Log#debug(Object)
+	 * @deprecated Use getLog() and call debug() on it.
+	 */
     public static void debug(Object message)
     {
         getLog().debug( message );
     }
 
     /**
-     *  <p>
-     *  Set the an ApplicationAttribue, which is an Object
-     *  set by the application which is accessable from
-     *  any component of the system that gets a RuntimeServices.
-     *  This allows communication between the application
-     *  environment and custom pluggable components of the
-     *  Velocity engine, such as loaders and loggers.
-     *  </p>
-     *
-     *  <p>
-     *  Note that there is no enfocement or rules for the key
-     *  used - it is up to the application developer.  However, to
-     *  help make the intermixing of components possible, using
-     *  the target Class name (e.g.  com.foo.bar ) as the key
-     *   might help avoid collision.
-     *  </p>
-     *
-     *  @param key object 'name' under which the object is stored
-     *  @param value object to store under this key
-     */
+	 * <p>
+	 * Set the an ApplicationAttribue, which is an Object set by the application
+	 * which is accessable from any component of the system that gets a
+	 * RuntimeServices. This allows communication between the application
+	 * environment and custom pluggable components of the Velocity engine, such
+	 * as loaders and loggers.
+	 * </p>
+	 * 
+	 * <p>
+	 * Note that there is no enfocement or rules for the key used - it is up to
+	 * the application developer. However, to help make the intermixing of
+	 * components possible, using the target Class name (e.g. com.foo.bar ) as
+	 * the key might help avoid collision.
+	 * </p>
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            object 'name' under which the object is stored
+	 * @param value
+	 *            object to store under this key
+	 * @Date 2018-9-3 11:38:34
+	 */
      public static void setApplicationAttribute( Object key, Object value )
      {
         RuntimeSingleton.getRuntimeInstance().setApplicationAttribute( key, value);
      }
 
     /**
-     * @param resourceName Name of the Template to check.
-     * @return True if the template exists.
-     * @see #resourceExists(String)
-     * @deprecated Use resourceExists(String) instead.
-     */
+	 * Template exists.
+	 *
+	 * @param resourceName
+	 *            Name of the Template to check.
+	 * @return True if the template exists.
+	 * @see #resourceExists(String)
+	 * @deprecated Use resourceExists(String) instead.
+	 */
     public static boolean templateExists(String resourceName)
     {
         return resourceExists(resourceName);
     }
     
     /**
-     * Remove a directive.
-     * 
-     * @param name name of the directive.
-     */
+	 * Remove a directive.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            name of the directive.
+	 * @Date 2018-9-3 11:38:34
+	 */
     public void removeDirective(String name)
     {
         RuntimeSingleton.removeDirective(name);
     }
 
     /**
-     * Instantiates and loads the directive with some basic checks.
-     *
-     * @param directiveClass classname of directive to load
-     */
+	 * Instantiates and loads the directive with some basic checks.
+	 *
+	 * @author mqfdy
+	 * @param directiveClass
+	 *            classname of directive to load
+	 * @Date 2018-9-3 11:38:34
+	 */
     public void loadDirective(String directiveClass)
     {
         RuntimeSingleton.loadDirective(directiveClass);

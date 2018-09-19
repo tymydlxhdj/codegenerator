@@ -21,31 +21,34 @@ package org.apache.velocity.runtime.log;
 
 import org.apache.velocity.runtime.RuntimeLogger;
 
+// TODO: Auto-generated Javadoc
 /**
- * A temporary RuntimeLogger wrapper to make the deprecation
- * of UberspectLoggable.setRuntimeLogger(RuntimeLogger) feasible.
- * This overrides all Log methods, either throwing
- * UnsupportedOperationExceptions or passing things off to the
- * theoretical RuntimeLogger used to create it.  Oh, and all the
- * is<Level>Enabled() methods return true.  Of course, ideally
- * there is no one out there who actually created their own
- * RuntimeLogger instance to use with UberspectLoggable.setRuntimeLogger()
- * and this class will therefore never be used.  But it's here just in case.
+ * A temporary RuntimeLogger wrapper to make the deprecation of
+ * UberspectLoggable.setRuntimeLogger(RuntimeLogger) feasible. This overrides
+ * all Log methods, either throwing UnsupportedOperationExceptions or passing
+ * things off to the theoretical RuntimeLogger used to create it. Oh, and all
+ * the is<Level>Enabled() methods return true. Of course, ideally there is no
+ * one out there who actually created their own RuntimeLogger instance to use
+ * with UberspectLoggable.setRuntimeLogger() and this class will therefore never
+ * be used. But it's here just in case.
  *
  * @author <a href="mailto:nbubna@apache.org">Nathan Bubna</a>
  * @version $Id: RuntimeLoggerLog.java 685685 2008-08-13 21:43:27Z nbubna $
- * @deprecated This will be removed along with the RuntimeLogger interface.
  * @since 1.5
+ * @deprecated This will be removed along with the RuntimeLogger interface.
  */
 public class RuntimeLoggerLog extends Log
 {
 
+    /** The rlog. */
     private RuntimeLogger rlog;
 
     /**
-     * Creates a new Log that wraps a PrimordialLogChute.
-     * @param rlog
-     */
+	 * Creates a new Log that wraps a PrimordialLogChute.
+	 *
+	 * @param rlog
+	 *            the rlog
+	 */
     public RuntimeLoggerLog(RuntimeLogger rlog)
     {
         if (rlog == null)
@@ -56,80 +59,124 @@ public class RuntimeLoggerLog extends Log
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#setLogChute(org.apache.velocity.runtime.log.LogChute)
-     */
+	 * Sets the log chute.
+	 *
+	 * @param newLogChute
+	 *            the new log chute
+	 * @see org.apache.velocity.runtime.log.Log#setLogChute(org.apache.velocity.runtime.log.LogChute)
+	 */
     protected void setLogChute(LogChute newLogChute)
     {
         throw new UnsupportedOperationException("RuntimeLoggerLog does not support this method.");
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#getLogChute()
-     */
+	 * Gets the log chute.
+	 *
+	 * @return the log chute
+	 * @see org.apache.velocity.runtime.log.Log#getLogChute()
+	 */
     protected LogChute getLogChute()
     {
         throw new UnsupportedOperationException("RuntimeLoggerLog does not support this method.");
     }
 
     /**
-     * @param showStacks
-     */
+	 * Sets the show stack traces.
+	 *
+	 * @author mqfdy
+	 * @param showStacks
+	 *            the new show stack traces
+	 * @Date 2018-09-03 09:00
+	 */
     protected void setShowStackTraces(boolean showStacks)
     {
         throw new UnsupportedOperationException("RuntimeLoggerLog does not support this method.");
     }
 
     /**
-     * @return True if Stack traces should be shown.
-     */
+	 * Gets the show stack traces.
+	 *
+	 * @author mqfdy
+	 * @return True if Stack traces should be shown.
+	 * @Date 2018-09-03 09:00
+	 */
     public boolean getShowStackTraces()
     {
         throw new UnsupportedOperationException("RuntimeLoggerLog does not support this method.");
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#isTraceEnabled()
-     */
+	 * Checks if is trace enabled.
+	 *
+	 * @return true, if is trace enabled
+	 * @see org.apache.velocity.runtime.log.Log#isTraceEnabled()
+	 */
     public boolean isTraceEnabled()
     {
         return true;
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#trace(java.lang.Object)
-     */
+	 * Trace.
+	 *
+	 * @param message
+	 *            the message
+	 * @see org.apache.velocity.runtime.log.Log#trace(java.lang.Object)
+	 */
     public void trace(Object message)
     {
         debug(message);
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#trace(java.lang.Object, java.lang.Throwable)
-     */
+	 * Trace.
+	 *
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @see org.apache.velocity.runtime.log.Log#trace(java.lang.Object,
+	 *      java.lang.Throwable)
+	 */
     public void trace(Object message, Throwable t)
     {
         debug(message, t);
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#isDebugEnabled()
-     */
+	 * Checks if is debug enabled.
+	 *
+	 * @return true, if is debug enabled
+	 * @see org.apache.velocity.runtime.log.Log#isDebugEnabled()
+	 */
     public boolean isDebugEnabled()
     {
         return true;
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#debug(java.lang.Object)
-     */
+	 * Debug.
+	 *
+	 * @param message
+	 *            the message
+	 * @see org.apache.velocity.runtime.log.Log#debug(java.lang.Object)
+	 */
     public void debug(Object message)
     {
         rlog.debug(message);
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#debug(java.lang.Object, java.lang.Throwable)
-     */
+	 * Debug.
+	 *
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @see org.apache.velocity.runtime.log.Log#debug(java.lang.Object,
+	 *      java.lang.Throwable)
+	 */
     public void debug(Object message, Throwable t)
     {
         rlog.debug(message);
@@ -137,24 +184,38 @@ public class RuntimeLoggerLog extends Log
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#isInfoEnabled()
-     */
+	 * Checks if is info enabled.
+	 *
+	 * @return true, if is info enabled
+	 * @see org.apache.velocity.runtime.log.Log#isInfoEnabled()
+	 */
     public boolean isInfoEnabled()
     {
         return true;
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#info(java.lang.Object)
-     */
+	 * Info.
+	 *
+	 * @param message
+	 *            the message
+	 * @see org.apache.velocity.runtime.log.Log#info(java.lang.Object)
+	 */
     public void info(Object message)
     {
         rlog.info(message);
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#info(java.lang.Object, java.lang.Throwable)
-     */
+	 * Info.
+	 *
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @see org.apache.velocity.runtime.log.Log#info(java.lang.Object,
+	 *      java.lang.Throwable)
+	 */
     public void info(Object message, Throwable t)
     {
         rlog.info(message);
@@ -162,24 +223,38 @@ public class RuntimeLoggerLog extends Log
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#isWarnEnabled()
-     */
+	 * Checks if is warn enabled.
+	 *
+	 * @return true, if is warn enabled
+	 * @see org.apache.velocity.runtime.log.Log#isWarnEnabled()
+	 */
     public boolean isWarnEnabled()
     {
         return true;
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#warn(java.lang.Object)
-     */
+	 * Warn.
+	 *
+	 * @param message
+	 *            the message
+	 * @see org.apache.velocity.runtime.log.Log#warn(java.lang.Object)
+	 */
     public void warn(Object message)
     {
         rlog.warn(message);
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#warn(java.lang.Object, java.lang.Throwable)
-     */
+	 * Warn.
+	 *
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @see org.apache.velocity.runtime.log.Log#warn(java.lang.Object,
+	 *      java.lang.Throwable)
+	 */
     public void warn(Object message, Throwable t)
     {
         rlog.warn(message);
@@ -187,24 +262,38 @@ public class RuntimeLoggerLog extends Log
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#isErrorEnabled()
-     */
+	 * Checks if is error enabled.
+	 *
+	 * @return true, if is error enabled
+	 * @see org.apache.velocity.runtime.log.Log#isErrorEnabled()
+	 */
     public boolean isErrorEnabled()
     {
         return true;
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#error(java.lang.Object)
-     */
+	 * Error.
+	 *
+	 * @param message
+	 *            the message
+	 * @see org.apache.velocity.runtime.log.Log#error(java.lang.Object)
+	 */
     public void error(Object message)
     {
         rlog.error(message);
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.Log#error(java.lang.Object, java.lang.Throwable)
-     */
+	 * Error.
+	 *
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @see org.apache.velocity.runtime.log.Log#error(java.lang.Object,
+	 *      java.lang.Throwable)
+	 */
     public void error(Object message, Throwable t)
     {
         rlog.error(message);

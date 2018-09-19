@@ -3,24 +3,61 @@ package com.mqfdy.code.datasource.mapping;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Enum DBType.
+ *
+ * @author mqfdy
+ */
 public enum DBType {
 
+	/** The Oracle. */
 	Oracle("Oracle", "org.hibernate.dialect.Oracle9Dialect"), 
+	
+	/** The db2. */
 	DB2("DB2","org.hibernate.dialect.DB2Dialect"), 
+	
+	/** The Sybase. */
 	Sybase("Sybase","org.hibernate.dialect.SybaseDialect"), 
+	
+	/** The My SQL. */
 	MySQL("MySQL","org.hibernate.dialect.MySQLDialect"),
+	
+	/** The Ms SQL. */
 	MsSQL("MSSQL","org.hibernate.dialect.SQLServerDialect"),
+	
+	/** The postgresql. */
 	POSTGRESQL("PostgreSQL","org.hibernate.dialect.PostgreSQLDialect"),
+	
+	/** The sqlserver. */
 	SQLSERVER("SqlServer","org.hibernate.dialect.SQLServerDialect");
+	
+	/** The db type. */
 	private String dbType;
 
+	/** The dialect. */
 	private String dialect;
 
+	/**
+	 * Instantiates a new DB type.
+	 *
+	 * @param dbType
+	 *            the db type
+	 * @param dialect
+	 *            the dialect
+	 */
 	DBType(String dbType, String dialect) {
 		this.dbType = dbType;
 		this.dialect = dialect;
 	}
 
+	/**
+	 * Gets the DB types.
+	 *
+	 * @author mqfdy
+	 * @return the DB types
+	 * @Date 2018-09-03 09:00
+	 */
 	public static List<DBType> getDBTypes() {
 		List<DBType> list = new ArrayList<DBType>();
 		for (int i = 0; i < DBType.values().length; i++) {
@@ -29,6 +66,15 @@ public enum DBType {
 		return list;
 	}
 
+	/**
+	 * Gets the dialect.
+	 *
+	 * @author mqfdy
+	 * @param dbType
+	 *            the db type
+	 * @return the dialect
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getDialect(String dbType) {
 		List<DBType> list = getDBTypes();
 		for (int i = 0; i < list.size(); i++) {
@@ -40,18 +86,48 @@ public enum DBType {
 		return null;
 	}
 
+	/**
+	 * Gets the db type.
+	 *
+	 * @author mqfdy
+	 * @return the db type
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getDbType() {
 		return dbType;
 	}
 
+	/**
+	 * Sets the db type.
+	 *
+	 * @author mqfdy
+	 * @param dbType
+	 *            the new db type
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setDbType(String dbType) {
 		this.dbType = dbType;
 	}
 
+	/**
+	 * Gets the dialect.
+	 *
+	 * @author mqfdy
+	 * @return the dialect
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getDialect() {
 		return dialect;
 	}
 
+	/**
+	 * Sets the dialect.
+	 *
+	 * @author mqfdy
+	 * @param dialect
+	 *            the new dialect
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setDialect(String dialect) {
 		this.dialect = dialect;
 	}

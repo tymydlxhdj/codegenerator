@@ -15,12 +15,14 @@ import java.util.ListIterator;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * A <code>ReadOnlyListIterator</code> wraps another
- * <code>ListIterator</code> and removes support for:
- * 	#remove()
- * 	#set(Object)
- * 	#add(Object)
+ * A <code>ReadOnlyListIterator</code> wraps another <code>ListIterator</code>
+ * and removes support for: #remove() #set(Object) #add(Object).
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class ReadOnlyListIterator<E>
 	implements ListIterator<E>
@@ -29,16 +31,22 @@ public class ReadOnlyListIterator<E>
 
 
 	/**
-	 * Construct an iterator on the specified list that
-	 * disallows removes, sets, and adds.
+	 * Construct an iterator on the specified list that disallows removes, sets,
+	 * and adds.
+	 *
+	 * @param list
+	 *            the list
 	 */
 	public ReadOnlyListIterator(List<? extends E> list) {
 		this(list.listIterator());
 	}
 
 	/**
-	 * Construct an iterator on the specified list iterator that
-	 * disallows removes, sets, and adds.
+	 * Construct an iterator on the specified list iterator that disallows
+	 * removes, sets, and adds.
+	 *
+	 * @param nestedListIterator
+	 *            the nested list iterator
 	 */
 	public ReadOnlyListIterator(ListIterator<? extends E> nestedListIterator) {
 		super();

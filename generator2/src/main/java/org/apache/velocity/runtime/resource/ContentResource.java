@@ -25,6 +25,7 @@ import java.io.InputStreamReader;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.exception.VelocityException;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class represent a general text resource that may have been
  * retrieved from any number of possible sources.
@@ -38,7 +39,10 @@ import org.apache.velocity.exception.VelocityException;
  */
 public class ContentResource extends Resource
 {
-    /** Default empty constructor */
+    
+    /**
+	 * Default empty constructor.
+	 */
     public ContentResource()
     {
         super();
@@ -47,12 +51,14 @@ public class ContentResource extends Resource
     }
 
     /**
-     * Pull in static content and store it.
-     * @return True if everything went ok.
-     *
-     * @exception ResourceNotFoundException Resource could not be
-     * found.
-     */
+	 * Pull in static content and store it.
+	 *
+	 * @author mqfdy
+	 * @return True if everything went ok.
+	 * @exception ResourceNotFoundException
+	 *                Resource could not be found.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public boolean process()
         throws ResourceNotFoundException
     {

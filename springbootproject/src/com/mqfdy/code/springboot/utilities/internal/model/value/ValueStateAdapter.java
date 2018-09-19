@@ -14,9 +14,14 @@ import com.mqfdy.code.springboot.utilities.model.event.StateChangeEvent;
 import com.mqfdy.code.springboot.utilities.model.listener.StateChangeListener;
 import com.mqfdy.code.springboot.utilities.model.value.WritablePropertyValueModel;
 
+// TODO: Auto-generated Javadoc
 /**
- * Extend ValueAspectAdapter to listen to the
- * "state" of the value in the wrapped value model.
+ * Extend ValueAspectAdapter to listen to the "state" of the value in the
+ * wrapped value model.
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
  */
 public class ValueStateAdapter<T extends Model>
 	extends ValueAspectAdapter<T>
@@ -29,6 +34,9 @@ public class ValueStateAdapter<T extends Model>
 
 	/**
 	 * Construct an adapter for the value state.
+	 *
+	 * @param valueHolder
+	 *            the value holder
 	 */
 	public ValueStateAdapter(WritablePropertyValueModel<T> valueHolder) {
 		super(valueHolder);
@@ -38,6 +46,13 @@ public class ValueStateAdapter<T extends Model>
 
 	// ********** initialization **********
 
+	/**
+	 * Builds the value state listener.
+	 *
+	 * @author mqfdy
+	 * @return the state change listener
+	 * @Date 2018-09-03 09:00
+	 */
 	protected StateChangeListener buildValueStateListener() {
 		return new StateChangeListener() {
 			public void stateChanged(StateChangeEvent event) {

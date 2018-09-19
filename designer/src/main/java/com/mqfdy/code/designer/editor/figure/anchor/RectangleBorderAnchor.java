@@ -5,20 +5,37 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 
+// TODO: Auto-generated Javadoc
 /**
- * RectangleBorderAnchor 方形锚点计算
- * 
- * @version 1.0 Date: 2011-11-22 下午02:13:03
+ * RectangleBorderAnchor 方形锚点计算.
+ *
  * @author mqfdy
- * 
+ * @version 1.0 Date: 2011-11-22 下午02:13:03
  */
 public class RectangleBorderAnchor extends BorderAnchor {
+	
+	/** The place. */
 	public Point place;
 
+	/**
+	 * Instantiates a new rectangle border anchor.
+	 *
+	 * @param figure
+	 *            the figure
+	 */
 	public RectangleBorderAnchor(IFigure figure) {
 		super(figure);
 	}
 
+	/**
+	 * Gets the border point.
+	 *
+	 * @author mqfdy
+	 * @param reference
+	 *            the reference
+	 * @return the border point
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -56,6 +73,15 @@ public class RectangleBorderAnchor extends BorderAnchor {
 		return new Point(pp);
 	}
 
+	/**
+	 * Gets the location.
+	 *
+	 * @author mqfdy
+	 * @param reference
+	 *            the reference
+	 * @return the location
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public Point getLocation(Point reference) {
 		if (angle == Double.MAX_VALUE) {
@@ -65,6 +91,15 @@ public class RectangleBorderAnchor extends BorderAnchor {
 		}
 	}
 
+	/**
+	 * Gets the location 1.
+	 *
+	 * @author mqfdy
+	 * @param reference
+	 *            the reference
+	 * @return the location 1
+	 * @Date 2018-09-03 09:00
+	 */
 	public Point getLocation1(Point reference) {
 		if (place != null) {
 			// 得到owner矩形，转换为绝对坐标

@@ -24,6 +24,7 @@ import org.jdom.Namespace;
 import org.jdom.output.XMLOutputter;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
  * A JDOM {@link Element} that is tailored for Anakia needs. It has
  * {@link #selectNodes(String)} method as well as a {@link #toString()} that
@@ -35,11 +36,11 @@ import java.util.List;
  */
 public class AnakiaElement extends Element
 {
-    /**
-     * Version Id for serializable
-     */
+    
+    /** Version Id for serializable. */
     private static final long serialVersionUID = 8429597252274491314L;
 
+    /** The Constant DEFAULT_OUTPUTTER. */
     private static final XMLOutputter DEFAULT_OUTPUTTER = new XMLOutputter();
 
     static
@@ -114,31 +115,37 @@ public class AnakiaElement extends Element
     }
 
     /**
-     * Applies an XPath expression to this element and returns the resulting
-     * node list. In order for this method to work, your application must have
-     * access to <a href="http://code.werken.com">werken.xpath</a> library
-     * classes. The implementation does cache the parsed format of XPath
-     * expressions in a weak hash map, keyed by the string representation of
-     * the XPath expression. As the string object passed as the argument is
-     * usually kept in the parsed template, this ensures that each XPath
-     * expression is parsed only once during the lifetime of the template that
-     * first invoked it.
-     * @param xpathExpression the XPath expression you wish to apply
-     * @return a NodeList representing the nodes that are the result of
-     * application of the XPath to the current element. It can be empty.
-     */
+	 * Applies an XPath expression to this element and returns the resulting
+	 * node list. In order for this method to work, your application must have
+	 * access to <a href="http://code.werken.com">werken.xpath</a> library
+	 * classes. The implementation does cache the parsed format of XPath
+	 * expressions in a weak hash map, keyed by the string representation of the
+	 * XPath expression. As the string object passed as the argument is usually
+	 * kept in the parsed template, this ensures that each XPath expression is
+	 * parsed only once during the lifetime of the template that first invoked
+	 * it.
+	 *
+	 * @author mqfdy
+	 * @param xpathExpression
+	 *            the XPath expression you wish to apply
+	 * @return a NodeList representing the nodes that are the result of
+	 *         application of the XPath to the current element. It can be empty.
+	 * @Date 2018-9-3 11:38:38
+	 */
     public NodeList selectNodes(String xpathExpression)
     {
         return new NodeList(XPathCache.getXPath(xpathExpression).applyTo(this), false);
     }
 
     /**
-     * Returns the XML serialized form of this element, as produced by the default
-     * {@link XMLOutputter}.
-
-     * @return The XML serialized form of this element, as produced by the default
-     * {@link XMLOutputter}.
-     */
+	 * Returns the XML serialized form of this element, as produced by the
+	 * default {@link XMLOutputter}.
+	 *
+	 * @author mqfdy
+	 * @return The XML serialized form of this element, as produced by the
+	 *         default {@link XMLOutputter}.
+	 * @Date 2018-9-3 11:38:38
+	 */
 
     public String toString()
     {
@@ -146,117 +153,127 @@ public class AnakiaElement extends Element
     }
 
     /**
-     * <p>
-     * This returns the full content of the element as a NodeList which
-     * may contain objects of type <code>String</code>, <code>Element</code>,
-     * <code>Comment</code>, <code>ProcessingInstruction</code>,
-     * <code>CDATA</code>, and <code>EntityRef</code>.
-     * The List returned is "live" in document order and modifications
-     * to it affect the element's actual contents.  Whitespace content is
-     * returned in its entirety.
-     * </p>
-     *
-     * @return a <code>List</code> containing the mixed content of the
-     *         element: may contain <code>String</code>,
-     *         <code>{@link Element}</code>, <code>{@link org.jdom.Comment}</code>,
-     *         <code>{@link org.jdom.ProcessingInstruction}</code>,
-     *         <code>{@link org.jdom.CDATA}</code>, and
-     *         <code>{@link org.jdom.EntityRef}</code> objects.
-     */
+	 * <p>
+	 * This returns the full content of the element as a NodeList which may
+	 * contain objects of type <code>String</code>, <code>Element</code>,
+	 * <code>Comment</code>, <code>ProcessingInstruction</code>,
+	 * <code>CDATA</code>, and <code>EntityRef</code>. The List returned is
+	 * "live" in document order and modifications to it affect the element's
+	 * actual contents. Whitespace content is returned in its entirety.
+	 * </p>
+	 *
+	 * @author mqfdy
+	 * @return a <code>List</code> containing the mixed content of the element:
+	 *         may contain <code>String</code>, <code>{@link Element}</code>,
+	 *         <code>{@link org.jdom.Comment}</code>,
+	 *         <code>{@link org.jdom.ProcessingInstruction}</code>,
+	 *         <code>{@link org.jdom.CDATA}</code>, and
+	 *         <code>{@link org.jdom.EntityRef}</code> objects.
+	 * @Date 2018-9-3 11:38:38
+	 */
     public List getContent()
     {
         return new NodeList(super.getContent(), false);
     }
 
     /**
-     * <p>
-     * This returns a <code>NodeList</code> of all the child elements
-     * nested directly (one level deep) within this element, as
-     * <code>Element</code> objects.  If this target element has no nested
-     * elements, an empty List is returned.  The returned list is "live"
-     * in document order and changes to it affect the element's actual
-     * contents.
-     * </p>
-     * <p>
-     * This performs no recursion, so elements nested two levels
-     *   deep would have to be obtained with:
-     * <pre>
-     * <code>
-     *   Iterator itr = currentElement.getChildren().iterator();
-     *   while (itr.hasNext()) {
-     *     Element oneLevelDeep = (Element)nestedElements.next();
-     *     List twoLevelsDeep = oneLevelDeep.getChildren();
-     *     // Do something with these children
-     *   }
-     * </code>
-     * </pre>
-     * </p>
-     *
-     * @return list of child <code>Element</code> objects for this element
-     */
+	 * <p>
+	 * This returns a <code>NodeList</code> of all the child elements nested
+	 * directly (one level deep) within this element, as <code>Element</code>
+	 * objects. If this target element has no nested elements, an empty List is
+	 * returned. The returned list is "live" in document order and changes to it
+	 * affect the element's actual contents.
+	 * </p>
+	 * <p>
+	 * This performs no recursion, so elements nested two levels deep would have
+	 * to be obtained with:
+	 * 
+	 * <pre>
+	 * <code>
+	 *   Iterator itr = currentElement.getChildren().iterator();
+	 *   while (itr.hasNext()) {
+	 *     Element oneLevelDeep = (Element)nestedElements.next();
+	 *     List twoLevelsDeep = oneLevelDeep.getChildren();
+	 *     // Do something with these children
+	 *   }
+	 * </code>
+	 * </pre>
+	 * </p>
+	 *
+	 * @author mqfdy
+	 * @return list of child <code>Element</code> objects for this element
+	 * @Date 2018-9-3 11:38:38
+	 */
     public List getChildren()
     {
         return new NodeList(super.getChildren(), false);
     }
 
     /**
-     * <p>
-     * This returns a <code>NodeList</code> of all the child elements
-     * nested directly (one level deep) within this element with the given
-     * local name and belonging to no namespace, returned as
-     * <code>Element</code> objects.  If this target element has no nested
-     * elements with the given name outside a namespace, an empty List
-     * is returned.  The returned list is "live" in document order
-     * and changes to it affect the element's actual contents.
-     * </p>
-     * <p>
-     * Please see the notes for <code>{@link #getChildren()}</code>
-     * for a code example.
-     * </p>
-     *
-     * @param name local name for the children to match
-     * @return all matching child elements
-     */
+	 * <p>
+	 * This returns a <code>NodeList</code> of all the child elements nested
+	 * directly (one level deep) within this element with the given local name
+	 * and belonging to no namespace, returned as <code>Element</code> objects.
+	 * If this target element has no nested elements with the given name outside
+	 * a namespace, an empty List is returned. The returned list is "live" in
+	 * document order and changes to it affect the element's actual contents.
+	 * </p>
+	 * <p>
+	 * Please see the notes for <code>{@link #getChildren()}</code> for a code
+	 * example.
+	 * </p>
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            local name for the children to match
+	 * @return all matching child elements
+	 * @Date 2018-9-3 11:38:38
+	 */
     public List getChildren(String name)
     {
         return new NodeList(super.getChildren(name));
     }
 
     /**
-     * <p>
-     * This returns a <code>NodeList</code> of all the child elements
-     * nested directly (one level deep) within this element with the given
-     * local name and belonging to the given Namespace, returned as
-     * <code>Element</code> objects.  If this target element has no nested
-     * elements with the given name in the given Namespace, an empty List
-     * is returned.  The returned list is "live" in document order
-     * and changes to it affect the element's actual contents.
-     * </p>
-     * <p>
-     * Please see the notes for <code>{@link #getChildren()}</code>
-     * for a code example.
-     * </p>
-     *
-     * @param name local name for the children to match
-     * @param ns <code>Namespace</code> to search within
-     * @return all matching child elements
-     */
+	 * <p>
+	 * This returns a <code>NodeList</code> of all the child elements nested
+	 * directly (one level deep) within this element with the given local name
+	 * and belonging to the given Namespace, returned as <code>Element</code>
+	 * objects. If this target element has no nested elements with the given
+	 * name in the given Namespace, an empty List is returned. The returned list
+	 * is "live" in document order and changes to it affect the element's actual
+	 * contents.
+	 * </p>
+	 * <p>
+	 * Please see the notes for <code>{@link #getChildren()}</code> for a code
+	 * example.
+	 * </p>
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            local name for the children to match
+	 * @param ns
+	 *            <code>Namespace</code> to search within
+	 * @return all matching child elements
+	 * @Date 2018-9-3 11:38:38
+	 */
     public List getChildren(String name, Namespace ns)
     {
         return new NodeList(super.getChildren(name, ns));
     }
 
     /**
-     * <p>
-     * This returns the complete set of attributes for this element, as a
-     * <code>NodeList</code> of <code>Attribute</code> objects in no particular
-     * order, or an empty list if there are none.
-     * The returned list is "live" and changes to it affect the
-     * element's actual attributes.
-     * </p>
-     *
-     * @return attributes for the element
-     */
+	 * <p>
+	 * This returns the complete set of attributes for this element, as a
+	 * <code>NodeList</code> of <code>Attribute</code> objects in no particular
+	 * order, or an empty list if there are none. The returned list is "live"
+	 * and changes to it affect the element's actual attributes.
+	 * </p>
+	 *
+	 * @author mqfdy
+	 * @return attributes for the element
+	 * @Date 2018-9-3 11:38:38
+	 */
     public List getAttributes()
     {
         return new NodeList(super.getAttributes());

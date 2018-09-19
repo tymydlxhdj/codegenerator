@@ -9,24 +9,54 @@ import org.eclipse.core.resources.IProject;
 import com.mqfdy.code.springboot.core.generator.AbstractGenerator;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JavaGenerator.
+ *
+ * @author mqfdy
+ */
 public class JavaGenerator extends AbstractGenerator {
 	
+	/** The map. */
 	protected Map<String, Object> map = new HashMap<String, Object>();
 	
+	/** The gen project. */
 	protected IProject genProject;
 	
+	/** The folder. */
 	protected String folder = "";
 	
+	/** The base package. */
 	protected String basePackage;
 	
 	private String fileName;
 	
 	private String templatePath;
 	
+	/**
+	 * Sets the folder.
+	 *
+	 * @author mqfdy
+	 * @param f
+	 *            the new folder
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setFolder(String f){
 		this.folder = f;
 	}
 	
+	/**
+	 * Instantiates a new java generator.
+	 *
+	 * @param genProject
+	 *            the gen project
+	 * @param basePackage
+	 *            the base package
+	 * @param fileName
+	 *            the file name
+	 * @param templatePath
+	 *            the template path
+	 */
 	public JavaGenerator(IProject genProject,String basePackage,String fileName,String templatePath) {
 		super(genProject);
 		this.genProject = genProject;
@@ -65,6 +95,14 @@ public class JavaGenerator extends AbstractGenerator {
 		return genProject;
 	}
 	
+	/**
+	 * Sets the gen project.
+	 *
+	 * @author mqfdy
+	 * @param genProject
+	 *            the new gen project
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setGenProject(IProject genProject) {
 		this.genProject = genProject;
 	}

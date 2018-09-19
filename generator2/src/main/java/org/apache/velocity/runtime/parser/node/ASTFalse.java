@@ -22,49 +22,79 @@ package org.apache.velocity.runtime.parser.node;
 import org.apache.velocity.context.InternalContextAdapter;
 import org.apache.velocity.runtime.parser.Parser;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ASTFalse.
  *
+ * @author mqfdy
  */
 public class ASTFalse extends SimpleNode
 {
+    
+    /** The value. */
     private static Boolean value = Boolean.FALSE;
 
     /**
-     * @param id
-     */
+	 * Instantiates a new AST false.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTFalse(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST false.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTFalse(Parser p, int id)
     {
         super(p, id);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#evaluate(org.apache.velocity.context.InternalContextAdapter)
-     */
+	 * Evaluate.
+	 *
+	 * @param context
+	 *            the context
+	 * @return true, if successful
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#evaluate(org.apache.velocity.context.InternalContextAdapter)
+	 */
     public boolean evaluate( InternalContextAdapter context)
     {
         return false;
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#value(org.apache.velocity.context.InternalContextAdapter)
-     */
+	 * Value.
+	 *
+	 * @param context
+	 *            the context
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#value(org.apache.velocity.context.InternalContextAdapter)
+	 */
     public Object value( InternalContextAdapter context)
     {
         return value;

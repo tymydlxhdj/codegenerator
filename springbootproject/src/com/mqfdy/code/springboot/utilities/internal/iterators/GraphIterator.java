@@ -19,38 +19,42 @@ import java.util.Set;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * A <code>GraphIterator</code> is similar to a <code>TreeIterator</code>
- * except that it cannot be assumed that all nodes assume a strict tree
- * structure.  For instance, in a tree, a node cannot be a descendent of
- * itself, but a graph may have a cyclical structure.
+ * A <code>GraphIterator</code> is similar to a <code>TreeIterator</code> except
+ * that it cannot be assumed that all nodes assume a strict tree structure. For
+ * instance, in a tree, a node cannot be a descendent of itself, but a graph may
+ * have a cyclical structure.
  * 
- * A <code>GraphIterator</code> simplifies the traversal of a
- * graph of objects, where the objects' protocol(s) provides
- * a method for getting the next collection of nodes in the graph,
- * (or *neighbors*), but does not provide a method for getting *all* 
- * of the nodes in the graph.
- * (e.g. a neighbor can return his neighbors, and those neighbors
- * can return their neighbors, which might also include the original
- * neighbor, but you only want to visit the original neighbor once.)
+ * A <code>GraphIterator</code> simplifies the traversal of a graph of objects,
+ * where the objects' protocol(s) provides a method for getting the next
+ * collection of nodes in the graph, (or *neighbors*), but does not provide a
+ * method for getting *all* of the nodes in the graph. (e.g. a neighbor can
+ * return his neighbors, and those neighbors can return their neighbors, which
+ * might also include the original neighbor, but you only want to visit the
+ * original neighbor once.)
  * <p>
- * If a neighbor has already been visited (determined by using 
- * <code>equals(Object)</code>), that neighbor is not visited again,
- * nor are the neighbors of that object.
+ * If a neighbor has already been visited (determined by using
+ * <code>equals(Object)</code>), that neighbor is not visited again, nor are the
+ * neighbors of that object.
  * <p>
  * It is up to the user of this class to ensure a *complete* graph.
  * <p>
- * To use, supply:<ul>
- * <li> either the initial node of the graph or an Iterator over an
- * initial collection of graph nodes
- * <li> a <code>MisterRogers</code> that tells who the neighbors are
- * of each node
- * (alternatively, subclass <code>GraphIterator</code>
- * and override the <code>neighbors(Object)</code> method)
+ * To use, supply:
+ * <ul>
+ * <li>either the initial node of the graph or an Iterator over an initial
+ * collection of graph nodes
+ * <li>a <code>MisterRogers</code> that tells who the neighbors are of each node
+ * (alternatively, subclass <code>GraphIterator</code> and override the
+ * <code>neighbors(Object)</code> method)
  * </ul>
  * <p>
- * <code>remove()</code> is not supported.  This method, if 
- * desired, must be implemented by the user of this class.
+ * <code>remove()</code> is not supported. This method, if desired, must be
+ * implemented by the user of this class.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class GraphIterator<E>
 	implements Iterator<E>
@@ -66,49 +70,63 @@ public class GraphIterator<E>
 
 
 	/**
-	 * Construct an iterator with the specified collection of roots
-	 * and a disabled mister rogers.
-	 * Use this constructor if you want to override the
-	 * <code>children(Object)</code> method instead of building
-	 * a <code>MisterRogers</code>.
+	 * Construct an iterator with the specified collection of roots and a
+	 * disabled mister rogers. Use this constructor if you want to override the
+	 * <code>children(Object)</code> method instead of building a
+	 * <code>MisterRogers</code>.
+	 *
+	 * @param roots
+	 *            the roots
 	 */
 	public GraphIterator(E... roots) {
 		this(new ArrayIterator<E>(roots));
 	}
 
 	/**
-	 * Construct an iterator with the specified collection of roots
-	 * and a disabled mister rogers.
-	 * Use this constructor if you want to override the
-	 * <code>children(Object)</code> method instead of building
-	 * a <code>MisterRogers</code>.
+	 * Construct an iterator with the specified collection of roots and a
+	 * disabled mister rogers. Use this constructor if you want to override the
+	 * <code>children(Object)</code> method instead of building a
+	 * <code>MisterRogers</code>.
+	 *
+	 * @param roots
+	 *            the roots
 	 */
 	public GraphIterator(Iterator<? extends E> roots) {
 		this(roots, MisterRogers.Disabled.<E>instance());
 	}
 
 	/**
-	 * Construct an iterator with the specified root
-	 * and a disabled mister rogers.
-	 * Use this constructor if you want to override the
-	 * <code>children(Object)</code> method instead of building
-	 * a <code>MisterRogers</code>.
+	 * Construct an iterator with the specified root and a disabled mister
+	 * rogers. Use this constructor if you want to override the
+	 * <code>children(Object)</code> method instead of building a
+	 * <code>MisterRogers</code>.
+	 *
+	 * @param root
+	 *            the root
 	 */
 	public GraphIterator(E root) {
 		this(root, MisterRogers.Disabled.<E>instance());
 	}
 
 	/**
-	 * Construct an iterator with the specified root
-	 * and mister rogers.
+	 * Construct an iterator with the specified root and mister rogers.
+	 *
+	 * @param root
+	 *            the root
+	 * @param misterRogers
+	 *            the mister rogers
 	 */
 	public GraphIterator(E root, MisterRogers<E> misterRogers) {
 		this(new SingleElementIterator<E>(root), misterRogers);
 	}
 
 	/**
-	 * Construct an iterator with the specified roots
-	 * and mister rogers.
+	 * Construct an iterator with the specified roots and mister rogers.
+	 *
+	 * @param roots
+	 *            the roots
+	 * @param misterRogers
+	 *            the mister rogers
 	 */
 	public GraphIterator(Iterator<? extends E> roots, MisterRogers<E> misterRogers) {
 		super();
@@ -170,6 +188,12 @@ public class GraphIterator<E>
 
 	/**
 	 * Return the immediate neighbors of the specified object.
+	 *
+	 * @author mqfdy
+	 * @param next
+	 *            the next
+	 * @return the iterator<? extends e>
+	 * @Date 2018-09-03 09:00
 	 */
 	protected Iterator<? extends E> neighbors(E next) {
 		return this.misterRogers.neighbors(next);
@@ -184,9 +208,12 @@ public class GraphIterator<E>
 	//********** inner classes **********
 	
 	/**
-	 * Used by <code>GraphIterator</code> to retrieve
-	 * the immediate neighbors of a node in the graph.
-	 * "These are the people in your neighborhood..."
+	 * Used by <code>GraphIterator</code> to retrieve the immediate neighbors of
+	 * a node in the graph. "These are the people in your neighborhood..."
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
 	 */
 	public interface MisterRogers<T> {
 

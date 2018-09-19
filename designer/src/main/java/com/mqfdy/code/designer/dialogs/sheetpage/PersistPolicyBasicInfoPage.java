@@ -26,22 +26,45 @@ import com.mqfdy.code.model.Association;
 import com.mqfdy.code.model.BusinessClass;
 import com.mqfdy.code.model.Inheritance;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PersistPolicyBasicInfoPage.
+ *
+ * @author mqfdy
+ */
 public class PersistPolicyBasicInfoPage extends Composite implements
 		IBusinessClassEditorPage {
+	
+	/** The group entity relation. */
 	private String GROUP_ENTITY_RELATION = "关联关系";
 	// private String GROUP_ENTITY_INHERICATE = "继承关系";
 
+	/** The association table. */
 	private Table associationTable = null;
+	
+	/** The association table viewer. */
 	private TableViewer associationTableViewer = null;
 
 	// private Table inherTable = null;
 	// private TableViewer inherTableViewer = null;
 
+	/** The parent page. */
 	private PersistPolicySheetPage parentPage;
 
+	/** The manager. */
 	BusinessModelManager manager = BusinessModelUtil
 			.getEditorBusinessModelManager();
 
+	/**
+	 * Instantiates a new persist policy basic info page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param parentPage
+	 *            the parent page
+	 */
 	public PersistPolicyBasicInfoPage(Composite parent, int style,
 			PersistPolicySheetPage parentPage) {
 		super(parent, style);
@@ -49,6 +72,14 @@ public class PersistPolicyBasicInfoPage extends Composite implements
 		createContent(this);
 	}
 
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent(Composite parent) {
 		GridLayout layout = new GridLayout();
 		parent.setLayout(layout);
@@ -57,6 +88,12 @@ public class PersistPolicyBasicInfoPage extends Composite implements
 		addListeners();
 	}
 
+	/**
+	 * Adds the listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void addListeners() {
 		associationTableViewer
 				.addDoubleClickListener(new IDoubleClickListener() {
@@ -97,6 +134,14 @@ public class PersistPolicyBasicInfoPage extends Composite implements
 
 	}
 
+	/**
+	 * Ctreate group.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void ctreateGroup(Composite parent) {
 		Group groupAssociation = new Group(parent, SWT.NONE);
 		groupAssociation.setLayout(new GridLayout(1, true));
@@ -115,6 +160,14 @@ public class PersistPolicyBasicInfoPage extends Composite implements
 	 * createInherTable(groupInher); }
 	 */
 
+	/**
+	 * Creates the association table.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createAssociationTable(Composite parent) {
 		GridData gridData = new GridData();
 		gridData.horizontalAlignment = SWT.FILL;
@@ -153,6 +206,9 @@ public class PersistPolicyBasicInfoPage extends Composite implements
 
 	}
 
+	/**
+	 * 
+	 */
 	/*
 	 * private void createInherTable(Composite parent){ GridData gridData = new
 	 * GridData(); gridData.horizontalAlignment = SWT.FILL;
@@ -194,16 +250,29 @@ public class PersistPolicyBasicInfoPage extends Composite implements
 
 	}
 
+	/**
+	 * Gets the associations by class.
+	 *
+	 * @author mqfdy
+	 * @return the associations by class
+	 * @Date 2018-09-03 09:00
+	 */
 	private List<Association> getAssociationsByClass() {
 		BusinessClass businessClass = parentPage.getBusinessClassEditorDialog()
 				.getBusinessClassCopy();
 		return manager.getAssociationsByBusinessClass(businessClass);
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 		BusinessClass businessClass = parentPage.getBusinessClassEditorDialog()
 				.getBusinessClassCopy();

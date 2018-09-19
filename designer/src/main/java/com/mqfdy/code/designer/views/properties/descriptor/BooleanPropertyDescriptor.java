@@ -6,17 +6,31 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.TextPropertyDescriptor;
 
+// TODO: Auto-generated Javadoc
 /**
- * true、false 下拉框
- * 
+ * true、false 下拉框.
+ *
  * @author mqfdy
  */
 // @Deprecated
 public class BooleanPropertyDescriptor extends TextPropertyDescriptor implements
 		IEditorValueDescriptor<Boolean> {
 
+	/** The default value. */
 	private Boolean defaultValue;
 
+	/**
+	 * Instantiates a new boolean property descriptor.
+	 *
+	 * @param id
+	 *            the id
+	 * @param displayName
+	 *            the display name
+	 * @param defaultValue
+	 *            the default value
+	 * @param description
+	 *            the description
+	 */
 	public BooleanPropertyDescriptor(Object id, String displayName,
 			Boolean defaultValue, String description) {
 		super(id, displayName);
@@ -26,6 +40,15 @@ public class BooleanPropertyDescriptor extends TextPropertyDescriptor implements
 		setLabelProvider(new MyLabelDecorator());
 	}
 
+	/**
+	 * Creates the property editor.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the cell editor
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public CellEditor createPropertyEditor(Composite parent) {
 		CellEditor editor = new ComboBoxCellEditor(parent, new String[] {
@@ -63,14 +86,24 @@ public class BooleanPropertyDescriptor extends TextPropertyDescriptor implements
 	}
 
 	/**
-	 * implement {@link IEditorValueDescriptor}
+	 * implement {@link IEditorValueDescriptor}.
+	 *
+	 * @author mqfdy
+	 * @return the default value
+	 * @Date 2018-09-03 09:00
 	 */
 	public Boolean getDefaultValue() {
 		return defaultValue;
 	}
 
 	/**
-	 * implement {@link IEditorValueDescriptor}
+	 * implement {@link IEditorValueDescriptor}.
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            the value
+	 * @return the editor value
+	 * @Date 2018-09-03 09:00
 	 */
 	public Boolean getEditorValue(Boolean value) {
 		if (value == null) {
@@ -80,7 +113,16 @@ public class BooleanPropertyDescriptor extends TextPropertyDescriptor implements
 		}
 	}
 
+	/**
+	 * The Class MyLabelDecorator.
+	 *
+	 * @author mqfdy
+	 */
 	class MyLabelDecorator extends PropertyLabelDecoratorUtil {
+		
+		/**
+		 * @return
+		 */
 		@Override
 		protected String getDefaultValue() {
 			return defaultValue.toString();

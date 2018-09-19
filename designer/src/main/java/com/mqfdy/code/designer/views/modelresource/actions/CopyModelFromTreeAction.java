@@ -17,15 +17,23 @@ import com.mqfdy.code.model.Association;
 import com.mqfdy.code.model.BusinessClass;
 import com.mqfdy.code.model.ReferenceObject;
 
+// TODO: Auto-generated Javadoc
 /**
- * 从业务模型树上复制对象
- * 
+ * 从业务模型树上复制对象.
+ *
  * @author mqfdy
- * 
  */
 public class CopyModelFromTreeAction extends TreeAction {
+	
+	/** The pro list. */
 	private List<AbstractModelElement> proList = new ArrayList<AbstractModelElement>();
 
+	/**
+	 * Instantiates a new copy model from tree action.
+	 *
+	 * @param treeViewer
+	 *            the tree viewer
+	 */
 	public CopyModelFromTreeAction(TreeViewer treeViewer) {
 		super(ActionTexts.MODEL_ELEMENT_COPY, treeViewer);
 		setId(ActionFactory.COPY.getId());
@@ -40,6 +48,9 @@ public class CopyModelFromTreeAction extends TreeAction {
 		setEnabled(false);
 	}
 
+	/**
+	 * 
+	 */
 	public void run() {
 		if (!isEnabled())
 			return;
@@ -98,6 +109,9 @@ public class CopyModelFromTreeAction extends TreeAction {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean isEnabled() {
 		TreeItem[] items = treeViewer.getTree().getSelection();

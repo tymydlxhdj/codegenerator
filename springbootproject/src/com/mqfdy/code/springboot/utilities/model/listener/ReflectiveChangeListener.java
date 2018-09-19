@@ -20,6 +20,7 @@ import com.mqfdy.code.springboot.utilities.model.event.StateChangeEvent;
 import com.mqfdy.code.springboot.utilities.model.event.TreeChangeEvent;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * This factory builds listeners that reflectively forward ChangeEvents.
  * If you are worried about having too many little classes that have to be
@@ -41,29 +42,54 @@ public abstract class ReflectiveChangeListener {
 	protected final Object target;
 
 
+	/** The Constant STATE_CHANGE_EVENT_CLASS. */
 	protected static final Class<StateChangeEvent> STATE_CHANGE_EVENT_CLASS = StateChangeEvent.class;
+	
+	/** The Constant STATE_CHANGE_EVENT_CLASS_ARRAY. */
 	@SuppressWarnings("unchecked")
 	protected static final Class<StateChangeEvent>[] STATE_CHANGE_EVENT_CLASS_ARRAY = new Class[] {STATE_CHANGE_EVENT_CLASS};
+	
+	/** The Constant EMPTY_STATE_CHANGE_EVENT_ARRAY. */
 	protected static final StateChangeEvent[] EMPTY_STATE_CHANGE_EVENT_ARRAY = new StateChangeEvent[0];
 
+	/** The Constant PROPERTY_CHANGE_EVENT_CLASS. */
 	protected static final Class<PropertyChangeEvent> PROPERTY_CHANGE_EVENT_CLASS = PropertyChangeEvent.class;
+	
+	/** The Constant PROPERTY_CHANGE_EVENT_CLASS_ARRAY. */
 	@SuppressWarnings("unchecked")
 	protected static final Class<PropertyChangeEvent>[] PROPERTY_CHANGE_EVENT_CLASS_ARRAY = new Class[] {PROPERTY_CHANGE_EVENT_CLASS};
+	
+	/** The Constant EMPTY_PROPERTY_CHANGE_EVENT_ARRAY. */
 	protected static final PropertyChangeEvent[] EMPTY_PROPERTY_CHANGE_EVENT_ARRAY = new PropertyChangeEvent[0];
 
+	/** The Constant COLLECTION_CHANGE_EVENT_CLASS. */
 	protected static final Class<CollectionChangeEvent> COLLECTION_CHANGE_EVENT_CLASS = CollectionChangeEvent.class;
+	
+	/** The Constant COLLECTION_CHANGE_EVENT_CLASS_ARRAY. */
 	@SuppressWarnings("unchecked")
 	protected static final Class<CollectionChangeEvent>[] COLLECTION_CHANGE_EVENT_CLASS_ARRAY = new Class[] {COLLECTION_CHANGE_EVENT_CLASS};
+	
+	/** The Constant EMPTY_COLLECTION_CHANGE_EVENT_ARRAY. */
 	protected static final CollectionChangeEvent[] EMPTY_COLLECTION_CHANGE_EVENT_ARRAY = new CollectionChangeEvent[0];
 
+	/** The Constant LIST_CHANGE_EVENT_CLASS. */
 	protected static final Class<ListChangeEvent> LIST_CHANGE_EVENT_CLASS = ListChangeEvent.class;
+	
+	/** The Constant LIST_CHANGE_EVENT_CLASS_ARRAY. */
 	@SuppressWarnings("unchecked")
 	protected static final Class<ListChangeEvent>[] LIST_CHANGE_EVENT_CLASS_ARRAY = new Class[] {LIST_CHANGE_EVENT_CLASS};
+	
+	/** The Constant EMPTY_LIST_CHANGE_EVENT_ARRAY. */
 	protected static final ListChangeEvent[] EMPTY_LIST_CHANGE_EVENT_ARRAY = new ListChangeEvent[0];
 
+	/** The Constant TREE_CHANGE_EVENT_CLASS. */
 	protected static final Class<TreeChangeEvent> TREE_CHANGE_EVENT_CLASS = TreeChangeEvent.class;
+	
+	/** The Constant TREE_CHANGE_EVENT_CLASS_ARRAY. */
 	@SuppressWarnings("unchecked")
 	protected static final Class<TreeChangeEvent>[] TREE_CHANGE_EVENT_CLASS_ARRAY = new Class[] {TREE_CHANGE_EVENT_CLASS};
+	
+	/** The Constant EMPTY_TREE_CHANGE_EVENT_ARRAY. */
 	protected static final TreeChangeEvent[] EMPTY_TREE_CHANGE_EVENT_ARRAY = new TreeChangeEvent[0];
 
 
@@ -110,6 +136,14 @@ public abstract class ReflectiveChangeListener {
 	/**
 	 * Construct a state change listener that will invoke the specified method
 	 * on the specified target.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @param method
+	 *            the method
+	 * @return the state change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public static StateChangeListener buildStateChangeListener(Object target, Method method) {
 		checkChangeListenerMethod(method, STATE_CHANGE_EVENT_CLASS);
@@ -119,8 +153,16 @@ public abstract class ReflectiveChangeListener {
 	/**
 	 * Construct a state change listener that will invoke the specified method
 	 * on the specified target. If a single-argument method with the specified
-	 * name and appropriate argument is found, it will be invoked; otherwise,
-	 * a zero-argument method with the specified name will be invoked.
+	 * name and appropriate argument is found, it will be invoked; otherwise, a
+	 * zero-argument method with the specified name will be invoked.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @param methodName
+	 *            the method name
+	 * @return the state change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public static StateChangeListener buildStateChangeListener(Object target, String methodName) {
 		return buildStateChangeListener(target, findChangeListenerMethod(target, methodName, STATE_CHANGE_EVENT_CLASS_ARRAY));
@@ -130,8 +172,16 @@ public abstract class ReflectiveChangeListener {
 	// ********** factory methods: PropertyChangeListener **********
 
 	/**
-	 * Construct a property change listener that will invoke the specified method
-	 * on the specified target.
+	 * Construct a property change listener that will invoke the specified
+	 * method on the specified target.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @param method
+	 *            the method
+	 * @return the property change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public static PropertyChangeListener buildPropertyChangeListener(Object target, Method method) {
 		checkChangeListenerMethod(method, PROPERTY_CHANGE_EVENT_CLASS);
@@ -139,10 +189,19 @@ public abstract class ReflectiveChangeListener {
 	}
 
 	/**
-	 * Construct a property change listener that will invoke the specified method
-	 * on the specified target. If a single-argument method with the specified
-	 * name and appropriate argument is found, it will be invoked; otherwise,
-	 * a zero-argument method with the specified name will be invoked.
+	 * Construct a property change listener that will invoke the specified
+	 * method on the specified target. If a single-argument method with the
+	 * specified name and appropriate argument is found, it will be invoked;
+	 * otherwise, a zero-argument method with the specified name will be
+	 * invoked.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @param methodName
+	 *            the method name
+	 * @return the property change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public static PropertyChangeListener buildPropertyChangeListener(Object target, String methodName) {
 		return buildPropertyChangeListener(target, findChangeListenerMethod(target, methodName, PROPERTY_CHANGE_EVENT_CLASS_ARRAY));
@@ -152,8 +211,22 @@ public abstract class ReflectiveChangeListener {
 	// ********** factory methods: CollectionChangeListener **********
 
 	/**
-	 * Construct a collection change listener that will invoke the specified methods
-	 * on the specified target.
+	 * Construct a collection change listener that will invoke the specified
+	 * methods on the specified target.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @param addMethod
+	 *            the add method
+	 * @param removeMethod
+	 *            the remove method
+	 * @param clearMethod
+	 *            the clear method
+	 * @param changeMethod
+	 *            the change method
+	 * @return the collection change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public static CollectionChangeListener buildCollectionChangeListener(Object target, Method addMethod, Method removeMethod, Method clearMethod, Method changeMethod) {
 		checkChangeListenerMethod(addMethod, COLLECTION_CHANGE_EVENT_CLASS);
@@ -164,18 +237,41 @@ public abstract class ReflectiveChangeListener {
 	}
 
 	/**
-	 * Construct a collection change listener that will invoke the specified method
-	 * on the specified target for any change event.
+	 * Construct a collection change listener that will invoke the specified
+	 * method on the specified target for any change event.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @param method
+	 *            the method
+	 * @return the collection change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public static CollectionChangeListener buildCollectionChangeListener(Object target, Method method) {
 		return buildCollectionChangeListener(target, method, method, method, method);
 	}
 
 	/**
-	 * Construct a collection change listener that will invoke the specified methods
-	 * on the specified target for change events. If a single-argument method
-	 * with the specified name and appropriate argument is found, it will be invoked;
-	 * otherwise, a zero-argument method with the specified name will be invoked.
+	 * Construct a collection change listener that will invoke the specified
+	 * methods on the specified target for change events. If a single-argument
+	 * method with the specified name and appropriate argument is found, it will
+	 * be invoked; otherwise, a zero-argument method with the specified name
+	 * will be invoked.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @param addMethodName
+	 *            the add method name
+	 * @param removeMethodName
+	 *            the remove method name
+	 * @param clearMethodName
+	 *            the clear method name
+	 * @param changeMethodName
+	 *            the change method name
+	 * @return the collection change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public static CollectionChangeListener buildCollectionChangeListener(Object target, String addMethodName, String removeMethodName, String clearMethodName, String changeMethodName) {
 		return buildCollectionChangeListener(
@@ -188,10 +284,19 @@ public abstract class ReflectiveChangeListener {
 	}
 
 	/**
-	 * Construct a collection change listener that will invoke the specified method
-	 * on the specified target for any change event. If a single-argument method
-	 * with the specified name and appropriate argument is found, it will be invoked;
-	 * otherwise, a zero-argument method with the specified name will be invoked.
+	 * Construct a collection change listener that will invoke the specified
+	 * method on the specified target for any change event. If a single-argument
+	 * method with the specified name and appropriate argument is found, it will
+	 * be invoked; otherwise, a zero-argument method with the specified name
+	 * will be invoked.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @param methodName
+	 *            the method name
+	 * @return the collection change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public static CollectionChangeListener buildCollectionChangeListener(Object target, String methodName) {
 		return buildCollectionChangeListener(target, findChangeListenerMethod(target, methodName, COLLECTION_CHANGE_EVENT_CLASS_ARRAY));
@@ -203,6 +308,24 @@ public abstract class ReflectiveChangeListener {
 	/**
 	 * Construct a list change listener that will invoke the specified methods
 	 * on the specified target.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @param addMethod
+	 *            the add method
+	 * @param removeMethod
+	 *            the remove method
+	 * @param replaceMethod
+	 *            the replace method
+	 * @param moveMethod
+	 *            the move method
+	 * @param clearMethod
+	 *            the clear method
+	 * @param changeMethod
+	 *            the change method
+	 * @return the list change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public static ListChangeListener buildListChangeListener(Object target, Method addMethod, Method removeMethod, Method replaceMethod, Method moveMethod, Method clearMethod, Method changeMethod) {
 		checkChangeListenerMethod(addMethod, LIST_CHANGE_EVENT_CLASS);
@@ -215,8 +338,16 @@ public abstract class ReflectiveChangeListener {
 	}
 
 	/**
-	 * Construct a list change listener that will invoke the specified method
-	 * on the specified target for any change event.
+	 * Construct a list change listener that will invoke the specified method on
+	 * the specified target for any change event.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @param method
+	 *            the method
+	 * @return the list change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public static ListChangeListener buildListChangeListener(Object target, Method method) {
 		return buildListChangeListener(target, method, method, method, method, method, method);
@@ -225,8 +356,27 @@ public abstract class ReflectiveChangeListener {
 	/**
 	 * Construct a list change listener that will invoke the specified methods
 	 * on the specified target for change events. If a single-argument method
-	 * with the specified name and appropriate argument is found, it will be invoked;
-	 * otherwise, a zero-argument method with the specified name will be invoked.
+	 * with the specified name and appropriate argument is found, it will be
+	 * invoked; otherwise, a zero-argument method with the specified name will
+	 * be invoked.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @param addMethodName
+	 *            the add method name
+	 * @param removeMethodName
+	 *            the remove method name
+	 * @param replaceMethodName
+	 *            the replace method name
+	 * @param moveMethodName
+	 *            the move method name
+	 * @param clearMethodName
+	 *            the clear method name
+	 * @param changeMethodName
+	 *            the change method name
+	 * @return the list change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public static ListChangeListener buildListChangeListener(Object target, String addMethodName, String removeMethodName, String replaceMethodName, String moveMethodName, String clearMethodName, String changeMethodName) {
 		return buildListChangeListener(
@@ -241,10 +391,19 @@ public abstract class ReflectiveChangeListener {
 	}
 
 	/**
-	 * Construct a list change listener that will invoke the specified method
-	 * on the specified target for any change event. If a single-argument method
-	 * with the specified name and appropriate argument is found, it will be invoked;
-	 * otherwise, a zero-argument method with the specified name will be invoked.
+	 * Construct a list change listener that will invoke the specified method on
+	 * the specified target for any change event. If a single-argument method
+	 * with the specified name and appropriate argument is found, it will be
+	 * invoked; otherwise, a zero-argument method with the specified name will
+	 * be invoked.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @param methodName
+	 *            the method name
+	 * @return the list change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public static ListChangeListener buildListChangeListener(Object target, String methodName) {
 		return buildListChangeListener(target, findChangeListenerMethod(target, methodName, LIST_CHANGE_EVENT_CLASS_ARRAY));
@@ -256,6 +415,20 @@ public abstract class ReflectiveChangeListener {
 	/**
 	 * Construct a tree change listener that will invoke the specified methods
 	 * on the specified target.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @param addMethod
+	 *            the add method
+	 * @param removeMethod
+	 *            the remove method
+	 * @param clearMethod
+	 *            the clear method
+	 * @param changeMethod
+	 *            the change method
+	 * @return the tree change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public static TreeChangeListener buildTreeChangeListener(Object target, Method addMethod, Method removeMethod, Method clearMethod, Method changeMethod) {
 		checkChangeListenerMethod(addMethod, TREE_CHANGE_EVENT_CLASS);
@@ -266,8 +439,16 @@ public abstract class ReflectiveChangeListener {
 	}
 
 	/**
-	 * Construct a tree change listener that will invoke the specified method
-	 * on the specified target for any change event.
+	 * Construct a tree change listener that will invoke the specified method on
+	 * the specified target for any change event.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @param method
+	 *            the method
+	 * @return the tree change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public static TreeChangeListener buildTreeChangeListener(Object target, Method method) {
 		return buildTreeChangeListener(target, method, method, method, method);
@@ -276,8 +457,23 @@ public abstract class ReflectiveChangeListener {
 	/**
 	 * Construct a tree change listener that will invoke the specified methods
 	 * on the specified target for change events. If a single-argument method
-	 * with the specified name and appropriate argument is found, it will be invoked;
-	 * otherwise, a zero-argument method with the specified name will be invoked.
+	 * with the specified name and appropriate argument is found, it will be
+	 * invoked; otherwise, a zero-argument method with the specified name will
+	 * be invoked.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @param addMethodName
+	 *            the add method name
+	 * @param removeMethodName
+	 *            the remove method name
+	 * @param clearMethodName
+	 *            the clear method name
+	 * @param changeMethodName
+	 *            the change method name
+	 * @return the tree change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public static TreeChangeListener buildTreeChangeListener(Object target, String addMethodName, String removeMethodName, String clearMethodName, String changeMethodName) {
 		return buildTreeChangeListener(
@@ -290,10 +486,19 @@ public abstract class ReflectiveChangeListener {
 	}
 
 	/**
-	 * Construct a tree change listener that will invoke the specified method
-	 * on the specified target for any change event. If a single-argument method
-	 * with the specified name and appropriate argument is found, it will be invoked;
-	 * otherwise, a zero-argument method with the specified name will be invoked.
+	 * Construct a tree change listener that will invoke the specified method on
+	 * the specified target for any change event. If a single-argument method
+	 * with the specified name and appropriate argument is found, it will be
+	 * invoked; otherwise, a zero-argument method with the specified name will
+	 * be invoked.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @param methodName
+	 *            the method name
+	 * @return the tree change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public static TreeChangeListener buildTreeChangeListener(Object target, String methodName) {
 		return buildTreeChangeListener(target, findChangeListenerMethod(target, methodName, TREE_CHANGE_EVENT_CLASS_ARRAY));
@@ -303,8 +508,11 @@ public abstract class ReflectiveChangeListener {
 	// ********** constructor **********
 
 	/**
-	 * Construct a listener that will invoke the specified method
-	 * on the specified target.
+	 * Construct a listener that will invoke the specified method on the
+	 * specified target.
+	 *
+	 * @param target
+	 *            the target
 	 */
 	protected ReflectiveChangeListener(Object target) {
 		super();

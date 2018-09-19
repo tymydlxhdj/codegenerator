@@ -24,6 +24,7 @@ import org.eclipse.ui.forms.widgets.SizeCache;
 import org.eclipse.ui.internal.forms.MessageManager;
 import org.eclipse.ui.internal.forms.widgets.FormUtil;
 
+// TODO: Auto-generated Javadoc
 /**
  * Form is a custom control that renders a title and an optional background
  * image above the body composite. It can be used alone when part of parents
@@ -84,23 +85,71 @@ import org.eclipse.ui.internal.forms.widgets.FormUtil;
  * @noextend This class is not intended to be subclassed by clients.
  */
 public class OmForm extends Composite {
+	
+	/** The head. */
 	private FormHeading head;
 
+	/** The body. */
 	private Composite body;
 
+	/** The body cache. */
 	private SizeCache bodyCache = new SizeCache();
 
+	/** The head cache. */
 	private SizeCache headCache = new SizeCache();
 
+	/**
+	 * The Class FormLayout.
+	 *
+	 * @author mqfdy
+	 */
 	private class FormLayout extends Layout implements ILayoutExtension {
+		
+		/**
+		 * Compute minimum width.
+		 *
+		 * @author mqfdy
+		 * @param composite
+		 *            the composite
+		 * @param flushCache
+		 *            the flush cache
+		 * @return the int
+		 * @Date 2018-09-03 09:00
+		 */
 		public int computeMinimumWidth(Composite composite, boolean flushCache) {
 			return computeSize(composite, 5, SWT.DEFAULT, flushCache).x;
 		}
 
+		/**
+		 * Compute maximum width.
+		 *
+		 * @author mqfdy
+		 * @param composite
+		 *            the composite
+		 * @param flushCache
+		 *            the flush cache
+		 * @return the int
+		 * @Date 2018-09-03 09:00
+		 */
 		public int computeMaximumWidth(Composite composite, boolean flushCache) {
 			return computeSize(composite, SWT.DEFAULT, SWT.DEFAULT, flushCache).x;
 		}
 
+		/**
+		 * Compute size.
+		 *
+		 * @author mqfdy
+		 * @param composite
+		 *            the composite
+		 * @param wHint
+		 *            the w hint
+		 * @param hHint
+		 *            the h hint
+		 * @param flushCache
+		 *            the flush cache
+		 * @return the point
+		 * @Date 2018-09-03 09:00
+		 */
 		public Point computeSize(Composite composite, int wHint, int hHint,
 				boolean flushCache) {
 			if (flushCache) {
@@ -131,6 +180,16 @@ public class OmForm extends Composite {
 			return new Point(width, height);
 		}
 
+		/**
+		 * Layout.
+		 *
+		 * @author mqfdy
+		 * @param composite
+		 *            the composite
+		 * @param flushCache
+		 *            the flush cache
+		 * @Date 2018-09-03 09:00
+		 */
 		protected void layout(Composite composite, boolean flushCache) {
 			if (flushCache) {
 				bodyCache.flush();
@@ -149,9 +208,11 @@ public class OmForm extends Composite {
 
 	/**
 	 * Creates the form content control as a child of the provided parent.
-	 * 
+	 *
 	 * @param parent
 	 *            the parent widget
+	 * @param style
+	 *            the style
 	 */
 	public OmForm(Composite parent, int style) {
 		super(parent, SWT.NO_BACKGROUND | style);
@@ -164,9 +225,11 @@ public class OmForm extends Composite {
 
 	/**
 	 * Passes the menu to the form body.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param menu
 	 *            the parent menu
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setMenu(Menu menu) {
 		super.setMenu(menu);
@@ -176,6 +239,16 @@ public class OmForm extends Composite {
 
 	/**
 	 * Fully delegates the size computation to the internal layout manager.
+	 *
+	 * @author mqfdy
+	 * @param wHint
+	 *            the w hint
+	 * @param hHint
+	 *            the h hint
+	 * @param changed
+	 *            the changed
+	 * @return the point
+	 * @Date 2018-09-03 09:00
 	 */
 	public final Point computeSize(int wHint, int hHint, boolean changed) {
 		return ((FormLayout) getLayout()).computeSize(this, wHint, hHint,
@@ -184,14 +257,21 @@ public class OmForm extends Composite {
 
 	/**
 	 * Prevents from changing the custom control layout.
+	 *
+	 * @author mqfdy
+	 * @param layout
+	 *            the new layout
+	 * @Date 2018-09-03 09:00
 	 */
 	public final void setLayout(Layout layout) {
 	}
 
 	/**
 	 * Returns the title text that will be rendered at the top of the form.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return the title text
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getText() {
 		return head.getText();
@@ -210,9 +290,11 @@ public class OmForm extends Composite {
 	/**
 	 * Sets the foreground color of the form. This color will also be used for
 	 * the body.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param fg
 	 *            the foreground color
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setForeground(Color fg) {
 		super.setForeground(fg);
@@ -223,9 +305,11 @@ public class OmForm extends Composite {
 	/**
 	 * Sets the background color of the form. This color will also be used for
 	 * the body.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param bg
 	 *            the background color
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setBackground(Color bg) {
 		super.setBackground(bg);
@@ -235,9 +319,11 @@ public class OmForm extends Composite {
 
 	/**
 	 * Sets the font of the header text.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param font
 	 *            the new font
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setFont(Font font) {
 		super.setFont(font);
@@ -255,9 +341,11 @@ public class OmForm extends Composite {
 	 * The mnemonic indicator character '&amp;' can be escaped by doubling it in
 	 * the string, causing a single '&amp;' to be displayed.
 	 * </p>
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param text
 	 *            the title text
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setText(String text) {
 		head.setText(text);
@@ -290,7 +378,8 @@ public class OmForm extends Composite {
 	 * gradient. Note that this method will reset color previously set by
 	 * {@link #setBackground(Color)}. This is necessary for the simulated
 	 * transparency of the heading in all of its children control.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param gradientColors
 	 *            the array of colors that form the gradient
 	 * @param percents
@@ -299,6 +388,7 @@ public class OmForm extends Composite {
 	 *            of <code>true</code>, the gradient will be rendered
 	 *            vertically, if <code>false</code> the orientation will be
 	 *            horizontal.
+	 * @Date 2018-09-03 09:00
 	 */
 
 	public void setTextBackground(Color[] gradientColors, int[] percents,
@@ -308,8 +398,10 @@ public class OmForm extends Composite {
 
 	/**
 	 * Returns the optional background image of the form head.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return the background image or <code>null</code> if not specified.
+	 * @Date 2018-09-03 09:00
 	 */
 	public Image getBackgroundImage() {
 		return head.getHeadingBackgroundImage();
@@ -320,13 +412,14 @@ public class OmForm extends Composite {
 	 * starting at the position 0,0. If the image is smaller than the container
 	 * in any dimension, it will be tiled.
 	 * 
-	 * As of version 3.2, this method only supports SWT.BITMAP image types. This is
-	 * because the rendering is now delegated to SWT which imposes this restriction
-	 * on background images, 
-	 * 
+	 * As of version 3.2, this method only supports SWT.BITMAP image types. This
+	 * is because the rendering is now delegated to SWT which imposes this
+	 * restriction on background images,
+	 *
+	 * @author mqfdy
 	 * @param backgroundImage
 	 *            the head background image.
-	 * 
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setBackgroundImage(Image backgroundImage) {
 		head.setHeadingBackgroundImage(backgroundImage);
@@ -335,8 +428,10 @@ public class OmForm extends Composite {
 	/**
 	 * Returns the tool bar manager that is used to manage tool items in the
 	 * form's title area.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return form tool bar manager
+	 * @Date 2018-09-03 09:00
 	 */
 	public IToolBarManager getToolBarManager() {
 		return head.getToolBarManager();
@@ -381,6 +476,9 @@ public class OmForm extends Composite {
 	/**
 	 * Updates the local tool bar manager if used. Does nothing if local tool
 	 * bar manager has not been created yet.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void updateToolBar() {
 		head.updateToolBar();
@@ -429,8 +527,10 @@ public class OmForm extends Composite {
 	 * Returns the container that occupies the body of the form (the form area
 	 * below the title). Use this container as a parent for the controls that
 	 * should be in the form. No layout manager has been set on the form body.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return Returns the body of the form.
+	 * @Date 2018-09-03 09:00
 	 */
 	public Composite getBody() {
 		return body;
@@ -439,9 +539,11 @@ public class OmForm extends Composite {
 	/**
 	 * Tests if the background image is tiled to cover the entire area of the
 	 * form heading.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return <code>true</code> if heading background image is tiled,
 	 *         <code>false</code> otherwise.
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean isBackgroundImageTiled() {
 		return head.isBackgroundImageTiled();
@@ -450,11 +552,12 @@ public class OmForm extends Composite {
 	/**
 	 * Sets whether the header background image is repeated to cover the entire
 	 * heading area or not.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param backgroundImageTiled
-	 *            set <code>true</code> to tile the image, or
-	 *            <code>false</code> to paint the background image only once
-	 *            at 0,0
+	 *            set <code>true</code> to tile the image, or <code>false</code>
+	 *            to paint the background image only once at 0,0
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setBackgroundImageTiled(boolean backgroundImageTiled) {
 		head.setBackgroundImageTiled(backgroundImageTiled);
@@ -462,10 +565,10 @@ public class OmForm extends Composite {
 
 	/**
 	 * Returns the background image alignment.
-	 * 
+	 *
+	 * @return SWT.LEFT
 	 * @deprecated due to the underlying widget limitations, background image is
 	 *             either painted at 0,0 and/or tiled.
-	 * @return SWT.LEFT
 	 */
 	public int getBackgroundImageAlignment() {
 		return SWT.LEFT;
@@ -473,23 +576,23 @@ public class OmForm extends Composite {
 
 	/**
 	 * Sets the background image alignment.
-	 * 
-	 * @deprecated due to the underlying widget limitations, background image is
-	 *             always tiled and alignment cannot be controlled.
+	 *
 	 * @param backgroundImageAlignment
 	 *            The backgroundImageAlignment to set.
 	 * @since 3.1
+	 * @deprecated due to the underlying widget limitations, background image is
+	 *             always tiled and alignment cannot be controlled.
 	 */
 	public void setBackgroundImageAlignment(int backgroundImageAlignment) {
 	}
 
 	/**
 	 * Tests if background image is clipped.
-	 * 
-	 * @deprecated due to the underlying widget limitations, background image is
-	 *             always clipped.
+	 *
 	 * @return true
 	 * @since 3.1
+	 * @deprecated due to the underlying widget limitations, background image is
+	 *             always clipped.
 	 */
 	public boolean isBackgroundImageClipped() {
 		return true;
@@ -497,12 +600,12 @@ public class OmForm extends Composite {
 
 	/**
 	 * Sets whether the background image is clipped.
-	 * 
-	 * @deprecated due to the underlying widget limitations, background image is
-	 *             always clipped.
+	 *
 	 * @param backgroundImageClipped
 	 *            the value to set
 	 * @since 3.1
+	 * @deprecated due to the underlying widget limitations, background image is
+	 *             always clipped.
 	 */
 	public void setBackgroundImageClipped(boolean backgroundImageClipped) {
 	}
@@ -656,8 +759,9 @@ public class OmForm extends Composite {
 	/**
 	 * Adds a message hyperlink listener. If at least one listener is present,
 	 * messages will be rendered as hyperlinks.
-	 * 
+	 *
 	 * @param listener
+	 *            the listener
 	 * @see #removeMessageHyperlinkListener(IHyperlinkListener)
 	 * @since 3.3
 	 */
@@ -667,8 +771,9 @@ public class OmForm extends Composite {
 
 	/**
 	 * Remove the message hyperlink listener.
-	 * 
+	 *
 	 * @param listener
+	 *            the listener
 	 * @see #addMessageHyperlinkListener(IHyperlinkListener)
 	 * @since 3.3
 	 */
@@ -743,6 +848,13 @@ public class OmForm extends Composite {
 		head.addDropSupport(operations, transferTypes, listener);
 	}
 
+	/**
+	 * Gets the message.
+	 *
+	 * @author mqfdy
+	 * @return the message
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -752,6 +864,13 @@ public class OmForm extends Composite {
 		return head.getMessage();
 	}
 
+	/**
+	 * Gets the message type.
+	 *
+	 * @author mqfdy
+	 * @return the message type
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 

@@ -14,14 +14,21 @@ import org.jdom2.output.XMLOutputter;
 
 import com.mqfdy.code.model.utils.DateTimeUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class GenerateBuinessModelUtil.
+ *
+ * @author mqfdy
+ */
 public class GenerateBuinessModelUtil {
 
 	/**
-	 * 生成文件初始化内容
-	 * 
-	 * @param namespace
-	 * 
-	 * @return
+	 * 生成文件初始化内容.
+	 *
+	 * @author mqfdy
+	 * @param momFilePath
+	 *            the mom file path
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void generateFileContent(String momFilePath) {
 		File file = new File(momFilePath);
@@ -115,6 +122,13 @@ public class GenerateBuinessModelUtil {
 		}
 	}
 
+	/**
+	 * Generate UUID.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String generateUUID() {
 		return UUID.randomUUID().toString().replace("-", "");
 	}

@@ -67,33 +67,57 @@ import com.mqfdy.code.reverse.mappings.PrimaryKey;
 import com.mqfdy.code.reverse.mappings.Table;
 import com.mqfdy.code.reverse.views.beans.TreeNode;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author mqfdy
+ * The Class ReverseUtil.
  *
+ * @author mqfdy
  */
 public class ReverseUtil {
 
+	/** The Constant diagram_bgc_color. */
 	private static final String diagram_bgc_color = "white";
 
+	/** The table names. */
 	public static List<String> tableNames = new ArrayList<String>();
 	
+	/** The plugin driver. */
 	public static String PLUGIN_DRIVER = "com.mqfdy.code.commonlib";
 	
+	/** The Constant KEY_DRIVER_CLASS_NAME. */
 	private static final String KEY_DRIVER_CLASS_NAME = "driverClassName";
+	
+	/** The Constant KEY_URL. */
 	private static final String KEY_URL = "url";
+	
+	/** The Constant KEY_USERNAME. */
 	private static final String KEY_USERNAME = "username";
+	
+	/** The Constant KEY_PPP. */
 	private static final String KEY_PPP = "pwd";
 	
+	/** The Constant MICRO_KEY_DRIVER_CLASS_NAME. */
 	private static final String MICRO_KEY_DRIVER_CLASS_NAME = "spring.datasource.driver-class-name";
+	
+	/** The Constant MICRO_KEY_URL. */
 	private static final String MICRO_KEY_URL = "spring.datasource.url";
+	
+	/** The Constant MICRO_KEY_USERNAME. */
 	private static final String MICRO_KEY_USERNAME = "spring.datasource.username";
+	
+	/** The Constant MICRO_KEY_PPP. */
 	private static final String MICRO_KEY_PPP = "spring.datasource.password";
 	
 	/**
-	 * 根据配置项获取数据库连接
-	 * @param properties
-	 * @return
+	 * 根据配置项获取数据库连接.
+	 *
+	 * @author mqfdy
+	 * @param dsi
+	 *            the dsi
+	 * @return the connection
 	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Connection createConnection(DataSourceInfo dsi) throws Exception{
 		
@@ -126,8 +150,12 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 关闭连接
+	 * 关闭连接.
+	 *
+	 * @author mqfdy
 	 * @param connection
+	 *            the connection
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void closeConnection(Connection connection){
 		try {
@@ -150,6 +178,21 @@ public class ReverseUtil {
 		pst.close();
 	}*/
 	
+	/**
+	 * Read column.
+	 *
+	 * @author mqfdy
+	 * @param connection
+	 *            the connection
+	 * @param tableName
+	 *            the table name
+	 * @param schema
+	 *            the schema
+	 * @return the list
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
+	 */
 	//读取列信息
 	public static List<Column> readColumn(Connection connection, String tableName, String schema) throws Exception {
 
@@ -189,6 +232,19 @@ public class ReverseUtil {
 		return columns;
 	}
 
+	/**
+	 * Read table.
+	 *
+	 * @author mqfdy
+	 * @param connection
+	 *            the connection
+	 * @param schema
+	 *            the schema
+	 * @return the list
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
+	 */
 	public static List<Table> readTable(Connection connection,String schema) throws Exception{
 		List<Table> tableList = new ArrayList<Table>();
 		DatabaseMetaData dbmd = connection.getMetaData();
@@ -218,9 +274,17 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 查找某用户下的所有表
-	 * @param schema 用户
-	 * @return
+	 * 查找某用户下的所有表.
+	 *
+	 * @author mqfdy
+	 * @param connection
+	 *            the connection
+	 * @param schema
+	 *            用户
+	 * @return the schema tables
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static ResultSet getSchemaTables(Connection connection ,String schema) throws Exception{
 		DatabaseMetaData dbmd = connection.getMetaData();
@@ -232,9 +296,17 @@ public class ReverseUtil {
 	
 	
 	/**
-	 * 查找某用户下的所有视图
-	 * @param schema 用户
-	 * @return
+	 * 查找某用户下的所有视图.
+	 *
+	 * @author mqfdy
+	 * @param connection
+	 *            the connection
+	 * @param schema
+	 *            用户
+	 * @return the schema views
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static ResultSet getSchemaViews(Connection connection ,String schema) throws Exception{
 		DatabaseMetaData dbmd = connection.getMetaData();
@@ -244,12 +316,19 @@ public class ReverseUtil {
 	}
 
 	/**
-	 * 获取表下所有列
+	 * 获取表下所有列.
+	 *
+	 * @author mqfdy
 	 * @param connection
+	 *            the connection
 	 * @param schema
+	 *            the schema
 	 * @param tabName
-	 * @return
+	 *            the tab name
+	 * @return the columns
 	 * @throws SQLException
+	 *             the SQL exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static ResultSet getColumns(Connection connection,String schema,String tabName) throws SQLException{
 		DatabaseMetaData dbmd = connection.getMetaData();
@@ -259,12 +338,17 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 获取主键ResultSet
-	 * @param connection
-	 * @param schema
-	 * @param tabName
-	 * @return
+	 * 获取主键ResultSet.
+	 *
+	 * @author mqfdy
+	 * @param dbmd
+	 *            the dbmd
+	 * @param table
+	 *            the table
+	 * @return the primary key
 	 * @throws SQLException
+	 *             the SQL exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static ResultSet getPrimaryKey(DatabaseMetaData dbmd, Table table) throws SQLException {
 		//DatabaseMetaData dbmd = connection.getMetaData();
@@ -276,12 +360,17 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 获取引用本表主键的子表
-	 * @param connection
-	 * @param schema
-	 * @param tabName
-	 * @return
+	 * 获取引用本表主键的子表.
+	 *
+	 * @author mqfdy
+	 * @param dbmd
+	 *            the dbmd
+	 * @param table
+	 *            the table
+	 * @return the children table
 	 * @throws SQLException
+	 *             the SQL exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static ResultSet getChildrenTable(DatabaseMetaData dbmd, Table table) throws SQLException{
 		//DatabaseMetaData dbmd = connection.getMetaData();
@@ -293,12 +382,17 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 获取主键ResultSet
+	 * 获取主键ResultSet.
+	 *
+	 * @author mqfdy
 	 * @param connection
-	 * @param schema
-	 * @param tabName
-	 * @return
+	 *            the connection
+	 * @param table
+	 *            the table
+	 * @return the foreign key
 	 * @throws SQLException
+	 *             the SQL exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static ResultSet getForeignKey(Connection connection, Table table) throws SQLException{
 		DatabaseMetaData dbmd = connection.getMetaData();
@@ -307,10 +401,13 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 获取ClassLoader对象，用于加载本地数据库驱动
+	 * 获取ClassLoader对象，用于加载本地数据库驱动.
+	 *
+	 * @author mqfdy
 	 * @param driver_url
-	 * @return
-	 * @throws Exception
+	 *            the driver url
+	 * @return the class loader
+	 * @Date 2018-09-03 09:00
 	 */
 	private static ClassLoader createClassLoader(String driver_url){
 
@@ -328,11 +425,14 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 修改选中节点
-	 * @param dsName
-	 * @return
-	 * @throws DocumentException 
-	 * @throws IOException 
+	 * 修改选中节点.
+	 *
+	 * @author mqfdy
+	 * @param dsi
+	 *            the dsi
+	 * @throws DocumentException
+	 *             the document exception
+	 * @Date 2018-09-03 09:00
 	 */
 	/*public static void updateSelectDs(String dsName) throws DocumentException, IOException {
 		//读取datasource.xml文件
@@ -446,9 +546,19 @@ public class ReverseUtil {
 	}
 
 	/**
-	 * 读出历史数据源列表
-	 * @param workspacePath
-	 * @throws DocumentException 
+	 * 读出历史数据源列表.
+	 *
+	 * @author mqfdy
+	 * @param dbType
+	 *            the db type
+	 * @param serverIP
+	 *            the server IP
+	 * @param dbId
+	 *            the db id
+	 * @param port
+	 *            the port
+	 * @return the url
+	 * @Date 2018-09-03 09:00
 	 */
 //	@SuppressWarnings("unchecked")
 	/*public static List<DataSourceInfo> readDataSource() throws DocumentException {
@@ -574,8 +684,11 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 获取工作弓箭路径
-	 * @return
+	 * 获取工作弓箭路径.
+	 *
+	 * @author mqfdy
+	 * @return the workspace path
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String getWorkspacePath(){
 		IPath path = Platform.getLocation();
@@ -585,13 +698,25 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 返回存储
-	 * @return
+	 * 返回存储.
+	 *
+	 * @author mqfdy
+	 * @return the storage path
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String getStoragePath(){
 		return getWorkspacePath()+ReverseContants.DataSource.STORAGE;
 	}
 	
+	/**
+	 * Gets the driver path.
+	 *
+	 * @author mqfdy
+	 * @param dbType
+	 *            the db type
+	 * @return the driver path
+	 * @Date 2018-09-03 09:00
+	 */
 	//根据数据库类型获取uap安装目录下的驱动包路径
 	public static String getDriverPath(String dbType) {
 		StringBuffer jar_path = new StringBuffer();
@@ -662,10 +787,14 @@ public class ReverseUtil {
 //	}
 	
 	/**
-	 * 将column名转为属性名
-	 * @param keySet
-	 * @return
-	 */
+ * 将column名转为属性名.
+ *
+ * @author mqfdy
+ * @param colNames
+ *            the col names
+ * @return the list
+ * @Date 2018-09-03 09:00
+ */
 	public static List<String> reverseColumnsName(Set<String> colNames) {
 		List<String> propertyNames = new ArrayList<String>();
 		for(Iterator<String> iterator = colNames.iterator();iterator.hasNext();){
@@ -681,9 +810,13 @@ public class ReverseUtil {
 	}
 
 	/**
-	 * 获取关联表
+	 * 获取关联表.
+	 *
+	 * @author mqfdy
 	 * @param selectedTable
-	 * @return
+	 *            the selected table
+	 * @return the relative tables
+	 * @Date 2018-09-03 09:00
 	 */
 	public static List<Table> getRelativeTables(Table selectedTable) {
 		//得到其外键关联的表
@@ -705,9 +838,13 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 判断是否无主键表
+	 * 判断是否无主键表.
+	 *
+	 * @author mqfdy
 	 * @param table
-	 * @return
+	 *            the table
+	 * @return true, if is no pk table
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isNoPkTable(Table table){
 		
@@ -722,9 +859,13 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 判断是否复合主键表
+	 * 判断是否复合主键表.
+	 *
+	 * @author mqfdy
 	 * @param table
-	 * @return
+	 *            the table
+	 * @return true, if is multi pk table
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isMultiPkTable(Table table){
 		if(table.getPrimaryKey() != null && table.getPrimaryKey().getColumns().size()>1){
@@ -735,9 +876,13 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 有且只有两列，且都为外键列才可判断为中间表
-	 * 判断是中间表的依据: 当前表无主键,并且两个外键,仅有两个字段
+	 * 有且只有两列，且都为外键列才可判断为中间表 判断是中间表的依据: 当前表无主键,并且两个外键,仅有两个字段.
+	 *
+	 * @author mqfdy
 	 * @param table
+	 *            the table
+	 * @return true, if is many to many table
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isManyToManyTable(Table table){
 		Map<String, Column> columns = table.getColumns();
@@ -760,6 +905,18 @@ public class ReverseUtil {
 		return false;
 	}
 	
+	/**
+	 * Creates the new bom.
+	 *
+	 * @author mqfdy
+	 * @param nameSpace
+	 *            the name space
+	 * @param modelName
+	 *            the model name
+	 * @param modelDisplayName
+	 *            the model display name
+	 * @Date 2018-09-03 09:00
+	 */
 	//创建bom实例
 	public static void createNewBom(String nameSpace,String modelName,String modelDisplayName){
 		BusinessObjectModel bom = new BusinessObjectModel(modelName, modelDisplayName);
@@ -803,6 +960,12 @@ public class ReverseUtil {
 		
 	}
 
+	/**
+	 * Copy sepcial tables.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	//拷贝map
 	public static void copySepcialTables() {
 		ReverseContext.handleTables.clear();
@@ -820,6 +983,15 @@ public class ReverseUtil {
 		}
 	}
 	
+	/**
+	 * Creates the pk column name.
+	 *
+	 * @author mqfdy
+	 * @param specialTable
+	 *            the special table
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	//给特鼠标创建一个主键列
 	public static String createPkColumnName(Table specialTable){
 		if(specialTable.getColumn("ID") == null){
@@ -835,7 +1007,11 @@ public class ReverseUtil {
 	}
 
 	/**
-	 * 在选择已经存在om文件时，缓存om文件中的
+	 * 在选择已经存在om文件时，缓存om文件中的.
+	 *
+	 * @author mqfdy
+	 * @return the exit bcs
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void getExitBcs() {
 		
@@ -847,9 +1023,13 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 获取当前节点的所有子节点
+	 * 获取当前节点的所有子节点.
+	 *
+	 * @author mqfdy
 	 * @param currentNode
-	 * @return
+	 *            the current node
+	 * @return the all children
+	 * @Date 2018-09-03 09:00
 	 */
 	public static List<TreeNode> getAllChildren(TreeNode currentNode) {
 		List<TreeNode> resultList = new ArrayList<TreeNode>();
@@ -876,6 +1056,15 @@ public class ReverseUtil {
 		return resultList;
 	}	
 	
+	/**
+	 * Gets the ass name.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return the ass name
+	 * @Date 2018-09-03 09:00
+	 */
 	//将长度大于28的字符串截取
 	public static String getAssName(String name){
 		if(name == null){
@@ -900,6 +1089,14 @@ public class ReverseUtil {
 		return name;
 	}
 	
+	/**
+	 * Parcel driver class name.
+	 *
+	 * @author mqfdy
+	 * @param dsi
+	 *            the dsi
+	 * @Date 2018-09-03 09:00
+	 */
 	private static void parcelDriverClassName(DataSourceInfo dsi){
 		
 		if(dsi.getDbType().equals(DBType.Oracle.getDbType())){//oracle
@@ -917,6 +1114,15 @@ public class ReverseUtil {
 		}
 	}
 
+	/**
+	 * Gets the DB type.
+	 *
+	 * @author mqfdy
+	 * @param driverClassName
+	 *            the driver class name
+	 * @return the DB type
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getDBType(String driverClassName) {
 		if("oracle.jdbc.driver.OracleDriver".equals(driverClassName)) {
 			return DBType.Oracle.getDbType();
@@ -934,6 +1140,18 @@ public class ReverseUtil {
 		return DBType.Oracle.getDbType();
 	}
 	
+	/**
+	 * Sets the IP port sid.
+	 *
+	 * @author mqfdy
+	 * @param dsi
+	 *            the dsi
+	 * @param url
+	 *            the url
+	 * @param dbType
+	 *            the db type
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void setIPPortSid(DataSourceInfo dsi, String url, String dbType) {
 		if (dbType.equals(DBType.Oracle.getDbType())) {// oracle
 			String[] IPPortSid = url.substring(url.indexOf("@") + 1).split(":");
@@ -976,10 +1194,16 @@ public class ReverseUtil {
 			dsi.setSid(IPPortSid[3]);
 		}
 	}
+	
 	/**
-	 * 获取工作空间中加载当前模块项目的所有OM项目配置的数据源
+	 * 获取工作空间中加载当前模块项目的所有OM项目配置的数据源.
+	 *
 	 * @author mqf
+	 * @param project
+	 *            the project
 	 * @return List<DataSourceInfo> 数据源列表
+	 * @throws ReverseException
+	 *             the reverse exception
 	 */
 	public static List<DataSourceInfo> readOMDataSourceList(IProject project) throws ReverseException {
 		
@@ -1004,8 +1228,12 @@ public class ReverseUtil {
 	
 	/**
 	 * 解析datasource.xml文件
-	 * @param dataSourceXMLPath datasource.xml文件路径
+	 *
+	 * @author mqfdy
+	 * @param dataSourceXMLPath
+	 *            datasource.xml文件路径
 	 * @return List<DataSourceInfo> 数据源列表
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	public static List<DataSourceInfo> readDataSourceXML(String dataSourceXMLPath) {
@@ -1076,9 +1304,14 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 写入数据源
+	 * 写入数据源.
+	 *
+	 * @author mqfdy
 	 * @param dataSourceXMLPath
+	 *            the data source XML path
 	 * @param dataSource
+	 *            the data source
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void writeDatasourceXML(String dataSourceXMLPath, DataSourceInfo dataSource) {
 		BufferedReader bufReader = null;
@@ -1188,10 +1421,20 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 修改数据源
-	 * @param dataSourceXMLPath 路径
-	 * @param oldSourceName 旧的数据源名称
-	 * @param dataSource 新的数据源参数
+	 * 修改数据源.
+	 *
+	 * @author mqfdy
+	 * @param oldUapName
+	 *            the old uap name
+	 * @param oldSourceName
+	 *            旧的数据源名称
+	 * @param dataSourceXMLPath
+	 *            路径
+	 * @param dataSource
+	 *            新的数据源参数
+	 * @throws ReverseException
+	 *             the reverse exception
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	public static void updateDatasourceXML(String oldUapName, String oldSourceName, String dataSourceXMLPath, DataSourceInfo dataSource) throws ReverseException {
@@ -1278,12 +1521,16 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 删除数据源
+	 * 删除数据源.
+	 *
 	 * @author mqf
 	 * @param uapName
+	 *            the uap name
 	 * @param sourceName
-	 * @return
-	 * @throws Exception
+	 *            the source name
+	 * @return true, if successful
+	 * @throws ReverseException
+	 *             the reverse exception
 	 */
 	@SuppressWarnings("unchecked")
 	public static boolean deleteOMDatasourceXML(String uapName, String sourceName) throws ReverseException {
@@ -1348,10 +1595,15 @@ public class ReverseUtil {
 		}
 		return true;
 	}
+	
 	/**
-	 * 根据nature获取指定类型的工程
+	 * 根据nature获取指定类型的工程.
+	 *
+	 * @author mqfdy
 	 * @param natureId
-	 * @return
+	 *            the nature id
+	 * @return the projects by nature id
+	 * @Date 2018-09-03 09:00
 	 */
 	public static List<IProject> getProjectsByNatureId(String natureId) {
 		List<IProject> natureProjects = new ArrayList<IProject>();
@@ -1374,6 +1626,15 @@ public class ReverseUtil {
 		return natureProjects;
 	}
 	
+	/**
+	 * Gets the last selected data source.
+	 *
+	 * @author mqfdy
+	 * @param datasourceList
+	 *            the datasource list
+	 * @return the last selected data source
+	 * @Date 2018-09-03 09:00
+	 */
 	public static DataSourceInfo getLastSelectedDataSource(List<DataSourceInfo> datasourceList) {
 		String selected = getReverseConfig("reverse.selected");
 		if(selected != null && selected.trim().length() != 0) {
@@ -1387,9 +1648,13 @@ public class ReverseUtil {
 	}
 	
 	/**
-	 * 读取studio参数：上一次连接的数据源
+	 * 读取studio参数：上一次连接的数据源.
+	 *
+	 * @author mqfdy
 	 * @param property
-	 * @return
+	 *            the property
+	 * @return the reverse config
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String getReverseConfig(String property) {
 		IPreferenceStore store = BusinessModelEditorPlugin.getDefault().getPreferenceStore();
@@ -1397,9 +1662,14 @@ public class ReverseUtil {
 	}
 
 	/**
-	 * 保存上次选择的数据源
+	 * 保存上次选择的数据源.
+	 *
+	 * @author mqfdy
 	 * @param property
+	 *            the property
 	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("deprecation")
 	public static void saveReverseConfig(String property, String value) {
@@ -1408,6 +1678,14 @@ public class ReverseUtil {
 		BusinessModelEditorPlugin.getDefault().savePluginPreferences();
 	}
 	
+	/**
+	 * Close result set.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void closeResultSet(ResultSet rs) {
 		if(rs != null) {
 			try {
@@ -1418,6 +1696,14 @@ public class ReverseUtil {
 		}
 	}
 	
+	/**
+	 * Close prepared statement.
+	 *
+	 * @author mqfdy
+	 * @param pst
+	 *            the pst
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void closePreparedStatement(PreparedStatement pst) {
 		if(pst != null) {
 			try {
@@ -1427,10 +1713,17 @@ public class ReverseUtil {
 			}
 		}
 	}
+	
 	/**
-	 * 读取项目得数据源
-	 * @return
-	 * @throws ReverseException 
+	 * 读取项目得数据源.
+	 *
+	 * @author mqfdy
+	 * @param project
+	 *            the project
+	 * @return the list
+	 * @throws ReverseException
+	 *             the reverse exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static List<DataSourceInfo> readMicroDataSourceList(IProject project) throws ReverseException {
 		List<DataSourceInfo> dataSourceList = new ArrayList<DataSourceInfo>();
@@ -1457,6 +1750,17 @@ public class ReverseUtil {
 		}
 	}
 
+	/**
+	 * Read data source properties.
+	 *
+	 * @author mqfdy
+	 * @param project
+	 *            the project
+	 * @return the list
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-09-03 09:00
+	 */
 	private static List<DataSourceInfo> readDataSourceProperties(IProject project) throws IOException{
 		String projectPath = project.getLocation().toOSString();
 		//数据源集合
@@ -1482,10 +1786,15 @@ public class ReverseUtil {
 		dataSourceList.add(dataSource);
 		return dataSourceList;
 	}
+	
 	/**
-	 * 判断表中字段是否含有特殊字符
+	 * 判断表中字段是否含有特殊字符.
+	 *
+	 * @author mqfdy
 	 * @param table
-	 * @return
+	 *            the table
+	 * @return true, if is special char table
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isSpecialCharTable(Table table) {
 		Collection<Column> columns = table.getColumns().values();
@@ -1496,12 +1805,16 @@ public class ReverseUtil {
 		}
 		return false;
 	}
+	
 	/**
-     * 判断是否含有特殊字符
-     *
-     * @param str
-     * @return true为包含，false为不包含
-     */
+	 * 判断是否含有特殊字符.
+	 *
+	 * @author mqfdy
+	 * @param str
+	 *            the str
+	 * @return true为包含，false为不包含
+	 * @Date 2018-09-03 09:00
+	 */
     public static boolean isSpecialChar(String str) {
     	str = str.replaceAll("\\d", "");
         String regEx = "[ `~!@#$%^&*()+-=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t";
@@ -1509,10 +1822,15 @@ public class ReverseUtil {
         Matcher m = p.matcher(str);
         return m.find();
     }
+	
 	/**
-	 * 判断表中字段是否含有特殊字符
+	 * 判断表中字段是否含有特殊字符.
+	 *
+	 * @author mqfdy
 	 * @param table
-	 * @return
+	 *            the table
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean startWithFigure(Table table) {
 		Collection<Column> columns = table.getColumns().values();
@@ -1523,12 +1841,16 @@ public class ReverseUtil {
 		}
 		return false;
 	}
+    
     /**
-     * 判断是以数字开头
-     *
-     * @param str
-     * @return 
-     */
+	 * 判断是以数字开头.
+	 *
+	 * @author mqfdy
+	 * @param str
+	 *            the str
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
     public static boolean startWithFigure(String str) {
     	if(str == null || "".equals(str)){
     		return false;

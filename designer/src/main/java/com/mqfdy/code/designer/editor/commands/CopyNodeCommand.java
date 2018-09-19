@@ -13,20 +13,32 @@ import com.mqfdy.code.designer.editor.part.EnumerationEditPart;
 import com.mqfdy.code.designer.editor.part.ReferenceObjectEditPart;
 import com.mqfdy.code.model.IModelElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * 复制图形
- * 
+ * 复制图形.
+ *
  * @author mqfdy
- * 
  */
 public class CopyNodeCommand extends Command {
+	
+	/** The parts. */
 	// 选中的图形EditPart
 	List<AbstractGraphicalEditPart> parts = new ArrayList<AbstractGraphicalEditPart>();// BusinessModelUtil.getBusinessModelDiagramEditor().getViewer().getSelectedEditParts();
+	
+	/** The con parts. */
 	// 选中的图形对应的关联关系的EditPart
 	List<AbstractGraphicalEditPart> conParts = new ArrayList<AbstractGraphicalEditPart>();// BusinessModelUtil.getBusinessModelDiagramEditor().getViewer().getSelectedEditParts();
+	
+	/** The all parts. */
 	// 选中的图形及其所对应的关联关系的EditPart
 	private List<AbstractGraphicalEditPart> allParts = new ArrayList<AbstractGraphicalEditPart>();
 
+	/**
+	 * Instantiates a new copy node command.
+	 *
+	 * @param selectedObjects
+	 *            the selected objects
+	 */
 	public CopyNodeCommand(List<AbstractGraphicalEditPart> selectedObjects) {
 		for (AbstractGraphicalEditPart part : selectedObjects) {
 			if (part instanceof BusinessClassEditPart
@@ -40,6 +52,9 @@ public class CopyNodeCommand extends Command {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		if (parts == null || parts.isEmpty())
@@ -47,6 +62,9 @@ public class CopyNodeCommand extends Command {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 		if (canExecute()) {
@@ -87,6 +105,9 @@ public class CopyNodeCommand extends Command {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canUndo() {
 		return false;

@@ -22,28 +22,28 @@ import com.mqfdy.code.springboot.utilities.model.value.TreeNodeValueModel;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Subclasses need only implement the following methods:
  * 
- * #value()
- *	    return the user-determined "value" of the node,
- *     i.e. the object "wrapped" by the node
+ * #value() return the user-determined "value" of the node, i.e. the object
+ * "wrapped" by the node
  * 
- * #setValue(Object)
- *     set the user-determined "value" of the node,
- *     i.e. the object "wrapped" by the node;
- *     typically only overridden for nodes with "primitive" values
+ * #setValue(Object) set the user-determined "value" of the node, i.e. the
+ * object "wrapped" by the node; typically only overridden for nodes with
+ * "primitive" values
  * 
- * #parent()
- *     return the parent of the node, which should be another
- *     TreeNodeValueModel
+ * #parent() return the parent of the node, which should be another
+ * TreeNodeValueModel
  * 
- * #childrenModel()
- *     return a ListValueModel for the node's children
+ * #childrenModel() return a ListValueModel for the node's children
  * 
- * #engageValue() and #disengageValue()
- *     override these methods to listen to the node's value if
- *     it can change in a way that should be reflected in the tree
+ * #engageValue() and #disengageValue() override these methods to listen to the
+ * node's value if it can change in a way that should be reflected in the tree
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
  */
 public abstract class AbstractTreeNodeValueModel<T>
 	extends AbstractModel
@@ -122,9 +122,12 @@ public abstract class AbstractTreeNodeValueModel<T>
 	}
 
 	/**
-	 * Return an iterator that climbs up the node's path,
-	 * starting with, and including, the node
-	 * and up to, and including, the root node.
+	 * Return an iterator that climbs up the node's path, starting with, and
+	 * including, the node and up to, and including, the root node.
+	 *
+	 * @author mqfdy
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	protected Iterator<TreeNodeValueModel<T>> backPath() {
 		return new ChainIterator<TreeNodeValueModel<T>>(this) {

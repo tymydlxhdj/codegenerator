@@ -1,5 +1,6 @@
 package org.apache.velocity.exception;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -20,16 +21,24 @@ package org.apache.velocity.exception;
  */
 
 /**
- * Separate exception class to distinguish math problems.   
+ * Separate exception class to distinguish math problems.
  *
  * @author Nathan Bubna
- * @since 1.6
  * @version $Id: MathException.java 685685 2008-08-13 21:43:27Z nbubna $
+ * @since 1.6
  */
 public class MathException extends VelocityException
 {
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -7966507088645215583L;
 
+    /**
+	 * Instantiates a new math exception.
+	 *
+	 * @param exceptionMessage
+	 *            the exception message
+	 */
     public MathException(final String exceptionMessage)
     {
         super(exceptionMessage);

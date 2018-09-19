@@ -16,6 +16,7 @@ import java.util.ListIterator;
 import com.mqfdy.code.springboot.utilities.model.Model;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * A "list change" event gets delivered whenever a model changes a "bound"
  * or "constrained" list. A ListChangeEvent is sent as an
@@ -90,6 +91,24 @@ public class ListChangeEvent extends ChangeEvent {
 
 	// ********** constructors **********
 
+	/**
+	 * Instantiates a new list change event.
+	 *
+	 * @param source
+	 *            the source
+	 * @param listName
+	 *            the list name
+	 * @param index
+	 *            the index
+	 * @param items
+	 *            the items
+	 * @param replacedItems
+	 *            the replaced items
+	 * @param sourceIndex
+	 *            the source index
+	 * @param moveLength
+	 *            the move length
+	 */
 	protected ListChangeEvent(Model source, String listName, int index, List<?> items, List<?> replacedItems, int sourceIndex, int moveLength) {
 		super(source);
 		if ((listName == null) || (items == null) || (replacedItems == null)) {
@@ -131,10 +150,16 @@ public class ListChangeEvent extends ChangeEvent {
 	/**
 	 * Construct a new list change event for a list of moved items.
 	 *
-	 * @param source The object on which the event initially occurred.
-	 * @param listName The programmatic name of the list that was changed.
-	 * @param targetIndex The index to which the items were moved.
-	 * @param sourceIndex The index from which the items were moved.
+	 * @param source
+	 *            The object on which the event initially occurred.
+	 * @param listName
+	 *            The programmatic name of the list that was changed.
+	 * @param targetIndex
+	 *            The index to which the items were moved.
+	 * @param sourceIndex
+	 *            The index from which the items were moved.
+	 * @param length
+	 *            the length
 	 */
 	public ListChangeEvent(Model source, String listName, int targetIndex, int sourceIndex, int length) {
 		this(source, listName, targetIndex, Collections.emptyList(), Collections.emptyList(), sourceIndex, length);
@@ -155,6 +180,10 @@ public class ListChangeEvent extends ChangeEvent {
 
 	/**
 	 * Return the programmatic name of the list that was changed.
+	 *
+	 * @author mqfdy
+	 * @return the list name
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getListName() {
 		return this.listName;
@@ -166,29 +195,38 @@ public class ListChangeEvent extends ChangeEvent {
 	}
 
 	/**
-	 * Return the index at which the items were added to, removed from,
-	 * or replaced in the list.
-	 * In the case of "moved" items, this will be the "target" index.
-	 * May be -1 if inappropriate or unknown.
+	 * Return the index at which the items were added to, removed from, or
+	 * replaced in the list. In the case of "moved" items, this will be the
+	 * "target" index. May be -1 if inappropriate or unknown.
+	 *
+	 * @author mqfdy
+	 * @return the index
+	 * @Date 2018-09-03 09:00
 	 */
 	public int getIndex() {
 		return this.index;
 	}
 
 	/**
-	 * Return a list iterator on the items that were added to or
-	 * removed from the list. In the case of "replaced" items, these
-	 * are the new items in the list.
-	 * May be empty if inappropriate or unknown.
+	 * Return a list iterator on the items that were added to or removed from
+	 * the list. In the case of "replaced" items, these are the new items in the
+	 * list. May be empty if inappropriate or unknown.
+	 *
+	 * @author mqfdy
+	 * @return the list iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public ListIterator<?> items() {
 		return this.items.listIterator();
 	}
 
 	/**
-	 * Return the number of items that were added to,
-	 * removed from, or replaced in the list.
-	 * May be 0 if inappropriate or unknown.
+	 * Return the number of items that were added to, removed from, or replaced
+	 * in the list. May be 0 if inappropriate or unknown.
+	 *
+	 * @author mqfdy
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public int itemsSize() {
 		return this.items.size();
@@ -198,8 +236,12 @@ public class ListChangeEvent extends ChangeEvent {
 	// ********** replace **********
 
 	/**
-	 * Return a list iterator on the items in the list that were replaced.
-	 * May be empty if inappropriate or unknown.
+	 * Return a list iterator on the items in the list that were replaced. May
+	 * be empty if inappropriate or unknown.
+	 *
+	 * @author mqfdy
+	 * @return the list iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public ListIterator<?> replacedItems() {
 		return this.replacedItems.listIterator();
@@ -209,24 +251,36 @@ public class ListChangeEvent extends ChangeEvent {
 	// ********** move **********
 
 	/**
-	 * In the case of "moved" items, this will be the "target" index.
-	 * May be -1 if inappropriate or unknown.
+	 * In the case of "moved" items, this will be the "target" index. May be -1
+	 * if inappropriate or unknown.
+	 *
+	 * @author mqfdy
+	 * @return the target index
+	 * @Date 2018-09-03 09:00
 	 */
 	public int getTargetIndex() {
 		return this.index;
 	}
 
 	/**
-	 * In the case of "moved" items, this will be the "source" index.
-	 * May be -1 if inappropriate or unknown.
+	 * In the case of "moved" items, this will be the "source" index. May be -1
+	 * if inappropriate or unknown.
+	 *
+	 * @author mqfdy
+	 * @return the source index
+	 * @Date 2018-09-03 09:00
 	 */
 	public int getSourceIndex() {
 		return this.sourceIndex;
 	}
 
 	/**
-	 * In the case of "moved" items, this will be the number of items moved.
-	 * May be -1 if inappropriate or unknown.
+	 * In the case of "moved" items, this will be the number of items moved. May
+	 * be -1 if inappropriate or unknown.
+	 *
+	 * @author mqfdy
+	 * @return the move length
+	 * @Date 2018-09-03 09:00
 	 */
 	public int getMoveLength() {
 		return this.moveLength;
@@ -247,6 +301,14 @@ public class ListChangeEvent extends ChangeEvent {
 	/**
 	 * Return a copy of the event with the specified source and list name
 	 * replacing the current source and list name.
+	 *
+	 * @author mqfdy
+	 * @param newSource
+	 *            the new source
+	 * @param newListName
+	 *            the new list name
+	 * @return the list change event
+	 * @Date 2018-09-03 09:00
 	 */
 	public ListChangeEvent cloneWithSource(Model newSource, String newListName) {
 		return new ListChangeEvent(newSource, newListName, this.index, this.items, this.replacedItems, this.sourceIndex, this.moveLength);
@@ -254,8 +316,18 @@ public class ListChangeEvent extends ChangeEvent {
 
 	/**
 	 * Return a copy of the event with the specified source and list name
-	 * replacing the current source and list name and displacing
-	 * the index by the specified amount.
+	 * replacing the current source and list name and displacing the index by
+	 * the specified amount.
+	 *
+	 * @author mqfdy
+	 * @param newSource
+	 *            the new source
+	 * @param newListName
+	 *            the new list name
+	 * @param offset
+	 *            the offset
+	 * @return the list change event
+	 * @Date 2018-09-03 09:00
 	 */
 	public ListChangeEvent cloneWithSource(Model newSource, String newListName, int offset) {
 		return new ListChangeEvent(newSource, newListName, this.index + offset, this.items, this.replacedItems, this.sourceIndex + offset, this.moveLength);

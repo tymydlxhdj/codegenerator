@@ -57,50 +57,104 @@ import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.utils.StringUtil;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务实体基本信息编辑页
- * 
+ * 业务实体基本信息编辑页.
+ *
  * @author mqfdy
- * 
  */
 public class BusinessClassBasicInfoPage extends Composite implements
 		IBusinessClassEditorPage {
 
+	/** The Constant GROUP_PERSITENCE_TEXT. */
 	public static final String GROUP_PERSITENCE_TEXT = "持久化策略";
+	
+	/** The Constant TABLENAME_LABEL_TEXT. */
 	public static final String TABLENAME_LABEL_TEXT = "数据库表名：";
+	
+	/** The Constant TABLESCHEMA_LABEL_TEXT. */
 	public static final String TABLESCHEMA_LABEL_TEXT = "模式名：";
 
+	/** The label name. */
 	// 显示组件
 	private Label label_name;
+	
+	/** The text name. */
 	private NullToEmptyText text_name;
 
+	/** The label display name. */
 	private Label label_displayName;
+	
+	/** The text display name. */
 	private NullToEmptyText text_displayName;
+	
+	/** The label remark. */
 	private Label label_remark;
+	
+	/** The text remark. */
 	private NullToEmptyText text_remark;
+	
+	/** The label table name. */
 	private Label label_tableName;
+	
+	/** The text table name. */
 	private NullToEmptyText text_tableName;
+	
+	/** The schema name. */
 	private Label schemaName;
+	
+	/** The schema name text. */
 	private Text schemaNameText;
+	
+	/** The business class editor dialog. */
 	private BusinessClassEditorDialog businessClassEditorDialog;
+	
+	/** The tool bar. */
 	private ToolBar toolBar = null;
+	
+	/** The table. */
 	private Table table = null;
+	
+	/** The table viewer. */
 	private TableViewer tableViewer = null;
+	
+	/** The version panel. */
 	private VersionInfoPanel versionPanel;
 
-	/**
-	 * 新增属性动作
-	 */
+	/** 新增属性动作. */
 	private AddPropertyAction addPropertyAction;
+	
+	/** The delete property action. */
 	private Action deletePropertyAction;
+	
+	/** The up action. */
 	private Action upAction;
+	
+	/** The down action. */
 	private Action downAction;
+	
+	/** The top action. */
 	private Action topAction;
+	
+	/** The bottom action. */
 	private Action bottomAction;
 
+	/** The table items. */
 	private List<Property> tableItems = new ArrayList<Property>();
+	
+	/** The group list. */
 	private Group group_list;
 
+	/**
+	 * Instantiates a new business class basic info page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param businessClassEditorDialog
+	 *            the business class editor dialog
+	 */
 	public BusinessClassBasicInfoPage(Composite parent, int style,
 			BusinessClassEditorDialog businessClassEditorDialog) {
 		super(parent, style);
@@ -109,6 +163,14 @@ public class BusinessClassBasicInfoPage extends Composite implements
 		addListeners();
 	}
 
+	/**
+	 * Creates the contents.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createContents(Composite composite) {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 4;
@@ -167,6 +229,12 @@ public class BusinessClassBasicInfoPage extends Composite implements
 		makeActions();
 	}
 
+	/**
+	 * Adds the listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void addListeners() {
 		text_name.addKeyListener(new KeyListener() {
 
@@ -225,6 +293,13 @@ public class BusinessClassBasicInfoPage extends Composite implements
 		});
 	}
 
+	/**
+	 * Vali table name.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * 数据库表名重复
 	 */
@@ -245,7 +320,10 @@ public class BusinessClassBasicInfoPage extends Composite implements
 	}
 	
 	/**
-	 * 初始化各个控件的值
+	 * 初始化各个控件的值.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void initControlValue() {
 		BusinessClass businessClass = businessClassEditorDialog
@@ -313,9 +391,11 @@ public class BusinessClassBasicInfoPage extends Composite implements
 	}
 
 	/**
-	 * 校验文本框的输入
-	 * 
-	 * @return
+	 * 校验文本框的输入.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean validateInput() {
 		if (text_name.getText().trim().length() == 0) {
@@ -499,7 +579,10 @@ public class BusinessClassBasicInfoPage extends Composite implements
 	}
 
 	/**
-	 * 更新模型
+	 * 更新模型.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void updateTheEditingElement() {
 		businessClassEditorDialog.getBusinessClassCopy().setName(
@@ -528,6 +611,13 @@ public class BusinessClassBasicInfoPage extends Composite implements
 		businessClass.getProperties().addAll(tableItems);
 	}
 
+	/**
+	 * Gets the cur name.
+	 *
+	 * @author mqfdy
+	 * @return the cur name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getCurName() {
 		if (text_name != null) {
 			return text_name.getText();
@@ -535,6 +625,13 @@ public class BusinessClassBasicInfoPage extends Composite implements
 		return "";
 	}
 
+	/**
+	 * Gets the cur table name.
+	 *
+	 * @author mqfdy
+	 * @return the cur table name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getCurTableName() {
 		if (text_tableName != null) {
 			return text_tableName.getText();
@@ -542,13 +639,43 @@ public class BusinessClassBasicInfoPage extends Composite implements
 		return "";
 	}
 
+	/**
+	 * The Class PropertyConentProvider.
+	 *
+	 * @author mqfdy
+	 */
 	private class PropertyConentProvider implements IStructuredContentProvider {
+		
+		/**
+		 * 
+		 */
 		public void dispose() {
 		}
 
+		/**
+		 * Input changed.
+		 *
+		 * @author mqfdy
+		 * @param viewer
+		 *            the viewer
+		 * @param oldInput
+		 *            the old input
+		 * @param newInput
+		 *            the new input
+		 * @Date 2018-09-03 09:00
+		 */
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		}
 
+		/**
+		 * Gets the elements.
+		 *
+		 * @author mqfdy
+		 * @param inputElement
+		 *            the input element
+		 * @return the elements
+		 * @Date 2018-09-03 09:00
+		 */
 		@SuppressWarnings("rawtypes")
 		public Object[] getElements(Object inputElement) {
 			if (inputElement instanceof Collection) {
@@ -567,8 +694,10 @@ public class BusinessClassBasicInfoPage extends Composite implements
 	}
 
 	/**
-	 * This method initializes toolBar
-	 * 
+	 * This method initializes toolBar.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createToolBar() {
 		GridData gridData = new GridData();
@@ -579,6 +708,12 @@ public class BusinessClassBasicInfoPage extends Composite implements
 		toolBar.setLayoutData(gridData);
 	}
 
+	/**
+	 * Creates the table.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createTable() {
 		GridData gridData = new GridData();
 		gridData.horizontalAlignment = SWT.FILL;
@@ -614,6 +749,12 @@ public class BusinessClassBasicInfoPage extends Composite implements
 		}
 	}
 
+	/**
+	 * Make actions.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void makeActions() {
 		text_name.addKeyListener(new KeyAdapter() {
 			public void keyReleased(KeyEvent e) {
@@ -784,6 +925,17 @@ public class BusinessClassBasicInfoPage extends Composite implements
 		});
 	}
 
+	/**
+	 * Gets the index.
+	 *
+	 * @author mqfdy
+	 * @param list
+	 *            the list
+	 * @param element
+	 *            the element
+	 * @return the index
+	 * @Date 2018-09-03 09:00
+	 */
 	private int getIndex(List<Property> list, AbstractModelElement element) {
 		int index = 1000;
 		for (int i = 0; i < list.size(); i++) {
@@ -795,12 +947,25 @@ public class BusinessClassBasicInfoPage extends Composite implements
 	}
 
 	/**
-	 * 刷新表格
+	 * 刷新表格.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void refreshTable() {
 		tableViewer.refresh();
 	}
 
+	/**
+	 * Reset order num.
+	 *
+	 * @author mqfdy
+	 * @param property
+	 *            the property
+	 * @param type
+	 *            the type
+	 * @Date 2018-09-03 09:00
+	 */
 	private void resetOrderNum(Property property, String type) {
 		if ("up".equals(type)) {
 			for (int i = 0; i < tableItems.size(); i++) {
@@ -844,9 +1009,11 @@ public class BusinessClassBasicInfoPage extends Composite implements
 	}
 
 	/**
-	 * 获取当前表格的数据
-	 * 
-	 * @return
+	 * 获取当前表格的数据.
+	 *
+	 * @author mqfdy
+	 * @return the table items
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<Property> getTableItems() {
 		return tableItems;

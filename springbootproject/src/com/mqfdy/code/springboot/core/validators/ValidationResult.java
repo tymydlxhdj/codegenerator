@@ -2,6 +2,7 @@ package com.mqfdy.code.springboot.core.validators;
 
 import org.eclipse.core.runtime.IStatus;
 
+// TODO: Auto-generated Javadoc
 /**
  * A value representing the result of a wizard page validation. 
  * 
@@ -9,22 +10,53 @@ import org.eclipse.core.runtime.IStatus;
  */
 public class ValidationResult {
 	
+	/** The msg. */
 	public final String msg;
+	
+	/** The status. */
 	public int status; 
 	
 	private ValidationResult(int status, String msg) {
 		this.msg = msg;
 		this.status = status;
 	}
+	
+	/**
+	 * Checks if is ok.
+	 *
+	 * @author mqfdy
+	 * @return true, if is ok
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isOk() {
 		return status == IStatus.OK;
 	}
+	
+	/** The Constant OK. */
 	public static final ValidationResult OK = new ValidationResult(IStatus.OK, null);
 	
+	/**
+	 * Error.
+	 *
+	 * @author mqfdy
+	 * @param msg
+	 *            the msg
+	 * @return the validation result
+	 * @Date 2018-09-03 09:00
+	 */
 	public static ValidationResult error(String msg) {
 		return new ValidationResult(IStatus.ERROR, msg);
 	}
 	
+	/**
+	 * Warning.
+	 *
+	 * @author mqfdy
+	 * @param msg
+	 *            the msg
+	 * @return the validation result
+	 * @Date 2018-09-03 09:00
+	 */
 	public static ValidationResult warning(String msg) {
 		return new ValidationResult(IStatus.WARNING, msg);
 	}

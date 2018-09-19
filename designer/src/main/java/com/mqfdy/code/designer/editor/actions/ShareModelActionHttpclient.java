@@ -14,10 +14,31 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ShareModelActionHttpclient.
+ *
+ * @author mqfdy
+ */
 public class ShareModelActionHttpclient {
+	
+	/** The Constant FAILCONNECTION. */
 	public static final String FAILCONNECTION="无法连接到共享模型库,请检查IP和端口是否配置正确或服务是否启动!";
+	
 	/**
-	 * @param args
+	 * Gets the do post response data by URL.
+	 *
+	 * @author mqfdy
+	 * @param url
+	 *            the url
+	 * @param params
+	 *            the params
+	 * @param charset
+	 *            the charset
+	 * @param pretty
+	 *            the pretty
+	 * @return the do post response data by URL
+	 * @Date 2018-09-03 09:00
 	 */
 	/*public static void main(String[] args) throws HttpException, IOException{
 		// TODO Auto-generated method stub

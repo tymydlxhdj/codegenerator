@@ -1,5 +1,6 @@
 package org.apache.velocity.runtime.log;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -31,20 +32,28 @@ package org.apache.velocity.runtime.log;
  */
 public class PrimordialLogSystem extends HoldingLogChute implements LogSystem
 {
+    
     /**
-     * @param level
-     * @param message
-     * @deprecated Use log(level, message).
-     */
+	 * Log velocity message.
+	 *
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @deprecated Use log(level, message).
+	 */
     public void logVelocityMessage(int level, String message)
     {
         log(level, message);
     }
 
     /**
-     * @param newLogger
-     * @deprecated use transferTo(LogChute newChute)
-     */
+	 * Dump log messages.
+	 *
+	 * @param newLogger
+	 *            the new logger
+	 * @deprecated use transferTo(LogChute newChute)
+	 */
     public void dumpLogMessages( LogSystem newLogger )
     {
         transferTo(new LogChuteSystem(newLogger));

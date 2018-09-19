@@ -25,20 +25,28 @@ import com.mqfdy.code.model.IModelElement;
 import com.mqfdy.code.model.utils.ModelUtil;
 import com.mqfdy.code.resource.BomManager;
 
+// TODO: Auto-generated Javadoc
 /**
- * 导入知识库动作
- * 
+ * 导入知识库动作.
+ *
  * @author mqfdy
- * 
  */
 public class ImportRepositoryAction extends Action {
 
-	/**
-	 * 对应动作操作的树显示器
-	 */
+	/** 对应动作操作的树显示器. */
 	private TreeViewer treeViewer;
+	
+	/** The repository model view. */
 	private RepositoryModelView repositoryModelView;
 
+	/**
+	 * Instantiates a new import repository action.
+	 *
+	 * @param text
+	 *            the text
+	 * @param repositoryModelView
+	 *            the repository model view
+	 */
 	public ImportRepositoryAction(String text,
 			RepositoryModelView repositoryModelView) {
 		super(text);
@@ -48,12 +56,25 @@ public class ImportRepositoryAction extends Action {
 		this.repositoryModelView = repositoryModelView;
 	}
 
+	/**
+	 * Instantiates a new import repository action.
+	 *
+	 * @param text
+	 *            the text
+	 * @param imageDescriptor
+	 *            the image descriptor
+	 * @param treeViewer
+	 *            the tree viewer
+	 */
 	public ImportRepositoryAction(String text, ImageDescriptor imageDescriptor,
 			TreeViewer treeViewer) {
 		super(text, imageDescriptor);
 		this.treeViewer = treeViewer;
 	}
 
+	/**
+	 * 
+	 */
 	public void run() {
 		OmFileSelecteDialog dialog = new OmFileSelecteDialog();
 		int returnKey = dialog.open();

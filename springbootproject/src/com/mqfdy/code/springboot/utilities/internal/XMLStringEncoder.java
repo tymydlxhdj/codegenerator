@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 
+// TODO: Auto-generated Javadoc
 /**
  * This encoder will replace any of a specified set of characters with an XML
  * "character reference": '/' => "&#x2f;"
@@ -29,8 +30,11 @@ public final class XMLStringEncoder {
 	// ********** constructors/initialization **********
 
 	/**
-	 * Construct an encoder that converts the specified set of characters
-	 * into XML character references.
+	 * Construct an encoder that converts the specified set of characters into
+	 * XML character references.
+	 *
+	 * @param chars
+	 *            the chars
 	 */
 	public XMLStringEncoder(char[] chars) {
 		super();
@@ -68,8 +72,14 @@ public final class XMLStringEncoder {
 	// ********** API **********
 
 	/**
-	 * Return the specified string with any characters in the set
-	 * replaced with XML character references.
+	 * Return the specified string with any characters in the set replaced with
+	 * XML character references.
+	 *
+	 * @author mqfdy
+	 * @param s
+	 *            the s
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public String encode(String s) {
 		int len = s.length();
@@ -82,8 +92,14 @@ public final class XMLStringEncoder {
 	}
 
 	/**
-	 * Return the specified string with any XML character references
-	 * replaced by the characters themselves.
+	 * Return the specified string with any XML character references replaced by
+	 * the characters themselves.
+	 *
+	 * @author mqfdy
+	 * @param s
+	 *            the s
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public String decode(String s) {
 		StringBuilder sb = new StringBuilder(s.length());

@@ -19,22 +19,44 @@ import com.mqfdy.code.model.Enumeration;
 import com.mqfdy.code.model.Inheritance;
 import com.mqfdy.code.model.ModelPackage;
 
+// TODO: Auto-generated Javadoc
 /**
- * 代码生成对象选择页面
- * 
+ * 代码生成对象选择页面.
+ *
  * @author mqfdy
- * 
  */
 public class GeneratorObjectSelectPage extends Composite {
+	
+	/** The business object model. */
 	private BusinessObjectModel businessObjectModel;
+	
+	/** The bu page. */
 	// private ModelSelectPage pkgPage;
 	private ModelSelectPage buPage;
+	
+	/** The as page. */
 	private ModelSelectPage asPage;
+    
+    /** The in page. */
     private ModelSelectPage inPage;
+	
+	/** The enum page. */
 	private ModelSelectPage enumPage;
+	
+	/** The selected models. */
 	// private ModelSelectPage dtoPage;
 	private List<AbstractModelElement> selectedModels = new ArrayList<AbstractModelElement>();
 
+	/**
+	 * Instantiates a new generator object select page.
+	 *
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 */
 	public GeneratorObjectSelectPage(BusinessObjectModel businessObjectModel,
 			Composite parent, int style) {
 		super(parent, style);
@@ -42,6 +64,14 @@ public class GeneratorObjectSelectPage extends Composite {
 		createContents(this);
 	}
 
+	/**
+	 * Creates the contents.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContents(Composite parent) {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
@@ -77,6 +107,13 @@ public class GeneratorObjectSelectPage extends Composite {
 		 tabFolder.getItem(3).setControl(inPage);
 	}
 
+	/**
+	 * Gets the selected models.
+	 *
+	 * @author mqfdy
+	 * @return the selected models
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<AbstractModelElement> getSelectedModels() {
 		// selectedModels.add(businessObjectModel);
 		// selectedModels.addAll(businessObjectModel.getPackages());
@@ -90,6 +127,13 @@ public class GeneratorObjectSelectPage extends Composite {
 		return selectedModels;
 	}
 
+	/**
+	 * Gets the business object model.
+	 *
+	 * @author mqfdy
+	 * @return the business object model
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessObjectModel getBusinessObjectModel() {
 		BusinessObjectModel newBom = new BusinessObjectModel(null, null);
 		for (ModelPackage pkg : businessObjectModel.getPackages()) {
@@ -118,13 +162,35 @@ public class GeneratorObjectSelectPage extends Composite {
 
 	}
 
+	/**
+	 * Gets the bu page.
+	 *
+	 * @author mqfdy
+	 * @return the bu page
+	 * @Date 2018-09-03 09:00
+	 */
 	public ModelSelectPage getBuPage() {
 		return buPage;
 	}
 
+	/**
+	 * Gets the as page.
+	 *
+	 * @author mqfdy
+	 * @return the as page
+	 * @Date 2018-09-03 09:00
+	 */
 	public ModelSelectPage getAsPage() {
 		return asPage;
 	}
+	
+	/**
+	 * Gets the enum page.
+	 *
+	 * @author mqfdy
+	 * @return the enum page
+	 * @Date 2018-09-03 09:00
+	 */
 	public ModelSelectPage getEnumPage() {
 		return enumPage;
 	}

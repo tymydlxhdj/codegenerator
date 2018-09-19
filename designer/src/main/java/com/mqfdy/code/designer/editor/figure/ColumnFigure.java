@@ -15,13 +15,26 @@ import com.mqfdy.code.designer.editor.BusinessModelEditorPlugin;
 import com.mqfdy.code.designer.models.ImageKeys;
 import com.mqfdy.code.model.AbstractModelElement;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ColumnFigure.
+ *
+ * @author mqfdy
  * @title:属性、操作对象的界面
  * @description:
- * @author mqfdy
  */
 public class ColumnFigure extends Label {
 
+	/**
+	 * Fill attribute.
+	 *
+	 * @author mqfdy
+	 * @param text
+	 *            the text
+	 * @param columnElement
+	 *            the column element
+	 * @Date 2018-09-03 09:00
+	 */
 	public void fillAttribute(String text, AbstractModelElement columnElement) {
 
 		setText(text);

@@ -39,11 +39,25 @@ import com.mqfdy.code.reverse.utils.ReverseUtil;
 import com.mqfdy.code.reverse.views.pages.PackageDispachPage;
 import com.mqfdy.code.thirdparty.utils.PDMBinder;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class OmImport.
+ *
+ * @author mqfdy
+ */
 public class OmImport {
+	
+	/** The y. */
 	private int y = 0;
+	
 	/**
-	 * 获取schema下所有表
-	 * @param schema
+	 * 获取schema下所有表.
+	 *
+	 * @author mqfdy
+	 * @param filePath
+	 *            the file path
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<Table> fetchTables(String filePath) {
 		
@@ -54,9 +68,13 @@ public class OmImport {
 
 	
 	/**
-	 * 获取具有关联关系的表
+	 * 获取具有关联关系的表.
+	 *
+	 * @author mqfdy
 	 * @param tableName
-	 * @return
+	 *            the table name
+	 * @return the relative tables
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<Table> getRelativeTables(String tableName) {
 		Table selectedTable = ReverseContext.allTables.get(tableName);
@@ -93,9 +111,13 @@ public class OmImport {
 	
 	
 	/**
-	 * 有且只有两列，且都为外键列才可判断为中间表
-	 * 判断是中间表的依据: 当前表无主键,并且两个外键,仅有两个字段
+	 * 有且只有两列，且都为外键列才可判断为中间表 判断是中间表的依据: 当前表无主键,并且两个外键,仅有两个字段.
+	 *
+	 * @author mqfdy
 	 * @param table
+	 *            the table
+	 * @return true, if is many to many table
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isManyToManyTable(Table table){
 		Map<String, Column> columns = table.getColumns();
@@ -114,7 +136,20 @@ public class OmImport {
 		return false;
 	}
 	
+	/** The ignored special. */
 	boolean ignoredSpecial;
+	
+	/**
+	 * Find no pk table.
+	 *
+	 * @author mqfdy
+	 * @param tableNames
+	 *            the table names
+	 * @param monitor
+	 *            the monitor
+	 * @return the map
+	 * @Date 2018-09-03 09:00
+	 */
 	public Map<String, List<Table>> findNoPkTable(List<String> tableNames, IProgressMonitor monitor){
 		ReverseContext.selectedTables.clear();
 		ReverseContext.lastTables.clear();
@@ -154,6 +189,18 @@ public class OmImport {
 	}
 	
 	
+	/**
+	 * Creates the bom.
+	 *
+	 * @author mqfdy
+	 * @param bom
+	 *            the bom
+	 * @param monitor
+	 *            the monitor
+	 * @param pdPage
+	 *            the pd page
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createBom(BusinessObjectModel bom, IProgressMonitor monitor,
 			final PackageDispachPage pdPage) {
 
@@ -189,6 +236,14 @@ public class OmImport {
 		monitor.worked(1);
 	}
 	
+	/**
+	 * Creates the diagram element.
+	 *
+	 * @author mqfdy
+	 * @param pdPage
+	 *            the pd page
+	 * @Date 2018-09-03 09:00
+	 */
 	// 添加图元 并布局
 			private void createDiagramElement(PackageDispachPage pdPage) {
 				// 添加图元 并布局
@@ -315,13 +370,18 @@ public class OmImport {
 				}
 
 			}
+			
 			/**
-			 * 布局没有关联关系的节点
-			 * 
+			 * 布局没有关联关系的节点.
+			 *
+			 * @author mqfdy
 			 * @param nonConBuList
-			 * @param y2
+			 *            the non con bu list
 			 * @param dia
-			 * @param y
+			 *            the dia
+			 * @param y2
+			 *            the y 2
+			 * @Date 2018-09-03 09:00
 			 */
 			private void layoutNoConnNode(List<BusinessClass> nonConBuList,
 					Diagram dia, int y2) {
@@ -353,6 +413,15 @@ public class OmImport {
 				}
 			}
 			
+			/**
+			 * Gets the diagram.
+			 *
+			 * @author mqfdy
+			 * @param pkg
+			 *            the pkg
+			 * @return the diagram
+			 * @Date 2018-09-03 09:00
+			 */
 			private Diagram getDiagram(ModelPackage pkg) {
 				// TODO Auto-generated method stub
 				for (AbstractModelElement ab : pkg.getChildren()) {

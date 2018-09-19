@@ -10,8 +10,14 @@
 package com.mqfdy.code.springboot.utilities.internal;
 
 /**
- * Implement some of the methods in Association that can
- * be defined in terms of the other methods.
+ * Implement some of the methods in Association that can be defined in terms of
+ * the other methods.
+ *
+ * @author mqfdy
+ * @param <K>
+ *            the key type
+ * @param <V>
+ *            the value type
  */
 public abstract class AbstractAssociation<K, V>
 	implements Association<K, V>

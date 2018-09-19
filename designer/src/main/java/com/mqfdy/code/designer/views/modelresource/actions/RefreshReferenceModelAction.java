@@ -22,24 +22,53 @@ import com.mqfdy.code.model.utils.ModelUtil;
 import com.mqfdy.code.resource.BomManager;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class RefreshReferenceModelAction.
+ *
+ * @author mqfdy
+ */
 public class RefreshReferenceModelAction extends TreeAction{
 
+	/** The om page. */
 	private ObjectModelOutlinePage omPage;
 	
+	/**
+	 * Instantiates a new refresh reference model action.
+	 *
+	 * @param text
+	 *            the text
+	 */
 	public RefreshReferenceModelAction(String text) {
 		super(text);
 	}
 
+	/**
+	 * Instantiates a new refresh reference model action.
+	 *
+	 * @param treeViewer
+	 *            the tree viewer
+	 */
 	public RefreshReferenceModelAction(TreeViewer treeViewer) {
 		super("重新加载", treeViewer);
 		this.setImageDescriptor(ImageManager.getInstance().getImageDescriptor(
 				ImageKeys.IMG_MODEL_OPER_REFRESH));
 	}
+	
+	/**
+	 * Instantiates a new refresh reference model action.
+	 *
+	 * @param omPage
+	 *            the om page
+	 */
 	public RefreshReferenceModelAction(ObjectModelOutlinePage omPage) {
 		this(omPage.getRmViewer().getTreeViewer());
 		this.omPage = omPage;
 	}
 
+	/**
+	 * 
+	 */
 	public void run() {
 		// 先找到所要刷新的节点
 		if (treeViewer != null && treeViewer.getSelection() != null) {
@@ -76,6 +105,13 @@ public class RefreshReferenceModelAction extends TreeAction{
 			action.run();
 		}
 	}
+	
+	/**
+	 * Refresh pro view.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void refreshProView(){
 		//刷新properties视图 
 		IViewPart[] views = PlatformUI.getWorkbench()

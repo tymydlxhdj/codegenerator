@@ -28,6 +28,7 @@ import org.apache.velocity.exception.ParseErrorException;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.runtime.parser.Parser;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class is responsible for handling the ElseIf VTL control statement.
  *
@@ -40,42 +41,61 @@ import org.apache.velocity.runtime.parser.Parser;
 */
 public class ASTElseIfStatement extends SimpleNode
 {
+    
     /**
-     * @param id
-     */
+	 * Instantiates a new AST else if statement.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTElseIfStatement(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST else if statement.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTElseIfStatement(Parser p, int id)
     {
         super(p, id);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     * An ASTElseStatement is true if the expression
-     * it contains evaluates to true. Expressions know
-     * how to evaluate themselves, so we do that
-     * here and return the value back to ASTIfStatement
-     * where this node was originally asked to evaluate
-     * itself.
-     * @param context
-     * @return True if all childs are true.
-     * @throws MethodInvocationException
-     */
+	 * An ASTElseStatement is true if the expression it contains evaluates to
+	 * true. Expressions know how to evaluate themselves, so we do that here and
+	 * return the value back to ASTIfStatement where this node was originally
+	 * asked to evaluate itself.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @return True if all childs are true.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-9-3 11:38:29
+	 */
     public boolean evaluate ( InternalContextAdapter context)
         throws MethodInvocationException
     {
@@ -83,8 +103,24 @@ public class ASTElseIfStatement extends SimpleNode
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#render(org.apache.velocity.context.InternalContextAdapter, java.io.Writer)
-     */
+	 * Render.
+	 *
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @return true, if successful
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#render(org.apache.velocity.context.InternalContextAdapter,
+	 *      java.io.Writer)
+	 */
     public boolean render( InternalContextAdapter context, Writer writer)
         throws IOException,MethodInvocationException,
         	ResourceNotFoundException, ParseErrorException

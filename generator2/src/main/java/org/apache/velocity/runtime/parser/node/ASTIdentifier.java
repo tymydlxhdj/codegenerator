@@ -32,6 +32,7 @@ import org.apache.velocity.util.introspection.Info;
 import org.apache.velocity.util.introspection.IntrospectionCacheData;
 import org.apache.velocity.util.introspection.VelPropertyGet;
 
+// TODO: Auto-generated Javadoc
 /**
  *  ASTIdentifier.java
  *
@@ -50,11 +51,11 @@ import org.apache.velocity.util.introspection.VelPropertyGet;
  */
 public class ASTIdentifier extends SimpleNode
 {
+    
+    /** The identifier. */
     private String identifier = "";
 
-    /**
-     *  This is really immutable after the init, so keep one for this node
-     */
+    /** This is really immutable after the init, so keep one for this node. */
     protected Info uberInfo;
     
     /**
@@ -63,17 +64,24 @@ public class ASTIdentifier extends SimpleNode
     protected boolean strictRef = false;
 
     /**
-     * @param id
-     */
+	 * Instantiates a new AST identifier.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTIdentifier(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST identifier.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTIdentifier(Parser p, int id)
     {
         super(p, id);
@@ -81,21 +89,35 @@ public class ASTIdentifier extends SimpleNode
 
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     *  simple init - don't do anything that is context specific.
-     *  just get what we need from the AST, which is static.
-     * @param context
-     * @param data
-     * @return The data object.
-     * @throws TemplateInitException
-     */
+	 * simple init - don't do anything that is context specific. just get what
+	 * we need from the AST, which is static.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param data
+	 *            the data
+	 * @return The data object.
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @Date 2018-9-3 11:38:27
+	 */
     public  Object init(InternalContextAdapter context, Object data)
         throws TemplateInitException
     {
@@ -111,8 +133,18 @@ public class ASTIdentifier extends SimpleNode
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#execute(java.lang.Object, org.apache.velocity.context.InternalContextAdapter)
-     */
+	 * Execute.
+	 *
+	 * @param o
+	 *            the o
+	 * @param context
+	 *            the context
+	 * @return the object
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#execute(java.lang.Object,
+	 *      org.apache.velocity.context.InternalContextAdapter)
+	 */
     public Object execute(Object o, InternalContextAdapter context)
         throws MethodInvocationException
     {

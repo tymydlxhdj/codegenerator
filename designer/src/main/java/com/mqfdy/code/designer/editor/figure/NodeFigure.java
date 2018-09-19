@@ -21,6 +21,7 @@ package com.mqfdy.code.designer.editor.figure;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.LineBorder;
 
+// TODO: Auto-generated Javadoc
 /**
  * 图形 Base figure for all nodes in a diagram, e.g. classes, interfaces, objects,
  * packages or comments.
@@ -43,7 +44,9 @@ public abstract class NodeFigure extends Figure {
 
 	/**
 	 * Create a new empty NodeFigure. Does nothing.
-	 * 
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public abstract void emptyFigure();
 

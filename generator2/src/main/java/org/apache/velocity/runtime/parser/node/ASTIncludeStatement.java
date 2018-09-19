@@ -21,23 +21,34 @@ package org.apache.velocity.runtime.parser.node;
 
 import org.apache.velocity.runtime.parser.Parser;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ASTIncludeStatement.
  *
+ * @author mqfdy
  */
 public class ASTIncludeStatement extends SimpleNode
 {
+    
     /**
-     * @param id
-     */
+	 * Instantiates a new AST include statement.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTIncludeStatement(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST include statement.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTIncludeStatement(Parser p, int id)
     {
         super(p, id);
@@ -45,8 +56,16 @@ public class ASTIncludeStatement extends SimpleNode
 
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);

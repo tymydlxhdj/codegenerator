@@ -16,6 +16,7 @@ import java.text.Collator;
 import com.mqfdy.code.springboot.utilities.JavaType;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Straightforward implementation of the JavaType interface.
  */
@@ -41,6 +42,11 @@ public final class SimpleJavaType
 
 	/**
 	 * Construct a Java type with the specified element type and array depth.
+	 *
+	 * @param elementTypeName
+	 *            the element type name
+	 * @param arrayDepth
+	 *            the array depth
 	 */
 	public SimpleJavaType(String elementTypeName, int arrayDepth) {
 		super();
@@ -61,14 +67,12 @@ public final class SimpleJavaType
 	}
 
 	/**
-	 * Construct a Java type for the specified class.
-	 * The class name can be in one of the following forms:
-	 *     java.lang.Object
-	 *     int
-	 *     java.util.Map$Entry
-	 *     [Ljava.lang.Object;
-	 *     [I
-	 *     [Ljava.util.Map$Entry;
+	 * Construct a Java type for the specified class. The class name can be in
+	 * one of the following forms: java.lang.Object int java.util.Map$Entry
+	 * [Ljava.lang.Object; [I [Ljava.util.Map$Entry;
+	 *
+	 * @param javaClassName
+	 *            the java class name
 	 */
 	public SimpleJavaType(String javaClassName) {
 		this(ClassTools.elementTypeNameForClassNamed(javaClassName), ClassTools.arrayDepthForClassNamed(javaClassName));
@@ -76,6 +80,9 @@ public final class SimpleJavaType
 
 	/**
 	 * Construct a Java type for the specified class.
+	 *
+	 * @param javaClass
+	 *            the java class
 	 */
 	public SimpleJavaType(Class<?> javaClass) {
 		this(javaClass.getName());

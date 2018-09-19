@@ -37,6 +37,7 @@ import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramElement;
 import com.mqfdy.code.model.graph.ElementStyle;
 
+// TODO: Auto-generated Javadoc
 /**
  * 在编辑器中创建对象
  * 
@@ -47,20 +48,40 @@ import com.mqfdy.code.model.graph.ElementStyle;
  */
 public class NodeCreateCommand extends Command {
 
+	/** The new node. */
 	private AbstractModelElement newNode;
 
+	/** The container. */
 	// can be model modelRoot or package
 	private AbstractModelElement container;
 
+	/** The bounds. */
 	private Rectangle bounds;
 
+	/** The edit part. */
 	private EditPart editPart;
 
+	/** The ele. */
 	private DiagramElement ele = new DiagramElement();
 
+	/** The can redo. */
 	private boolean canRedo = true;
+	
+	/** The isdid. */
 	private boolean isdid = false;
 
+	/**
+	 * Instantiates a new node create command.
+	 *
+	 * @param newNode
+	 *            the new node
+	 * @param container
+	 *            the container
+	 * @param bounds
+	 *            the bounds
+	 * @param editPart
+	 *            the edit part
+	 */
 	public NodeCreateCommand(AbstractModelElement newNode,
 			AbstractModelElement container, Rectangle bounds, EditPart editPart) {
 		if (newNode == null || container == null || bounds == null) {
@@ -74,12 +95,18 @@ public class NodeCreateCommand extends Command {
 		setLabel("add new node");
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canUndo() {
 		// TODO Auto-generated method stub
 		return super.canUndo();
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		if (newNode == null || container == null) {
@@ -93,6 +120,9 @@ public class NodeCreateCommand extends Command {
 		return f;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 		ele.setObjectId(newNode.getId());
@@ -251,6 +281,9 @@ public class NodeCreateCommand extends Command {
 
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void redo() {
 		if (canRedo) {
@@ -279,6 +312,9 @@ public class NodeCreateCommand extends Command {
 
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void undo() {
 		if (canRedo) {

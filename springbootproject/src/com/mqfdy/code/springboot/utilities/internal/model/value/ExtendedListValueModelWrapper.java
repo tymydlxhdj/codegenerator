@@ -22,12 +22,17 @@ import com.mqfdy.code.springboot.utilities.model.event.ListChangeEvent;
 import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * This wrapper extends a ListValueModel (or CollectionValueModel)
- * with fixed collections of items on either end.
+ * This wrapper extends a ListValueModel (or CollectionValueModel) with fixed
+ * collections of items on either end.
  * <p>
- * NB: Be careful using or wrapping this list value model, since the
- * "extended" items may be unexpected by the client code or wrapper.
+ * NB: Be careful using or wrapping this list value model, since the "extended"
+ * items may be unexpected by the client code or wrapper.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class ExtendedListValueModelWrapper<E>
 	extends ListValueModelWrapper<E>
@@ -44,6 +49,13 @@ public class ExtendedListValueModelWrapper<E>
 
 	/**
 	 * Extend the specified list with a prefix and suffix.
+	 *
+	 * @param prefix
+	 *            the prefix
+	 * @param listHolder
+	 *            the list holder
+	 * @param suffix
+	 *            the suffix
 	 */
 	public ExtendedListValueModelWrapper(List<? extends E> prefix, ListValueModel<? extends E> listHolder, List<? extends E> suffix) {
 		super(listHolder);
@@ -53,6 +65,13 @@ public class ExtendedListValueModelWrapper<E>
 
 	/**
 	 * Extend the specified list with a prefix and suffix.
+	 *
+	 * @param prefix
+	 *            the prefix
+	 * @param listHolder
+	 *            the list holder
+	 * @param suffix
+	 *            the suffix
 	 */
 	public ExtendedListValueModelWrapper(E prefix, ListValueModel<? extends E> listHolder, E suffix) {
 		super(listHolder);
@@ -62,6 +81,11 @@ public class ExtendedListValueModelWrapper<E>
 
 	/**
 	 * Extend the specified list with a prefix.
+	 *
+	 * @param prefix
+	 *            the prefix
+	 * @param listHolder
+	 *            the list holder
 	 */
 	public ExtendedListValueModelWrapper(List<? extends E> prefix, ListValueModel<? extends E> listHolder) {
 		super(listHolder);
@@ -71,6 +95,11 @@ public class ExtendedListValueModelWrapper<E>
 
 	/**
 	 * Extend the specified list with a prefix.
+	 *
+	 * @param prefix
+	 *            the prefix
+	 * @param listHolder
+	 *            the list holder
 	 */
 	public ExtendedListValueModelWrapper(E prefix, ListValueModel<? extends E> listHolder) {
 		super(listHolder);
@@ -80,6 +109,11 @@ public class ExtendedListValueModelWrapper<E>
 
 	/**
 	 * Extend the specified list with a suffix.
+	 *
+	 * @param listHolder
+	 *            the list holder
+	 * @param suffix
+	 *            the suffix
 	 */
 	public ExtendedListValueModelWrapper(ListValueModel<? extends E> listHolder, List<? extends E> suffix) {
 		super(listHolder);
@@ -89,6 +123,11 @@ public class ExtendedListValueModelWrapper<E>
 
 	/**
 	 * Extend the specified list with a suffix.
+	 *
+	 * @param listHolder
+	 *            the list holder
+	 * @param suffix
+	 *            the suffix
 	 */
 	public ExtendedListValueModelWrapper(ListValueModel<? extends E> listHolder, E suffix) {
 		super(listHolder);
@@ -98,6 +137,9 @@ public class ExtendedListValueModelWrapper<E>
 
 	/**
 	 * Extend the specified list with a prefix containing a single null item.
+	 *
+	 * @param listHolder
+	 *            the list holder
 	 */
 	public ExtendedListValueModelWrapper(ListValueModel<? extends E> listHolder) {
 		super(listHolder);
@@ -116,6 +158,13 @@ public class ExtendedListValueModelWrapper<E>
 		return new ReadOnlyListIterator<E>(this.listIterator_());
 	}
 
+	/**
+	 * List iterator.
+	 *
+	 * @author mqfdy
+	 * @return the list iterator
+	 * @Date 2018-09-03 09:00
+	 */
 	@SuppressWarnings("unchecked")
 	protected ListIterator<E> listIterator_() {
 		return new ReadOnlyCompositeListIterator<E>(
@@ -193,11 +242,27 @@ public class ExtendedListValueModelWrapper<E>
 
 	// ********** miscellaneous **********
 
+	/**
+	 * Sets the prefix.
+	 *
+	 * @author mqfdy
+	 * @param prefix
+	 *            the new prefix
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPrefix(List<E> prefix) {
 		this.prefix = prefix;
 		this.fireListChanged(LIST_VALUES);
 	}
 
+	/**
+	 * Sets the suffix.
+	 *
+	 * @author mqfdy
+	 * @param suffix
+	 *            the new suffix
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setSuffix(List<E> suffix) {
 		this.suffix = suffix;
 		this.fireListChanged(LIST_VALUES);

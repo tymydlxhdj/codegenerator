@@ -19,21 +19,44 @@ import com.mqfdy.code.model.IModelElement;
 import com.mqfdy.code.model.PKProperty;
 import com.mqfdy.code.model.Property;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BusinessClassFigure.
+ *
+ * @author mqfdy
  * @title:businessClass对象的界面
  * @description:
- * @author mqfdy
  */
 
 public class BusinessClassFigure extends NodeFigure {
+	
+	/** The x length. */
 	private int xLength = 0;
+	
+	/** The y length. */
 	private int yLength = 0;
+	
+	/** The name label. */
 	protected Label nameLabel;
+	
+	/** The pros figure. */
 	// protected Color bgColor;
 	protected Figure prosFigure;
+	
+	/** The opers figure. */
 	protected Figure opersFigure;
+	
+	/** The business class. */
 	private BusinessClass businessClass;
 
+	/**
+	 * Instantiates a new business class figure.
+	 *
+	 * @param name
+	 *            the name
+	 * @param businessClass
+	 *            the business class
+	 */
 	public BusinessClassFigure(String name, BusinessClass businessClass) {
 
 		// super();
@@ -47,6 +70,14 @@ public class BusinessClassFigure extends NodeFigure {
 		paintFigure(name, businessClass);
 	}
 
+	/**
+	 * Paint figure.
+	 *
+	 * @author mqfdy
+	 * @param g
+	 *            the g
+	 * @Date 2018-09-03 09:00
+	 */
 	public void paintFigure(Graphics g) {
 		super.paintFigure(g);
 		if (g != null) {
@@ -70,6 +101,16 @@ public class BusinessClassFigure extends NodeFigure {
 		}
 	}
 
+	/**
+	 * Paint figure.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @param businessClass
+	 *            the business class
+	 * @Date 2018-09-03 09:00
+	 */
 	public void paintFigure(String name, BusinessClass businessClass) {
 		// 内置模型
 		Label bu = new Label("<<built-in>>");
@@ -148,9 +189,11 @@ public class BusinessClassFigure extends NodeFigure {
 
 	/**
 	 * Set the name of the class or interface.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param newName
 	 *            The new name.
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setName(String newName) {
 		if (nameLabel == null) {
@@ -162,23 +205,27 @@ public class BusinessClassFigure extends NodeFigure {
 	}
 
 	/**
-	 * Return the name of class or interface
-	 * 
+	 * Return the name of class or interface.
+	 *
+	 * @author mqfdy
 	 * @return the text of the nameLabel
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getName() {
 		return nameLabel.getText();
 	}
 
 	/**
-	 * Adds a new Figure with the given constraints to the TableFigure
-	 * 
+	 * Adds a new Figure with the given constraints to the TableFigure.
+	 *
+	 * @author mqfdy
 	 * @param figure
 	 *            the figure to be added
 	 * @param constraint
 	 *            the constraint used on the figure
 	 * @param index
 	 *            index of insertion
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void add(IFigure figure, Object constraint, int index) {
@@ -195,9 +242,11 @@ public class BusinessClassFigure extends NodeFigure {
 	 * Remove a subfigure from its parent. If subfigure is ColumnFigure
 	 * remove-action is performed here. Otherwise the remove action is performed
 	 * in NodeFigure.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param figure
 	 *            the figure to be removed
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void remove(IFigure figure) {
@@ -211,13 +260,18 @@ public class BusinessClassFigure extends NodeFigure {
 
 	/**
 	 * Return nameLabel of the TableFigure.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return Returns the nameLabel.
+	 * @Date 2018-09-03 09:00
 	 */
 	public Label getNameLabel() {
 		return nameLabel;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void emptyFigure() {
 

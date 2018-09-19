@@ -11,15 +11,23 @@ import com.mqfdy.code.designer.editor.commands.CreateBendpointCommand;
 import com.mqfdy.code.designer.editor.commands.DeleteBendpointCommand;
 import com.mqfdy.code.designer.editor.commands.MoveBendpointCommand;
 import com.mqfdy.code.designer.editor.part.OmConnectionEditPart;
+// TODO: Auto-generated Javadoc
+
 /**
- * 连线拐点的 编辑策略
- * @author mqfdy
+ * 连线拐点的 编辑策略.
  *
+ * @author mqfdy
  */
 public class ConnectionBendPointEditPolicy extends BendpointEditPolicy {
 
 	/**
-	 * 创建
+	 * 创建.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @return the creates the bendpoint command
+	 * @Date 2018-09-03 09:00
 	 */
 	protected Command getCreateBendpointCommand(BendpointRequest request) {
 		CreateBendpointCommand cmd = new CreateBendpointCommand();
@@ -42,7 +50,13 @@ public class ConnectionBendPointEditPolicy extends BendpointEditPolicy {
 	}
 
 	/**
-	 * 删除
+	 * 删除.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @return the delete bendpoint command
+	 * @Date 2018-09-03 09:00
 	 */
 	protected Command getDeleteBendpointCommand(BendpointRequest request) {
 		BendpointCommand cmd = new DeleteBendpointCommand();
@@ -53,7 +67,13 @@ public class ConnectionBendPointEditPolicy extends BendpointEditPolicy {
 	}
 
 	/**
-	 * 移动
+	 * 移动.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @return the move bendpoint command
+	 * @Date 2018-09-03 09:00
 	 */
 	protected Command getMoveBendpointCommand(BendpointRequest request) {
 		Point p = request.getLocation();
@@ -75,6 +95,14 @@ public class ConnectionBendPointEditPolicy extends BendpointEditPolicy {
 		return cmd;
 	}
 
+	/**
+	 * Show move bendpoint feedback.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void showMoveBendpointFeedback(BendpointRequest request) {
 		// TODO Auto-generated method stub

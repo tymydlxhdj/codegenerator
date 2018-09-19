@@ -34,21 +34,45 @@ import com.mqfdy.code.resource.validator.ValiResult;
 import com.mqfdy.code.resource.validator.Validator;
 import com.mqfdy.code.resource.validator.ValidatorContext;
 
+// TODO: Auto-generated Javadoc
 /**
- * 模型校验
- * 
+ * 模型校验.
+ *
  * @author mqfdy
- * 
  */
 public class ModelValidatePopAction implements IObjectActionDelegate,
 		ValidatorContext {
+	
+	/** The Constant ERROR. */
 	final static String ERROR = "error";
+	
+	/** The Constant INFO. */
 	final static String INFO = "info";
+	
+	/** The selection. */
 	private StructuredSelection selection = null;
 
+	/**
+	 * Sets the active part.
+	 *
+	 * @author mqfdy
+	 * @param action
+	 *            the action
+	 * @param targetPart
+	 *            the target part
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
 	}
 
+	/**
+	 * Run.
+	 *
+	 * @author mqfdy
+	 * @param action
+	 *            the action
+	 * @Date 2018-09-03 09:00
+	 */
 	public void run(IAction action) {
 		// 用户没做选择，则直接返回
 		if (this.selection == null) {
@@ -119,12 +143,32 @@ public class ModelValidatePopAction implements IObjectActionDelegate,
 		}
 	}
 
+	/**
+	 * Selection changed.
+	 *
+	 * @author mqfdy
+	 * @param action
+	 *            the action
+	 * @param selection
+	 *            the selection
+	 * @Date 2018-09-03 09:00
+	 */
 	public void selectionChanged(IAction action, ISelection selection) {
 		if (selection instanceof StructuredSelection) {
 			this.selection = (StructuredSelection) selection;
 		}
 	}
 
+	/**
+	 * Prints the to console.
+	 *
+	 * @author mqfdy
+	 * @param mesg
+	 *            the mesg
+	 * @param type
+	 *            the type
+	 * @Date 2018-09-03 09:00
+	 */
 	public void printToConsole(String mesg, String type) {
 		if (type.equals(INFO))
 			ConsoleFactory.printToConsole(mesg, true, false);// 黑色

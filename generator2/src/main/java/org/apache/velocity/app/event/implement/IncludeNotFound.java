@@ -26,6 +26,7 @@ import org.apache.velocity.util.ContextAware;
 import org.apache.velocity.util.RuntimeServicesAware;
 import org.apache.velocity.util.StringUtils;
 
+// TODO: Auto-generated Javadoc
 /**
  * Simple event handler that checks to see if an included page is available.
  * If not, it includes a designated replacement page instead.
@@ -51,22 +52,36 @@ import org.apache.velocity.util.StringUtils;
  */
 public class IncludeNotFound implements IncludeEventHandler,RuntimeServicesAware,ContextAware {
 
+    /** The Constant DEFAULT_NOT_FOUND. */
     private static final String DEFAULT_NOT_FOUND = "notfound.vm";
+    
+    /** The Constant PROPERTY_NOT_FOUND. */
     private static final String PROPERTY_NOT_FOUND = "eventhandler.include.notfound";
+    
+    /** The rs. */
     private RuntimeServices rs = null;
+    
+    /** The notfound. */
     String notfound;
+    
+    /** The context. */
     Context context;
 
     /**
-     * Chseck to see if included file exists, and display "not found" page if it
-     * doesn't. If "not found" page does not exist, log an error and return
-     * null.
-     * 
-     * @param includeResourcePath
-     * @param currentResourcePath
-     * @param directiveName
-     * @return message.
-     */
+	 * Chseck to see if included file exists, and display "not found" page if it
+	 * doesn't. If "not found" page does not exist, log an error and return
+	 * null.
+	 *
+	 * @author mqfdy
+	 * @param includeResourcePath
+	 *            the include resource path
+	 * @param currentResourcePath
+	 *            the current resource path
+	 * @param directiveName
+	 *            the directive name
+	 * @return message.
+	 * @Date 2018-9-3 11:38:29
+	 */
     public String includeEvent(
         String includeResourcePath,
         String currentResourcePath,
@@ -99,17 +114,25 @@ public class IncludeNotFound implements IncludeEventHandler,RuntimeServicesAware
 
 
     /**
-     * @see org.apache.velocity.util.RuntimeServicesAware#setRuntimeServices(org.apache.velocity.runtime.RuntimeServices)
-     */
+	 * Sets the runtime services.
+	 *
+	 * @param rs
+	 *            the new runtime services
+	 * @see org.apache.velocity.util.RuntimeServicesAware#setRuntimeServices(org.apache.velocity.runtime.RuntimeServices)
+	 */
     public void setRuntimeServices(RuntimeServices rs)
     {
          this.rs = rs;
          notfound = StringUtils.nullTrim(rs.getString(PROPERTY_NOT_FOUND, DEFAULT_NOT_FOUND));
     }
 
-    /** 
-     * @see org.apache.velocity.util.ContextAware#setContext(org.apache.velocity.context.Context)
-     */ 
+    /**
+	 * 
+	 *
+	 * @param context
+	 *            the new context
+	 * @see org.apache.velocity.util.ContextAware#setContext(org.apache.velocity.context.Context)
+	 */ 
     public void setContext(Context context)
     {
         this.context = context;

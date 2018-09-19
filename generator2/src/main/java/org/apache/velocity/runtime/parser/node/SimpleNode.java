@@ -34,66 +34,85 @@ import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.runtime.parser.Parser;
 import org.apache.velocity.runtime.parser.Token;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class SimpleNode.
  *
+ * @author mqfdy
  */
 public class SimpleNode implements Node
 {
-    /** */
+    
+    /** The rsvc. */
     protected RuntimeServices rsvc = null;
 
-    /** */
+    /** The log. */
     protected Log log = null;
 
-    /** */
+    /** The parent. */
     protected Node parent;
 
-    /** */
+    /** The children. */
     protected Node[] children;
 
-    /** */
+    /** The id. */
     protected int id;
 
-    /** */
+    /** The parser. */
     // TODO - It seems that this field is only valid when parsing, and should not be kept around.    
     protected Parser parser;
 
-    /** */
+    /** The info. */
     protected int info; // added
 
-    /** */
+    /** The state. */
     public boolean state;
 
-    /** */
+    /** The invalid. */
     protected boolean invalid = false;
 
-    /** */
+    /** The first. */
     protected Token first;
 
-    /** */
+    /** The last. */
     protected Token last;
     
     
+    /** The template name. */
     protected String templateName;
 
     
+    /**
+	 * Gets the runtime services.
+	 *
+	 * @author mqfdy
+	 * @return the runtime services
+	 * @Date 2018-09-03 09:00
+	 */
     public RuntimeServices getRuntimeServices()
     {
       return rsvc;
     }
     
     /**
-     * @param i
-     */
+	 * Instantiates a new simple node.
+	 *
+	 * @param i
+	 *            the i
+	 */
     public SimpleNode(int i)
     {
         id = i;
     }
 
     /**
-     * @param p
-     * @param i
-     */
+	 * Instantiates a new simple node.
+	 *
+	 * @param p
+	 *            the p
+	 * @param i
+	 *            the i
+	 */
     public SimpleNode(Parser p, int i)
     {
         this(i);
@@ -102,64 +121,93 @@ public class SimpleNode implements Node
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#jjtOpen()
-     */
+	 * Jjt open.
+	 *
+	 * @see org.apache.velocity.runtime.parser.node.Node#jjtOpen()
+	 */
     public void jjtOpen()
     {
         first = parser.getToken(1); // added
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#jjtClose()
-     */
+	 * Jjt close.
+	 *
+	 * @see org.apache.velocity.runtime.parser.node.Node#jjtClose()
+	 */
     public void jjtClose()
     {
         last = parser.getToken(0); // added
     }
 
     /**
-     * @param t
-     */
+	 * Sets the first token.
+	 *
+	 * @author mqfdy
+	 * @param t
+	 *            the new first token
+	 * @Date 2018-09-03 09:00
+	 */
     public void setFirstToken(Token t)
     {
         this.first = t;
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#getFirstToken()
-     */
+	 * Gets the first token.
+	 *
+	 * @return the first token
+	 * @see org.apache.velocity.runtime.parser.node.Node#getFirstToken()
+	 */
     public Token getFirstToken()
     {
         return first;
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#getLastToken()
-     */
+	 * Gets the last token.
+	 *
+	 * @return the last token
+	 * @see org.apache.velocity.runtime.parser.node.Node#getLastToken()
+	 */
     public Token getLastToken()
     {
         return last;
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#jjtSetParent(org.apache.velocity.runtime.parser.node.Node)
-     */
+	 * Jjt set parent.
+	 *
+	 * @param n
+	 *            the n
+	 * @see org.apache.velocity.runtime.parser.node.Node#jjtSetParent(org.apache.velocity.runtime.parser.node.Node)
+	 */
     public void jjtSetParent(Node n)
     {
         parent = n;
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#jjtGetParent()
-     */
+	 * Jjt get parent.
+	 *
+	 * @return the node
+	 * @see org.apache.velocity.runtime.parser.node.Node#jjtGetParent()
+	 */
     public Node jjtGetParent()
     {
         return parent;
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#jjtAddChild(org.apache.velocity.runtime.parser.node.Node, int)
-     */
+	 * Jjt add child.
+	 *
+	 * @param n
+	 *            the n
+	 * @param i
+	 *            the i
+	 * @see org.apache.velocity.runtime.parser.node.Node#jjtAddChild(org.apache.velocity.runtime.parser.node.Node,
+	 *      int)
+	 */
     public void jjtAddChild(Node n, int i)
     {
         if (children == null)
@@ -176,16 +224,24 @@ public class SimpleNode implements Node
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#jjtGetChild(int)
-     */
+	 * Jjt get child.
+	 *
+	 * @param i
+	 *            the i
+	 * @return the node
+	 * @see org.apache.velocity.runtime.parser.node.Node#jjtGetChild(int)
+	 */
     public Node jjtGetChild(int i)
     {
         return children[i];
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#jjtGetNumChildren()
-     */
+	 * Jjt get num children.
+	 *
+	 * @return the int
+	 * @see org.apache.velocity.runtime.parser.node.Node#jjtGetNumChildren()
+	 */
     public int jjtGetNumChildren()
     {
         return (children == null) ? 0 : children.length;
@@ -193,8 +249,16 @@ public class SimpleNode implements Node
 
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.Node#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
@@ -202,8 +266,16 @@ public class SimpleNode implements Node
 
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#childrenAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Children accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.Node#childrenAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object childrenAccept(ParserVisitor visitor, Object data)
     {
         if (children != null)
@@ -227,20 +299,28 @@ public class SimpleNode implements Node
     //    return ParserTreeConstants.jjtNodeName[id];
     // }
     /**
-     * @param prefix
-     * @return String representation of this node.
-     */
+	 * To string.
+	 *
+	 * @author mqfdy
+	 * @param prefix
+	 *            the prefix
+	 * @return String representation of this node.
+	 * @Date 2018-09-03 09:00
+	 */
     public String toString(String prefix)
     {
         return prefix + toString();
     }
 
     /**
-     * Override this method if you want to customize how the node dumps
-     * out its children.
-     *
-     * @param prefix
-     */
+	 * Override this method if you want to customize how the node dumps out its
+	 * children.
+	 *
+	 * @author mqfdy
+	 * @param prefix
+	 *            the prefix
+	 * @Date 2018-09-03 09:00
+	 */
     public void dump(String prefix)
     {
         System.out.println(toString(prefix));
@@ -258,8 +338,14 @@ public class SimpleNode implements Node
     }
 
     /**
-     * Return a string that tells the current location of this node.
-     */
+	 * Return a string that tells the current location of this node.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @return the location
+	 * @Date 2018-09-03 09:00
+	 */
     protected String getLocation(InternalContextAdapter context)
     {
         return Log.formatFileString(this);
@@ -268,8 +354,11 @@ public class SimpleNode implements Node
     // All additional methods
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#literal()
-     */
+	 * Literal.
+	 *
+	 * @return the string
+	 * @see org.apache.velocity.runtime.parser.node.Node#literal()
+	 */
     public String literal()
     {
         // if we have only one string, just return it and avoid
@@ -290,9 +379,18 @@ public class SimpleNode implements Node
     }
 
     /**
-     * @throws TemplateInitException 
-     * @see org.apache.velocity.runtime.parser.node.Node#init(org.apache.velocity.context.InternalContextAdapter, java.lang.Object)
-     */
+	 * Inits the.
+	 *
+	 * @param context
+	 *            the context
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @see org.apache.velocity.runtime.parser.node.Node#init(org.apache.velocity.context.InternalContextAdapter,
+	 *      java.lang.Object)
+	 */
     public Object init( InternalContextAdapter context, Object data) throws TemplateInitException
     {
         /*
@@ -313,8 +411,15 @@ public class SimpleNode implements Node
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#evaluate(org.apache.velocity.context.InternalContextAdapter)
-     */
+	 * Evaluate.
+	 *
+	 * @param context
+	 *            the context
+	 * @return true, if successful
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @see org.apache.velocity.runtime.parser.node.Node#evaluate(org.apache.velocity.context.InternalContextAdapter)
+	 */
     public boolean evaluate( InternalContextAdapter  context)
         throws MethodInvocationException
     {
@@ -322,8 +427,15 @@ public class SimpleNode implements Node
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#value(org.apache.velocity.context.InternalContextAdapter)
-     */
+	 * Value.
+	 *
+	 * @param context
+	 *            the context
+	 * @return the object
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @see org.apache.velocity.runtime.parser.node.Node#value(org.apache.velocity.context.InternalContextAdapter)
+	 */
     public Object value( InternalContextAdapter context)
         throws MethodInvocationException
     {
@@ -331,8 +443,24 @@ public class SimpleNode implements Node
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#render(org.apache.velocity.context.InternalContextAdapter, java.io.Writer)
-     */
+	 * Render.
+	 *
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @return true, if successful
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @see org.apache.velocity.runtime.parser.node.Node#render(org.apache.velocity.context.InternalContextAdapter,
+	 *      java.io.Writer)
+	 */
     public boolean render( InternalContextAdapter context, Writer writer)
         throws IOException, MethodInvocationException, ParseErrorException, ResourceNotFoundException
     {
@@ -345,8 +473,18 @@ public class SimpleNode implements Node
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#execute(java.lang.Object, org.apache.velocity.context.InternalContextAdapter)
-     */
+	 * Execute.
+	 *
+	 * @param o
+	 *            the o
+	 * @param context
+	 *            the context
+	 * @return the object
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @see org.apache.velocity.runtime.parser.node.Node#execute(java.lang.Object,
+	 *      org.apache.velocity.context.InternalContextAdapter)
+	 */
     public Object execute(Object o, InternalContextAdapter context)
       throws MethodInvocationException
     {
@@ -354,64 +492,88 @@ public class SimpleNode implements Node
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#getType()
-     */
+	 * Gets the type.
+	 *
+	 * @return the type
+	 * @see org.apache.velocity.runtime.parser.node.Node#getType()
+	 */
     public int getType()
     {
         return id;
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#setInfo(int)
-     */
+	 * Sets the info.
+	 *
+	 * @param info
+	 *            the new info
+	 * @see org.apache.velocity.runtime.parser.node.Node#setInfo(int)
+	 */
     public void setInfo(int info)
     {
         this.info = info;
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#getInfo()
-     */
+	 * Gets the info.
+	 *
+	 * @return the info
+	 * @see org.apache.velocity.runtime.parser.node.Node#getInfo()
+	 */
     public int getInfo()
     {
         return info;
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#setInvalid()
-     */
+	 * Sets the invalid.
+	 *
+	 * @see org.apache.velocity.runtime.parser.node.Node#setInvalid()
+	 */
     public void setInvalid()
     {
         invalid = true;
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#isInvalid()
-     */
+	 * Checks if is invalid.
+	 *
+	 * @return true, if is invalid
+	 * @see org.apache.velocity.runtime.parser.node.Node#isInvalid()
+	 */
     public boolean isInvalid()
     {
         return invalid;
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#getLine()
-     */
+	 * Gets the line.
+	 *
+	 * @return the line
+	 * @see org.apache.velocity.runtime.parser.node.Node#getLine()
+	 */
     public int getLine()
     {
         return first.beginLine;
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#getColumn()
-     */
+	 * Gets the column.
+	 *
+	 * @return the column
+	 * @see org.apache.velocity.runtime.parser.node.Node#getColumn()
+	 */
     public int getColumn()
     {
         return first.beginColumn;
     }
     
     /**
-     * @since 1.5
-     */
+	 * To string.
+	 *
+	 * @return the string
+	 * @since 1.5
+	 */
     public String toString()
     {
         StrBuilder tokens = new StrBuilder();
@@ -442,6 +604,10 @@ public class SimpleNode implements Node
             .toString();
     }
 
+    /**
+     * @see org.apache.velocity.runtime.parser.node.Node#getTemplateName()
+     * @return SimpleNode
+     */
     public String getTemplateName()
     {
       return templateName;

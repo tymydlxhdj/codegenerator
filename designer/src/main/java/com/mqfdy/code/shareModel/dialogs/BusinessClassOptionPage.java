@@ -44,16 +44,30 @@ import com.mqfdy.code.model.BusinessClass;
 import com.mqfdy.code.model.BusinessOperation;
 import com.mqfdy.code.shareModel.providers.DataGridLabelProvider;
 import com.mqfdy.code.shareModel.providers.DataGridTableContentProvider;
+// TODO: Auto-generated Javadoc
+
 /**
- * 业务实体操作tab页
- * @author mqfdy
+ * 业务实体操作tab页.
  *
+ * @author mqfdy
  */
 public class BusinessClassOptionPage extends Composite{
+	
+	/** The table viewer. */
 	private TableViewer tableViewer;
+	
+	/** The table. */
 	public Table table;
+	
+	/** The table group. */
 	private Group tableGroup;
 
+	/**
+	 * Instantiates a new business class option page.
+	 *
+	 * @param parent
+	 *            the parent
+	 */
 	public BusinessClassOptionPage(Composite parent) {
 		super(parent, SWT.NONE);
 		createContents(this);
@@ -61,8 +75,12 @@ public class BusinessClassOptionPage extends Composite{
 	
 
 	/**
-	 * 创建界面
+	 * 创建界面.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createContents(Composite composite) {
 			composite.setLayout(new GridLayout(1,false));			
@@ -70,6 +88,14 @@ public class BusinessClassOptionPage extends Composite{
 	}
 
 
+	/**
+	 * Creates the table group.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createTableGroup(Composite composite) {
 		tableGroup=new Group(composite,SWT.None);
 		GridLayout layout2=new GridLayout(1,false);
@@ -101,8 +127,12 @@ public class BusinessClassOptionPage extends Composite{
 	}
 
 	/**
-	 * 初始化业务实体的操作信息
+	 * 初始化业务实体的操作信息.
+	 *
+	 * @author mqfdy
 	 * @param obj
+	 *            the obj
+	 * @Date 2018-09-03 09:00
 	 */
 	public void initOptionInfoPage(Object obj) {
 		BusinessClass bs=(BusinessClass)obj;

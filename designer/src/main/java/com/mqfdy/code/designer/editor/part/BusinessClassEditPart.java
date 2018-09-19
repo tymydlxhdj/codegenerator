@@ -32,17 +32,33 @@ import com.mqfdy.code.model.IModelElement;
 import com.mqfdy.code.model.graph.DiagramElement;
 import com.mqfdy.code.model.graph.ElementStyle;
 
+// TODO: Auto-generated Javadoc
 /**
- * 透视图中业务实体的控制器
- * 
+ * 透视图中业务实体的控制器.
+ *
  * @author mqfdy
- * 
  */
 public class BusinessClassEditPart extends NodeEditPart {
+	
+	/** The business class. */
 	BusinessClass businessClass;
 
+	/** The model element. */
 	DiagramElement modelElement;
+	
+	/** The business object model. */
 	BusinessObjectModel businessObjectModel;
+	
+	/**
+	 * Instantiates a new business class edit part.
+	 *
+	 * @param bu
+	 *            the bu
+	 * @param modelElement
+	 *            the model element
+	 * @param businessObjectModel
+	 *            the business object model
+	 */
 	public BusinessClassEditPart(BusinessClass bu, DiagramElement modelElement,
 			BusinessObjectModel businessObjectModel) {
 		super(modelElement);
@@ -51,10 +67,20 @@ public class BusinessClassEditPart extends NodeEditPart {
 		this.businessObjectModel = businessObjectModel;
 	}
 
+	/**
+	 * Gets the business class.
+	 *
+	 * @author mqfdy
+	 * @return the business class
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessClass getBusinessClass() {
 		return businessClass;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected IFigure createFigure() {
 		// NodeModelElement classEl = getCastedModel();
@@ -67,6 +93,9 @@ public class BusinessClassEditPart extends NodeEditPart {
 		return figure;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void activate() {
 		if (!isActive()) {
@@ -75,6 +104,9 @@ public class BusinessClassEditPart extends NodeEditPart {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void deactivate() {
 		if (isActive()) {
@@ -84,7 +116,12 @@ public class BusinessClassEditPart extends NodeEditPart {
 	}
 
 	/**
-	 * 执行用户请求 点击透视图中的对象时，执行该方法 同时创建窗口
+	 * 执行用户请求 点击透视图中的对象时，执行该方法 同时创建窗口.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void performRequest(final Request request) {
@@ -114,13 +151,20 @@ public class BusinessClassEditPart extends NodeEditPart {
 	}
 
 	/**
-	 * 取得模型DiagramElement
+	 * 取得模型DiagramElement.
+	 *
+	 * @author mqfdy
+	 * @return the casted model
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	protected AbstractModelElement getCastedModel() {
 		return (AbstractModelElement) getModel();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void refreshVisuals() {
 		if (modelElement != null) {
@@ -139,7 +183,10 @@ public class BusinessClassEditPart extends NodeEditPart {
 	}
 
 	/**
-	 * 重新绘制界面对象
+	 * 重新绘制界面对象.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void repaintFigure() {
@@ -153,6 +200,14 @@ public class BusinessClassEditPart extends NodeEditPart {
 		c.paintFigure(name, businessClass);
 	}
 
+	/**
+	 * Property change.
+	 *
+	 * @author mqfdy
+	 * @param evt
+	 *            the evt
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		String propertyId = evt.getPropertyName();
@@ -170,6 +225,9 @@ public class BusinessClassEditPart extends NodeEditPart {
 
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void createEditPolicies() {
 		super.createEditPolicies();

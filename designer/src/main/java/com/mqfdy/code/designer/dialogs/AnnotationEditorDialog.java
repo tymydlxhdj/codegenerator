@@ -18,33 +18,43 @@ import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.model.AbstractModelElement;
 import com.mqfdy.code.model.Annotation;
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务类编辑弹出框(用于新增和编辑)
- * 
+ * 业务类编辑弹出框(用于新增和编辑).
+ *
  * @author mqfdy
- * 
  */
 public class AnnotationEditorDialog extends TrayDialog {
 
+	/** The Constant DIALOG_TITLE_ADD. */
 	public static final String DIALOG_TITLE_ADD = "创建注释";
+	
+	/** The Constant DIALOG_TITLE_EDIT. */
 	public static final String DIALOG_TITLE_EDIT = "修改注释";
 
+	/** The annotation copy. */
 	private Annotation annotationCopy;
 
+	/** The content text. */
 	private Text contentText;
 
-	/**
-	 * 从组件面板创建
-	 */
+	/** 从组件面板创建. */
 	private boolean  createFromPlatter = false;
+	
+	/** The is chaged. */
 	protected boolean isChaged = false;
+	
+	/** The operation type. */
 	private Object operationType;
+	
+	/** The ok but. */
 	private Button okBut;
 
 	/**
-	 * 新增业务类时构造函数
-	 * 
+	 * 新增业务类时构造函数.
+	 *
 	 * @param parentShell
+	 *            the parent shell
 	 * @param parent
 	 *            父节点
 	 */
@@ -54,9 +64,10 @@ public class AnnotationEditorDialog extends TrayDialog {
 	}
 
 	/**
-	 * 编辑业务类时构造函数
-	 * 
+	 * 编辑业务类时构造函数.
+	 *
 	 * @param parentShell
+	 *            the parent shell
 	 * @param editingElement
 	 *            编辑的对象
 	 * @param parent
@@ -68,6 +79,19 @@ public class AnnotationEditorDialog extends TrayDialog {
 		this.annotationCopy = (Annotation) editingElement;
 		this.operationType = ModelElementEditorDialog.OPERATION_TYPE_EDIT;
 	}
+	
+	/**
+	 * Instantiates a new annotation editor dialog.
+	 *
+	 * @param createFromPlatter
+	 *            the create from platter
+	 * @param parentShell
+	 *            the parent shell
+	 * @param editingElement
+	 *            the editing element
+	 * @param parent
+	 *            the parent
+	 */
 	public AnnotationEditorDialog(boolean createFromPlatter,Shell parentShell,
 			AbstractModelElement editingElement, AbstractModelElement parent) {
 		super(parentShell);
@@ -75,10 +99,26 @@ public class AnnotationEditorDialog extends TrayDialog {
 		this.annotationCopy = (Annotation) editingElement;
 		this.operationType = ModelElementEditorDialog.OPERATION_TYPE_ADD;
 	}
+	
+	/**
+	 * Instantiates a new annotation editor dialog.
+	 *
+	 * @param shell
+	 *            the shell
+	 */
 	public AnnotationEditorDialog(Shell shell) {
 		super(shell);
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createDialogArea(Composite composite) {
 		// 初始化窗口
 		GridLayout gridLayout = new GridLayout(1, true);
@@ -103,7 +143,12 @@ public class AnnotationEditorDialog extends TrayDialog {
 	}
 
 	/**
-	 * 操作按钮
+	 * 操作按钮.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void createButtonsForButtonBar(Composite composite) {
 		okBut = createButton(composite, IDialogConstants.OK_ID,
@@ -127,13 +172,20 @@ public class AnnotationEditorDialog extends TrayDialog {
 		});
 	}
 
+	/**
+	 * 
+	 */
 	protected void okPressed() {
 		updateTheEditingElement();
 		super.okPressed();
 	}
 
 	/**
-	 * 验证输入数据是否合法
+	 * 验证输入数据是否合法.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean validateAllInput() {
 		boolean isOk = true;//basicInfoPage.validateInput();
@@ -145,12 +197,23 @@ public class AnnotationEditorDialog extends TrayDialog {
 	}
 
 	/**
-	 * 更新模型
+	 * 更新模型.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void updateTheEditingElement() {
 		((Annotation)annotationCopy).setContent(contentText.getText());
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		if (operationType.equals(ModelElementEditorDialog.OPERATION_TYPE_ADD)) {
@@ -165,7 +228,10 @@ public class AnnotationEditorDialog extends TrayDialog {
 	}
 
 	/**
-	 * 初始化弹出框控件的值
+	 * 初始化弹出框控件的值.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initControlValue() {
 
@@ -181,13 +247,31 @@ public class AnnotationEditorDialog extends TrayDialog {
 		contentText.setText(annotationCopy.getContent()== null ?"":annotationCopy.getContent());
 	}
 
+	/**
+	 * Gets the annotation copy.
+	 *
+	 * @author mqfdy
+	 * @return the annotation copy
+	 * @Date 2018-09-03 09:00
+	 */
 	public Annotation getAnnotationCopy() {
 		return annotationCopy;
 	}
+	
+	/**
+	 * Checks if is changed.
+	 *
+	 * @author mqfdy
+	 * @return true, if is changed
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isChanged() {
 		return this.isChaged;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected boolean isResizable() {
 		// TODO Auto-generated method stub

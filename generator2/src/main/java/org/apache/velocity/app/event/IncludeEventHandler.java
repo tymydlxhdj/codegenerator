@@ -3,6 +3,7 @@ package org.apache.velocity.app.event;
 import org.apache.velocity.context.Context;
 import org.apache.velocity.util.ContextAware;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -32,38 +33,66 @@ import org.apache.velocity.util.ContextAware;
  */
 public interface  IncludeEventHandler extends EventHandler
 {
+    
     /**
-     * Called when an include-type directive is encountered (
-     * <code>#include</code> or <code>#parse</code>). May modify the path
-     * of the resource to be included or may block the include entirely. All the
-     * registered IncludeEventHandlers are called unless null is returned. If
-     * none are registered the template at the includeResourcePath is retrieved.
-     *
-     * @param includeResourcePath  the path as given in the include directive.
-     * @param currentResourcePath the path of the currently rendering template that includes the
-     *            include directive.
-     * @param directiveName  name of the directive used to include the resource. (With the
-     *            standard directives this is either "parse" or "include").
-     *
-     * @return a new resource path for the directive, or null to block the
-     *         include from occurring.
-     */
+	 * Called when an include-type directive is encountered (
+	 * <code>#include</code> or <code>#parse</code>). May modify the path of the
+	 * resource to be included or may block the include entirely. All the
+	 * registered IncludeEventHandlers are called unless null is returned. If
+	 * none are registered the template at the includeResourcePath is retrieved.
+	 *
+	 * @author mqfdy
+	 * @param includeResourcePath
+	 *            the path as given in the include directive.
+	 * @param currentResourcePath
+	 *            the path of the currently rendering template that includes the
+	 *            include directive.
+	 * @param directiveName
+	 *            name of the directive used to include the resource. (With the
+	 *            standard directives this is either "parse" or "include").
+	 * @return a new resource path for the directive, or null to block the
+	 *         include from occurring.
+	 * @Date 2018-9-3 11:38:33
+	 */
     public String includeEvent( String includeResourcePath, String currentResourcePath, String directiveName );
 
 
 
     /**
-     * Defines the execution strategy for includeEvent
-     */
+	 * Defines the execution strategy for includeEvent.
+	 *
+	 * @author mqfdy
+	 */
     static class IncludeEventExecutor implements EventHandlerMethodExecutor
     {
+        
+        /** The context. */
         private Context context;
+        
+        /** The include resource path. */
         private String includeResourcePath;
+        
+        /** The current resource path. */
         private String currentResourcePath;
+        
+        /** The directive name. */
         private String directiveName;
         
+        /** The executed. */
         private boolean executed = false;
         
+        /**
+		 * Instantiates a new include event executor.
+		 *
+		 * @param context
+		 *            the context
+		 * @param includeResourcePath
+		 *            the include resource path
+		 * @param currentResourcePath
+		 *            the current resource path
+		 * @param directiveName
+		 *            the directive name
+		 */
         IncludeEventExecutor(
                 Context context, 
                 String includeResourcePath,
@@ -77,10 +106,14 @@ public interface  IncludeEventHandler extends EventHandler
         }
 
         /**
-         * Call the method includeEvent()
-         *  
-         * @param handler call the appropriate method on this handler
-         */
+		 * Call the method includeEvent()
+		 * 
+		 *
+		 * @author mqfdy
+		 * @param handler
+		 *            call the appropriate method on this handler
+		 * @Date 2018-9-3 11:38:33
+		 */
         public void execute(EventHandler handler)
         {
             IncludeEventHandler eh = (IncludeEventHandler) handler;
@@ -93,11 +126,19 @@ public interface  IncludeEventHandler extends EventHandler
                 .includeEvent(includeResourcePath, currentResourcePath, directiveName); 
         }
 
+        /**
+         * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
+         * @return IncludeEventExecutor
+         */
         public Object getReturnValue()
         {
             return includeResourcePath;
         }
 
+        /**
+         * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#isDone()
+         * @return IncludeEventExecutor
+         */
         public boolean isDone()
         {
             return executed && (includeResourcePath == null);

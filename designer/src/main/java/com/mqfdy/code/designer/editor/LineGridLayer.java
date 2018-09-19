@@ -8,6 +8,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.SnapToGrid;
 import org.eclipse.swt.graphics.Color;
 
+// TODO: Auto-generated Javadoc
 /**
  * 重载org.eclipse.gef.editparts.GridLayer，改变线条颜色
  * 
@@ -17,7 +18,7 @@ import org.eclipse.swt.graphics.Color;
 public class LineGridLayer extends org.eclipse.gef.editparts.GridLayer {
 
 	/**
-	 * Field indicating the horizontal grid spacing
+	 * Field indicating the horizontal grid spacing.
 	 */
 	// protected int gridX = SnapToGrid.DEFAULT_GRID_SIZE;
 	/**
@@ -41,6 +42,10 @@ public class LineGridLayer extends org.eclipse.gef.editparts.GridLayer {
 	}
 
 	/**
+	 * Paint figure.
+	 *
+	 * @param graphics
+	 *            the graphics
 	 * @see org.eclipse.draw2d.Figure#paintFigure(org.eclipse.draw2d.Graphics)
 	 */
 	protected void paintFigure(Graphics graphics) {
@@ -63,6 +68,22 @@ public class LineGridLayer extends org.eclipse.gef.editparts.GridLayer {
 		paintGrid(g, this, origin, gridX, gridY);
 	}
 
+	/**
+	 * Paint grid.
+	 *
+	 * @author mqfdy
+	 * @param g
+	 *            the g
+	 * @param f
+	 *            the f
+	 * @param origin
+	 *            the origin
+	 * @param distanceX
+	 *            the distance X
+	 * @param distanceY
+	 *            the distance Y
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void paintGrid(Graphics g, IFigure f,
 			org.eclipse.draw2d.geometry.Point origin, int distanceX,
 			int distanceY) {

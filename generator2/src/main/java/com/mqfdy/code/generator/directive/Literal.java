@@ -28,6 +28,7 @@ import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.runtime.directive.Directive;
 import org.apache.velocity.runtime.parser.node.Node;
 
+// TODO: Auto-generated Javadoc
 /**
  * A very simple directive that leverages the Node.literal()
  * to grab the literal rendition of a node. We basically
@@ -42,43 +43,61 @@ import org.apache.velocity.runtime.parser.node.Node;
  */
 public class Literal extends Directive
 {
+    
+    /** The literal text. */
     String literalText;
 
     /**
-     * Return name of this directive.
-     * @return The name of this directive.
-     */
+	 * Return name of this directive.
+	 *
+	 * @author mqfdy
+	 * @return The name of this directive.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public String getName()
     {
         return "literal";
     }
 
     /**
-     * Return type of this directive.
-     * @return The type of this directive.
-     */
+	 * Return type of this directive.
+	 *
+	 * @author mqfdy
+	 * @return The type of this directive.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public int getType()
     {
         return BLOCK;
     }
 
     /**
-     * Since there is no processing of content,
-     * there is never a need for an internal scope.
-     */
+	 * Since there is no processing of content, there is never a need for an
+	 * internal scope.
+	 *
+	 * @author mqfdy
+	 * @return true, if is scope provided
+	 * @Date 2018-9-3 11:38:31
+	 */
     public boolean isScopeProvided()
     {
         return false;
     }
 
     /**
-     * Store the literal rendition of a node using
-     * the Node.literal().
-     * @param rs
-     * @param context
-     * @param node
-     * @throws TemplateInitException
-     */
+	 * Store the literal rendition of a node using the Node.literal().
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @param context
+	 *            the context
+	 * @param node
+	 *            the node
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @Date 2018-9-3 11:38:31
+	 */
     public void init(RuntimeServices rs, InternalContextAdapter context,
                      Node node)
         throws TemplateInitException
@@ -89,14 +108,21 @@ public class Literal extends Directive
     }
 
     /**
-     * Throw the literal rendition of the block between
-     * #literal()/#end into the writer.
-     * @param context
-     * @param writer
-     * @param node
-     * @return True if the directive rendered successfully.
-     * @throws IOException
-     */
+	 * Throw the literal rendition of the block between #literal()/#end into the
+	 * writer.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @param node
+	 *            the node
+	 * @return True if the directive rendered successfully.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public boolean render( InternalContextAdapter context,
                            Writer writer, Node node)
         throws IOException

@@ -1,6 +1,7 @@
 package com.mqfdy.code.springboot.core.generator;
 
 import org.eclipse.osgi.util.NLS;
+// TODO: Auto-generated Javadoc
 /**
  * 模板信息类
  * 
@@ -11,8 +12,10 @@ public class TemplateConstantMessages extends NLS {
 	
 	private static String BUNDLE_NAME = "com.mqfdy.code.springboot.core.generator.messages";
 	
+	/** The Constant GRADLE_PROJECT_TYPE. */
 	public final static String GRADLE_PROJECT_TYPE="gradle";
 	
+	/** The Constant MAVEN_PROJECT_TYPE. */
 	public final static String MAVEN_PROJECT_TYPE="maven";
 	/**
 	 * 启动类名称

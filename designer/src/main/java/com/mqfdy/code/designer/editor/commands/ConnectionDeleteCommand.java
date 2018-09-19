@@ -30,6 +30,7 @@ import com.mqfdy.code.model.IModelElement;
 import com.mqfdy.code.model.Inheritance;
 import com.mqfdy.code.model.graph.DiagramElement;
 
+// TODO: Auto-generated Javadoc
 /**
  * 删除连线
  * 
@@ -48,23 +49,33 @@ public class ConnectionDeleteCommand extends Command {
 	//
 	// private BusinessClass target;
 
+	/** The con edit part. */
 	private EditPart conEditPart;
+	
+	/** The target edit part. */
 	private EditPart targetEditPart;
+	
+	/** The source edit part. */
 	private EditPart sourceEditPart;
+	
+	/** The type. */
 	private String type;
 	// private List<RelationFigure> figureList = new
 	// ArrayList<RelationFigure>();
 
+	/** The re dia. */
 	private DiagramElement reDia;
 	
+	/** The is deleted. */
 	private boolean isDeleted = true;
 
 	/**
 	 * Create a command that will disconnect a connection from its endpoints.
-	 * 
+	 *
 	 * @param conn
 	 *            the connection instance to disconnect (non-null)
 	 * @param editPart
+	 *            the edit part
 	 * @throws IllegalArgumentException
 	 *             if conn is null
 	 */
@@ -90,6 +101,16 @@ public class ConnectionDeleteCommand extends Command {
 		this.connection = conn;
 	}
 
+	/**
+	 * Instantiates a new connection delete command.
+	 *
+	 * @param conn
+	 *            the conn
+	 * @param sourceEditPart
+	 *            the source edit part
+	 * @param targetEditPart
+	 *            the target edit part
+	 */
 	public ConnectionDeleteCommand(AbstractModelElement conn,
 			EditPart sourceEditPart, EditPart targetEditPart) {
 		if (conn == null) {
@@ -110,6 +131,9 @@ public class ConnectionDeleteCommand extends Command {
 		this.connection = conn;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 		redo();
@@ -117,6 +141,9 @@ public class ConnectionDeleteCommand extends Command {
 
 	
 	
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		if(conEditPart.getModel() instanceof Association
@@ -127,12 +154,18 @@ public class ConnectionDeleteCommand extends Command {
 		return super.canExecute();
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canUndo() {
 		// TODO Auto-generated method stub
 		return isDeleted;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void redo() {
 		// BusinessObjectModel businessObjectModel =
@@ -172,6 +205,9 @@ public class ConnectionDeleteCommand extends Command {
 
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void undo() {
 		// BusinessObjectModel businessObjectModel =

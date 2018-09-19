@@ -25,6 +25,7 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
+// TODO: Auto-generated Javadoc
 /**
  * Factory class for creating Maps.
  * 
@@ -39,6 +40,8 @@ import java.util.Map;
  */
 public class MapFactory
 {
+    
+    /** The concurrent hash map constructor. */
     private static Constructor concurrentHashMapConstructor;
     static
     {
@@ -55,36 +58,44 @@ public class MapFactory
     }
 
     /**
-     * Creates a new instance of a class that implements Map interface
-     * using the JDK defaults for initial size, load factor, etc.
-     * 
-     * Note that there is a small performance penalty because concurrent
-     * maps are created using reflection.
-     * 
-     * @param allowNullKeys if true, the returned Map instance supports null keys         
-     * @return one of ConcurrentHashMap, HashMap, Hashtable
-     */
+	 * Creates a new instance of a class that implements Map interface using the
+	 * JDK defaults for initial size, load factor, etc.
+	 * 
+	 * Note that there is a small performance penalty because concurrent maps
+	 * are created using reflection.
+	 *
+	 * @author mqfdy
+	 * @param allowNullKeys
+	 *            if true, the returned Map instance supports null keys
+	 * @return one of ConcurrentHashMap, HashMap, Hashtable
+	 * @Date 2018-9-3 11:38:38
+	 */
     public static Map create(boolean allowNullKeys)
     {
         return create(16, 0.75f, 16, allowNullKeys);
     }
 
     /**
-     * Creates a new instance of a class that implements Map interface.
-     * 
-     * Note that there is a small performance penalty because concurrent
-     * maps are created using reflection.
-     * 
-     * @param size initial size of the map
-     * @param loadFactor smaller value = better performance, 
-     *          larger value = better memory utilization
-     * @param concurrencyLevel estimated number of writer Threads. 
-     *          If this is smaller than 1, HashMap is always returned which is not 
-     *          threadsafe.
-     * @param allowNullKeys if true, the returned Map instance supports null keys         
-     *          
-     * @return one of ConcurrentHashMap, HashMap, Hashtable
-     */
+	 * Creates a new instance of a class that implements Map interface.
+	 * 
+	 * Note that there is a small performance penalty because concurrent maps
+	 * are created using reflection.
+	 *
+	 * @author mqfdy
+	 * @param size
+	 *            initial size of the map
+	 * @param loadFactor
+	 *            smaller value = better performance, larger value = better
+	 *            memory utilization
+	 * @param concurrencyLevel
+	 *            estimated number of writer Threads. If this is smaller than 1,
+	 *            HashMap is always returned which is not threadsafe.
+	 * @param allowNullKeys
+	 *            if true, the returned Map instance supports null keys
+	 * 
+	 * @return one of ConcurrentHashMap, HashMap, Hashtable
+	 * @Date 2018-9-3 11:38:38
+	 */
     public static Map create(int size, float loadFactor,
                              int concurrencyLevel, boolean allowNullKeys)
     {

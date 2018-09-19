@@ -59,45 +59,107 @@ import com.mqfdy.code.reverse.views.models.TreeModel;
 import com.mqfdy.code.reverse.views.providers.MultiTreeContentProvider;
 import com.mqfdy.code.reverse.views.providers.TreeLabelProvider;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class OmNameReverseStrategyPage.
+ *
+ * @author mqfdy
+ */
 public class OmNameReverseStrategyPage extends WizardPage{
+	
+	/** The Constant WIDTH. */
 	public static final int WIDTH = 600;
+	
+	/** The Constant TREE_WIDTH. */
 	public static final int TREE_WIDTH = 150;
+	
+	/** The Constant UPGROUP_HEIGHT. */
 	public static final int UPGROUP_HEIGHT = 300;
+	
+	/** The Constant DOWNGROUP_HEIGHT. */
 	public static final int DOWNGROUP_HEIGHT = 100;
 	
 //	public static final String ASSOCIATION = "关联关系";
 	
-	private TreeViewer dbTreeViewer;
+	/** The db tree viewer. */
+private TreeViewer dbTreeViewer;
+	
+	/** The db tree. */
 	private Tree dbTree;
 
+	/** The biz tree viewer. */
 	private TreeViewer bizTreeViewer;
+	
+	/** The biz tree. */
 	private Tree bizTree;
 	
+	/** The up group. */
 	private Group upGroup;
+	
+	/** The down group. */
 	private Group downGroup;
+	
+	/** The group 1. */
 	private Group group1;
+	
+	/** The tab name radio 1. */
 	private Button tabNameRadio1;
+	
+	/** The tab name radio 2. */
 	private Button tabNameRadio2;
+	
+	/** The group 2. */
 	private Group group2;
+	
+	/** The prop name radio 2. */
 	private Button propNameRadio2;
+	
+	/** The prop name radio 1. */
 	private Button propNameRadio1;
 
+	/** The om reverse. */
 	private IOmReverse omReverse;
+	
+	/** The change strategy. */
 	private Button changeStrategy;
+	
+	/** The down grid data. */
 	private GridData downGridData;
+	
+	/** The db grid data. */
 	private GridData dbGridData;
+	
+	/** The container. */
 	private Composite container;
 	
+	/** The selected node. */
 	private TreeNode selectedNode;//选过的节点
+	
+	/** The node error count. */
 	private int nodeErrorCount;//错误的节点个数
 	
+	/** The is before. */
 	private boolean isBefore = true;
 	
+	/**
+	 * Instantiates a new om name reverse strategy page.
+	 *
+	 * @param pageName
+	 *            the page name
+	 */
 	public OmNameReverseStrategyPage(String pageName) {
 		super(pageName);
 		omReverse = new OmReverse();
 	}
 	
+	/**
+	 * Creates the control.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createControl(Composite composite) {
 
 		setTitle("表转换业务实体");
@@ -388,10 +450,15 @@ public class OmNameReverseStrategyPage extends WizardPage{
 	}
 	
 	/**
-	 * 通过id查找树节点
+	 * 通过id查找树节点.
+	 *
+	 * @author mqfdy
 	 * @param tree
+	 *            the tree
 	 * @param id
-	 * @return
+	 *            the id
+	 * @return the tree item
+	 * @Date 2018-09-03 09:00
 	 */
 	public TreeItem findTreeItem(Tree tree, String id) {
 		for (int i = 0; i < tree.getItemCount(); i++) {
@@ -416,7 +483,10 @@ public class OmNameReverseStrategyPage extends WizardPage{
 	}
 	
 	/**
-	 * 重画
+	 * 重画.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void repaint(){
 		
@@ -556,6 +626,16 @@ public class OmNameReverseStrategyPage extends WizardPage{
 		bizTreeViewer.refresh();
 	}
 	
+	/**
+	 * Make red.
+	 *
+	 * @author mqfdy
+	 * @param treeItem
+	 *            the tree item
+	 * @param treeNode
+	 *            the tree node
+	 * @Date 2018-09-03 09:00
+	 */
 	private void makeRed(TreeItem treeItem , TreeNode treeNode){
 		TreeItem parentItem;
 		if(treeItem.getParentItem()==null){
@@ -584,17 +664,39 @@ public class OmNameReverseStrategyPage extends WizardPage{
 		}
 	}
 	
+	/**
+	 * Make red.
+	 *
+	 * @author mqfdy
+	 * @param treeItem
+	 *            the tree item
+	 * @Date 2018-09-03 09:00
+	 */
 	private void makeRed(TreeItem treeItem ){
 		Color color=new Color(null,255,0,0);
 		treeItem.setBackground(color);
 	}
+	
+	/**
+	 * Make white.
+	 *
+	 * @author mqfdy
+	 * @param treeItem
+	 *            the tree item
+	 * @Date 2018-09-03 09:00
+	 */
 	private void makeWhite(TreeItem treeItem){
 		Color color=new Color(null,255,255,255);
 		treeItem.setBackground(color);
 	}
+	
 	/**
-	 * 列出表转换的清单
+	 * 列出表转换的清单.
+	 *
+	 * @author mqfdy
 	 * @param tableList
+	 *            the table list
+	 * @Date 2018-09-03 09:00
 	 */
 	private void listTables(List<Table> tableList) {
 		List<TreeModel> tableModelList = new ArrayList<TreeModel>();
@@ -703,7 +805,10 @@ public class OmNameReverseStrategyPage extends WizardPage{
 	}
 	
 	/**
-	 * 根据表加载业务实体
+	 * 根据表加载业务实体.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	private void listBusinessClasses() {
@@ -886,11 +991,17 @@ public class OmNameReverseStrategyPage extends WizardPage{
 		}*/
 	}
 	
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canFlipToNextPage() {
 		return  isPageComplete();
 	}
 
+	/**
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public IWizardPage getNextPage() {
@@ -947,10 +1058,15 @@ public class OmNameReverseStrategyPage extends WizardPage{
 	}
 
 	/**
-	 * 去“_” + 驼峰式策略转换
+	 * 去“_” + 驼峰式策略转换.
+	 *
+	 * @author mqfdy
 	 * @param str
-	 * @param isEntity true: 首字母大写   false:  首字母小写
-	 * @return
+	 *            the str
+	 * @param isEntity
+	 *            true: 首字母大写 false: 首字母小写
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	protected String noUnderlineHumpConvert(String str, boolean isEntity) {
 
@@ -981,10 +1097,15 @@ public class OmNameReverseStrategyPage extends WizardPage{
 	}
 	
 	/**
-	 * 驼峰式策略转换
+	 * 驼峰式策略转换.
+	 *
+	 * @author mqfdy
 	 * @param str
-	 * @param isEntity true: 首字母大写   false:  首字母小写
-	 * @return
+	 *            the str
+	 * @param isEntity
+	 *            true: 首字母大写 false: 首字母小写
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	protected String humpConvert(String str, boolean isEntity) {
 		StringBuffer buffer = new StringBuffer();
@@ -1014,6 +1135,13 @@ public class OmNameReverseStrategyPage extends WizardPage{
 		return buffer.toString();
 	}
 	
+	/**
+	 * Validate tree.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean validateTree(){
 		boolean result = true;
 		TreeItem[] rootItems =bizTreeViewer.getTree().getItems();
@@ -1064,9 +1192,15 @@ public class OmNameReverseStrategyPage extends WizardPage{
 	
 	
 	/**
-	 * 校验当前节点的值是否含有java关键字
+	 * 校验当前节点的值是否含有java关键字.
+	 *
+	 * @author mqfdy
 	 * @param value
+	 *            the value
 	 * @param treeNode
+	 *            the tree node
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean validate(Object value, TreeNode treeNode) {
 		if(CheckerUtil.checkJava(String.valueOf(value)) || CheckerUtil.checkSql(String.valueOf(value)) || CheckerUtil.checkSguap(String.valueOf(value))) {
@@ -1109,6 +1243,16 @@ public class OmNameReverseStrategyPage extends WizardPage{
 		
 	}
 	
+	/**
+	 * Validate bom.
+	 *
+	 * @author mqfdy
+	 * @param treeNode
+	 *            the tree node
+	 * @param bom
+	 *            the bom
+	 * @Date 2018-09-03 09:00
+	 */
 	private void validateBom(TreeNode treeNode, BusinessObjectModel bom) {
 
 		String value = String.valueOf(treeNode.getDisplayName());
@@ -1147,8 +1291,12 @@ public class OmNameReverseStrategyPage extends WizardPage{
 	}
 	
 	/**
-	 * 处理关键字
+	 * 处理关键字.
+	 *
+	 * @author mqfdy
 	 * @param treeNode
+	 *            the tree node
+	 * @Date 2018-09-03 09:00
 	 */
 	private void handleKeywords(TreeNode treeNode) {
 		String name = treeNode.getName();
@@ -1169,22 +1317,35 @@ public class OmNameReverseStrategyPage extends WizardPage{
 		}
 	}
 	
+	/**
+	 * The Class TableConvertSelectionAdapter.
+	 *
+	 * @author mqfdy
+	 */
 	class TableConvertSelectionAdapter extends SelectionAdapter {
 		
+		/** The radio btn. */
 		private Button radioBtn;
 
+		/**
+		 * Instantiates a new table convert selection adapter.
+		 *
+		 * @param radioBtn
+		 *            the radio btn
+		 */
 		public TableConvertSelectionAdapter(Button radioBtn) {
 			super();
 			this.radioBtn = radioBtn;
 		}
 		
 		/**
-		 * 表名称转换
-		 * 判断参数的类型
-		 * tabNameRadio1：去“_” + 驼峰式策略转换
-		 * tabNameRadio2：驼峰式策略转换
-		 * tabNameRadio3：不转换
-		 * @param radio
+		 * 表名称转换 判断参数的类型 tabNameRadio1：去“_” + 驼峰式策略转换 tabNameRadio2：驼峰式策略转换
+		 * tabNameRadio3：不转换.
+		 *
+		 * @author mqfdy
+		 * @param e
+		 *            the e
+		 * @Date 2018-09-03 09:00
 		 */
 		@SuppressWarnings("unchecked")
 		public void widgetSelected(SelectionEvent e) {
@@ -1228,15 +1389,35 @@ public class OmNameReverseStrategyPage extends WizardPage{
 		}
 	}
 	
+	/**
+	 * The Class ColumnConvertSelectionAdapter.
+	 *
+	 * @author mqfdy
+	 */
 	class ColumnConvertSelectionAdapter extends SelectionAdapter {
 		
+		/** The radio btn. */
 		private Button radioBtn;
 		
+		/**
+		 * Instantiates a new column convert selection adapter.
+		 *
+		 * @param radioBtn
+		 *            the radio btn
+		 */
 		public ColumnConvertSelectionAdapter(Button radioBtn) {
 			super();
 			this.radioBtn = radioBtn;
 		}
 		
+		/**
+		 * Widget selected.
+		 *
+		 * @author mqfdy
+		 * @param e
+		 *            the e
+		 * @Date 2018-09-03 09:00
+		 */
 		@SuppressWarnings("unchecked")
 		public void widgetSelected(SelectionEvent e) {
 			if(radioBtn.getSelection()) {

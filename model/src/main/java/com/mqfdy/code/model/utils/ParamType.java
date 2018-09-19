@@ -3,31 +3,63 @@ package com.mqfdy.code.model.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Enum ParamType.
+ *
+ * @author mqfdy
+ */
 public enum ParamType {
 
-	minLength("minLength", "最小长度"), maxLength("maxLength", "最大长度"), minValue(
-			"minValue", "最小值"), maxValue("maxValue", "最大值"), minDate("minDate",
-			"最早日期"), maxDate("maxDate", "最晚日期"), expression("expression", "表达式"), customValidatorClassName(
+	/** The min length. */
+	minLength("minLength", "最小长度"), /** The max length. */
+ maxLength("maxLength", "最大长度"), /** The min value. */
+ minValue(
+			"minValue", "最小值"), 
+ /** The max value. */
+ maxValue("maxValue", "最大值"), 
+ /** The min date. */
+ minDate("minDate",
+			"最早日期"), 
+ /** The max date. */
+ maxDate("maxDate", "最晚日期"), 
+ /** The expression. */
+ expression("expression", "表达式"), 
+ /** The custom validator class name. */
+ customValidatorClassName(
 			"customValidatorClassName", "校验类名称");
 	// interfaceName("INTERFACENAME","接口名"),
 	// Ognl("OGNL","Ognl表达式"),
 	// Custom("CUSTOM","自定义");
 
-	/**
-	 * 值
-	 */
+	/** 值. */
 	private String value;
 
-	/**
-	 * 显示值
-	 */
+	/** 显示值. */
 	private String displayValue;
 
+	/**
+	 * Instantiates a new param type.
+	 *
+	 * @param value
+	 *            the value
+	 * @param displayValue
+	 *            the display value
+	 */
 	ParamType(String value, String displayValue) {
 		this.value = value;
 		this.displayValue = displayValue;
 	}
 
+	/**
+	 * Gets the param types.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @return the param types
+	 * @Date 2018-09-03 09:00
+	 */
 	public static List<ParamType> getParamTypes(String key) {
 		List<ParamType> list = new ArrayList<ParamType>();
 		if (key == null)
@@ -50,6 +82,15 @@ public enum ParamType {
 		return list;
 	}
 
+	/**
+	 * Gets the param types.
+	 *
+	 * @author mqfdy
+	 * @param validatorType
+	 *            the validator type
+	 * @return the param types
+	 * @Date 2018-09-03 09:00
+	 */
 	public static List<ParamType> getParamTypes(ValidatorType validatorType) {
 		List<ParamType> list = new ArrayList<ParamType>();
 		switch (validatorType) {
@@ -74,6 +115,15 @@ public enum ParamType {
 		return list;
 	}
 
+	/**
+	 * Gets the param types string.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @return the param types string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String[] getParamTypesString(String key) {
 		List<ParamType> list = getParamTypes(key);
 		String[] s = new String[list.size()];
@@ -83,6 +133,15 @@ public enum ParamType {
 		return s;
 	}
 
+	/**
+	 * Gets the param types value.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @return the param types value
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String[] getParamTypesValue(String key) {
 		List<ParamType> list = getParamTypes(key);
 		String[] s = new String[list.size()];
@@ -92,6 +151,15 @@ public enum ParamType {
 		return s;
 	}
 
+	/**
+	 * Gets the param type value.
+	 *
+	 * @author mqfdy
+	 * @param displayValue
+	 *            the display value
+	 * @return the param type value
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getParamTypeValue(String displayValue) {
 		if (displayValue == null) {
 			return "";
@@ -104,18 +172,48 @@ public enum ParamType {
 		return "";
 	}
 
+	/**
+	 * Gets the value.
+	 *
+	 * @author mqfdy
+	 * @return the value
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getValue() {
 		return value;
 	}
 
+	/**
+	 * Sets the value.
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            the new value
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setValue(String value) {
 		this.value = value;
 	}
 
+	/**
+	 * Gets the display value.
+	 *
+	 * @author mqfdy
+	 * @return the display value
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getDisplayValue() {
 		return displayValue;
 	}
 
+	/**
+	 * Sets the display value.
+	 *
+	 * @author mqfdy
+	 * @param displayValue
+	 *            the new display value
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setDisplayValue(String displayValue) {
 		this.displayValue = displayValue;
 	}

@@ -14,9 +14,10 @@ import com.mqfdy.code.springboot.utilities.model.listener.PropertyChangeListener
 import com.mqfdy.code.springboot.utilities.model.value.PropertyValueModel;
 import com.mqfdy.code.springboot.utilities.model.value.WritablePropertyValueModel;
 
+// TODO: Auto-generated Javadoc
 /**
- * A BufferedPropertyValueModel is used to hold a temporary copy of the value
- * in another property value model (the "wrapped" value holder). The application
+ * A BufferedPropertyValueModel is used to hold a temporary copy of the value in
+ * another property value model (the "wrapped" value holder). The application
  * can modify this temporary copy, ad nauseam; but the temporary copy is only
  * passed through to the "wrapped" value holder when the trigger "accepts" the
  * buffered value. Alternatively, the application can "reset" the buffered value
@@ -24,19 +25,20 @@ import com.mqfdy.code.springboot.utilities.model.value.WritablePropertyValueMode
  * 
  * The trigger is another value model that holds a Boolean and the application
  * changes the trigger's value to true on "accept", false on "reset". Typically,
- * in a dialog:
- * 	- pressing the OK button will trigger an "accept" and close the dialog
- * 	- pressing the Cancel button will simply close the dialog,
- * 		dropping the "buffered" values into the bit bucket
- * 	- pressing the Apply button will trigger an "accept" and leave the dialog open
- * 	- pressing the Restore button will trigger a "reset" and leave the dialog open
+ * in a dialog: - pressing the OK button will trigger an "accept" and close the
+ * dialog - pressing the Cancel button will simply close the dialog, dropping
+ * the "buffered" values into the bit bucket - pressing the Apply button will
+ * trigger an "accept" and leave the dialog open - pressing the Restore button
+ * will trigger a "reset" and leave the dialog open
  * 
- * A number of buffered property value models can wrap another set of
- * property aspect adapters that adapt the various aspects of a single
- * domain model. All the bufferd property value models can be hooked to the
- * same trigger, and that trigger is controlled by the application, typically
- * via the OK button in a dialog.
- * 
+ * A number of buffered property value models can wrap another set of property
+ * aspect adapters that adapt the various aspects of a single domain model. All
+ * the bufferd property value models can be hooked to the same trigger, and that
+ * trigger is controlled by the application, typically via the OK button in a
+ * dialog.
+ *
+ * @param <T>
+ *            the generic type
  * @see PropertyAspectAdapter
  */
 public class BufferedWritablePropertyValueModel<T>
@@ -82,6 +84,11 @@ public class BufferedWritablePropertyValueModel<T>
 	/**
 	 * Construct a buffered property value model with the specified wrapped
 	 * property value model and trigger holder.
+	 *
+	 * @param valueHolder
+	 *            the value holder
+	 * @param triggerHolder
+	 *            the trigger holder
 	 */
 	public BufferedWritablePropertyValueModel(WritablePropertyValueModel<T> valueHolder, PropertyValueModel<Boolean> triggerHolder) {
 		super(valueHolder);
@@ -98,6 +105,13 @@ public class BufferedWritablePropertyValueModel<T>
 
 	// ********** initialization **********
 
+	/**
+	 * Builds the trigger change listener.
+	 *
+	 * @author mqfdy
+	 * @return the property change listener
+	 * @Date 2018-09-03 09:00
+	 */
 	protected PropertyChangeListener buildTriggerChangeListener() {
 		return new PropertyChangeListener() {
 			public void propertyChanged(PropertyChangeEvent event) {
@@ -177,23 +191,32 @@ public class BufferedWritablePropertyValueModel<T>
 	}
 	
 	/**
-	 * By default, if we have a "buffered" value and the "wrapped" value changes,
-	 * we simply ignore the new "wrapped" value and simply overlay it with the
-	 * "buffered" value if it is "accepted". ("Last One In Wins" concurrency model)
-	 * Subclasses can override this method to change that behavior with a
-	 * different concurrency model. For example, you could drop the "buffered" value
-	 * and replace it with the new "wrapped" value, or you could throw an
-	 * exception.
+	 * By default, if we have a "buffered" value and the "wrapped" value
+	 * changes, we simply ignore the new "wrapped" value and simply overlay it
+	 * with the "buffered" value if it is "accepted". ("Last One In Wins"
+	 * concurrency model) Subclasses can override this method to change that
+	 * behavior with a different concurrency model. For example, you could drop
+	 * the "buffered" value and replace it with the new "wrapped" value, or you
+	 * could throw an exception.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void handleChangeConflict(PropertyChangeEvent event) {
 		// the default is to do nothing
 	}
 	
 	/**
-	 * The trigger changed:
-	 * If it is now true, "accept" the buffered value and forward
-	 * it to the wrapped value holder.
-	 * If it is now false, "reset" the buffered value to its original value.
+	 * The trigger changed: If it is now true, "accept" the buffered value and
+	 * forward it to the wrapped value holder. If it is now false, "reset" the
+	 * buffered value to its original value.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void triggerChanged(PropertyChangeEvent event) {
 		if ( ! this.buffering) {
@@ -228,8 +251,11 @@ public class BufferedWritablePropertyValueModel<T>
 	// ********** convenience methods **********
 
 	/**
-	 * Return whether the buffered model is currently "buffering"
-	 * a value.
+	 * Return whether the buffered model is currently "buffering" a value.
+	 *
+	 * @author mqfdy
+	 * @return true, if is buffering
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean isBuffering() {
 		return this.buffering;
@@ -237,6 +263,10 @@ public class BufferedWritablePropertyValueModel<T>
 
 	/**
 	 * Our constructor accepts only a WritablePropertyValueModel<T>.
+	 *
+	 * @author mqfdy
+	 * @return the writable property value model
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	protected WritablePropertyValueModel<T> valueHolder() {
@@ -293,18 +323,25 @@ public class BufferedWritablePropertyValueModel<T>
 		// ********** convenience methods **********
 
 		/**
-		 * Set the trigger's value:
-		 * 	- true indicates "accept"
-		 * 	- false indicates "reset"
+		 * Set the trigger's value: - true indicates "accept" - false indicates
+		 * "reset".
+		 *
+		 * @author mqfdy
+		 * @param value
+		 *            the new value
+		 * @Date 2018-09-03 09:00
 		 */
 		public void setValue(boolean value) {
 			this.setValue(Boolean.valueOf(value));
 		}
 
 		/**
-		 * Return the trigger's value:
-		 * 	- true indicates "accept"
-		 * 	- false indicates "reset"
+		 * Return the trigger's value: - true indicates "accept" - false
+		 * indicates "reset".
+		 *
+		 * @author mqfdy
+		 * @return true, if successful
+		 * @Date 2018-09-03 09:00
 		 */
 		public boolean booleanValue() {
 			return this.getValue().booleanValue();
@@ -318,8 +355,12 @@ public class BufferedWritablePropertyValueModel<T>
 		}
 
 		/**
-		 * Return whether the trigger has been accepted
-		 * (i.e. its value was changed to true).
+		 * Return whether the trigger has been accepted (i.e. its value was
+		 * changed to true).
+		 *
+		 * @author mqfdy
+		 * @return true, if is accepted
+		 * @Date 2018-09-03 09:00
 		 */
 		public boolean isAccepted() {
 			return this.booleanValue();
@@ -333,8 +374,12 @@ public class BufferedWritablePropertyValueModel<T>
 		}
 
 		/**
-		 * Return whether the trigger has been reset
-		 * (i.e. its value was changed to false).
+		 * Return whether the trigger has been reset (i.e. its value was changed
+		 * to false).
+		 *
+		 * @author mqfdy
+		 * @return true, if is reset
+		 * @Date 2018-09-03 09:00
 		 */
 		public boolean isReset() {
 			return ! this.booleanValue();

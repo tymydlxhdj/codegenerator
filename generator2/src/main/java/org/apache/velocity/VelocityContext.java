@@ -25,34 +25,32 @@ import java.util.Map;
 import org.apache.velocity.context.AbstractContext;
 import org.apache.velocity.context.Context;
 
+// TODO: Auto-generated Javadoc
 /**
- *  General purpose implemention of the application Context
- *  interface for general application use.  This class should
- *  be used in place of the original Context class.
+ * General purpose implemention of the application Context interface for general
+ * application use. This class should be used in place of the original Context
+ * class.
+ * 
+ * This implementation uses a HashMap (@see java.util.HashMap ) for data
+ * storage.
+ * 
+ * This context implementation cannot be shared between threads without those
+ * threads synchronizing access between them, as the HashMap is not
+ * synchronized, nor are some of the fundamentals of AbstractContext. If you
+ * need to share a Context between threads with simultaneous access for some
+ * reason, please create your own and extend the interface Context
  *
- *  This implementation uses a HashMap  (@see java.util.HashMap )
- *  for data storage.
- *
- *  This context implementation cannot be shared between threads
- *  without those threads synchronizing access between them, as
- *  the HashMap is not synchronized, nor are some of the fundamentals
- *  of AbstractContext.  If you need to share a Context between
- *  threads with simultaneous access for some reason, please create
- *  your own and extend the interface Context
- *
- *  @see org.apache.velocity.context.Context
- *
- *  @author <a href="mailto:geirm@optonline.net">Geir Magnusson Jr.</a>
- *  @author <a href="mailto:jvanzyl@apache.org">Jason van Zyl</a>
- *  @author <a href="mailto:fedor.karpelevitch@home.com">Fedor Karpelevitch</a>
- *  @author <a href="mailto:dlr@finemaltcoding.com">Daniel Rall</a>
- *  @version $Id: VelocityContext.java 898032 2010-01-11 19:51:03Z nbubna $
+ * @author <a href="mailto:geirm@optonline.net">Geir Magnusson Jr.</a>
+ * @author <a href="mailto:jvanzyl@apache.org">Jason van Zyl</a>
+ * @author <a href="mailto:fedor.karpelevitch@home.com">Fedor Karpelevitch</a>
+ * @author <a href="mailto:dlr@finemaltcoding.com">Daniel Rall</a>
+ * @version $Id: VelocityContext.java 898032 2010-01-11 19:51:03Z nbubna $
+ * @see org.apache.velocity.context.Context
  */
 public class VelocityContext extends AbstractContext implements Cloneable
 {
-    /**
-     * Version Id for serializable
-     */
+    
+    /** Version Id for serializable. */
     private static final long serialVersionUID = 9033846851064645037L;
 
     /**
@@ -69,10 +67,11 @@ public class VelocityContext extends AbstractContext implements Cloneable
     }
 
     /**
-     *  Creates a new instance with the provided storage (and no inner
-     *  context).
-     * @param context
-     */
+	 * Creates a new instance with the provided storage (and no inner context).
+	 *
+	 * @param context
+	 *            the context
+	 */
     public VelocityContext(Map context)
     {
         this(context, null);
@@ -108,69 +107,82 @@ public class VelocityContext extends AbstractContext implements Cloneable
     }
 
     /**
-     *  retrieves value for key from internal
-     *  storage
-     *
-     *  @param key name of value to get
-     *  @return value as object
-     */
+	 * retrieves value for key from internal storage.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            name of value to get
+	 * @return value as object
+	 * @Date 2018-9-3 11:38:30
+	 */
     public Object internalGet( String key )
     {
         return context.get( key );
     }
 
     /**
-     *  stores the value for key to internal
-     *  storage
-     *
-     *  @param key name of value to store
-     *  @param value value to store
-     *  @return previous value of key as Object
-     */
+	 * stores the value for key to internal storage.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            name of value to store
+	 * @param value
+	 *            value to store
+	 * @return previous value of key as Object
+	 * @Date 2018-9-3 11:38:30
+	 */
     public Object internalPut( String key, Object value )
     {
         return context.put( key, value );
     }
 
     /**
-     *  determines if there is a value for the
-     *  given key
-     *
-     *  @param key name of value to check
-     *  @return true if non-null value in store
-     */
+	 * determines if there is a value for the given key.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            name of value to check
+	 * @return true if non-null value in store
+	 * @Date 2018-9-3 11:38:30
+	 */
     public  boolean internalContainsKey(Object key)
     {
         return context.containsKey( key );
     }
 
     /**
-     *  returns array of keys
-     *
-     *  @return keys as []
-     */
+	 * returns array of keys.
+	 *
+	 * @author mqfdy
+	 * @return keys as []
+	 * @Date 2018-9-3 11:38:30
+	 */
     public  Object[] internalGetKeys()
     {
         return context.keySet().toArray();
     }
 
     /**
-     *  remove a key/value pair from the
-     *  internal storage
-     *
-     *  @param key name of value to remove
-     *  @return value removed
-     */
+	 * remove a key/value pair from the internal storage.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            name of value to remove
+	 * @return value removed
+	 * @Date 2018-9-3 11:38:30
+	 */
     public  Object internalRemove(Object key)
     {
         return context.remove( key );
     }
 
     /**
-     * Clones this context object.
-     *
-     * @return A deep copy of this <code>Context</code>.
-     */
+	 * Clones this context object.
+	 *
+	 * @author mqfdy
+	 * @return A deep copy of this <code>Context</code>.
+	 * @Date 2018-9-3 11:38:30
+	 */
     public Object clone()
     {
         VelocityContext clone = null;

@@ -21,31 +21,50 @@ package org.apache.velocity.runtime.parser.node;
 
 import org.apache.velocity.runtime.parser.Parser;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ASTprocess.
  *
+ * @author mqfdy
  */
 public class ASTprocess extends SimpleNode
 {
+    
     /**
-     * @param id
-     */
+	 * Instantiates a new AS tprocess.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTprocess(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AS tprocess.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTprocess(Parser p, int id)
     {
         super(p, id);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);

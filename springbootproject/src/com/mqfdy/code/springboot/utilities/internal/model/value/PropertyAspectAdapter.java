@@ -20,27 +20,28 @@ import com.mqfdy.code.springboot.utilities.model.value.PropertyValueModel;
 import com.mqfdy.code.springboot.utilities.model.value.WritablePropertyValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * This AspectAdapter provides basic PropertyChange support.
- * This allows us to convert a set of one or more properties into
- * a single property, VALUE.
+ * This AspectAdapter provides basic PropertyChange support. This allows us to
+ * convert a set of one or more properties into a single property, VALUE.
  * 
- * The typical subclass will override the following methods:
- * #buildValue_()
- *     at the very minimum, override this method to return the value of the
- *     subject's property (or "virtual" property); it does not need to be
- *     overridden if #buildValue() is overridden and its behavior changed
- * #setValue_(Object)
- *     override this method if the client code needs to *set* the value of
- *     the subject's property; oftentimes, though, the client code (e.g. UI)
- *     will need only to *get* the value; it does not need to be
- *     overridden if #setValue(Object) is overridden and its behavior changed
- * #buildValue()
- *     override this method only if returning a null value when the subject is null
- *     is unacceptable
- * #setValue(Object)
- *     override this method only if something must be done when the subject
- *     is null (e.g. throw an exception)
+ * The typical subclass will override the following methods: #buildValue_() at
+ * the very minimum, override this method to return the value of the subject's
+ * property (or "virtual" property); it does not need to be overridden if
+ * #buildValue() is overridden and its behavior changed #setValue_(Object)
+ * override this method if the client code needs to *set* the value of the
+ * subject's property; oftentimes, though, the client code (e.g. UI) will need
+ * only to *get* the value; it does not need to be overridden if
+ * #setValue(Object) is overridden and its behavior changed #buildValue()
+ * override this method only if returning a null value when the subject is null
+ * is unacceptable #setValue(Object) override this method only if something must
+ * be done when the subject is null (e.g. throw an exception)
+ *
+ * @author mqfdy
+ * @param <S>
+ *            the generic type
+ * @param <T>
+ *            the generic type
  */
 public abstract class PropertyAspectAdapter<S extends Model, T>
 	extends AspectAdapter<S>
@@ -57,6 +58,8 @@ public abstract class PropertyAspectAdapter<S extends Model, T>
 
 	/** The name of the subject's properties that we use for the value. */
 	protected final String[] propertyNames;
+		
+		/** The Constant EMPTY_PROPERTY_NAMES. */
 		protected static final String[] EMPTY_PROPERTY_NAMES = new String[0];
 
 	/** A listener that listens to the appropriate properties of the subject. */
@@ -66,24 +69,38 @@ public abstract class PropertyAspectAdapter<S extends Model, T>
 	// ********** constructors **********
 
 	/**
-	 * Construct a PropertyAspectAdapter for the specified subject
-	 * and property.
+	 * Construct a PropertyAspectAdapter for the specified subject and property.
+	 *
+	 * @param propertyName
+	 *            the property name
+	 * @param subject
+	 *            the subject
 	 */
 	protected PropertyAspectAdapter(String propertyName, S subject) {
 		this(new String[] {propertyName}, subject);
 	}
 
 	/**
-	 * Construct a PropertyAspectAdapter for the specified subject
-	 * and properties.
+	 * Construct a PropertyAspectAdapter for the specified subject and
+	 * properties.
+	 *
+	 * @param propertyNames
+	 *            the property names
+	 * @param subject
+	 *            the subject
 	 */
 	protected PropertyAspectAdapter(String[] propertyNames, S subject) {
 		this(new StaticPropertyValueModel<S>(subject), propertyNames);
 	}
 
 	/**
-	 * Construct a PropertyAspectAdapter for the specified subject holder
-	 * and properties.
+	 * Construct a PropertyAspectAdapter for the specified subject holder and
+	 * properties.
+	 *
+	 * @param subjectHolder
+	 *            the subject holder
+	 * @param propertyNames
+	 *            the property names
 	 */
 	protected PropertyAspectAdapter(PropertyValueModel<? extends S> subjectHolder, String... propertyNames) {
 		super(subjectHolder);
@@ -94,19 +111,27 @@ public abstract class PropertyAspectAdapter<S extends Model, T>
 	}
 
 	/**
-	 * Construct a PropertyAspectAdapter for the specified subject holder
-	 * and properties.
+	 * Construct a PropertyAspectAdapter for the specified subject holder and
+	 * properties.
+	 *
+	 * @param subjectHolder
+	 *            the subject holder
+	 * @param propertyNames
+	 *            the property names
 	 */
 	protected PropertyAspectAdapter(PropertyValueModel<? extends S> subjectHolder, Collection<String> propertyNames) {
 		this(subjectHolder, propertyNames.toArray(new String[propertyNames.size()]));
 	}
 
 	/**
-	 * Construct a PropertyAspectAdapter for an "unchanging" property in
-	 * the specified subject. This is useful for a property aspect that does not
-	 * change for a particular subject; but the subject will change, resulting in
-	 * a new property. (A TransformationPropertyValueModel could also be
-	 * used in this situation.)
+	 * Construct a PropertyAspectAdapter for an "unchanging" property in the
+	 * specified subject. This is useful for a property aspect that does not
+	 * change for a particular subject; but the subject will change, resulting
+	 * in a new property. (A TransformationPropertyValueModel could also be used
+	 * in this situation.)
+	 *
+	 * @param subjectHolder
+	 *            the subject holder
 	 */
 	protected PropertyAspectAdapter(PropertyValueModel<? extends S> subjectHolder) {
 		this(subjectHolder, EMPTY_PROPERTY_NAMES);
@@ -117,6 +142,10 @@ public abstract class PropertyAspectAdapter<S extends Model, T>
 
 	/**
 	 * The subject's property has changed, notify the listeners.
+	 *
+	 * @author mqfdy
+	 * @return the property change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected PropertyChangeListener buildPropertyChangeListener() {
 		// transform the subject's property change events into VALUE property change events
@@ -155,8 +184,11 @@ public abstract class PropertyAspectAdapter<S extends Model, T>
 	}
 
 	/**
-	 * Set the value of the subject's property.
-	 * At this point we can be sure that the subject is not null.
+	 * Set the value of the subject's property. At this point we can be sure
+	 * that the subject is not null.
+	 *
+	 * @param value
+	 *            the new value
 	 * @see #setValue(Object)
 	 */
 	protected void setValue_(T value) {
@@ -232,22 +264,33 @@ public abstract class PropertyAspectAdapter<S extends Model, T>
 	// ********** behavior **********
 
 	/**
-	 * Return the aspect's value.
-	 * At this point the subject may be null.
+	 * Return the aspect's value. At this point the subject may be null.
+	 *
+	 * @author mqfdy
+	 * @return the t
+	 * @Date 2018-09-03 09:00
 	 */
 	protected T buildValue() {
 		return (this.subject == null) ? null : this.buildValue_();
 	}
 
 	/**
-	 * Return the value of the subject's property.
-	 * At this point we can be sure that the subject is not null.
+	 * Return the value of the subject's property. At this point we can be sure
+	 * that the subject is not null.
+	 *
+	 * @return the t
 	 * @see #buildValue()
 	 */
 	protected T buildValue_() {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Property changed.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void propertyChanged() {
 		T old = this.value;
 		this.value = this.buildValue();

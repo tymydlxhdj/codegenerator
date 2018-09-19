@@ -12,13 +12,26 @@ import org.json.JSONObject;
 import com.mqfdy.code.designer.models.ImageKeys;
 import com.mqfdy.code.designer.models.ImageManager;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author mqfdy
+ * The Class DataGridLabelProvider.
  *
+ * @author mqfdy
  */
 public class DataGridLabelProvider extends LabelProvider implements
 		ITableLabelProvider {
 
+	/**
+	 * Gets the column image.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @param columnIndex
+	 *            the column index
+	 * @return the column image
+	 * @Date 2018-09-03 09:00
+	 */
 	/* (non-Javadoc)
 	 * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnImage(java.lang.Object, int)
 	 */
@@ -44,6 +57,18 @@ public class DataGridLabelProvider extends LabelProvider implements
 	 }
 		return null;
 	}
+	
+	/**
+	 * Gets the column text.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @param columnIndex
+	 *            the column index
+	 * @return the column text
+	 * @Date 2018-09-03 09:00
+	 */
 	/* (non-Javadoc)
 	 * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnText(java.lang.Object, int)
 	 */

@@ -22,32 +22,75 @@ import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.model.EnumElement;
 import com.mqfdy.code.model.Enumeration;
 
+// TODO: Auto-generated Javadoc
 /**
- * 显示枚举文件信息
- * @author mqfdy
+ * 显示枚举文件信息.
  *
+ * @author mqfdy
  */
 public class EnumMessageDialog extends TitleAreaDialog {
+	
+	/** The Constant TITLE. */
 	private static final String TITLE = "枚举实体详细信息";
+	
+	/** The obj. */
 	private Object obj;
+	
+	/** The image manager. */
 	public ImageManager imageManager=new ImageManager();
+	
+	/** The layout. */
 	private GridLayout layout = new GridLayout(1, false);
+	
+	/** The container. */
 	public Composite container ;
+	
+	/** The basic info group. */
 	private Group basicInfoGroup;
+	
+	/** The property group. */
 	private Group propertyGroup;
+	
+	/** The name label. */
 	private Label nameLabel;
+	
+	/** The name text. */
 	private Text nameText;
 	
+	/** The display name label. */
 	private Label displayNameLabel;
+	
+	/** The display name text. */
 	private Text displayNameText;
+	
+	/** The table viewer. */
 	private TableViewer tableViewer;
+	
+	/** The table. */
 	public Table table;
 	
+	/**
+	 * Instantiates a new enum message dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param obj
+	 *            the obj
+	 */
 	public EnumMessageDialog(Shell parentShell,Object obj) {
 		super(parentShell);
 		this.obj=obj;
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createDialogArea(Composite parent) {
 		Composite area = (Composite) super.createDialogArea(parent);
 		container = new Composite(area, SWT.NONE);
@@ -117,7 +160,10 @@ public class EnumMessageDialog extends TitleAreaDialog {
 	}
 	
 	/**
-	 * 初始化数据	
+	 * 初始化数据.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initData() {
 		Enumeration e=(Enumeration) obj;
@@ -132,21 +178,38 @@ public class EnumMessageDialog extends TitleAreaDialog {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected Point getInitialSize() {
 		return new Point(400, 450);
 	}
 	
 	
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText("查看枚举信息");
 	}
 	
+	/**
+	 * @return
+	 */
 	protected int getShellStyle() {
 		return super.getShellStyle() | SWT.RESIZE | SWT.MAX |SWT.MIN ;
 	}	
 	
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean isHelpAvailable() {
 		return false;

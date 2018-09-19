@@ -20,10 +20,15 @@ import com.mqfdy.code.springboot.utilities.internal.model.AbstractModel;
 import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * Implementation of ListValueModel that can be used for
- * returning a list iterator on a static list, but still allows listeners to be added.
- * Listeners will NEVER be notified of any changes, because there should be none.
+ * Implementation of ListValueModel that can be used for returning a list
+ * iterator on a static list, but still allows listeners to be added. Listeners
+ * will NEVER be notified of any changes, because there should be none.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class StaticListValueModel<E>
 	extends AbstractModel
@@ -37,6 +42,9 @@ public class StaticListValueModel<E>
 
 	/**
 	 * Construct a static ListValueModel for the specified list.
+	 *
+	 * @param list
+	 *            the list
 	 */
 	public StaticListValueModel(List<? extends E> list) {
 		super();

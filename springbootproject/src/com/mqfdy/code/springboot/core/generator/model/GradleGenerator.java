@@ -8,6 +8,7 @@ import org.eclipse.core.resources.IProject;
 
 import com.mqfdy.code.springboot.core.generator.AbstractGenerator;
 
+// TODO: Auto-generated Javadoc
 /**
  * gradle文件生成器
  * @author mqfdy
@@ -15,22 +16,46 @@ import com.mqfdy.code.springboot.core.generator.AbstractGenerator;
  */
 public class GradleGenerator extends AbstractGenerator {
 	
+	/** The map. */
 	protected Map<String, Object> map = new HashMap<String, Object>();
 	
+	/** The gen project. */
 	protected IProject genProject;
 	
+	/** The folder. */
 	protected String folder = "";
 	
+	/** The base package. */
 	protected String basePackage;
 	
 	private String fileName;
 	
 	private String templatePath;
 	
+	/**
+	 * Sets the folder.
+	 *
+	 * @author mqfdy
+	 * @param f
+	 *            the new folder
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setFolder(String f){
 		this.folder = f;
 	}
 	
+	/**
+	 * Instantiates a new gradle generator.
+	 *
+	 * @param genProject
+	 *            the gen project
+	 * @param basePackage
+	 *            the base package
+	 * @param fileName
+	 *            the file name
+	 * @param templatePath
+	 *            the template path
+	 */
 	public GradleGenerator(IProject genProject,String basePackage,String fileName,String templatePath) {
 		super(genProject);
 		this.genProject = genProject;
@@ -68,6 +93,14 @@ public class GradleGenerator extends AbstractGenerator {
 		return genProject;
 	}
 	
+	/**
+	 * Sets the gen project.
+	 *
+	 * @author mqfdy
+	 * @param genProject
+	 *            the new gen project
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setGenProject(IProject genProject) {
 		this.genProject = genProject;
 	}

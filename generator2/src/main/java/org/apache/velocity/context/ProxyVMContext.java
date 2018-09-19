@@ -32,6 +32,7 @@ import org.apache.velocity.runtime.parser.ParserTreeConstants;
 import org.apache.velocity.runtime.parser.node.ASTReference;
 import org.apache.velocity.runtime.parser.node.Node;
 
+// TODO: Auto-generated Javadoc
 /**
  * Context for Velocity macro arguments.
  * 
@@ -55,17 +56,24 @@ public class ProxyVMContext extends ChainedInternalContextAdapter
     /** container for any local or constant macro arguments. Size must be power of 2. */
     Map localcontext = new HashMap(8, 0.8f);
 
-    /** support for local context scope feature, where all references are local */
+    /**
+	 * support for local context scope feature, where all references are local.
+	 */
     private boolean localContextScope;
 
     /** needed for writing log entries. */
     private RuntimeServices rsvc;
 
     /**
-     * @param inner Velocity context for processing
-     * @param rsvc RuntimeServices provides logging reference
-     * @param localContextScope if true, all references are set to be local
-     */
+	 * Instantiates a new proxy VM context.
+	 *
+	 * @param inner
+	 *            Velocity context for processing
+	 * @param rsvc
+	 *            RuntimeServices provides logging reference
+	 * @param localContextScope
+	 *            if true, all references are set to be local
+	 */
     public ProxyVMContext(InternalContextAdapter inner,
                           RuntimeServices rsvc,
                           boolean localContextScope)
@@ -77,15 +85,21 @@ public class ProxyVMContext extends ChainedInternalContextAdapter
     }
 
     /**
-     * Used to put Velocity macro arguments into this context. 
-     * 
-     * @param context rendering context
-     * @param macroArgumentName name of the macro argument that we received
-     * @param literalMacroArgumentName ".literal.$"+macroArgumentName
-     * @param argumentValue actual value of the macro argument
-     * 
-     * @throws MethodInvocationException
-     */
+	 * Used to put Velocity macro arguments into this context.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            rendering context
+	 * @param macroArgumentName
+	 *            name of the macro argument that we received
+	 * @param literalMacroArgumentName
+	 *            ".literal.$"+macroArgumentName
+	 * @param argumentValue
+	 *            actual value of the macro argument
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-09-03 09:00
+	 */
     public void addVMProxyArg(InternalContextAdapter context,
                               String macroArgumentName,
                               String literalMacroArgumentName,
@@ -103,15 +117,21 @@ public class ProxyVMContext extends ChainedInternalContextAdapter
     }
 
     /**
-     * Used to put Velocity macro bodyContext arguments into this context. 
-     * 
-     * @param context rendering context
-     * @param macroArgumentName name of the macro argument that we received
-     * @param literalMacroArgumentName ".literal.$"+macroArgumentName
-     * @param argumentValue actual value of the macro body
-     * 
-     * @throws MethodInvocationException
-     */
+	 * Used to put Velocity macro bodyContext arguments into this context.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            rendering context
+	 * @param macroArgumentName
+	 *            name of the macro argument that we received
+	 * @param literalMacroArgumentName
+	 *            ".literal.$"+macroArgumentName
+	 * @param argumentValue
+	 *            actual value of the macro body
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-09-03 09:00
+	 */
     public void addVMProxyArg(InternalContextAdapter context,
                               String macroArgumentName,
                               String literalMacroArgumentName,
@@ -121,13 +141,15 @@ public class ProxyVMContext extends ChainedInternalContextAdapter
     }
 
     /**
-     * AST nodes that are considered constants can be directly
-     * saved into the context. Dynamic values are stored in
-     * another argument hashmap.
-     * 
-     * @param node macro argument as AST node
-     * @return true if the node is a constant value
-     */
+	 * AST nodes that are considered constants can be directly saved into the
+	 * context. Dynamic values are stored in another argument hashmap.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            macro argument as AST node
+	 * @return true if the node is a constant value
+	 * @Date 2018-9-3 11:38:24
+	 */
     private boolean isConstant(Node node)
     {
         switch (node.getType())
@@ -145,38 +167,52 @@ public class ProxyVMContext extends ChainedInternalContextAdapter
     }
 
     /**
-     * Impl of the Context.put() method.
-     * 
-     * @param key name of item to set
-     * @param value object to set to key
-     * @return old stored object
-     */
+	 * Impl of the Context.put() method.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            name of item to set
+	 * @param value
+	 *            object to set to key
+	 * @return old stored object
+	 * @Date 2018-9-3 11:38:24
+	 */
     public Object put(final String key, final Object value)
     {
         return put(key, value, localContextScope);
     }
 
     /**
-     * Allows callers to explicitly put objects in the local context, no matter what the
-     * velocimacro.context.local setting says. Needed e.g. for loop variables in foreach.
-     * 
-     * @param key name of item to set.
-     * @param value object to set to key.
-     * @return old stored object
-     */
+	 * Allows callers to explicitly put objects in the local context, no matter
+	 * what the velocimacro.context.local setting says. Needed e.g. for loop
+	 * variables in foreach.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            name of item to set.
+	 * @param value
+	 *            object to set to key.
+	 * @return old stored object
+	 * @Date 2018-9-3 11:38:24
+	 */
     public Object localPut(final String key, final Object value)
     {
         return put(key, value, true);
     }
 
     /**
-     * Internal put method to select between local and global scope.
-     * 
-     * @param key name of item to set
-     * @param value object to set to key
-     * @param forceLocal True forces the object into the local scope.
-     * @return old stored object
-     */
+	 * Internal put method to select between local and global scope.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            name of item to set
+	 * @param value
+	 *            object to set to key
+	 * @param forceLocal
+	 *            True forces the object into the local scope.
+	 * @return old stored object
+	 * @Date 2018-9-3 11:38:24
+	 */
     protected Object put(final String key, final Object value, final boolean forceLocal)
     {
         Object old = localcontext.put(key, value);
@@ -188,12 +224,15 @@ public class ProxyVMContext extends ChainedInternalContextAdapter
     }
 
     /**
-     * Implementation of the Context.get() method.  First checks
-     * localcontext, then arguments, then global context.
-     * 
-     * @param key name of item to get
-     * @return stored object or null
-     */
+	 * Implementation of the Context.get() method. First checks localcontext,
+	 * then arguments, then global context.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            name of item to get
+	 * @return stored object or null
+	 * @Date 2018-9-3 11:38:24
+	 */
     public Object get(String key)
     {
         Object o = localcontext.get(key);
@@ -264,8 +303,13 @@ public class ProxyVMContext extends ChainedInternalContextAdapter
     }
 
     /**
-     * @see org.apache.velocity.context.Context#containsKey(java.lang.Object)
-     */
+	 * Contains key.
+	 *
+	 * @param key
+	 *            the key
+	 * @return true, if successful
+	 * @see org.apache.velocity.context.Context#containsKey(java.lang.Object)
+	 */
     public boolean containsKey(Object key)
     {
       return vmproxyhash.containsKey(key)
@@ -274,8 +318,11 @@ public class ProxyVMContext extends ChainedInternalContextAdapter
     }
 
     /**
-     * @see org.apache.velocity.context.Context#getKeys()
-     */
+	 * Gets the keys.
+	 *
+	 * @return the keys
+	 * @see org.apache.velocity.context.Context#getKeys()
+	 */
     public Object[] getKeys()
     {
         if (localcontext.isEmpty())
@@ -293,8 +340,13 @@ public class ProxyVMContext extends ChainedInternalContextAdapter
     }
 
     /**
-     * @see org.apache.velocity.context.Context#remove(java.lang.Object)
-     */
+	 * Removes the.
+	 *
+	 * @param key
+	 *            the key
+	 * @return the object
+	 * @see org.apache.velocity.context.Context#remove(java.lang.Object)
+	 */
     public Object remove(Object key)
     {
         Object loc = localcontext.remove(key);

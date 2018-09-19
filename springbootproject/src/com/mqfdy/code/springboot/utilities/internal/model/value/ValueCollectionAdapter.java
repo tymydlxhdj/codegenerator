@@ -17,9 +17,14 @@ import com.mqfdy.code.springboot.utilities.model.listener.CollectionChangeListen
 import com.mqfdy.code.springboot.utilities.model.value.WritablePropertyValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * Extend ValueAspectAdapter to listen to one or more collection
- * aspects of the value in the wrapped value model.
+ * Extend ValueAspectAdapter to listen to one or more collection aspects of the
+ * value in the wrapped value model.
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
  */
 public class ValueCollectionAdapter<T extends Model>
 	extends ValueAspectAdapter<T>
@@ -36,6 +41,11 @@ public class ValueCollectionAdapter<T extends Model>
 
 	/**
 	 * Construct an adapter for the specified value collections.
+	 *
+	 * @param valueHolder
+	 *            the value holder
+	 * @param collectionNames
+	 *            the collection names
 	 */
 	public ValueCollectionAdapter(WritablePropertyValueModel<T> valueHolder, String... collectionNames) {
 		super(valueHolder);
@@ -47,8 +57,12 @@ public class ValueCollectionAdapter<T extends Model>
 	// ********** initialization **********
 
 	/**
-	 * All we really care about is the fact that a Collection aspect has 
+	 * All we really care about is the fact that a Collection aspect has
 	 * changed. Do the same thing no matter which event occurs.
+	 *
+	 * @author mqfdy
+	 * @return the collection change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected CollectionChangeListener buildValueCollectionListener() {
 		return new CollectionChangeListener() {

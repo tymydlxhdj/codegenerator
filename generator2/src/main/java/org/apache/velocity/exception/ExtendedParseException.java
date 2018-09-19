@@ -1,5 +1,6 @@
 package org.apache.velocity.exception;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -31,22 +32,32 @@ package org.apache.velocity.exception;
  */
 public interface ExtendedParseException
 {
+    
     /**
-     * returns the Template name where this exception occured.
-     * @return The Template name where this exception occured.
-     */
+	 * returns the Template name where this exception occured.
+	 *
+	 * @author mqfdy
+	 * @return The Template name where this exception occured.
+	 * @Date 2018-9-3 11:38:33
+	 */
     String getTemplateName();
 
     /**
-     * returns the line number where this exception occured.
-     * @return The line number where this exception occured.
-     */
+	 * returns the line number where this exception occured.
+	 *
+	 * @author mqfdy
+	 * @return The line number where this exception occured.
+	 * @Date 2018-9-3 11:38:33
+	 */
     int getLineNumber();
 
     /**
-     * returns the column number where this exception occured.
-     * @return The column number where this exception occured.
-     */
+	 * returns the column number where this exception occured.
+	 *
+	 * @author mqfdy
+	 * @return The column number where this exception occured.
+	 * @Date 2018-9-3 11:38:33
+	 */
     int getColumnNumber();
 }
 

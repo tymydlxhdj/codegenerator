@@ -17,18 +17,19 @@ import com.mqfdy.code.model.ModelPackage;
 import com.mqfdy.code.model.SolidifyPackage;
 import com.mqfdy.code.model.graph.Diagram;
 
+// TODO: Auto-generated Javadoc
 /**
- * 新建业务类动作
- * 
+ * 新建业务类动作.
+ *
  * @author mqfdy
- * 
  */
 public class AddBusinessClassAction extends TreeAction {
 
 	/**
-	 * 构造函数(采用默认名称和图标，通过树来创建，通过树来查找上级节点)
-	 * 
-	 * @param parent
+	 * 构造函数(采用默认名称和图标，通过树来创建，通过树来查找上级节点).
+	 *
+	 * @param treeViewer
+	 *            the tree viewer
 	 */
 	public AddBusinessClassAction(TreeViewer treeViewer) {
 		super(ActionTexts.BUSINESSCLASS_ADD);
@@ -39,9 +40,14 @@ public class AddBusinessClassAction extends TreeAction {
 	}
 
 	/**
-	 * 构造函数(通过树来创建，通过树来查找上级节点)
-	 * 
-	 * @param parent
+	 * 构造函数(通过树来创建，通过树来查找上级节点).
+	 *
+	 * @param text
+	 *            the text
+	 * @param imageDescriptor
+	 *            the image descriptor
+	 * @param treeViewer
+	 *            the tree viewer
 	 */
 	public AddBusinessClassAction(String text, ImageDescriptor imageDescriptor,
 			TreeViewer treeViewer) {
@@ -50,9 +56,10 @@ public class AddBusinessClassAction extends TreeAction {
 	}
 
 	/**
-	 * 构造函数(采用默认名称和图标，可以不通过树来创建，直接传入上级节点)
-	 * 
+	 * 构造函数(采用默认名称和图标，可以不通过树来创建，直接传入上级节点).
+	 *
 	 * @param parent
+	 *            the parent
 	 */
 	public AddBusinessClassAction(AbstractModelElement parent) {
 		super(ActionTexts.BUSINESSCLASS_ADD);
@@ -61,6 +68,9 @@ public class AddBusinessClassAction extends TreeAction {
 		this.parent = parent;
 	}
 
+	/**
+	 * 
+	 */
 	public void run() {
 		// 先找到所要添加的业务类的上级节点
 		if (treeViewer != null && treeViewer.getSelection() != null) {

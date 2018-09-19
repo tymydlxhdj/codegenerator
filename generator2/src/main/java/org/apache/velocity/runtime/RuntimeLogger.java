@@ -1,5 +1,6 @@
 package org.apache.velocity.runtime;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -29,31 +30,44 @@ package org.apache.velocity.runtime;
  */
 public interface RuntimeLogger
 {
+    
     /**
-     * @deprecated Use Log.warn(Object).
-     * @see org.apache.velocity.runtime.log.Log#warn(Object)
-     * @param message The message to log.
-     */
+	 * Warn.
+	 *
+	 * @param message
+	 *            The message to log.
+	 * @see org.apache.velocity.runtime.log.Log#warn(Object)
+	 * @deprecated Use Log.warn(Object).
+	 */
     public void warn(Object message);
 
     /**
-     * @deprecated Use Log.info(Object)
-     * @see org.apache.velocity.runtime.log.Log#info(Object)
-     * @param message The message to log.
-     */
+	 * Info.
+	 *
+	 * @param message
+	 *            The message to log.
+	 * @see org.apache.velocity.runtime.log.Log#info(Object)
+	 * @deprecated Use Log.info(Object)
+	 */
     public  void info(Object message);
 
     /**
-     * @deprecated Use Log.error(Object)
-     * @see org.apache.velocity.runtime.log.Log#error(Object)
-     * @param message The message to log.
-     */
+	 * Error.
+	 *
+	 * @param message
+	 *            The message to log.
+	 * @see org.apache.velocity.runtime.log.Log#error(Object)
+	 * @deprecated Use Log.error(Object)
+	 */
     public void error(Object message);
 
     /**
-     * @deprecated Use Log.debug(Object)
-     * @see org.apache.velocity.runtime.log.Log#debug(Object)
-     * @param message The message to log.
-     */
+	 * Debug.
+	 *
+	 * @param message
+	 *            The message to log.
+	 * @see org.apache.velocity.runtime.log.Log#debug(Object)
+	 * @deprecated Use Log.debug(Object)
+	 */
     public void debug(Object message);
 }

@@ -7,15 +7,23 @@ import com.mqfdy.code.model.ModelPackage;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 包PropertyPropertySource
- * 
+ * 包PropertyPropertySource.
+ *
  * @author mqfdy
- * 
  */
 public class ModelPackagePropertySource extends ModelPropertySource {
+	
+	/** The model package. */
 	public ModelPackage modelPackage;
 
+	/**
+	 * Instantiates a new model package property source.
+	 *
+	 * @param property
+	 *            the property
+	 */
 	public ModelPackagePropertySource(AbstractModelElement property) {
 		super();
 		this.modelPackage = (ModelPackage) property;
@@ -25,9 +33,15 @@ public class ModelPackagePropertySource extends ModelPropertySource {
 		// }
 	}
 
+	/**
+	 * 
+	 */
 	protected void initializeDescriptors() {
 	}
 
+	/**
+	 * 
+	 */
 	protected void installModelProperty() {
 		if (modelPackage.getStereotype() != null
 				&& (IModelElement.STEREOTYPE_BUILDIN.equals(modelPackage.getStereotype()
@@ -68,6 +82,15 @@ public class ModelPackagePropertySource extends ModelPropertySource {
 		// addButtonModelProperty(IBusinessModelPropertyNames.PROPERTY_ENUMERARION_VALUES,IBusinessModelPropertyNames.CATEGORY_ENUMERARION,"");
 	}
 
+	/**
+	 * Gets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return the property value
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -91,6 +114,16 @@ public class ModelPackagePropertySource extends ModelPropertySource {
 			return "";
 	}
 
+	/**
+	 * Sets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPropertyValue(Object propertyId, Object value) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException(propertyId.toString());
@@ -192,10 +225,27 @@ public class ModelPackagePropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * Checks if is property set.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return true, if is property set
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isPropertySet(Object propertyId) {
 		return true;
 	}
 
+	/**
+	 * Reset property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @Date 2018-09-03 09:00
+	 */
 	public void resetPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -209,6 +259,9 @@ public class ModelPackagePropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public Object getEditableValue() {
 		return this;
 	}

@@ -33,35 +33,64 @@ import com.mqfdy.code.model.BusinessClass;
 import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.model.BusinessOperation;
 
+// TODO: Auto-generated Javadoc
 /**
- * 代码生成对话框
- * 
+ * 代码生成对话框.
+ *
  * @author mqfdy
- * 
  */
 public class FindObjectDiaolg extends TitleAreaDialog {
-	/**
-	 * 标签页对象
-	 */
+	
+	/** 标签页对象. */
 	private TabFolder tabFolder;
+	
+	/** The fo page. */
 	private FindObjectItemsPage foPage;
+	
+	/** The ok button. */
 	private Button okButton;
+	
+	/** The case sensitive. */
 	private boolean caseSensitive;
+	
+	/** The search type. */
 	private String searchType;
+	
+	/** The search name. */
 	private String searchName;
+	
+	/** The search dis name. */
 	private String searchDisName;
 
+	/** The findobject searchtype. */
 	public static String FINDOBJECT_SEARCHTYPE = "fo_searchType";
+	
+	/** The findobject searchname. */
 	public static String FINDOBJECT_SEARCHNAME = "fo_searchName";
+	
+	/** The findobject searchdisname. */
 	public static String FINDOBJECT_SEARCHDISNAME = "fo_searchDisName";
+	
+	/** The findobject casesensitive. */
 	public static String FINDOBJECT_CASESENSITIVE = "fo_caseSensitive";
 
+	/**
+	 * Instantiates a new find object diaolg.
+	 *
+	 * @param shell
+	 *            the shell
+	 */
 	public FindObjectDiaolg(Shell shell) {
 		super(shell);
 	}
 
 	/**
-	 * 操作按钮
+	 * 操作按钮.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void createButtonsForButtonBar(Composite parent) {
 		okButton = createButton(parent, IDialogConstants.OK_ID,
@@ -71,6 +100,14 @@ public class FindObjectDiaolg extends TitleAreaDialog {
 				IDialogConstants.CANCEL_LABEL, false);
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void configureShell(Shell newShell) {
 		// TODO Auto-generated method stub
@@ -82,6 +119,15 @@ public class FindObjectDiaolg extends TitleAreaDialog {
 		newShell.setImage(icon);
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createDialogArea(Composite parent) {
 		// 初始化窗口
 		GridLayout gridLayout = new GridLayout(1, true);
@@ -101,6 +147,9 @@ public class FindObjectDiaolg extends TitleAreaDialog {
 		return parent;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		BusinessObjectModel model = BusinessModelUtil
@@ -159,6 +208,15 @@ public class FindObjectDiaolg extends TitleAreaDialog {
 		super.okPressed();
 	}
 
+	/**
+	 * Gets the result.
+	 *
+	 * @author mqfdy
+	 * @param model
+	 *            the model
+	 * @return the result
+	 * @Date 2018-09-03 09:00
+	 */
 	private List<AbstractModelElement> getResult(BusinessObjectModel model) {
 		List<AbstractModelElement> reList = new ArrayList<AbstractModelElement>();
 		List<AbstractModelElement> resultList = new ArrayList<AbstractModelElement>();
@@ -216,6 +274,17 @@ public class FindObjectDiaolg extends TitleAreaDialog {
 		return resultList;
 	}
 
+	/**
+	 * Checks if is string exist.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @param name
+	 *            the name
+	 * @return true, if is string exist
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isStringExist(String key, String name) {
 		if (caseSensitive) {
 			int first = name.indexOf(key);
@@ -234,6 +303,13 @@ public class FindObjectDiaolg extends TitleAreaDialog {
 		}
 	}
 
+	/**
+	 * Gets the ok button.
+	 *
+	 * @author mqfdy
+	 * @return the ok button
+	 * @Date 2018-09-03 09:00
+	 */
 	public Button getOkButton() {
 		return okButton;
 	}

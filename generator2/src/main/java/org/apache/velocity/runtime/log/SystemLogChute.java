@@ -22,6 +22,7 @@ package org.apache.velocity.runtime.log;
 import java.io.PrintStream;
 import org.apache.velocity.runtime.RuntimeServices;
 
+// TODO: Auto-generated Javadoc
 /**
  * Logger used when no other is configured.  By default, all messages
  * will be printed to the System.err output stream.
@@ -32,14 +33,26 @@ import org.apache.velocity.runtime.RuntimeServices;
  */
 public class SystemLogChute implements LogChute
 {
+    
+    /** The Constant RUNTIME_LOG_LEVEL_KEY. */
     public static final String RUNTIME_LOG_LEVEL_KEY = 
         "runtime.log.logsystem.system.level";
+    
+    /** The Constant RUNTIME_LOG_SYSTEM_ERR_LEVEL_KEY. */
     public static final String RUNTIME_LOG_SYSTEM_ERR_LEVEL_KEY = 
         "runtime.log.logsystem.system.err.level";
 
+    /** The enabled. */
     private int enabled = WARN_ID;
+    
+    /** The err level. */
     private int errLevel = TRACE_ID;
 
+    /**
+     * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
+     * @param rs
+     * @throws Exception SystemLogChute
+     */
     public void init(RuntimeServices rs) throws Exception
     {
         // look for a level config property
@@ -58,6 +71,15 @@ public class SystemLogChute implements LogChute
         }
     }
 
+    /**
+	 * To level.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the level
+	 * @return the int
+	 * @Date 2018-09-03 09:00
+	 */
     protected int toLevel(String level) {
         if (level.equalsIgnoreCase("debug"))
         {
@@ -81,6 +103,15 @@ public class SystemLogChute implements LogChute
         }
     }
 
+    /**
+	 * Gets the prefix.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the level
+	 * @return the prefix
+	 * @Date 2018-09-03 09:00
+	 */
     protected String getPrefix(int level)
     {
         switch (level)
@@ -100,12 +131,15 @@ public class SystemLogChute implements LogChute
     }
 
     /**
-     * Logs messages to either std.out or std.err
-     * depending on their severity.
-     *
-     * @param level severity level
-     * @param message complete error message
-     */
+	 * Logs messages to either std.out or std.err depending on their severity.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            severity level
+	 * @param message
+	 *            complete error message
+	 * @Date 2018-9-3 11:38:37
+	 */
     public void log(int level, String message)
     {
         // pass it off
@@ -113,18 +147,22 @@ public class SystemLogChute implements LogChute
     }
 
     /**
-     * Logs messages to the system console so long as the specified level
-     * is equal to or greater than the level this LogChute is enabled for.
-     * If the level is equal to or greater than LogChute.ERROR_ID, 
-     * messages will be printed to System.err. Otherwise, they will be 
-     * printed to System.out. If a java.lang.Throwable accompanies the 
-     * message, it's stack trace will be printed to the same stream
-     * as the message.
-     *
-     * @param level severity level
-     * @param message complete error message
-     * @param t the java.lang.Throwable
-     */
+	 * Logs messages to the system console so long as the specified level is
+	 * equal to or greater than the level this LogChute is enabled for. If the
+	 * level is equal to or greater than LogChute.ERROR_ID, messages will be
+	 * printed to System.err. Otherwise, they will be printed to System.out. If
+	 * a java.lang.Throwable accompanies the message, it's stack trace will be
+	 * printed to the same stream as the message.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            severity level
+	 * @param message
+	 *            complete error message
+	 * @param t
+	 *            the java.lang.Throwable
+	 * @Date 2018-9-3 11:38:37
+	 */
     public void log(int level, String message, Throwable t)
     {
         if (!isLevelEnabled(level))
@@ -143,6 +181,20 @@ public class SystemLogChute implements LogChute
         }
     }
 
+    /**
+	 * Write.
+	 *
+	 * @author mqfdy
+	 * @param stream
+	 *            the stream
+	 * @param prefix
+	 *            the prefix
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @Date 2018-09-03 09:00
+	 */
     protected void write(PrintStream stream, String prefix, String message, Throwable t)
     {
         stream.print(prefix);
@@ -155,44 +207,67 @@ public class SystemLogChute implements LogChute
     }
 
     /**
-     * Set the minimum level at which messages will be printed.
-     */
+	 * Set the minimum level at which messages will be printed.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the new enabled level
+	 * @Date 2018-09-03 09:00
+	 */
     public void setEnabledLevel(int level)
     {
         this.enabled = level;
     }
 
     /**
-     * Returns the current minimum level at which messages will be printed.
-     */
+	 * Returns the current minimum level at which messages will be printed.
+	 *
+	 * @author mqfdy
+	 * @return the enabled level
+	 * @Date 2018-09-03 09:00
+	 */
     public int getEnabledLevel()
     {
         return this.enabled;
     }
 
     /**
-     * Set the minimum level at which messages will be printed to System.err
-     * instead of System.out.
-     */
+	 * Set the minimum level at which messages will be printed to System.err
+	 * instead of System.out.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the new system err level
+	 * @Date 2018-09-03 09:00
+	 */
     public void setSystemErrLevel(int level)
     {
         this.errLevel = level;
     }
 
     /**
-     * Returns the current minimum level at which messages will be printed
-     * to System.err instead of System.out.
-     */
+	 * Returns the current minimum level at which messages will be printed to
+	 * System.err instead of System.out.
+	 *
+	 * @author mqfdy
+	 * @return the system err level
+	 * @Date 2018-09-03 09:00
+	 */
     public int getSystemErrLevel()
     {
         return this.errLevel;
     }
 
     /**
-     * This will return true if the specified level
-     * is equal to or higher than the level this
-     * LogChute is enabled for.
-     */
+	 * This will return true if the specified level is equal to or higher than
+	 * the level this LogChute is enabled for.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the level
+	 * @return true, if is level enabled
+	 * @Date 2018-9-3 11:38:37
+	 */
     public boolean isLevelEnabled(int level)
     {
         return (level >= this.enabled);

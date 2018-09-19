@@ -21,19 +21,23 @@ package org.apache.velocity.runtime.log;
 
 import org.apache.velocity.runtime.RuntimeServices;
 
+// TODO: Auto-generated Javadoc
 /**
  * Old base interface that old logging systems needed to implement.
  *
  * @author <a href="mailto:jon@latchkey.com">Jon S. Stevens</a>
  * @author <a href="mailto:geirm@optonline.net">Geir Magnusson Jr.</a>
- * @deprecated Use LogChute instead!
  * @version $Id: LogSystem.java 730039 2008-12-30 03:53:19Z byron $
+ * @deprecated Use LogChute instead!
  */
 public interface LogSystem
 {
+    
     /**
-     * @deprecated This is unused and meaningless
-     */
+	 * The Constant DEBUG_ON.
+	 *
+	 * @deprecated This is unused and meaningless
+	 */
     public final static boolean DEBUG_ON = true;
 
     /**
@@ -57,16 +61,25 @@ public interface LogSystem
     public final static int ERROR_ID = 3;
 
     /**
-     * Initializes this LogSystem.
-     * @param rs
-     * @throws Exception
-     */
+	 * Initializes this LogSystem.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
+	 */
     public void init( RuntimeServices rs ) throws Exception;
 
     /**
-     * @param level
-     * @param message
-     * @deprecated Use log(level, message).
-     */
+	 * Log velocity message.
+	 *
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @deprecated Use log(level, message).
+	 */
     public void logVelocityMessage(int level, String message);
 }

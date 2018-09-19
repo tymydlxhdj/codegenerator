@@ -21,19 +21,29 @@ import com.mqfdy.code.model.BusinessOperation;
 import com.mqfdy.code.model.Enumeration;
 import com.mqfdy.code.model.Property;
 
+// TODO: Auto-generated Javadoc
 /**
- * 粘贴图形
- * 
+ * 粘贴图形.
+ *
  * @author mqfdy
- * 
  */
 public class PasteNodeAction extends SelectionAction {
+	
+	/**
+	 * Instantiates a new paste node action.
+	 *
+	 * @param part
+	 *            the part
+	 */
 	public PasteNodeAction(IWorkbenchPart part) {
 		super(part);
 		// force calculateEnabled() to be called in every context
 		setLazyEnablementCalculation(true);
 	}
 
+	/**
+	 * 
+	 */
 	protected void init() {
 		super.init();
 		ISharedImages sharedImages = PlatformUI.getWorkbench()
@@ -50,6 +60,13 @@ public class PasteNodeAction extends SelectionAction {
 		setEnabled(false);
 	}
 
+	/**
+	 * Creates the paste command.
+	 *
+	 * @author mqfdy
+	 * @return the command
+	 * @Date 2018-09-03 09:00
+	 */
 	private Command createPasteCommand() {
 		List<Object> list = new ArrayList<Object>();
 		if (Clipboard.getDefault().getContents() == null)
@@ -65,6 +82,9 @@ public class PasteNodeAction extends SelectionAction {
 		return new PasteNodeCommand();
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected boolean calculateEnabled() {
 
@@ -74,6 +94,9 @@ public class PasteNodeAction extends SelectionAction {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void run() {
 		Command command = createPasteCommand();

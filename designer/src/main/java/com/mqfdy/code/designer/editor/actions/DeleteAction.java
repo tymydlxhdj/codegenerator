@@ -16,13 +16,19 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
 
+// TODO: Auto-generated Javadoc
 /**
- * 删除对象动作    同gef的DeleteAction
- * 用于解决一次删除多个node对象时，重复发送delCommand
+ * 删除对象动作 同gef的DeleteAction 用于解决一次删除多个node对象时，重复发送delCommand.
+ *
+ * @author mqfdy
  */
 public class DeleteAction extends SelectionAction {
 
-	/** @deprecated Use ActionFactory.DELETE.getId() instead. */
+	/**
+	 * The Constant ID.
+	 *
+	 * @deprecated Use ActionFactory.DELETE.getId() instead.
+	 */
 	public static final String ID = ActionFactory.DELETE.getId();
 
 	/**
@@ -43,8 +49,10 @@ public class DeleteAction extends SelectionAction {
 	 * Returns <code>true</code> if the selected objects can be deleted. Returns
 	 * <code>false</code> if there are no objects selected or the selected
 	 * objects are not {@link EditPart}s.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return <code>true</code> if the command should be enabled
+	 * @Date 2018-09-03 09:00
 	 */
 	protected boolean calculateEnabled() {
 		Command cmd = createDeleteCommand(getSelectedObjects());
@@ -55,10 +63,12 @@ public class DeleteAction extends SelectionAction {
 
 	/**
 	 * Create a command to remove the selected objects.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param objects
 	 *            The objects to be deleted.
 	 * @return The command to remove the selected objects.
+	 * @Date 2018-09-03 09:00
 	 */
 	public Command createDeleteCommand(List objects) {
 		if (objects.isEmpty())
@@ -104,6 +114,9 @@ public class DeleteAction extends SelectionAction {
 
 	/**
 	 * Initializes this action's text and images.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void init() {
 		super.init();
@@ -121,6 +134,9 @@ public class DeleteAction extends SelectionAction {
 
 	/**
 	 * Performs the delete action on the selected objects.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void run() {
 		execute(createDeleteCommand(getSelectedObjects()));

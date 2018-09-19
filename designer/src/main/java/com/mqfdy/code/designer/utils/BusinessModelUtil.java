@@ -61,12 +61,20 @@ import com.mqfdy.code.model.utils.EditorType;
 import com.mqfdy.code.resource.BomManager;
 import com.mqfdy.code.reverse.utils.ReverseUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BusinessModelUtil.
+ *
+ * @author mqfdy
+ */
 public class BusinessModelUtil {
 
 	/**
-	 * get the Editing BusinessModelManager;
-	 * 
-	 * @return
+	 * get the Editing BusinessModelManager;.
+	 *
+	 * @author mqfdy
+	 * @return the editor business model manager
+	 * @Date 2018-09-03 09:00
 	 */
 	public static BusinessModelManager getEditorBusinessModelManager() {
 		IEditorPart editorPart = PlatformUI.getWorkbench()
@@ -91,18 +99,34 @@ public class BusinessModelUtil {
 		return null;
 	}
 
+	/**
+	 * Gets the gef viewer.
+	 *
+	 * @author mqfdy
+	 * @return the gef viewer
+	 * @Date 2018-09-03 09:00
+	 */
 	public static GraphicalViewer getGefViewer() {
 		return getBusinessModelDiagramEditor().getViewer();
 	}
 
+	/**
+	 * Gets the selected edit parts.
+	 *
+	 * @author mqfdy
+	 * @return the selected edit parts
+	 * @Date 2018-09-03 09:00
+	 */
 	public static List getSelectedEditParts() {
 		return getGefViewer().getSelectedEditParts();
 	}
 
 	/**
-	 * get the editing Editor
-	 * 
-	 * @return
+	 * get the editing Editor.
+	 *
+	 * @author mqfdy
+	 * @return the business model diagram editor
+	 * @Date 2018-09-03 09:00
 	 */
 	public static BusinessModelDiagramEditor getBusinessModelDiagramEditor() {
 		IWorkbenchPage acpage = PlatformUI.getWorkbench()
@@ -133,10 +157,13 @@ public class BusinessModelUtil {
 	}
 
 	/**
-	 * get the editing view
-	 * 
+	 * get the editing view.
+	 *
+	 * @author mqfdy
 	 * @param classType
-	 * @return
+	 *            the class type
+	 * @return the view
+	 * @Date 2018-09-03 09:00
 	 */
 	public static ValiView getView(Class<? extends IViewPart> classType) {
 		try{
@@ -153,6 +180,13 @@ public class BusinessModelUtil {
 		return null;
 	}
 
+	/**
+	 * Gets the outline page.
+	 *
+	 * @author mqfdy
+	 * @return the outline page
+	 * @Date 2018-09-03 09:00
+	 */
 	public static ObjectModelOutlinePage getOutlinePage() {
 		IViewPart[] parts = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow().getActivePage().getViews();
@@ -167,11 +201,19 @@ public class BusinessModelUtil {
 		}
 		return null;
 	}
+	
 	/**
-	 * 解析引用模型  如果出错 弹出确认窗口删掉
-	 * @param businessModelEditor 
+	 * 解析引用模型 如果出错 弹出确认窗口删掉.
+	 *
+	 * @author mqfdy
+	 * @param businessModelEditor
+	 *            the business model editor
 	 * @param businessObjectModel
+	 *            the business object model
 	 * @param filePath
+	 *            the file path
+	 * @return true, if is checks for reference object
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isHasReferenceObject(
 			BusinessModelEditor businessModelEditor, BusinessObjectModel businessObjectModel,String filePath/*,BusinessModelDiagramEditor buEditor*/) {
@@ -271,10 +313,16 @@ public class BusinessModelUtil {
 		businessModelEditor.setHasErrorRefObj(false);
 		return false;
 	}
+	
 	/**
-	 * 解析引用模型  如果出错 弹出确认窗口删掉
+	 * 解析引用模型 如果出错 弹出确认窗口删掉.
+	 *
+	 * @author mqfdy
 	 * @param businessObjectModel
+	 *            the business object model
 	 * @param filePath
+	 *            the file path
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void assembReferenceObject(
 			BusinessObjectModel businessObjectModel,String filePath) {
@@ -380,6 +428,14 @@ public class BusinessModelUtil {
 		assertRefEnum(businessObjectModel);
 	}
 	
+	/**
+	 * Assert ref enum.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @Date 2018-09-03 09:00
+	 */
 	private static void assertRefEnum(BusinessObjectModel businessObjectModel){
 		if(businessObjectModel!=null){
 			List<BusinessClass> listBusinessClasses = businessObjectModel.getBusinessClasses();
@@ -426,6 +482,16 @@ public class BusinessModelUtil {
 		}
 	}
 	
+	/**
+	 * Save model after del ref.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @param filePath
+	 *            the file path
+	 * @Date 2018-09-03 09:00
+	 */
 	//删除错误的引用后保存模型
 	public static void saveModelAfterDelRef(BusinessObjectModel businessObjectModel,String filePath){
 		//删除错误的引用后保存模型
@@ -439,6 +505,16 @@ public class BusinessModelUtil {
 			Logger.log(e);
 		}
 	}
+	
+	/**
+	 * Gets the table name.
+	 *
+	 * @author mqfdy
+	 * @param oldName
+	 *            the old name
+	 * @return the table name
+	 * @Date 2018-09-03 09:00
+	 */
 	public static  String getTableName(String oldName){
 		String name = oldName;
 		IPreferenceStore store = BusinessModelEditorPlugin.getDefault()
@@ -451,6 +527,15 @@ public class BusinessModelUtil {
 		return name;
 	}
 	
+	/**
+	 * Gets the pro column name.
+	 *
+	 * @author mqfdy
+	 * @param oldName
+	 *            the old name
+	 * @return the pro column name
+	 * @Date 2018-09-03 09:00
+	 */
 	public static  String getProColumnName(String oldName){
 		String name = oldName;
 		IPreferenceStore store = BusinessModelEditorPlugin.getDefault()
@@ -460,6 +545,16 @@ public class BusinessModelUtil {
 			name = name.toUpperCase(Locale.getDefault());
 		return name;
 	}
+	
+	/**
+	 * Gets the bom.
+	 *
+	 * @author mqfdy
+	 * @param modelElement
+	 *            the model element
+	 * @return the bom
+	 * @Date 2018-09-03 09:00
+	 */
 	public static BusinessObjectModel getBom(AbstractModelElement modelElement) {
 		BusinessObjectModel businessObjectModel = null;
 		if (modelElement instanceof BusinessClass) {
@@ -474,9 +569,16 @@ public class BusinessModelUtil {
 	
 	/**
 	 * 在MANIFEST.MF中，指定的属性中新增一个值
+	 *
+	 * @author mqfdy
 	 * @param manifestPath
-	 * @param packageName
-	 * @throws Exception 
+	 *            the manifest path
+	 * @param attributeName
+	 *            the attribute name
+	 * @param value
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean addValueToManifest(String manifestPath, String attributeName, String value) {
 		if(attributeName == null || attributeName.trim().length() == 0) {
@@ -594,9 +696,13 @@ public class BusinessModelUtil {
 	}
 
 	/**
-	 * 是否是属性头的行
+	 * 是否是属性头的行.
+	 *
+	 * @author mqfdy
 	 * @param attributeValue
-	 * @return
+	 *            the attribute value
+	 * @return true, if is attribute row
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isAttributeRow(String attributeValue) {
 		if(attributeValue == null || attributeValue.length() == 0) {
@@ -606,10 +712,15 @@ public class BusinessModelUtil {
 	}
 	
 	/**
-	 * 是否存在当前属性
+	 * 是否存在当前属性.
+	 *
+	 * @author mqfdy
 	 * @param manifestPath
+	 *            the manifest path
 	 * @param attributeName
-	 * @return
+	 *            the attribute name
+	 * @return true, if is exist attribute
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isExistAttribute(String manifestPath, String attributeName) {
 		BufferedReader reader = null;
@@ -647,6 +758,16 @@ public class BusinessModelUtil {
 			}
 		}
 	}	
+	
+	/**
+	 * Checks if is custom object model.
+	 *
+	 * @author mqfdy
+	 * @param obj
+	 *            the obj
+	 * @return true, if is custom object model
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * 判断是否是自定义类型的模型
 	 */
@@ -655,6 +776,15 @@ public class BusinessModelUtil {
 			||IModelElement.STEREOTYPE_CUSTOM.equals(obj.getStereotype());
 	}
 	
+	/**
+	 * Checks if is reverse object model.
+	 *
+	 * @author mqfdy
+	 * @param obj
+	 *            the obj
+	 * @return true, if is reverse object model
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * 判断是否是自定义类型的模型
 	 */

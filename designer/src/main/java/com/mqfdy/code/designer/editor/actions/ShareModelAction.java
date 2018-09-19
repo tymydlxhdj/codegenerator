@@ -22,18 +22,40 @@ import com.mqfdy.code.designer.utils.BusinessModelUtil;
 import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.shareModel.dialogs.ShareModelDialog;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ShareModelAction.
+ *
+ * @author mqfdy
+ */
 public class ShareModelAction extends SelectionAction {
 
+	/** The Constant STR. */
 	public static final String STR = "shardId";
+	
+	/** The share model action. */
 	ShareModelAction shareModelAction;
+	
+	/** The share model dialog. */
 	ShareModelDialog shareModelDialog;
+	
+	/** The list. */
 	List<AbstractGraphicalEditPart> list = null;
 
+	/**
+	 * Instantiates a new share model action.
+	 *
+	 * @param part
+	 *            the part
+	 */
 	public ShareModelAction(IWorkbenchPart part) {
 		super(part);
 		setLazyEnablementCalculation(true);
 	}
 
+	/**
+	 * 
+	 */
 	protected void init() {
 		ISharedImages sharedImages = PlatformUI.getWorkbench()
 				.getSharedImages();
@@ -47,6 +69,15 @@ public class ShareModelAction extends SelectionAction {
 		setEnabled(true);
 	}
 
+	/**
+	 * Creates the command.
+	 *
+	 * @author mqfdy
+	 * @param selectedObjects
+	 *            the selected objects
+	 * @return the command
+	 * @Date 2018-09-03 09:00
+	 */
 	private Command createCommand(
 			List<AbstractGraphicalEditPart> selectedObjects) {
 
@@ -54,6 +85,9 @@ public class ShareModelAction extends SelectionAction {
 		return cmd;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected boolean calculateEnabled() {
 		@SuppressWarnings("unchecked")
@@ -62,6 +96,9 @@ public class ShareModelAction extends SelectionAction {
 		return cmd.canExecute();
 	}
 
+	/**
+	 * 
+	 */
 	@SuppressWarnings({ "static-access", "unchecked" })
 	public void run() {
 		Command cmd = createCommand(getSelectedObjects());
@@ -121,6 +158,9 @@ public class ShareModelAction extends SelectionAction {
 
 	}
 
+	/**
+	 * @return
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	protected List getSelectedObjects() {

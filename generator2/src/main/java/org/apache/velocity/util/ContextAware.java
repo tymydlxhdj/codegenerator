@@ -22,6 +22,7 @@ package org.apache.velocity.util;
 import org.apache.velocity.context.Context;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Event handlers implementing this interface will automatically
  * have the method setContext called before each event.  This
@@ -40,10 +41,15 @@ import org.apache.velocity.context.Context;
  */
 public interface  ContextAware
 {
+    
     /**
-     * Initialize the EventHandler.
-     * @param context
-     */
+	 * Initialize the EventHandler.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the new context
+	 * @Date 2018-9-3 11:38:27
+	 */
     public void setContext( Context context );
 
 }

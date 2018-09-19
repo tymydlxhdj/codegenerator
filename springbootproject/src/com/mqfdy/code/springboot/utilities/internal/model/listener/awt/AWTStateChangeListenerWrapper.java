@@ -24,6 +24,12 @@ public class AWTStateChangeListenerWrapper
 {
 	private final StateChangeListener listener;
 
+	/**
+	 * Instantiates a new AWT state change listener wrapper.
+	 *
+	 * @param listener
+	 *            the listener
+	 */
 	public AWTStateChangeListenerWrapper(StateChangeListener listener) {
 		super();
 		if (listener == null) {

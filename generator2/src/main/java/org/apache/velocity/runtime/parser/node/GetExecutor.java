@@ -27,6 +27,7 @@ import org.apache.velocity.runtime.log.RuntimeLoggerLog;
 import org.apache.velocity.util.introspection.Introspector;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Executor that simply tries to execute a get(key)
  * operation. This will try to find a get(key) method
@@ -39,18 +40,27 @@ import org.apache.velocity.util.introspection.Introspector;
  */
 public class GetExecutor extends AbstractExecutor
 {
+    
+    /** The introspector. */
     private final Introspector introspector;
 
+    /** The params. */
     // This is still threadsafe because this object is only read except in the C'tor.
     private Object [] params = {};
 
     /**
-     * @param log
-     * @param introspector
-     * @param clazz
-     * @param property
-     * @since 1.5
-     */
+	 * Instantiates a new gets the executor.
+	 *
+	 * @param log
+	 *            the log
+	 * @param introspector
+	 *            the introspector
+	 * @param clazz
+	 *            the clazz
+	 * @param property
+	 *            the property
+	 * @since 1.5
+	 */
     public GetExecutor(final Log log, final Introspector introspector,
             final Class clazz, final String property)
     {
@@ -72,12 +82,18 @@ public class GetExecutor extends AbstractExecutor
     }
 
     /**
-     * @param rlog
-     * @param introspector
-     * @param clazz
-     * @param property
-     * @deprecated RuntimeLogger is deprecated. Use the other constructor.
-     */
+	 * Instantiates a new gets the executor.
+	 *
+	 * @param rlog
+	 *            the rlog
+	 * @param introspector
+	 *            the introspector
+	 * @param clazz
+	 *            the clazz
+	 * @param property
+	 *            the property
+	 * @deprecated RuntimeLogger is deprecated. Use the other constructor.
+	 */
     public GetExecutor(final RuntimeLogger rlog, final Introspector introspector,
             final Class clazz, final String property)
     {
@@ -85,8 +101,12 @@ public class GetExecutor extends AbstractExecutor
     }
 
     /**
-     * @since 1.5
-     */
+	 * Discover.
+	 *
+	 * @param clazz
+	 *            the clazz
+	 * @since 1.5
+	 */
     protected void discover(final Class clazz)
     {
         try
@@ -109,8 +129,17 @@ public class GetExecutor extends AbstractExecutor
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.AbstractExecutor#execute(java.lang.Object)
-     */
+	 * Execute.
+	 *
+	 * @param o
+	 *            the o
+	 * @return the object
+	 * @throws IllegalAccessException
+	 *             the illegal access exception
+	 * @throws InvocationTargetException
+	 *             the invocation target exception
+	 * @see org.apache.velocity.runtime.parser.node.AbstractExecutor#execute(java.lang.Object)
+	 */
     public Object execute(final Object o)
         throws IllegalAccessException,  InvocationTargetException
     {

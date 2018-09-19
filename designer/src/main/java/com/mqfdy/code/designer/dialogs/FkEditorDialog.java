@@ -20,38 +20,59 @@ import com.mqfdy.code.model.QueryCondition;
 import com.mqfdy.code.model.utils.EditorType;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 属性编辑器弹出框
- * 
+ * 属性编辑器弹出框.
+ *
  * @author mqfdy
- * 
  */
 public class FkEditorDialog extends ModelElementEditorDialog {
 
+	/** The Constant DIALOG_TITLE_ADD. */
 	public static final String DIALOG_TITLE_ADD = "创建编辑器";
+	
+	/** The Constant DIALOG_TITLE_EDIT. */
 	public static final String DIALOG_TITLE_EDIT = "编辑编辑器";
+	
+	/** The Constant MESSAGE_TITLE. */
 	public static final String MESSAGE_TITLE = "编辑器";
+	
+	/** The Constant DIALOG_MESSAGE_ADD. */
 	public static final String DIALOG_MESSAGE_ADD = "创建编辑器";
+	
+	/** The Constant DIALOG_MESSAGE_EDIT. */
 	public static final String DIALOG_MESSAGE_EDIT = "修改编辑器";
 
+	/** The is class A. */
 	private boolean isClassA = false;
-	/**
-	 * 属性编辑器页面
-	 */
+	
+	/** 属性编辑器页面. */
 	private FkEditorPage fkEditorPage;
 
+	/** The conditions. */
 	private List<QueryCondition> conditions = new ArrayList<QueryCondition>();
 
+	/**
+	 * Instantiates a new fk editor dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 */
 	public FkEditorDialog(Shell parentShell) {
 		super(parentShell);
 	}
 
 	/**
-	 * 构造函数(用于编辑)
-	 * 
+	 * 构造函数(用于编辑).
+	 *
+	 * @param isClassA
+	 *            the is class A
 	 * @param parentShell
+	 *            the parent shell
 	 * @param editingElement
+	 *            the editing element
 	 * @param parent
+	 *            the parent
 	 */
 	public FkEditorDialog(boolean isClassA,Shell parentShell,
 			AbstractModelElement editingElement, Association parent) {
@@ -60,16 +81,29 @@ public class FkEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 构造函数(用于新增)
-	 * 
+	 * 构造函数(用于新增).
+	 *
+	 * @param isClassA
+	 *            the is class A
 	 * @param parentShell
+	 *            the parent shell
 	 * @param parent
+	 *            the parent
 	 */
 	public FkEditorDialog(boolean isClassA,Shell parentShell, AbstractModelElement parent) {
 		super(parentShell, parent);
 		this.isClassA = isClassA;
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createDialogArea(Composite parent) {
 		// 初始化窗口
 		GridLayout gridLayout = new GridLayout(1, true);
@@ -82,6 +116,14 @@ public class FkEditorDialog extends ModelElementEditorDialog {
 		return parent;
 	}
 
+	/**
+	 * Creates the buttons for button bar.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void createButtonsForButtonBar(Composite composite) {
 		createButton(composite, IDialogConstants.OK_ID,
 				IDialogConstants.OK_LABEL, true);
@@ -89,6 +131,9 @@ public class FkEditorDialog extends ModelElementEditorDialog {
 				IDialogConstants.CANCEL_LABEL, false);
 	}
 
+	/**
+	 * 
+	 */
 	protected void okPressed() {
 		if (validateAllInput() == true) {
 			updateTheEditingElement();
@@ -97,7 +142,10 @@ public class FkEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 设置标题和信息
+	 * 设置标题和信息.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setTitleAndMessage() {
 		setTitle(MESSAGE_TITLE);
@@ -112,6 +160,14 @@ public class FkEditorDialog extends ModelElementEditorDialog {
 
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		if (operationType.equals(OPERATION_TYPE_ADD)) {
@@ -124,7 +180,10 @@ public class FkEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 初始化弹出框控件的值
+	 * 初始化弹出框控件的值.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initControlValue() {
 		if (OPERATION_TYPE_EDIT.equals(operationType) && editingElement != null) {
@@ -136,6 +195,13 @@ public class FkEditorDialog extends ModelElementEditorDialog {
 
 	}
 
+	/**
+	 * Validate all input.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean validateAllInput() {
 		boolean isOk = fkEditorPage.validateInput();
 		if (isOk == false) {
@@ -152,9 +218,11 @@ public class FkEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 校验是否匹配
-	 * 
-	 * @return
+	 * 校验是否匹配.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean checkEditorType() {
 		String curDataType;
@@ -171,14 +239,35 @@ public class FkEditorDialog extends ModelElementEditorDialog {
 		}
 	}
 
+	/**
+	 * Update the editing element.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void updateTheEditingElement() {
 		fkEditorPage.updateTheEditingElement();
 	}
 
+	/**
+	 * Gets the conditions.
+	 *
+	 * @author mqfdy
+	 * @return the conditions
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<QueryCondition> getConditions() {
 		return conditions;
 	}
 
+	/**
+	 * Sets the conditions.
+	 *
+	 * @author mqfdy
+	 * @param conditions
+	 *            the new conditions
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setConditions(List<QueryCondition> conditions) {
 		this.conditions = conditions;
 	}

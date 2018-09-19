@@ -23,20 +23,22 @@ import org.apache.velocity.exception.ExtendedParseException;
 import org.apache.velocity.runtime.log.Log;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * This is an extension of the ParseException, which also takes a
- * template name.
- *
- * @see org.apache.velocity.runtime.parser.ParseException
+ * This is an extension of the ParseException, which also takes a template name.
  *
  * @author <a href="hps@intermeta.de">Henning P. Schmiedehausen</a>
- * @version $Id: TemplateParseException.java 703544 2008-10-10 18:15:53Z nbubna $
+ * @version $Id: TemplateParseException.java 703544 2008-10-10 18:15:53Z nbubna
+ *          $
+ * @see org.apache.velocity.runtime.parser.ParseException
  * @since 1.5
  */
 public class TemplateParseException
         extends ParseException
         implements ExtendedParseException
 {
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = -3146323135623083918L;
 
     /**
@@ -46,13 +48,18 @@ public class TemplateParseException
     private final String templateName;
 
     /**
-     * This constructor is used to add a template name
-     * to info cribbed from a ParseException generated in the parser.
-     * @param currentTokenVal
-     * @param expectedTokenSequencesVal
-     * @param tokenImageVal
-     * @param templateNameVal
-     */
+	 * This constructor is used to add a template name to info cribbed from a
+	 * ParseException generated in the parser.
+	 *
+	 * @param currentTokenVal
+	 *            the current token val
+	 * @param expectedTokenSequencesVal
+	 *            the expected token sequences val
+	 * @param tokenImageVal
+	 *            the token image val
+	 * @param templateNameVal
+	 *            the template name val
+	 */
     public TemplateParseException(Token currentTokenVal, int [][] expectedTokenSequencesVal, String [] tokenImageVal,
         String templateNameVal)
     {
@@ -61,20 +68,22 @@ public class TemplateParseException
     }
 
     /**
-     * This constructor is used by the method "generateParseException"
-     * in the generated parser.  Calling this constructor generates
-     * a new object of this type with the fields "currentToken",
-     * "expectedTokenSequences", and "tokenImage" set.  The boolean
-     * flag "specialConstructor" is also set to true to indicate that
-     * this constructor was used to create this object.
-     * This constructor calls its super class with the empty string
-     * to force the "toString" method of parent class "Throwable" to
-     * print the error message in the form:
-     *     ParseException: <result of getMessage>
-     * @param currentTokenVal
-     * @param expectedTokenSequencesVal
-     * @param tokenImageVal
-     */
+	 * This constructor is used by the method "generateParseException" in the
+	 * generated parser. Calling this constructor generates a new object of this
+	 * type with the fields "currentToken", "expectedTokenSequences", and
+	 * "tokenImage" set. The boolean flag "specialConstructor" is also set to
+	 * true to indicate that this constructor was used to create this object.
+	 * This constructor calls its super class with the empty string to force the
+	 * "toString" method of parent class "Throwable" to print the error message
+	 * in the form: ParseException: <result of getMessage>
+	 *
+	 * @param currentTokenVal
+	 *            the current token val
+	 * @param expectedTokenSequencesVal
+	 *            the expected token sequences val
+	 * @param tokenImageVal
+	 *            the token image val
+	 */
     public TemplateParseException(Token currentTokenVal, int [][] expectedTokenSequencesVal, String [] tokenImageVal)
     {
         super(currentTokenVal, expectedTokenSequencesVal, tokenImageVal);
@@ -108,18 +117,24 @@ public class TemplateParseException
     }
 
     /**
-     * returns the Template name where this exception occured.
-     * @return The Template name where this exception occured.
-     */
+	 * returns the Template name where this exception occured.
+	 *
+	 * @author mqfdy
+	 * @return The Template name where this exception occured.
+	 * @Date 2018-9-3 11:38:38
+	 */
     public String getTemplateName()
     {
         return templateName;
     }
 
     /**
-     * returns the line number where this exception occured.
-     * @return The line number where this exception occured.
-     */
+	 * returns the line number where this exception occured.
+	 *
+	 * @author mqfdy
+	 * @return The line number where this exception occured.
+	 * @Date 2018-9-3 11:38:38
+	 */
     public int getLineNumber()
     {
         if ((currentToken != null) && (currentToken.next != null))
@@ -133,9 +148,12 @@ public class TemplateParseException
     }
 
     /**
-     * returns the column number where this exception occured.
-     * @return The column number where this exception occured.
-     */
+	 * returns the column number where this exception occured.
+	 *
+	 * @author mqfdy
+	 * @return The column number where this exception occured.
+	 * @Date 2018-9-3 11:38:38
+	 */
     public int getColumnNumber()
     {
         if ((currentToken != null) && (currentToken.next != null))
@@ -149,16 +167,18 @@ public class TemplateParseException
     }
 
     /**
-     * This method has the standard behavior when this object has been
-     * created using the standard constructors.  Otherwise, it uses
-     * "currentToken" and "expectedTokenSequences" to generate a parse
-     * error message and returns it.  If this object has been created
-     * due to a parse error, and you do not catch it (it gets thrown
-     * from the parser), then this method is called during the printing
-     * of the final stack trace, and hence the correct error message
-     * gets displayed.
-     * @return The error message.
-     */
+	 * This method has the standard behavior when this object has been created
+	 * using the standard constructors. Otherwise, it uses "currentToken" and
+	 * "expectedTokenSequences" to generate a parse error message and returns
+	 * it. If this object has been created due to a parse error, and you do not
+	 * catch it (it gets thrown from the parser), then this method is called
+	 * during the printing of the final stack trace, and hence the correct error
+	 * message gets displayed.
+	 *
+	 * @author mqfdy
+	 * @return The error message.
+	 * @Date 2018-9-3 11:38:38
+	 */
     public String getMessage()
     {
         if (!specialConstructor)
@@ -230,8 +250,13 @@ public class TemplateParseException
     }
 
     /**
-     * @param sb
-     */
+	 * Append template info.
+	 *
+	 * @author mqfdy
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
+	 */
     protected void appendTemplateInfo(final StringBuffer sb)
     {
         sb.append(Log.formatFileString(getTemplateName(), getLineNumber(), getColumnNumber()));

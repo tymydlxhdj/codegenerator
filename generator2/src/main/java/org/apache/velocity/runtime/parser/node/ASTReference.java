@@ -40,6 +40,7 @@ import org.apache.velocity.util.introspection.Info;
 import org.apache.velocity.util.introspection.VelMethod;
 import org.apache.velocity.util.introspection.VelPropertySet;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class is responsible for handling the references in
  * VTL ($foo).
@@ -55,22 +56,48 @@ import org.apache.velocity.util.introspection.VelPropertySet;
 */
 public class ASTReference extends SimpleNode
 {
+    
+    /** The Constant NORMAL_REFERENCE. */
     /* Reference types */
     private static final int NORMAL_REFERENCE = 1;
+    
+    /** The Constant FORMAL_REFERENCE. */
     private static final int FORMAL_REFERENCE = 2;
+    
+    /** The Constant QUIET_REFERENCE. */
     private static final int QUIET_REFERENCE = 3;
+    
+    /** The Constant RUNT. */
     private static final int RUNT = 4;
 
+    /** The reference type. */
     private int referenceType;
+    
+    /** The null string. */
     private String nullString;
+    
+    /** The root string. */
     private String rootString;
+    
+    /** The escaped. */
     private boolean escaped = false;
+    
+    /** The computable reference. */
     private boolean computableReference = true;
+    
+    /** The log on null. */
     private boolean logOnNull = true;
+    
+    /** The esc prefix. */
     private String escPrefix = "";
+    
+    /** The more prefix. */
     private String morePrefix = "";
+    
+    /** The identifier. */
     private String identifier = "";
 
+    /** The literal. */
     private String literal = null;
 
     /**
@@ -99,38 +126,65 @@ public class ASTReference extends SimpleNode
      */
     public boolean toStringNullCheck = true;
     
+    /** The num children. */
     private int numChildren = 0;
 
+    /** The uber info. */
     protected Info uberInfo;
 
     /**
-     * @param id
-     */
+	 * Instantiates a new AST reference.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTReference(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST reference.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTReference(Parser p, int id)
     {
         super(p, id);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#init(org.apache.velocity.context.InternalContextAdapter, java.lang.Object)
-     */
+	 * Inits the.
+	 *
+	 * @param context
+	 *            the context
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#init(org.apache.velocity.context.InternalContextAdapter,
+	 *      java.lang.Object)
+	 */
     public Object init(InternalContextAdapter context, Object data)
     throws TemplateInitException
     {
@@ -210,22 +264,30 @@ public class ASTReference extends SimpleNode
     }
 
     /**
-     *  Returns the 'root string', the reference key
-     * @return the root string.
-     */
+	 * Returns the 'root string', the reference key.
+	 *
+	 * @author mqfdy
+	 * @return the root string.
+	 * @Date 2018-9-3 11:38:33
+	 */
      public String getRootString()
      {
         return rootString;
      }
 
     /**
-     *   gets an Object that 'is' the value of the reference
-     *
-     *   @param o   unused Object parameter
-     *   @param context context used to generate value
-     * @return The execution result.
-     * @throws MethodInvocationException
-     */
+	 * gets an Object that 'is' the value of the reference.
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            unused Object parameter
+	 * @param context
+	 *            context used to generate value
+	 * @return The execution result.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-9-3 11:38:33
+	 */
     public Object execute(Object o, InternalContextAdapter context)
         throws MethodInvocationException
     {
@@ -335,15 +397,20 @@ public class ASTReference extends SimpleNode
     }
 
     /**
-     *  gets the value of the reference and outputs it to the
-     *  writer.
-     *
-     *  @param context  context of data to use in getting value
-     *  @param writer   writer to render to
-     * @return True if rendering was successful.
-     * @throws IOException
-     * @throws MethodInvocationException
-     */
+	 * gets the value of the reference and outputs it to the writer.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            context of data to use in getting value
+	 * @param writer
+	 *            writer to render to
+	 * @return True if rendering was successful.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-9-3 11:38:33
+	 */
     public boolean render(InternalContextAdapter context, Writer writer) throws IOException,
             MethodInvocationException
     {
@@ -495,16 +562,21 @@ public class ASTReference extends SimpleNode
     }
 
     /**
-     * This method helps to implement the "render literal if null" functionality.
-     * 
-     * VelocimacroProxy saves references to macro arguments (AST nodes) so that if we have a macro
-     * #foobar($a $b) then there is key "$a.literal" which points to the literal presentation of the
-     * argument provided to variable $a. If the value of $a is null, we render the string that was
-     * provided as the argument.
-     * 
-     * @param context
-     * @return
-     */
+	 * This method helps to implement the "render literal if null"
+	 * functionality.
+	 * 
+	 * VelocimacroProxy saves references to macro arguments (AST nodes) so that
+	 * if we have a macro #foobar($a $b) then there is key "$a.literal" which
+	 * points to the literal presentation of the argument provided to variable
+	 * $a. If the value of $a is null, we render the string that was provided as
+	 * the argument.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @return the null string
+	 * @Date 2018-9-3 11:38:33
+	 */
     private String getNullString(InternalContextAdapter context)
     {
         Object callingArgument = context.get(".literal." + nullString);
@@ -516,14 +588,17 @@ public class ASTReference extends SimpleNode
     }
 
     /**
-     *   Computes boolean value of this reference
-     *   Returns the actual value of reference return type
-     *   boolean, and 'true' if value is not null
-     *
-     *   @param context context to compute value with
-     * @return True if evaluation was ok.
-     * @throws MethodInvocationException
-     */
+	 * Computes boolean value of this reference Returns the actual value of
+	 * reference return type boolean, and 'true' if value is not null.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            context to compute value with
+	 * @return True if evaluation was ok.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-9-3 11:38:33
+	 */
     public boolean evaluate(InternalContextAdapter context)
         throws MethodInvocationException
     {
@@ -559,8 +634,15 @@ public class ASTReference extends SimpleNode
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#value(org.apache.velocity.context.InternalContextAdapter)
-     */
+	 * Value.
+	 *
+	 * @param context
+	 *            the context
+	 * @return the object
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#value(org.apache.velocity.context.InternalContextAdapter)
+	 */
     public Object value(InternalContextAdapter context)
         throws MethodInvocationException
     {
@@ -569,8 +651,14 @@ public class ASTReference extends SimpleNode
 
     
     /**
-     * Utility class to handle nulls when printing a class type
-     */
+	 * Utility class to handle nulls when printing a class type.
+	 *
+	 * @author mqfdy
+	 * @param clazz
+	 *            the clazz
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
     public static String printClass(Class clazz)
     {
       return clazz == null ? "null" : clazz.getName();
@@ -578,16 +666,18 @@ public class ASTReference extends SimpleNode
     
     
     /**
-     *  Sets the value of a complex reference (something like $foo.bar)
-     *  Currently used by ASTSetReference()
-     *
-     *  @see ASTSetDirective
-     *
-     *  @param context context object containing this reference
-     *  @param value Object to set as value
-     *  @return true if successful, false otherwise
-     * @throws MethodInvocationException
-     */
+	 * Sets the value of a complex reference (something like $foo.bar) Currently
+	 * used by ASTSetReference()
+	 *
+	 * @param context
+	 *            context object containing this reference
+	 * @param value
+	 *            Object to set as value
+	 * @return true if successful, false otherwise
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @see ASTSetDirective
+	 */
     public boolean setValue( InternalContextAdapter context, Object value)
       throws MethodInvocationException
     {
@@ -770,6 +860,13 @@ public class ASTReference extends SimpleNode
         return true;
     }
 
+    /**
+	 * Gets the root.
+	 *
+	 * @author mqfdy
+	 * @return the root
+	 * @Date 2018-9-3 11:38:33
+	 */
     private String getRoot()
     {
         Token t = getFirstToken();
@@ -978,11 +1075,18 @@ public class ASTReference extends SimpleNode
     }
 
     /**
-     * @param context
-     * @param variable
-     * @return The evaluated value of the variable.
-     * @throws MethodInvocationException
-     */
+	 * Gets the variable value.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param variable
+	 *            the variable
+	 * @return The evaluated value of the variable.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-09-03 09:00
+	 */
     public Object getVariableValue(Context context, String variable) throws MethodInvocationException
     {
         Object obj = null;
@@ -1011,6 +1115,13 @@ public class ASTReference extends SimpleNode
         return obj;        
     }
 
+    /**
+	 * Gets the dollar bang.
+	 *
+	 * @author mqfdy
+	 * @return the dollar bang
+	 * @Date 2018-09-03 09:00
+	 */
     public String getDollarBang()
     {
         return (referenceType == QUIET_REFERENCE) ? "$!" : "$";

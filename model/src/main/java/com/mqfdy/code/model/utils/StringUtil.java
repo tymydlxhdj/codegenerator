@@ -18,14 +18,25 @@ import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
+// TODO: Auto-generated Javadoc
 /**
- * 字符串处理工具类
- * 
+ * 字符串处理工具类.
+ *
  * @author mqfdy
- * 
  */
 public class StringUtil {
 
+	/**
+	 * String 2 byte.
+	 *
+	 * @author mqfdy
+	 * @param str
+	 *            the str
+	 * @return the byte[]
+	 * @throws UnsupportedEncodingException
+	 *             the unsupported encoding exception
+	 * @Date 2018-09-03 09:00
+	 */
 	public static byte[] string2Byte(String str)
 			throws UnsupportedEncodingException {
 		if (str == null)
@@ -34,10 +45,13 @@ public class StringUtil {
 	}
 
 	/**
-	 * 判断字符串是否为 null 或为空字符串。
-	 * 
+	 * 判断字符串是否为 null 或为空字符串。.
+	 *
+	 * @author mqfdy
 	 * @param str
-	 * @return
+	 *            the str
+	 * @return true, if is empty
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isEmpty(String str) {
 		if (str == null) {
@@ -49,10 +63,13 @@ public class StringUtil {
 	}
 
 	/**
-	 * 将字符串转化为 boolean
-	 * 
+	 * 将字符串转化为 boolean.
+	 *
+	 * @author mqfdy
 	 * @param str
-	 * @return
+	 *            the str
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean string2Boolean(String str) {
 		str = convertNull2EmptyStr(str);
@@ -66,10 +83,13 @@ public class StringUtil {
 	}
 
 	/**
-	 * 将boolean转化为 字符串
-	 * 
-	 * @param str
-	 * @return
+	 * 将boolean转化为 字符串.
+	 *
+	 * @author mqfdy
+	 * @param b
+	 *            the b
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String boolean2String(boolean b) {
 		if (b) {
@@ -79,9 +99,13 @@ public class StringUtil {
 	}
 
 	/**
-	 * 将日期按照 yyyy-MM-dd 格式转换为字符串
-	 * 
-	 * @return
+	 * 将日期按照 yyyy-MM-dd 格式转换为字符串.
+	 *
+	 * @author mqfdy
+	 * @param date
+	 *            the date
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String date2String2(Date date) {
 		if (date == null) {
@@ -95,11 +119,15 @@ public class StringUtil {
 	}
 
 	/**
-	 * 判断数组是否包含
-	 * 
+	 * 判断数组是否包含.
+	 *
+	 * @author mqfdy
 	 * @param strs
+	 *            the strs
 	 * @param str
-	 * @return
+	 *            the str
+	 * @return true, if is contain
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isContain(String[] strs, String str) {
 		if (str == null || str.length() == 0) {
@@ -114,10 +142,13 @@ public class StringUtil {
 	}
 
 	/**
-	 * 重排xml格式
-	 * 
+	 * 重排xml格式.
+	 *
+	 * @author mqfdy
 	 * @param str
-	 * @return
+	 *            the str
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String prettyXml(String str) {
 		StringReader in = null;
@@ -153,10 +184,13 @@ public class StringUtil {
 	}
 
 	/**
-	 * 将字符串转换为int类型
-	 * 
+	 * 将字符串转换为int类型.
+	 *
+	 * @author mqfdy
 	 * @param numberStr
-	 * @return
+	 *            the number str
+	 * @return the integer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Integer string2Int(String numberStr) {
 		if (isEmpty(numberStr)) {
@@ -169,10 +203,13 @@ public class StringUtil {
 	}
 
 	/**
-	 * 判断字符串是否是数字，null值返回false
-	 * 
+	 * 判断字符串是否是数字，null值返回false.
+	 *
+	 * @author mqfdy
 	 * @param str
-	 * @return
+	 *            the str
+	 * @return true, if is numeric
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isNumeric(String str) {
 		if (isEmpty(str)) {
@@ -188,10 +225,13 @@ public class StringUtil {
 	}
 
 	/**
-	 * 将字符串转换为float类型
-	 * 
+	 * 将字符串转换为float类型.
+	 *
+	 * @author mqfdy
 	 * @param numberStr
-	 * @return
+	 *            the number str
+	 * @return the float
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Float string2Float(String numberStr) {
 		if (isEmpty(numberStr)) {
@@ -201,10 +241,13 @@ public class StringUtil {
 	}
 
 	/**
-	 * 将NULL转换为""返回
-	 * 
+	 * 将NULL转换为""返回.
+	 *
+	 * @author mqfdy
 	 * @param str
-	 * @return
+	 *            the str
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertNull2EmptyStr(String str) {
 		if (null == str) {
@@ -215,11 +258,13 @@ public class StringUtil {
 	}
 
 	/**
-	 * 将类名改为表名，用于创建Table对象
-	 * 
+	 * 将类名改为表名，用于创建Table对象.
+	 *
+	 * @author mqfdy
 	 * @param className
 	 *            持久化类
-	 * @return
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertFromClassName2TableName(String className) {
 
@@ -227,10 +272,15 @@ public class StringUtil {
 	}
 
 	/**
-	 * 根据数据类型判断默认值的格式。如数值类型 0 ，字符串类型 'vvvv'
-	 * 
+	 * 根据数据类型判断默认值的格式。如数值类型 0 ，字符串类型 'vvvv'.
+	 *
+	 * @author mqfdy
 	 * @param dataType
-	 * @return
+	 *            the data type
+	 * @param defaultValue
+	 *            the default value
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String handledefaultValue(String dataType, String defaultValue) {
 		if (isEmpty(defaultValue)) {
@@ -245,10 +295,13 @@ public class StringUtil {
 	}
 
 	/**
-	 * 从“包名+类名”中提取出类名
-	 * 
+	 * 从“包名+类名”中提取出类名.
+	 *
+	 * @author mqfdy
 	 * @param fullName
-	 * @return
+	 *            the full name
+	 * @return the class name from full name
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String getClassNameFromFullName(String fullName) {
 
@@ -260,9 +313,12 @@ public class StringUtil {
 
 	/**
 	 * 形如“src/com.mqfdy”，只需后面的包名
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param path
-	 * @return
+	 *            the path
+	 * @return the load package
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String getLoadPackage(String path) {
 		if (isEmpty(path)) {
@@ -274,15 +330,27 @@ public class StringUtil {
 
 	/**
 	 * 形如“src/com.mqfdy”，只需src
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param path
-	 * @return
+	 *            the path
+	 * @return the porject source path
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String getPorjectSourcePath(String path) {
 
 		return path.substring(0, path.lastIndexOf("\\") + 1);
 	}
 
+	/**
+	 * Gets the package.
+	 *
+	 * @author mqfdy
+	 * @param str
+	 *            the str
+	 * @return the package
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getPackage(String str) {
 		if (isEmpty(str)) {
 			return null;
@@ -290,6 +358,15 @@ public class StringUtil {
 		return str.substring(0, str.lastIndexOf("."));
 	}
 
+	/**
+	 * Capitalize.
+	 *
+	 * @author mqfdy
+	 * @param str
+	 *            the str
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String capitalize(String str) {
 		if (str == null || str.length() == 0) {
 			return str;
@@ -300,6 +377,15 @@ public class StringUtil {
 		return sb.toString();
 	}
 
+	/**
+	 * Un capitalize.
+	 *
+	 * @author mqfdy
+	 * @param str
+	 *            the str
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String unCapitalize(String str) {
 		if (str == null || str.length() == 0) {
 			return str;
@@ -310,6 +396,15 @@ public class StringUtil {
 		return sb.toString();
 	}
 
+	/**
+	 * Gets the file name list.
+	 *
+	 * @author mqfdy
+	 * @param projectPath
+	 *            the project path
+	 * @return the file name list
+	 * @Date 2018-09-03 09:00
+	 */
 	public static List<String> getFileNameList(String projectPath) {
 		List<String> fileNameList = new ArrayList<String>();
 		File fileDir = new File(projectPath);
@@ -317,6 +412,17 @@ public class StringUtil {
 		return fileNameList;
 	}
 
+	/**
+	 * Gets the all file.
+	 *
+	 * @author mqfdy
+	 * @param f
+	 *            the f
+	 * @param fileNameList
+	 *            the file name list
+	 * @return the all file
+	 * @Date 2018-09-03 09:00
+	 */
 	private static void getAllFile(File f, List<String> fileNameList) {
 		if (f.isDirectory() && f.exists()) {
 			File[] files = f.listFiles();
@@ -332,6 +438,15 @@ public class StringUtil {
 		}
 	}
 
+	/**
+	 * To camel case.
+	 *
+	 * @author mqfdy
+	 * @param s
+	 *            the s
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * 去下划线,并改成驼峰式
 	 */
@@ -359,6 +474,15 @@ public class StringUtil {
         return sb.toString();  
 	}
 	
+	/**
+	 * First upper.
+	 *
+	 * @author mqfdy
+	 * @param s
+	 *            the s
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * 去下划线,并将首字母大写
 	 */
@@ -372,7 +496,15 @@ public class StringUtil {
         return str.substring(0, 1).toUpperCase(Locale.getDefault()) + str.substring(1);  
 	}
 	
-	/** 列出某路径下的所有文件 */
+	/**
+	 * 列出某路径下的所有文件.
+	 *
+	 * @author mqfdy
+	 * @param path
+	 *            the path
+	 * @return the list
+	 * @Date 2018-09-03 09:00
+	 */
 	public static List<File> listFile(String path) {
 		File dir = new File(path);
 		if (!dir.exists()) {
@@ -388,7 +520,15 @@ public class StringUtil {
 		return fileList;
 	}
 
-	/** 去掉xxx.java中的.java */
+	/**
+	 * 去掉xxx.java中的.java
+	 *
+	 * @author mqfdy
+	 * @param fileName
+	 *            the file name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String removeSuffixJava(String fileName) {
 		if (isEmpty(fileName)) {
 			return "";

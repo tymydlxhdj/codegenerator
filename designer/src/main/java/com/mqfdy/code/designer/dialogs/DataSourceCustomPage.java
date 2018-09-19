@@ -29,51 +29,87 @@ import com.mqfdy.code.designer.provider.EnumElementLabelProvider;
 import com.mqfdy.code.model.EnumElement;
 import com.mqfdy.code.model.PropertyEditor;
 
+// TODO: Auto-generated Javadoc
 /**
- * 自定义数据源页面
- * 
+ * 自定义数据源页面.
+ *
  * @author mqfdy
- * 
  */
 public class DataSourceCustomPage extends Composite {
 
+	/** The Constant DELETE_MESSAGE. */
 	public static final String DELETE_MESSAGE = "请选择要删除的对象";
+	
+	/** The Constant DELETE_MESSAGE_TITLE. */
 	public static final String DELETE_MESSAGE_TITLE = "属性";
 
+	/** The tool bar. */
 	private ToolBar toolBar;
+	
+	/** The table. */
 	private Table table;
+	
+	/** The table viewer. */
 	private TableViewer tableViewer;
 
+	/** The add action. */
 	private Action addAction;// 新增
+	
+	/** The delete action. */
 	private Action deleteAction;// 删除
 
-	/**
-	 * 表格对应数据源
-	 */
+	/** 表格对应数据源. */
 	private List<EnumElement> tableItems = new ArrayList<EnumElement>();
 
-	/**
-	 * 属性页编辑页面
-	 */
+	/** 属性页编辑页面. */
 	private PropertyEditorPage parentPage;
 
 	/**
-	 * 枚举元素对应的单元格修改器
-	 * 
+	 * 枚举元素对应的单元格修改器.
+	 *
 	 * @author LQR
-	 * 
 	 */
 	public class EnumElementCellModifier implements ICellModifier {
+		
+		/** The table viewer. */
 		private TableViewer tableViewer;
 
+		/**
+		 * Instantiates a new enum element cell modifier.
+		 *
+		 * @param tableViewer
+		 *            the table viewer
+		 */
 		public EnumElementCellModifier(TableViewer tableViewer) {
 			this.tableViewer = tableViewer;
 		}
 
+		/**
+		 * Can modify.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param property
+		 *            the property
+		 * @return true, if successful
+		 * @Date 2018-09-03 09:00
+		 */
 		public boolean canModify(Object element, String property) {
 			return true;
 		}
 
+		/**
+		 * Gets the value.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param property
+		 *            the property
+		 * @return the value
+		 * @Date 2018-09-03 09:00
+		 */
 		public Object getValue(Object element, String property) {
 			EnumElement enumElement = (EnumElement) element;
 			if (property.equals("name")) {
@@ -83,6 +119,18 @@ public class DataSourceCustomPage extends Composite {
 			}
 		}
 
+		/**
+		 * Modify.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param property
+		 *            the property
+		 * @param value
+		 *            the value
+		 * @Date 2018-09-03 09:00
+		 */
 		public void modify(Object element, String property, Object value) {
 			TableItem item = (TableItem) element;
 			EnumElement enumElement = (EnumElement) item.getData();
@@ -98,8 +146,8 @@ public class DataSourceCustomPage extends Composite {
 	}
 
 	/**
-	 * 构造函数
-	 * 
+	 * 构造函数.
+	 *
 	 * @param parent
 	 *            上级容器
 	 * @param style
@@ -115,9 +163,12 @@ public class DataSourceCustomPage extends Composite {
 	}
 
 	/**
-	 * 创建页面内容
-	 * 
+	 * 创建页面内容.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createContents(Composite composite) {
 		composite.setLayout(new GridLayout(1, false));
@@ -152,6 +203,12 @@ public class DataSourceCustomPage extends Composite {
 		makeAction();
 	}
 
+	/**
+	 * Make action.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void makeAction() {
 		addAction = new Action(ActionTexts.MODEL_ELEMENT_ADD, ImageManager
 				.getInstance().getImageDescriptor(
@@ -185,6 +242,12 @@ public class DataSourceCustomPage extends Composite {
 		manager.update(true);
 	}
 
+	/**
+	 * Inits the control value.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void initControlValue() {
 		PropertyEditor editor = parentPage.getEditingProperty().getEditor();
 		List<EnumElement> dataList = editor.getEditorData();
@@ -194,6 +257,13 @@ public class DataSourceCustomPage extends Composite {
 		tableViewer.refresh();
 	}
 
+	/**
+	 * Gets the table items.
+	 *
+	 * @author mqfdy
+	 * @return the table items
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<EnumElement> getTableItems() {
 		return tableItems;
 	}

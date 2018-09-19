@@ -16,12 +16,17 @@ import java.util.NoSuchElementException;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * A <code>ReadOnlyCompositeListIterator</code> wraps a list
- * of <code>ListIterator</code>s and makes them appear to be a single
- * read-only <code>ListIterator</code>. A read-only composite list
- * iterator is more flexible than a normal composite when it comes to the element types of
- * the nested iterators.
+ * A <code>ReadOnlyCompositeListIterator</code> wraps a list of
+ * <code>ListIterator</code>s and makes them appear to be a single read-only
+ * <code>ListIterator</code>. A read-only composite list iterator is more
+ * flexible than a normal composite when it comes to the element types of the
+ * nested iterators.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class ReadOnlyCompositeListIterator<E>
 	implements ListIterator<E>
@@ -32,16 +37,22 @@ public class ReadOnlyCompositeListIterator<E>
 
 
 	/**
-	 * Construct a read-only list iterator with the specified list of
-	 * list iterators.
+	 * Construct a read-only list iterator with the specified list of list
+	 * iterators.
+	 *
+	 * @param iterators
+	 *            the iterators
 	 */
 	public ReadOnlyCompositeListIterator(List<? extends ListIterator<? extends E>> iterators) {
 		this(iterators.listIterator());
 	}
 
 	/**
-	 * Construct a read-only list iterator with the specified list of
-	 * list iterators.
+	 * Construct a read-only list iterator with the specified list of list
+	 * iterators.
+	 *
+	 * @param iterators
+	 *            the iterators
 	 */
 	public ReadOnlyCompositeListIterator(ListIterator<? extends ListIterator<? extends E>> iterators) {
 		super();
@@ -52,6 +63,11 @@ public class ReadOnlyCompositeListIterator<E>
 	/**
 	 * Construct a read-only list iterator with the specified object prepended
 	 * to the specified iterator.
+	 *
+	 * @param object
+	 *            the object
+	 * @param iterator
+	 *            the iterator
 	 */
 	@SuppressWarnings("unchecked")
 	public ReadOnlyCompositeListIterator(E object, ListIterator<? extends E> iterator) {
@@ -59,8 +75,13 @@ public class ReadOnlyCompositeListIterator<E>
 	}
 
 	/**
-	 * Construct a read-only list iterator with the specified object appended
-	 * to the specified iterator.
+	 * Construct a read-only list iterator with the specified object appended to
+	 * the specified iterator.
+	 *
+	 * @param iterator
+	 *            the iterator
+	 * @param object
+	 *            the object
 	 */
 	@SuppressWarnings("unchecked")
 	public ReadOnlyCompositeListIterator(ListIterator<? extends E> iterator, E object) {
@@ -69,6 +90,9 @@ public class ReadOnlyCompositeListIterator<E>
 
 	/**
 	 * Construct a read-only list iterator with the specified list iterators.
+	 *
+	 * @param iterators
+	 *            the iterators
 	 */
 	public ReadOnlyCompositeListIterator(ListIterator<? extends E>... iterators) {
 		this(new ArrayListIterator<ListIterator<? extends E>>(iterators));

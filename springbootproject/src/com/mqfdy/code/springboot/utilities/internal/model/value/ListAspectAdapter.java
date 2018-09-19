@@ -25,27 +25,27 @@ import com.mqfdy.code.springboot.utilities.model.value.PropertyValueModel;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
- * This extension of AspectAdapter provides ListChange support.
- * This allows us to convert a set of one or more collections into
- * a single collection, LIST_VALUES.
+ * This extension of AspectAdapter provides ListChange support. This allows us
+ * to convert a set of one or more collections into a single collection,
+ * LIST_VALUES.
  * 
- * The typical subclass will override the following methods:
- * #listIterator_()
- *     at the very minimum, override this method to return a list iterator
- *     on the subject's list aspect; it does not need to be overridden if
- *     #listIterator() is overridden and its behavior changed
- * #get(int)
- *     override this method to improve performance
- * #size_()
- *     override this method to improve performance; it does not need to be overridden if
- *     #size() is overridden and its behavior changed
- * #listIterator()
- *     override this method only if returning an empty list iterator when the
- *     subject is null is unacceptable
- * #size()
- *     override this method only if returning a zero when the
- *     subject is null is unacceptable
+ * The typical subclass will override the following methods: #listIterator_() at
+ * the very minimum, override this method to return a list iterator on the
+ * subject's list aspect; it does not need to be overridden if #listIterator()
+ * is overridden and its behavior changed #get(int) override this method to
+ * improve performance #size_() override this method to improve performance; it
+ * does not need to be overridden if #size() is overridden and its behavior
+ * changed #listIterator() override this method only if returning an empty list
+ * iterator when the subject is null is unacceptable #size() override this
+ * method only if returning a zero when the subject is null is unacceptable
+ *
+ * @author mqfdy
+ * @param <S>
+ *            the generic type
+ * @param <E>
+ *            the element type
  */
 public abstract class ListAspectAdapter<S extends Model, E>
 	extends AspectAdapter<S>
@@ -55,6 +55,8 @@ public abstract class ListAspectAdapter<S extends Model, E>
 	 * The name of the subject's lists that we use for the value.
 	 */
 	protected final String[] listNames;
+		
+		/** The Constant EMPTY_LIST_NAMES. */
 		protected static final String[] EMPTY_LIST_NAMES = new String[0];
 
 	/** A listener that listens to the subject's list aspect. */
@@ -66,24 +68,36 @@ public abstract class ListAspectAdapter<S extends Model, E>
 	// ********** constructors **********
 
 	/**
-	 * Construct a ListAspectAdapter for the specified subject
-	 * and list.
+	 * Construct a ListAspectAdapter for the specified subject and list.
+	 *
+	 * @param listName
+	 *            the list name
+	 * @param subject
+	 *            the subject
 	 */
 	protected ListAspectAdapter(String listName, S subject) {
 		this(new String[] {listName}, subject);
 	}
 
 	/**
-	 * Construct a ListAspectAdapter for the specified subject
-	 * and lists.
+	 * Construct a ListAspectAdapter for the specified subject and lists.
+	 *
+	 * @param listNames
+	 *            the list names
+	 * @param subject
+	 *            the subject
 	 */
 	protected ListAspectAdapter(String[] listNames, S subject) {
 		this(new StaticPropertyValueModel<S>(subject), listNames);
 	}
 
 	/**
-	 * Construct a ListAspectAdapter for the specified subject holder
-	 * and lists.
+	 * Construct a ListAspectAdapter for the specified subject holder and lists.
+	 *
+	 * @param subjectHolder
+	 *            the subject holder
+	 * @param listNames
+	 *            the list names
 	 */
 	protected ListAspectAdapter(PropertyValueModel<? extends S> subjectHolder, String... listNames) {
 		super(subjectHolder);
@@ -92,18 +106,24 @@ public abstract class ListAspectAdapter<S extends Model, E>
 	}
 
 	/**
-	 * Construct a ListAspectAdapter for the specified subject holder
-	 * and lists.
+	 * Construct a ListAspectAdapter for the specified subject holder and lists.
+	 *
+	 * @param subjectHolder
+	 *            the subject holder
+	 * @param listNames
+	 *            the list names
 	 */
 	protected ListAspectAdapter(PropertyValueModel<? extends S> subjectHolder, Collection<String> listNames) {
 		this(subjectHolder, listNames.toArray(new String[listNames.size()]));
 	}
 
 	/**
-	 * Construct a ListAspectAdapter for an "unchanging" list in
-	 * the specified subject. This is useful for a list aspect that does not
-	 * change for a particular subject; but the subject will change, resulting in
-	 * a new list.
+	 * Construct a ListAspectAdapter for an "unchanging" list in the specified
+	 * subject. This is useful for a list aspect that does not change for a
+	 * particular subject; but the subject will change, resulting in a new list.
+	 *
+	 * @param subjectHolder
+	 *            the subject holder
 	 */
 	protected ListAspectAdapter(PropertyValueModel<? extends S> subjectHolder) {
 		this(subjectHolder, EMPTY_LIST_NAMES);
@@ -114,6 +134,10 @@ public abstract class ListAspectAdapter<S extends Model, E>
 
 	/**
 	 * The subject's list aspect has changed, notify the listeners.
+	 *
+	 * @author mqfdy
+	 * @return the list change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected ListChangeListener buildListChangeListener() {
 		// transform the subject's list change events into VALUE list change events
@@ -161,8 +185,10 @@ public abstract class ListAspectAdapter<S extends Model, E>
 	}
 
 	/**
-	 * Return the elements of the subject's list aspect.
-	 * At this point we can be sure that the subject is not null.
+	 * Return the elements of the subject's list aspect. At this point we can be
+	 * sure that the subject is not null.
+	 *
+	 * @return the list iterator
 	 * @see #listIterator()
 	 */
 	protected ListIterator<E> listIterator_() {
@@ -184,8 +210,10 @@ public abstract class ListAspectAdapter<S extends Model, E>
 	}
 
 	/**
-	 * Return the size of the subject's list aspect.
-	 * At this point we can be sure that the subject is not null.
+	 * Return the size of the subject's list aspect. At this point we can be
+	 * sure that the subject is not null.
+	 *
+	 * @return the int
 	 * @see #size()
 	 */
 	protected int size_() {
@@ -200,8 +228,10 @@ public abstract class ListAspectAdapter<S extends Model, E>
 	}
 
 	/**
-	 * Return an array manifestation of the subject's list aspect.
-	 * At this point we can be sure that the subject is not null.
+	 * Return an array manifestation of the subject's list aspect. At this point
+	 * we can be sure that the subject is not null.
+	 *
+	 * @return the object[]
 	 * @see #toArray()
 	 */
 	protected Object[] toArray_() {
@@ -263,26 +293,74 @@ public abstract class ListAspectAdapter<S extends Model, E>
 
 	// ********** behavior **********
 
+	/**
+	 * Items added.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void itemsAdded(ListChangeEvent event) {
 		this.fireItemsAdded(event.cloneWithSource(this, LIST_VALUES));
 	}
 
+	/**
+	 * Items removed.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void itemsRemoved(ListChangeEvent event) {
 		this.fireItemsRemoved(event.cloneWithSource(this, LIST_VALUES));
 	}
 
+	/**
+	 * Items replaced.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void itemsReplaced(ListChangeEvent event) {
 		this.fireItemsReplaced(event.cloneWithSource(this, LIST_VALUES));
 	}
 
+	/**
+	 * Items moved.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void itemsMoved(ListChangeEvent event) {
 		this.fireItemsMoved(event.cloneWithSource(this, LIST_VALUES));
 	}
 
+	/**
+	 * List cleared.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void listCleared(ListChangeEvent event) {
 		this.fireListCleared(LIST_VALUES);  // nothing from original event to forward
 	}
 
+	/**
+	 * List changed.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void listChanged(ListChangeEvent event) {
 		this.fireListChanged(LIST_VALUES);  // nothing from original event to forward
 	}

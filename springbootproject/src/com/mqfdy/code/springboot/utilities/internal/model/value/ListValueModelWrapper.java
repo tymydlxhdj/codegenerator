@@ -19,10 +19,14 @@ import com.mqfdy.code.springboot.utilities.model.listener.ListChangeListener;
 import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * This abstract class provides the infrastructure needed to wrap
- * another list value model, "lazily" listen to it, and propagate
- * its change notifications.
+ * This abstract class provides the infrastructure needed to wrap another list
+ * value model, "lazily" listen to it, and propagate its change notifications.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public abstract class ListValueModelWrapper<E>
 	extends AbstractModel
@@ -38,8 +42,10 @@ public abstract class ListValueModelWrapper<E>
 	// ********** constructors **********
 
 	/**
-	 * Construct a list value model with the specified wrapped
-	 * list value model.
+	 * Construct a list value model with the specified wrapped list value model.
+	 *
+	 * @param listHolder
+	 *            the list holder
 	 */
 	protected ListValueModelWrapper(ListValueModel<? extends E> listHolder) {
 		super();
@@ -58,6 +64,13 @@ public abstract class ListValueModelWrapper<E>
 		return new SingleAspectChangeSupport(this, ListChangeListener.class, ListValueModel.LIST_VALUES);
 	}
 
+	/**
+	 * Builds the list change listener.
+	 *
+	 * @author mqfdy
+	 * @return the list change listener
+	 * @Date 2018-09-03 09:00
+	 */
 	protected ListChangeListener buildListChangeListener() {
 		return new ListChangeListener() {
 			public void itemsAdded(ListChangeEvent event) {
@@ -154,12 +167,30 @@ public abstract class ListValueModelWrapper<E>
 		sb.append(this.listHolder);
 	}
 
+	/**
+	 * Items.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @return the list iterator
+	 * @Date 2018-09-03 09:00
+	 */
 	// minimize suppressed warnings
 	@SuppressWarnings("unchecked")
 	protected ListIterator<E> items(ListChangeEvent event) {
 		return (ListIterator<E>) event.items();
 	}
 
+	/**
+	 * Replaced items.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @return the list iterator
+	 * @Date 2018-09-03 09:00
+	 */
 	// minimize suppressed warnings
 	@SuppressWarnings("unchecked")
 	protected ListIterator<E> replacedItems(ListChangeEvent event) {
@@ -170,38 +201,68 @@ public abstract class ListValueModelWrapper<E>
 	// ********** list change support **********
 
 	/**
-	 * Items were added to the wrapped list holder;
-	 * propagate the change notification appropriately.
+	 * Items were added to the wrapped list holder; propagate the change
+	 * notification appropriately.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract void itemsAdded(ListChangeEvent event);
 
 	/**
-	 * Items were removed from the wrapped list holder;
-	 * propagate the change notification appropriately.
+	 * Items were removed from the wrapped list holder; propagate the change
+	 * notification appropriately.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract void itemsRemoved(ListChangeEvent event);
 
 	/**
-	 * Items were replaced in the wrapped list holder;
-	 * propagate the change notification appropriately.
+	 * Items were replaced in the wrapped list holder; propagate the change
+	 * notification appropriately.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract void itemsReplaced(ListChangeEvent event);
 
 	/**
-	 * Items were moved in the wrapped list holder;
-	 * propagate the change notification appropriately.
+	 * Items were moved in the wrapped list holder; propagate the change
+	 * notification appropriately.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract void itemsMoved(ListChangeEvent event);
 
 	/**
-	 * The wrapped list holder was cleared;
-	 * propagate the change notification appropriately.
+	 * The wrapped list holder was cleared; propagate the change notification
+	 * appropriately.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract void listCleared(ListChangeEvent event);
 
 	/**
-	 * The value of the wrapped list holder has changed;
-	 * propagate the change notification appropriately.
+	 * The value of the wrapped list holder has changed; propagate the change
+	 * notification appropriately.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract void listChanged(ListChangeEvent event);
 

@@ -15,13 +15,20 @@ import org.springsource.ide.eclipse.gradle.core.wizards.GradleImportOperation;
 
 import com.mqfdy.code.springboot.core.util.JobUtil;
 import com.mqfdy.code.springboot.core.util.Operation2Runnable;
+ // TODO: Auto-generated Javadoc
+
  /**
- * @author lenovo
- */
+	 * The Class MicroProjectImportWizard.
+	 *
+	 * @author lenovo
+	 */
 public class MicroProjectImportWizard extends Wizard implements IImportWizard {
 
 	private ImportWizardPageOne pageOne;
 
+	/**
+	 * Instantiates a new micro project import wizard.
+	 */
 	public MicroProjectImportWizard() {
 	}
 

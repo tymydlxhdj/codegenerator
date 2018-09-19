@@ -13,19 +13,44 @@ import com.mqfdy.code.designer.editor.commands.MoveMutilNodeConstraintCommand;
 import com.mqfdy.code.designer.editor.part.NodeEditPart;
 import com.mqfdy.code.designer.utils.BusinessModelUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MoveNodeAction.
+ *
+ * @author mqfdy
+ */
 public class MoveNodeAction extends SelectionAction {
+	
+	/** The type. */
 	public int type;
 
+	/**
+	 * Instantiates a new move node action.
+	 *
+	 * @param part
+	 *            the part
+	 */
 	public MoveNodeAction(IWorkbenchPart part) {
 		super(part);
 		// force calculateEnabled() to be called in every context
 		setLazyEnablementCalculation(true);
 	}
 
+	/**
+	 * Sets the type.
+	 *
+	 * @author mqfdy
+	 * @param type
+	 *            the new type
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setType(int type) {
 		this.type = type;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void init() {
 		super.init();
@@ -33,6 +58,15 @@ public class MoveNodeAction extends SelectionAction {
 		setEnabled(true);
 	}
 
+	/**
+	 * Creates the command.
+	 *
+	 * @author mqfdy
+	 * @param selectedObjects
+	 *            the selected objects
+	 * @return the move mutil node constraint command
+	 * @Date 2018-09-03 09:00
+	 */
 	private MoveMutilNodeConstraintCommand createCommand(
 			List<Object> selectedObjects) {
 		if (selectedObjects == null || selectedObjects.isEmpty()) {
@@ -57,6 +91,9 @@ public class MoveNodeAction extends SelectionAction {
 		return cmd;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected boolean calculateEnabled() {
 		Command cmd = createCommand(BusinessModelUtil.getSelectedEditParts());
@@ -65,6 +102,9 @@ public class MoveNodeAction extends SelectionAction {
 		return cmd.canExecute();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void run() {
 		Command cmd = createCommand(BusinessModelUtil.getSelectedEditParts());

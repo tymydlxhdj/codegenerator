@@ -17,9 +17,14 @@ import com.mqfdy.code.springboot.utilities.model.listener.ListChangeListener;
 import com.mqfdy.code.springboot.utilities.model.value.WritablePropertyValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * Extend ValueAspectAdapter to listen to one or more list
- * aspects of the value in the wrapped value model.
+ * Extend ValueAspectAdapter to listen to one or more list aspects of the value
+ * in the wrapped value model.
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
  */
 public class ValueListAdapter<T extends Model>
 	extends ValueAspectAdapter<T>
@@ -36,6 +41,11 @@ public class ValueListAdapter<T extends Model>
 
 	/**
 	 * Construct an adapter for the specified value lists.
+	 *
+	 * @param valueHolder
+	 *            the value holder
+	 * @param listNames
+	 *            the list names
 	 */
 	public ValueListAdapter(WritablePropertyValueModel<T> valueHolder, String... listNames) {
 		super(valueHolder);
@@ -47,8 +57,12 @@ public class ValueListAdapter<T extends Model>
 	// ********** initialization **********
 
 	/**
-	 * All we really care about is the fact that a List aspect has 
-	 * changed. Do the same thing no matter which event occurs.
+	 * All we really care about is the fact that a List aspect has changed. Do
+	 * the same thing no matter which event occurs.
+	 *
+	 * @author mqfdy
+	 * @return the list change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected ListChangeListener buildValueListListener() {
 		return new ListChangeListener() {

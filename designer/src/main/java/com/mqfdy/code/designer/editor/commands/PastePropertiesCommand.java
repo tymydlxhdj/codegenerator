@@ -18,20 +18,29 @@ import com.mqfdy.code.model.PKProperty;
 import com.mqfdy.code.model.PersistenceProperty;
 import com.mqfdy.code.model.Property;
 
+// TODO: Auto-generated Javadoc
 /**
- * 粘贴图形
- * 
+ * 粘贴图形.
+ *
  * @author mqfdy
- * 
  */
 
 public class PastePropertiesCommand extends Command {
+	
+	/** The properties list. */
 	// 内存中复制的业务实体属性Property
 	List<Property> propertiesList = new ArrayList<Property>();
+	
+	/** The new pro list. */
 	// 复制出的对象
 	List<AbstractModelElement> newProList = new ArrayList<AbstractModelElement>();
+	
+	/** The old bu. */
 	private BusinessClass oldBu;
 
+	/**
+	 * Instantiates a new paste properties command.
+	 */
 	public PastePropertiesCommand() {
 		super();
 		propertiesList.clear();
@@ -40,6 +49,9 @@ public class PastePropertiesCommand extends Command {
 					.getContents());
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		if (propertiesList.isEmpty())
@@ -59,6 +71,9 @@ public class PastePropertiesCommand extends Command {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 		if (!canExecute())
@@ -66,6 +81,9 @@ public class PastePropertiesCommand extends Command {
 		redo();
 	}
 
+	/**
+	 * 
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void redo() {
@@ -126,11 +144,17 @@ public class PastePropertiesCommand extends Command {
 				.businessObjectModelChanged(bcAddevent);
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canUndo() {
 		return canExecute();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void undo() {
 		oldBu.getProperties().removeAll(newProList);

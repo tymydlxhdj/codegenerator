@@ -28,40 +28,52 @@ import com.mqfdy.code.model.BusinessOperation;
 import com.mqfdy.code.model.IModelElement;
 import com.mqfdy.code.reconfiguration.ReconstructionDialog;
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务类编辑弹出框(用于新增和编辑)
- * 
+ * 业务类编辑弹出框(用于新增和编辑).
+ *
  * @author mqfdy
- * 
  */
 public class BusinessClassEditorDialog extends ModelElementEditorDialog {
 
+	/** The Constant DIALOG_TITLE_ADD. */
 	public static final String DIALOG_TITLE_ADD = "创建业务实体";
+	
+	/** The Constant DIALOG_TITLE_EDIT. */
 	public static final String DIALOG_TITLE_EDIT = "修改业务实体";
+	
+	/** The Constant MESSAGE_TITLE. */
 	public static final String MESSAGE_TITLE = "业务实体";
+	
+	/** The Constant DIALOG_MESSAGE_ADD. */
 	public static final String DIALOG_MESSAGE_ADD = "创建业务实体";
+	
+	/** The Constant DIALOG_MESSAGE_EDIT. */
 	public static final String DIALOG_MESSAGE_EDIT = "修改 @ 信息";
 
+	/** The Constant TAB_BASICINFO_TITLE. */
 	public static final String TAB_BASICINFO_TITLE = "基本信息";
+	
+	/** The Constant TAB_PROPERTIES_TITLE. */
 	public static final String TAB_PROPERTIES_TITLE = "属性列表";
+	
+	/** The Constant TAB_OPERATIONS_TITLE. */
 	public static final String TAB_OPERATIONS_TITLE = "业务操作";
+	
+	/** The Constant TAB_PERSISTENCE_TITLE. */
 	public static final String TAB_PERSISTENCE_TITLE = "关系";
 	// public static final String TAB_PERMISSION_TITLE = "权限";
 
+	/** The business class copy. */
 	private BusinessClass businessClassCopy;
-	/**
-	 * 标签页对象
-	 */
+	
+	/** 标签页对象. */
 	private TabFolder tabFolder;
 
-	/**
-	 * 基本信息页
-	 */
+	/** 基本信息页. */
 	private BusinessClassBasicInfoPage basicInfoPage;
 
-	/**
-	 * 属性列表页
-	 */
+	/** 属性列表页. */
 	// private BusinessClassPropertiesPage propertiesPage;
 
 	/**
@@ -69,17 +81,19 @@ public class BusinessClassEditorDialog extends ModelElementEditorDialog {
 	 */
 	private BusinessClassOperationsPage operationsPage;
 
-	/**
-	 * 持久化策略页面
-	 */
+	/** 持久化策略页面. */
 	PersistPolicySheetPage persistPolicySheetPage;
 	
-	/**
-	 * 从组件面板创建
-	 */
+	/** 从组件面板创建. */
 	private boolean  createFromPlatter = false;
+	
 	/**
-	 * 权限列表页
+	 * 权限列表页.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param parent
+	 *            the parent
 	 */
 	// private BusinessClassPermissionPage permissionPage;
 
@@ -96,9 +110,10 @@ public class BusinessClassEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 编辑业务类时构造函数
-	 * 
+	 * 编辑业务类时构造函数.
+	 *
 	 * @param parentShell
+	 *            the parent shell
 	 * @param editingElement
 	 *            编辑的对象
 	 * @param parent
@@ -108,15 +123,44 @@ public class BusinessClassEditorDialog extends ModelElementEditorDialog {
 			AbstractModelElement editingElement, AbstractModelElement parent) {
 		super(parentShell, editingElement, parent);
 	}
+	
+	/**
+	 * Instantiates a new business class editor dialog.
+	 *
+	 * @param createFromPlatter
+	 *            the create from platter
+	 * @param parentShell
+	 *            the parent shell
+	 * @param editingElement
+	 *            the editing element
+	 * @param parent
+	 *            the parent
+	 */
 	public BusinessClassEditorDialog(boolean createFromPlatter,Shell parentShell,
 			AbstractModelElement editingElement, AbstractModelElement parent) {
 		super(parentShell, editingElement, parent);
 		this.createFromPlatter = createFromPlatter;
 	}
+	
+	/**
+	 * Instantiates a new business class editor dialog.
+	 *
+	 * @param shell
+	 *            the shell
+	 */
 	public BusinessClassEditorDialog(Shell shell) {
 		super(shell);
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createDialogArea(Composite composite) {
 		// 初始化窗口
 		GridLayout gridLayout = new GridLayout(1, true);
@@ -148,7 +192,12 @@ public class BusinessClassEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 初始化创建 标签页
+	 * 初始化创建 标签页.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createtabFolder(Composite composite) {
 		tabFolder = new TabFolder(composite, SWT.NONE);
@@ -189,7 +238,12 @@ public class BusinessClassEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 操作按钮
+	 * 操作按钮.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void createButtonsForButtonBar(Composite composite) {
 		// if(operationType.equals(OPERATION_TYPE_EDIT))
@@ -202,6 +256,14 @@ public class BusinessClassEditorDialog extends ModelElementEditorDialog {
 //		createButton(composite, APPLY_ID, APPLY_LABEL, true);
 	}
 
+	/**
+	 * Button pressed.
+	 *
+	 * @author mqfdy
+	 * @param buttonId
+	 *            the button id
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void buttonPressed(int buttonId) {
 //		if (APPLY_ID == buttonId) {
 //			applylPressed();
@@ -218,6 +280,9 @@ public class BusinessClassEditorDialog extends ModelElementEditorDialog {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	protected void okPressed() {
 		if (validateAllInput() == true) {
 			updateTheEditingElement();
@@ -225,6 +290,12 @@ public class BusinessClassEditorDialog extends ModelElementEditorDialog {
 		}
 	}
 
+	/**
+	 * Applyl pressed.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void applylPressed() {
 		if (validateAllInput() == true) {
 			updateTheEditingElement();
@@ -234,7 +305,11 @@ public class BusinessClassEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 验证输入数据是否合法
+	 * 验证输入数据是否合法.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean validateAllInput() {
 		boolean isOk = basicInfoPage.validateInput();
@@ -258,7 +333,10 @@ public class BusinessClassEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 更新模型
+	 * 更新模型.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void updateTheEditingElement() {
 		basicInfoPage.updateTheEditingElement();
@@ -270,7 +348,10 @@ public class BusinessClassEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 设置标题和信息
+	 * 设置标题和信息.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setTitleAndMessage() {
 		setTitle(MESSAGE_TITLE);
@@ -288,6 +369,14 @@ public class BusinessClassEditorDialog extends ModelElementEditorDialog {
 
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		if (operationType.equals(OPERATION_TYPE_ADD)) {
@@ -307,7 +396,10 @@ public class BusinessClassEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 初始化弹出框控件的值
+	 * 初始化弹出框控件的值.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initControlValue() {
 
@@ -351,10 +443,26 @@ public class BusinessClassEditorDialog extends ModelElementEditorDialog {
 		// permissionPage.initControlValue();
 	}
 
+	/**
+	 * Gets the business class copy.
+	 *
+	 * @author mqfdy
+	 * @return the business class copy
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessClass getBusinessClassCopy() {
 		return businessClassCopy;
 	}
 
+	/**
+	 * Gets the tab title.
+	 *
+	 * @author mqfdy
+	 * @param index
+	 *            the index
+	 * @return the tab title
+	 * @Date 2018-09-03 09:00
+	 */
 	private String getTabTitle(int index) {
 		switch (index) {
 		case 0:
@@ -378,10 +486,24 @@ public class BusinessClassEditorDialog extends ModelElementEditorDialog {
 	// return propertiesPage;
 	// }
 
+	/**
+	 * Gets the operations page.
+	 *
+	 * @author mqfdy
+	 * @return the operations page
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessClassOperationsPage getOperationsPage() {
 		return operationsPage;
 	}
 
+	/**
+	 * Gets the basic info page.
+	 *
+	 * @author mqfdy
+	 * @return the basic info page
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessClassBasicInfoPage getBasicInfoPage() {
 		return basicInfoPage;
 	}

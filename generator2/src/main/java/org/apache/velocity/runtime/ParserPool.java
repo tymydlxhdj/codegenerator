@@ -22,6 +22,7 @@ package org.apache.velocity.runtime;
 import org.apache.velocity.runtime.parser.Parser;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Provides instances of parsers as needed.  get() will return a new parser if
  * available.  If a parser is acquired from the pool, put() should be called
@@ -33,21 +34,33 @@ import org.apache.velocity.runtime.parser.Parser;
  */
 public interface ParserPool
 {
+    
     /**
-     * Initialize the pool so that it can begin serving parser instances.
-     * @param svc
-     */
+	 * Initialize the pool so that it can begin serving parser instances.
+	 *
+	 * @author mqfdy
+	 * @param svc
+	 *            the svc
+	 * @Date 2018-9-3 11:38:31
+	 */
     void initialize(RuntimeServices svc);
 
     /**
-     * Retrieve an instance of a parser pool.
-     * @return A parser object.
-     */
+	 * Retrieve an instance of a parser pool.
+	 *
+	 * @author mqfdy
+	 * @return A parser object.
+	 * @Date 2018-9-3 11:38:31
+	 */
     Parser get();
 
     /**
-     * Return the parser to the pool so that it may be reused.
-     * @param parser
-     */
+	 * Return the parser to the pool so that it may be reused.
+	 *
+	 * @author mqfdy
+	 * @param parser
+	 *            the parser
+	 * @Date 2018-9-3 11:38:31
+	 */
     void put(Parser parser);
 }

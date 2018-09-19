@@ -15,29 +15,49 @@ import com.mqfdy.code.designer.models.ImageKeys;
 import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.model.DTOProperty;
 
+// TODO: Auto-generated Javadoc
 /**
- * DTO属性编辑对话框
- * 
+ * DTO属性编辑对话框.
+ *
  * @author mqfdy
- * 
  */
 public class DTOPropertyEditDialog extends ModelElementEditorDialog implements
 		IBusinessClassEditorPage {
 
+	/** The dialog title. */
 	public String DIALOG_TITLE = "";
+	
+	/** The dialog message add. */
 	public final String DIALOG_MESSAGE_ADD = "创建数据传输对象属性";
+	
+	/** The dialog message edit. */
 	public final String DIALOG_MESSAGE_EDIT = "修改数据传输对象 ";
 
+	/** The property. */
 	private DTOProperty property;
-	/**
-	 * 标签页
-	 */
+	
+	/** 标签页. */
 	private TabFolder tabBasic;
 
+	/** The parent page. */
 	private DTOPropertiesPage parentPage;
+	
+	/** The property basic info page. */
 	private DTOPropertyBasicInfoPage propertyBasicInfoPage;
+	
+	/** The property validator page. */
 	private DTOPropertyValidatorPage propertyValidatorPage;
 
+	/**
+	 * Instantiates a new DTO property edit dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param property
+	 *            the property
+	 * @param page
+	 *            the page
+	 */
 	public DTOPropertyEditDialog(Shell parentShell, DTOProperty property,
 			DTOPropertiesPage page) {
 		super(parentShell);
@@ -53,10 +73,22 @@ public class DTOPropertyEditDialog extends ModelElementEditorDialog implements
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	protected int getShellStyle() {
 		return super.getShellStyle() | SWT.RESIZE | SWT.MAX;
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Control createDialogArea(Composite composite) {
 		// 初始化窗口
@@ -71,6 +103,14 @@ public class DTOPropertyEditDialog extends ModelElementEditorDialog implements
 		return composite;
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		if (operationType.equals(OPERATION_TYPE_ADD)) {
@@ -83,7 +123,10 @@ public class DTOPropertyEditDialog extends ModelElementEditorDialog implements
 	}
 
 	/**
-	 * 设置标题和信息
+	 * 设置标题和信息.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setTitleAndMessage() {
 		setTitle("DTO");
@@ -98,7 +141,12 @@ public class DTOPropertyEditDialog extends ModelElementEditorDialog implements
 	}
 
 	/**
-	 * 初始化创建 标签页
+	 * 初始化创建 标签页.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createtabFolder(Composite composite) {
 		tabBasic = new TabFolder(composite, SWT.NONE);
@@ -112,6 +160,14 @@ public class DTOPropertyEditDialog extends ModelElementEditorDialog implements
 
 	}
 
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent(Composite parent) {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
@@ -132,6 +188,14 @@ public class DTOPropertyEditDialog extends ModelElementEditorDialog implements
 		tabBasic.getItem(1).setControl(propertyValidatorPage);
 	}
 
+	/**
+	 * Creates the buttons for button bar.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void createButtonsForButtonBar(Composite composite) {
 		// if(operationType.equals(OPERATION_TYPE_EDIT))
 		// createButton(composite, 12000, "重构", true);
@@ -143,6 +207,9 @@ public class DTOPropertyEditDialog extends ModelElementEditorDialog implements
 //		createButton(composite, APPLY_ID, APPLY_LABEL, true);
 	}
 
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		if (this.property != null) {
 			propertyBasicInfoPage.initControlValue();
@@ -150,11 +217,17 @@ public class DTOPropertyEditDialog extends ModelElementEditorDialog implements
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 		propertyBasicInfoPage.updateTheEditingElement();
 		propertyValidatorPage.updateTheEditingElement();
@@ -170,6 +243,9 @@ public class DTOPropertyEditDialog extends ModelElementEditorDialog implements
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		if (validateAllInput() == true) {
@@ -178,6 +254,12 @@ public class DTOPropertyEditDialog extends ModelElementEditorDialog implements
 		}
 	}
 
+	/**
+	 * Applyl pressed.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void applylPressed() {
 		if (validateAllInput() == true) {
 			updateTheEditingElement();
@@ -185,6 +267,14 @@ public class DTOPropertyEditDialog extends ModelElementEditorDialog implements
 
 	}
 
+	/**
+	 * Button pressed.
+	 *
+	 * @author mqfdy
+	 * @param buttonId
+	 *            the button id
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void buttonPressed(int buttonId) {
 //		if (APPLY_ID == buttonId) {
@@ -194,15 +284,36 @@ public class DTOPropertyEditDialog extends ModelElementEditorDialog implements
 //		}
 	}
 
+	/**
+	 * Validate all input.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean validateAllInput() {
 		boolean isOk = this.validateInput();
 		return isOk;
 	}
 
+	/**
+	 * Gets the parent page.
+	 *
+	 * @author mqfdy
+	 * @return the parent page
+	 * @Date 2018-09-03 09:00
+	 */
 	public DTOPropertiesPage getParentPage() {
 		return parentPage;
 	}
 
+	/**
+	 * Gets the property.
+	 *
+	 * @author mqfdy
+	 * @return the property
+	 * @Date 2018-09-03 09:00
+	 */
 	public DTOProperty getProperty() {
 		return property;
 	}

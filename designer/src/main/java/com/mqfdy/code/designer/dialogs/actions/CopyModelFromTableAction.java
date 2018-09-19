@@ -15,16 +15,26 @@ import com.mqfdy.code.designer.models.ActionTexts;
 import com.mqfdy.code.model.AbstractModelElement;
 import com.mqfdy.code.model.BusinessOperation;
 
+// TODO: Auto-generated Javadoc
 /**
- * 从业务模型树上复制对象
- * 
+ * 从业务模型树上复制对象.
+ *
  * @author mqfdy
- * 
  */
 public class CopyModelFromTableAction extends Action {
+	
+	/** The pro list. */
 	private List<AbstractModelElement> proList = new ArrayList<AbstractModelElement>();
+	
+	/** The table viewer. */
 	private TableViewer tableViewer;
 
+	/**
+	 * Instantiates a new copy model from table action.
+	 *
+	 * @param tableViewer
+	 *            the table viewer
+	 */
 	public CopyModelFromTableAction(TableViewer tableViewer) {
 		super(ActionTexts.MODEL_ELEMENT_COPY);
 		this.tableViewer = tableViewer;
@@ -40,6 +50,9 @@ public class CopyModelFromTableAction extends Action {
 		setEnabled(false);
 	}
 
+	/**
+	 * 
+	 */
 	public void run() {
 		if (!isEnabled())
 			return;
@@ -59,6 +72,9 @@ public class CopyModelFromTableAction extends Action {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean isEnabled() {
 		TableItem[] items = tableViewer.getTable().getSelection();

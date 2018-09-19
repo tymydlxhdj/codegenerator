@@ -26,12 +26,14 @@ import java.util.List;
 
 import org.apache.velocity.context.Context;
 
+// TODO: Auto-generated Javadoc
 /**
- * Formatting tool for inserting into the Velocity WebContext.  Can
- * format dates or lists of objects.
- *
- * <p>Here's an example of some uses:
- *
+ * Formatting tool for inserting into the Velocity WebContext. Can format dates
+ * or lists of objects.
+ * 
+ * <p>
+ * Here's an example of some uses:
+ * 
  * <code><pre>
  * $formatter.formatShortDate($object.Date)
  * $formatter.formatLongDate($db.getRecord(232).getDate())
@@ -39,16 +41,18 @@ import org.apache.velocity.context.Context;
  * $formatter.limitLen(30, $object.Description)
  * </pre></code>
  *
- * @deprecated This class has been replaced by NumberTool, DateTool,
- * DisplayTool, and AlternatorTool available from the Velocity-Tools sub-project.
- * VelocityFormatter will be removed in a future version of Velocity.
- *
  * @author <a href="sean@somacity.com">Sean Legassick</a>
  * @author <a href="dlr@collab.net">Daniel Rall</a>
  * @version $Id: VelocityFormatter.java 544641 2007-06-05 21:30:22Z nbubna $
+ * @deprecated This class has been replaced by NumberTool, DateTool,
+ *             DisplayTool, and AlternatorTool available from the Velocity-Tools
+ *             sub-project. VelocityFormatter will be removed in a future
+ *             version of Velocity.
  */
 public class VelocityFormatter
 {
+    
+    /** The context. */
     Context context = null;
 
     /**
@@ -62,33 +66,42 @@ public class VelocityFormatter
     }
 
     /**
-     * Formats a date in <code>DateFormat.SHORT</code> style.
-     *
-     * @param date The date to format.
-     * @return The formatted date as text.
-     */
+	 * Formats a date in <code>DateFormat.SHORT</code> style.
+	 *
+	 * @author mqfdy
+	 * @param date
+	 *            The date to format.
+	 * @return The formatted date as text.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public String formatShortDate(Date date)
     {
         return DateFormat.getDateInstance(DateFormat.SHORT).format(date);
     }
 
     /**
-     * Formats a date in <code>DateFormat.LONG</code> style.
-     *
-     * @param date The date to format.
-     * @return The formatted date as text.
-     */
+	 * Formats a date in <code>DateFormat.LONG</code> style.
+	 *
+	 * @author mqfdy
+	 * @param date
+	 *            The date to format.
+	 * @return The formatted date as text.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public String formatLongDate(Date date)
     {
         return DateFormat.getDateInstance(DateFormat.LONG).format(date);
     }
 
     /**
-     * Formats a date/time in 'short' style.
-     *
-     * @param date The date to format.
-     * @return The formatted date as text.
-     */
+	 * Formats a date/time in 'short' style.
+	 *
+	 * @author mqfdy
+	 * @param date
+	 *            The date to format.
+	 * @return The formatted date as text.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public String formatShortDateTime(Date date)
     {
         return DateFormat
@@ -97,11 +110,14 @@ public class VelocityFormatter
     }
 
     /**
-     * Formats a date/time in 'long' style.
-     *
-     * @param date The date to format.
-     * @return The formatted date as text.
-     */
+	 * Formats a date/time in 'long' style.
+	 *
+	 * @author mqfdy
+	 * @param date
+	 *            The date to format.
+	 * @return The formatted date as text.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public String formatLongDateTime(Date date)
     {
         return DateFormat.getDateTimeInstance(
@@ -109,24 +125,30 @@ public class VelocityFormatter
     }
 
     /**
-     * Formats an array into the form "A, B and C".
-     *
-     * @param array An Object.
-     * @return A String.
-     */
+	 * Formats an array into the form "A, B and C".
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            An Object.
+	 * @return A String.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public String formatArray(Object array)
     {
         return formatArray(array, ", ", " and ");
     }
 
     /**
-     * Formats an array into the form
-     * "A&lt;delim&gt;B&lt;delim&gt;C".
-     *
-     * @param array An Object.
-     * @param delim A String.
-     * @return A String.
-     */
+	 * Formats an array into the form "A&lt;delim&gt;B&lt;delim&gt;C".
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            An Object.
+	 * @param delim
+	 *            A String.
+	 * @return A String.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public String formatArray(Object array,
                               String delim)
     {
@@ -134,14 +156,18 @@ public class VelocityFormatter
     }
 
     /**
-     * Formats an array into the form
-     * "A&lt;delim&gt;B&lt;finaldelim&gt;C".
-     *
-     * @param array An Object.
-     * @param delim A String.
-     * @param finaldelim A String.
-     * @return A String.
-     */
+	 * Formats an array into the form "A&lt;delim&gt;B&lt;finaldelim&gt;C".
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            An Object.
+	 * @param delim
+	 *            A String.
+	 * @param finaldelim
+	 *            A String.
+	 * @return A String.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public String formatArray(Object array,
                               String delim,
                               String finaldelim)
@@ -167,23 +193,30 @@ public class VelocityFormatter
     }
 
     /**
-     * Formats a vector into the form "A, B and C".
-     *
-     * @param list The list of elements to format.
-     * @return A String.
-     */
+	 * Formats a vector into the form "A, B and C".
+	 *
+	 * @author mqfdy
+	 * @param list
+	 *            The list of elements to format.
+	 * @return A String.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public String formatVector(List list)
     {
         return formatVector(list, ", ", " and ");
     }
 
     /**
-     * Formats a vector into the form "A&lt;delim&gt;B&lt;delim&gt;C".
-     *
-     * @param list The list of elements to format.
-     * @param delim A String.
-     * @return A String.
-     */
+	 * Formats a vector into the form "A&lt;delim&gt;B&lt;delim&gt;C".
+	 *
+	 * @author mqfdy
+	 * @param list
+	 *            The list of elements to format.
+	 * @param delim
+	 *            A String.
+	 * @return A String.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public String formatVector(List list,
                                String delim)
     {
@@ -191,14 +224,18 @@ public class VelocityFormatter
     }
 
     /**
-     * Formats a list into the form
-     * "Adelim&gt;B&lt;finaldelim&gt;C".
-     *
-     * @param list The list of elements to format.
-     * @param delim A String.
-     * @param finaldelim A String.
-     * @return A String.
-     */
+	 * Formats a list into the form "Adelim&gt;B&lt;finaldelim&gt;C".
+	 *
+	 * @author mqfdy
+	 * @param list
+	 *            The list of elements to format.
+	 * @param delim
+	 *            A String.
+	 * @param finaldelim
+	 *            A String.
+	 * @return A String.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public String formatVector(List list,
                                String delim,
                                String finaldelim)
@@ -221,13 +258,17 @@ public class VelocityFormatter
     }
 
     /**
-     * Limits 'string' to 'maxlen' characters.  If the string gets
-     * curtailed, "..." is appended to it.
-     *
-     * @param maxlen An int with the maximum length.
-     * @param string A String.
-     * @return A String.
-     */
+	 * Limits 'string' to 'maxlen' characters. If the string gets curtailed,
+	 * "..." is appended to it.
+	 *
+	 * @author mqfdy
+	 * @param maxlen
+	 *            An int with the maximum length.
+	 * @param string
+	 *            A String.
+	 * @return A String.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public String limitLen(int maxlen,
                            String string)
     {
@@ -235,14 +276,19 @@ public class VelocityFormatter
     }
 
     /**
-     * Limits 'string' to 'maxlen' character.  If the string gets
-     * curtailed, 'suffix' is appended to it.
-     *
-     * @param maxlen An int with the maximum length.
-     * @param string A String.
-     * @param suffix A String.
-     * @return A String.
-     */
+	 * Limits 'string' to 'maxlen' character. If the string gets curtailed,
+	 * 'suffix' is appended to it.
+	 *
+	 * @author mqfdy
+	 * @param maxlen
+	 *            An int with the maximum length.
+	 * @param string
+	 *            A String.
+	 * @param suffix
+	 *            A String.
+	 * @return A String.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public String limitLen(int maxlen,
                            String string,
                            String suffix)
@@ -256,22 +302,21 @@ public class VelocityFormatter
     }
 
     /**
-     * Class that returns alternating values in a template.  It stores
-     * a list of alternate Strings, whenever alternate() is called it
-     * switches to the next in the list.  The current alternate is
-     * retrieved through toString() - i.e. just by referencing the
-     * object in a Velocity template.  For an example of usage see the
-     * makeAlternator() method below.
-     */
+	 * Class that returns alternating values in a template. It stores a list of
+	 * alternate Strings, whenever alternate() is called it switches to the next
+	 * in the list. The current alternate is retrieved through toString() - i.e.
+	 * just by referencing the object in a Velocity template. For an example of
+	 * usage see the makeAlternator() method below.
+	 *
+	 * @author mqfdy
+	 */
     public class VelocityAlternator
     {
-        /**
-         *
-         */
+        
+        /** The alternates. */
         protected String[] alternates = null;
-        /**
-         *
-         */
+        
+        /** The current. */
         protected int current = 0;
 
         /**
@@ -285,10 +330,12 @@ public class VelocityFormatter
         }
 
         /**
-         * Alternates to the next in the list.
-         *
-         * @return The current alternate in the sequence.
-         */
+		 * Alternates to the next in the list.
+		 *
+		 * @author mqfdy
+		 * @return The current alternate in the sequence.
+		 * @Date 2018-9-3 11:38:24
+		 */
         public String alternate()
         {
             current++;
@@ -297,10 +344,12 @@ public class VelocityFormatter
         }
 
         /**
-         * Returns the current alternate.
-         *
-         * @return A String.
-         */
+		 * Returns the current alternate.
+		 *
+		 * @author mqfdy
+		 * @return A String.
+		 * @Date 2018-9-3 11:38:24
+		 */
         public String toString()
         {
             return alternates[current];
@@ -308,9 +357,11 @@ public class VelocityFormatter
     }
 
     /**
-     * As VelocityAlternator, but calls <code>alternate()</code>
-     * automatically on rendering in a template.
-     */
+	 * As VelocityAlternator, but calls <code>alternate()</code> automatically
+	 * on rendering in a template.
+	 *
+	 * @author mqfdy
+	 */
     public class VelocityAutoAlternator extends VelocityAlternator
     {
         /**
@@ -324,12 +375,13 @@ public class VelocityFormatter
         }
 
         /**
-         * Returns the current alternate, and automatically alternates
-         * to the next alternate in its sequence (trigged upon
-         * rendering).
-         *
-         * @return The current alternate in the sequence.
-         */
+		 * Returns the current alternate, and automatically alternates to the
+		 * next alternate in its sequence (trigged upon rendering).
+		 *
+		 * @author mqfdy
+		 * @return The current alternate in the sequence.
+		 * @Date 2018-9-3 11:38:24
+		 */
         public final String toString()
         {
             String s = alternates[current];
@@ -339,26 +391,32 @@ public class VelocityFormatter
     }
 
     /**
-     * Makes an alternator object that alternates between two values.
-     *
-     * <p>Example usage in a Velocity template:
-     *
-     * <code><pre>
-     * &lt;table&gt;
-     * $formatter.makeAlternator("rowcolor", "#c0c0c0", "#e0e0e0")
-     * #foreach $item in $items
-     * #begin
-     * &lt;tr&gt;&lt;td bgcolor="$rowcolor"&gt;$item.Name&lt;/td&gt;&lt;/tr&gt;
-     * $rowcolor.alternate()
-     * #end
-     * &lt;/table&gt;
-     * </pre></code>
-     *
-     * @param name The name for the alternator int the context.
-     * @param alt1 The first alternate.
-     * @param alt2 The second alternate.
-     * @return The newly created instance.
-     */
+	 * Makes an alternator object that alternates between two values.
+	 * 
+	 * <p>
+	 * Example usage in a Velocity template:
+	 * 
+	 * <code><pre>
+	 * &lt;table&gt;
+	 * $formatter.makeAlternator("rowcolor", "#c0c0c0", "#e0e0e0")
+	 * #foreach $item in $items
+	 * #begin
+	 * &lt;tr&gt;&lt;td bgcolor="$rowcolor"&gt;$item.Name&lt;/td&gt;&lt;/tr&gt;
+	 * $rowcolor.alternate()
+	 * #end
+	 * &lt;/table&gt;
+	 * </pre></code>
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            The name for the alternator int the context.
+	 * @param alt1
+	 *            The first alternate.
+	 * @param alt2
+	 *            The second alternate.
+	 * @return The newly created instance.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public String makeAlternator(String name,
                                  String alt1,
                                  String alt2)
@@ -369,16 +427,19 @@ public class VelocityFormatter
     }
 
     /**
-     * Makes an alternator object that alternates between three
-     * values.
-     * @param name
-     * @param alt1
-     * @param alt2
-     * @param alt3
-     * @return alternated object.
-     *
-     * @see #makeAlternator(String name, String alt1, String alt2)
-     */
+	 * Makes an alternator object that alternates between three values.
+	 *
+	 * @param name
+	 *            the name
+	 * @param alt1
+	 *            the alt 1
+	 * @param alt2
+	 *            the alt 2
+	 * @param alt3
+	 *            the alt 3
+	 * @return alternated object.
+	 * @see #makeAlternator(String name, String alt1, String alt2)
+	 */
     public String makeAlternator(String name,
                                  String alt1,
                                  String alt2,
@@ -390,16 +451,21 @@ public class VelocityFormatter
     }
 
     /**
-     * Makes an alternator object that alternates between four values.
-     * @param name
-     * @param alt1
-     * @param alt2
-     * @param alt3
-     * @param alt4
-     * @return Alternated object.
-     *
-     * @see #makeAlternator(String name, String alt1, String alt2)
-     */
+	 * Makes an alternator object that alternates between four values.
+	 *
+	 * @param name
+	 *            the name
+	 * @param alt1
+	 *            the alt 1
+	 * @param alt2
+	 *            the alt 2
+	 * @param alt3
+	 *            the alt 3
+	 * @param alt4
+	 *            the alt 4
+	 * @return Alternated object.
+	 * @see #makeAlternator(String name, String alt1, String alt2)
+	 */
     public String makeAlternator(String name, String alt1, String alt2,
                                  String alt3, String alt4)
     {
@@ -409,15 +475,18 @@ public class VelocityFormatter
     }
 
     /**
-     * Makes an alternator object that alternates between two values
-     * automatically.
-     * @param name
-     * @param alt1
-     * @param alt2
-     * @return Alternated object.
-     *
-     * @see #makeAlternator(String name, String alt1, String alt2)
-     */
+	 * Makes an alternator object that alternates between two values
+	 * automatically.
+	 *
+	 * @param name
+	 *            the name
+	 * @param alt1
+	 *            the alt 1
+	 * @param alt2
+	 *            the alt 2
+	 * @return Alternated object.
+	 * @see #makeAlternator(String name, String alt1, String alt2)
+	 */
     public String makeAutoAlternator(String name, String alt1, String alt2)
     {
         String[] alternates = { alt1, alt2 };
@@ -426,11 +495,16 @@ public class VelocityFormatter
     }
 
     /**
-     * Returns a default value if the object passed is null.
-     * @param o
-     * @param dflt
-     * @return Object or default value when object is null.
-     */
+	 * Returns a default value if the object passed is null.
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @param dflt
+	 *            the dflt
+	 * @return Object or default value when object is null.
+	 * @Date 2018-09-03 09:00
+	 */
     public Object isNull(Object o, Object dflt)
     {
         if ( o == null )

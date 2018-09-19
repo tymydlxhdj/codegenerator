@@ -24,10 +24,11 @@ import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.runtime.parser.ParseException;
 import org.apache.velocity.runtime.parser.Token;
 
+// TODO: Auto-generated Javadoc
 /**
- *  Exception to indicate problem happened while constructing #macro()
- *
- *  For internal use in parser - not to be passed to app level
+ * Exception to indicate problem happened while constructing #macro()
+ * 
+ * For internal use in parser - not to be passed to app level.
  *
  * @author <a href="mailto:geirm@apache.org">Geir Magnusson Jr.</a>
  * @author <a href="hps@intermeta.de">Henning P. Schmiedehausen</a>
@@ -37,18 +38,23 @@ public class MacroParseException
         extends ParseException
         implements ExtendedParseException
 {
+    
+    /** The template name. */
     private final String templateName;
 
-    /**
-     * Version Id for serializable
-     */
+    /** Version Id for serializable. */
     private static final long serialVersionUID = -4985224672336070689L;
 
     /**
-     * @param msg
-     * @param templateName
-     * @param currentToken
-     */
+	 * Instantiates a new macro parse exception.
+	 *
+	 * @param msg
+	 *            the msg
+	 * @param templateName
+	 *            the template name
+	 * @param currentToken
+	 *            the current token
+	 */
     public MacroParseException(final String msg, final String templateName, final Token currentToken)
     {
         super(msg + " at ");
@@ -191,9 +197,12 @@ public class MacroParseException
     }
 
     /**
-     * @param sb
-     * @since 1.5
-     */
+	 * Append template info.
+	 *
+	 * @param sb
+	 *            the sb
+	 * @since 1.5
+	 */
     protected void appendTemplateInfo(final StringBuffer sb)
     {
         sb.append(Log.formatFileString(getTemplateName(), getLineNumber(), getColumnNumber()));

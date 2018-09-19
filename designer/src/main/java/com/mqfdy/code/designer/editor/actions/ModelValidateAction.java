@@ -28,24 +28,39 @@ import com.mqfdy.code.resource.validator.ValiResult;
 import com.mqfdy.code.resource.validator.Validator;
 import com.mqfdy.code.resource.validator.ValidatorContext;
 
+// TODO: Auto-generated Javadoc
 /**
- * 模型校验
- * 
+ * 模型校验.
+ *
  * @author mqfdy
- * 
  */
 public class ModelValidateAction extends SelectionAction implements
 		ValidatorContext {
+	
+	/** The Constant ERROR. */
 	final static String ERROR = "error";
+	
+	/** The Constant INFO. */
 	final static String INFO = "info";
+	
+	/** The business model manager. */
 	private BusinessModelManager businessModelManager;
 
+	/**
+	 * Instantiates a new model validate action.
+	 *
+	 * @param businessModelManager
+	 *            the business model manager
+	 */
 	public ModelValidateAction(BusinessModelManager businessModelManager) {
 		super(null);
 		setLazyEnablementCalculation(true);
 		this.businessModelManager = businessModelManager;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void init() {
 		super.init();
@@ -61,11 +76,17 @@ public class ModelValidateAction extends SelectionAction implements
 		setEnabled(false);
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected boolean calculateEnabled() {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void run() {
 		Shell shell = BusinessModelEditorPlugin.getActiveWorkbenchWindow()
@@ -103,6 +124,16 @@ public class ModelValidateAction extends SelectionAction implements
 		}
 	}
 
+	/**
+	 * Prints the to console.
+	 *
+	 * @author mqfdy
+	 * @param mesg
+	 *            the mesg
+	 * @param type
+	 *            the type
+	 * @Date 2018-09-03 09:00
+	 */
 	public void printToConsole(String mesg, String type) {
 		if (type.equals(INFO))
 			ConsoleFactory.printToConsole(mesg, true, false);// 黑色

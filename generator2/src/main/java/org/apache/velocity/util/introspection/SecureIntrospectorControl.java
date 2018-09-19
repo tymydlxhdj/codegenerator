@@ -1,5 +1,6 @@
 package org.apache.velocity.util.introspection;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -30,13 +31,17 @@ public interface SecureIntrospectorControl
 {
 
     /**
-     * Determine which methods and classes to prevent from executing.  
-     * 
-     * @param clazz Class for which method is being called
-     * @param method method being called.  This may be null in the case of a call to iterator, get, or set method
-     *
-     * @return true if method may be called on object
-     */
+	 * Determine which methods and classes to prevent from executing.
+	 *
+	 * @author mqfdy
+	 * @param clazz
+	 *            Class for which method is being called
+	 * @param method
+	 *            method being called. This may be null in the case of a call to
+	 *            iterator, get, or set method
+	 * @return true if method may be called on object
+	 * @Date 2018-9-3 11:38:31
+	 */
     public boolean checkObjectExecutePermission(Class clazz, String method);
 
 }

@@ -11,23 +11,32 @@ import java.io.IOException;
 import com.mqfdy.code.designer.editor.utils.Logger;
 import com.mqfdy.code.model.BusinessClass;
 
+// TODO: Auto-generated Javadoc
 /**
- * 重构工具类
- * 
+ * 重构工具类.
+ *
  * @author mqfdy
  */
 @Deprecated
 public class ReconstructUtils {
+	
+	/** The Constant EOL. */
 	private static final String EOL = "\r\n";// windows操作系统换行
 
+	/** The Constant INTERFACE. */
 	public static final String INTERFACE = "interface";
+	
+	/** The Constant CLASS. */
 	public static final String CLASS = "class";
 
 	/**
-	 * 判断该文件的类型（class、interface、enum）
-	 * 
+	 * 判断该文件的类型（class、interface、enum）.
+	 *
+	 * @author mqfdy
 	 * @param file
-	 * @return
+	 *            the file
+	 * @return the file type
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String getFileType(File file) {
 		BufferedInputStream bis = null;
@@ -66,8 +75,9 @@ public class ReconstructUtils {
 	}
 
 	/**
-	 * 逐行查找替换内容
-	 * 
+	 * 逐行查找替换内容.
+	 *
+	 * @author mqfdy
 	 * @param resource
 	 *            文件
 	 * @param oldValue
@@ -76,8 +86,11 @@ public class ReconstructUtils {
 	 *            新值
 	 * @param mark
 	 *            标示
-	 * @param direction
-	 *            上中下（0，1，2）
+	 * @param num
+	 *            the num
+	 * @param redirect
+	 *            the redirect
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void replaceFileLine(File resource, String oldValue,
 			String newValue, String mark, int num, String redirect) {
@@ -136,13 +149,18 @@ public class ReconstructUtils {
 	}
 
 	/**
-	 * 全替换文件内容
-	 * 
+	 * 全替换文件内容.
+	 *
+	 * @author mqfdy
 	 * @param resource
+	 *            the resource
 	 * @param oldValue
+	 *            the old value
 	 * @param newValue
+	 *            the new value
 	 * @param modifySelf
 	 *            文件是否须要更名
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void replaceFileAll(File resource, String oldValue,
 			String newValue, boolean modifySelf) {
@@ -217,11 +235,13 @@ public class ReconstructUtils {
 	}
 
 	/**
-	 * 克隆业务实体
-	 * 
+	 * 克隆业务实体.
+	 *
+	 * @author mqfdy
 	 * @param bc
 	 *            被克隆的业务实体对象
-	 * @return
+	 * @return the business class
+	 * @Date 2018-09-03 09:00
 	 */
 	public static BusinessClass cloneBc(BusinessClass bc) {
 		BusinessClass newBc = new BusinessClass();

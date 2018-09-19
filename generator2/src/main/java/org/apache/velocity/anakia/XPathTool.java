@@ -24,6 +24,7 @@ import java.util.List;
 import org.jdom.Document;
 import org.jdom.Element;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class adds an entrypoint into XPath functionality,
  * for Anakia.
@@ -71,10 +72,11 @@ import org.jdom.Element;
  */
 public class XPathTool
 {
+    
     /**
-     * Constructor does nothing, as this is mostly
-     * just objectified static methods
-     */
+	 * Constructor does nothing, as this is mostly just objectified static
+	 * methods.
+	 */
     public XPathTool()
     {
         //        RuntimeSingleton.info("XPathTool::XPathTool()");
@@ -82,13 +84,16 @@ public class XPathTool
     }
 
     /**
-     * Apply an XPath to a JDOM Document
-     *
-     * @param xpathSpec The XPath to apply
-     * @param doc The Document context
-     *
-     * @return A list of selected nodes
-     */
+	 * Apply an XPath to a JDOM Document.
+	 *
+	 * @author mqfdy
+	 * @param xpathSpec
+	 *            The XPath to apply
+	 * @param doc
+	 *            The Document context
+	 * @return A list of selected nodes
+	 * @Date 2018-9-3 11:38:31
+	 */
     public NodeList applyTo(String xpathSpec,
                         Document doc)
     {
@@ -97,13 +102,16 @@ public class XPathTool
     }
 
     /**
-     * Apply an XPath to a JDOM Element
-     *
-     * @param xpathSpec The XPath to apply
-     * @param elem The Element context
-     *
-     * @return A list of selected nodes
-     */
+	 * Apply an XPath to a JDOM Element.
+	 *
+	 * @author mqfdy
+	 * @param xpathSpec
+	 *            The XPath to apply
+	 * @param elem
+	 *            The Element context
+	 * @return A list of selected nodes
+	 * @Date 2018-9-3 11:38:31
+	 */
     public NodeList applyTo(String xpathSpec,
                         Element elem)
     {
@@ -112,13 +120,16 @@ public class XPathTool
     }
 
     /**
-     * Apply an XPath to a nodeset
-     *
-     * @param xpathSpec The XPath to apply
-     * @param nodeSet The nodeset context
-     *
-     * @return A list of selected nodes
-     */
+	 * Apply an XPath to a nodeset.
+	 *
+	 * @author mqfdy
+	 * @param xpathSpec
+	 *            The XPath to apply
+	 * @param nodeSet
+	 *            The nodeset context
+	 * @return A list of selected nodes
+	 * @Date 2018-9-3 11:38:31
+	 */
     public NodeList applyTo(String xpathSpec,
                         List nodeSet)
     {

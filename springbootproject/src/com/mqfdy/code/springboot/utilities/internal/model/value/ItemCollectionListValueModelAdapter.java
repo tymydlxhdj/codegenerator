@@ -18,9 +18,14 @@ import com.mqfdy.code.springboot.utilities.model.value.CollectionValueModel;
 import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Extend ItemAspectListValueModelAdapter to listen to one or more collection
  * aspects of each item in the wrapped list model.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class ItemCollectionListValueModelAdapter<E>
 	extends ItemAspectListValueModelAdapter<E>
@@ -37,6 +42,11 @@ public class ItemCollectionListValueModelAdapter<E>
 
 	/**
 	 * Construct an adapter for the specified item Collections.
+	 *
+	 * @param listHolder
+	 *            the list holder
+	 * @param collectionNames
+	 *            the collection names
 	 */
 	public ItemCollectionListValueModelAdapter(ListValueModel<E> listHolder, String... collectionNames) {
 		super(listHolder);
@@ -46,6 +56,11 @@ public class ItemCollectionListValueModelAdapter<E>
 
 	/**
 	 * Construct an adapter for the specified item Collections.
+	 *
+	 * @param collectionHolder
+	 *            the collection holder
+	 * @param collectionNames
+	 *            the collection names
 	 */
 	public ItemCollectionListValueModelAdapter(CollectionValueModel<E> collectionHolder, String... collectionNames) {
 		this(new CollectionListValueModelAdapter<E>(collectionHolder), collectionNames);
@@ -55,8 +70,12 @@ public class ItemCollectionListValueModelAdapter<E>
 	// ********** initialization **********
 
 	/**
-	 * All we really care about is the fact that a Collection aspect has 
-	 * changed.  Do the same thing no matter which event occurs.
+	 * All we really care about is the fact that a Collection aspect has
+	 * changed. Do the same thing no matter which event occurs.
+	 *
+	 * @author mqfdy
+	 * @return the collection change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected CollectionChangeListener buildItemCollectionListener() {
 		return new CollectionChangeListener() {

@@ -23,10 +23,13 @@ import com.mqfdy.code.model.BusinessClass;
 import com.mqfdy.code.model.Enumeration;
 import com.mqfdy.code.model.utils.AssociationType;
 
+// TODO: Auto-generated Javadoc
 /**
+ * A factory for creating DiagramEditorPalette objects.
+ *
+ * @author mqfdy
  * @title:om编辑器的组件面板类部分
  * @description:
- * @author mqfdy
  */
 public class DiagramEditorPaletteFactory {
 
@@ -39,9 +42,15 @@ public class DiagramEditorPaletteFactory {
 	/** Preference ID used to persist the flyout palette's state. */
 	private static final String PALETTE_STATE = "DiagramEditorPaletteFactory.State";
 
+	/** The image registry. */
 	private static ImageRegistry imageRegistry = BusinessModelEditorPlugin
 			.getDefault().getImageRegistry();
 
+	/**
+	 * Creates a new DiagramEditorPalette object.
+	 *
+	 * @return the palette root
+	 */
 	// 创建面板
 	protected static PaletteRoot createPalette() {
 		PaletteRoot palette = new PaletteRoot();
@@ -53,6 +62,13 @@ public class DiagramEditorPaletteFactory {
 		return palette;
 	}
 
+	/**
+	 * Creates a new DiagramEditorPalette object.
+	 *
+	 * @param palette
+	 *            the palette
+	 * @return the palette container
+	 */
 	// add basic tools to palette : selection tool, marquee tool and a seperator
 	private static PaletteContainer createBasicToolsGroup(PaletteRoot palette) {
 		PaletteGroup toolGroup = new PaletteGroup("选择");
@@ -71,6 +87,13 @@ public class DiagramEditorPaletteFactory {
 		return toolGroup;
 	}
 
+	/**
+	 * Creates a new DiagramEditorPalette object.
+	 *
+	 * @param palette
+	 *            the palette
+	 * @return the palette container
+	 */
 	private static PaletteContainer createNodeDrawer(PaletteRoot palette) {
 		PaletteDrawer elementDrawer = new PaletteDrawer("对象");
 		// Class
@@ -126,6 +149,13 @@ public class DiagramEditorPaletteFactory {
 
 	}
 
+	/**
+	 * Creates a new DiagramEditorPalette object.
+	 *
+	 * @param palette
+	 *            the palette
+	 * @return the palette container
+	 */
 	private static PaletteContainer createConnectionDrawer(PaletteRoot palette) {
 		PaletteDrawer elementDrawer = new PaletteDrawer("关系");
 
@@ -247,9 +277,9 @@ public class DiagramEditorPaletteFactory {
 	}
 
 	/**
-	 * 编辑器调色板的布局
-	 * 
-	 * @return
+	 * 编辑器调色板的布局.
+	 *
+	 * @return the flyout preferences
 	 */
 	protected static FlyoutPreferences createPalettePreferences() {
 		return new FlyoutPreferences() {

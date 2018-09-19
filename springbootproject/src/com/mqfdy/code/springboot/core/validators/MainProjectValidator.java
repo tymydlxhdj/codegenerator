@@ -10,10 +10,22 @@ import com.mqfdy.code.springboot.core.util.expression.LiveExpression;
 import com.mqfdy.code.springboot.core.util.expression.ValueListener;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MainProjectValidator.
+ *
+ * @author mqfdy
+ */
 public class MainProjectValidator extends Validator implements ValueListener<String> {
 	
 	private final LiveExpression<String> projectNameField;
 
+	/**
+	 * Instantiates a new main project validator.
+	 *
+	 * @param projectNameField
+	 *            the project name field
+	 */
 	public MainProjectValidator(LiveExpression<String> projectNameField) {
 		this.projectNameField = projectNameField;
 		projectNameField.addListener(this);
@@ -24,6 +36,15 @@ public class MainProjectValidator extends Validator implements ValueListener<Str
 			|| "-_.".indexOf(c)>=0;
 	}
 	
+	/**
+	 * Checks if is chinese character.
+	 *
+	 * @author mqfdy
+	 * @param chineseStr
+	 *            the chinese str
+	 * @return true, if is chinese character
+	 * @Date 2018-09-03 09:00
+	 */
 	//判断是否为中文
 	public boolean isChineseCharacter(String chineseStr) {
 		char[] charArray = chineseStr.toCharArray();

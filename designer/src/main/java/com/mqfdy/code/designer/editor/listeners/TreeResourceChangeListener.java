@@ -6,18 +6,30 @@ import org.eclipse.core.resources.IResourceDelta;
 
 import com.mqfdy.code.designer.views.modelresource.page.ObjectModelOutlinePage;
 
+// TODO: Auto-generated Javadoc
 /**
  * 工作空间资源管理器的资源监听器 透视图编辑器内容改变的监听器
  * 
- * 当用编辑器打开bom文件对其中的内容进行修改时此监听器开始工作
- * 
+ * 当用编辑器打开bom文件对其中的内容进行修改时此监听器开始工作.
+ *
  * @author mqfdy
- * 
  */
 public class TreeResourceChangeListener implements IResourceChangeListener {
+	
+	/** The object model outline page. */
 	private ObjectModelOutlinePage objectModelOutlinePage;
+	
+	/** The path. */
 	private String path;
 
+	/**
+	 * Instantiates a new tree resource change listener.
+	 *
+	 * @param path
+	 *            the path
+	 * @param objectModelOutlinePage
+	 *            the object model outline page
+	 */
 	public TreeResourceChangeListener(String path,
 			ObjectModelOutlinePage objectModelOutlinePage) {
 		this.objectModelOutlinePage = objectModelOutlinePage;
@@ -25,8 +37,10 @@ public class TreeResourceChangeListener implements IResourceChangeListener {
 	}
 
 	/**
-	 * om文件不存在或者所在项目不存在时返回； 当om文件被其他编辑器修改后，给出提示，并先关闭再打开编辑器
-	 * 
+	 * om文件不存在或者所在项目不存在时返回； 当om文件被其他编辑器修改后，给出提示，并先关闭再打开编辑器.
+	 *
+	 * @param event
+	 *            the event
 	 * @see org.eclipse.core.resources.IResourceChangeListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)
 	 */
 	public void resourceChanged(IResourceChangeEvent event) {

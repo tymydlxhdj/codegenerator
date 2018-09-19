@@ -30,6 +30,7 @@ import org.apache.velocity.context.InternalEventContext;
 import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.util.RuntimeServicesAware;
 
+// TODO: Auto-generated Javadoc
 /**
  * Stores the event handlers. Event handlers can be assigned on a per
  * VelocityEngine instance basis by specifying the class names in the
@@ -53,10 +54,20 @@ import org.apache.velocity.util.RuntimeServicesAware;
  */
 public class EventCartridge
   {
+    
+    /** The reference handlers. */
     private List referenceHandlers = new ArrayList();
+    
+    /** The null set handlers. */
     private List nullSetHandlers = new ArrayList();
+    
+    /** The method exception handlers. */
     private List methodExceptionHandlers = new ArrayList();
+    
+    /** The include handlers. */
     private List includeHandlers = new ArrayList();
+    
+    /** The invalid reference handlers. */
     private List invalidReferenceHandlers = new ArrayList();
 
     /**
@@ -65,13 +76,15 @@ public class EventCartridge
     Set initializedHandlers = new HashSet();
 
     /**
-     *  Adds an event handler(s) to the Cartridge.  This method
-     *  will find all possible event handler interfaces supported
-     *  by the passed in object.
-     *
-     *  @param ev object impementing a valid EventHandler-derived interface
-     *  @return true if a supported interface, false otherwise or if null
-     */
+	 * Adds an event handler(s) to the Cartridge. This method will find all
+	 * possible event handler interfaces supported by the passed in object.
+	 *
+	 * @author mqfdy
+	 * @param ev
+	 *            object impementing a valid EventHandler-derived interface
+	 * @return true if a supported interface, false otherwise or if null
+	 * @Date 2018-9-3 11:38:32
+	 */
     public boolean addEventHandler( EventHandler ev )
     {
         if (ev == null)
@@ -171,14 +184,17 @@ public class EventCartridge
 
 
     /**
-     * Removes an event handler(s) from the Cartridge. This method will find all
-     * possible event handler interfaces supported by the passed in object and
-     * remove them.
-     *
-     * @param ev  object impementing a valid EventHandler-derived interface
-     * @return true if event handler was previously registered, false if not
-     *         found
-     */
+	 * Removes an event handler(s) from the Cartridge. This method will find all
+	 * possible event handler interfaces supported by the passed in object and
+	 * remove them.
+	 *
+	 * @author mqfdy
+	 * @param ev
+	 *            object impementing a valid EventHandler-derived interface
+	 * @return true if event handler was previously registered, false if not
+	 *         found
+	 * @Date 2018-9-3 11:38:32
+	 */
     public boolean removeEventHandler( EventHandler ev )
     {
         if ( ev == null )
@@ -207,67 +223,72 @@ public class EventCartridge
     }
 
     /**
-     * Iterate through all the stored ReferenceInsertionEventHandler objects
-     * 
-     * @return iterator of handler objects, null if there are not handlers
-     * @since 1.5
-     */
+	 * Iterate through all the stored ReferenceInsertionEventHandler objects.
+	 *
+	 * @return iterator of handler objects, null if there are not handlers
+	 * @since 1.5
+	 */
     public Iterator getReferenceInsertionEventHandlers()
     {
         return referenceHandlers.size() == 0 ? null : referenceHandlers.iterator();
     }
 
     /**
-     * Iterate through all the stored NullSetEventHandler objects
-     * 
-     * @return iterator of handler objects
-     * @since 1.5
-     */
+	 * Iterate through all the stored NullSetEventHandler objects.
+	 *
+	 * @return iterator of handler objects
+	 * @since 1.5
+	 */
     public Iterator getNullSetEventHandlers()
     {
         return nullSetHandlers.iterator();
     }
 
     /**
-     * Iterate through all the stored MethodExceptionEventHandler objects
-     * 
-     * @return iterator of handler objects
-     * @since 1.5
-     */
+	 * Iterate through all the stored MethodExceptionEventHandler objects.
+	 *
+	 * @return iterator of handler objects
+	 * @since 1.5
+	 */
     public Iterator getMethodExceptionEventHandlers()
     {
         return methodExceptionHandlers.iterator();
     }
 
     /**
-     * Iterate through all the stored IncludeEventHandlers objects
-     * 
-     * @return iterator of handler objects
-     */
+	 * Iterate through all the stored IncludeEventHandlers objects.
+	 *
+	 * @author mqfdy
+	 * @return iterator of handler objects
+	 * @Date 2018-9-3 11:38:32
+	 */
     public Iterator getIncludeEventHandlers()
     {
         return includeHandlers.iterator();
     }
 
     /**
-     * Iterate through all the stored InvalidReferenceEventHandlers objects
-     * 
-     * @return iterator of handler objects
-     * @since 1.5
-     */
+	 * Iterate through all the stored InvalidReferenceEventHandlers objects.
+	 *
+	 * @return iterator of handler objects
+	 * @since 1.5
+	 */
     public Iterator getInvalidReferenceEventHandlers()
     {
         return invalidReferenceHandlers.iterator();
     }
 
     /**
-     *  Attached the EventCartridge to the context
-     *
-     *  Final because not something one should mess with lightly :)
-     *
-     *  @param context context to attach to
-     *  @return true if successful, false otherwise
-     */
+	 * Attached the EventCartridge to the context
+	 * 
+	 * Final because not something one should mess with lightly :).
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            context to attach to
+	 * @return true if successful, false otherwise
+	 * @Date 2018-9-3 11:38:32
+	 */
     public final boolean attachToContext( Context context )
     {
         if (  context instanceof InternalEventContext )
@@ -292,14 +313,16 @@ public class EventCartridge
     }
 
     /**
-     * Initialize the handlers.  For global handlers this is called when Velocity
-     * is initialized. For local handlers this is called when the first handler
-     * is executed.  Handlers will not be initialized more than once.
-     * 
-     * @param rs
-     * @throws Exception
-     * @since 1.5
-     */
+	 * Initialize the handlers. For global handlers this is called when Velocity
+	 * is initialized. For local handlers this is called when the first handler
+	 * is executed. Handlers will not be initialized more than once.
+	 *
+	 * @param rs
+	 *            the rs
+	 * @throws Exception
+	 *             the exception
+	 * @since 1.5
+	 */
     public void initialize (RuntimeServices rs) throws Exception
     {
 

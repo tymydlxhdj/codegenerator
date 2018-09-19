@@ -15,8 +15,13 @@ import java.util.EmptyStackException;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Straightforward implementation of the Stack interface.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class SimpleStack<E>
 	implements Stack<E>, Cloneable, Serializable
@@ -37,11 +42,13 @@ public class SimpleStack<E>
 	}
 
 	/**
-	 * Construct a stack containing the elements of the specified
-	 * collection. The stack will pop its elements in reverse of the
-	 * order they are returned by the collection's iterator (i.e. the
-	 * last element returned by the collection's iterator will be the
-	 * first element returned by #pop()).
+	 * Construct a stack containing the elements of the specified collection.
+	 * The stack will pop its elements in reverse of the order they are returned
+	 * by the collection's iterator (i.e. the last element returned by the
+	 * collection's iterator will be the first element returned by #pop()).
+	 *
+	 * @param c
+	 *            the c
 	 */
 	public SimpleStack(Collection<? extends E> c) {
 		super();

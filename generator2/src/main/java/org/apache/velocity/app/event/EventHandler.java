@@ -20,7 +20,7 @@ package org.apache.velocity.app.event;
  */
 
 /**
- * Base interface for all event handlers
+ * Base interface for all event handlers.
  *
  * @author <a href="mailto:geirm@optonline.net">Geir Magnusson Jr.</a>
  * @version $Id: EventHandler.java 463298 2006-10-12 16:10:32Z henning $

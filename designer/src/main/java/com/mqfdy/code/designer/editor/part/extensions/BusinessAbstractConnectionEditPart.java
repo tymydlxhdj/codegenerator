@@ -33,15 +33,21 @@ import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.tools.SelectEditPartTracker;
 
+// TODO: Auto-generated Javadoc
 /**
  * The base implementation for {@link org.eclipse.gef.ConnectionEditPart}.
+ *
+ * @author mqfdy
  */
 public abstract class BusinessAbstractConnectionEditPart extends
 		BusinessAbstractGraphicalEditPart implements ConnectionEditPart,
 		LayerConstants {
 
+	/** The Constant DEFAULT_SOURCE_ANCHOR. */
 	private static final ConnectionAnchor DEFAULT_SOURCE_ANCHOR = new XYAnchor(
 			new Point(10, 10));
+	
+	/** The Constant DEFAULT_TARGET_ANCHOR. */
 	private static final ConnectionAnchor DEFAULT_TARGET_ANCHOR = new XYAnchor(
 			new Point(100, 100));
 
@@ -67,6 +73,8 @@ public abstract class BusinessAbstractConnectionEditPart extends
 	}
 
 	/**
+	 * Adds the notify.
+	 *
 	 * @see org.eclipse.gef.EditPart#addNotify()
 	 */
 	public void addNotify() {
@@ -76,8 +84,10 @@ public abstract class BusinessAbstractConnectionEditPart extends
 
 	/**
 	 * Returns a newly created Figure to represent these type of EditParts.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return The created Figure.
+	 * @Date 2018-09-03 09:00
 	 */
 	protected IFigure createFigure() {
 		return new PolylineConnection();
@@ -87,6 +97,9 @@ public abstract class BusinessAbstractConnectionEditPart extends
 	 * Deactivates the Figure representing this, by removing it from the
 	 * connection layer, and resetting the source and target connections to
 	 * <code>null</code>.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void deactivateFigure() {
 		getLayer(CONNECTION_LAYER).remove(getFigure());
@@ -102,12 +115,12 @@ public abstract class BusinessAbstractConnectionEditPart extends
 	 * the {@link AccessibleAnchorProvider} adapter returned by the superclass.
 	 * When treating a connection as a node for other connections, it makes
 	 * sense to target its midpoint, and not the edge of its bounds.
-	 * 
-	 * @see AbstractConnectionEditPart.DefaultAccessibleAnchorProvider
-	 * @see AbstractGraphicalEditPart#getAdapter(Class)
+	 *
 	 * @param adapter
 	 *            the adapter Class
 	 * @return the adapter
+	 * @see AbstractConnectionEditPart.DefaultAccessibleAnchorProvider
+	 * @see AbstractGraphicalEditPart#getAdapter(Class)
 	 */
 	public Object getAdapter(Class adapter) {
 		if (adapter == AccessibleAnchorProvider.class)
@@ -117,15 +130,22 @@ public abstract class BusinessAbstractConnectionEditPart extends
 
 	/**
 	 * Convenience method for casting this GraphicalEditPart's Figure to a
-	 * {@link Connection}
-	 * 
+	 * {@link Connection}.
+	 *
+	 * @author mqfdy
 	 * @return the Figure as a Connection
+	 * @Date 2018-09-03 09:00
 	 */
 	public Connection getConnectionFigure() {
 		return (Connection) getFigure();
 	}
 
 	/**
+	 * Gets the drag tracker.
+	 *
+	 * @param req
+	 *            the req
+	 * @return the drag tracker
 	 * @see org.eclipse.gef.EditPart#getDragTracker(Request)
 	 */
 	public DragTracker getDragTracker(Request req) {
@@ -133,6 +153,9 @@ public abstract class BusinessAbstractConnectionEditPart extends
 	}
 
 	/**
+	 * Gets the source.
+	 *
+	 * @return the source
 	 * @see org.eclipse.gef.ConnectionEditPart#getSource()
 	 */
 	public EditPart getSource() {
@@ -140,6 +163,9 @@ public abstract class BusinessAbstractConnectionEditPart extends
 	}
 
 	/**
+	 * Gets the target.
+	 *
+	 * @return the target
 	 * @see org.eclipse.gef.ConnectionEditPart#getTarget()
 	 */
 	public EditPart getTarget() {
@@ -154,8 +180,10 @@ public abstract class BusinessAbstractConnectionEditPart extends
 	 * should be overridden to return the correct ConnectionAnchor. Failure to
 	 * do this will cause a default anchor to be used so that the connection
 	 * figure will be made visible to the developer.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return ConnectionAnchor for the source end of the Connection
+	 * @Date 2018-09-03 09:00
 	 */
 	protected ConnectionAnchor getSourceConnectionAnchor() {
 		if (getSource() != null) {
@@ -177,8 +205,10 @@ public abstract class BusinessAbstractConnectionEditPart extends
 	 * should be overridden to return the correct ConnectionAnchor. Failure to
 	 * do this will cause a default anchor to be used so that the connection
 	 * figure will be made visible to the developer.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return ConnectionAnchor for the target end of the Connection
+	 * @Date 2018-09-03 09:00
 	 */
 	protected ConnectionAnchor getTargetConnectionAnchor() {
 		if (getTarget() != null) {
@@ -206,6 +236,9 @@ public abstract class BusinessAbstractConnectionEditPart extends
 	/**
 	 * Updates the source ConnectionAnchor. Subclasses should override
 	 * {@link #getSourceConnectionAnchor()} if necessary, and not this method.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void refreshSourceAnchor() {
 		getConnectionFigure().setSourceAnchor(getSourceConnectionAnchor());
@@ -214,6 +247,9 @@ public abstract class BusinessAbstractConnectionEditPart extends
 	/**
 	 * Updates the target ConnectionAnchor. Subclasses should override
 	 * {@link #getTargetConnectionAnchor()} if necessary, and not this method.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void refreshTargetAnchor() {
 		getConnectionFigure().setTargetAnchor(getTargetConnectionAnchor());
@@ -232,7 +268,9 @@ public abstract class BusinessAbstractConnectionEditPart extends
 
 	/**
 	 * Extended to implement automatic addNotify and removeNotify handling.
-	 * 
+	 *
+	 * @param parent
+	 *            the new parent
 	 * @see org.eclipse.gef.EditPart#setParent(EditPart)
 	 */
 	public void setParent(EditPart parent) {
@@ -247,9 +285,11 @@ public abstract class BusinessAbstractConnectionEditPart extends
 
 	/**
 	 * Sets the source EditPart of this connection.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param editPart
 	 *            EditPart which is the source.
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setSource(EditPart editPart) {
 		if (sourceEditPart == editPart)
@@ -265,9 +305,11 @@ public abstract class BusinessAbstractConnectionEditPart extends
 
 	/**
 	 * Sets the target EditPart of this connection.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param editPart
 	 *            EditPart which is the target.
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setTarget(EditPart editPart) {
 		if (targetEditPart == editPart)
@@ -281,6 +323,11 @@ public abstract class BusinessAbstractConnectionEditPart extends
 			refresh();
 	}
 
+	/**
+	 * The Class DefaultAccessibleAnchorProvider.
+	 *
+	 * @author mqfdy
+	 */
 	protected final class DefaultAccessibleAnchorProvider implements
 			AccessibleAnchorProvider {
 		/**
@@ -291,6 +338,9 @@ public abstract class BusinessAbstractConnectionEditPart extends
 		}
 
 		/**
+		 * Gets the source anchor locations.
+		 *
+		 * @return the source anchor locations
 		 * @see AccessibleAnchorProvider#getSourceAnchorLocations()
 		 */
 		public List getSourceAnchorLocations() {
@@ -304,6 +354,9 @@ public abstract class BusinessAbstractConnectionEditPart extends
 		}
 
 		/**
+		 * Gets the target anchor locations.
+		 *
+		 * @return the target anchor locations
 		 * @see AccessibleAnchorProvider#getTargetAnchorLocations()
 		 */
 		public List getTargetAnchorLocations() {

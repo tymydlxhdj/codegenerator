@@ -32,24 +32,30 @@ import com.mqfdy.code.reverse.ReverseContext;
 import com.mqfdy.code.reverse.ReverseException;
 import com.mqfdy.code.reverse.utils.ReverseUtil;
 import com.mqfdy.code.utils.ProjectUtil;
+// TODO: Auto-generated Javadoc
+
 /**
- * 数据库反向建模向导
- * @author mqfdy
+ * 数据库反向建模向导.
  *
+ * @author mqfdy
  */
 public class ReverseWizard extends Wizard implements INewWizard {
 	
+	/** The connection. */
 	private Connection connection;
 	
+	/** The project. */
 	private IProject project;
 	
+	/** The is all ignored. */
 	private boolean isAllIgnored;
 	
 	/**
-	 * 获取数据库连接对象
-	 * 如果之前缓存过连接，并且该连接未关闭，就直接返回
-	 * 否则用缓存的数据源信息重新申请连接对象。
-	 * @return
+	 * 获取数据库连接对象 如果之前缓存过连接，并且该连接未关闭，就直接返回 否则用缓存的数据源信息重新申请连接对象。.
+	 *
+	 * @author mqfdy
+	 * @return the connection
+	 * @Date 2018-09-03 09:00
 	 */
 	public Connection getConnection() {
 		Connection conn = null;
@@ -67,29 +73,81 @@ public class ReverseWizard extends Wizard implements INewWizard {
 		
 	}
 
+	/**
+	 * Sets the connection.
+	 *
+	 * @author mqfdy
+	 * @param connection
+	 *            the new connection
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setConnection(Connection connection) {
 		this.connection = connection;
 	}
 
+	/** The rw page. */
 	private DatasourceWizardPage rwPage;
+	
+	/** The ts page. */
 	private TableStructureWizardPage tsPage;
+	
+	/** The st page. */
 	private SpecialTableWizardPage stPage;
+	
+	/** The os page. */
 	private OmSelectWizardPage osPage;
+	
+	/** The dn page. */
 	private DuplicateNameWizardPage dnPage;
+	
+	/** The onrs page. */
 	private OmNameReverseStrategyPage onrsPage;
+	
+	/** The pd page. */
 	private PackageDispachPage pdPage;
+	
+	/** The om reverse. */
 	private IOmReverse omReverse = new OmReverse();
 	
+	/** The Constant TOTAL_WORK. */
 	public static final int TOTAL_WORK = 5;
 	
+	/** The is finish. */
 	private boolean isFinish = false;
+	
+	/**
+	 * Checks if is finish.
+	 *
+	 * @author mqfdy
+	 * @return true, if is finish
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isFinish() {
 		return isFinish;
 	}
 
+	/**
+	 * Sets the finish.
+	 *
+	 * @author mqfdy
+	 * @param isFinish
+	 *            the new finish
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setFinish(boolean isFinish) {
 		this.isFinish = isFinish;
 	}
+	
+	/**
+	 * Inits the.
+	 *
+	 * @author mqfdy
+	 * @param arg0
+	 *            the arg 0
+	 * @param selection
+	 *            the selection
+	 * @Date 2018-09-03 09:00
+	 */
 	public void init(IWorkbench arg0, IStructuredSelection selection) {
 		setWindowTitle("数据库反向生成bom - 向导");
 		if (selection != null && !selection.isEmpty()) {
@@ -109,6 +167,9 @@ public class ReverseWizard extends Wizard implements INewWizard {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean performFinish() {
 		final IWorkbenchPage[] pages = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPages();
@@ -144,6 +205,14 @@ public class ReverseWizard extends Wizard implements INewWizard {
 		return true;
 	}
 
+	/**
+	 * Refresh.
+	 *
+	 * @author mqfdy
+	 * @param pages
+	 *            the pages
+	 * @Date 2018-09-03 09:00
+	 */
 	public void refresh(final IWorkbenchPage[] pages) {
 		if(ProjectUtil.isBOMProject(project)){
 			try {
@@ -154,6 +223,9 @@ public class ReverseWizard extends Wizard implements INewWizard {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canFinish() {
 		isAllIgnored = dnPage.valiFinish();
@@ -166,6 +238,16 @@ public class ReverseWizard extends Wizard implements INewWizard {
 		return false;
 	}
 	
+	/**
+	 * Do finish.
+	 *
+	 * @author mqfdy
+	 * @param pages
+	 *            the pages
+	 * @param monitor
+	 *            the monitor
+	 * @Date 2018-09-03 09:00
+	 */
 	@SuppressWarnings("deprecation")
 	private void doFinish(IWorkbenchPage[] pages, IProgressMonitor monitor) {
 		omReverse.createBom(ReverseContext.bom, monitor, pdPage);
@@ -182,10 +264,20 @@ public class ReverseWizard extends Wizard implements INewWizard {
 //			EditorOperation.refreshEditorByFile(ReverseContext.OM_STORAGE_PATH, pages);
 	}
 	
+	/**
+	 * Gets the project.
+	 *
+	 * @author mqfdy
+	 * @return the project
+	 * @Date 2018-09-03 09:00
+	 */
 	public IProject getProject(){
 		return project;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void addPages() {
 		try {
@@ -214,20 +306,47 @@ public class ReverseWizard extends Wizard implements INewWizard {
 		addPage(pdPage);
 		
 	}
+	
+	/**
+	 * 
+	 */
 	@Override
 	public void dispose() {
 		omReverse.clearMemery();
 	}
 
+	/**
+	 * Sets the project.
+	 *
+	 * @author mqfdy
+	 * @param project
+	 *            the new project
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setProject(IProject project) {
 		this.project = project;
 		osPage.setProject(project);
 	}
 
+	/**
+	 * Checks if is all ignored.
+	 *
+	 * @author mqfdy
+	 * @return true, if is all ignored
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isAllIgnored() {
 		return isAllIgnored;
 	}
 
+	/**
+	 * Sets the all ignored.
+	 *
+	 * @author mqfdy
+	 * @param isAllIgnored
+	 *            the new all ignored
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setAllIgnored(boolean isAllIgnored) {
 		this.isAllIgnored = isAllIgnored;
 	}

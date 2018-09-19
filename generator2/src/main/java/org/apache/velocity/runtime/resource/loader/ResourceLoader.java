@@ -29,6 +29,7 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.exception.VelocityException;
 import org.apache.commons.collections.ExtendedProperties;
 
+// TODO: Auto-generated Javadoc
 /**
  * This is abstract class the all text resource loaders should
  * extend.
@@ -57,16 +58,23 @@ public abstract class ResourceLoader
      */
     protected String className = null;
 
+    /** The rsvc. */
     protected RuntimeServices rsvc = null;
+    
+    /** The log. */
     protected Log log = null;
 
     /**
-     * This initialization is used by all resource
-     * loaders and must be called to set up common
-     * properties shared by all resource loaders
-     * @param rs
-     * @param configuration
-     */
+	 * This initialization is used by all resource loaders and must be called to
+	 * set up common properties shared by all resource loaders.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @param configuration
+	 *            the configuration
+	 * @Date 2018-9-3 11:38:39
+	 */
     public void commonInit( RuntimeServices rs, ExtendedProperties configuration)
     {
         this.rsvc = rs;
@@ -120,88 +128,117 @@ public abstract class ResourceLoader
     }
 
     /**
-     * Initialize the template loader with a
-     * a resources class.
-     * @param configuration
-     */
+	 * Initialize the template loader with a a resources class.
+	 *
+	 * @author mqfdy
+	 * @param configuration
+	 *            the configuration
+	 * @Date 2018-9-3 11:38:39
+	 */
     public abstract void init( ExtendedProperties configuration);
 
     /**
-     * Get the InputStream that the Runtime will parse
-     * to create a template.
-     * @param source
-     * @return The input stream for the requested resource.
-     * @throws ResourceNotFoundException
-     */
+	 * Get the InputStream that the Runtime will parse to create a template.
+	 *
+	 * @author mqfdy
+	 * @param source
+	 *            the source
+	 * @return The input stream for the requested resource.
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @Date 2018-9-3 11:38:39
+	 */
     public abstract InputStream getResourceStream( String source )
         throws ResourceNotFoundException;
 
     /**
-     * Given a template, check to see if the source of InputStream
-     * has been modified.
-     * @param resource
-     * @return True if the resource has been modified.
-     */
+	 * Given a template, check to see if the source of InputStream has been
+	 * modified.
+	 *
+	 * @author mqfdy
+	 * @param resource
+	 *            the resource
+	 * @return True if the resource has been modified.
+	 * @Date 2018-9-3 11:38:39
+	 */
     public abstract boolean isSourceModified(Resource resource);
 
     /**
-     * Get the last modified time of the InputStream source
-     * that was used to create the template. We need the template
-     * here because we have to extract the name of the template
-     * in order to locate the InputStream source.
-     * @param resource
-     * @return Time in millis when the resource has been modified.
-     */
+	 * Get the last modified time of the InputStream source that was used to
+	 * create the template. We need the template here because we have to extract
+	 * the name of the template in order to locate the InputStream source.
+	 *
+	 * @author mqfdy
+	 * @param resource
+	 *            the resource
+	 * @return Time in millis when the resource has been modified.
+	 * @Date 2018-9-3 11:38:39
+	 */
     public abstract long getLastModified(Resource resource);
 
     /**
-     * Return the class name of this resource Loader
-     * @return Class name of the resource loader.
-     */
+	 * Return the class name of this resource Loader.
+	 *
+	 * @author mqfdy
+	 * @return Class name of the resource loader.
+	 * @Date 2018-9-3 11:38:39
+	 */
     public String getClassName()
     {
         return className;
     }
 
     /**
-     * Set the caching state. If true, then this loader
-     * would like the Runtime to cache templates that
-     * have been created with InputStreams provided
-     * by this loader.
-     * @param value
-     */
+	 * Set the caching state. If true, then this loader would like the Runtime
+	 * to cache templates that have been created with InputStreams provided by
+	 * this loader.
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            the new caching on
+	 * @Date 2018-9-3 11:38:39
+	 */
     public void setCachingOn(boolean value)
     {
         isCachingOn = value;
     }
 
     /**
-     * The Runtime uses this to find out whether this
-     * template loader wants the Runtime to cache
-     * templates created with InputStreams provided
-     * by this loader.
-     * @return True if this resource loader caches.
-     */
+	 * The Runtime uses this to find out whether this template loader wants the
+	 * Runtime to cache templates created with InputStreams provided by this
+	 * loader.
+	 *
+	 * @author mqfdy
+	 * @return True if this resource loader caches.
+	 * @Date 2018-9-3 11:38:39
+	 */
     public boolean isCachingOn()
     {
         return isCachingOn;
     }
 
     /**
-     * Set the interval at which the InputStream source
-     * should be checked for modifications.
-     * @param modificationCheckInterval
-     */
+	 * Set the interval at which the InputStream source should be checked for
+	 * modifications.
+	 *
+	 * @author mqfdy
+	 * @param modificationCheckInterval
+	 *            the new modification check interval
+	 * @Date 2018-9-3 11:38:39
+	 */
     public void setModificationCheckInterval(long modificationCheckInterval)
     {
         this.modificationCheckInterval = modificationCheckInterval;
     }
 
     /**
-     * Get the interval at which the InputStream source
-     * should be checked for modifications.
-     * @return The modification check interval.
-     */
+	 * Get the interval at which the InputStream source should be checked for
+	 * modifications.
+	 *
+	 * @author mqfdy
+	 * @return The modification check interval.
+	 * @Date 2018-9-3 11:38:39
+	 */
     public long getModificationCheckInterval()
     {
         return modificationCheckInterval;

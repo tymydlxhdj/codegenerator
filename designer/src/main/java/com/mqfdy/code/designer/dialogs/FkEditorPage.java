@@ -40,11 +40,11 @@ import com.mqfdy.code.model.utils.DataType;
 import com.mqfdy.code.model.utils.EditorType;
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 属性编辑器页面
- * 
+ * 属性编辑器页面.
+ *
  * @author mqfdy
- * 
  */
 public class FkEditorPage extends Composite implements
 		IBusinessClassEditorPage {
@@ -52,72 +52,88 @@ public class FkEditorPage extends Composite implements
 	// private static final String ERROR_MESSAGE_EDITORTYPE_NULLABLE
 	// ="请选择编辑器类型";
 
+	/** The Constant GROUP_EDITORTYPELIST_TEXT. */
 	public static final String GROUP_EDITORTYPELIST_TEXT = "编辑器类型选择";
+	
+	/** The Constant GROUP_EDITORPARAM_TEXT. */
 	// public static final String GROUP_EDITORSHOW_TEXT = "编辑器效果";
 	public static final String GROUP_EDITORPARAM_TEXT = "参数设置";
 
+	/** The Constant DATASOURCE_LABEL_TEXT. */
 	public static final String DATASOURCE_LABEL_TEXT = "数据来源：";
 
+	/** The Constant TAB_ENUM_TITLE. */
 	public static final String TAB_ENUM_TITLE = "来源于枚举";
+	
+	/** The Constant TAB_BUSINESS_TITLE. */
 	public static final String TAB_BUSINESS_TITLE = "来源于业务数据";
 	// public static final String TAB_CUSTOM_TITLE = "自定义";
 
-	/**
-	 * 数据源
-	 */
+	/** 数据源. */
 	// public static final String[] datasources = new
 	// String[]{TAB_ENUM_TITLE,TAB_BUSINESS_TITLE,TAB_CUSTOM_TITLE};
 	public static final String[] datasources = new String[] { TAB_ENUM_TITLE,
 			TAB_BUSINESS_TITLE };
 
+	/** The parent dialog. */
 	private FkEditorDialog parentDialog;
 
+	/** The group editor type list. */
 	private Group group_editorTypeList;
+	
+	/** The group editor param. */
 	// private Group group_editorShow;
 	private Group group_editorParam;
+	
+	/** The composite. */
 	Composite composite;
-	/**
-	 * 图片显示容器
-	 */
+	
+	/** 图片显示容器. */
 	// private Composite imageCantainer;
 
 	/**
 	 * 编辑器类型树
 	 */
 	private Tree tree;
+	
+	/** The tree viewer. */
 	private TreeViewer treeViewer;
 
+	/** The label data source type. */
 	private Label label_dataSourceType;
+	
+	/** The combo data source type. */
 	private Combo combo_dataSourceType;
 
 	// private TabFolder tabFolder;
 
-	/**
-	 * 枚举数据源页面
-	 */
+	/** 枚举数据源页面. */
 	private DataSourceEnumPage enumPage;
 
-	/**
-	 * 业务数据源页面
-	 */
+	/** 业务数据源页面. */
 	private DataSourceBusinessPage businessPage;
 
+	/** The cur type. */
 	EditorType curType = EditorType.TextEditor;
 
-	/**
-	 * 自定义数据源页面
-	 */
+	/** 自定义数据源页面. */
 	// private DataSourceCustomPage customPage;
 
 	final StackLayout rootLayout = new StackLayout();// 堆栈布局方式;
+	
+	/** The tab 1. */
 	private Composite tab1;
+	
+	/** The tab 2. */
 	private Composite tab2;
+	
+	/** The root container. */
 	private Composite rootContainer;
 
 	// private Composite tab3;
 	/**
-	 * 构造函数
-	 * 
+	 * 构造函数.
+	 *
 	 * @param parent
 	 *            上级容器
 	 * @param style
@@ -133,9 +149,12 @@ public class FkEditorPage extends Composite implements
 	}
 
 	/**
-	 * 创建页面内容
-	 * 
+	 * 创建页面内容.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createContents(Composite composite) {
 		this.composite = composite;
@@ -179,6 +198,12 @@ public class FkEditorPage extends Composite implements
 		makeAction();
 	}
 
+	/**
+	 * Adds the listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void addListeners() {
 		treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -195,7 +220,10 @@ public class FkEditorPage extends Composite implements
 	}
 
 	/**
-	 * 初始化创建数据源标签页
+	 * 初始化创建数据源标签页.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createTabFolder() {
 
@@ -221,7 +249,10 @@ public class FkEditorPage extends Composite implements
 	}
 
 	/**
-	 * 初始化化事件
+	 * 初始化化事件.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void makeAction() {
 		// 编辑器类型选择树点击事件
@@ -261,10 +292,12 @@ public class FkEditorPage extends Composite implements
 	}
 
 	/**
-	 * 重置编辑器
-	 * 
+	 * 重置编辑器.
+	 *
+	 * @author mqfdy
 	 * @param editorType
 	 *            编辑器类型枚举
+	 * @Date 2018-09-03 09:00
 	 */
 	private void resetEditor(EditorType editorType) {
 		if(editorType == null)
@@ -295,6 +328,14 @@ public class FkEditorPage extends Composite implements
 		}
 	}
 
+	/**
+	 * Sets the backgrand.
+	 *
+	 * @author mqfdy
+	 * @param b
+	 *            the new backgrand
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setBackgrand(boolean b) {
 		Color color = null;
 		if (b) {
@@ -316,9 +357,12 @@ public class FkEditorPage extends Composite implements
 	}
 
 	/**
-	 * 根据数据类型更改树的选中节点
-	 * 
+	 * 根据数据类型更改树的选中节点.
+	 *
+	 * @author mqfdy
 	 * @param dataType
+	 *            the data type
+	 * @Date 2018-09-03 09:00
 	 */
 	public void change(String dataType) {
 		DataType selectType = DataType.getDataType(dataType);
@@ -335,10 +379,13 @@ public class FkEditorPage extends Composite implements
 	}
 
 	/**
-	 * 为选择的数据类型计算默认编辑器
-	 * 
+	 * 为选择的数据类型计算默认编辑器.
+	 *
+	 * @author mqfdy
 	 * @param selectType
-	 * @return
+	 *            the select type
+	 * @return the editor type by select
+	 * @Date 2018-09-03 09:00
 	 */
 	private EditorType getEditorTypeBySelect(DataType selectType) {
 		EditorType type = EditorType.TextEditor;
@@ -365,10 +412,14 @@ public class FkEditorPage extends Composite implements
 	}
 
 	/**
-	 * 判断当前节点是否应该被选中，如果是，则选中
-	 * 
+	 * 判断当前节点是否应该被选中，如果是，则选中.
+	 *
+	 * @author mqfdy
 	 * @param item
+	 *            the item
 	 * @param type
+	 *            the type
+	 * @Date 2018-09-03 09:00
 	 */
 	private void checkItem(TreeItem item, EditorType type) {
 		if (type == null) {
@@ -396,7 +447,10 @@ public class FkEditorPage extends Composite implements
 	}
 
 	/**
-	 * 初始化控件的值和内容
+	 * 初始化控件的值和内容.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void initControlValue() {
 		combo_dataSourceType.setItems(datasources);
@@ -463,7 +517,11 @@ public class FkEditorPage extends Composite implements
 	}
 
 	/**
-	 * 校验输入
+	 * 校验输入.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean validateInput() {
 		// 是否选择编辑器类型
@@ -501,7 +559,10 @@ public class FkEditorPage extends Composite implements
 	}
 
 	/**
-	 * 更新正在编辑的对象
+	 * 更新正在编辑的对象.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void updateTheEditingElement() {
 		PropertyEditor editor = ((Association) parentDialog.parent)
@@ -542,32 +603,56 @@ public class FkEditorPage extends Composite implements
 //	}
 
 	/**
-	 * 获取当前编辑器类型
-	 * 
-	 * @return
-	 */
+ * 获取当前编辑器类型.
+ *
+ * @author mqfdy
+ * @return the cur type
+ * @Date 2018-09-03 09:00
+ */
 	public EditorType getCurType() {
 		return curType;
 	}
 
 	/**
-	 * 设置当前编辑器类型
+	 * 设置当前编辑器类型.
+	 *
+	 * @author mqfdy
+	 * @param curType
+	 *            the new cur editor type
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setCurEditorType(EditorType curType) {
 		this.curType = curType;
 	}
 
+	/**
+	 * Gets the parent dialog.
+	 *
+	 * @author mqfdy
+	 * @return the parent dialog
+	 * @Date 2018-09-03 09:00
+	 */
 	public FkEditorDialog getParentDialog() {
 		return parentDialog;
 	}
+	
 	/**
-	 * 编辑器类型树的标签显示提供者
-	 * 
+	 * 编辑器类型树的标签显示提供者.
+	 *
 	 * @author LQR
-	 * 
 	 */
 	private class EditorTypeTreeLabelProvider extends LabelProvider implements
 			ILabelProvider {
+		
+		/**
+		 * Gets the image.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @return the image
+		 * @Date 2018-09-03 09:00
+		 */
 		public Image getImage(Object element) {
 			if (element instanceof String) {
 				return ImageManager.getInstance().getImage(
@@ -579,6 +664,15 @@ public class FkEditorPage extends Composite implements
 			return null;
 		}
 
+		/**
+		 * Gets the text.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @return the text
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getText(Object element) {
 			if (element instanceof String) {
 				return (String) element;
@@ -590,23 +684,55 @@ public class FkEditorPage extends Composite implements
 	}
 
 	/**
-	 * 编辑器类型树的内容提供者
-	 * 
+	 * 编辑器类型树的内容提供者.
+	 *
 	 * @author LQR
-	 * 
 	 */
 	private class EditorTypeTreeContentProvider implements ITreeContentProvider {
 
+		/**
+		 * 
+		 */
 		public void dispose() {
 		}
 
+		/**
+		 * Input changed.
+		 *
+		 * @author mqfdy
+		 * @param viewer
+		 *            the viewer
+		 * @param oldInput
+		 *            the old input
+		 * @param newInput
+		 *            the new input
+		 * @Date 2018-09-03 09:00
+		 */
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		}
 
+		/**
+		 * Gets the elements.
+		 *
+		 * @author mqfdy
+		 * @param inputElement
+		 *            the input element
+		 * @return the elements
+		 * @Date 2018-09-03 09:00
+		 */
 		public Object[] getElements(Object inputElement) {
 			return EditorType.getEditorTypeGroups().toArray();
 		}
 
+		/**
+		 * Gets the children.
+		 *
+		 * @author mqfdy
+		 * @param parentElement
+		 *            the parent element
+		 * @return the children
+		 * @Date 2018-09-03 09:00
+		 */
 		public Object[] getChildren(Object parentElement) {
 			if (parentElement instanceof String) {
 				List<EditorType> list = EditorType
@@ -616,6 +742,15 @@ public class FkEditorPage extends Composite implements
 			return null;
 		}
 
+		/**
+		 * Gets the parent.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @return the parent
+		 * @Date 2018-09-03 09:00
+		 */
 		public Object getParent(Object element) {
 			if (element instanceof EditorType) {
 				return ((EditorType) element).getGroup();
@@ -623,6 +758,15 @@ public class FkEditorPage extends Composite implements
 			return null;
 		}
 
+		/**
+		 * Checks for children.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @return true, if successful
+		 * @Date 2018-09-03 09:00
+		 */
 		public boolean hasChildren(Object element) {
 			if (element instanceof String) {
 				return true;

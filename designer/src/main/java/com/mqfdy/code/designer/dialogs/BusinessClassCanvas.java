@@ -24,36 +24,78 @@ import org.eclipse.swt.widgets.Composite;
 import com.mqfdy.code.model.BusinessClass;
 import com.mqfdy.code.model.utils.AssociationType;
 import com.mqfdy.code.model.utils.NavigationType;
+// TODO: Auto-generated Javadoc
+
 /**
- * 业务模型画布
- * @author mqfdy
+ * 业务模型画布.
  *
+ * @author mqfdy
  */
 public class BusinessClassCanvas extends Canvas {
 
+	/** The dialog width. */
 	private int DIALOG_WIDTH;
+	
+	/** The class width. */
 	private int CLASS_WIDTH = 100;
+	
+	/** The class heigth. */
 	private int CLASS_HEIGTH = 50;
+	
+	/** The margin left. */
 	private int MARGIN_LEFT = 30;
+
+/** The margin top. */
 //	private int MARGIN_RIGHT = 30;
 	private int MARGIN_TOP = 10;
+	
+	/** The canvas width. */
 	private int CANVAS_WIDTH;
+	
+	/** The canvas heigth. */
 	private int CANVAS_HEIGTH;
 
+	/** The lws. */
 	private LightweightSystem lws = null;
+	
+	/** The root. */
 	IFigure root;
+	
+	/** The figure A. */
 	IFigure figureA;
+	
+	/** The figure B. */
 	IFigure figureB;
+	
+	/** The figure line. */
 	IFigure figureLine;
+	
+	/** The business class A. */
 	BusinessClass businessClassA;
+	
+	/** The business class B. */
 	BusinessClass businessClassB;
+	
+	/** The navigate to class B role name. */
 	String navigateToClassBRoleName;
+	
+	/** The navigate to class A role name. */
 	String navigateToClassARoleName;
 
+	/** The type. */
 	NavigationType type;
 
+	/** The association type. */
 	AssociationType associationType;
 
+	/**
+	 * Instantiates a new business class canvas.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param width
+	 *            the width
+	 */
 	public BusinessClassCanvas(Composite parent, int width) {
 		super(parent, SWT.NONE);
 		DIALOG_WIDTH = width;
@@ -64,6 +106,12 @@ public class BusinessClassCanvas extends Canvas {
 		lws.setContents(createRoot(parent));
 	}
 
+	/**
+	 * Compute dialog size.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void computeDialogSize() {
 		CANVAS_WIDTH = DIALOG_WIDTH - 80 - 80;
 		this.CANVAS_HEIGTH = 50;
@@ -72,17 +120,38 @@ public class BusinessClassCanvas extends Canvas {
 		this.MARGIN_TOP = CANVAS_HEIGTH / 4;
 	}
 
+	/**
+	 * Compute class size.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void computeClassSize() {
 		this.CLASS_WIDTH = CANVAS_WIDTH / 4;
 		this.CLASS_HEIGTH = CANVAS_HEIGTH / 10 * 8;
 	}
 
+	/**
+	 * Creates the root.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the i figure
+	 * @Date 2018-09-03 09:00
+	 */
 	private IFigure createRoot(Composite parent) {
 		root = new Figure();
 		root.setFont(parent.getFont());
 		return root;
 	}
 
+	/**
+	 * Creates the figures.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createFigures() {
 		// 添加实体机组
 		if (businessClassA != null) {
@@ -108,6 +177,22 @@ public class BusinessClassCanvas extends Canvas {
 				CLASS_HEIGTH));
 	}
 
+	/**
+	 * Change data.
+	 *
+	 * @author mqfdy
+	 * @param businessClassA
+	 *            the business class A
+	 * @param businessClassB
+	 *            the business class B
+	 * @param associationType
+	 *            the association type
+	 * @param navigateToClassBRoleName
+	 *            the navigate to class B role name
+	 * @param navigateToClassARoleName
+	 *            the navigate to class A role name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void changeData(BusinessClass businessClassA,
 			BusinessClass businessClassB, AssociationType associationType,
 			String navigateToClassBRoleName, String navigateToClassARoleName) {
@@ -125,6 +210,14 @@ public class BusinessClassCanvas extends Canvas {
 		this.redraw();
 	}
 
+	/**
+	 * On resized.
+	 *
+	 * @author mqfdy
+	 * @param dialogWidth
+	 *            the dialog width
+	 * @Date 2018-09-03 09:00
+	 */
 	public void onResized(int dialogWidth) {
 		this.DIALOG_WIDTH = dialogWidth;
 		computeDialogSize();
@@ -133,10 +226,13 @@ public class BusinessClassCanvas extends Canvas {
 	}
 
 	/**
-	 * 创建长方形图形
-	 * 
+	 * 创建长方形图形.
+	 *
+	 * @author mqfdy
 	 * @param name
-	 * @return
+	 *            the name
+	 * @return the i figure
+	 * @Date 2018-09-03 09:00
 	 */
 	private IFigure createRectangleFigure(String name) {
 		RectangleFigure rectangleFigure = new RectangleFigure();
@@ -150,11 +246,15 @@ public class BusinessClassCanvas extends Canvas {
 	}
 
 	/**
-	 * 创建连接线
-	 * 
+	 * 创建连接线.
+	 *
+	 * @author mqfdy
 	 * @param figure1
+	 *            the figure 1
 	 * @param figure2
-	 * @return
+	 *            the figure 2
+	 * @return the connection
+	 * @Date 2018-09-03 09:00
 	 */
 	private Connection createConnect(IFigure figure1, IFigure figure2) {
 		PolylineConnection connection = new PolylineConnection();
@@ -269,6 +369,12 @@ public class BusinessClassCanvas extends Canvas {
 		return connection;
 	}
 
+	/**
+	 * Clear all.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void clearAll() {
 		if (root != null) {
 			if (figureA != null) {
@@ -283,18 +389,50 @@ public class BusinessClassCanvas extends Canvas {
 		}
 	}
 
+	/**
+	 * Sets the business class A.
+	 *
+	 * @author mqfdy
+	 * @param businessClassA
+	 *            the new business class A
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBusinessClassA(BusinessClass businessClassA) {
 		this.businessClassA = businessClassA;
 	}
 
+	/**
+	 * Sets the business class B.
+	 *
+	 * @author mqfdy
+	 * @param businessClassB
+	 *            the new business class B
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBusinessClassB(BusinessClass businessClassB) {
 		this.businessClassB = businessClassB;
 	}
 
+	/**
+	 * Sets the association type.
+	 *
+	 * @author mqfdy
+	 * @param associationType
+	 *            the new association type
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setAssociationType(AssociationType associationType) {
 		this.associationType = associationType;
 	}
 
+	/**
+	 * Sets the type.
+	 *
+	 * @author mqfdy
+	 * @param type
+	 *            the new type
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setType(NavigationType type) {
 		this.type = type;
 	}

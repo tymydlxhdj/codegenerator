@@ -27,22 +27,27 @@ import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
  * A <code>CompositeCollectionValueModel</code> wraps another
- * <code>CollectionValueModel</code> and uses a <code>Transformer</code>
- * to convert each item in the wrapped collection to yet another
- * <code>CollectionValueModel</code>. This composite collection contains
- * the combined items from all these component collections.
+ * <code>CollectionValueModel</code> and uses a <code>Transformer</code> to
+ * convert each item in the wrapped collection to yet another
+ * <code>CollectionValueModel</code>. This composite collection contains the
+ * combined items from all these component collections.
  * 
- * NB: The wrapped collection must be an "identity set" that does not
- * contain the same item twice or this class will throw an exception.
+ * NB: The wrapped collection must be an "identity set" that does not contain
+ * the same item twice or this class will throw an exception.
  * 
- * Terminology:
- * - sources - the items in the wrapped collection value model; these
- *    are converted into component CVMs by the transformer
- * - component CVMs - the component collection value models that are combined
- *    by this composite collection value model
- * - items - the items held by the component CVMs
+ * Terminology: - sources - the items in the wrapped collection value model;
+ * these are converted into component CVMs by the transformer - component CVMs -
+ * the component collection value models that are combined by this composite
+ * collection value model - items - the items held by the component CVMs
+ *
+ * @author mqfdy
+ * @param <E1>
+ *            the generic type
+ * @param <E2>
+ *            the generic type
  */
 public class CompositeCollectionValueModel<E1, E2>
 	extends CollectionValueModelWrapper<E1>
@@ -80,20 +85,27 @@ public class CompositeCollectionValueModel<E1, E2>
 	// ********** constructors **********
 
 	/**
-	 * Construct a collection value model with the specified wrapped
-	 * collection value model. Use this constructor if
-	 *     - the wrapped collection value model already contains other
-	 *       collection value models or
-	 *     - you want to override the <code>transform(E1)</code> method
-	 *       instead of building a <code>Transformer</code>
+	 * Construct a collection value model with the specified wrapped collection
+	 * value model. Use this constructor if - the wrapped collection value model
+	 * already contains other collection value models or - you want to override
+	 * the <code>transform(E1)</code> method instead of building a
+	 * <code>Transformer</code>
+	 *
+	 * @param collectionHolder
+	 *            the collection holder
 	 */
 	public CompositeCollectionValueModel(CollectionValueModel<? extends E1> collectionHolder) {
 		this(collectionHolder, Transformer.Null.<E1, CollectionValueModel<E2>>instance());
 	}
 
 	/**
-	 * Construct a collection value model with the specified wrapped
-	 * collection value model and transformer.
+	 * Construct a collection value model with the specified wrapped collection
+	 * value model and transformer.
+	 *
+	 * @param collectionHolder
+	 *            the collection holder
+	 * @param transformer
+	 *            the transformer
 	 */
 	public CompositeCollectionValueModel(CollectionValueModel<? extends E1> collectionHolder, Transformer<E1, CollectionValueModel<E2>> transformer) {
 		super(collectionHolder);
@@ -105,40 +117,54 @@ public class CompositeCollectionValueModel<E1, E2>
 	}
 
 	/**
-	 * Construct a collection value model with the specified wrapped
-	 * list value model. Use this constructor if
-	 *     - the wrapped list value model already contains collection
-	 *       value models or
-	 *     - you want to override the <code>transform(E1)</code> method
-	 *       instead of building a <code>Transformer</code>
+	 * Construct a collection value model with the specified wrapped list value
+	 * model. Use this constructor if - the wrapped list value model already
+	 * contains collection value models or - you want to override the
+	 * <code>transform(E1)</code> method instead of building a
+	 * <code>Transformer</code>
+	 *
+	 * @param listHolder
+	 *            the list holder
 	 */
 	public CompositeCollectionValueModel(ListValueModel<? extends E1> listHolder) {
 		this(new ListCollectionValueModelAdapter<E1>(listHolder));
 	}
 
 	/**
-	 * Construct a collection value model with the specified wrapped
-	 * list value model and transformer.
+	 * Construct a collection value model with the specified wrapped list value
+	 * model and transformer.
+	 *
+	 * @param listHolder
+	 *            the list holder
+	 * @param transformer
+	 *            the transformer
 	 */
 	public CompositeCollectionValueModel(ListValueModel<? extends E1> listHolder, Transformer<E1, CollectionValueModel<E2>> transformer) {
 		this(new ListCollectionValueModelAdapter<E1>(listHolder), transformer);
 	}
 
 	/**
-	 * Construct a collection value model with the specified, unchanging, wrapped
-	 * collection. Use this constructor if
-	 *     - the wrapped collection already contains collection
-	 *       value models or
-	 *     - you want to override the <code>transform(E1)</code> method
-	 *       instead of building a <code>Transformer</code>
+	 * Construct a collection value model with the specified, unchanging,
+	 * wrapped collection. Use this constructor if - the wrapped collection
+	 * already contains collection value models or - you want to override the
+	 * <code>transform(E1)</code> method instead of building a
+	 * <code>Transformer</code>
+	 *
+	 * @param collection
+	 *            the collection
 	 */
 	public CompositeCollectionValueModel(Collection<? extends E1> collection) {
 		this(new StaticCollectionValueModel<E1>(collection));
 	}
 
 	/**
-	 * Construct a collection value model with the specified, unchanging, wrapped
-	 * collection and transformer.
+	 * Construct a collection value model with the specified, unchanging,
+	 * wrapped collection and transformer.
+	 *
+	 * @param collection
+	 *            the collection
+	 * @param transformer
+	 *            the transformer
 	 */
 	public CompositeCollectionValueModel(Collection<? extends E1> collection, Transformer<E1, CollectionValueModel<E2>> transformer) {
 		this(new StaticCollectionValueModel<E1>(collection), transformer);
@@ -147,6 +173,13 @@ public class CompositeCollectionValueModel<E1, E2>
 
 	// ********** initialization **********
 
+	/**
+	 * Builds the component listener.
+	 *
+	 * @author mqfdy
+	 * @return the collection change listener
+	 * @Date 2018-09-03 09:00
+	 */
 	protected CollectionChangeListener buildComponentListener() {
 		return new CollectionChangeListener() {
 			public void itemsAdded(CollectionChangeEvent event) {
@@ -175,6 +208,13 @@ public class CompositeCollectionValueModel<E1, E2>
 		return new CompositeIterator<E2>(this.buildCollectionsIterators());
 	}
 
+	/**
+	 * Builds the collections iterators.
+	 *
+	 * @author mqfdy
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Iterator<Iterator<E2>> buildCollectionsIterators() {
 		return new TransformationIterator<ArrayList<E2>, Iterator<E2>>(this.collections.values().iterator()) {
 			@Override
@@ -236,8 +276,15 @@ public class CompositeCollectionValueModel<E1, E2>
 	}
 
 	/**
-	 * Transform the specified source to a collection value model
-	 * and add its items to our cache and the "collecting parameter".
+	 * Transform the specified source to a collection value model and add its
+	 * items to our cache and the "collecting parameter".
+	 *
+	 * @author mqfdy
+	 * @param source
+	 *            the source
+	 * @param addedItems
+	 *            the added items
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void addComponentSource(E1 source, List<E2> addedItems) {
 		CollectionValueModel<E2> componentCVM = this.transform(source);
@@ -256,6 +303,13 @@ public class CompositeCollectionValueModel<E1, E2>
 	/**
 	 * Add the items in the specified component CVM to the specified component
 	 * collection.
+	 *
+	 * @author mqfdy
+	 * @param componentCVM
+	 *            the component CVM
+	 * @param componentCollection
+	 *            the component collection
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void addComponentItems(CollectionValueModel<E2> componentCVM, ArrayList<E2> componentCollection) {
 		int itemsSize = componentCVM.size();
@@ -278,8 +332,14 @@ public class CompositeCollectionValueModel<E1, E2>
 	}
 
 	/**
-	 * Remove the items corresponding to the specified source
-	 * from our cache.
+	 * Remove the items corresponding to the specified source from our cache.
+	 *
+	 * @author mqfdy
+	 * @param source
+	 *            the source
+	 * @param removedItems
+	 *            the removed items
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void removeComponentSource(E1 source, List<E2> removedItems) {
 		CollectionValueModel<E2> componentCVM = this.componentCVMs.remove(source);
@@ -297,6 +357,11 @@ public class CompositeCollectionValueModel<E1, E2>
 
 	/**
 	 * Update our size and collection cache.
+	 *
+	 * @author mqfdy
+	 * @param componentCollection
+	 *            the component collection
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void removeComponentItems(ArrayList<E2> componentCollection) {
 		this.size -= componentCollection.size();
@@ -313,6 +378,12 @@ public class CompositeCollectionValueModel<E1, E2>
 		this.fireCollectionCleared(VALUES);
 	}
 
+	/**
+	 * Removes the all component sources.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void removeAllComponentSources() {
 		// copy the keys so we don't eat our own tail
 		ArrayList<E1> copy = new ArrayList<E1>(this.componentCVMs.keySet());
@@ -338,16 +409,26 @@ public class CompositeCollectionValueModel<E1, E2>
 	/**
 	 * Transform the specified object into a collection value model.
 	 * <p>
-	 * This method can be overridden by a subclass as an
-	 * alternative to building a <code>Transformer</code>.
+	 * This method can be overridden by a subclass as an alternative to building
+	 * a <code>Transformer</code>.
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            the value
+	 * @return the collection value model
+	 * @Date 2018-09-03 09:00
 	 */
 	protected CollectionValueModel<E2> transform(E1 value) {
 		return this.transformer.transform(value);
 	}
 
 	/**
-	 * One of the component collections had items added;
-	 * synchronize our caches.
+	 * One of the component collections had items added; synchronize our caches.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void componentItemsAdded(CollectionChangeEvent event) {
 		int itemsSize = event.itemsSize();
@@ -360,8 +441,13 @@ public class CompositeCollectionValueModel<E1, E2>
 	}
 
 	/**
-	 * One of the component collections had items removed;
-	 * synchronize our caches.
+	 * One of the component collections had items removed; synchronize our
+	 * caches.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void componentItemsRemoved(CollectionChangeEvent event) {
 		this.size -= event.itemsSize();
@@ -370,9 +456,13 @@ public class CompositeCollectionValueModel<E1, E2>
 	}
 
 	/**
-	 * One of the component collections was cleared;
-	 * synchronize our caches by clearing out the appropriate
-	 * collection.
+	 * One of the component collections was cleared; synchronize our caches by
+	 * clearing out the appropriate collection.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void componentCollectionCleared(CollectionChangeEvent event) {
 		ArrayList<E2> componentCollection = this.collections.get(this.componentCVM(event));
@@ -382,9 +472,13 @@ public class CompositeCollectionValueModel<E1, E2>
 	}
 
 	/**
-	 * One of the component collections changed;
-	 * synchronize our caches by clearing out the appropriate
-	 * collection and then rebuilding it.
+	 * One of the component collections changed; synchronize our caches by
+	 * clearing out the appropriate collection and then rebuilding it.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void componentCollectionChanged(CollectionChangeEvent event) {
 		CollectionValueModel<E2> componentCVM = this.componentCVM(event);
@@ -394,12 +488,30 @@ public class CompositeCollectionValueModel<E1, E2>
 		this.fireCollectionChanged(VALUES);
 	}
 
+	/**
+	 * Component items.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
+	 */
 	// minimize scope of suppressed warnings
 	@SuppressWarnings("unchecked")
 	protected Iterator<E2> componentItems(CollectionChangeEvent event) {
 		return (Iterator<E2>) event.items();
 	}
 
+	/**
+	 * Component CVM.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @return the collection value model
+	 * @Date 2018-09-03 09:00
+	 */
 	// minimize scope of suppressed warnings
 	@SuppressWarnings("unchecked")
 	protected CollectionValueModel<E2> componentCVM(CollectionChangeEvent event) {

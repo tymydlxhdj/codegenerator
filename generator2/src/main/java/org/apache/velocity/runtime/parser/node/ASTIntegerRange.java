@@ -27,6 +27,7 @@ import org.apache.velocity.exception.MethodInvocationException;
 import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.runtime.parser.Parser;
 
+// TODO: Auto-generated Javadoc
 /**
  * handles the range 'operator'  [ n .. m ]
  *
@@ -37,39 +38,59 @@ import org.apache.velocity.runtime.parser.Parser;
  */
 public class ASTIntegerRange extends SimpleNode
 {
+    
     /**
-     * @param id
-     */
+	 * Instantiates a new AST integer range.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTIntegerRange(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST integer range.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTIntegerRange(Parser p, int id)
     {
         super(p, id);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     *  does the real work.  Creates an Vector of Integers with the
-     *  right value range
-     *
-     *  @param context  app context used if Left or Right of .. is a ref
-     *  @return Object array of Integers
-     * @throws MethodInvocationException
-     */
+	 * does the real work. Creates an Vector of Integers with the right value
+	 * range
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            app context used if Left or Right of .. is a ref
+	 * @return Object array of Integers
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-9-3 11:38:32
+	 */
     public Object value( InternalContextAdapter context)
         throws MethodInvocationException
     {

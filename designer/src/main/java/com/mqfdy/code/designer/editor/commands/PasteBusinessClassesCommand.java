@@ -27,21 +27,30 @@ import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramElement;
 import com.mqfdy.code.model.graph.ElementStyle;
 
+// TODO: Auto-generated Javadoc
 /**
- * 粘贴图形
- * 
+ * 粘贴图形.
+ *
  * @author mqfdy
- * 
  */
 
 public class PasteBusinessClassesCommand extends Command {
+	
+	/** The business classes list. */
 	// 内存中复制的业务实体
 	List<AbstractModelElement> businessClassesList = new ArrayList<AbstractModelElement>();
+	
+	/** The new bus list. */
 	// 复制出的对象
 	List<AbstractModelElement> newBusList = new ArrayList<AbstractModelElement>();
+	
+	/** The bu map. */
 	// 新旧模型对象的Map
 	Map<AbstractModelElement, AbstractModelElement> buMap = new HashMap<AbstractModelElement, AbstractModelElement>();
 
+	/**
+	 * Instantiates a new paste business classes command.
+	 */
 	public PasteBusinessClassesCommand() {
 		super();
 		businessClassesList.clear();
@@ -50,6 +59,9 @@ public class PasteBusinessClassesCommand extends Command {
 					.getDefault().getContents());
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		if (businessClassesList.isEmpty())
@@ -65,6 +77,9 @@ public class PasteBusinessClassesCommand extends Command {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 		if (!canExecute())
@@ -72,6 +87,9 @@ public class PasteBusinessClassesCommand extends Command {
 		redo();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void redo() {
 		Diagram diagram = ((Diagram) BusinessModelUtil.getGefViewer()
@@ -310,11 +328,17 @@ public class PasteBusinessClassesCommand extends Command {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canUndo() {
 		return canExecute();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void undo() {
 		for (AbstractModelElement ab : newBusList) {

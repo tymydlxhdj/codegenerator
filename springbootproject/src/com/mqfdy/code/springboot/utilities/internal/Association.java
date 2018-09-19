@@ -10,8 +10,13 @@
 package com.mqfdy.code.springboot.utilities.internal;
 
 /**
- * Straightforward definition of an object pairing.
- * The key is immutable.
+ * Straightforward definition of an object pairing. The key is immutable.
+ *
+ * @author mqfdy
+ * @param <K>
+ *            the key type
+ * @param <V>
+ *            the value type
  */
 public interface Association<K, V> {
 

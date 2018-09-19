@@ -37,6 +37,7 @@ import org.apache.velocity.util.ClassUtils;
 import org.apache.velocity.util.StringUtils;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Class to manage the text resource for the Velocity Runtime.
  *
@@ -74,9 +75,7 @@ public class ResourceManagerImpl
      */
     private final List sourceInitializerList = new ArrayList();
 
-    /**
-     * Has this Manager been initialized?
-     */
+    /** Has this Manager been initialized?. */
     private boolean isInit = false;
 
     /** switch to turn off log notice when a resource is found for the first time. */
@@ -89,10 +88,13 @@ public class ResourceManagerImpl
     protected Log log = null;
 
     /**
-     * Initialize the ResourceManager.
-     *
-     * @param  rsvc  The Runtime Services object which is associated with this Resource Manager.
-     */
+	 * Initialize the ResourceManager.
+	 *
+	 * @author mqfdy
+	 * @param rsvc
+	 *            the rsvc
+	 * @Date 2018-9-3 11:38:38
+	 */
     public synchronized void initialize(final RuntimeServices rsvc)
     {
         if (isInit)
@@ -207,9 +209,13 @@ public class ResourceManagerImpl
     }
 
     /**
-     * This will produce a List of Hashtables, each hashtable contains the intialization info for a particular resource loader. This
-     * Hashtable will be passed in when initializing the the template loader.
-     */
+	 * This will produce a List of Hashtables, each hashtable contains the
+	 * intialization info for a particular resource loader. This Hashtable will
+	 * be passed in when initializing the the template loader.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:38
+	 */
     private void assembleResourceLoaderInitializers()
     {
         Vector resourceLoaderNames = rsvc.getConfiguration().getVector(RuntimeConstants.RESOURCE_LOADER);
@@ -261,21 +267,27 @@ public class ResourceManagerImpl
     }
 
     /**
-     * Gets the named resource. Returned class type corresponds to specified type (i.e. <code>Template</code> to <code>
-     * RESOURCE_TEMPLATE</code>).
-     *
-     * This method is now unsynchronized which requires that ResourceCache
-     * implementations be thread safe (as the default is).
-     *
-     * @param  resourceName  The name of the resource to retrieve.
-     * @param  resourceType  The type of resource (<code>RESOURCE_TEMPLATE</code>, <code>RESOURCE_CONTENT</code>, etc.).
-     * @param  encoding  The character encoding to use.
-     *
-     * @return  Resource with the template parsed and ready.
-     *
-     * @throws  ResourceNotFoundException  if template not found from any available source.
-     * @throws  ParseErrorException  if template cannot be parsed due to syntax (or other) error.
-     */
+	 * Gets the named resource. Returned class type corresponds to specified
+	 * type (i.e. <code>Template</code> to <code>
+	 * RESOURCE_TEMPLATE</code>).
+	 * 
+	 * This method is now unsynchronized which requires that ResourceCache
+	 * implementations be thread safe (as the default is).
+	 *
+	 * @author mqfdy
+	 * @param resourceName
+	 *            the resource name
+	 * @param resourceType
+	 *            the resource type
+	 * @param encoding
+	 *            the encoding
+	 * @return Resource with the template parsed and ready.
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @Date 2018-9-3 11:38:38
+	 */
     public Resource getResource(final String resourceName, final int resourceType, final String encoding)
         throws ResourceNotFoundException,
             ParseErrorException
@@ -378,30 +390,37 @@ public class ResourceManagerImpl
     }
 
     /**
-     * Create a new Resource of the specified type.
-     *
-     * @param  resourceName  The name of the resource to retrieve.
-     * @param  resourceType  The type of resource (<code>RESOURCE_TEMPLATE</code>, <code>RESOURCE_CONTENT</code>, etc.).
-     * @return  new instance of appropriate resource type
-     * @since 1.6
-     */
+	 * Create a new Resource of the specified type.
+	 *
+	 * @param resourceName
+	 *            the resource name
+	 * @param resourceType
+	 *            the resource type
+	 * @return new instance of appropriate resource type
+	 * @since 1.6
+	 */
     protected Resource createResource(String resourceName, int resourceType)
     {
         return ResourceFactory.getResource(resourceName, resourceType);
     }
 
     /**
-     * Loads a resource from the current set of resource loaders.
-     *
-     * @param  resourceName  The name of the resource to retrieve.
-     * @param  resourceType  The type of resource (<code>RESOURCE_TEMPLATE</code>, <code>RESOURCE_CONTENT</code>, etc.).
-     * @param  encoding  The character encoding to use.
-     *
-     * @return  Resource with the template parsed and ready.
-     *
-     * @throws  ResourceNotFoundException  if template not found from any available source.
-     * @throws  ParseErrorException  if template cannot be parsed due to syntax (or other) error.
-     */
+	 * Loads a resource from the current set of resource loaders.
+	 *
+	 * @author mqfdy
+	 * @param resourceName
+	 *            the resource name
+	 * @param resourceType
+	 *            the resource type
+	 * @param encoding
+	 *            the encoding
+	 * @return Resource with the template parsed and ready.
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @Date 2018-09-03 09:00
+	 */
     protected Resource loadResource(String resourceName, int resourceType, String encoding)
         throws ResourceNotFoundException,
             ParseErrorException
@@ -487,15 +506,23 @@ public class ResourceManagerImpl
     }
 
     /**
-     * Takes an existing resource, and 'refreshes' it. This generally means that the source of the resource is checked for changes
-     * according to some cache/check algorithm and if the resource changed, then the resource data is reloaded and re-parsed.
-     *
-     * @param  resource  resource to refresh
-     * @param  encoding  character encoding of the resource to refresh.
-     *
-     * @throws  ResourceNotFoundException  if template not found from current source for this Resource
-     * @throws  ParseErrorException  if template cannot be parsed due to syntax (or other) error.
-     */
+	 * Takes an existing resource, and 'refreshes' it. This generally means that
+	 * the source of the resource is checked for changes according to some
+	 * cache/check algorithm and if the resource changed, then the resource data
+	 * is reloaded and re-parsed.
+	 *
+	 * @author mqfdy
+	 * @param resource
+	 *            the resource
+	 * @param encoding
+	 *            the encoding
+	 * @return the resource
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @Date 2018-09-03 09:00
+	 */
     protected Resource refreshResource(Resource resource, final String encoding)
         throws ResourceNotFoundException, ParseErrorException
     {
@@ -576,20 +603,24 @@ public class ResourceManagerImpl
     }
 
     /**
-     * Gets the named resource. Returned class type corresponds to specified type (i.e. <code>Template</code> to <code>
-     * RESOURCE_TEMPLATE</code>).
-     *
-     * @param  resourceName  The name of the resource to retrieve.
-     * @param  resourceType  The type of resource (<code>RESOURCE_TEMPLATE</code>, <code>RESOURCE_CONTENT</code>, etc.).
-     *
-     * @return  Resource with the template parsed and ready.
-     *
-     * @throws  ResourceNotFoundException  if template not found from any available source.
-     * @throws  ParseErrorException  if template cannot be parsed due to syntax (or other) error.
-     * @throws  Exception  if a problem in parse
-     *
-     * @deprecated  Use {@link #getResource(String resourceName, int resourceType, String encoding )}
-     */
+	 * Gets the named resource. Returned class type corresponds to specified
+	 * type (i.e. <code>Template</code> to <code>
+	 * RESOURCE_TEMPLATE</code>).
+	 *
+	 * @param resourceName
+	 *            the resource name
+	 * @param resourceType
+	 *            the resource type
+	 * @return Resource with the template parsed and ready.
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @throws Exception
+	 *             the exception
+	 * @deprecated Use
+	 *             {@link #getResource(String resourceName, int resourceType, String encoding )}
+	 */
     public Resource getResource(String resourceName, int resourceType)
         throws ResourceNotFoundException,
             ParseErrorException,
@@ -599,14 +630,17 @@ public class ResourceManagerImpl
     }
 
     /**
-     * Determines if a template exists, and returns name of the loader that provides it. This is a slightly less hokey way to
-     * support the Velocity.templateExists() utility method, which was broken when per-template encoding was introduced. We can
-     * revisit this.
-     *
-     * @param  resourceName  Name of template or content resource
-     *
-     * @return  class name of loader than can provide it
-     */
+	 * Determines if a template exists, and returns name of the loader that
+	 * provides it. This is a slightly less hokey way to support the
+	 * Velocity.templateExists() utility method, which was broken when
+	 * per-template encoding was introduced. We can revisit this.
+	 *
+	 * @author mqfdy
+	 * @param resourceName
+	 *            the resource name
+	 * @return class name of loader than can provide it
+	 * @Date 2018-9-3 11:38:38
+	 */
     public String getLoaderNameForResource(String resourceName)
     {
         ResourceLoader loader = getLoaderForResource(resourceName);
@@ -618,9 +652,15 @@ public class ResourceManagerImpl
     }
 
     /**
-     * Returns the first {@link ResourceLoader} in which the specified
-     * resource exists.
-     */
+	 * Returns the first {@link ResourceLoader} in which the specified resource
+	 * exists.
+	 *
+	 * @author mqfdy
+	 * @param resourceName
+	 *            the resource name
+	 * @return the loader for resource
+	 * @Date 2018-9-3 11:38:38
+	 */
     private ResourceLoader getLoaderForResource(String resourceName)
     {
         for (Iterator i = resourceLoaders.iterator(); i.hasNext(); )

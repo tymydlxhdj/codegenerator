@@ -20,6 +20,7 @@ import com.mqfdy.code.springboot.utilities.model.event.StateChangeEvent;
 import com.mqfdy.code.springboot.utilities.model.event.TreeChangeEvent;
 import com.mqfdy.code.springboot.utilities.model.listener.ChangeListener;
 
+// TODO: Auto-generated Javadoc
 /**
  * This change support class changes the behavior of the standard
  * ChangeSupport in several ways:
@@ -30,7 +31,11 @@ import com.mqfdy.code.springboot.utilities.model.listener.ChangeListener;
 public class SingleAspectChangeSupport
 	extends ChangeSupport
 {
+	
+	/** The listener class. */
 	protected final Class<? extends ChangeListener> listenerClass;
+	
+	/** The aspect name. */
 	protected final String aspectName;
 
 	private static final long serialVersionUID = 1L;
@@ -38,6 +43,16 @@ public class SingleAspectChangeSupport
 
 	// ********** constructor **********
 
+	/**
+	 * Instantiates a new single aspect change support.
+	 *
+	 * @param source
+	 *            the source
+	 * @param listenerClass
+	 *            the listener class
+	 * @param aspectName
+	 *            the aspect name
+	 */
 	public SingleAspectChangeSupport(Model source, Class<? extends ChangeListener> listenerClass, String aspectName) {
 		super(source);
 		this.listenerClass = listenerClass;

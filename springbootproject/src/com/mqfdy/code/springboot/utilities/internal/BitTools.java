@@ -9,54 +9,102 @@
  ******************************************************************************/
 package com.mqfdy.code.springboot.utilities.internal;
 
+// TODO: Auto-generated Javadoc
 /**
  * Assorted bit tools
  */
 public class BitTools {
 
 	/**
-	 * Return whether the specified 'flags' has the specified
-	 * 'flagToCheck' set.
+	 * Return whether the specified 'flags' has the specified 'flagToCheck' set.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @param flagToCheck
+	 *            the flag to check
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean flagIsSet(int flags, int flagToCheck) {
 		return allFlagsAreSet(flags, flagToCheck);
 	}
 
 	/**
-	 * Return whether the specified 'flags' has the specified
-	 * 'flagToCheck' turned off.
+	 * Return whether the specified 'flags' has the specified 'flagToCheck'
+	 * turned off.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @param flagToCheck
+	 *            the flag to check
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean flagIsOff(int flags, int flagToCheck) {
 		return allFlagsAreOff(flags, flagToCheck);
 	}
 
 	/**
-	 * Return whether the specified 'flags' has ONLY the specified
-	 * 'flagToCheck' set.
+	 * Return whether the specified 'flags' has ONLY the specified 'flagToCheck'
+	 * set.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @param flagToCheck
+	 *            the flag to check
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean onlyFlagIsSet(int flags, int flagToCheck) {
 		return onlyFlagsAreSet(flags, flagToCheck);
 	}
 
 	/**
-	 * Return whether the specified 'flags' has ONLY the specified
-	 * 'flagToCheck' turned off.
+	 * Return whether the specified 'flags' has ONLY the specified 'flagToCheck'
+	 * turned off.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @param flagToCheck
+	 *            the flag to check
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean onlyFlagIsOff(int flags, int flagToCheck) {
 		return onlyFlagsAreOff(flags, flagToCheck);
 	}
 
 	/**
-	 * Return whether the specified 'flags' has all the specified
-	 * 'flagsToCheck' set.
+	 * Return whether the specified 'flags' has all the specified 'flagsToCheck'
+	 * set.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @param flagsToCheck
+	 *            the flags to check
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean allFlagsAreSet(int flags, int flagsToCheck) {
 		return (flags & flagsToCheck) == flagsToCheck;
 	}
 
 	/**
-	 * Return whether the specified 'flags' has all the specified
-	 * 'flagsToCheck' turned off.
+	 * Return whether the specified 'flags' has all the specified 'flagsToCheck'
+	 * turned off.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @param flagsToCheck
+	 *            the flags to check
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean allFlagsAreOff(int flags, int flagsToCheck) {
 		return (flags & flagsToCheck) == 0;
@@ -65,6 +113,14 @@ public class BitTools {
 	/**
 	 * Return whether the specified 'flags' has ONLY the specified
 	 * 'flagsToCheck' set.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @param flagsToCheck
+	 *            the flags to check
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean onlyFlagsAreSet(int flags, int flagsToCheck) {
 		return allFlagsAreSet(flags, flagsToCheck) && allFlagsAreOff(flags, ~flagsToCheck);
@@ -73,6 +129,14 @@ public class BitTools {
 	/**
 	 * Return whether the specified 'flags' has ONLY the specified
 	 * 'flagsToCheck' turned off.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @param flagsToCheck
+	 *            the flags to check
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean onlyFlagsAreOff(int flags, int flagsToCheck) {
 		return allFlagsAreOff(flags, flagsToCheck) && allFlagsAreSet(flags, ~flagsToCheck);
@@ -81,6 +145,14 @@ public class BitTools {
 	/**
 	 * Return whether the specified 'flags' has any one of the specified
 	 * 'flagsToCheck' set.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @param flagsToCheck
+	 *            the flags to check
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean anyFlagsAreSet(int flags, int flagsToCheck) {
 		return (flags & flagsToCheck) != 0;
@@ -89,14 +161,30 @@ public class BitTools {
 	/**
 	 * Return whether the specified 'flags' has any one of the specified
 	 * 'flagsToCheck' turned off.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @param flagsToCheck
+	 *            the flags to check
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean anyFlagsAreOff(int flags, int flagsToCheck) {
 		return (flags & flagsToCheck) != flagsToCheck;
 	}
 
 	/**
-	 * Return whether the specified 'flags' has all the specified
-	 * 'flagsToCheck' set.
+	 * Return whether the specified 'flags' has all the specified 'flagsToCheck'
+	 * set.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @param flagsToCheck
+	 *            the flags to check
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean allFlagsAreSet(int flags, int[] flagsToCheck) {
 		for (int i = flagsToCheck.length; i-- > 0; ) {
@@ -108,8 +196,16 @@ public class BitTools {
 	}
 
 	/**
-	 * Return whether the specified 'flags' has all the specified
-	 * 'flagsToCheck' turned off.
+	 * Return whether the specified 'flags' has all the specified 'flagsToCheck'
+	 * turned off.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @param flagsToCheck
+	 *            the flags to check
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean allFlagsAreOff(int flags, int[] flagsToCheck) {
 		for (int i = flagsToCheck.length; i-- > 0; ) {
@@ -123,6 +219,14 @@ public class BitTools {
 	/**
 	 * Return whether the specified 'flags' has ONLY the specified
 	 * 'flagsToCheck' set.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @param flagsToCheck
+	 *            the flags to check
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean onlyFlagsAreSet(int flags, int[] flagsToCheck) {
 		int combinedFlags = orFlags(flagsToCheck);
@@ -132,6 +236,14 @@ public class BitTools {
 	/**
 	 * Return whether the specified 'flags' has ONLY the specified
 	 * 'flagsToCheck' turned off.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @param flagsToCheck
+	 *            the flags to check
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean onlyFlagsAreOff(int flags, int[] flagsToCheck) {
 		int combinedFlags = orFlags(flagsToCheck);
@@ -141,6 +253,14 @@ public class BitTools {
 	/**
 	 * Return whether the specified 'flags' has any one of the specified
 	 * 'flagsToCheck' set.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @param flagsToCheck
+	 *            the flags to check
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean anyFlagsAreSet(int flags, int[] flagsToCheck) {
 		for (int i = flagsToCheck.length; i-- > 0; ) {
@@ -154,6 +274,14 @@ public class BitTools {
 	/**
 	 * Return whether the specified 'flags' has any one of the specified
 	 * 'flagsToCheck' turned off.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @param flagsToCheck
+	 *            the flags to check
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean anyFlagsAreOff(int flags, int[] flagsToCheck) {
 		for (int i = flagsToCheck.length; i-- > 0; ) {
@@ -166,6 +294,12 @@ public class BitTools {
 
 	/**
 	 * OR all the specified 'flags' together and return the result.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int orFlags(int[] flags) {
 		int last = flags.length - 1;
@@ -178,6 +312,12 @@ public class BitTools {
 
 	/**
 	 * AND all the specified 'flags' together and return the result.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int andFlags(int[] flags) {
 		int last = flags.length - 1;
@@ -190,6 +330,12 @@ public class BitTools {
 
 	/**
 	 * XOR all the specified 'flags' together and return the result.
+	 *
+	 * @author mqfdy
+	 * @param flags
+	 *            the flags
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int xorFlags(int[] flags) {
 		int last = flags.length - 1;

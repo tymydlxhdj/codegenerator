@@ -26,6 +26,7 @@ import java.util.Map;
 import java.util.List;
 import java.util.ArrayList;
 
+// TODO: Auto-generated Javadoc
 /**
  * Utility-class for all arithmetic-operations.<br><br>
  *
@@ -50,23 +51,27 @@ import java.util.ArrayList;
 public abstract class MathUtils
 {
 
-    /**
-     * A BigDecimal representing the number 0
-     */
+    /** A BigDecimal representing the number 0. */
     protected static final BigDecimal DECIMAL_ZERO    = new BigDecimal ( BigInteger.ZERO );
 
     /**
      * The constants are used to determine in which context we have to calculate.
      */
     protected static final int BASE_LONG          = 0;
+    
+    /** The Constant BASE_FLOAT. */
     protected static final int BASE_FLOAT         = 1;
+    
+    /** The Constant BASE_DOUBLE. */
     protected static final int BASE_DOUBLE        = 2;
+    
+    /** The Constant BASE_BIGINTEGER. */
     protected static final int BASE_BIGINTEGER    = 3;
+    
+    /** The Constant BASE_BIGDECIMAL. */
     protected static final int BASE_BIGDECIMAL    = 4;
 
-    /**
-     * The <code>Class</code>-object is key, the maximum-value is the value
-     */
+    /** The <code>Class</code>-object is key, the maximum-value is the value. */
     protected static final Map ints = new HashMap();
     static
     {
@@ -92,10 +97,14 @@ public abstract class MathUtils
     }
 
     /**
-     * Convert the given Number to a BigDecimal
-     * @param n
-     * @return The number as BigDecimal
-     */
+	 * Convert the given Number to a BigDecimal.
+	 *
+	 * @author mqfdy
+	 * @param n
+	 *            the n
+	 * @return The number as BigDecimal
+	 * @Date 2018-09-03 09:00
+	 */
     public static BigDecimal toBigDecimal (Number n)
     {
 
@@ -114,10 +123,14 @@ public abstract class MathUtils
     }
 
     /**
-     * Convert the given Number to a BigInteger
-     * @param n
-     * @return The number as BigInteger
-     */
+	 * Convert the given Number to a BigInteger.
+	 *
+	 * @author mqfdy
+	 * @param n
+	 *            the n
+	 * @return The number as BigInteger
+	 * @Date 2018-09-03 09:00
+	 */
     public static BigInteger toBigInteger (Number n)
     {
 
@@ -131,10 +144,14 @@ public abstract class MathUtils
     }
 
     /**
-     * Compare the given Number to 0.
-     * @param n
-     * @return True if number is 0.
-     */
+	 * Compare the given Number to 0.
+	 *
+	 * @author mqfdy
+	 * @param n
+	 *            the n
+	 * @return True if number is 0.
+	 * @Date 2018-09-03 09:00
+	 */
     public static boolean isZero (Number n)
     {
         if (isInteger( n ) )
@@ -157,23 +174,33 @@ public abstract class MathUtils
     }
 
     /**
-     * Test, whether the given object is an integer value
-     * (Byte, Short, Integer, Long, BigInteger)
-     * @param n
-     * @return True if n is an integer.
-     */
+	 * Test, whether the given object is an integer value (Byte, Short, Integer,
+	 * Long, BigInteger).
+	 *
+	 * @author mqfdy
+	 * @param n
+	 *            the n
+	 * @return True if n is an integer.
+	 * @Date 2018-09-03 09:00
+	 */
     public static boolean isInteger (Number n)
     {
         return ints.containsKey (n.getClass());
     }
 
     /**
-     * Wrap the given primitive into the given class if the value is in the
-     * range of the destination type. If not the next bigger type will be chosen.
-     * @param value
-     * @param type
-     * @return Number object representing the primitive.
-     */
+	 * Wrap the given primitive into the given class if the value is in the
+	 * range of the destination type. If not the next bigger type will be
+	 * chosen.
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            the value
+	 * @param type
+	 *            the type
+	 * @return Number object representing the primitive.
+	 * @Date 2018-09-03 09:00
+	 */
     public static Number wrapPrimitive (long value, Class type)
     {
         if (type == Byte.class)
@@ -221,13 +248,18 @@ public abstract class MathUtils
     }
 
     /**
-     * Wrap the result in the object of the bigger type.
-     * 
-     * @param value result of operation (as a long) - used to check size
-     * @param op1 first operand of binary operation
-     * @param op2 second operand of binary operation
-     * @return Number object of appropriate size to fit the value and operators
-     */
+	 * Wrap the result in the object of the bigger type.
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            result of operation (as a long) - used to check size
+	 * @param op1
+	 *            first operand of binary operation
+	 * @param op2
+	 *            second operand of binary operation
+	 * @return Number object of appropriate size to fit the value and operators
+	 * @Date 2018-9-3 11:38:37
+	 */
     private static Number wrapPrimitive (long value, Number op1, Number op2)
     {
         if ( typesBySize.indexOf( op1.getClass()) > typesBySize.indexOf( op2.getClass()))
@@ -238,12 +270,16 @@ public abstract class MathUtils
     }
 
     /**
-     * Find the common Number-type to be used in calculations.
-     * 
-     * @param op1 first operand of binary operation
-     * @param op2 second operand of binary operation
-     * @return constant indicating type of Number to use in calculations
-     */
+	 * Find the common Number-type to be used in calculations.
+	 *
+	 * @author mqfdy
+	 * @param op1
+	 *            first operand of binary operation
+	 * @param op2
+	 *            second operand of binary operation
+	 * @return constant indicating type of Number to use in calculations
+	 * @Date 2018-9-3 11:38:37
+	 */
     private static int findCalculationBase (Number op1, Number op2)
     {
 
@@ -272,12 +308,17 @@ public abstract class MathUtils
     }
 
     /**
-     * Add two numbers and return the correct value / type.
-     * Overflow detection is done for integer values (byte, short, int, long) only!
-     * @param op1
-     * @param op2
-     * @return Addition result.
-     */
+	 * Add two numbers and return the correct value / type. Overflow detection
+	 * is done for integer values (byte, short, int, long) only!
+	 *
+	 * @author mqfdy
+	 * @param op1
+	 *            the op 1
+	 * @param op2
+	 *            the op 2
+	 * @return Addition result.
+	 * @Date 2018-09-03 09:00
+	 */
     public static Number add (Number op1, Number op2)
     {
 
@@ -309,12 +350,17 @@ public abstract class MathUtils
     }
 
     /**
-     * Subtract two numbers and return the correct value / type.
-     * Overflow detection is done for integer values (byte, short, int, long) only!
-     * @param op1
-     * @param op2
-     * @return Subtraction result.
-     */
+	 * Subtract two numbers and return the correct value / type. Overflow
+	 * detection is done for integer values (byte, short, int, long) only!
+	 *
+	 * @author mqfdy
+	 * @param op1
+	 *            the op 1
+	 * @param op2
+	 *            the op 2
+	 * @return Subtraction result.
+	 * @Date 2018-09-03 09:00
+	 */
     public static Number subtract (Number op1, Number op2) {
 
         int calcBase = findCalculationBase( op1, op2);
@@ -343,12 +389,17 @@ public abstract class MathUtils
     }
 
     /**
-     * Multiply two numbers and return the correct value / type.
-     * Overflow detection is done for integer values (byte, short, int, long) only!
-     * @param op1
-     * @param op2
-     * @return Multiplication result.
-     */
+	 * Multiply two numbers and return the correct value / type. Overflow
+	 * detection is done for integer values (byte, short, int, long) only!
+	 *
+	 * @author mqfdy
+	 * @param op1
+	 *            the op 1
+	 * @param op2
+	 *            the op 2
+	 * @return Multiplication result.
+	 * @Date 2018-09-03 09:00
+	 */
     public static Number multiply (Number op1, Number op2) {
 
         int calcBase = findCalculationBase( op1, op2);
@@ -377,13 +428,18 @@ public abstract class MathUtils
     }
 
     /**
-     * Divide two numbers. The result will be returned as Integer-type if and only if
-     * both sides of the division operator are Integer-types. Otherwise a Float, Double,
-     * or BigDecimal will be returned.
-     * @param op1
-     * @param op2
-     * @return Division result.
-     */
+	 * Divide two numbers. The result will be returned as Integer-type if and
+	 * only if both sides of the division operator are Integer-types. Otherwise
+	 * a Float, Double, or BigDecimal will be returned.
+	 *
+	 * @author mqfdy
+	 * @param op1
+	 *            the op 1
+	 * @param op2
+	 *            the op 2
+	 * @return Division result.
+	 * @Date 2018-09-03 09:00
+	 */
     public static Number divide (Number op1, Number op2) {
 
         int calcBase = findCalculationBase( op1, op2);
@@ -410,13 +466,18 @@ public abstract class MathUtils
     }
 
     /**
-     * Modulo two numbers.
-     * @param op1
-     * @param op2
-     * @return Modulo result.
-     *
-     * @throws ArithmeticException If at least one parameter is a BigDecimal
-     */
+	 * Modulo two numbers.
+	 *
+	 * @author mqfdy
+	 * @param op1
+	 *            the op 1
+	 * @param op2
+	 *            the op 2
+	 * @return Modulo result.
+	 * @throws ArithmeticException
+	 *             If at least one parameter is a BigDecimal
+	 * @Date 2018-09-03 09:00
+	 */
     public static Number modulo (Number op1, Number op2) throws ArithmeticException {
 
         int calcBase = findCalculationBase( op1, op2);
@@ -437,11 +498,16 @@ public abstract class MathUtils
     }
 
     /**
-     * Compare two numbers.
-     * @param op1
-     * @param op2
-     * @return 1 if n1 > n2, -1 if n1 < n2 and 0 if equal.
-     */
+	 * Compare two numbers.
+	 *
+	 * @author mqfdy
+	 * @param op1
+	 *            the op 1
+	 * @param op2
+	 *            the op 2
+	 * @return 1 if n1 > n2, -1 if n1 < n2 and 0 if equal.
+	 * @Date 2018-09-03 09:00
+	 */
     public static int compare (Number op1, Number op2) {
 
         int calcBase = findCalculationBase( op1, op2);

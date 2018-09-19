@@ -10,14 +10,47 @@ import java.io.IOException;
 import org.apache.commons.io.FileUtils;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class IOUtils.
+ *
+ * @author mqfdy
+ */
 public class IOUtils {
 	
+	/** The is exist gradle. */
 	public static boolean isExistGradle = false;
 	
+	/**
+	 * Update gradle.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @param readContent
+	 *            the read content
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void updateGradle(File file, String readContent) throws IOException {
 		write(file, readContent);
     }
 	
+	/**
+	 * Copy lib.
+	 *
+	 * @author mqfdy
+	 * @param libDir
+	 *            the lib dir
+	 * @param libName
+	 *            the lib name
+	 * @param destDir
+	 *            the dest dir
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void copyLib(File libDir, String libName, File destDir) throws IOException {
 		if (libDir != null && libDir.exists() && libDir.isDirectory()) {
 			for (File srcFile : libDir.listFiles()) {
@@ -29,11 +62,18 @@ public class IOUtils {
     }
 	
 	/**
-     * 读取文件内容
-     * 
-     * @param filePath
-     * @return
-     */
+	 * 读取文件内容.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @param sign
+	 *            the sign
+	 * @param content
+	 *            the content
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
     public static String read(File file, String sign, String content) {
         BufferedReader br = null;
         String line = null;
@@ -76,11 +116,15 @@ public class IOUtils {
     }
     
     /**
-     * 将内容回写到文件中
-     * 
-     * @param filePath
-     * @param content
-     */
+	 * 将内容回写到文件中.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @param content
+	 *            the content
+	 * @Date 2018-09-03 09:00
+	 */
     public static void write(File file, String content) {
         BufferedWriter bw = null;
         

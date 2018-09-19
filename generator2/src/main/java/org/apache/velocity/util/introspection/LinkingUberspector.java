@@ -21,40 +21,52 @@ package org.apache.velocity.util.introspection;
 
 import java.util.Iterator;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>
- * When the runtime.introspection.uberspect configuration property contains several
- * uberspector class names, it means those uberspectors will be chained. When an
- * uberspector in the list other than the leftmost does not implement ChainableUberspector,
- * then this utility class is used to provide a basic default chaining where the
- * first non-null result is kept for each introspection call.
+ * When the runtime.introspection.uberspect configuration property contains
+ * several uberspector class names, it means those uberspectors will be chained.
+ * When an uberspector in the list other than the leftmost does not implement
+ * ChainableUberspector, then this utility class is used to provide a basic
+ * default chaining where the first non-null result is kept for each
+ * introspection call.
  * </p>
- * 
- * @since 1.6
- * @see ChainableUberspector
+ *
  * @version $Id: LinkingUberspector.java 10959 2008-07-01 00:12:29Z sdumitriu $
+ * @see ChainableUberspector
+ * @since 1.6
  */
 public class LinkingUberspector extends AbstractChainableUberspector
 {
+    
+    /** The left uberspect. */
     private Uberspect leftUberspect;
+    
+    /** The right uberspect. */
     private Uberspect rightUberspect;
 
     /**
-     * Constructor that takes the two uberspectors to link
-     */
+	 * Constructor that takes the two uberspectors to link.
+	 *
+	 * @param left
+	 *            the left
+	 * @param right
+	 *            the right
+	 */
     public LinkingUberspector(Uberspect left,Uberspect right) {
         leftUberspect = left;
         rightUberspect = right;
     }
 
     /**
-     * {@inheritDoc}
-     * <p>
-     * Init both wrapped uberspectors
-     * </p>
-     * 
-     * @see org.apache.velocity.util.introspection.Uberspect#init()
-     */
+	 * {@inheritDoc}
+	 * <p>
+	 * Init both wrapped uberspectors
+	 * </p>
+	 * .
+	 *
+	 * @see org.apache.velocity.util.introspection.Uberspect#init()
+	 */
     //@Override
     public void init()
     {
@@ -63,11 +75,18 @@ public class LinkingUberspector extends AbstractChainableUberspector
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.velocity.util.introspection.Uberspect#getIterator(java.lang.Object,
-     *      org.apache.velocity.util.introspection.Info)
-     */
+	 * {@inheritDoc}.
+	 *
+	 * @param obj
+	 *            the obj
+	 * @param i
+	 *            the i
+	 * @return the iterator
+	 * @throws Exception
+	 *             the exception
+	 * @see org.apache.velocity.util.introspection.Uberspect#getIterator(java.lang.Object,
+	 *      org.apache.velocity.util.introspection.Info)
+	 */
     //@SuppressWarnings("unchecked")
     //@Override
     public Iterator getIterator(Object obj, Info i) throws Exception
@@ -77,11 +96,23 @@ public class LinkingUberspector extends AbstractChainableUberspector
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.velocity.util.introspection.Uberspect#getMethod(java.lang.Object, java.lang.String,
-     *      java.lang.Object[], org.apache.velocity.util.introspection.Info)
-     */
+	 * {@inheritDoc}.
+	 *
+	 * @param obj
+	 *            the obj
+	 * @param methodName
+	 *            the method name
+	 * @param args
+	 *            the args
+	 * @param i
+	 *            the i
+	 * @return the method
+	 * @throws Exception
+	 *             the exception
+	 * @see org.apache.velocity.util.introspection.Uberspect#getMethod(java.lang.Object,
+	 *      java.lang.String, java.lang.Object[],
+	 *      org.apache.velocity.util.introspection.Info)
+	 */
     //@Override
     public VelMethod getMethod(Object obj, String methodName, Object[] args, Info i)
         throws Exception
@@ -91,11 +122,20 @@ public class LinkingUberspector extends AbstractChainableUberspector
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.velocity.util.introspection.Uberspect#getPropertyGet(java.lang.Object, java.lang.String,
-     *      org.apache.velocity.util.introspection.Info)
-     */
+	 * {@inheritDoc}.
+	 *
+	 * @param obj
+	 *            the obj
+	 * @param identifier
+	 *            the identifier
+	 * @param i
+	 *            the i
+	 * @return the property get
+	 * @throws Exception
+	 *             the exception
+	 * @see org.apache.velocity.util.introspection.Uberspect#getPropertyGet(java.lang.Object,
+	 *      java.lang.String, org.apache.velocity.util.introspection.Info)
+	 */
     //@Override
     public VelPropertyGet getPropertyGet(Object obj, String identifier, Info i)
         throws Exception
@@ -105,11 +145,23 @@ public class LinkingUberspector extends AbstractChainableUberspector
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.apache.velocity.util.introspection.Uberspect#getPropertySet(java.lang.Object, java.lang.String,
-     *      java.lang.Object, org.apache.velocity.util.introspection.Info)
-     */
+	 * {@inheritDoc}.
+	 *
+	 * @param obj
+	 *            the obj
+	 * @param identifier
+	 *            the identifier
+	 * @param arg
+	 *            the arg
+	 * @param i
+	 *            the i
+	 * @return the property set
+	 * @throws Exception
+	 *             the exception
+	 * @see org.apache.velocity.util.introspection.Uberspect#getPropertySet(java.lang.Object,
+	 *      java.lang.String, java.lang.Object,
+	 *      org.apache.velocity.util.introspection.Info)
+	 */
     //@Override
     public VelPropertySet getPropertySet(Object obj, String identifier, Object arg, Info i)
         throws Exception

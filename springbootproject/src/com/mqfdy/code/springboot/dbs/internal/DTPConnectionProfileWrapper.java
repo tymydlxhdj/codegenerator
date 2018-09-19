@@ -32,6 +32,7 @@ import com.mqfdy.code.springboot.utilities.internal.StringTools;
 import com.mqfdy.code.springboot.utilities.internal.iterators.CloneIterator;
 
 
+// TODO: Auto-generated Javadoc
 /**
  *  Wrap a DTP ConnectionProfile
  */
@@ -53,18 +54,25 @@ final class DTPConnectionProfileWrapper
 
 	// ********** constants **********
 
+	/** The Constant LIVE_DTP_CONNECTION_TYPE. */
 	public static final String LIVE_DTP_CONNECTION_TYPE = "java.sql.Connection";  //$NON-NLS-1$
 
+	/** The Constant OFFLINE_DTP_CONNECTION_TYPE. */
 	public static final String OFFLINE_DTP_CONNECTION_TYPE = ConnectionInfo.class.getName();
 
+	/** The Constant DATABASE_PRODUCT_PROP_ID. */
 	public static final String DATABASE_PRODUCT_PROP_ID = "org.eclipse.datatools.connectivity.server.version";  //$NON-NLS-1$
 
+	/** The Constant POSTGRESQL_VENDOR. */
 	public static final String POSTGRESQL_VENDOR = "postgres";  //$NON-NLS-1$
 	
+	/** The Constant KINGBASE_VENDOR. */
 	public static final String KINGBASE_VENDOR = "KingBase";  //$NON-NLS-1$
 
+	/** The Constant POSTGRESQL_DEFAULT_SCHEMA_NAME. */
 	public static final String POSTGRESQL_DEFAULT_SCHEMA_NAME = "public";  //$NON-NLS-1$
 	
+	/** The Constant KINGBASE_DEFAULT_SCHEMA_NAME. */
 	public static final String KINGBASE_DEFAULT_SCHEMA_NAME = "public";  //$NON-NLS-1$
 
 
@@ -116,6 +124,13 @@ final class DTPConnectionProfileWrapper
 		return this.isConnected() || this.isWorkingOffline();
 	}
 
+	/**
+	 * Checks if is inactive.
+	 *
+	 * @author mqfdy
+	 * @return true, if is inactive
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isInactive() {
 		return ! this.isActive();
 	}
@@ -125,6 +140,13 @@ final class DTPConnectionProfileWrapper
 				&& ! this.dtpManagedConnection.isWorkingOffline();
 	}
 
+	/**
+	 * Checks if is disconnected.
+	 *
+	 * @author mqfdy
+	 * @return true, if is disconnected
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isDisconnected() {
 		return ! this.isConnected();
 	}

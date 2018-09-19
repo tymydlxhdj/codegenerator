@@ -11,31 +11,60 @@ import com.mqfdy.code.model.BusinessClass;
 import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.model.BusinessOperation;
 import com.mqfdy.code.model.OperationParam;
+// TODO: Auto-generated Javadoc
+
 /**
- * 
- * @author mqf
+ * The Class IServiceClass.
  *
+ * @author mqf
  */
 public class IServiceClass extends AbstractBusinessClass {
 
+	/**
+	 * Instantiates a new i service class.
+	 *
+	 * @param bc
+	 *            the bc
+	 * @param persistenceModel
+	 *            the persistence model
+	 * @param project
+	 *            the project
+	 * @param bom
+	 *            the bom
+	 */
 	public IServiceClass(BusinessClass bc, IPersistenceModel persistenceModel, IProject project, BusinessObjectModel bom) {
 		super(bc, persistenceModel, project,bom);
 	}
 
+	/**
+	 * Instantiates a new i service class.
+	 *
+	 * @param param
+	 *            the param
+	 */
 	public IServiceClass(ClassParam param) {
 		super(param);
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initPackage() IServiceClass
+	 */
 	@Override
 	public void initPackage() {
 		packageStr = packagePrefix + ".services;";
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields() IServiceClass
+	 */
 	@Override
 	public void initFields() {
 		
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initImports() IServiceClass
+	 */
 	@Override
 	public void initImports() {
 		if(isTree){
@@ -44,6 +73,9 @@ public class IServiceClass extends AbstractBusinessClass {
 		}
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods() IServiceClass
+	 */
 	@Override
 	public void initMethods() {
 		//方法
@@ -80,6 +112,11 @@ public class IServiceClass extends AbstractBusinessClass {
 		}
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#getCustomMethod(com.mqfdy.code.model.BusinessOperation)
+	 * @param bop
+	 * @return IServiceClass
+	 */
 	public String getCustomMethod(BusinessOperation bop) {
 		StringBuffer sb = new StringBuffer();
 		List<OperationParam> params = bop.getOperationParams();
@@ -128,6 +165,9 @@ public class IServiceClass extends AbstractBusinessClass {
 		return sb.toString();
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#putToVelocityMap() IServiceClass
+	 */
 	@Override
 	public void putToVelocityMap() {
 		putToVelocityMapDef();

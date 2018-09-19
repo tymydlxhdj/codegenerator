@@ -19,12 +19,15 @@ import com.mqfdy.code.springboot.utilities.model.value.CollectionValueModel;
 
 
 /**
- * A read-only collection value model for when you
- * don't need to support a collection. In particular, this
- * is useful for the leaf nodes of a tree that never have
- * children.
+ * A read-only collection value model for when you don't need to support a
+ * collection. In particular, this is useful for the leaf nodes of a tree that
+ * never have children.
  * 
  * We don't use a singleton because we hold on to listeners.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public final class NullCollectionValueModel<E>
 	extends AbstractModel

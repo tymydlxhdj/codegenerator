@@ -22,6 +22,7 @@ package org.apache.velocity.runtime.log;
 import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.util.StringUtils;
 
+// TODO: Auto-generated Javadoc
 /**
  * Wrapper to make user's custom LogSystem implementations work
  * with the new LogChute setup.
@@ -33,42 +34,62 @@ import org.apache.velocity.util.StringUtils;
 public class LogChuteSystem implements LogChute
 {
 
+    /** The log system. */
     private LogSystem logSystem;
 
     /**
-     * Only classes in this package should be creating this.
-     * Users should not have to mess with this class.
-     * @param wrapMe
-     */
+	 * Only classes in this package should be creating this. Users should not
+	 * have to mess with this class.
+	 *
+	 * @param wrapMe
+	 *            the wrap me
+	 */
     protected LogChuteSystem(LogSystem wrapMe)
     {
         this.logSystem = wrapMe;
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
-     */
+	 * Inits the.
+	 *
+	 * @param rs
+	 *            the rs
+	 * @throws Exception
+	 *             the exception
+	 * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
+	 */
     public void init(RuntimeServices rs) throws Exception
     {
         logSystem.init(rs);
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#log(int, java.lang.String)
-     */
+	 * Log.
+	 *
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @see org.apache.velocity.runtime.log.LogChute#log(int, java.lang.String)
+	 */
     public void log(int level, String message)
     {
         logSystem.logVelocityMessage(level, message);
     }
 
     /**
-     * First passes off the message at the specified level,
-     * then passes off stack trace of the Throwable as a
-     * 2nd message at the same level.
-     * @param level
-     * @param message
-     * @param t
-     */
+	 * First passes off the message at the specified level, then passes off
+	 * stack trace of the Throwable as a 2nd message at the same level.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @Date 2018-9-3 11:38:36
+	 */
     public void log(int level, String message, Throwable t)
     {
         logSystem.logVelocityMessage(level, message);
@@ -76,8 +97,13 @@ public class LogChuteSystem implements LogChute
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#isLevelEnabled(int)
-     */
+	 * Checks if is level enabled.
+	 *
+	 * @param level
+	 *            the level
+	 * @return true, if is level enabled
+	 * @see org.apache.velocity.runtime.log.LogChute#isLevelEnabled(int)
+	 */
     public boolean isLevelEnabled(int level)
     {
         return true;

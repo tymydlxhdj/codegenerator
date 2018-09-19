@@ -42,26 +42,63 @@ import com.mqfdy.code.resource.validator.ValiResult;
 import com.mqfdy.code.resource.validator.ValidatorContext;
 import com.mqfdy.code.wizard.wizardpages.MicroGeneratorWizardPage2;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MicroGeneratorConfigWizard2.
+ *
+ * @author mqfdy
+ */
 @SuppressWarnings("restriction")
 public class MicroGeneratorConfigWizard2 extends Wizard implements IMicroGeneratorConfigWizard, GeneratorContext,ValidatorContext {
 
+	/** The micro generator wizard page. */
 	private MicroGeneratorWizardPage2 microGeneratorWizardPage;
+	
+	/** The project. */
 	private IProject project;
 	
+	/** The om path. */
 	private String omPath;
+	
+	/** The business object model. */
 	private BusinessObjectModel businessObjectModel;
+	
+	/** The is finished. */
 	private boolean isFinished;
 	
+	/**
+	 * 
+	 */
 	public void addPages(){
 		microGeneratorWizardPage = new MicroGeneratorWizardPage2("microGeneratorWizardPage", this,businessObjectModel);
 		addPage(microGeneratorWizardPage);
 	}
 
+	/**
+	 * Inits the.
+	 *
+	 * @author mqfdy
+	 * @param workbench
+	 *            the workbench
+	 * @param selection
+	 *            the selection
+	 * @Date 2018-09-03 09:00
+	 */
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		setWindowTitle("生成代码");
 	}
 
 
+	/**
+	 * Initialize.
+	 *
+	 * @author mqfdy
+	 * @param omPath
+	 *            the om path
+	 * @param project
+	 *            the project
+	 * @Date 2018-09-03 09:00
+	 */
 	public void initialize(String omPath,IProject project) {
 		setOmPath(omPath);
 		try {
@@ -73,6 +110,9 @@ public class MicroGeneratorConfigWizard2 extends Wizard implements IMicroGenerat
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean performFinish() {
 		try {
@@ -88,6 +128,12 @@ public class MicroGeneratorConfigWizard2 extends Wizard implements IMicroGenerat
 		return true;
 	}
 	
+	/**
+	 * Do finish.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void doFinish(){
 		microGeneratorWizardPage.validate();
 		boolean flag = false;
@@ -123,8 +169,12 @@ public class MicroGeneratorConfigWizard2 extends Wizard implements IMicroGenerat
 			doGenerator();
 		}
 	}
+	
 	/**
-	 * 生成代码
+	 * 生成代码.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void doGenerator() {
 		String exportPackage = getExportPackage();
@@ -139,11 +189,18 @@ public class MicroGeneratorConfigWizard2 extends Wizard implements IMicroGenerat
 			Logger.log(e);
 		}
 	}
+	
 	/**
-	 * 生成代码
+	 * 生成代码.
+	 *
+	 * @author mqfdy
 	 * @param flag
+	 *            the flag
 	 * @param exportPackage
+	 *            the export package
 	 * @param engine
+	 *            the engine
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void genCode(boolean flag, String exportPackage, ICodeGenerator engine) {
@@ -175,6 +232,14 @@ public class MicroGeneratorConfigWizard2 extends Wizard implements IMicroGenerat
 		}
 	
 	}
+	
+	/**
+	 * Gets the export package.
+	 *
+	 * @author mqfdy
+	 * @return the export package
+	 * @Date 2018-09-03 09:00
+	 */
 	/*public boolean validateModel(boolean flag) {
 		if (microGeneratorWizardPage.getParametersPage().getV()) {
 			List<ValiResult> resultList = (new ValidatorManager())
@@ -224,24 +289,80 @@ public class MicroGeneratorConfigWizard2 extends Wizard implements IMicroGenerat
 		 }
 		return exportPackage;
 	}
+	
+	/**
+	 * Gets the project.
+	 *
+	 * @author mqfdy
+	 * @return the project
+	 * @Date 2018-09-03 09:00
+	 */
 	public IProject getProject() {
 		return project;
 	}
+	
+	/**
+	 * Sets the project.
+	 *
+	 * @author mqfdy
+	 * @param project
+	 *            the new project
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setProject(IProject project) {
 		this.project = project;
 	}
+	
+	/**
+	 * Gets the om path.
+	 *
+	 * @author mqfdy
+	 * @return the om path
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getOmPath() {
 		return omPath;
 	}
+	
+	/**
+	 * Sets the om path.
+	 *
+	 * @author mqfdy
+	 * @param omPath
+	 *            the new om path
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setOmPath(String omPath) {
 		this.omPath = omPath;
 	}
+	
+	/**
+	 * Prints the to console.
+	 *
+	 * @author mqfdy
+	 * @param msg
+	 *            the msg
+	 * @param type
+	 *            the type
+	 * @Date 2018-09-03 09:00
+	 */
 	public void printToConsole(String msg, String type) {
 		if (type.equals(GeneratorContext.INFO))
 			ConsoleFactory.printToConsole(msg, true, false);// 黑色
 		if (type.equals(GeneratorContext.ERROR))
 			ConsoleFactory.printToConsole(msg, true, true);// 黑色
 	}
+	
+	/**
+	 * Prints the.
+	 *
+	 * @author mqfdy
+	 * @param mesg
+	 *            the mesg
+	 * @param type
+	 *            the type
+	 * @Date 2018-09-03 09:00
+	 */
 	public void print(String mesg, String type) {
 		if (type.equals(GeneratorContext.INFO))
 			ConsoleFactory.printToConsoleGenerate(mesg, true, false);// 黑色
@@ -250,6 +371,15 @@ public class MicroGeneratorConfigWizard2 extends Wizard implements IMicroGenerat
 	}
 
 
+	/**
+	 * Confirm.
+	 *
+	 * @author mqfdy
+	 * @param message
+	 *            the message
+	 * @return the int
+	 * @Date 2018-09-03 09:00
+	 */
 	public int confirm(String message) {
 		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 				.getShell();
@@ -259,10 +389,15 @@ public class MicroGeneratorConfigWizard2 extends Wizard implements IMicroGenerat
 
 		return dialog.open();
 	}
+	
 	/**
-	 * 获取SRC路径列表
+	 * 获取SRC路径列表.
+	 *
+	 * @author mqfdy
 	 * @param project
-	 * @return
+	 *            the project
+	 * @return the src path list
+	 * @Date 2018-09-03 09:00
 	 */
 	public static List<String> getSrcPathList(IProject project){
 		List<String> pathList = new ArrayList<String>();

@@ -24,6 +24,7 @@ import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import org.apache.velocity.util.ClassUtils;
 
+// TODO: Auto-generated Javadoc
 /**
  *  <p>
  *  This is a small utility class allow easy access to static fields in a class,
@@ -61,7 +62,8 @@ import org.apache.velocity.util.ClassUtils;
  */
 public class FieldMethodizer
 {
-    /** Hold the field objects by field name */
+    
+    /** Hold the field objects by field name. */
     private HashMap fieldHash = new HashMap();
 
     /**
@@ -115,10 +117,15 @@ public class FieldMethodizer
     }
 
     /**
-     * Add the Name of the class to methodize
-     * @param s
-     * @throws Exception
-     */
+	 * Add the Name of the class to methodize.
+	 *
+	 * @author mqfdy
+	 * @param s
+	 *            the s
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
+	 */
     public void addObject ( String s )
         throws Exception
     {
@@ -126,10 +133,15 @@ public class FieldMethodizer
     }
 
     /**
-     * Add an Object to methodize
-     * @param o
-     * @throws Exception
-     */
+	 * Add an Object to methodize.
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
+	 */
     public void addObject ( Object o )
         throws Exception
     {
@@ -137,12 +149,14 @@ public class FieldMethodizer
     }
 
     /**
-     *  Accessor method to get the fields by name.
-     *
-     *  @param fieldName Name of static field to retrieve
-     *
-     *  @return The value of the given field.
-     */
+	 * Accessor method to get the fields by name.
+	 *
+	 * @author mqfdy
+	 * @param fieldName
+	 *            Name of static field to retrieve
+	 * @return The value of the given field.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public Object get( String fieldName )
     {
         Object value = null;
@@ -163,9 +177,14 @@ public class FieldMethodizer
     }
 
     /**
-     *  Method that retrieves all public static fields
-     *  in the class we are methodizing.
-     */
+	 * Method that retrieves all public static fields in the class we are
+	 * methodizing.
+	 *
+	 * @author mqfdy
+	 * @param clas
+	 *            the clas
+	 * @Date 2018-9-3 11:38:24
+	 */
     private void inspect(Class clas)
     {
         Field[] fields = clas.getFields();

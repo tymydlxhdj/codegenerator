@@ -50,21 +50,33 @@ import com.mqfdy.code.reverse.utils.ReverseUtil;
 import com.mqfdy.code.reverse.views.beans.SpecialTable;
 import com.mqfdy.code.reverse.views.constant.IViewConstant;
 import com.mqfdy.code.reverse.views.pages.PackageDispachPage;
+// TODO: Auto-generated Javadoc
+
 /**
- * @author mqfdy
+ * The Class OmReverse.
  *
+ * @author mqfdy
  */
 public class OmReverse implements IOmReverse{
 	
+	/** The ignored duplication. */
 	private static boolean ignoredDuplication = false;  //是否有重复表名的业务实体
+	
+	/** The ignored special. */
 	private static boolean ignoredSpecial = false;	//是否处理过不合规的表 
+	
+	/** The y. */
 	private int y = 0;
 	
 	/**
-	 * 写入新配置数据源
+	 * 写入新配置数据源.
+	 *
+	 * @author mqfdy
 	 * @param dsi
-	 * @throws IOException
-	 * @throws DocumentException 
+	 *            the dsi
+	 * @throws DocumentException
+	 *             the document exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void writeDataSource(DataSourceInfo dsi) throws DocumentException{
 		
@@ -72,9 +84,15 @@ public class OmReverse implements IOmReverse{
 	}
 	
 	/**
-	 * 测试连接是否成功
+	 * 测试连接是否成功.
+	 *
+	 * @author mqfdy
 	 * @param dsi
-	 * @return
+	 *            the dsi
+	 * @return true, if successful
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean connectTest(DataSourceInfo dsi) throws Exception{
 		dsi.setDriverUrl(ReverseUtil.getDriverPath(dsi.getDbType()));
@@ -92,8 +110,13 @@ public class OmReverse implements IOmReverse{
 	}
 
 	/**
-	 * 获取schema下所有表
-	 * @param schema
+	 * 获取schema下所有表.
+	 *
+	 * @author mqfdy
+	 * @param dataSourceInfo
+	 *            the data source info
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<Table> fetchTables(DataSourceInfo dataSourceInfo) {
 		List<Table> tableList = new ArrayList<Table>();
@@ -118,8 +141,13 @@ public class OmReverse implements IOmReverse{
 	}
 	
 	/**
-	 * 获取schema下所有视图
-	 * @param schema
+	 * 获取schema下所有视图.
+	 *
+	 * @author mqfdy
+	 * @param dataSourceInfo
+	 *            the data source info
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<View> fetchViews(DataSourceInfo dataSourceInfo) {
 		
@@ -134,10 +162,15 @@ public class OmReverse implements IOmReverse{
 	}
 	
 	/**
-	 * 读取表字段及约束信息
-	 * @param schema
+	 * 读取表字段及约束信息.
+	 *
+	 * @author mqfdy
+	 * @param dataSourceInfo
+	 *            the data source info
 	 * @param tableName
-	 * @return
+	 *            the table name
+	 * @return the table
+	 * @Date 2018-09-03 09:00
 	 */
 	public Table fetchColumnsAndContraints(DataSourceInfo dataSourceInfo,String tableName){
 		JDBCReader reader = new JDBCReader();
@@ -149,9 +182,15 @@ public class OmReverse implements IOmReverse{
 	}
 	
 	/**
-	 * 获取用户下所有sequence名集合
+	 * 获取用户下所有sequence名集合.
+	 *
+	 * @author mqfdy
 	 * @param dataSourceInfo
-	 * @return
+	 *            the data source info
+	 * @return the list
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<String> fetchSequences(DataSourceInfo dataSourceInfo) throws Exception{
 		JDBCReader reader = new JDBCReader();
@@ -163,8 +202,12 @@ public class OmReverse implements IOmReverse{
 	}
 	
 	/**
-	 * 封装column名到table对象中
+	 * 封装column名到table对象中.
+	 *
+	 * @author mqfdy
 	 * @param table
+	 *            the table
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fetchTableColumnNames(Table table){
 		JDBCReader reader = new JDBCReader();
@@ -172,8 +215,13 @@ public class OmReverse implements IOmReverse{
 	}
 	
 	/**
-	 * 封装column名VIEW对象
-	 * @param table
+	 * 封装column名VIEW对象.
+	 *
+	 * @author mqfdy
+	 * @param viewName
+	 *            the view name
+	 * @return the view
+	 * @Date 2018-09-03 09:00
 	 */
 	public View fetchViewColumns(String viewName){
 		JDBCReader reader = new JDBCReader();
@@ -184,8 +232,14 @@ public class OmReverse implements IOmReverse{
 	}
 
 	/**
-	 * 数据源下拉列表值改变时，触发该方法用于创建连接
+	 * 数据源下拉列表值改变时，触发该方法用于创建连接.
+	 *
+	 * @author mqfdy
 	 * @param dsi
+	 *            the dsi
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void createConnection(DataSourceInfo dsi) throws Exception {
 		dsi.setDriverUrl(ReverseUtil.getDriverPath(dsi.getDbType()));
@@ -198,9 +252,13 @@ public class OmReverse implements IOmReverse{
 	}
 
 	/**
-	 * 获取具有关联关系的表
+	 * 获取具有关联关系的表.
+	 *
+	 * @author mqfdy
 	 * @param tableName
-	 * @return
+	 *            the table name
+	 * @return the relative tables
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<Table> getRelativeTables(String tableName) {
 		Table selectedTable = ReverseContext.allTables.get(tableName);
@@ -294,7 +352,18 @@ public class OmReverse implements IOmReverse{
 //		return noPkTables;
 //	}
 	
-	public Map<String, List<Table>> findNoPkTable(List<String> tableNames, IProgressMonitor monitor){
+	/**
+ * Find no pk table.
+ *
+ * @author mqfdy
+ * @param tableNames
+ *            the table names
+ * @param monitor
+ *            the monitor
+ * @return the map
+ * @Date 2018-09-03 09:00
+ */
+public Map<String, List<Table>> findNoPkTable(List<String> tableNames, IProgressMonitor monitor){
 		ReverseContext.selectedTables.clear();
 		ReverseContext.lastTables.clear();
 		ignoredSpecial = false;
@@ -336,9 +405,13 @@ public class OmReverse implements IOmReverse{
 	}
 	
 	/**
-	 * 查找出复合主键的表
+	 * 查找出复合主键的表.
+	 *
+	 * @author mqfdy
 	 * @param tableNames
-	 * @return
+	 *            the table names
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<Table> findMutiPkTable(List<String> tableNames){
 		List<Table> mutiPkTables = new ArrayList<Table>();
@@ -352,6 +425,17 @@ public class OmReverse implements IOmReverse{
 		return mutiPkTables;
 	}
 	
+	/**
+	 * Find muti pk table.
+	 *
+	 * @author mqfdy
+	 * @param tableNames
+	 *            the table names
+	 * @param monitor
+	 *            the monitor
+	 * @return the list
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Table> findMutiPkTable(List<String> tableNames, IProgressMonitor monitor){
 		//monitor.setTaskName("正在分析含有复合主键的表  ......");
 		List<Table> mutiPkTables = new ArrayList<Table>();
@@ -367,11 +451,18 @@ public class OmReverse implements IOmReverse{
 	}
 	
 	/**
-	 * 新建bom对象，用于向导“完成”时创建om文件
-	 * @param filePath om上级目录全路径
-	 * @param nameSpace 命名空间名
-	 * @param modelName 模块名
-	 * @param modelDisplayName 模块显示名
+	 * 新建bom对象，用于向导“完成”时创建om文件.
+	 *
+	 * @author mqfdy
+	 * @param filePath
+	 *            om上级目录全路径
+	 * @param nameSpace
+	 *            命名空间名
+	 * @param modelName
+	 *            模块名
+	 * @param modelDisplayName
+	 *            模块显示名
+	 * @Date 2018-09-03 09:00
 	 */
 	public void createNewBom(String filePath,String nameSpace,String modelName,String modelDisplayName){
 		ReverseContext.OM_STORAGE_PATH = filePath+ReverseContants.SEPERATOR+nameSpace+ReverseContants.DOT+modelName+ReverseContants.DOT+"bom";
@@ -385,8 +476,15 @@ public class OmReverse implements IOmReverse{
 	}
 	
 	/**
-	 * 获取与已有om中表同名的集合
-	 * @param omPath om文件路径
+	 * 获取与已有om中表同名的集合.
+	 *
+	 * @author mqfdy
+	 * @param omPath
+	 *            om文件路径
+	 * @return the list
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<Table> fetchExistOm(String omPath) throws Exception{
 		ReverseContext.OM_STORAGE_PATH = omPath;
@@ -442,8 +540,12 @@ public class OmReverse implements IOmReverse{
 	}
 	
 	/**
-	 * 处理重复表
+	 * 处理重复表.
+	 *
+	 * @author mqfdy
 	 * @param sTables
+	 *            the s tables
+	 * @Date 2018-09-03 09:00
 	 */
 	public void handleDuplicateTable(List<SpecialTable> sTables){
 		ignoredDuplication = false;
@@ -470,8 +572,11 @@ public class OmReverse implements IOmReverse{
 	}
 	
 	/**
-	 * 获取最终表集合，其中封装列信息
-	 * @return
+	 * 获取最终表集合，其中封装列信息.
+	 *
+	 * @author mqfdy
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<Table> fetchLastTables(){
 		if(!ignoredSpecial && !ignoredDuplication && ReverseContext.lastTables.isEmpty()){//没经过特殊表处理 也没经过重复表处理
@@ -488,8 +593,12 @@ public class OmReverse implements IOmReverse{
 	}
 	
 	/**
-	 * 生成业务实体
-	 * @param bcNames
+	 * 生成业务实体.
+	 *
+	 * @author mqfdy
+	 * @param bom
+	 *            the bom
+	 * @Date 2018-09-03 09:00
 	 */
 	public void createBom(BusinessObjectModel bom){
 		
@@ -509,6 +618,18 @@ public class OmReverse implements IOmReverse{
 		BomManager.outputXmlFile(bom, ReverseContext.OM_STORAGE_PATH);
 	}
 	
+	/**
+	 * Creates the bom.
+	 *
+	 * @author mqfdy
+	 * @param bom
+	 *            the bom
+	 * @param monitor
+	 *            the monitor
+	 * @param pdPage
+	 *            the pd page
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createBom(BusinessObjectModel bom, IProgressMonitor monitor,
 			final PackageDispachPage pdPage) {
 
@@ -547,10 +668,12 @@ public class OmReverse implements IOmReverse{
 	}
 	
 	/**
-	 * 处理特殊表
-	 * 无主键表，自动加上一个主键。
-	 * 复合主键表，自动改造为单一主键，其关联的子表中的复合外键改造为单一外键。
-	 * @param noPkTableNames
+	 * 处理特殊表 无主键表，自动加上一个主键。 复合主键表，自动改造为单一主键，其关联的子表中的复合外键改造为单一外键。.
+	 *
+	 * @author mqfdy
+	 * @param sTables
+	 *            the s tables
+	 * @Date 2018-09-03 09:00
 	 */
 	public void handleSpecialTable(List<SpecialTable> sTables){
 		ReverseUtil.copySepcialTables();
@@ -667,7 +790,10 @@ public class OmReverse implements IOmReverse{
 	}
 	
 	/**
-	 * 反向工程完成后，释放内存
+	 * 反向工程完成后，释放内存.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void clearMemery() {
 		if(ReverseContext.wizard!=null){
@@ -691,13 +817,27 @@ public class OmReverse implements IOmReverse{
 	}
 	
 	/**
-	 * 写入数据源到指定路径
+	 * 写入数据源到指定路径.
+	 *
+	 * @author mqfdy
 	 * @param dataSourceXMLPath
+	 *            the data source XML path
 	 * @param dataSourceInfo
+	 *            the data source info
+	 * @Date 2018-09-03 09:00
 	 */
 	public void writeDataSource(String dataSourceXMLPath, DataSourceInfo dataSourceInfo) {
 		ReverseUtil.writeDatasourceXML(dataSourceXMLPath, dataSourceInfo);
 	}
+	
+	/**
+	 * Creates the diagram element.
+	 *
+	 * @author mqfdy
+	 * @param pdPage
+	 *            the pd page
+	 * @Date 2018-09-03 09:00
+	 */
 	// 添加图元 并布局
 		private void createDiagramElement(PackageDispachPage pdPage) {
 			// 添加图元 并布局
@@ -825,6 +965,15 @@ public class OmReverse implements IOmReverse{
 
 		}
 
+		/**
+		 * Gets the diagram.
+		 *
+		 * @author mqfdy
+		 * @param pkg
+		 *            the pkg
+		 * @return the diagram
+		 * @Date 2018-09-03 09:00
+		 */
 		private Diagram getDiagram(ModelPackage pkg) {
 			// TODO Auto-generated method stub
 			for (AbstractModelElement ab : pkg.getChildren()) {
@@ -836,12 +985,16 @@ public class OmReverse implements IOmReverse{
 		}
 
 		/**
-		 * 布局没有关联关系的节点
-		 * 
+		 * 布局没有关联关系的节点.
+		 *
+		 * @author mqfdy
 		 * @param nonConBuList
-		 * @param y2
+		 *            the non con bu list
 		 * @param dia
-		 * @param y
+		 *            the dia
+		 * @param y2
+		 *            the y 2
+		 * @Date 2018-09-03 09:00
 		 */
 		private void layoutNoConnNode(List<BusinessClass> nonConBuList,
 				Diagram dia, int y2) {
@@ -873,6 +1026,17 @@ public class OmReverse implements IOmReverse{
 			}
 		}
 
+		/**
+		 * Find in valid table.
+		 *
+		 * @author mqfdy
+		 * @param tableNames
+		 *            the table names
+		 * @param monitor
+		 *            the monitor
+		 * @return the map
+		 * @Date 2018-09-03 09:00
+		 */
 		@Override
 		public Map<String, List<Table>> findInValidTable(List<String> tableNames, IProgressMonitor monitor) {
 			ReverseContext.selectedTables.clear();

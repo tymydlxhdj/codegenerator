@@ -26,10 +26,15 @@ import com.mqfdy.code.springboot.utilities.model.value.CollectionValueModel;
 import com.mqfdy.code.springboot.utilities.model.value.PropertyValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * This adapter wraps a Preferences node and converts its preferences into a
  * CollectionValueModel of PreferencePropertyValueModels. It listens for
  * "preference" changes and converts them into VALUE collection changes.
+ *
+ * @author mqfdy
+ * @param <P>
+ *            the generic type
  */
 public class PreferencesCollectionValueModel<P>
 	extends AspectAdapter<Preferences>
@@ -47,6 +52,9 @@ public class PreferencesCollectionValueModel<P>
 
 	/**
 	 * Construct an adapter for the specified preferences node.
+	 *
+	 * @param preferences
+	 *            the preferences
 	 */
 	public PreferencesCollectionValueModel(Preferences preferences) {
 		this(new StaticPropertyValueModel<Preferences>(preferences));
@@ -54,6 +62,9 @@ public class PreferencesCollectionValueModel<P>
 
 	/**
 	 * Construct an adapter for the specified preferences node.
+	 *
+	 * @param preferencesHolder
+	 *            the preferences holder
 	 */
 	public PreferencesCollectionValueModel(PropertyValueModel<? extends Preferences> preferencesHolder) {
 		super(preferencesHolder);
@@ -66,6 +77,10 @@ public class PreferencesCollectionValueModel<P>
 
 	/**
 	 * A preferences have changed, notify the listeners.
+	 *
+	 * @author mqfdy
+	 * @return the preference change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected PreferenceChangeListener buildPreferenceChangeListener() {
 		// transform the preference change events into VALUE collection change events
@@ -158,8 +173,12 @@ public class PreferencesCollectionValueModel<P>
 	// ********** internal methods **********
 
 	/**
-	 * Return an iterator on the preference models.
-	 * At this point we can be sure that the subject is not null.
+	 * Return an iterator on the preference models. At this point we can be sure
+	 * that the subject is not null.
+	 *
+	 * @author mqfdy
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	protected Iterator<PreferencePropertyValueModel<P>> preferenceModels() {
 		String[] keys;
@@ -177,13 +196,29 @@ public class PreferencesCollectionValueModel<P>
 	}
 
 	/**
-	 * Override this method to tweak the model used to wrap the
-	 * specified preference (e.g. to customize the model's converter).
+	 * Override this method to tweak the model used to wrap the specified
+	 * preference (e.g. to customize the model's converter).
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @return the preference property value model
+	 * @Date 2018-09-03 09:00
 	 */
 	protected PreferencePropertyValueModel<P> buildPreferenceModel(String key) {
 		return new PreferencePropertyValueModel<P>(this.subjectHolder, key);
 	}
 
+	/**
+	 * Preference changed.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @param newValue
+	 *            the new value
+	 * @Date 2018-09-03 09:00
+	 */
 	protected synchronized void preferenceChanged(String key, String newValue) {
 		if (newValue == null) {
 			// a preference was removed

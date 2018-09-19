@@ -4,16 +4,24 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author mqfdy
- * 文件工具类
+ * The Class FileUtils.
+ *
+ * @author mqfdy 文件工具类
  */
 public class FileUtils {
 
 	/**
-	 * 当前目录下的所有子目录以及子文件中  是否含有'suffix'后缀文件
+	 * 当前目录下的所有子目录以及子文件中 是否含有'suffix'后缀文件.
+	 *
+	 * @author mqfdy
 	 * @param file
-	 * @return
+	 *            the file
+	 * @param suffix
+	 *            the suffix
+	 * @return true, if is checks for file with suffix
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isHasFileWithSuffix(File file, String suffix) {
 		if(file.isDirectory()) {//当前文件是一个目录
@@ -46,9 +54,15 @@ public class FileUtils {
 	}
 	
 	/**
-	 * 得到当前目录下的带'suffix'后缀文件的目录集合和文件集合（只包含当前子目录）
+	 * 得到当前目录下的带'suffix'后缀文件的目录集合和文件集合（只包含当前子目录）.
+	 *
+	 * @author mqfdy
 	 * @param file
-	 * @return
+	 *            the file
+	 * @param suffix
+	 *            the suffix
+	 * @return the files with suffix
+	 * @Date 2018-09-03 09:00
 	 */
 	public static List<File> getFilesWithSuffix(File file, String suffix) {
 		List<File> resultList = new ArrayList<File>();
@@ -71,10 +85,15 @@ public class FileUtils {
 	}
 	
 	/**
-	 * 得到当前目录下所有带有某一后缀的文件（含子目录的）
-	 * @param file  当前的目录 File
-	 * @param suffix 后缀名  String
-	 * @return
+	 * 得到当前目录下所有带有某一后缀的文件（含子目录的）.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            当前的目录 File
+	 * @param suffix
+	 *            后缀名 String
+	 * @return the all suffix files
+	 * @Date 2018-09-03 09:00
 	 */
 	public static List<File> getAllSuffixFiles(File file, String suffix) {
 		List<File> resultList = new ArrayList<File>();
@@ -98,9 +117,15 @@ public class FileUtils {
 	}
 	
 	/**
-	 * 得到当前目录下的不带'suffix'后缀文件的目录集合（只包含当前子目录）
+	 * 得到当前目录下的不带'suffix'后缀文件的目录集合（只包含当前子目录）.
+	 *
+	 * @author mqfdy
 	 * @param file
-	 * @return
+	 *            the file
+	 * @param suffix
+	 *            the suffix
+	 * @return the files with no suffix
+	 * @Date 2018-09-03 09:00
 	 */
 	public static List<File> getFilesWithNoSuffix(File file, String suffix) {
 		List<File> resultList = new ArrayList<File>();
@@ -117,9 +142,13 @@ public class FileUtils {
 	}
 	
 	/**
-	 * 通过文件得到子目录(不含文件)
+	 * 通过文件得到子目录(不含文件).
+	 *
+	 * @author mqfdy
 	 * @param file
-	 * @return
+	 *            the file
+	 * @return the directory by file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static List<File> getDirectoryByFile(File file) {
 		List<File> resultList = new ArrayList<File>();
@@ -135,10 +164,15 @@ public class FileUtils {
 	}
 	
 	/**
-	 * 通过文件得到不以str开头的子目录(不含文件)
+	 * 通过文件得到不以str开头的子目录(不含文件).
+	 *
+	 * @author mqfdy
 	 * @param file
-	 * @param str
-	 * @return
+	 *            the file
+	 * @param filterString
+	 *            the filter string
+	 * @return the directory by file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static List<File> getDirectoryByFile(File file, String filterString) {
 		List<File> resultList = new ArrayList<File>();
@@ -154,9 +188,13 @@ public class FileUtils {
 	}
 	
 	/**
-	 * 当前目录是否有子目录
+	 * 当前目录是否有子目录.
+	 *
+	 * @author mqfdy
 	 * @param directory
-	 * @return
+	 *            the directory
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean hasSubDirectorys(File directory) {
 		

@@ -21,8 +21,9 @@ package org.apache.velocity.texen.util;
 
 import java.io.File;
 
+// TODO: Auto-generated Javadoc
 /**
- * A general file utility for use in the context
+ * A general file utility for use in the context.
  *
  * @author <a href="mailto:leon@opticode.co.za">Leon Messerschmidt</a>
  * @author <a href="mailto:jvanzyl@apache.org">Jason van Zyl</a>
@@ -30,12 +31,16 @@ import java.io.File;
  */
 public class FileUtil
 {
+    
     /**
-     * Creates the directory s (and any parent directories needed).
-     *
-     * @param s path/directory to create.
-     * @return report of path/directory creation.
-     */
+	 * Creates the directory s (and any parent directories needed).
+	 *
+	 * @author mqfdy
+	 * @param s
+	 *            path/directory to create.
+	 * @return report of path/directory creation.
+	 * @Date 2018-9-3 11:38:24
+	 */
     static public String mkdir (String s)
     {
         try
@@ -52,11 +57,14 @@ public class FileUtil
     }
 
     /**
-     * A method to get a File object.
-     *
-     * @param s path to file object to create.
-     * @return File created file object.
-     */
+	 * A method to get a File object.
+	 *
+	 * @author mqfdy
+	 * @param s
+	 *            path to file object to create.
+	 * @return File created file object.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public static File file(String s)
     {
         File f = new File(s);
@@ -64,12 +72,16 @@ public class FileUtil
     }
 
     /**
-     * A method to get a File object.
-     *
-     * @param base base path
-     * @param s file name
-     * @return File created file object.
-     */
+	 * A method to get a File object.
+	 *
+	 * @author mqfdy
+	 * @param base
+	 *            base path
+	 * @param s
+	 *            file name
+	 * @return File created file object.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public static File file(String base, String s)
     {
         File f = new File(base, s);

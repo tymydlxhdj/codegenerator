@@ -22,6 +22,7 @@ package org.apache.velocity.app.event;
 import org.apache.velocity.context.Context;
 import org.apache.velocity.util.ContextAware;
 
+// TODO: Auto-generated Javadoc
 /**
  *  Reference 'Stream insertion' event handler.  Called with object
  *  that will be inserted into stream via value.toString().
@@ -34,31 +35,53 @@ import org.apache.velocity.util.ContextAware;
  */
 public interface  ReferenceInsertionEventHandler extends EventHandler
 {
+    
     /**
-     * A call-back which is executed during Velocity merge before a reference
-     * value is inserted into the output stream. All registered
-     * ReferenceInsertionEventHandlers are called in sequence. If no
-     * ReferenceInsertionEventHandlers are are registered then reference value
-     * is inserted into the output stream as is.
-     *
-     * @param reference Reference from template about to be inserted.
-     * @param value Value about to be inserted (after its <code>toString()</code>
-     *            method is called).
-     * @return Object on which <code>toString()</code> should be called for
-     *         output.
-     */
+	 * A call-back which is executed during Velocity merge before a reference
+	 * value is inserted into the output stream. All registered
+	 * ReferenceInsertionEventHandlers are called in sequence. If no
+	 * ReferenceInsertionEventHandlers are are registered then reference value
+	 * is inserted into the output stream as is.
+	 *
+	 * @author mqfdy
+	 * @param reference
+	 *            Reference from template about to be inserted.
+	 * @param value
+	 *            Value about to be inserted (after its <code>toString()</code>
+	 *            method is called).
+	 * @return Object on which <code>toString()</code> should be called for
+	 *         output.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public Object referenceInsert( String reference, Object value  );
 
     /**
-     * Defines the execution strategy for referenceInsert
-     * @since 1.5
-     */
+	 * Defines the execution strategy for referenceInsert.
+	 *
+	 * @since 1.5
+	 */
     static class referenceInsertExecutor implements EventHandlerMethodExecutor
     {
+        
+        /** The context. */
         private Context context;
+        
+        /** The reference. */
         private String reference;
+        
+        /** The value. */
         private Object value;
 
+        /**
+		 * Instantiates a new reference insert executor.
+		 *
+		 * @param context
+		 *            the context
+		 * @param reference
+		 *            the reference
+		 * @param value
+		 *            the value
+		 */
         referenceInsertExecutor(
                 Context context, 
                 String reference, 
@@ -70,10 +93,14 @@ public interface  ReferenceInsertionEventHandler extends EventHandler
         }
 
         /**
-         * Call the method referenceInsert()
-         *  
-         * @param handler call the appropriate method on this handler
-         */
+		 * Call the method referenceInsert()
+		 * 
+		 *
+		 * @author mqfdy
+		 * @param handler
+		 *            call the appropriate method on this handler
+		 * @Date 2018-9-3 11:38:32
+		 */
         public void execute(EventHandler handler)
         {
             ReferenceInsertionEventHandler eh = (ReferenceInsertionEventHandler) handler;
@@ -87,16 +114,22 @@ public interface  ReferenceInsertionEventHandler extends EventHandler
             value = ((ReferenceInsertionEventHandler) handler).referenceInsert(reference, value); 
         }
 
+        /**
+         * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
+         * @return referenceInsertExecutor
+         */
         public Object getReturnValue()
         {
             return value;
         }
 
         /**
-         * Continue to end of event handler iteration
-         * 
-         * @return always returns false
-         */
+		 * Continue to end of event handler iteration.
+		 *
+		 * @author mqfdy
+		 * @return always returns false
+		 * @Date 2018-9-3 11:38:32
+		 */
         public boolean isDone()
         {
             return false;

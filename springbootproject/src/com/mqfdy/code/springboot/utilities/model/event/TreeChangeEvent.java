@@ -11,6 +11,7 @@ package com.mqfdy.code.springboot.utilities.model.event;
 
 import com.mqfdy.code.springboot.utilities.model.Model;
 
+// TODO: Auto-generated Javadoc
 /**
  * A "tree change" event gets delivered whenever a model changes a "bound"
  * or "constrained" tree. A TreeChangeEvent is sent as an
@@ -74,6 +75,10 @@ public class TreeChangeEvent extends ChangeEvent {
 
 	/**
 	 * Return the programmatic name of the tree that was changed.
+	 *
+	 * @author mqfdy
+	 * @return the tree name
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getTreeName() {
 		return this.treeName;
@@ -85,8 +90,12 @@ public class TreeChangeEvent extends ChangeEvent {
 	}
 
 	/**
-	 * Return the path to the part of the tree that was changed.
-	 * May be empty, if not known.
+	 * Return the path to the part of the tree that was changed. May be empty,
+	 * if not known.
+	 *
+	 * @author mqfdy
+	 * @return the path
+	 * @Date 2018-09-03 09:00
 	 */
 	public Object[] getPath() {
 		return this.path;
@@ -101,8 +110,16 @@ public class TreeChangeEvent extends ChangeEvent {
 	}
 
 	/**
-	 * Return a copy of the event with the specified source
-	 * replacing the current source and the tree name.
+	 * Return a copy of the event with the specified source replacing the
+	 * current source and the tree name.
+	 *
+	 * @author mqfdy
+	 * @param newSource
+	 *            the new source
+	 * @param newTreeName
+	 *            the new tree name
+	 * @return the tree change event
+	 * @Date 2018-09-03 09:00
 	 */
 	public TreeChangeEvent cloneWithSource(Model newSource, String newTreeName) {
 		return new TreeChangeEvent(newSource, newTreeName, this.path);

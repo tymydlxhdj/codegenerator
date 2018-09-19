@@ -6,16 +6,25 @@ import org.eclipse.core.runtime.Status;
 
 import com.mqfdy.code.designer.editor.BusinessModelEditorPlugin;
 
+// TODO: Auto-generated Javadoc
 /**
- * 自定义异常类
- * 
+ * 自定义异常类.
+ *
  * @author mqfdy
- * 
  */
 public class ModuleExceptionLogOnly extends ModuleException {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 5645105894868022838L;
 
+	/**
+	 * Instantiates a new module exception log only.
+	 *
+	 * @param e
+	 *            the e
+	 * @param message
+	 *            the message
+	 */
 	public ModuleExceptionLogOnly(CoreException e, String message) {
 
 		BusinessModelEditorPlugin plugin = BusinessModelEditorPlugin
@@ -25,6 +34,12 @@ public class ModuleExceptionLogOnly extends ModuleException {
 
 	}
 
+	/**
+	 * Instantiates a new module exception log only.
+	 *
+	 * @param message
+	 *            the message
+	 */
 	public ModuleExceptionLogOnly(String message) {
 
 		BusinessModelEditorPlugin plugin = BusinessModelEditorPlugin

@@ -24,12 +24,17 @@ import com.mqfdy.code.springboot.utilities.model.value.PropertyValueModel;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
- * An adapter that allows us to make a PropertyValueModel behave like
- * a read-only, single-element CollectionValueModel, sorta.
+ * An adapter that allows us to make a PropertyValueModel behave like a
+ * read-only, single-element CollectionValueModel, sorta.
  * 
- * If the property's value is null, an empty iterator is returned
- * (i.e. you can't have a collection with a null element).
+ * If the property's value is null, an empty iterator is returned (i.e. you
+ * can't have a collection with a null element).
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class PropertyCollectionValueModelAdapter<E>
 	extends AbstractModel
@@ -49,6 +54,9 @@ public class PropertyCollectionValueModelAdapter<E>
 
 	/**
 	 * Wrap the specified ListValueModel.
+	 *
+	 * @param valueHolder
+	 *            the value holder
 	 */
 	public PropertyCollectionValueModelAdapter(PropertyValueModel<? extends E> valueHolder) {
 		super();
@@ -67,8 +75,12 @@ public class PropertyCollectionValueModelAdapter<E>
 	}
 
 	/**
-	 * The wrapped value has changed, forward an equivalent
-	 * collection change event to our listeners.
+	 * The wrapped value has changed, forward an equivalent collection change
+	 * event to our listeners.
+	 *
+	 * @author mqfdy
+	 * @return the property change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected PropertyChangeListener buildPropertyChangeListener() {
 		return new PropertyChangeListener() {
@@ -147,10 +159,24 @@ public class PropertyCollectionValueModelAdapter<E>
 
 	// ********** queries **********
 
+	/**
+	 * Checks for listeners.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	protected boolean hasListeners() {
 		return this.hasAnyCollectionChangeListeners(VALUES);
 	}
 
+	/**
+	 * Checks for no listeners.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	protected boolean hasNoListeners() {
 		return ! this.hasListeners();
 	}
@@ -158,6 +184,12 @@ public class PropertyCollectionValueModelAdapter<E>
 
 	// ********** behavior **********
 
+	/**
+	 * Engage model.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void engageModel() {
 		this.valueHolder.addPropertyChangeListener(PropertyValueModel.VALUE, this.propertyChangeListener);
 		// synch our value *after* we start listening to the value holder,
@@ -165,6 +197,12 @@ public class PropertyCollectionValueModelAdapter<E>
 		this.value = this.valueHolder.getValue();
 	}
 
+	/**
+	 * Disengage model.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void disengageModel() {
 		this.valueHolder.removePropertyChangeListener(PropertyValueModel.VALUE, this.propertyChangeListener);
 		// clear out the value when we are not listening to the value holder
@@ -172,8 +210,13 @@ public class PropertyCollectionValueModelAdapter<E>
 	}
 
 	/**
-	 * synchronize our internal value with the wrapped value
-	 * and fire the appropriate events
+	 * synchronize our internal value with the wrapped value and fire the
+	 * appropriate events.
+	 *
+	 * @author mqfdy
+	 * @param newValue
+	 *            the new value
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void valueChanged(E newValue) {
 		// put in "empty" check so we don't fire events unnecessarily

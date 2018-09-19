@@ -24,6 +24,7 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.directive.Directive;
 import org.apache.velocity.runtime.resource.Resource;
 
+// TODO: Auto-generated Javadoc
 /**
  * Base class for directives which do input operations
  * (e.g. <code>#include()</code>, <code>#parse()</code>, etc.).
@@ -33,18 +34,20 @@ import org.apache.velocity.runtime.resource.Resource;
  */
 public abstract class InputBase extends Directive
 {
+    
     /**
-     * Decides the encoding used during input processing of this
-     * directive.
-     *
-     * Get the resource, and assume that we use the encoding of the
-     * current template the 'current resource' can be
-     * <code>null</code> if we are processing a stream....
-     *
-     * @param context The context to derive the default input encoding
-     * from.
-     * @return The encoding to use when processing this directive.
-     */
+	 * Decides the encoding used during input processing of this directive.
+	 * 
+	 * Get the resource, and assume that we use the encoding of the current
+	 * template the 'current resource' can be <code>null</code> if we are
+	 * processing a stream....
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            The context to derive the default input encoding from.
+	 * @return The encoding to use when processing this directive.
+	 * @Date 2018-9-3 11:38:31
+	 */
     protected String getInputEncoding(InternalContextAdapter context)
     {
         Resource current = context.getCurrentResource();

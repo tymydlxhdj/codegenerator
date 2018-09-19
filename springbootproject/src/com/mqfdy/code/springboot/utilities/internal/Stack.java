@@ -13,9 +13,12 @@ import java.io.Serializable;
 import java.util.EmptyStackException;
 
 /**
- * Interface defining the classic stack behavior,
- * without the backdoors allowed by java.util.Stack.
- * E is the type of elements contained by the Stack.
+ * Interface defining the classic stack behavior, without the backdoors allowed
+ * by java.util.Stack. E is the type of elements contained by the Stack.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public interface Stack<E> {
 

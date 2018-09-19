@@ -16,24 +16,30 @@ import com.mqfdy.code.springboot.utilities.Filter;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * A <code>FilteringIterator</code> wraps another <code>Iterator</code>
- * and uses a <code>Filter</code> to determine which elements in the
- * nested iterator are to be returned by calls to <code>next()</code>.
+ * A <code>FilteringIterator</code> wraps another <code>Iterator</code> and uses
+ * a <code>Filter</code> to determine which elements in the nested iterator are
+ * to be returned by calls to <code>next()</code>.
  * <p>
- * As an alternative to building a <code>Filter</code>, a subclass
- * of <code>FilteringIterator</code> can override the
- * <code>accept(Object)</code> method.
+ * As an alternative to building a <code>Filter</code>, a subclass of
+ * <code>FilteringIterator</code> can override the <code>accept(Object)</code>
+ * method.
  * <p>
- * One, possibly undesirable, side-effect of using this iterator is that
- * the nested iterator's <code>next()</code> method will be invoked
- * <em>before</em> the filtered iterator's <code>next()</code>
- * method is invoked. This is because the "next" element must be
- * checked for whether it is to be accepted before the filtered iterator
- * can determine whether it has a "next" element (i.e. that the
- * <code>hasNext()</code> method should return <code>true</code>).
- * This also prevents a filtered iterator from supporting the optional
- * <code>remove()</code> method.
+ * One, possibly undesirable, side-effect of using this iterator is that the
+ * nested iterator's <code>next()</code> method will be invoked <em>before</em>
+ * the filtered iterator's <code>next()</code> method is invoked. This is
+ * because the "next" element must be checked for whether it is to be accepted
+ * before the filtered iterator can determine whether it has a "next" element
+ * (i.e. that the <code>hasNext()</code> method should return
+ * <code>true</code>). This also prevents a filtered iterator from supporting
+ * the optional <code>remove()</code> method.
+ *
+ * @author mqfdy
+ * @param <E1>
+ *            the generic type
+ * @param <E2>
+ *            the generic type
  */
 public class FilteringIterator<E1, E2>
 	implements Iterator<E2>
@@ -45,19 +51,25 @@ public class FilteringIterator<E1, E2>
 
 
 	/**
-	 * Construct an iterator with the specified nested
-	 * iterator and a disabled filter.
-	 * Use this constructor if you want to override the
-	 * <code>accept(Object)</code> method instead of building
-	 * a <code>Filter</code>.
+	 * Construct an iterator with the specified nested iterator and a disabled
+	 * filter. Use this constructor if you want to override the
+	 * <code>accept(Object)</code> method instead of building a
+	 * <code>Filter</code>.
+	 *
+	 * @param nestedIterator
+	 *            the nested iterator
 	 */
 	public FilteringIterator(Iterator<? extends E1> nestedIterator) {
 		this(nestedIterator, Filter.Disabled.<E1>instance());
 	}
 
 	/**
-	 * Construct an iterator with the specified nested
-	 * iterator and filter.
+	 * Construct an iterator with the specified nested iterator and filter.
+	 *
+	 * @param nestedIterator
+	 *            the nested iterator
+	 * @param filter
+	 *            the filter
 	 */
 	public FilteringIterator(Iterator<? extends E1> nestedIterator, Filter<E1> filter) {
 		super();
@@ -117,12 +129,17 @@ public class FilteringIterator<E1, E2>
 	}
 
 	/**
-	 * Return whether the <code>FilteringIterator</code>
-	 * should return the specified next element from a call to the
-	 * <code>next()</code> method.
+	 * Return whether the <code>FilteringIterator</code> should return the
+	 * specified next element from a call to the <code>next()</code> method.
 	 * <p>
-	 * This method can be overridden by a subclass as an
-	 * alternative to building a <code>Filter</code>.
+	 * This method can be overridden by a subclass as an alternative to building
+	 * a <code>Filter</code>.
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	protected boolean accept(E1 o) {
 		return this.filter.accept(o);

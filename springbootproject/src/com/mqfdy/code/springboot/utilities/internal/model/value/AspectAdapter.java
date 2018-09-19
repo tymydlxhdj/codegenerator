@@ -17,15 +17,20 @@ import com.mqfdy.code.springboot.utilities.model.listener.ChangeListener;
 import com.mqfdy.code.springboot.utilities.model.listener.PropertyChangeListener;
 import com.mqfdy.code.springboot.utilities.model.value.PropertyValueModel;
 
+// TODO: Auto-generated Javadoc
 /**
- * This abstract extension of AbstractModel provides a base for adding 
- * change listeners (PropertyChange, CollectionChange, ListChange, TreeChange)
- * to a subject and converting the subject's change notifications into a single
- * set of change notifications for a common aspect (e.g. VALUE).
+ * This abstract extension of AbstractModel provides a base for adding change
+ * listeners (PropertyChange, CollectionChange, ListChange, TreeChange) to a
+ * subject and converting the subject's change notifications into a single set
+ * of change notifications for a common aspect (e.g. VALUE).
  * 
  * The adapter will only listen to the subject (and subject holder) when the
  * adapter itself actually has listeners. This will allow the adapter to be
  * garbage collected when appropriate
+ *
+ * @author mqfdy
+ * @param <S>
+ *            the generic type
  */
 public abstract class AspectAdapter<S>
 	extends AbstractModel
@@ -57,14 +62,20 @@ public abstract class AspectAdapter<S>
 
 	/**
 	 * Construct an AspectAdapter for the specified subject.
+	 *
+	 * @param subject
+	 *            the subject
 	 */
 	protected AspectAdapter(S subject) {
 		this(new StaticPropertyValueModel<S>(subject));
 	}
 
 	/**
-	 * Construct an AspectAdapter for the specified subject holder.
-	 * The subject holder cannot be null.
+	 * Construct an AspectAdapter for the specified subject holder. The subject
+	 * holder cannot be null.
+	 *
+	 * @param subjectHolder
+	 *            the subject holder
 	 */
 	protected AspectAdapter(PropertyValueModel<? extends S> subjectHolder) {
 		super();
@@ -88,6 +99,10 @@ public abstract class AspectAdapter<S>
 
 	/**
 	 * The subject holder's value has changed, keep our subject in synch.
+	 *
+	 * @author mqfdy
+	 * @return the property change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected PropertyChangeListener buildSubjectChangeListener() {
 		return new PropertyChangeListener() {
@@ -122,29 +137,49 @@ public abstract class AspectAdapter<S>
 
 	/**
 	 * Return the aspect's current value.
+	 *
+	 * @author mqfdy
+	 * @return the value
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract Object getValue();
 
 	/**
 	 * Return the class of listener that is interested in the aspect adapter's
 	 * changes.
+	 *
+	 * @author mqfdy
+	 * @return the listener class
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract Class<? extends ChangeListener> getListenerClass();
 
 	/**
-	 * Return the name of the aspect adapter's aspect (e.g. VALUE).
-	 * This is the name of the aspect adapter's single aspect, not the
-	 * name of the subject's aspect the aspect adapter is adapting.
+	 * Return the name of the aspect adapter's aspect (e.g. VALUE). This is the
+	 * name of the aspect adapter's single aspect, not the name of the subject's
+	 * aspect the aspect adapter is adapting.
+	 *
+	 * @author mqfdy
+	 * @return the listener aspect name
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract String getListenerAspectName();
 
 	/**
 	 * Return whether there are any listeners for the aspect.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract boolean hasListeners();
 
 	/**
 	 * Return whether there are no listeners for the aspect.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	protected boolean hasNoListeners() {
 		return ! this.hasListeners();
@@ -152,9 +187,22 @@ public abstract class AspectAdapter<S>
 
 	/**
 	 * The aspect has changed, notify listeners appropriately.
+	 *
+	 * @author mqfdy
+	 * @param oldValue
+	 *            the old value
+	 * @param newValue
+	 *            the new value
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract void fireAspectChange(Object oldValue, Object newValue);
 
+	/**
+	 * Engage subject.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void engageSubject() {
 		// check for nothing to listen to
 		if (this.subject != null) {
@@ -167,6 +215,12 @@ public abstract class AspectAdapter<S>
 	 */
 	protected abstract void engageSubject_();
 
+	/**
+	 * Disengage subject.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void disengageSubject() {
 		// check for nothing to listen to
 		if (this.subject != null) {
@@ -179,6 +233,12 @@ public abstract class AspectAdapter<S>
 	 */
 	protected abstract void disengageSubject_();
 
+	/**
+	 * Engage subject holder.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void engageSubjectHolder() {
 		this.subjectHolder.addPropertyChangeListener(PropertyValueModel.VALUE, this.subjectChangeListener);
 		// synch our subject *after* we start listening to the subject holder,
@@ -186,17 +246,35 @@ public abstract class AspectAdapter<S>
 		this.subject = this.subjectHolder.getValue();
 	}
 
+	/**
+	 * Disengage subject holder.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void disengageSubjectHolder() {
 		this.subjectHolder.removePropertyChangeListener(PropertyValueModel.VALUE, this.subjectChangeListener);
 		// clear out the subject when we are not listening to its holder
 		this.subject = null;
 	}
 
+	/**
+	 * Engage models.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void engageModels() {
 		this.engageSubjectHolder();
 		this.engageSubject();
 	}
 
+	/**
+	 * Disengage models.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void disengageModels() {
 		this.disengageSubject();
 		this.disengageSubjectHolder();
@@ -216,24 +294,74 @@ public abstract class AspectAdapter<S>
 	protected class LocalChangeSupport extends SingleAspectChangeSupport {
 		private static final long serialVersionUID = 1L;
 
+		/**
+		 * Instantiates a new local change support.
+		 *
+		 * @param source
+		 *            the source
+		 * @param listenerClass
+		 *            the listener class
+		 * @param aspectName
+		 *            the aspect name
+		 */
 		public LocalChangeSupport(AspectAdapter<S> source, Class<? extends ChangeListener> listenerClass, String aspectName) {
 			super(source, listenerClass, aspectName);
 		}
 
+		/**
+		 * Listener is relevant.
+		 *
+		 * @author mqfdy
+		 * @param lClass
+		 *            the l class
+		 * @return true, if successful
+		 * @Date 2018-09-03 09:00
+		 */
 		protected boolean listenerIsRelevant(Class<? extends ChangeListener> lClass) {
 			return lClass == this.listenerClass;
 		}
 
+		/**
+		 * Checks for no relevant listeners.
+		 *
+		 * @author mqfdy
+		 * @param lClass
+		 *            the l class
+		 * @return true, if successful
+		 * @Date 2018-09-03 09:00
+		 */
 		protected boolean hasNoRelevantListeners(Class<? extends ChangeListener> lClass) {
 			return this.listenerIsRelevant(lClass)
 						&& this.hasNoListeners(lClass);
 		}
 
+		/**
+		 * Listener is relevant.
+		 *
+		 * @author mqfdy
+		 * @param lClass
+		 *            the l class
+		 * @param listenerAspectName
+		 *            the listener aspect name
+		 * @return true, if successful
+		 * @Date 2018-09-03 09:00
+		 */
 		protected boolean listenerIsRelevant(Class<? extends ChangeListener> lClass, String listenerAspectName) {
 			return this.listenerIsRelevant(lClass)
 						&& (listenerAspectName == AspectAdapter.this.getListenerAspectName());
 		}
 
+		/**
+		 * Checks for no relevant listeners.
+		 *
+		 * @author mqfdy
+		 * @param lClass
+		 *            the l class
+		 * @param listenerAspectName
+		 *            the listener aspect name
+		 * @return true, if successful
+		 * @Date 2018-09-03 09:00
+		 */
 		protected boolean hasNoRelevantListeners(Class<? extends ChangeListener> lClass, String listenerAspectName) {
 			return this.listenerIsRelevant(lClass, listenerAspectName)
 						&& this.hasNoListeners(lClass, listenerAspectName);

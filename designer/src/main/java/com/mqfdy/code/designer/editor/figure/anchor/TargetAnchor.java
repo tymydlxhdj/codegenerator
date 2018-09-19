@@ -6,23 +6,40 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 
+// TODO: Auto-generated Javadoc
 /**
- * 关联关系的起点
- * 
+ * 关联关系的起点.
+ *
  * @author mqfdy
- * 
  */
 public class TargetAnchor extends ChopboxAnchor {
 
+	/** The source. */
 	private IFigure source;
 
+	/** The place. */
 	public Point place;
 
+	/**
+	 * Instantiates a new target anchor.
+	 *
+	 * @param source
+	 *            the source
+	 */
 	public TargetAnchor(IFigure source) {
 		super(source);
 		this.source = source;
 	}
 
+	/**
+	 * Gets the location.
+	 *
+	 * @author mqfdy
+	 * @param reference
+	 *            the reference
+	 * @return the location
+	 * @Date 2018-09-03 09:00
+	 */
 	public Point getLocation(Point reference) {
 		if (place != null) {
 			// 得到owner矩形，转换为绝对坐标

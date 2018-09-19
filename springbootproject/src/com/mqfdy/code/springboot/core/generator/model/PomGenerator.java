@@ -9,20 +9,46 @@ import org.eclipse.core.resources.IProject;
 import com.mqfdy.code.springboot.core.generator.AbstractGenerator;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PomGenerator.
+ *
+ * @author mqfdy
+ */
 public class PomGenerator extends AbstractGenerator {
 	
+	/** The map. */
 	protected Map<String, Object> map = new HashMap<String, Object>();
 	
+	/** The gen project. */
 	protected IProject genProject;
 	
+	/** The folder. */
 	protected String folder = "";
 	
+	/** The base package. */
 	protected String basePackage;
 	
+	/**
+	 * Sets the folder.
+	 *
+	 * @author mqfdy
+	 * @param f
+	 *            the new folder
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setFolder(String f){
 		this.folder = f;
 	}
 	
+	/**
+	 * Instantiates a new pom generator.
+	 *
+	 * @param genProject
+	 *            the gen project
+	 * @param basePackage
+	 *            the base package
+	 */
 	public PomGenerator(IProject genProject,String basePackage) {
 		super(genProject);
 		this.genProject = genProject;
@@ -57,6 +83,14 @@ public class PomGenerator extends AbstractGenerator {
 		return genProject;
 	}
 	
+	/**
+	 * Sets the gen project.
+	 *
+	 * @author mqfdy
+	 * @param genProject
+	 *            the new gen project
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setGenProject(IProject genProject) {
 		this.genProject = genProject;
 	}

@@ -16,22 +16,40 @@ import com.mqfdy.code.designer.utils.BusinessModelUtil;
 import com.mqfdy.code.model.AbstractModelElement;
 import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.model.ReferenceObject;
+// TODO: Auto-generated Javadoc
+
 /**
- * 删除引用模型
- * @author mqfdy
+ * 删除引用模型.
  *
+ * @author mqfdy
  */
 public class DeleteReferenceModelAction  extends TreeAction{
 
+	/**
+	 * Instantiates a new delete reference model action.
+	 *
+	 * @param text
+	 *            the text
+	 */
 	public DeleteReferenceModelAction(String text) {
 		super(text);
 	}
 
+	/**
+	 * Instantiates a new delete reference model action.
+	 *
+	 * @param treeViewer
+	 *            the tree viewer
+	 */
 	public DeleteReferenceModelAction(TreeViewer treeViewer) {
 		super(ActionTexts.MODEL_ELEMENT_DELETE, treeViewer);
 		this.setImageDescriptor(ImageManager.getInstance().getImageDescriptor(
 				ImageKeys.IMG_OBJECT_OPER_DELETE));
 	}
+	
+	/**
+	 * 
+	 */
 	public void run() {
 		// 先找到所要删除的节点
 		

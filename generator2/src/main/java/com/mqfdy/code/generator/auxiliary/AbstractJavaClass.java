@@ -17,59 +17,70 @@ import com.mqfdy.code.model.BusinessClass;
 import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.model.utils.DataType;
 import com.mqfdy.code.scence.IScenceType;
+// TODO: Auto-generated Javadoc
+
 /**
- * 
- * @author mqf
+ * The Class AbstractJavaClass.
  *
+ * @author mqf
  */
 public abstract class AbstractJavaClass {
 	
-	/**
-	 * import集合
-	 */
+	/** import集合. */
 	protected Set<String> importSet;
-	/**
-	 * 业务对象模型对象
-	 */
+	
+	/** 业务对象模型对象. */
 	protected BusinessObjectModel bom;
-	/**
-	 * 业务对象
-	 */
+	
+	/** 业务对象. */
 	protected BusinessClass bc;
-	/**
-	 * 项目对象
-	 */
+	
+	/** 项目对象. */
 	protected IProject project;
-	/**
-	 * velocity map
-	 */
+	
+	/** velocity map. */
 	protected Map<String,Object> map;
-	/**
-	 * 持久化模型
-	 */
+	
+	/** 持久化模型. */
 	protected IPersistenceModel persistenceModel;
-	/**
-	 * 包前缀
-	 */
+	
+	/** 包前缀. */
 	protected String packagePrefix;
-	/**
-	 * import语句 包前缀
-	 */
+	
+	/** import语句 包前缀. */
 	protected String importPackage;
 	
+	/** The is tree. */
 	protected boolean isTree = false;    //是否是树
 	
+	/** The is slave. */
 	protected boolean isSlave = false;    //是否是从节点
 	
+	/** The is master. */
 	protected boolean isMaster = false;   //是否是主节点
 	
+	/** The parent id. */
 	protected String parentId;           //parentId ：外键
 	
+	/** The scene type set. */
 	protected Set<Integer> sceneTypeSet;  //场景类型集合
 	
+	/** The output folder path. */
 	protected String outputFolderPath;
 	
 	
+	/**
+	 * Instantiates a new abstract java class.
+	 *
+	 * @param bc
+	 *            the bc
+	 * @param persistenceModel
+	 *            the persistence model
+	 * @param project
+	 *            the project
+	 * @param bom
+	 *            the bom
+	 */
 	public AbstractJavaClass(BusinessClass bc, IPersistenceModel persistenceModel,IProject project, BusinessObjectModel bom){
 		this.persistenceModel = persistenceModel;
 		this.bc = bc;
@@ -82,6 +93,12 @@ public abstract class AbstractJavaClass {
 		init();
 	}
 	
+	/**
+	 * Instantiates a new abstract java class.
+	 *
+	 * @param param
+	 *            the param
+	 */
 	public AbstractJavaClass(ClassParam param){
 		this.persistenceModel = param.getPersistenceModel();
 		this.bc = param.getBc();
@@ -108,30 +125,52 @@ public abstract class AbstractJavaClass {
 	}
 
 	/**
-	 * 初始化
-	 * @param bom
+	 * 初始化.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public abstract void init();
+	
 	/**
-	 * 初始化包
+	 * 初始化包.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:37
 	 */
 	public abstract void initPackage();
+	
 	/**
-	 * 初始化域
+	 * 初始化域.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:37
 	 */
 	public abstract void initFields();
+	
 	/**
-	 * 初始化import
+	 * 初始化import.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:37
 	 */
 	public abstract void initImports();
+	
 	/**
-	 * 初始化方法
+	 * 初始化方法.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:37
 	 */
 	public abstract void initMethods();
+	
 	/**
-	 * 向importSet加import
+	 * 向importSet加import.
+	 *
+	 * @author mqfdy
 	 * @param dataType
-	 * @return
+	 *            the data type
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void putToImportSet(String dataType) {
 		if(StringUtils.isEmpty(dataType)){
@@ -198,10 +237,15 @@ public abstract class AbstractJavaClass {
 				}
 			}
 		}
+	
 	/**
-	 * 数据类型转换
+	 * 数据类型转换.
+	 *
+	 * @author mqfdy
 	 * @param dataType
+	 *            the data type
 	 * @return String
+	 * @Date 2018-09-03 09:00
 	 */
 	protected String getDataType(String dataType) {
 		if(StringUtils.isEmpty(dataType)){
@@ -213,26 +257,81 @@ public abstract class AbstractJavaClass {
 		}
 		return dataType;
 	}
+	
+	/**
+	 * Gets the bc.
+	 *
+	 * @author mqfdy
+	 * @return the bc
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessClass getBc() {
 		return bc;
 	}
+	
+	/**
+	 * Gets the project.
+	 *
+	 * @author mqfdy
+	 * @return the project
+	 * @Date 2018-09-03 09:00
+	 */
 	public IProject getProject() {
 		return project;
 	}
+	
+	/**
+	 * Gets the map.
+	 *
+	 * @author mqfdy
+	 * @return the map
+	 * @Date 2018-09-03 09:00
+	 */
 	public Map<String, Object> getMap() {
 		return map;
 	}
+	
+	/**
+	 * Gets the persistence model.
+	 *
+	 * @author mqfdy
+	 * @return the persistence model
+	 * @Date 2018-09-03 09:00
+	 */
 	public IPersistenceModel getPersistenceModel() {
 		return persistenceModel;
 	}
+	
+	/**
+	 * Gets the bom.
+	 *
+	 * @author mqfdy
+	 * @return the bom
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessObjectModel getBom() {
 		return bom;
 	}
 
+	/**
+	 * Gets the output folder path.
+	 *
+	 * @author mqfdy
+	 * @return the output folder path
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getOutputFolderPath() {
 		return outputFolderPath;
 	}
 
+	/**
+	 * Sets the output folder path.
+	 *
+	 * @author mqfdy
+	 * @param outputFolderPath
+	 *            the new output folder path
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setOutputFolderPath(String outputFolderPath) {
 		this.outputFolderPath = outputFolderPath;
 	}

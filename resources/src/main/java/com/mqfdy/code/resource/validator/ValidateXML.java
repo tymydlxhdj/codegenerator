@@ -24,29 +24,70 @@ import org.xml.sax.SAXNotSupportedException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
+// TODO: Auto-generated Javadoc
+
 /**
- * 根据xsd校验xml
- * 
+ * 根据xsd校验xml.
+ *
  * @author mqfdy
- * 
  */
 public class ValidateXML {
+	
+	/** The flag. */
 	private boolean flag = true;
+	
+	/** The exception string. */
 	private StringBuffer exceptionString = new StringBuffer("\n");
 
+	/**
+	 * Instantiates a new validate XML.
+	 */
 	public ValidateXML() {
 
 	}
 
+	/**
+	 * Gets the exception string.
+	 *
+	 * @author mqfdy
+	 * @return the exception string
+	 * @Date 2018-09-03 09:00
+	 */
 	public StringBuffer getExceptionString() {
 		return exceptionString;
 	}
 
+	/**
+	 * Validate xml.
+	 *
+	 * @author mqfdy
+	 * @param xmlpath
+	 *            the xmlpath
+	 * @return true, if successful
+	 * @throws SAXException
+	 *             the SAX exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean ValidateXml(String xmlpath) throws SAXException, IOException {
 		// return Validatexml(xmlpath);
 		return validateXmlByXsd(xmlpath);
 	}
 
+	/**
+	 * Validatexml.
+	 *
+	 * @author mqfdy
+	 * @param xmlpath
+	 *            the xmlpath
+	 * @return true, if successful
+	 * @throws SAXException
+	 *             the SAX exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean Validatexml(String xmlpath) throws SAXException, IOException {
 		Bundle bundle = FrameworkUtil.getBundle(this.getClass());// Platform.getBundle(BusinessModelEditorPlugin.PLUGIN_ID);
 
@@ -86,16 +127,15 @@ public class ValidateXML {
 	}
 
 	/**
-	 * 使用xsd验证xml
-	 * 
+	 * 使用xsd验证xml.
+	 *
+	 * @author mqfdy
 	 * @param xmlfilename
 	 *            String xml文件 包括路径
-	 * @param xsdfilename
-	 *            String xsd文件 包括路径
-	 * @param validatesuccess
-	 *            boolean 是否验证成功 成功返回true，
 	 * @return boolean 成功返回true 失败返回false
 	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean validateXmlByXsd(String xmlfilename) throws IOException {
 		Bundle bundle = FrameworkUtil.getBundle(this.getClass());// Platform.getBundle(BusinessModelEditorPlugin.PLUGIN_ID);

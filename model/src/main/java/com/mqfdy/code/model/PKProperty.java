@@ -10,44 +10,50 @@ import org.dom4j.Element;
 
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务主键列属性
- * 
+ * 业务主键列属性.
+ *
  * @author mqfdy
- * 
  */
 public class PKProperty extends PersistenceProperty {
 
+	/** The Constant PRIMARYKEY_PREFIX. */
 	public static final String PRIMARYKEY_PREFIX = "PRIMARY_KEY_";// 序列名
 
+	/** The Constant PARAM_KEY_SEQUENCENAME. */
 	public static final String PARAM_KEY_SEQUENCENAME = "suquenceName";// 序列名
 
-	/**
-	 * 主键名称
-	 */
+	/** 主键名称. */
 	private String pkName;
-	/**
-	 * 主键生成策略
-	 */
+	
+	/** 主键生成策略. */
 	private String primaryKeyPloy;
 
-	/**
-	 * 参数列表
-	 */
+	/** 参数列表. */
 	private Map<String, String> primaryKeyParams;
 
+	/**
+	 * Instantiates a new PK property.
+	 */
 	public PKProperty() {
 		super();
 		primaryKeyParams = new HashMap<String, String>(10);
 
 	}
 
+	/**
+	 * @param dest
+	 */
 	public void copy(AbstractModelElement dest) {
 		super.copy(dest);
 		((PKProperty) dest).pkName = this.pkName;
 		((PKProperty) dest).primaryKeyPloy = this.primaryKeyPloy;
 	}
 
+	/**
+	 * @return
+	 */
 	public PKProperty clone() {
 		PKProperty property = new PKProperty();
 		copy(property);
@@ -64,6 +70,9 @@ public class PKProperty extends PersistenceProperty {
 		return property;
 	}
 
+	/**
+	 * @return
+	 */
 	public PKProperty cloneChangeId() {
 		PKProperty property = new PKProperty();
 		copyChangeId(property);
@@ -80,6 +89,9 @@ public class PKProperty extends PersistenceProperty {
 		return property;
 	}
 
+	/**
+	 * @param dest
+	 */
 	public void copyChangeId(AbstractModelElement dest) {
 		super.copyChangeId(dest);
 		((PKProperty) dest).pkName = this.pkName;
@@ -87,9 +99,10 @@ public class PKProperty extends PersistenceProperty {
 	}
 
 	/**
-	 * 通过 XML 构造 PKProperty
-	 * 
+	 * 通过 XML 构造 PKProperty.
+	 *
 	 * @param propertyElement
+	 *            the property element
 	 */
 	@SuppressWarnings("unchecked")
 	public PKProperty(Element propertyElement) {
@@ -117,6 +130,10 @@ public class PKProperty extends PersistenceProperty {
 		}
 	}
 
+	/**
+	 * @param propertiesElement
+	 * @return
+	 */
 	public Element generateXmlElement(Element propertiesElement) {
 		Element propertyElement = super.generateXmlElement(propertiesElement);// 创建Property节点
 		propertyElement.addElement("PkName").addText(
@@ -135,30 +152,86 @@ public class PKProperty extends PersistenceProperty {
 		return propertyElement;
 	}
 
+	/**
+	 * Gets the pk name.
+	 *
+	 * @author mqfdy
+	 * @return the pk name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getPkName() {
 		return pkName;
 	}
 
+	/**
+	 * Sets the pk name.
+	 *
+	 * @author mqfdy
+	 * @param pkName
+	 *            the new pk name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPkName(String pkName) {
 		this.pkName = pkName;
 	}
 
+	/**
+	 * Gets the primary key ploy.
+	 *
+	 * @author mqfdy
+	 * @return the primary key ploy
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getPrimaryKeyPloy() {
 		return primaryKeyPloy;
 	}
 
+	/**
+	 * Sets the primary key ploy.
+	 *
+	 * @author mqfdy
+	 * @param primaryKeyPloy
+	 *            the new primary key ploy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPrimaryKeyPloy(String primaryKeyPloy) {
 		this.primaryKeyPloy = primaryKeyPloy;
 	}
 
+	/**
+	 * Gets the primary key params.
+	 *
+	 * @author mqfdy
+	 * @return the primary key params
+	 * @Date 2018-09-03 09:00
+	 */
 	public Map<String, String> getPrimaryKeyParams() {
 		return primaryKeyParams;
 	}
 
+	/**
+	 * Sets the primary key params.
+	 *
+	 * @author mqfdy
+	 * @param map
+	 *            the map
+	 * @return the map
+	 * @Date 2018-09-03 09:00
+	 */
 	public Map<String, String> setPrimaryKeyParams(Map<String, String> map) {
 		return this.primaryKeyParams = map;
 	}
 
+	/**
+	 * Adds the primary key param.
+	 *
+	 * @author mqfdy
+	 * @param pName
+	 *            the name
+	 * @param pValue
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addPrimaryKeyParam(String pName, String pValue) {
 		primaryKeyParams.put(pName, pValue);
 	}

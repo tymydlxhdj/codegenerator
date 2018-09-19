@@ -32,20 +32,38 @@ import com.mqfdy.code.model.PersistenceProperty;
 import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.ReferenceObject;
 
+// TODO: Auto-generated Javadoc
 /**
- * 在业务模型树上粘贴节点
- * 
+ * 在业务模型树上粘贴节点.
+ *
  * @author mqfdy
- * 
  */
 public class PasteModelFromTreeAction extends TreeAction {
+	
+	/** The list. */
 	private List<Object> list = new ArrayList<Object>();
+	
+	/** The tree viewer. */
 	private TreeViewer treeViewer;
+	
+	/** The model element. */
 	private AbstractModelElement modelElement;
+	
+	/** The business model manager. */
 	private BusinessModelManager businessModelManager;
+	
+	/** The bu map. */
 	// 新旧模型对象的Map
 	private Map<BusinessClass, BusinessClass> buMap = new HashMap<BusinessClass, BusinessClass>();
 
+	/**
+	 * Instantiates a new paste model from tree action.
+	 *
+	 * @param treeViewer
+	 *            the tree viewer
+	 * @param businessModelManager
+	 *            the business model manager
+	 */
 	public PasteModelFromTreeAction(TreeViewer treeViewer,
 			BusinessModelManager businessModelManager) {
 		super(ActionTexts.MODEL_ELEMENT_PASTE, treeViewer);
@@ -64,6 +82,12 @@ public class PasteModelFromTreeAction extends TreeAction {
 		setEnabled(false);
 	}
 
+	/**
+	 * Creates the pasted model list.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createPastedModelList() {
 		list.clear();
 		if (Clipboard.getDefault().getContents() == null)
@@ -71,6 +95,9 @@ public class PasteModelFromTreeAction extends TreeAction {
 		list.addAll((List<Object>) Clipboard.getDefault().getContents());
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean isEnabled() {
 		TreeItem[] items = treeViewer.getTree().getSelection();
@@ -114,6 +141,9 @@ public class PasteModelFromTreeAction extends TreeAction {
 		return false;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void run() {
 		if (isEnabled()) {
@@ -145,6 +175,12 @@ public class PasteModelFromTreeAction extends TreeAction {
 		}
 	}
 
+	/**
+	 * Paste properties.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void pasteProperties() {
 		// modelElement = (BusinessClass)modelElement;
 		for (Object pro : list) {
@@ -185,6 +221,12 @@ public class PasteModelFromTreeAction extends TreeAction {
 
 	}
 
+	/**
+	 * Paste operations.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void pasteOperations() {
 		// modelElement = (BusinessClass)modelElement;
 		for (Object op : list) {
@@ -209,6 +251,12 @@ public class PasteModelFromTreeAction extends TreeAction {
 		businessModelManager.businessObjectModelChanged(bcAddevent);
 	}
 
+	/**
+	 * Paste business classes.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void pasteBusinessClasses() {
 		// modelElement = (ModelPackage)modelElement;
 		for (Object abObject : list) {

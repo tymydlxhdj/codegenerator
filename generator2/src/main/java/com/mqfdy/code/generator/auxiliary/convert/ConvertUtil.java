@@ -24,26 +24,27 @@ import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.PropertyEditor;
 import com.mqfdy.code.model.Validator;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ConvertUtil.
+ *
+ * @author mqfdy
+ */
 public class ConvertUtil {
-	/**
-	 * oracle 序列
-	 */
+	
+	/** oracle 序列. */
 	private final static String SEQUENCE = "SEQUENCE";
-	/**
-	 * oracle 序列 名称
-	 */
+	
+	/** oracle 序列 名称. */
 	private final static String SEQUENCE_NAME = "suquenceName";
-	/**
-	 * mx 编辑器：文本
-	 */
+	
+	/** mx 编辑器：文本. */
 	private final static String TEXT_EDITOR = "TextEditor";
-	/**
-	 * mx 编辑器：下拉框
-	 */
+	
+	/** mx 编辑器：下拉框. */
 	private final static String COMBO_EDITOR = "ComboEditor";
-	/**
-	 * mx 编辑器：主键策略类型map
-	 */
+	
+	/** mx 编辑器：主键策略类型map. */
 	private static Map<String,String> pkTypeMap;
 	
 	static{
@@ -55,21 +56,33 @@ public class ConvertUtil {
 	}
 	
 	/**
-	 * 获取业务对象对应的表对象
+	 * 获取业务对象对应的表对象.
+	 *
+	 * @author mqfdy
 	 * @param bussinessClass
+	 *            the bussiness class
 	 * @param bom
-	 * @return
+	 *            the bom
+	 * @return the table
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Table convertToTable(BusinessClass bussinessClass, BusinessObjectModel bom) {
 		Table table = convertToTable(bussinessClass);
 		addPkColumnToTable(table,bussinessClass,bom);
 		return table;
 	}
+	
 	/**
-	 * 外键字段
+	 * 外键字段.
+	 *
+	 * @author mqfdy
 	 * @param table
+	 *            the table
 	 * @param bc
+	 *            the bc
 	 * @param bom
+	 *            the bom
+	 * @Date 2018-9-3 11:38:25
 	 */
 	private static void addPkColumnToTable(Table table, BusinessClass bc, BusinessObjectModel bom) {
 		for(Association association: bom.getAssociations()){
@@ -136,9 +149,13 @@ public class ConvertUtil {
 	}
 
 	/**
-	 * 获取业务对象对应的表对象
+	 * 获取业务对象对应的表对象.
+	 *
+	 * @author mqfdy
 	 * @param bussinessClass
-	 * @return
+	 *            the bussiness class
+	 * @return the table
+	 * @Date 2018-9-3 11:38:25
 	 */
 	private static Table convertToTable(BusinessClass bussinessClass) {
 		Table table = new Table();
@@ -206,9 +223,13 @@ public class ConvertUtil {
 	}
 	
 	/**
-	 * 创建持久化实体模型
-	 * @param table 持久化实体对应数据库表
-	 * @return
+	 * 创建持久化实体模型.
+	 *
+	 * @author mqfdy
+	 * @param table
+	 *            持久化实体对应数据库表
+	 * @return the i persistence model
+	 * @Date 2018-09-03 09:00
 	 */
 	public static IPersistenceModel convertToPersistenceModel(Table table) {
 		
@@ -218,6 +239,17 @@ public class ConvertUtil {
 		return currentPersistenceModel;
 	}
 	
+	/**
+	 * Convert to persistence model.
+	 *
+	 * @author mqfdy
+	 * @param bussinessClass
+	 *            the bussiness class
+	 * @param bom
+	 *            the bom
+	 * @return the i persistence model
+	 * @Date 2018-09-03 09:00
+	 */
 	public static IPersistenceModel convertToPersistenceModel(BusinessClass bussinessClass, BusinessObjectModel bom){
 		Table table = convertToTable(bussinessClass,bom);
 		IPersistenceModel persistenceModel = convertToPersistenceModel(table);

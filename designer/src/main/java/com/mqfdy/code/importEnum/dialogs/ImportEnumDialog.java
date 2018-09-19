@@ -18,34 +18,64 @@ import com.mqfdy.code.designer.utils.BusinessModelUtil;
 import com.mqfdy.code.model.AbstractModelElement;
 import com.mqfdy.code.model.Enumeration;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ImportEnumDialog.
+ *
+ * @author mqfdy
+ */
 public class ImportEnumDialog extends ModelElementEditorDialog {
 
-	/**
-	 * 基本信息标签页
-	 */
+	/** 基本信息标签页. */
 	private TabFolder tabBasic;
+	
+	/** The enum basic info enum page. */
 	private EnumBasicInfoEnumPage enumBasicInfoEnumPage;
-	/**
-	 * 枚举值信息标签页
-	 */
+	
+	/** 枚举值信息标签页. */
 	private TabFolder tabEnumeration;
+	
+	/** The enum elements enum page. */
 	private EnumElementsEnumPage enumElementsEnumPage;
+	
+	/** The enumeration. */
 	private Enumeration enumeration;
-	/**
-	 * 从组件面板创建
-	 */
+	
+	/** 从组件面板创建. */
 	public String DIALOG_TITLE = "";
+	
+	/** The dialog title operation. */
 	public final String DIALOG_TITLE_OPERATION = "";
+	
+	/** The dialog message import. */
 	public final String DIALOG_MESSAGE_IMPORT = "导入枚举类型";
+	
+	/** The manager. */
 	private BusinessModelManager manager = BusinessModelUtil
 			.getEditorBusinessModelManager();
 	
 	
+	/**
+	 * Instantiates a new import enum dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 */
 	public ImportEnumDialog(Shell parentShell) {
 		super(parentShell);
 		
 	}
 	
+	/**
+	 * Instantiates a new import enum dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param parent
+	 *            the parent
+	 * @param enumeration
+	 *            the enumeration
+	 */
 	public ImportEnumDialog(Shell parentShell, AbstractModelElement parent,
 			Enumeration enumeration) {
 		super(parentShell);
@@ -55,6 +85,15 @@ public class ImportEnumDialog extends ModelElementEditorDialog {
 	}
 	
 	
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createDialogArea(Composite parent) {
 		// 初始化窗口
 		GridLayout gridLayout = new GridLayout(1, true);
@@ -69,7 +108,12 @@ public class ImportEnumDialog extends ModelElementEditorDialog {
 	}
 	
 	/**
-	 * 初始化创建 标签页
+	 * 初始化创建 标签页.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createtabFolder(Composite composite) {
 		tabBasic = new TabFolder(composite, SWT.NONE);
@@ -84,6 +128,14 @@ public class ImportEnumDialog extends ModelElementEditorDialog {
 		tabItem2.setText("枚举值信息");
 	}
 	
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent(Composite parent) {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
@@ -102,6 +154,12 @@ public class ImportEnumDialog extends ModelElementEditorDialog {
 		tabEnumeration.getItem(0).setControl(enumElementsEnumPage);
 	}
 	
+	/**
+	 * Inits the control value.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void initControlValue() {
 		if (this.enumeration != null) {
 			enumBasicInfoEnumPage.initControlValue();
@@ -110,11 +168,26 @@ public class ImportEnumDialog extends ModelElementEditorDialog {
 	}
 	
 
+	/**
+	 * Validate all input.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	//验证
 	private boolean validateAllInput() {
 		boolean isOk = this.validateInput();
 		return isOk;
 	}
+	
+	/**
+	 * Validate input.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean validateInput() {
 		boolean isOk = enumBasicInfoEnumPage.validateInput();
 		if (isOk == false) {
@@ -129,6 +202,9 @@ public class ImportEnumDialog extends ModelElementEditorDialog {
 		return true;
 	}
 	
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		if (validateAllInput() == true ) {
@@ -140,7 +216,12 @@ public class ImportEnumDialog extends ModelElementEditorDialog {
 	
 	
 	/**
-	 * shell标题
+	 * shell标题.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
@@ -149,7 +230,10 @@ public class ImportEnumDialog extends ModelElementEditorDialog {
 	
 	
 	/**
-	 * 设置标题和信息
+	 * 设置标题和信息.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setTitleAndMessage() {
 		setTitle("枚举类型");
@@ -158,6 +242,12 @@ public class ImportEnumDialog extends ModelElementEditorDialog {
 		} 
 	}
 	
+	/**
+	 * Update the editing element.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void updateTheEditingElement() {
 		enumBasicInfoEnumPage.updateTheEditingElement();
 		if (ModelElementEditorDialog.OPERATION_TYPE_IMPORT.equals(operationType)) {
@@ -167,27 +257,68 @@ public class ImportEnumDialog extends ModelElementEditorDialog {
 		
 	}
 	
+	/**
+	 * Gets the enum elements enum page.
+	 *
+	 * @author mqfdy
+	 * @return the enum elements enum page
+	 * @Date 2018-09-03 09:00
+	 */
 	public EnumElementsEnumPage getEnumElementsEnumPage(){
 		return enumElementsEnumPage;
 	}
+	
+	/**
+	 * Gets the enum basic info enum page.
+	 *
+	 * @author mqfdy
+	 * @return the enum basic info enum page
+	 * @Date 2018-09-03 09:00
+	 */
 	public EnumBasicInfoEnumPage getEnumBasicInfoEnumPage(){
 		return enumBasicInfoEnumPage;
 	}
 	
+	/**
+	 * Gets the enumeration.
+	 *
+	 * @author mqfdy
+	 * @return the enumeration
+	 * @Date 2018-09-03 09:00
+	 */
 	public Enumeration getEnumeration() {
 		return enumeration;
 	}
 	
 	
+	/**
+	 * Sets the enumeration.
+	 *
+	 * @author mqfdy
+	 * @param enumeration
+	 *            the new enumeration
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setEnumeration(Enumeration enumeration) {
 		this.enumeration = enumeration;
 	}
 
+	/**
+	 * @return
+	 */
 	protected int getShellStyle() {
 		return super.getShellStyle() | SWT.RESIZE | SWT.MAX;
 	}
 
 
+	/**
+	 * Button pressed.
+	 *
+	 * @author mqfdy
+	 * @param buttonId
+	 *            the button id
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void buttonPressed(int buttonId) {
 		super.buttonPressed(buttonId);

@@ -6,6 +6,7 @@ import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Rectangle;
 
+// TODO: Auto-generated Javadoc
 /**
  * 边框 Border that consists only of a line in top of the figure.
  * 
@@ -25,13 +26,15 @@ public class SeparatorBorder extends MarginBorder {
 
 	/**
 	 * Paint or Repaint the SeperatorBorder.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param figure
 	 *            the figure above the SeperatorBorder
 	 * @param graphics
 	 *            the figure to be drawn on
 	 * @param insets
 	 *            the insets to be used
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void paint(IFigure figure, Graphics graphics, Insets insets) {

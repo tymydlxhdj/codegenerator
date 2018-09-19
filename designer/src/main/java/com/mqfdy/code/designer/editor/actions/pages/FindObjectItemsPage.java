@@ -15,27 +15,55 @@ import org.eclipse.swt.widgets.Text;
 import com.mqfdy.code.designer.editor.BusinessModelEditorPlugin;
 import com.mqfdy.code.model.utils.ModelUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 代码生成对象选择页面
- * 
+ * 代码生成对象选择页面.
+ *
  * @author mqfdy
- * 
  */
 public class FindObjectItemsPage extends Composite {
+	
+	/** The type. */
 	private String type;
+	
+	/** The db type. */
 	private Combo dbType;
+	
+	/** The dis name text. */
 	private Text disNameText;
+	
+	/** The name text. */
 	private Text nameText;
+	
+	/** The case sensitive. */
 	private boolean caseSensitive;
+	
+	/** The clear. */
 	private Button clear;
+	
+	/** The sel. */
 	private Button sel;
 
+	/**
+	 * Instantiates a new find object items page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 */
 	public FindObjectItemsPage(Composite parent, int style) {
 		super(parent, style);
 		createContents(this);
 		init();
 	}
 
+	/**
+	 * Inits the.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void init() {
 		IPreferenceStore store = BusinessModelEditorPlugin.getDefault()
 				.getPreferenceStore();
@@ -75,6 +103,14 @@ public class FindObjectItemsPage extends Composite {
 		});
 	}
 
+	/**
+	 * Creates the contents.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContents(Composite composite) {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
@@ -136,22 +172,58 @@ public class FindObjectItemsPage extends Composite {
 		disNameText.setLayoutData(textgridData);
 	}
 
+	/**
+	 * Gets the type.
+	 *
+	 * @author mqfdy
+	 * @return the type
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getType() {
 		return type == null ? "" : type;
 	}
 
+	/**
+	 * Sets the type.
+	 *
+	 * @author mqfdy
+	 * @param type
+	 *            the new type
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setType(String type) {
 		this.type = type;
 	}
 
+	/**
+	 * Gets the display name.
+	 *
+	 * @author mqfdy
+	 * @return the display name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getDisplayName() {
 		return disNameText.getText();
 	}
 
+	/**
+	 * Gets the object name.
+	 *
+	 * @author mqfdy
+	 * @return the object name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getObjectName() {
 		return nameText.getText();
 	}
 
+	/**
+	 * Checks if is case sensitive.
+	 *
+	 * @author mqfdy
+	 * @return true, if is case sensitive
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isCaseSensitive() {
 		return caseSensitive;
 	}

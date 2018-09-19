@@ -37,23 +37,52 @@ import com.mqfdy.code.model.OperationParam;
 import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.PropertyEditor;
 
+// TODO: Auto-generated Javadoc
 /**
- * 代码生成向导对象选择页面
- * 
+ * 代码生成向导对象选择页面.
+ *
  * @author mqfdy
- * 
  */
 public class ModelSelectPage extends Composite {
+	
+	/** The business object model. */
 	private BusinessObjectModel businessObjectModel;
+	
+	/** The per. */
 	private Label per;// 显示选择数量
+	
+	/** The query checkbox table viewer. */
 	private CheckboxTableViewer queryCheckboxTableViewer;
 
+	/** The all elements. */
 	List<AbstractModelElement> allElements = new ArrayList<AbstractModelElement>();
+	
+	/** The selected elements. */
 	List<AbstractModelElement> selectedElements = new ArrayList<AbstractModelElement>();// 模型选择的元素
+	
+	/** The list type. */
 	private String listType;
+	
+	/** The generator object select page. */
 	private GeneratorObjectSelectPage generatorObjectSelectPage;
+	
+	/** The filter text. */
 	private Text filterText;
 
+	/**
+	 * Instantiates a new model select page.
+	 *
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param listType
+	 *            the list type
+	 * @param generatorObjectSelectPage
+	 *            the generator object select page
+	 */
 	public ModelSelectPage(BusinessObjectModel businessObjectModel,
 			Composite parent, int style, String listType, GeneratorObjectSelectPage generatorObjectSelectPage) {
 		super(parent, style);
@@ -75,6 +104,14 @@ public class ModelSelectPage extends Composite {
 
 	}
 
+	/**
+	 * Creates the contents.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createContents(Composite composite) {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
@@ -362,10 +399,15 @@ public class ModelSelectPage extends Composite {
 				+ selectedElements.size() + "/"
 				+ allElements.size());
 	}
+	
 	/**
-	 * 获取当前业务对象相关的枚举对象集合
+	 * 获取当前业务对象相关的枚举对象集合.
+	 *
+	 * @author mqfdy
 	 * @param bu
-	 * @return
+	 *            the bu
+	 * @return the enums
+	 * @Date 2018-09-03 09:00
 	 */
 	protected List<Enumeration> getEnums(BusinessClass bu) {
 		List<Enumeration> enums = new ArrayList<Enumeration>();
@@ -388,11 +430,17 @@ public class ModelSelectPage extends Composite {
 	}
 
 	/**
-	 * 判断当前选中的关联关系中除了as之外是否有与BusinessClass对象相关的关联关系
+	 * 判断当前选中的关联关系中除了as之外是否有与BusinessClass对象相关的关联关系.
+	 *
+	 * @author mqfdy
 	 * @param as
+	 *            the as
 	 * @param selectedElements
+	 *            the selected elements
 	 * @param bc
-	 * @return
+	 *            the bc
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	protected boolean hasOtherAss(Association as, List<AbstractModelElement> selectedElements, BusinessClass bc) {
 		for(AbstractModelElement me : selectedElements){
@@ -405,9 +453,13 @@ public class ModelSelectPage extends Composite {
 	}
 
 	/**
-	 * 判断业务对象是否被选中
+	 * 判断业务对象是否被选中.
+	 *
+	 * @author mqfdy
 	 * @param bcList
-	 * @return
+	 *            the bc list
+	 * @return true, if is bc checked
+	 * @Date 2018-09-03 09:00
 	 */
 	protected boolean isBcChecked(List<BusinessClass> bcList) {
 		TableItem[] itemsBus = generatorObjectSelectPage.getBuPage().queryCheckboxTableViewer.getTable().getItems();
@@ -421,10 +473,15 @@ public class ModelSelectPage extends Composite {
 		}
 		return true;
 	}
+	
 	/**
-	 * 获取关联关系相关的业务对象列表
+	 * 获取关联关系相关的业务对象列表.
+	 *
+	 * @author mqfdy
 	 * @param association
-	 * @return
+	 *            the association
+	 * @return the bc list
+	 * @Date 2018-09-03 09:00
 	 */
 	protected List<BusinessClass> getBcList(Association association) {
 		List<BusinessClass> bcList = new ArrayList<BusinessClass>();
@@ -433,10 +490,27 @@ public class ModelSelectPage extends Composite {
 		return bcList;
 	}
 
+	/**
+	 * Gets the selected elements.
+	 *
+	 * @author mqfdy
+	 * @return the selected elements
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<AbstractModelElement> getSelectedElements() {
 		return selectedElements;
 
 	}
+	
+	/**
+	 * Gets the associations by business class.
+	 *
+	 * @author mqfdy
+	 * @param businessClass
+	 *            the business class
+	 * @return the associations by business class
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Association> getAssociationsByBusinessClass(
 			BusinessClass businessClass) {
 		List<Association> associations = businessObjectModel.getAssociations();
@@ -457,11 +531,27 @@ public class ModelSelectPage extends Composite {
 		return results;
 	}
 	
+	/**
+	 * Creates the filter controls.
+	 *
+	 * @author mqfdy
+	 * @param filterComposite
+	 *            the filter composite
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createFilterControls(Composite filterComposite) {
 		createFilterText(filterComposite);
 		createClearTextNew(filterComposite);
 	}
 	
+	/**
+	 * Creates the filter text.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void createFilterText(Composite parent) {
 		filterText = new Text(parent, SWT.SINGLE);
 		GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
@@ -475,6 +565,15 @@ public class ModelSelectPage extends Composite {
 			}
 		});
 	}
+	
+	/**
+	 * Creates the clear text new.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createClearTextNew(Composite parent) {
 		final Image inactiveImage = ImageManager.getInstance().getImage(
 				FilteredTree.getDisabledClearIcon());
@@ -505,6 +604,13 @@ public class ModelSelectPage extends Composite {
 
 		});
 	}
+	
+	/**
+	 * Filter.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void filter(){
 		String name = filterText.getText();
 		if(name.trim().equals("")){

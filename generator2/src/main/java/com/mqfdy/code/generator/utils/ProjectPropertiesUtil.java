@@ -11,22 +11,40 @@ import org.eclipse.core.resources.IProject;
 import com.mqfdy.code.datasource.mapping.DBType;
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 读取属性文件
- * @author mqfdy
+ * 读取属性文件.
  *
+ * @author mqfdy
  */
 public class ProjectPropertiesUtil {
 	
+	/** The prop. */
 	private Properties prop;
+	
+	/** The path. */
 	private String path;
 	
+	/** The Constant DB_DRIVER. */
 	private final static String DB_DRIVER = "spring.datasource.driver-class-name";
+	
+	/**
+	 * Instantiates a new project properties util.
+	 *
+	 * @param project
+	 *            the project
+	 */
 	public ProjectPropertiesUtil(IProject project){
 		this.path = project.getFullPath().toOSString();
 		init();
 	}
 	
+	/**
+	 * Inits the.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void init(){
 		prop = new Properties();
 		InputStream fis = null;
@@ -50,15 +68,27 @@ public class ProjectPropertiesUtil {
 			}
 		}
 	}
+	
 	/**
-	 * 
+	 * Gets the property.
+	 *
+	 * @author mqfdy
 	 * @param key
-	 * @return
+	 *            the key
+	 * @return the property
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getProperty(String key) {
 		return prop.getProperty(key);
 	}
 	
+	/**
+	 * Gets the db type.
+	 *
+	 * @author mqfdy
+	 * @return the db type
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getDbType(){
 		String dbType = DBType.MySQL.getDbType();
 		String dbDriver = prop.getProperty(DB_DRIVER);

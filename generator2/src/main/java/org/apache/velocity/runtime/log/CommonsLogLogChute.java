@@ -24,44 +24,55 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.runtime.log.LogChute;
 
+// TODO: Auto-generated Javadoc
 /**
  * Redirects Velocity's LogChute messages to commons-logging.
- *
- * <p>To use, first set up commons-logging, then tell Velocity to use
- * this class for logging by adding the following to your velocity.properties:
- *
+ * 
+ * <p>
+ * To use, first set up commons-logging, then tell Velocity to use this class
+ * for logging by adding the following to your velocity.properties:
+ * 
  * <code>
  * runtime.log.logsystem.class = org.apache.velocity.runtime.log.CommonsLogLogChute
  * </code>
  * </p>
- *
- * <p>You may also set this property to specify what log/name Velocity's
- * messages should be logged to (example below is default).
- * <code>
+ * 
+ * <p>
+ * You may also set this property to specify what log/name Velocity's messages
+ * should be logged to (example below is default). <code>
  * runtime.log.logsystem.commons.logging.name = org.apache.velocity
  * </code>
  * </p>
- * 
+ *
  * @author Nathan Bubna
- * @since 1.6
  * @version $Id: CommonsLogLogChute.java 71982 2004-02-18 20:11:07Z nbubna $
+ * @since 1.6
  */
 public class CommonsLogLogChute implements LogChute
 {
 
-    /** Property key for specifying the name for the log instance */
+    /** Property key for specifying the name for the log instance. */
     public static final String LOGCHUTE_COMMONS_LOG_NAME =
         "runtime.log.logsystem.commons.logging.name";
 
-    /** Default name for the commons-logging instance */
+    /** Default name for the commons-logging instance. */
     public static final String DEFAULT_LOG_NAME = "org.apache.velocity";
 
     
-    /** the commons-logging Log instance */
+    /** the commons-logging Log instance. */
     protected Log log;
 
 
-    /********** LogChute methods *************/
+    /**
+	 * ******** LogChute methods ************.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:38
+	 */
 
     public void init(RuntimeServices rs) throws Exception
     {
@@ -77,8 +88,15 @@ public class CommonsLogLogChute implements LogChute
     }
 
     /**
-     * Send a log message from Velocity.
-     */
+	 * Send a log message from Velocity.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @Date 2018-9-3 11:38:38
+	 */
     public void log(int level, String message)
     {
         switch (level) 
@@ -103,8 +121,17 @@ public class CommonsLogLogChute implements LogChute
     }
 
     /**
-     * Send a log message from Velocity with an error.
-     */
+	 * Send a log message from Velocity with an error.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @Date 2018-9-3 11:38:38
+	 */
     public void log(int level, String message, Throwable t)
     {
         switch (level) 
@@ -129,8 +156,14 @@ public class CommonsLogLogChute implements LogChute
     }
 
     /**
-     * Checks whether the specified log level is enabled.
-     */
+	 * Checks whether the specified log level is enabled.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the level
+	 * @return true, if is level enabled
+	 * @Date 2018-9-3 11:38:38
+	 */
     public boolean isLevelEnabled(int level)
     {
         switch (level)

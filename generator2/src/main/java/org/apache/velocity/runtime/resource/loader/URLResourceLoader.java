@@ -31,6 +31,7 @@ import org.apache.velocity.exception.VelocityException;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.runtime.resource.Resource;
 
+// TODO: Auto-generated Javadoc
 /**
  * This is a simple URL-based loader.
  *
@@ -41,14 +42,26 @@ import org.apache.velocity.runtime.resource.Resource;
  */
 public class URLResourceLoader extends ResourceLoader
 {
+    
+    /** The roots. */
     private String[] roots = null;
+    
+    /** The template roots. */
     protected HashMap templateRoots = null;
+    
+    /** The timeout. */
     private int timeout = -1;
+    
+    /** The timeout methods. */
     private Method[] timeoutMethods;
 
     /**
-     * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#init(org.apache.commons.collections.ExtendedProperties)
-     */
+	 * Inits the.
+	 *
+	 * @param configuration
+	 *            the configuration
+	 * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#init(org.apache.commons.collections.ExtendedProperties)
+	 */
     public void init(ExtendedProperties configuration)
     {
         log.trace("URLResourceLoader : initialization starting.");
@@ -87,14 +100,16 @@ public class URLResourceLoader extends ResourceLoader
     }
 
     /**
-     * Get an InputStream so that the Runtime can build a
-     * template with it.
-     *
-     * @param name name of template to fetch bytestream of
-     * @return InputStream containing the template
-     * @throws ResourceNotFoundException if template not found
-     *         in the file template path.
-     */
+	 * Get an InputStream so that the Runtime can build a template with it.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            name of template to fetch bytestream of
+	 * @return InputStream containing the template
+	 * @throws ResourceNotFoundException
+	 *             if template not found in the file template path.
+	 * @Date 2018-9-3 11:38:38
+	 */
     public synchronized InputStream getResourceStream(String name)
         throws ResourceNotFoundException
     {
@@ -155,11 +170,15 @@ public class URLResourceLoader extends ResourceLoader
     }
 
     /**
-     * Checks to see if a resource has been deleted, moved or modified.
-     *
-     * @param resource Resource  The resource to check for modification
-     * @return boolean  True if the resource has been modified, moved, or unreachable
-     */
+	 * Checks to see if a resource has been deleted, moved or modified.
+	 *
+	 * @author mqfdy
+	 * @param resource
+	 *            Resource The resource to check for modification
+	 * @return boolean True if the resource has been modified, moved, or
+	 *         unreachable
+	 * @Date 2018-9-3 11:38:38
+	 */
     public boolean isSourceModified(Resource resource)
     {
         long fileLastModified = getLastModified(resource);
@@ -173,11 +192,15 @@ public class URLResourceLoader extends ResourceLoader
     }
 
     /**
-     * Checks to see when a resource was last modified
-     *
-     * @param resource Resource the resource to check
-     * @return long The time when the resource was last modified or 0 if the file can't be reached
-     */
+	 * Checks to see when a resource was last modified.
+	 *
+	 * @author mqfdy
+	 * @param resource
+	 *            Resource the resource to check
+	 * @return long The time when the resource was last modified or 0 if the
+	 *         file can't be reached
+	 * @Date 2018-9-3 11:38:38
+	 */
     public long getLastModified(Resource resource)
     {
         // get the previously used root
@@ -202,14 +225,25 @@ public class URLResourceLoader extends ResourceLoader
     }
 
     /**
-     * Returns the current, custom timeout setting. If negative, there is no custom timeout.
-     * @since 1.6
-     */
+	 * Returns the current, custom timeout setting. If negative, there is no
+	 * custom timeout.
+	 *
+	 * @return the timeout
+	 * @since 1.6
+	 */
     public int getTimeout()
     {
         return timeout;
     }
 
+    /**
+	 * Try to set timeout.
+	 *
+	 * @author mqfdy
+	 * @param conn
+	 *            the conn
+	 * @Date 2018-9-3 11:38:38
+	 */
     private void tryToSetTimeout(URLConnection conn)
     {
         if (timeout > 0)

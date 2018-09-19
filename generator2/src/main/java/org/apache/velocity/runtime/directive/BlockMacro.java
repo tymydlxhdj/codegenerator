@@ -28,25 +28,30 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.runtime.parser.node.Node;
 
+// TODO: Auto-generated Javadoc
 /**
- * BlockMacro directive is used to invoke Velocity macros with normal parameters and a macro body.
+ * BlockMacro directive is used to invoke Velocity macros with normal parameters
+ * and a macro body.
  * <p>
- * The macro can then refer to the passed body AST. This directive can be used as a 
- * "decorator". Body AST can contain any valid Velocity syntax.
- *
+ * The macro can then refer to the passed body AST. This directive can be used
+ * as a "decorator". Body AST can contain any valid Velocity syntax.
+ * 
  * An example:
+ * 
  * <pre>
  * #set($foobar = "yeah!")
  * 
  * #macro(strong $txt)
  * &lt;strong&gt;$bodyContent&lt;/strong&gt; $txt
  * #end
- *
+ * 
  * #@strong($foobar)
  * &lt;u&gt;This text is underlined and bold&lt;/u&gt;
  * #end
  * </pre>
+ * 
  * Will print:
+ * 
  * <pre>
  * &lt;strong&gt;&lt;u&gt;This text is underlined and bold&lt;u&gt;&lt;/strong&gt; yeah!
  * </pre>
@@ -54,42 +59,65 @@ import org.apache.velocity.runtime.parser.node.Node;
  * bodyContent reference name is configurable (see velocity.properties).
  *
  * @author <a href="mailto:wyla@removethis.sci.fi">Jarkko Viinamaki</a>
- * @since 1.7
  * @version $Id$
+ * @since 1.7
  */
 public class BlockMacro extends Block
 {
+    
+    /** The name. */
     private String name;
+    
+    /** The macro. */
     private RuntimeMacro macro;
 
+    /**
+	 * Instantiates a new block macro.
+	 *
+	 * @param name
+	 *            the name
+	 */
     public BlockMacro(String name)
     {
         this.name = name;
     }
     
+    /**
+     * @see org.apache.velocity.runtime.directive.Directive#getName()
+     * @return BlockMacro
+     */
     public String getName()
     {
         return key;
     }
 
     /**
-     * Override to use the macro name, since it is within an
-     * #@myMacro() ... #end block that the scope in question
-     * would be used.
-     */
+	 * Override to use the macro name, since it is within an #@myMacro() ...
+	 * #end block that the scope in question would be used.
+	 *
+	 * @author mqfdy
+	 * @return the scope name
+	 * @Date 2018-9-3 11:38:38
+	 */
     public String getScopeName()
     {
         return name;
     }
 
     /**
-     * Initializes the directive.
-     * 
-     * @param rs
-     * @param context
-     * @param node
-     * @throws TemplateInitException
-     */
+	 * Initializes the directive.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @param context
+	 *            the context
+	 * @param node
+	 *            the node
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @Date 2018-9-3 11:38:38
+	 */
     public void init(RuntimeServices rs, InternalContextAdapter context, Node node)
         throws TemplateInitException
     {
@@ -107,14 +135,20 @@ public class BlockMacro extends Block
     }
 
     /**
-     * Renders content using the selected macro and the passed AST body.
-     *
-     * @param context
-     * @param writer
-     * @param node
-     * @return True if the directive rendered successfully.
-     * @throws IOException
-     */
+	 * Renders content using the selected macro and the passed AST body.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @param node
+	 *            the node
+	 * @return True if the directive rendered successfully.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-9-3 11:38:38
+	 */
     public boolean render(InternalContextAdapter context, Writer writer, Node node)
         throws IOException
     {

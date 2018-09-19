@@ -10,19 +10,24 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Plugin;
 
+// TODO: Auto-generated Javadoc
 /**
- * 定义和插件相关的工具类
+ * 定义和插件相关的工具类.
+ *
+ * @author mqfdy
  */
 public class PluginUtil {
+	
 	/**
-	 * 取得id为pluginID的插件的安装目录
-	 * 
+	 * 取得id为pluginID的插件的安装目录.
+	 *
+	 * @author mqfdy
 	 * @param pluginID
 	 *            要得到安装目录的插件ID, not null
-	 * @return 
-	 *         插件安装目录的绝对路径，注意这个路径以"\"开头，例如"/F:/workspace/com.mqfdy.project/"
+	 * @return 插件安装目录的绝对路径，注意这个路径以"\"开头，例如"/F:/workspace/com.mqfdy.project/"
 	 * @throws IOException
 	 *             使用FileLocator进行URL转换的时候发生错误会抛出
+	 * @Date 2018-9-3 11:38:29
 	 */
 	public static String getPluginPath(String pluginID) throws IOException {
 		if (pluginID == null) {
@@ -37,7 +42,17 @@ public class PluginUtil {
 	}
 
 	/**
-	 * 取得id为pluginID的插件下相对路径为filePath的文件的url, filePath应该以“/”开头
+	 * 取得id为pluginID的插件下相对路径为filePath的文件的url, filePath应该以“/”开头.
+	 *
+	 * @author mqfdy
+	 * @param pluginID
+	 *            the plugin ID
+	 * @param filePath
+	 *            the file path
+	 * @return the plugin file URL
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-09-03 09:00
 	 */
 	public static URL getPluginFileURL(String pluginID, String filePath)
 			throws IOException {
@@ -48,36 +63,40 @@ public class PluginUtil {
 	}
 
 	/**
-	 * 取得id为pluginID的插件的安装目录
-	 * 
+	 * 取得id为pluginID的插件的安装目录.
+	 *
+	 * @author mqfdy
 	 * @param pluginID
 	 *            要得到安装目录的插件ID, not null
-	 * @return 插件安装目录的绝对路径，并且该路径完全符合操作系统的规范，例如
-	 *         "F:\workspace\com.mqfdy.project\
+	 * @return 插件安装目录的绝对路径，并且该路径完全符合操作系统的规范，例如 "F:\workspace\com.mqfdy.project\
 	 *         "
 	 * @throws IOException
 	 *             使用FileLocator进行URL转换的时候发生错误会抛出
+	 * @Date 2018-9-3 11:38:29
 	 */
 	public static String getPluginOSPath(String pluginID) throws IOException {
 		return Path.fromOSString(getPluginPath(pluginID)).toOSString();
 	}
 
 	/**
-	 * 取得id为pluginID的插件的安装目录
-	 * 
+	 * 取得id为pluginID的插件的安装目录.
+	 *
+	 * @author mqfdy
 	 * @param plugin
 	 *            要得到安装目录的插件对象
 	 * @return 插件安装目录的绝对路径
 	 * @throws IOException
 	 *             使用FileLocator进行URL转换的时候发生错误会抛出
+	 * @Date 2018-9-3 11:38:29
 	 */
 	public static String getPluginPath(Plugin plugin) throws IOException {
 		return getPluginPath(plugin.getBundle().getSymbolicName());
 	}
 
 	/**
-	 * 得到插件安装目录下的某一个目录的路径
-	 * 
+	 * 得到插件安装目录下的某一个目录的路径.
+	 *
+	 * @author mqfdy
 	 * @param pluginID
 	 *            目标插件ID, not null
 	 * @param filePath
@@ -85,6 +104,7 @@ public class PluginUtil {
 	 * @return 文件的IPath路径
 	 * @throws IOException
 	 *             使用FileLocator进行URL转换的时候发生错误会抛出
+	 * @Date 2018-9-3 11:38:29
 	 */
 	public static IPath filePathFromPlugin(String pluginID, String filePath)
 			throws IOException {

@@ -30,26 +30,48 @@ import com.mqfdy.code.model.Enumeration;
 import com.mqfdy.code.model.graph.DiagramElement;
 import com.mqfdy.code.model.graph.ElementStyle;
 
+// TODO: Auto-generated Javadoc
 /**
- * 透视图中枚举对象的控制器
- * 
+ * 透视图中枚举对象的控制器.
+ *
  * @author mqfdy
- * 
  */
 public class EnumerationEditPart extends NodeEditPart {
+	
+	/** The model element. */
 	DiagramElement modelElement;
+	
+	/** The ele. */
 	Enumeration ele;
 
+	/**
+	 * Gets the enumeration.
+	 *
+	 * @author mqfdy
+	 * @return the enumeration
+	 * @Date 2018-09-03 09:00
+	 */
 	public Enumeration getEnumeration() {
 		return ele;
 	}
 
+	/**
+	 * Instantiates a new enumeration edit part.
+	 *
+	 * @param ele
+	 *            the ele
+	 * @param modelElement
+	 *            the model element
+	 */
 	public EnumerationEditPart(Enumeration ele, DiagramElement modelElement) {
 		super(modelElement);
 		this.ele = ele;
 		this.modelElement = modelElement;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected IFigure createFigure() {
 		String name = ele.getDisplayName();
@@ -61,6 +83,9 @@ public class EnumerationEditPart extends NodeEditPart {
 		return figure;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void activate() {
 		if (!isActive()) {
@@ -69,6 +94,9 @@ public class EnumerationEditPart extends NodeEditPart {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void deactivate() {
 		if (isActive()) {
@@ -78,7 +106,12 @@ public class EnumerationEditPart extends NodeEditPart {
 	}
 
 	/**
-	 * 执行用户请求 点击透视图中的某一对象时，执行该方法 同时创建窗口
+	 * 执行用户请求 点击透视图中的某一对象时，执行该方法 同时创建窗口.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void performRequest(final Request request) {
@@ -109,13 +142,20 @@ public class EnumerationEditPart extends NodeEditPart {
 	}
 
 	/**
-	 * 取得模型DiagramElement
+	 * 取得模型DiagramElement.
+	 *
+	 * @author mqfdy
+	 * @return the casted model
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	protected AbstractModelElement getCastedModel() {
 		return (AbstractModelElement) getModel();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void refreshVisuals() {
 		if (modelElement != null) {
@@ -133,7 +173,10 @@ public class EnumerationEditPart extends NodeEditPart {
 	}
 
 	/**
-	 * 重新绘制界面对象
+	 * 重新绘制界面对象.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void repaintFigure() {
@@ -147,6 +190,14 @@ public class EnumerationEditPart extends NodeEditPart {
 		c.paintFigure(name, ele);
 	}
 
+	/**
+	 * Property change.
+	 *
+	 * @author mqfdy
+	 * @param evt
+	 *            the evt
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		String propertyId = evt.getPropertyName();
@@ -164,6 +215,9 @@ public class EnumerationEditPart extends NodeEditPart {
 
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void createEditPolicies() {
 		super.createEditPolicies();

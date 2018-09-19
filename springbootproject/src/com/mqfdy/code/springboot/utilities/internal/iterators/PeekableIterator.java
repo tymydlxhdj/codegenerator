@@ -15,18 +15,22 @@ import java.util.NoSuchElementException;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * A <code>PeekableIterator</code> wraps another <code>Iterator</code>
- * and allows a <code>peek()</code> at the next element to be 
- * returned by <code>next()</code>.
+ * A <code>PeekableIterator</code> wraps another <code>Iterator</code> and
+ * allows a <code>peek()</code> at the next element to be returned by
+ * <code>next()</code>.
  * <p>
- * One, possibly undesirable, side-effect of using this iterator is that
- * the nested iterator's <code>next()</code> method will be invoked
- * <em>before</em> the peekable iterator's <code>next()</code>
- * method is invoked. This is because the "next" element must be
- * pre-loaded for the <code>peek()</code> method.
- * This also prevents a peekable iterator from supporting the optional
+ * One, possibly undesirable, side-effect of using this iterator is that the
+ * nested iterator's <code>next()</code> method will be invoked <em>before</em>
+ * the peekable iterator's <code>next()</code> method is invoked. This is
+ * because the "next" element must be pre-loaded for the <code>peek()</code>
+ * method. This also prevents a peekable iterator from supporting the optional
  * <code>remove()</code> method.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 
 public class PeekableIterator<E>
@@ -38,8 +42,10 @@ public class PeekableIterator<E>
 
 
 	/**
-	 * Construct a peekable iterator that wraps the specified nested
-	 * iterator.
+	 * Construct a peekable iterator that wraps the specified nested iterator.
+	 *
+	 * @param nestedIterator
+	 *            the nested iterator
 	 */
 	public PeekableIterator(Iterator<? extends E> nestedIterator) {
 		super();
@@ -64,6 +70,10 @@ public class PeekableIterator<E>
 	/**
 	 * Return the element that will be returned by the next call to the
 	 * <code>next()</code> method, without advancing past it.
+	 *
+	 * @author mqfdy
+	 * @return the e
+	 * @Date 2018-09-03 09:00
 	 */
 	public E peek() {
 		if (this.done) {

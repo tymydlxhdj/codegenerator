@@ -7,18 +7,33 @@ import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.TextPropertyDescriptor;
 
+// TODO: Auto-generated Javadoc
 /**
- * 下拉框
- * 
+ * 下拉框.
+ *
  * @author mqfdy
- * 
  */
 public class StringListPropertyDescriptor extends TextPropertyDescriptor
 		implements IEditorValueDescriptor<String> {
 
+	/** The list. */
 	private String[] list;
+	
+	/** The default value. */
 	private String defaultValue;
 
+	/**
+	 * Instantiates a new string list property descriptor.
+	 *
+	 * @param id
+	 *            the id
+	 * @param displayName
+	 *            the display name
+	 * @param list
+	 *            the list
+	 * @param description
+	 *            the description
+	 */
 	public StringListPropertyDescriptor(Object id, String displayName,
 			String[] list, String description) {
 		super(id, displayName);
@@ -30,6 +45,20 @@ public class StringListPropertyDescriptor extends TextPropertyDescriptor
 		setLabelProvider(new PropertyLabelDecoratorUtil(defaultValue));
 	}
 
+	/**
+	 * Instantiates a new string list property descriptor.
+	 *
+	 * @param id
+	 *            the id
+	 * @param displayName
+	 *            the display name
+	 * @param list
+	 *            the list
+	 * @param defaultValue
+	 *            the default value
+	 * @param description
+	 *            the description
+	 */
 	public StringListPropertyDescriptor(Object id, String displayName,
 			String[] list, String defaultValue, String description) {
 		super(id, displayName);
@@ -39,6 +68,15 @@ public class StringListPropertyDescriptor extends TextPropertyDescriptor
 		setLabelProvider(new PropertyLabelDecoratorUtil(defaultValue));
 	}
 
+	/**
+	 * Creates the property editor.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the cell editor
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public CellEditor createPropertyEditor(Composite parent) {
 		CellEditor editor = new ComboBoxCellEditor(parent, list, SWT.NONE) {
@@ -77,14 +115,24 @@ public class StringListPropertyDescriptor extends TextPropertyDescriptor
 	}
 
 	/**
-	 * implement {@link IEditorValueDescriptor}
+	 * implement {@link IEditorValueDescriptor}.
+	 *
+	 * @author mqfdy
+	 * @return the default value
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getDefaultValue() {
 		return defaultValue;
 	}
 
 	/**
-	 * implement {@link IEditorValueDescriptor}
+	 * implement {@link IEditorValueDescriptor}.
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            the value
+	 * @return the editor value
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getEditorValue(String value) {
 		if (value != null && value.length() != 0) {

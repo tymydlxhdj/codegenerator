@@ -13,14 +13,32 @@ import com.mqfdy.code.designer.editor.part.EnumerationEditPart;
 import com.mqfdy.code.designer.editor.part.ReferenceObjectEditPart;
 import com.mqfdy.code.model.IModelElement;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ShareModelNodeCommand.
+ *
+ * @author mqfdy
+ */
 public class ShareModelNodeCommand extends Command {
+	
+	/** The parts. */
 	// 选中的图形EditPart
 		List<AbstractGraphicalEditPart> parts = new ArrayList<AbstractGraphicalEditPart>();// BusinessModelUtil.getBusinessModelDiagramEditor().getViewer().getSelectedEditParts();
+		
+		/** The con parts. */
 		// 选中的图形对应的关联关系的EditPart
 		List<AbstractGraphicalEditPart> conParts = new ArrayList<AbstractGraphicalEditPart>();// BusinessModelUtil.getBusinessModelDiagramEditor().getViewer().getSelectedEditParts();
+		
+		/** The all parts. */
 		// 选中的图形及其所对应的关联关系的EditPart
 		private List<AbstractGraphicalEditPart> allParts = new ArrayList<AbstractGraphicalEditPart>();
 
+		/**
+		 * Instantiates a new share model node command.
+		 *
+		 * @param selectedObjects
+		 *            the selected objects
+		 */
 		public ShareModelNodeCommand(List<AbstractGraphicalEditPart> selectedObjects) {
 			for (AbstractGraphicalEditPart part : selectedObjects) {
 				if (part instanceof BusinessClassEditPart
@@ -34,12 +52,18 @@ public class ShareModelNodeCommand extends Command {
 			}
 		}
 
+		/**
+		 * @return
+		 */
 		@Override
 		public boolean canExecute() {
 			
 			return true;
 		}
 
+		/**
+		 * 
+		 */
 		@Override
 		public void execute() {
 			if (canExecute()) {
@@ -80,23 +104,56 @@ public class ShareModelNodeCommand extends Command {
 			}
 		}
 
+		/**
+		 * @return
+		 */
 		@Override
 		public boolean canUndo() {
 			return false;
 		}
 
+		/**
+		 * Gets the parts.
+		 *
+		 * @author mqfdy
+		 * @return the parts
+		 * @Date 2018-09-03 09:00
+		 */
 		public List<AbstractGraphicalEditPart> getParts() {
 			return parts;
 		}
 
+		/**
+		 * Sets the parts.
+		 *
+		 * @author mqfdy
+		 * @param parts
+		 *            the new parts
+		 * @Date 2018-09-03 09:00
+		 */
 		public void setParts(List<AbstractGraphicalEditPart> parts) {
 			this.parts = parts;
 		}
 
+		/**
+		 * Gets the all parts.
+		 *
+		 * @author mqfdy
+		 * @return the all parts
+		 * @Date 2018-09-03 09:00
+		 */
 		public List<AbstractGraphicalEditPart> getAllParts() {
 			return allParts;
 		}
 
+		/**
+		 * Sets the all parts.
+		 *
+		 * @author mqfdy
+		 * @param allParts
+		 *            the new all parts
+		 * @Date 2018-09-03 09:00
+		 */
 		public void setAllParts(List<AbstractGraphicalEditPart> allParts) {
 			this.allParts = allParts;
 		}

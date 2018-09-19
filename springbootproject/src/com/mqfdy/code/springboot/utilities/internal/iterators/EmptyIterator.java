@@ -15,8 +15,13 @@ import java.util.NoSuchElementException;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * An <code>EmptyIterator</code> is just that.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public final class EmptyIterator<E>
 	implements Iterator<E>
@@ -28,6 +33,12 @@ public final class EmptyIterator<E>
 
 	/**
 	 * Return the singleton.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> Iterator<T> instance() {

@@ -11,6 +11,7 @@ import org.eclipse.core.runtime.MultiStatus;
 
 import com.mqfdy.code.springboot.core.MicroProjectPlugin;
 
+// TODO: Auto-generated Javadoc
 /**
  * In contexts where we wish to collect certain errors and continue processing rather than abort
  * immediately, an instance of this class is passed in as an argument.
@@ -23,6 +24,8 @@ import com.mqfdy.code.springboot.core.MicroProjectPlugin;
 public abstract class ErrorHandler {
 	
 	/**
+	 * The Class FilterDuplicates.
+	 *
 	 * @author Kris De Volder
 	 */
 	public static abstract class FilterDuplicates extends ErrorHandler {
@@ -40,6 +43,16 @@ public abstract class ErrorHandler {
 			}
 		}
 
+		/**
+		 * No duplicate handle.
+		 *
+		 * @author mqfdy
+		 * @param severity
+		 *            the severity
+		 * @param e
+		 *            the e
+		 * @Date 2018-09-03 09:00
+		 */
 		protected abstract void noDuplicateHandle(int severity, Throwable e);
 
 	}
@@ -59,6 +72,16 @@ public abstract class ErrorHandler {
 
 	private IStatus firstError = null;
 
+	/**
+	 * Handle.
+	 *
+	 * @author mqfdy
+	 * @param severity
+	 *            the severity
+	 * @param e
+	 *            the e
+	 * @Date 2018-09-03 09:00
+	 */
 	public void handle(int severity, Throwable e) {
 		if (firstError==null && severity>=IStatus.ERROR) {
 			firstError = ExceptionUtil.status(severity, e);
@@ -68,15 +91,35 @@ public abstract class ErrorHandler {
 	
 	/**
 	 * Convenient shortcut for handling an exception with severity 'error'.
+	 *
+	 * @author mqfdy
+	 * @param e
+	 *            the e
+	 * @Date 2018-09-03 09:00
 	 */
 	public void handleError(Throwable e) {
 		handle(IStatus.ERROR, e);
 	}
 	
+	/**
+	 * Checks for errors.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean hasErrors() {
 		return firstError!=null;
 	}
 	
+	/**
+	 * Rethrow as core.
+	 *
+	 * @author mqfdy
+	 * @throws CoreException
+	 *             the core exception
+	 * @Date 2018-09-03 09:00
+	 */
 	public void rethrowAsCore() throws CoreException {
 		if (hasErrors()) {
 			throw ExceptionUtil.coreException(firstError);
@@ -155,8 +198,12 @@ public abstract class ErrorHandler {
 		}
 
 		/**
-		 * Create a test error handler that will immediately rethrow any received exception
-		 * with severity greater or equal to given severity and ignore any other exceptions.
+		 * Create a test error handler that will immediately rethrow any
+		 * received exception with severity greater or equal to given severity
+		 * and ignore any other exceptions.
+		 *
+		 * @param rethrowSeverity
+		 *            the rethrow severity
 		 */
 		public Test(int rethrowSeverity) {
 			this.rethrowSeverity = rethrowSeverity;
@@ -175,6 +222,16 @@ public abstract class ErrorHandler {
 
 	}
 	
+	/**
+	 * Internal handle.
+	 *
+	 * @author mqfdy
+	 * @param severity
+	 *            the severity
+	 * @param e
+	 *            the e
+	 * @Date 2018-09-03 09:00
+	 */
 	protected abstract void internalHandle(int severity, Throwable e);
 
 	@Override
@@ -190,7 +247,11 @@ public abstract class ErrorHandler {
 	/// Methods below are to keep error handler policy decisions all together in one place.
 	
 	/**
+	 * For refresh source folders.
+	 *
+	 * @author mqfdy
 	 * @return ErrorHandler used by "Refresh Source Folders" menu command.
+	 * @Date 2018-09-03 09:00
 	 */
 	public static ErrorHandler forRefreshSourceFolders() {
 		//return new RecordAll();
@@ -198,7 +259,11 @@ public abstract class ErrorHandler {
 	}
 
 	/**
+	 * For refresh all.
+	 *
+	 * @author mqfdy
 	 * @return ErrorHandler used by "Refresh All" menu command.
+	 * @Date 2018-09-03 09:00
 	 */
 	public static ErrorHandler forRefreshAll() {
 		//return new RecordAll();
@@ -206,13 +271,25 @@ public abstract class ErrorHandler {
 	}
 
 	/**
-	 * @return ErrorHandler used by import wizard when it performs the import operation.
+	 * For import wizard.
+	 *
+	 * @author mqfdy
+	 * @return ErrorHandler used by import wizard when it performs the import
+	 *         operation.
+	 * @Date 2018-09-03 09:00
 	 */
 	public static ErrorHandler forImportWizard() {
 		return new RecordAll();
 		//return new LogToEclipseErrorLog();
 	}
 
+	/**
+	 * For enable disable DSLD.
+	 *
+	 * @author mqfdy
+	 * @return the error handler
+	 * @Date 2018-09-03 09:00
+	 */
 	public static ErrorHandler forEnableDisableDSLD() {
 		return new LogToEclipseErrorLog();
 	}

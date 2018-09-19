@@ -36,6 +36,7 @@ import org.apache.velocity.runtime.resource.Resource;
 import org.apache.velocity.util.ExceptionUtils;
 import org.apache.velocity.util.StringUtils;
 
+// TODO: Auto-generated Javadoc
 /**
  * <P>This is a simple template file loader that loads templates
  * from a DataSource instead of plain files.
@@ -127,17 +128,35 @@ import org.apache.velocity.util.StringUtils;
  */
 public class DataSourceResourceLoader extends ResourceLoader
 {
+    
+    /** The data source name. */
     private String dataSourceName;
+    
+    /** The table name. */
     private String tableName;
+    
+    /** The key column. */
     private String keyColumn;
+    
+    /** The template column. */
     private String templateColumn;
+    
+    /** The timestamp column. */
     private String timestampColumn;
+    
+    /** The ctx. */
     private InitialContext ctx;
+    
+    /** The data source. */
     private DataSource dataSource;
 
     /**
-     * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#init(org.apache.commons.collections.ExtendedProperties)
-     */
+	 * Inits the.
+	 *
+	 * @param configuration
+	 *            the configuration
+	 * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#init(org.apache.commons.collections.ExtendedProperties)
+	 */
     public void init(ExtendedProperties configuration)
     {
         dataSourceName  = StringUtils.nullTrim(configuration.getString("resource.datasource"));
@@ -181,18 +200,27 @@ public class DataSourceResourceLoader extends ResourceLoader
     }
 
     /**
-     * Set the DataSource used by this resource loader.  Call this as an alternative to
-     * specifying the data source name via properties.
-     * @param dataSource The data source for this ResourceLoader.
-     */
+	 * Set the DataSource used by this resource loader. Call this as an
+	 * alternative to specifying the data source name via properties.
+	 *
+	 * @author mqfdy
+	 * @param dataSource
+	 *            The data source for this ResourceLoader.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public void setDataSource(final DataSource dataSource)
     {
         this.dataSource = dataSource;
     }
 
     /**
-     * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#isSourceModified(org.apache.velocity.runtime.resource.Resource)
-     */
+	 * Checks if is source modified.
+	 *
+	 * @param resource
+	 *            the resource
+	 * @return true, if is source modified
+	 * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#isSourceModified(org.apache.velocity.runtime.resource.Resource)
+	 */
     public boolean isSourceModified(final Resource resource)
     {
         return (resource.getLastModified() !=
@@ -200,21 +228,29 @@ public class DataSourceResourceLoader extends ResourceLoader
     }
 
     /**
-     * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#getLastModified(org.apache.velocity.runtime.resource.Resource)
-     */
+	 * Gets the last modified.
+	 *
+	 * @param resource
+	 *            the resource
+	 * @return the last modified
+	 * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#getLastModified(org.apache.velocity.runtime.resource.Resource)
+	 */
     public long getLastModified(final Resource resource)
     {
         return readLastModified(resource, "getting timestamp");
     }
 
     /**
-     * Get an InputStream so that the Runtime can build a
-     * template with it.
-     *
-     *  @param name name of template
-     *  @return InputStream containing template
-     * @throws ResourceNotFoundException
-     */
+	 * Get an InputStream so that the Runtime can build a template with it.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            name of template
+	 * @return InputStream containing template
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @Date 2018-9-3 11:38:32
+	 */
     public synchronized InputStream getResourceStream(final String name)
         throws ResourceNotFoundException
     {
@@ -277,13 +313,16 @@ public class DataSourceResourceLoader extends ResourceLoader
     }
 
     /**
-     * Fetches the last modification time of the resource
-     *
-     * @param resource Resource object we are finding timestamp of
-     * @param operation string for logging, indicating caller's intention
-     *
-     * @return timestamp as long
-     */
+	 * Fetches the last modification time of the resource.
+	 *
+	 * @author mqfdy
+	 * @param resource
+	 *            Resource object we are finding timestamp of
+	 * @param operation
+	 *            string for logging, indicating caller's intention
+	 * @return timestamp as long
+	 * @Date 2018-9-3 11:38:32
+	 */
     private long readLastModified(final Resource resource, final String operation)
     {
         long timeStamp = 0;
@@ -348,11 +387,17 @@ public class DataSourceResourceLoader extends ResourceLoader
     }
 
     /**
-     * Gets connection to the datasource specified through the configuration
-     * parameters.
-     *
-     * @return connection
-     */
+	 * Gets connection to the datasource specified through the configuration
+	 * parameters.
+	 *
+	 * @author mqfdy
+	 * @return connection
+	 * @throws NamingException
+	 *             the naming exception
+	 * @throws SQLException
+	 *             the SQL exception
+	 * @Date 2018-9-3 11:38:32
+	 */
     private Connection openDbConnection() throws NamingException, SQLException
     {
          if (dataSource != null)
@@ -371,8 +416,13 @@ public class DataSourceResourceLoader extends ResourceLoader
      }
 
     /**
-     * Closes connection to the datasource
-     */
+	 * Closes connection to the datasource.
+	 *
+	 * @author mqfdy
+	 * @param conn
+	 *            the conn
+	 * @Date 2018-9-3 11:38:32
+	 */
     private void closeDbConnection(final Connection conn)
     {
         if (conn != null)
@@ -395,8 +445,13 @@ public class DataSourceResourceLoader extends ResourceLoader
     }
 
     /**
-     * Closes the result set.
-     */
+	 * Closes the result set.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @Date 2018-9-3 11:38:32
+	 */
     private void closeResultSet(final ResultSet rs)
     {
         if (rs != null)
@@ -419,8 +474,13 @@ public class DataSourceResourceLoader extends ResourceLoader
     }
     
     /**
-     * Closes the PreparedStatement.
-     */
+	 * Closes the PreparedStatement.
+	 *
+	 * @author mqfdy
+	 * @param ps
+	 *            the ps
+	 * @Date 2018-9-3 11:38:32
+	 */
     private void closeStatement(PreparedStatement ps)
     {
         if (ps != null)
@@ -444,18 +504,23 @@ public class DataSourceResourceLoader extends ResourceLoader
         
 
     /**
-     * Creates the following PreparedStatement query :
-     * <br>
-     *  SELECT <i>columnNames</i> FROM <i>tableName</i> WHERE <i>keyColumn</i>
-     *     = '<i>templateName</i>'
-     * <br>
-     * where <i>keyColumn</i> is a class member set in init()
-     *
-     * @param conn connection to datasource
-     * @param columnNames columns to fetch from datasource
-     * @param templateName name of template to fetch
-     * @return PreparedStatement
-     */
+	 * Creates the following PreparedStatement query : <br>
+	 * SELECT <i>columnNames</i> FROM <i>tableName</i> WHERE <i>keyColumn</i> =
+	 * '<i>templateName</i>' <br>
+	 * where <i>keyColumn</i> is a class member set in init().
+	 *
+	 * @author mqfdy
+	 * @param conn
+	 *            connection to datasource
+	 * @param columnNames
+	 *            columns to fetch from datasource
+	 * @param templateName
+	 *            name of template to fetch
+	 * @return PreparedStatement
+	 * @throws SQLException
+	 *             the SQL exception
+	 * @Date 2018-9-3 11:38:32
+	 */
     private PreparedStatement getStatement(final Connection conn,
                                final String columnNames,
                                final String templateName) throws SQLException

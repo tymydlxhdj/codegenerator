@@ -23,6 +23,7 @@ import org.apache.velocity.Template;
 import org.apache.velocity.runtime.RuntimeInstance;
 import org.apache.velocity.runtime.directive.Evaluate;
 
+// TODO: Auto-generated Javadoc
 /**
  * Stop command for directive Control objects.  In an ideal JDK,
  * this would be able to extend a RuntimeThrowable class, but we
@@ -36,25 +37,50 @@ import org.apache.velocity.runtime.directive.Evaluate;
  */
 public class StopCommand extends Error
 {
+    
+    /** The Constant serialVersionUID. */
     private static final long serialVersionUID = 2577683435802825964L;
+    
+    /** The stop me. */
     private Object stopMe;
+    
+    /** The nearest. */
     private boolean nearest = false;
 
+    /**
+	 * Instantiates a new stop command.
+	 */
     public StopCommand()
     {
         this.nearest = true;
     }
 
+    /**
+	 * Instantiates a new stop command.
+	 *
+	 * @param message
+	 *            the message
+	 */
     public StopCommand(String message)
     {
         super(message);
     }
 
+    /**
+	 * Instantiates a new stop command.
+	 *
+	 * @param stopMe
+	 *            the stop me
+	 */
     public StopCommand(Object stopMe)
     {
         this.stopMe = stopMe;
     }
 
+    /**
+     * @see java.lang.Throwable#getMessage()
+     * @return StopCommand
+     */
     public String getMessage()
     {
         if (stopMe != null)
@@ -68,6 +94,15 @@ public class StopCommand extends Error
         }
     }
 
+    /**
+	 * Checks if is for.
+	 *
+	 * @author mqfdy
+	 * @param that
+	 *            the that
+	 * @return true, if is for
+	 * @Date 2018-09-03 09:00
+	 */
     public boolean isFor(Object that)
     {
         if (nearest) // if we're stopping at the first chance

@@ -16,23 +16,38 @@ import com.mqfdy.code.model.Association;
 import com.mqfdy.code.model.utils.AssociationType;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 关联关系tab页
- * @author mqfdy
+ * 关联关系tab页.
  *
+ * @author mqfdy
  */
 public class AssociationPage extends Composite{
+	
+	/** The table viewer. */
 	private TableViewer tableViewer;
+	
+	/** The table. */
 	public Table table;
 	
+	/**
+	 * Instantiates a new association page.
+	 *
+	 * @param folder
+	 *            the folder
+	 */
 	public AssociationPage(Composite folder) {
 		super(folder, SWT.NONE);
 		createContents(this);
 	}	
 
 	/**
-	 * 创建界面
+	 * 创建界面.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createContents(Composite composite) {
 		composite.setLayout(new GridLayout(1,false));	
@@ -72,6 +87,14 @@ public class AssociationPage extends Composite{
 		
 	}
 
+	/**
+	 * Inits the ass info page.
+	 *
+	 * @author mqfdy
+	 * @param assList
+	 *            the ass list
+	 * @Date 2018-09-03 09:00
+	 */
 	public void initAssInfoPage(List<Association> assList) {
 		for(Association ass:assList){
 			 TableItem item=new TableItem(table, SWT.NONE);
@@ -85,7 +108,13 @@ public class AssociationPage extends Composite{
 	}	
 	
 	/**
-	 * 获取导航关系
+	 * 获取导航关系.
+	 *
+	 * @author mqfdy
+	 * @param ass
+	 *            the ass
+	 * @return the navigate
+	 * @Date 2018-09-03 09:00
 	 */
 	private String getNavigate(Association ass) {
 		if(ass.isNavigateToClassA()==true&&ass.isCascadeDeleteClassB()==false){
@@ -97,9 +126,13 @@ public class AssociationPage extends Composite{
 	}
 
 	/**
-	 * 获取关联关系类型
+	 * 获取关联关系类型.
+	 *
+	 * @author mqfdy
 	 * @param type
-	 * @return
+	 *            the type
+	 * @return the association type
+	 * @Date 2018-09-03 09:00
 	 */
 	private String getAssociationType(String type) {
 		if(AssociationType.mult2mult.getValue().equals(type)){
@@ -113,10 +146,25 @@ public class AssociationPage extends Composite{
 		}
 	}
 
+	/**
+	 * Gets the table viewer.
+	 *
+	 * @author mqfdy
+	 * @return the table viewer
+	 * @Date 2018-09-03 09:00
+	 */
 	public TableViewer getTableViewer() {
 		return tableViewer;
 	}
 
+	/**
+	 * Sets the table viewer.
+	 *
+	 * @author mqfdy
+	 * @param tableViewer
+	 *            the new table viewer
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setTableViewer(TableViewer tableViewer) {
 		this.tableViewer = tableViewer;
 	}

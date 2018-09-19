@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/com.mqfdy.code.feature_1.0.0.qualifier.jar" id="com.mqfdy.code.feature" version="1.0.0.qualifier">
+   <feature url="features/com.mqfdy.code.feature_1.0.0.201808071006.jar" id="com.mqfdy.code.feature" version="1.0.0.201808071006">
       <category name="code_generator"/>
    </feature>
    <category-def name="code_generator" label="code_generator"/>

@@ -16,6 +16,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
+// TODO: Auto-generated Javadoc
 /**
  * 创建数据源工具类
  * @author jingjing
@@ -26,9 +27,15 @@ public class DataSourceUtils {
 	private static final String DATABASE_CATEGORY_ID = "org.eclipse.datatools.connectivity.db.category"; //$NON-NLS-1$
 
 	/**
-	 * Launch the DTP New Connection Profile wizard to create a new database connection profile.
+	 * Launch the DTP New Connection Profile wizard to create a new database
+	 * connection profile.
 	 * 
-	 * Returns the name of the added profile, or null if the wizard is cancelled.
+	 * Returns the name of the added profile, or null if the wizard is
+	 * cancelled.
+	 *
+	 * @author mqfdy
+	 * @return the i connection profile
+	 * @Date 2018-09-03 09:00
 	 */
 	public static IConnectionProfile newDataSourceWizard() {
 		NewCPWizard wizard;
@@ -92,8 +99,13 @@ public class DataSourceUtils {
 	
 
 	/**
+	 * Not empty.
+	 *
+	 * @author mqfdy
 	 * @param str
+	 *            the str
 	 * @return return true is parameter is null and ""
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean notEmpty(String str){
 		return str!=null && !"".equals(str);

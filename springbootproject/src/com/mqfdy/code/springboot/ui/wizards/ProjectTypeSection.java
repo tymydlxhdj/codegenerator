@@ -39,6 +39,12 @@ public class ProjectTypeSection extends WizardPageSection {
 		}
 	};
 
+	/**
+	 * Instantiates a new project type section.
+	 *
+	 * @param owner
+	 *            the owner
+	 */
 	public ProjectTypeSection(BaseInfoWizardPage owner) {
 		super(owner);
 		owner.operation.setSampleProjectField(sampleProjectExp);

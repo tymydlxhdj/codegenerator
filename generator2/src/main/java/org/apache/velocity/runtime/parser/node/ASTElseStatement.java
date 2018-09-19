@@ -22,6 +22,7 @@ package org.apache.velocity.runtime.parser.node;
 import org.apache.velocity.context.InternalContextAdapter;
 import org.apache.velocity.runtime.parser.Parser;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class is responsible for handling the Else VTL control statement.
  *
@@ -34,37 +35,57 @@ import org.apache.velocity.runtime.parser.Parser;
  */
 public class ASTElseStatement extends SimpleNode
 {
+    
     /**
-     * @param id
-     */
+	 * Instantiates a new AST else statement.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTElseStatement(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST else statement.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTElseStatement(Parser p, int id)
     {
         super(p, id);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     * An ASTElseStatement always evaluates to
-     * true. Basically behaves like an #if(true).
-     * @param context
-     * @return Always true.
-     */
+	 * An ASTElseStatement always evaluates to true. Basically behaves like an
+	 * #if(true).
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @return Always true.
+	 * @Date 2018-9-3 11:38:29
+	 */
     public boolean evaluate( InternalContextAdapter context)
     {
         return true;

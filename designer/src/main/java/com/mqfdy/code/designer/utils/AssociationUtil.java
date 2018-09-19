@@ -11,14 +11,27 @@ import com.mqfdy.code.model.PersistenceProperty;
 import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.utils.AssociationType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 关联关系创建初始化
- * 
+ * 关联关系创建初始化.
+ *
  * @author mqfdy
- * 
  */
 public class AssociationUtil {
 
+	/**
+	 * Generate association.
+	 *
+	 * @author mqfdy
+	 * @param businessClassA
+	 *            the business class A
+	 * @param businessClassB
+	 *            the business class B
+	 * @param associationType
+	 *            the association type
+	 * @return the association
+	 * @Date 2018-09-03 09:00
+	 */
 	public static Association generateAssociation(BusinessClass businessClassA,
 			BusinessClass businessClassB, AssociationType associationType) {
 		Association association = new Association();
@@ -37,6 +50,20 @@ public class AssociationUtil {
 		return association;
 	}
 	
+	/**
+	 * Process self ass.
+	 *
+	 * @author mqfdy
+	 * @param association
+	 *            the association
+	 * @param businessClassA
+	 *            the business class A
+	 * @param businessClassB
+	 *            the business class B
+	 * @param associationType
+	 *            the association type
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void processSelfAss(Association association,
 			BusinessClass businessClassA, BusinessClass businessClassB,AssociationType associationType) {
 		if (businessClassA != null && businessClassB != null
@@ -67,11 +94,16 @@ public class AssociationUtil {
 	}
 	
 	/**
-	 * 处理出现反向对象的情况
-	 * 
+	 * 处理出现反向对象的情况.
+	 *
+	 * @author mqfdy
 	 * @param association
+	 *            the association
 	 * @param businessClassA
+	 *            the business class A
 	 * @param businessClassB
+	 *            the business class B
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void processReverse(Association association,
 			BusinessClass businessClassA, BusinessClass businessClassB) {
@@ -182,6 +214,18 @@ public class AssociationUtil {
 	}
 	
 	
+	/**
+	 * Process custom.
+	 *
+	 * @author mqfdy
+	 * @param association
+	 *            the association
+	 * @param businessClassA
+	 *            the business class A
+	 * @param businessClassB
+	 *            the business class B
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void processCustom(Association association,
 			BusinessClass businessClassA, BusinessClass businessClassB) {
 	
@@ -238,11 +282,16 @@ public class AssociationUtil {
 	}
 
 	/**
-	 * 处理出现内置对象的情况
-	 * 
+	 * 处理出现内置对象的情况.
+	 *
+	 * @author mqfdy
 	 * @param association
+	 *            the association
 	 * @param businessClassA
+	 *            the business class A
 	 * @param businessClassB
+	 *            the business class B
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void processBuildIn(Association association,
 			BusinessClass businessClassA, BusinessClass businessClassB) {
@@ -349,11 +398,16 @@ public class AssociationUtil {
 	}
 
 	/**
-	 * 处理引用模型
-	 * 
+	 * 处理引用模型.
+	 *
+	 * @author mqfdy
 	 * @param association
+	 *            the association
 	 * @param businessClassA
+	 *            the business class A
 	 * @param businessClassB
+	 *            the business class B
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void processReference(Association association,
 			BusinessClass businessClassA, BusinessClass businessClassB) {
@@ -450,9 +504,14 @@ public class AssociationUtil {
 	}
 
 	/**
-	 * 2
-	 * 
-	 * @return
+	 * 2.
+	 *
+	 * @author mqfdy
+	 * @param association
+	 *            the association
+	 * @param associationType
+	 *            the association type
+	 * @Date 2018-09-03 09:00
 	 */
 	private static void updateAssociation(Association association,
 			AssociationType associationType) {
@@ -488,6 +547,20 @@ public class AssociationUtil {
 		}
 	}
 
+	/**
+	 * Sets the knowed.
+	 *
+	 * @author mqfdy
+	 * @param association
+	 *            the association
+	 * @param businessClassA
+	 *            the business class A
+	 * @param businessClassB
+	 *            the business class B
+	 * @param associationType
+	 *            the association type
+	 * @Date 2018-09-03 09:00
+	 */
 	private static void setKnowed(Association association,
 			BusinessClass businessClassA, BusinessClass businessClassB,
 			AssociationType associationType) {
@@ -589,16 +662,28 @@ public class AssociationUtil {
 			}
 		}
 	}
+	
 	/**
-	 * 设置默认值
+	 * 设置默认值.
+	 *
+	 * @author mqfdy
 	 * @param association
-	 * @param majorClassId 主控端
-	 * @param navigateToClassB 导航到B
-	 * @param navigateToClassA 导航到A
-	 * @param cascadeDeleteClassB 级联删除B
-	 * @param cascadeDeleteClassA 级联删除A
-	 * @param createFKA 在实体A中创建外键
-	 * @param createFKB 在实体B中创建外键
+	 *            the association
+	 * @param majorClassId
+	 *            主控端
+	 * @param navigateToClassB
+	 *            导航到B
+	 * @param navigateToClassA
+	 *            导航到A
+	 * @param cascadeDeleteClassB
+	 *            级联删除B
+	 * @param cascadeDeleteClassA
+	 *            级联删除A
+	 * @param createFKA
+	 *            在实体A中创建外键
+	 * @param createFKB
+	 *            在实体B中创建外键
+	 * @Date 2018-09-03 09:00
 	 */
 	private static void setAssociation(Association association,
 			String majorClassId, boolean navigateToClassB,
@@ -616,22 +701,35 @@ public class AssociationUtil {
 		association.getPersistencePloyParams().put(Association.FOREIGNKEYINB,
 				createFKB ? Association.TRUE : Association.FALSE);
 	}
+	
 	/**
-	 * 计算导航属性名
+	 * 计算导航属性名.
+	 *
+	 * @author mqfdy
 	 * @param businessClass
+	 *            the business class
 	 * @param anotherClassName
-	 * @return
+	 *            the another class name
+	 * @return the new role name
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String getNewRoleName(BusinessClass businessClass,
 			String anotherClassName) {
 		return getNewRoleName(businessClass, anotherClassName, 0);
 	}
+	
 	/**
-	 * 计算导航属性名
+	 * 计算导航属性名.
+	 *
+	 * @author mqfdy
 	 * @param businessClass
+	 *            the business class
 	 * @param anotherClassName
+	 *            the another class name
 	 * @param count
-	 * @return
+	 *            the count
+	 * @return the new role name
+	 * @Date 2018-09-03 09:00
 	 */
 	private static String getNewRoleName(BusinessClass businessClass,
 			String anotherClassName, int count) {
@@ -670,11 +768,17 @@ public class AssociationUtil {
 		}
 		return resultName.toLowerCase(Locale.getDefault());
 	}
+	
 	/**
-	 * 外键字段名
+	 * 外键字段名.
+	 *
+	 * @author mqfdy
 	 * @param businessClass
+	 *            the business class
 	 * @param newName
-	 * @return
+	 *            the new name
+	 * @return the new db column name
+	 * @Date 2018-09-03 09:00
 	 */
 	private static String getNewDbColumnName(BusinessClass businessClass,
 			String newName) {
@@ -697,11 +801,17 @@ public class AssociationUtil {
 		}
 		return getNewFKColumnName(businessClass, resultName.toUpperCase(Locale.getDefault()));
 	}
+	
 	/**
-	 * 外键字段名
+	 * 外键字段名.
+	 *
+	 * @author mqfdy
 	 * @param businessClass
+	 *            the business class
 	 * @param newName
-	 * @return
+	 *            the new name
+	 * @return the new FK column name
+	 * @Date 2018-09-03 09:00
 	 */
 	private static String getNewFKColumnName(BusinessClass businessClass,
 			String newName) {
@@ -734,11 +844,17 @@ public class AssociationUtil {
 		}
 		return resultName.toUpperCase(Locale.getDefault());
 	}
+	
 	/**
-	 * 计算中间表名
+	 * 计算中间表名.
+	 *
+	 * @author mqfdy
 	 * @param businessClassA
+	 *            the business class A
 	 * @param businessClassB
-	 * @return
+	 *            the business class B
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	private static String generateTableName(BusinessClass businessClassA,
 			BusinessClass businessClassB) {
@@ -762,6 +878,16 @@ public class AssociationUtil {
 		}
 		return generateNextMiddleTableName(tableName.toString());
 	}
+	
+	/**
+	 * Generate next middle table name.
+	 *
+	 * @author mqfdy
+	 * @param ref
+	 *            the ref
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String generateNextMiddleTableName(String ref) {
 		String name = ref;
 		BusinessModelManager manager = BusinessModelUtil.getEditorBusinessModelManager();

@@ -19,27 +19,36 @@ import com.mqfdy.code.designer.utils.BusinessModelUtil;
 import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.model.graph.Diagram;
 
+// TODO: Auto-generated Javadoc
 /**
  * 工作空间资源管理器的资源监听器 透视图编辑器内容改变的监听器
  * 
- * 当用编辑器打开bom文件对其中的内容进行修改时此监听器开始工作
- * 
+ * 当用编辑器打开bom文件对其中的内容进行修改时此监听器开始工作.
+ *
  * @author mqfdy
- * 
  */
 public class EditorResourceChangeListener implements IResourceChangeListener {
+	
+	/** The editor part. */
 	private IEditorPart editorPart;
 
 	// private final IWorkspace workspace = ResourcesPlugin.getWorkspace();
 
+	/**
+	 * Instantiates a new editor resource change listener.
+	 *
+	 * @param editorPart
+	 *            the editor part
+	 */
 	public EditorResourceChangeListener(IEditorPart editorPart) {
 		this.editorPart = editorPart;
 	}
 
 	/**
-	 * om文件不存在或者所在项目不存在时返回； 
-	 * 当om文件被其他编辑器修改后，给出提示，刷新编辑器
-	 * 
+	 * om文件不存在或者所在项目不存在时返回； 当om文件被其他编辑器修改后，给出提示，刷新编辑器.
+	 *
+	 * @param event
+	 *            the event
 	 * @see org.eclipse.core.resources.IResourceChangeListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)
 	 */
 	public void resourceChanged(IResourceChangeEvent event) {
@@ -112,6 +121,12 @@ public class EditorResourceChangeListener implements IResourceChangeListener {
 		}
 	}
 
+	/**
+	 * Close editor.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void closeEditor() {
 		Display.getDefault().asyncExec(new Runnable() {
 			public void run() {

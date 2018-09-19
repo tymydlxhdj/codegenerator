@@ -23,6 +23,7 @@ import com.mqfdy.code.model.EnumElement;
 import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.SolidifyPackage;
 
+// TODO: Auto-generated Javadoc
 /**
  * 改写org.eclipse.ui.dialogs.PatternFilter
  * 改变方法的可见性（setUseCache）及模糊查询（setPattern）
@@ -31,16 +32,20 @@ import com.mqfdy.code.model.SolidifyPackage;
  *
  */
 public class PatternFilter extends ViewerFilter {
+	
+	/** The cache. */
 	/*
 	 * Cache of filtered elements in the tree
 	 */
 	private Map cache = new HashMap();
 
+	/** The found any cache. */
 	/*
 	 * Maps parent elements to TRUE or FALSE
 	 */
 	private Map foundAnyCache = new HashMap();
 
+	/** The use cache. */
 	private boolean useCache = false;
 
 	/**
@@ -54,10 +59,25 @@ public class PatternFilter extends ViewerFilter {
 	 */
 	private StringMatcher matcher;
 
+	/** The use early return if matcher is null. */
 	private boolean useEarlyReturnIfMatcherIsNull = true;
 
+	/** The empty. */
 	private static Object[] EMPTY = new Object[0];
 
+	/**
+	 * Filter.
+	 *
+	 * @author mqfdy
+	 * @param viewer
+	 *            the viewer
+	 * @param parent
+	 *            the parent
+	 * @param elements
+	 *            the elements
+	 * @return the object[]
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -94,12 +114,16 @@ public class PatternFilter extends ViewerFilter {
 	 * Returns true if any of the elements makes it through the filter. This
 	 * method uses caching if enabled; the computation is done in
 	 * computeAnyVisible.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param viewer
+	 *            the viewer
 	 * @param parent
+	 *            the parent
 	 * @param elements
 	 *            the elements (must not be an empty array)
 	 * @return true if any of the elements makes it through the filter.
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean isAnyVisible(Viewer viewer, Object parent, Object[] elements) {
 		if (matcher == null) {
@@ -125,13 +149,15 @@ public class PatternFilter extends ViewerFilter {
 
 	/**
 	 * Returns true if any of the elements makes it through the filter.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param viewer
 	 *            the viewer
 	 * @param elements
 	 *            the elements to test
 	 * @return <code>true</code> if any of the elements makes it through the
 	 *         filter
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean computeAnyVisible(Viewer viewer, Object[] elements) {
 		boolean elementFound = false;
@@ -142,6 +168,19 @@ public class PatternFilter extends ViewerFilter {
 		return elementFound;
 	}
 
+	/**
+	 * Select.
+	 *
+	 * @author mqfdy
+	 * @param viewer
+	 *            the viewer
+	 * @param parentElement
+	 *            the parent element
+	 * @param element
+	 *            the element
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -157,9 +196,11 @@ public class PatternFilter extends ViewerFilter {
 	/**
 	 * Sets whether a leading wildcard should be attached to each pattern
 	 * string.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param includeLeadingWildcard
 	 *            Whether a leading wildcard should be added.
+	 * @Date 2018-09-03 09:00
 	 */
 	public final void setIncludeLeadingWildcard(
 			final boolean includeLeadingWildcard) {
@@ -169,8 +210,11 @@ public class PatternFilter extends ViewerFilter {
 	/**
 	 * The pattern string for which this filter should select elements in the
 	 * viewer.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param patternString
+	 *            the new pattern
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setPattern(String patternString) {
 		// these 2 strings allow the PatternFilter to be extended in
@@ -197,6 +241,9 @@ public class PatternFilter extends ViewerFilter {
 	/**
 	 * Clears the caches used for optimizing this filter. Needs to be called
 	 * whenever the tree content changes.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	/* package */void clearCaches() {
 		cache.clear();
@@ -205,11 +252,12 @@ public class PatternFilter extends ViewerFilter {
 
 	/**
 	 * Answers whether the given String matches the pattern.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param string
 	 *            the String to test
-	 * 
 	 * @return whether the string matches the pattern
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean match(String string) {
 		if (matcher == null) {
@@ -223,9 +271,12 @@ public class PatternFilter extends ViewerFilter {
 	 * tree. For example, if a tree has items that are categorized, the category
 	 * itself may not be a valid selection since it is used merely to organize
 	 * the elements.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param element
+	 *            the element
 	 * @return true if this element is eligible for automatic selection
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean isElementSelectable(Object element) {
 		return element != null;
@@ -239,13 +290,14 @@ public class PatternFilter extends ViewerFilter {
 	 * any).
 	 * 
 	 * Subclasses may override this method.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param viewer
 	 *            the tree viewer in which the element resides
 	 * @param element
 	 *            the element in the tree to check for a match
-	 * 
 	 * @return true if the element matches the filter pattern
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean isElementVisible(Viewer viewer, Object element) {
 		// add
@@ -309,13 +361,15 @@ public class PatternFilter extends ViewerFilter {
 	 * is a match with the filter text.
 	 * 
 	 * Subclasses may override this method.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param viewer
 	 *            the viewer that contains the element
 	 * @param element
 	 *            the tree element to check
 	 * @return true if the given element has children that matches the filter
 	 *         text
+	 * @Date 2018-09-03 09:00
 	 */
 	protected boolean isParentMatch(Viewer viewer, Object element) {
 		Object[] children = ((ITreeContentProvider) ((AbstractTreeViewer) viewer)
@@ -332,12 +386,14 @@ public class PatternFilter extends ViewerFilter {
 	 * default behavior checks that the label of the element is a match.
 	 * 
 	 * Subclasses should override this method.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param viewer
 	 *            the viewer that contains the element
 	 * @param element
 	 *            the tree element to check
 	 * @return true if the given element's label matches the filter text
+	 * @Date 2018-09-03 09:00
 	 */
 	protected boolean isLeafMatch(Viewer viewer, Object element) {
 		String labelText = ((ILabelProvider) ((StructuredViewer) viewer)
@@ -352,9 +408,12 @@ public class PatternFilter extends ViewerFilter {
 	/**
 	 * Take the given filter text and break it down into words using a
 	 * BreakIterator.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param text
+	 *            the text
 	 * @return an array of words
+	 * @Date 2018-09-03 09:00
 	 */
 	private String[] getWords(String text) {
 		List words = new ArrayList();
@@ -387,11 +446,13 @@ public class PatternFilter extends ViewerFilter {
 	/**
 	 * Return whether or not if any of the words in text satisfy the match
 	 * critera.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param text
 	 *            the text to match
 	 * @return boolean <code>true</code> if one of the words in text satisifes
 	 *         the match criteria.
+	 * @Date 2018-09-03 09:00
 	 */
 	protected boolean wordMatches(String text) {
 		if (text == null) {
@@ -417,9 +478,11 @@ public class PatternFilter extends ViewerFilter {
 
 	/**
 	 * Can be called by the filtered tree to turn on caching.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param useCache
 	 *            The useCache to set.
+	 * @Date 2018-09-03 09:00
 	 */
 	void setUseCache(boolean useCache) {
 		this.useCache = useCache;

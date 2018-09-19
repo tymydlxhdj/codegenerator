@@ -1,5 +1,6 @@
 package org.apache.velocity.runtime.log;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -20,19 +21,24 @@ package org.apache.velocity.runtime.log;
  */
 
 /**
- *  Logger used in case of failure. Does nothing.
+ * Logger used in case of failure. Does nothing.
  *
  * @author <a href="mailto:geirm@optonline.net">Geir Magnusson Jr.</a>
- * @deprecated Use NullLogChute.
  * @version $Id: NullLogSystem.java 463298 2006-10-12 16:10:32Z henning $
+ * @deprecated Use NullLogChute.
  */
 public class NullLogSystem extends NullLogChute implements LogSystem
 {
+    
     /**
-     *  @param level
-     * @param message
-     * @deprecated Use log(level, message).
-     */
+	 * Log velocity message.
+	 *
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @deprecated Use log(level, message).
+	 */
     public void logVelocityMessage(int level, String message)
     {
     }

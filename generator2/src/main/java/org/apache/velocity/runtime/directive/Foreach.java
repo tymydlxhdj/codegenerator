@@ -38,6 +38,7 @@ import org.apache.velocity.runtime.parser.node.Node;
 import org.apache.velocity.runtime.parser.node.SimpleNode;
 import org.apache.velocity.util.introspection.Info;
 
+// TODO: Auto-generated Javadoc
 /**
  * Foreach directive used for moving through arrays,
  * or objects that provide an Iterator.
@@ -57,14 +58,21 @@ public class Foreach extends Directive
      */
     protected static class NullHolderContext extends ChainedInternalContextAdapter
     {
+        
+        /** The loop variable key. */
         private String   loopVariableKey = "";
+        
+        /** The active. */
         private boolean  active = true;
 
         /**
-         * Create the context as a wrapper to be used within the foreach
-         * @param key the reference used in the foreach
-         * @param context the parent context
-         */
+		 * Create the context as a wrapper to be used within the foreach.
+		 *
+		 * @param key
+		 *            the reference used in the foreach
+		 * @param context
+		 *            the parent context
+		 */
         private NullHolderContext( String key, InternalContextAdapter context )
         {
            super(context);
@@ -73,10 +81,17 @@ public class Foreach extends Directive
         }
 
         /**
-         * Get an object from the context, or null if the key is equal to the loop variable
-         * @see org.apache.velocity.context.InternalContextAdapter#get(java.lang.String)
-         * @exception MethodInvocationException passes on potential exception from reference method call
-         */
+		 * Get an object from the context, or null if the key is equal to the
+		 * loop variable.
+		 *
+		 * @param key
+		 *            the key
+		 * @return the object
+		 * @see org.apache.velocity.context.InternalContextAdapter#get(java.lang.String)
+		 * @exception MethodInvocationException
+		 *                passes on potential exception from reference method
+		 *                call
+		 */
         public Object get( String key ) throws MethodInvocationException
         {
             return ( active && loopVariableKey.equals(key) )
@@ -85,8 +100,16 @@ public class Foreach extends Directive
         }
 
         /**
-         * @see org.apache.velocity.context.InternalContextAdapter#put(java.lang.String key, java.lang.Object value)
-         */
+		 * Put.
+		 *
+		 * @param key
+		 *            the key
+		 * @param value
+		 *            the value
+		 * @return the object
+		 * @see org.apache.velocity.context.InternalContextAdapter#put(java.lang.String
+		 *      key, java.lang.Object value)
+		 */
         public Object put( String key, Object value )
         {
             if( loopVariableKey.equals(key) && (value == null) )
@@ -98,23 +121,32 @@ public class Foreach extends Directive
         }
 
         /**
-         * Allows callers to explicitly put objects in the local context.
-         * Objects added to the context through this method always end up
-         * in the top-level context of possible wrapped contexts.
-         *
-         * @param key name of item to set.
-         * @param value object to set to key.
-         * @see org.apache.velocity.context.InternalWrapperContext#localPut(String, Object)
-         */        
+		 * Allows callers to explicitly put objects in the local context.
+		 * Objects added to the context through this method always end up in the
+		 * top-level context of possible wrapped contexts.
+		 *
+		 * @param key
+		 *            name of item to set.
+		 * @param value
+		 *            object to set to key.
+		 * @return the object
+		 * @see org.apache.velocity.context.InternalWrapperContext#localPut(String,
+		 *      Object)
+		 */        
         public Object localPut(final String key, final Object value)
         {
             return put(key, value);
         }
 
         /**
-         * Remove an object from the context
-         * @see org.apache.velocity.context.InternalContextAdapter#remove(java.lang.Object key)
-         */
+		 * Remove an object from the context.
+		 *
+		 * @param key
+		 *            the key
+		 * @return the object
+		 * @see org.apache.velocity.context.InternalContextAdapter#remove(java.lang.Object
+		 *      key)
+		 */
         public Object remove(Object key)
         {
            if( loopVariableKey.equals(key) )
@@ -126,18 +158,24 @@ public class Foreach extends Directive
     }
 
     /**
-     * Return name of this directive.
-     * @return The name of this directive.
-     */
+	 * Return name of this directive.
+	 *
+	 * @author mqfdy
+	 * @return The name of this directive.
+	 * @Date 2018-9-3 11:38:28
+	 */
     public String getName()
     {
         return "foreach";
     }
 
     /**
-     * Return type of this directive.
-     * @return The type of this directive.
-     */
+	 * Return type of this directive.
+	 *
+	 * @author mqfdy
+	 * @return The type of this directive.
+	 * @Date 2018-9-3 11:38:28
+	 */
     public int getType()
     {
         return BLOCK;
@@ -184,22 +222,27 @@ public class Foreach extends Directive
      */
     private String elementKey;
 
+    /** The warned. */
     // track if we've done the deprecation warning thing already
     private boolean warned = false;
 
-    /**
-     *  immutable, so create in init
-     */
+    /** immutable, so create in init. */
     protected Info uberInfo;
 
     /**
-     *  simple init - init the tree and get the elementKey from
-     *  the AST
-     * @param rs
-     * @param context
-     * @param node
-     * @throws TemplateInitException
-     */
+	 * simple init - init the tree and get the elementKey from the AST.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @param context
+	 *            the context
+	 * @param node
+	 *            the node
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @Date 2018-9-3 11:38:28
+	 */
     public void init(RuntimeServices rs, InternalContextAdapter context, Node node)
         throws TemplateInitException
     {
@@ -285,27 +328,46 @@ public class Foreach extends Directive
     }
 
     /**
-     * Extension hook to allow subclasses to control whether loop vars
-     * are set locally or not. So, those in favor of VELOCITY-285, can
-     * make that happen easily by overriding this and having it use
-     * context.localPut(k,v). See VELOCITY-630 for more on this.
-     */
+	 * Extension hook to allow subclasses to control whether loop vars are set
+	 * locally or not. So, those in favor of VELOCITY-285, can make that happen
+	 * easily by overriding this and having it use context.localPut(k,v). See
+	 * VELOCITY-630 for more on this.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param key
+	 *            the key
+	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
     protected void put(InternalContextAdapter context, String key, Object value)
     {
         context.put(key, value);
     }
 
     /**
-     *  renders the #foreach() block
-     * @param context
-     * @param writer
-     * @param node
-     * @return True if the directive rendered successfully.
-     * @throws IOException
-     * @throws MethodInvocationException
-     * @throws ResourceNotFoundException
-     * @throws ParseErrorException
-     */
+	 * renders the #foreach() block.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @param node
+	 *            the node
+	 * @return True if the directive rendered successfully.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @Date 2018-9-3 11:38:28
+	 */
     public boolean render(InternalContextAdapter context,
                            Writer writer, Node node)
         throws IOException,  MethodInvocationException, ResourceNotFoundException,
@@ -444,6 +506,20 @@ public class Foreach extends Directive
         return true;
     }
 
+    /**
+	 * Clean.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param o
+	 *            the o
+	 * @param savedCounter
+	 *            the saved counter
+	 * @param nextFlag
+	 *            the next flag
+	 * @Date 2018-09-03 09:00
+	 */
     protected void clean(InternalContextAdapter context,
                          Object o, Object savedCounter, Object nextFlag)
     {

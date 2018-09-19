@@ -68,6 +68,13 @@ public class ProjectTreeLabelProvider extends LabelProvider implements ILabelPro
 		return false;
 	}
 
+	/**
+	 * Checks if is use transparant icons.
+	 *
+	 * @author mqfdy
+	 * @return true, if is use transparant icons
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isUSE_TRANSPARANT_ICONS() {
 		return USE_TRANSPARANT_ICONS;
 	}

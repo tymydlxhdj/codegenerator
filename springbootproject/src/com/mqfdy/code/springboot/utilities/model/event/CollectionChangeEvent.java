@@ -16,6 +16,7 @@ import java.util.Iterator;
 import com.mqfdy.code.springboot.utilities.model.Model;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * A "collection change" event gets delivered whenever a model changes a "bound"
  * or "constrained" collection. A CollectionChangeEvent is sent as an
@@ -88,6 +89,10 @@ public class CollectionChangeEvent extends ChangeEvent {
 
 	/**
 	 * Return the programmatic name of the collection that was changed.
+	 *
+	 * @author mqfdy
+	 * @return the collection name
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getCollectionName() {
 		return this.collectionName;
@@ -99,18 +104,24 @@ public class CollectionChangeEvent extends ChangeEvent {
 	}
 
 	/**
-	 * Return an iterator on the items that were added to or
-	 * removed from the collection.
-	 * May be empty if inappropriate or unknown.
+	 * Return an iterator on the items that were added to or removed from the
+	 * collection. May be empty if inappropriate or unknown.
+	 *
+	 * @author mqfdy
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public Iterator<?> items() {
 		return this.items.iterator();
 	}
 
 	/**
-	 * Return the number of items that were added to or
-	 * removed from the collection.
-	 * May be 0 if inappropriate or unknown.
+	 * Return the number of items that were added to or removed from the
+	 * collection. May be 0 if inappropriate or unknown.
+	 *
+	 * @author mqfdy
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public int itemsSize() {
 		return this.items.size();
@@ -131,6 +142,14 @@ public class CollectionChangeEvent extends ChangeEvent {
 	/**
 	 * Return a copy of the event with the specified source and collection name
 	 * replacing the current source and collection name.
+	 *
+	 * @author mqfdy
+	 * @param newSource
+	 *            the new source
+	 * @param newCollectionName
+	 *            the new collection name
+	 * @return the collection change event
+	 * @Date 2018-09-03 09:00
 	 */
 	public CollectionChangeEvent cloneWithSource(Model newSource, String newCollectionName) {
 		return new CollectionChangeEvent(newSource, newCollectionName, this.items);

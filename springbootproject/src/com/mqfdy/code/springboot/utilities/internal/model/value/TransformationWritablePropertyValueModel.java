@@ -12,21 +12,29 @@ package com.mqfdy.code.springboot.utilities.internal.model.value;
 import com.mqfdy.code.springboot.utilities.internal.BidiTransformer;
 import com.mqfdy.code.springboot.utilities.model.value.WritablePropertyValueModel;
 
+// TODO: Auto-generated Javadoc
 /**
  * A <code>TransformationWritablePropertyValueModel</code> wraps another
- * <code>WritablePropertyValueModel</code> and uses a <code>BidiTransformer</code>
- * to:<ul>
+ * <code>WritablePropertyValueModel</code> and uses a
+ * <code>BidiTransformer</code> to:
+ * <ul>
  * <li>transform the wrapped value before it is returned by <code>value()</code>
  * <li>"reverse-transform" the new value that comes in via
  * <code>setValue(Object)</code>
  * </ul>
- * As an alternative to building a <code>BidiTransformer</code>,
- * a subclass of <code>TransformationWritablePropertyValueModel</code> can
- * override the <code>transform_(Object)</code> and 
- * <code>reverseTransform_(Object)</code> methods; or,
- * if something other than null should be returned when the wrapped value
- * is null or the new value is null, override the <code>transform(Object)</code>
- * and <code>reverseTransform(Object)</code> methods.
+ * As an alternative to building a <code>BidiTransformer</code>, a subclass of
+ * <code>TransformationWritablePropertyValueModel</code> can override the
+ * <code>transform_(Object)</code> and <code>reverseTransform_(Object)</code>
+ * methods; or, if something other than null should be returned when the wrapped
+ * value is null or the new value is null, override the
+ * <code>transform(Object)</code> and <code>reverseTransform(Object)</code>
+ * methods.
+ *
+ * @author mqfdy
+ * @param <T1>
+ *            the generic type
+ * @param <T2>
+ *            the generic type
  */
 public class TransformationWritablePropertyValueModel<T1, T2>
 	extends TransformationPropertyValueModel<T1, T2>
@@ -37,11 +45,14 @@ public class TransformationWritablePropertyValueModel<T1, T2>
 
 	/**
 	 * Construct a writable property value model with the specified nested
-	 * writable property value model and the default bidi transformer.
-	 * Use this constructor if you want to override the
-	 * <code>transform_(Object)</code> and <code>reverseTransform_(Object)</code>
-	 * (or <code>transform(Object)</code> and <code>reverseTransform(Object)</code>)
+	 * writable property value model and the default bidi transformer. Use this
+	 * constructor if you want to override the <code>transform_(Object)</code>
+	 * and <code>reverseTransform_(Object)</code> (or
+	 * <code>transform(Object)</code> and <code>reverseTransform(Object)</code>)
 	 * methods instead of building a <code>BidiTransformer</code>.
+	 *
+	 * @param valueHolder
+	 *            the value holder
 	 */
 	public TransformationWritablePropertyValueModel(WritablePropertyValueModel<T1> valueHolder) {
 		super(valueHolder);
@@ -50,6 +61,11 @@ public class TransformationWritablePropertyValueModel<T1, T2>
 	/**
 	 * Construct a writable property value model with the specified nested
 	 * writable property value model and bidi transformer.
+	 *
+	 * @param valueHolder
+	 *            the value holder
+	 * @param transformer
+	 *            the transformer
 	 */
 	public TransformationWritablePropertyValueModel(WritablePropertyValueModel<T1> valueHolder, BidiTransformer<T1, T2> transformer) {
 		super(valueHolder, transformer);
@@ -72,8 +88,14 @@ public class TransformationWritablePropertyValueModel<T1, T2>
 	// ********** behavior **********
 
 	/**
-	 * "Reverse-transform" the specified value and return the result.
-	 * This is called by #setValue(Object).
+	 * "Reverse-transform" the specified value and return the result. This is
+	 * called by #setValue(Object).
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            the value
+	 * @return the t1
+	 * @Date 2018-09-03 09:00
 	 */
 	protected T1 reverseTransform(T2 value) {
 		return this.transformer().reverseTransform(value);
@@ -81,6 +103,12 @@ public class TransformationWritablePropertyValueModel<T1, T2>
 
 	/**
 	 * "Reverse-transform" the specified, non-null, value and return the result.
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            the value
+	 * @return the t1
+	 * @Date 2018-09-03 09:00
 	 */
 	protected T1 reverseTransform_(T2 value) {
 		throw new UnsupportedOperationException();
@@ -91,6 +119,10 @@ public class TransformationWritablePropertyValueModel<T1, T2>
 
 	/**
 	 * Our constructors accept only a WritablePropertyValueModel<T1>.
+	 *
+	 * @author mqfdy
+	 * @return the writable property value model
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	protected WritablePropertyValueModel<T1> valueHolder() {
@@ -99,6 +131,10 @@ public class TransformationWritablePropertyValueModel<T1, T2>
 
 	/**
 	 * Our constructors accept only a bidirectional transformer.
+	 *
+	 * @author mqfdy
+	 * @return the bidi transformer
+	 * @Date 2018-09-03 09:00
 	 */
 	protected BidiTransformer<T1, T2> transformer() {
 		return (BidiTransformer<T1, T2>) this.transformer;

@@ -11,22 +11,32 @@ import org.eclipse.swt.widgets.Control;
 
 import com.mqfdy.code.designer.utils.BusinessModelUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 继承GraphicalEditorWithFlyoutPalette 主要用于获取鼠标在当前编辑器中的相对位置
- * 
+ * 继承GraphicalEditorWithFlyoutPalette 主要用于获取鼠标在当前编辑器中的相对位置.
+ *
  * @author mqfdy
- * 
  */
 public class AbstractGenericGEFEditor extends GraphicalEditorWithFlyoutPalette {
+	
+	/** The mouse location. */
 	private static Point mouseLocation = new Point();
+	
+	/** The range location. */
 	private static Point rangeLocation = new Point();
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected PaletteRoot getPaletteRoot() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public Control getGraphicalControl() {
 		Control graphicalControl = super.getGraphicalControl();
@@ -47,6 +57,14 @@ public class AbstractGenericGEFEditor extends GraphicalEditorWithFlyoutPalette {
 		return graphicalControl;
 	}
 
+	/**
+	 * Do save.
+	 *
+	 * @author mqfdy
+	 * @param monitor
+	 *            the monitor
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public void doSave(IProgressMonitor monitor) {
 		// TODO Auto-generated method stub
@@ -54,18 +72,22 @@ public class AbstractGenericGEFEditor extends GraphicalEditorWithFlyoutPalette {
 	}
 
 	/**
-	 * 获取鼠标位置
-	 * 
-	 * @return
+	 * 获取鼠标位置.
+	 *
+	 * @author mqfdy
+	 * @return the mouse location
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Point getMouseLocation() {
 		return mouseLocation;
 	}
 	
 	/**
-	 * 获取滚动位移
-	 * 
-	 * @return
+	 * 获取滚动位移.
+	 *
+	 * @author mqfdy
+	 * @return the range location
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Point getRangeLocation() {
 		return rangeLocation;

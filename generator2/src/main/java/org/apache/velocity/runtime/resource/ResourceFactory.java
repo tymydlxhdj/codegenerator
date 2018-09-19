@@ -21,6 +21,7 @@ package org.apache.velocity.runtime.resource;
 
 import org.apache.velocity.Template;
 
+// TODO: Auto-generated Javadoc
 /**
  * Class responsible for instantiating <code>Resource</code> objects,
  * given name and type.
@@ -31,11 +32,18 @@ import org.apache.velocity.Template;
  */
 public class ResourceFactory
 {
+    
     /**
-     * @param resourceName
-     * @param resourceType
-     * @return The resource described by name and type.
-     */
+	 * Gets the resource.
+	 *
+	 * @author mqfdy
+	 * @param resourceName
+	 *            the resource name
+	 * @param resourceType
+	 *            the resource type
+	 * @return The resource described by name and type.
+	 * @Date 2018-09-03 09:00
+	 */
     public static Resource getResource(String resourceName, int resourceType)
     {
         Resource resource = null;

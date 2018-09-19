@@ -15,6 +15,7 @@ import com.mqfdy.code.springboot.utilities.internal.StringTools;
 import com.mqfdy.code.springboot.utilities.model.Model;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Abstract class for all the change events that can be fired by models.
  * 
@@ -47,14 +48,24 @@ public abstract class ChangeEvent extends EventObject {
 	}
 
 	/**
-	 * Return the name of the aspect of the source that changed.
-	 * May be null if inappropriate.
+	 * Return the name of the aspect of the source that changed. May be null if
+	 * inappropriate.
+	 *
+	 * @author mqfdy
+	 * @return the aspect name
+	 * @Date 2018-09-03 09:00
 	 */
 	public abstract String getAspectName();
 
 	/**
-	 * Return a copy of the event with the specified source
-	 * replacing the current source.
+	 * Return a copy of the event with the specified source replacing the
+	 * current source.
+	 *
+	 * @author mqfdy
+	 * @param newSource
+	 *            the new source
+	 * @return the change event
+	 * @Date 2018-09-03 09:00
 	 */
 	public abstract ChangeEvent cloneWithSource(Model newSource);
 

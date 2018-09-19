@@ -10,8 +10,14 @@
 package com.mqfdy.code.springboot.utilities.internal;
 
 /**
- * Used by various "pluggable" classes to transform objects.
- * Transform an object of type T1 to an object of type T2.
+ * Used by various "pluggable" classes to transform objects. Transform an object
+ * of type T1 to an object of type T2.
+ *
+ * @author mqfdy
+ * @param <T1>
+ *            the generic type
+ * @param <T2>
+ *            the generic type
  */
 public interface Transformer<T1, T2> {
 

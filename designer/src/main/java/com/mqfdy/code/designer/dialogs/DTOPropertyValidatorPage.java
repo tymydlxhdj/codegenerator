@@ -46,87 +46,149 @@ import com.mqfdy.code.model.utils.ParamType;
 import com.mqfdy.code.model.utils.StringUtil;
 import com.mqfdy.code.model.utils.ValidatorType;
 
+// TODO: Auto-generated Javadoc
 /**
- * DTO属性校验器页
- * 
+ * DTO属性校验器页.
+ *
  * @author mqfdy
- * 
  */
 public class DTOPropertyValidatorPage extends Composite implements
 		IBusinessClassEditorPage {
+	
+	/** The parent dialog. */
 	DTOPropertyEditDialog parentDialog;
-	/**
-	 * 属性编辑弹出框
-	 */
+	
+	/** 属性编辑弹出框. */
 
 	public static final String GROUP_VALIDATORLIST_TEXT = "已应用校验策略列表";
+	
+	/** The Constant GROUP_VALIDATOREDITOR_TEXT. */
 	public static final String GROUP_VALIDATOREDITOR_TEXT = "数据校验策略编辑";
+	
+	/** The Constant GROUP_VALIDATORPARAM_TEXT. */
 	public static final String GROUP_VALIDATORPARAM_TEXT = "校验参数";
 
+	/** The Constant VALIDATORNAME_LABEL_TEXT. */
 	public static final String VALIDATORNAME_LABEL_TEXT = "策略名称：";
+	
+	/** The Constant VALIDATORTYPE_LABEL_TEXT. */
 	public static final String VALIDATORTYPE_LABEL_TEXT = "校验器类型：";
+	
+	/** The Constant ERRORMESSAGE_LABEL_TEXT. */
 	public static final String ERRORMESSAGE_LABEL_TEXT = "失败提示：";
 
+	/** The Constant DELETE_MESSAGE. */
 	public static final String DELETE_MESSAGE = "请选择要删除的对象";
+	
+	/** The Constant DELETE_MESSAGE_TITLE. */
 	public static final String DELETE_MESSAGE_TITLE = "校验器";
 
+	/** The tool bar. */
 	private ToolBar toolBar = null;
 
+	/** The table. */
 	private Table table;
+	
+	/** The table viewer. */
 	private TableViewer tableViewer;
 
+	/** The label validator type. */
 	private Label label_validatorType;
+	
+	/** The list validator type. */
 	private List list_validatorType;
 
+	/** The label error message. */
 	private Label label_errorMessage;
+	
+	/** The text error message. */
 	private NullToEmptyText text_errorMessage;
 
+	/** The combo validator param. */
 	private Combo combo_validatorParam;
+	
+	/** The text validator param. */
 	private NullToEmptyText text_validatorParam;
 
+	/** The group validator list. */
 	private Group group_validatorList;
+	
+	/** The group validator editor. */
 	private Group group_validatorEditor;
+	
+	/** The group validator param. */
 	private Group group_validatorParam;
 
+	/** The add validator action. */
 	private Action addValidatorAction;// 新增
+	
+	/** The delete validator action. */
 	private Action deleteValidatorAction;// 删除
+	
+	/** The save validator action. */
 	private Action saveValidatorAction;// 保存
 
+	/** The up action. */
 	private Action upAction;
+	
+	/** The down action. */
 	private Action downAction;
+	
+	/** The top action. */
 	private Action topAction;
+	
+	/** The bottom action. */
 	private Action bottomAction;
 
+	/** The statue. */
 	private String statue = STATUS_NO;
 
-	/**
-	 * 当前编辑的校验器
-	 */
+	/** 当前编辑的校验器. */
 	private Validator editingValidator;
 
-	/**
-	 * 表格数据源
-	 */
+	/** 表格数据源. */
 	private Vector<Validator> tableItems = new Vector<Validator>();
 
-	/**
-	 * 校验器参数
-	 */
+	/** 校验器参数. */
 	private Map<String, String> validatorParams = new HashMap<String, String>();
 
 	/**
-	 * 校验器表格内容 提供者
-	 * 
+	 * 校验器表格内容 提供者.
+	 *
 	 * @author LQR
-	 * 
 	 */
 	private class ValidatorConentProvider implements IStructuredContentProvider {
+		
+		/**
+		 * 
+		 */
 		public void dispose() {
 		}
 
+		/**
+		 * Input changed.
+		 *
+		 * @author mqfdy
+		 * @param viewer
+		 *            the viewer
+		 * @param oldInput
+		 *            the old input
+		 * @param newInput
+		 *            the new input
+		 * @Date 2018-09-03 09:00
+		 */
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		}
 
+		/**
+		 * Gets the elements.
+		 *
+		 * @author mqfdy
+		 * @param inputElement
+		 *            the input element
+		 * @return the elements
+		 * @Date 2018-09-03 09:00
+		 */
 		@SuppressWarnings("rawtypes")
 		public Object[] getElements(Object inputElement) {
 			if (inputElement instanceof Collection) {
@@ -145,18 +207,39 @@ public class DTOPropertyValidatorPage extends Composite implements
 	}
 
 	/**
-	 * 校验器表格标签提供者
-	 * 
+	 * 校验器表格标签提供者.
+	 *
 	 * @author LQR
-	 * 
 	 */
 	private class ValidatorLabelProvider extends LabelProvider implements
 			ITableLabelProvider {
 
+		/**
+		 * Gets the column image.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param columnIndex
+		 *            the column index
+		 * @return the column image
+		 * @Date 2018-09-03 09:00
+		 */
 		public Image getColumnImage(Object element, int columnIndex) {
 			return null;
 		}
 
+		/**
+		 * Gets the column text.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param columnIndex
+		 *            the column index
+		 * @return the column text
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getColumnText(Object element, int columnIndex) {
 			Validator validator = (Validator) element;
 			switch (columnIndex) {
@@ -170,8 +253,8 @@ public class DTOPropertyValidatorPage extends Composite implements
 	}
 
 	/**
-	 * 构造函数(用于新增)
-	 * 
+	 * 构造函数(用于新增).
+	 *
 	 * @param parent
 	 *            上级容器
 	 * @param style
@@ -182,8 +265,8 @@ public class DTOPropertyValidatorPage extends Composite implements
 	}
 
 	/**
-	 * 构造函数(用于编辑)
-	 * 
+	 * 构造函数(用于编辑).
+	 *
 	 * @param parent
 	 *            上级容器
 	 * @param style
@@ -199,9 +282,12 @@ public class DTOPropertyValidatorPage extends Composite implements
 	}
 
 	/**
-	 * 创建页面内容
-	 * 
+	 * 创建页面内容.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createContents(Composite composite) {
 		GridLayout layout = new GridLayout();
@@ -233,7 +319,10 @@ public class DTOPropertyValidatorPage extends Composite implements
 	}
 
 	/**
-	 * 创建工具条
+	 * 创建工具条.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createToolBar() {
 		GridData gridData = new GridData();
@@ -245,7 +334,10 @@ public class DTOPropertyValidatorPage extends Composite implements
 	}
 
 	/**
-	 * 创建校验策略列表表格
+	 * 创建校验策略列表表格.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createValidatorListTable() {
 		tableViewer = new TableViewer(group_validatorList, SWT.SINGLE
@@ -267,7 +359,10 @@ public class DTOPropertyValidatorPage extends Composite implements
 	}
 
 	/**
-	 * 创建校验器编辑面板
+	 * 创建校验器编辑面板.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createValidatorEditorPanel() {
 		/*
@@ -311,7 +406,10 @@ public class DTOPropertyValidatorPage extends Composite implements
 	}
 
 	/**
-	 * 初始化动作
+	 * 初始化动作.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void makeActions() {
 		addValidatorAction = new Action(ActionTexts.MODEL_ELEMENT_ADD,
@@ -523,7 +621,10 @@ public class DTOPropertyValidatorPage extends Composite implements
 	}
 
 	/**
-	 * 更新校验参数列表
+	 * 更新校验参数列表.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void validatorParamsUpdate() {
 		if (combo_validatorParam.getSelectionIndex() < 0) {
@@ -542,14 +643,24 @@ public class DTOPropertyValidatorPage extends Composite implements
 		}
 	}
 
+	/**
+	 * Gets the next order number.
+	 *
+	 * @author mqfdy
+	 * @return the next order number
+	 * @Date 2018-09-03 09:00
+	 */
 	private int getNextOrderNumber() {
 		return tableItems.size() + 1;
 	}
 
 	/**
-	 * 新增
-	 * 
+	 * 新增.
+	 *
+	 * @author mqfdy
 	 * @param validator
+	 *            the validator
+	 * @Date 2018-09-03 09:00
 	 */
 	private void saveNewValidator(Validator validator) {
 		tableItems.add(validator);
@@ -560,12 +671,18 @@ public class DTOPropertyValidatorPage extends Composite implements
 	}
 
 	/**
-	 * 保存
+	 * 保存.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void saveEditingValidator() {
 		tableViewer.refresh();
 	}
 
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		list_validatorType.setItems(ValidatorType.getValidatorTypesString());
 		AbstractModelElement editingElement = parentDialog.getProperty();
@@ -579,6 +696,9 @@ public class DTOPropertyValidatorPage extends Composite implements
 		tableViewer.refresh();
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		if (STATUS_NO.equals(getStatue()) || STATUS_ADD.equals(getStatue())) {
 			if (list_validatorType.getSelectionIndex() < 0) {
@@ -625,6 +745,9 @@ public class DTOPropertyValidatorPage extends Composite implements
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 		for (int i = 0; i < tableItems.size(); i++) {
 			Validator temp = tableItems.get(i);
@@ -635,16 +758,22 @@ public class DTOPropertyValidatorPage extends Composite implements
 	}
 
 	/**
-	 * 刷新表格
+	 * 刷新表格.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void refreshTable() {
 		tableViewer.refresh();
 	}
 
 	/**
-	 * 重置右边校验器明细
-	 * 
+	 * 重置右边校验器明细.
+	 *
+	 * @author mqfdy
 	 * @param validator
+	 *            the validator
+	 * @Date 2018-09-03 09:00
 	 */
 	private void resetValidatorDetail(Validator validator) {
 		this.editingValidator = validator;
@@ -667,7 +796,10 @@ public class DTOPropertyValidatorPage extends Composite implements
 	}
 
 	/**
-	 * 重新设置校验参数
+	 * 重新设置校验参数.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void resetValidatorParam() {
 		int index = list_validatorType.getSelectionIndex();
@@ -690,6 +822,16 @@ public class DTOPropertyValidatorPage extends Composite implements
 		}
 	}
 
+	/**
+	 * Reset order num.
+	 *
+	 * @author mqfdy
+	 * @param validator
+	 *            the validator
+	 * @param type
+	 *            the type
+	 * @Date 2018-09-03 09:00
+	 */
 	private void resetOrderNum(Validator validator, String type) {
 		if ("up".equals(type)) {
 			for (int i = 0; i < tableItems.size(); i++) {
@@ -732,14 +874,36 @@ public class DTOPropertyValidatorPage extends Composite implements
 		}
 	}
 
+	/**
+	 * Gets the editing validator.
+	 *
+	 * @author mqfdy
+	 * @return the editing validator
+	 * @Date 2018-09-03 09:00
+	 */
 	public Validator getEditingValidator() {
 		return editingValidator;
 	}
 
+	/**
+	 * Gets the statue.
+	 *
+	 * @author mqfdy
+	 * @return the statue
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getStatue() {
 		return statue;
 	}
 
+	/**
+	 * Sets the statue.
+	 *
+	 * @author mqfdy
+	 * @param statue
+	 *            the new statue
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setStatue(String statue) {
 		this.statue = statue;
 	}

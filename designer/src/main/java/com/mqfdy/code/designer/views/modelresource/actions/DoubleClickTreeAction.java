@@ -44,12 +44,27 @@ import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.utils.ModelUtil;
 import com.mqfdy.code.resource.BomManager;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DoubleClickTreeAction.
+ *
+ * @author mqfdy
+ */
 public class DoubleClickTreeAction extends TreeAction {
 
+	/**
+	 * Instantiates a new double click tree action.
+	 *
+	 * @param treeViewer
+	 *            the tree viewer
+	 */
 	public DoubleClickTreeAction(TreeViewer treeViewer) {
 		super("double Click", treeViewer);
 	}
 
+	/**
+	 * 
+	 */
 	public void run() {
 		ISelection selection = this.treeViewer.getSelection();
 		Object node = ((IStructuredSelection) selection).getFirstElement();
@@ -248,6 +263,13 @@ public class DoubleClickTreeAction extends TreeAction {
 
 		}
 	}
+	
+	/**
+	 * Refresh pro view.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void refreshProView(){
 		//刷新properties视图 
 		IViewPart[] views = PlatformUI.getWorkbench()

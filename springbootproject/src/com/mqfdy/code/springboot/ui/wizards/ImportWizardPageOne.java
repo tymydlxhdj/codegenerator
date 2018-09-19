@@ -37,7 +37,10 @@ import com.mqfdy.code.security.util.SecurityTestUtil;
 import com.mqfdy.code.springboot.core.MicroProjectPlugin;
 import com.mqfdy.code.springboot.core.util.OsUtils;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ImportWizardPageOne.
+ *
  * @author lenovo
  */
 public class ImportWizardPageOne extends WizardPage {
@@ -63,6 +66,9 @@ public class ImportWizardPageOne extends WizardPage {
 	private Object[] fs = null;
 	String directory = getBrowerButtonFromSettings();
 
+	/**
+	 * Instantiates a new import wizard page one.
+	 */
 	public ImportWizardPageOne() {
 		super("gradleImportWizardPage1", "Import Springboot Project",
 				WIZBAN_IMAGE);
@@ -85,7 +91,12 @@ public class ImportWizardPageOne extends WizardPage {
 	}
 
 	/**
-	 * Create the import source selection widget
+	 * Create the import source selection widget.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void createProjectSelectionGroup(Composite parent) {
 
@@ -158,6 +169,12 @@ public class ImportWizardPageOne extends WizardPage {
 		saveImportOptions();
 	}
 
+	/**
+	 * Check page complete.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void checkPageComplete() {
 		setPageComplete(getErrorMessage() == null);
 	}
@@ -303,6 +320,13 @@ public class ImportWizardPageOne extends WizardPage {
 		return null;
 	}
 
+	/**
+	 * Gets the root folder.
+	 *
+	 * @author mqfdy
+	 * @return the root folder
+	 * @Date 2018-09-03 09:00
+	 */
 	public File getRootFolder() {
 		String text = rootFolderText.getText();
 		if (text != null && !("".equals(text.trim()))) {
@@ -316,6 +340,13 @@ public class ImportWizardPageOne extends WizardPage {
 		fs = elements;
 	}
 
+	/**
+	 * Gets the import elements.
+	 *
+	 * @author mqfdy
+	 * @return the import elements
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object[] getImportElements() {
 		return fs;
 	}

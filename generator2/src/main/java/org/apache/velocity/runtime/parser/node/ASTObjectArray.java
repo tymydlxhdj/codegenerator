@@ -26,23 +26,34 @@ import org.apache.velocity.context.InternalContextAdapter;
 import org.apache.velocity.exception.MethodInvocationException;
 import org.apache.velocity.runtime.parser.Parser;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ASTObjectArray.
  *
+ * @author mqfdy
  */
 public class ASTObjectArray extends SimpleNode
 {
+    
     /**
-     * @param id
-     */
+	 * Instantiates a new AST object array.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTObjectArray(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST object array.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTObjectArray(Parser p, int id)
     {
         super(p, id);
@@ -50,16 +61,31 @@ public class ASTObjectArray extends SimpleNode
 
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#value(org.apache.velocity.context.InternalContextAdapter)
-     */
+	 * Value.
+	 *
+	 * @param context
+	 *            the context
+	 * @return the object
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#value(org.apache.velocity.context.InternalContextAdapter)
+	 */
     public Object value( InternalContextAdapter context)
         throws MethodInvocationException
     {

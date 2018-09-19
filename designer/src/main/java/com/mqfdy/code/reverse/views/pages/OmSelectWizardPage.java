@@ -52,64 +52,153 @@ import com.mqfdy.code.reverse.views.providers.MultiTreeContentProvider;
 import com.mqfdy.code.reverse.views.providers.SingleTreeLabelProvider;
 import com.mqfdy.code.utils.ProjectUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * om选择页面
- * @author xuran
- * 2014-9-4
+ * om选择页面.
+ *
+ * @author xuran 2014-9-4
  */
 public class OmSelectWizardPage extends WizardPage {
 
+	/** The Constant LABELDATA_WIDTH. */
 	public static final int LABELDATA_WIDTH = 100;
+	
+	/** The Constant MODEL_DEFAULT_NAME. */
 	public static final String MODEL_DEFAULT_NAME = "com.orgname.projectname";
+	
+	/** The Constant DIR_NAME_MODEL. */
 	public static final String DIR_NAME_MODEL = "model";
+	
+	/** The Constant DIR_NAME_OM. */
 	public static final String DIR_NAME_OM = "bom";
 	
+	/** The Constant STR_OM. */
 	private static final String STR_OM = "bom";
 	
+	/** The Constant STR_OM_Q. */
 	private static final String STR_OM_Q = ".bom";
 	
 	
+	/** The path label. */
 	private Label pathLabel;
+	
+	/** The path text. */
 	private Text pathText;
+	
+	/** The new om btn. */
 	private Button newOmBtn;
+	
+	/** The namespace label. */
 	private Label namespaceLabel;
+	
+	/** The namespace text. */
 	private Text namespaceText;
+	
+	/** The om name label. */
 	private Label omNameLabel;
+	
+	/** The om name text. */
 	private Text omNameText;
+	
+	/** The om display name label. */
 	private Label omDisplayNameLabel;
+	
+	/** The om display text. */
 	private Text omDisplayText;
+	
+	/** The old om btn. */
 	private Button oldOmBtn;
+	
+	/** The tree viewer. */
 	private TreeViewer treeViewer;
+	
+	/** The tree. */
 	private Tree tree;
 	
+	/** The is new om. */
 	private boolean isNewOm = true;			//是否选择新的om  true:新增 , false: 已有
+	
+	/** The is new validate. */
 	private boolean isNewValidate = false;	//新建om验证结果
+	
+	/** The is old validate. */
 	private boolean isOldValidate = false;	//已选om验证结果
+	
+	/** The up group. */
 	private Group upGroup;
+	
+	/** The down group. */
 	private Group downGroup;
 	
+	/** The om reverse. */
 	private IOmReverse omReverse;
+	
+	/** The exsit om path. */
 	private String exsitOmPath;				//已有om的文件路径
+	
+	/** The om path. */
 	private String omPath;				//最终om的文件上一层目录
+	
+	/** The om name. */
 	private String omName;				//最终om的文件名称
+	
+	/** The project. */
 	private IProject project;
 	
+	/**
+	 * Gets the om name.
+	 *
+	 * @author mqfdy
+	 * @return the om name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getOmName() {
 		return omName;
 	}
 
+	/**
+	 * Sets the om name.
+	 *
+	 * @author mqfdy
+	 * @param omName
+	 *            the new om name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setOmName(String omName) {
 		this.omName = omName;
 	}
 
+	/**
+	 * Gets the om path.
+	 *
+	 * @author mqfdy
+	 * @return the om path
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getOmPath() {
 		return omPath;
 	}
 
+	/**
+	 * Sets the om path.
+	 *
+	 * @author mqfdy
+	 * @param omPath
+	 *            the new om path
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setOmPath(String omPath) {
 		this.omPath = omPath;
 	}
 
+	/**
+	 * Instantiates a new om select wizard page.
+	 *
+	 * @param pageName
+	 *            the page name
+	 * @param project
+	 *            the project
+	 */
 	public OmSelectWizardPage(String pageName, IProject project) {
 		super(pageName);
 		setPageComplete(false);
@@ -117,6 +206,14 @@ public class OmSelectWizardPage extends WizardPage {
 		this.project = project;
 	}
 
+	/**
+	 * Creates the control.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createControl(Composite parent) {
 		setTitle("新建/选择已存在的bom");
 		
@@ -416,10 +513,25 @@ public class OmSelectWizardPage extends WizardPage {
 		setControl(container);
 	}
 
+	/**
+	 * Gets the project.
+	 *
+	 * @author mqfdy
+	 * @return the project
+	 * @Date 2018-09-03 09:00
+	 */
 	public IProject getProject() {
 		return project;
 	}
 
+	/**
+	 * Sets the project.
+	 *
+	 * @author mqfdy
+	 * @param project
+	 *            the new project
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setProject(IProject project) {
 		this.project = project;
 		String omDirPath = getBomPath();
@@ -427,7 +539,11 @@ public class OmSelectWizardPage extends WizardPage {
 	}
 
 	/**
-	 * @return
+	 * Gets the bom path.
+	 *
+	 * @author mqfdy
+	 * @return the bom path
+	 * @Date 2018-09-03 09:00
 	 */
 	private String getBomPath() {
 		String omDirPath = "";
@@ -438,6 +554,12 @@ public class OmSelectWizardPage extends WizardPage {
 		return omDirPath;
 	}
 
+	/**
+	 * Construct tree.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void constructTree() {
 		if(ReverseContext.wizard != null){
 			IProject project = ReverseContext.wizard.getProject();
@@ -447,6 +569,12 @@ public class OmSelectWizardPage extends WizardPage {
 		}
 	}
 	
+	/**
+	 * Construct BOM tree.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void constructBOMTree() {
 		//获取当前工作空间下的所有工程
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
@@ -544,6 +672,14 @@ public class OmSelectWizardPage extends WizardPage {
 	
 	}
 	
+	/**
+	 * Expand tree.
+	 *
+	 * @author mqfdy
+	 * @param currentNode
+	 *            the current node
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void expandTree(TreeNode currentNode) {
 		//判断如果当前节点有子节点，则说明之前加载过，所以直接展开。
 		List<TreeNode> childList = currentNode.getChilds();
@@ -592,11 +728,17 @@ public class OmSelectWizardPage extends WizardPage {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canFlipToNextPage() {
 		return isPageComplete();
 	}
 
+	/**
+	 * @return
+	 */
 	@SuppressWarnings("deprecation")
 	@Override
 	public IWizardPage getNextPage() {
@@ -652,6 +794,12 @@ public class OmSelectWizardPage extends WizardPage {
 		return duplicateNameWizardPage;
 	}
 
+	/**
+	 * Validate input.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	@SuppressWarnings("static-access")
 	public void validateInput() {
 		//新建om校验
@@ -751,22 +899,57 @@ public class OmSelectWizardPage extends WizardPage {
 		}
 	}
 	
+	/**
+	 * The Class ModifyListenerAdapter.
+	 *
+	 * @author mqfdy
+	 */
 	class ModifyListenerAdapter implements ModifyListener {
 
+		/**
+		 * Modify text.
+		 *
+		 * @author mqfdy
+		 * @param e
+		 *            the e
+		 * @Date 2018-09-03 09:00
+		 */
 		public void modifyText(ModifyEvent e) {
 			validateInput();
 		}
 		
 	}
 
+	/**
+	 * Gets the exsit om path.
+	 *
+	 * @author mqfdy
+	 * @return the exsit om path
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getExsitOmPath() {
 		return exsitOmPath;
 	}
 
+	/**
+	 * Sets the exsit om path.
+	 *
+	 * @author mqfdy
+	 * @param exsitOmPath
+	 *            the new exsit om path
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setExsitOmPath(String exsitOmPath) {
 		this.exsitOmPath = exsitOmPath;
 	}
 
+	/**
+	 * Checks if is new om.
+	 *
+	 * @author mqfdy
+	 * @return true, if is new om
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isNewOm() {
 		return isNewOm;
 	}

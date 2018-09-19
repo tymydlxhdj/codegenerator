@@ -48,24 +48,41 @@ import com.mqfdy.code.shareModel.providers.ModelMessageTreeContentProvider;
 import com.mqfdy.code.shareModel.providers.ModelMessageTreeLabelProvider;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务实体选择tab页
- * @author chenwanli
+ * 业务实体选择tab页.
  *
+ * @author chenwanli
  */
 public class BusinessClassInfoPage extends Composite{	
+	
+	/** The table viewer. */
 	private TableViewer tableViewer;
+	
+	/** The model. */
 	private BusinessObjectModel model;
+	
+	/** The table. */
 	public Table table;
 	
+	/**
+	 * Instantiates a new business class info page.
+	 *
+	 * @param folder
+	 *            the folder
+	 */
 	public BusinessClassInfoPage(Composite folder) {
 		super(folder, SWT.NONE);
 		createContents(this);
 	}	
 
 	/**
-	 * 创建界面
+	 * 创建界面.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createContents(Composite composite) {
 		composite.setLayout(new GridLayout(1,false));	
@@ -130,6 +147,14 @@ public class BusinessClassInfoPage extends Composite{
 
 	}
 	
+	/**
+	 * Inits the data.
+	 *
+	 * @author mqfdy
+	 * @param obj
+	 *            the obj
+	 * @Date 2018-09-03 09:00
+	 */
 	public void initData(Object obj){
 		model=(BusinessObjectModel)obj;
 		for(BusinessClass bs:model.getBusinessClasses()){

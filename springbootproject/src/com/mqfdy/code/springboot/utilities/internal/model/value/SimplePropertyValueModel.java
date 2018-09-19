@@ -15,9 +15,14 @@ import com.mqfdy.code.springboot.utilities.internal.model.SingleAspectChangeSupp
 import com.mqfdy.code.springboot.utilities.model.listener.PropertyChangeListener;
 import com.mqfdy.code.springboot.utilities.model.value.WritablePropertyValueModel;
 
+// TODO: Auto-generated Javadoc
 /**
  * Implementation of WritablePropertyValueModel that simply holds on to an
  * object and uses it as the value.
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
  */
 public class SimplePropertyValueModel<T>
 	extends AbstractModel
@@ -29,6 +34,9 @@ public class SimplePropertyValueModel<T>
 
 	/**
 	 * Construct a PropertyValueModel for the specified value.
+	 *
+	 * @param value
+	 *            the value
 	 */
 	public SimplePropertyValueModel(T value) {
 		super();

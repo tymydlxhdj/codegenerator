@@ -22,6 +22,7 @@ package org.apache.velocity.util.introspection;
 import java.lang.reflect.Method;
 import org.apache.velocity.runtime.log.Log;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>Prevent "dangerous" classloader/reflection related calls.  Use this
  * introspector for situations in which template writers are numerous
@@ -37,9 +38,23 @@ import org.apache.velocity.runtime.log.Log;
  */
 public class SecureIntrospectorImpl extends Introspector implements SecureIntrospectorControl
 {
+    
+    /** The bad classes. */
     private String[] badClasses;
+    
+    /** The bad packages. */
     private String[] badPackages;
 
+    /**
+	 * Instantiates a new secure introspector impl.
+	 *
+	 * @param badClasses
+	 *            the bad classes
+	 * @param badPackages
+	 *            the bad packages
+	 * @param log
+	 *            the log
+	 */
     public SecureIntrospectorImpl(String[] badClasses, String[] badPackages, Log log)
     {
         super(log);
@@ -48,16 +63,22 @@ public class SecureIntrospectorImpl extends Introspector implements SecureIntros
     }
 
     /**
-     * Get the Method object corresponding to the given class, name and parameters.
-     * Will check for appropriate execute permissions and return null if the method
-     * is not allowed to be executed.
-     *
-     * @param clazz Class on which method will be called
-     * @param methodName Name of method to be called
-     * @param params array of parameters to method
-     * @return Method object retrieved by Introspector
-     * @throws IllegalArgumentException The parameter passed in were incorrect.
-     */
+	 * Get the Method object corresponding to the given class, name and
+	 * parameters. Will check for appropriate execute permissions and return
+	 * null if the method is not allowed to be executed.
+	 *
+	 * @author mqfdy
+	 * @param clazz
+	 *            Class on which method will be called
+	 * @param methodName
+	 *            Name of method to be called
+	 * @param params
+	 *            array of parameters to method
+	 * @return Method object retrieved by Introspector
+	 * @throws IllegalArgumentException
+	 *             The parameter passed in were incorrect.
+	 * @Date 2018-9-3 11:38:27
+	 */
     public Method getMethod(Class clazz, String methodName, Object[] params)
         throws IllegalArgumentException
     {
@@ -75,16 +96,21 @@ public class SecureIntrospectorImpl extends Introspector implements SecureIntros
     }
 
     /**
-     * Determine which methods and classes to prevent from executing.  Always blocks
-     * methods wait() and notify().  Always allows methods on Number, Boolean, and String.
-     * Prohibits method calls on classes related to reflection and system operations.
-     * For the complete list, see the properties <code>introspector.restrict.classes</code>
-     * and <code>introspector.restrict.packages</code>.
-     *
-     * @param clazz Class on which method will be called
-     * @param methodName Name of method to be called
-     * @see org.apache.velocity.util.introspection.SecureIntrospectorControl#checkObjectExecutePermission(java.lang.Class, java.lang.String)
-     */
+	 * Determine which methods and classes to prevent from executing. Always
+	 * blocks methods wait() and notify(). Always allows methods on Number,
+	 * Boolean, and String. Prohibits method calls on classes related to
+	 * reflection and system operations. For the complete list, see the
+	 * properties <code>introspector.restrict.classes</code> and
+	 * <code>introspector.restrict.packages</code>.
+	 *
+	 * @param clazz
+	 *            Class on which method will be called
+	 * @param methodName
+	 *            Name of method to be called
+	 * @return true, if successful
+	 * @see org.apache.velocity.util.introspection.SecureIntrospectorControl#checkObjectExecutePermission(java.lang.Class,
+	 *      java.lang.String)
+	 */
     public boolean checkObjectExecutePermission(Class clazz, String methodName)
     {
 		/**

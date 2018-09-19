@@ -1,5 +1,6 @@
 package org.apache.velocity.util;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -31,26 +32,25 @@ package org.apache.velocity.util;
  */
 public final class SimplePool
 {
+    
+    /** The pool. */
     /*
      * Where the objects are held.
      */
     private Object pool[];
 
-    /**
-     *  max amount of objects to be managed
-     *  set via CTOR
-     */
+    /** max amount of objects to be managed set via CTOR. */
     private int max;
 
-    /**
-     *  index of previous to next
-     *  free slot
-     */
+    /** index of previous to next free slot. */
     private int current=-1;
 
     /**
-     * @param max
-     */
+	 * Instantiates a new simple pool.
+	 *
+	 * @param max
+	 *            the max
+	 */
     public SimplePool(int max)
     {
         this.max = max;
@@ -58,9 +58,13 @@ public final class SimplePool
     }
 
     /**
-     * Add the object to the pool, silent nothing if the pool is full
-     * @param o
-     */
+	 * Add the object to the pool, silent nothing if the pool is full.
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @Date 2018-9-3 11:38:40
+	 */
     public void put(Object o)
     {
         int idx=-1;
@@ -88,9 +92,12 @@ public final class SimplePool
     }
 
     /**
-     * Get an object from the pool, null if the pool is empty.
-     * @return The object from the pool.
-     */
+	 * Get an object from the pool, null if the pool is empty.
+	 *
+	 * @author mqfdy
+	 * @return The object from the pool.
+	 * @Date 2018-9-3 11:38:40
+	 */
     public Object get()
     {
         synchronized(this)
@@ -117,19 +124,24 @@ public final class SimplePool
     }
 
     /**
-     * Return the size of the pool
-     * @return The pool size.
-     */
+	 * Return the size of the pool.
+	 *
+	 * @author mqfdy
+	 * @return The pool size.
+	 * @Date 2018-9-3 11:38:40
+	 */
     public int getMax()
     {
         return max;
     }
 
     /**
-     *   for testing purposes, so we can examine the pool
-     *
-     * @return Array of Objects in the pool.
-     */
+	 * for testing purposes, so we can examine the pool.
+	 *
+	 * @author mqfdy
+	 * @return Array of Objects in the pool.
+	 * @Date 2018-9-3 11:38:40
+	 */
     Object[] getPool()
     {
         return pool;

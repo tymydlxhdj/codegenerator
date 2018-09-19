@@ -24,24 +24,29 @@ import com.mqfdy.code.springboot.utilities.model.value.CollectionValueModel;
 import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Abstract list value model that provides behavior for wrapping a list value
  * model (or collection value model) and listening for changes to aspects of the
- * *items* held by the list (or collection). Changes to the actual list
- * (or collection) are also monitored.
+ * *items* held by the list (or collection). Changes to the actual list (or
+ * collection) are also monitored.
  * 
- * This is useful if you have a collection of items that can be modified by adding
- * or removing items or the items themselves might change in a fashion that
- * might change the collection's external appearance.
+ * This is useful if you have a collection of items that can be modified by
+ * adding or removing items or the items themselves might change in a fashion
+ * that might change the collection's external appearance.
  * 
  * Subclasses need to override two methods:
  * 
- * #listenToItem(Model)
- *     begin listening to the appropriate aspect of the specified item and call
- *     #itemAspectChanged(Object) whenever the aspect changes
+ * #listenToItem(Model) begin listening to the appropriate aspect of the
+ * specified item and call #itemAspectChanged(Object) whenever the aspect
+ * changes
  * 
- * #stopListeningToItem(Model)
- *     stop listening to the appropriate aspect of the specified item
+ * #stopListeningToItem(Model) stop listening to the appropriate aspect of the
+ * specified item
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public abstract class ItemAspectListValueModelAdapter<E>
 	extends ListValueModelWrapper<E>
@@ -59,6 +64,9 @@ public abstract class ItemAspectListValueModelAdapter<E>
 
 	/**
 	 * Constructor - the list holder is required.
+	 *
+	 * @param listHolder
+	 *            the list holder
 	 */
 	protected ItemAspectListValueModelAdapter(ListValueModel<? extends E> listHolder) {
 		super(listHolder);
@@ -67,6 +75,9 @@ public abstract class ItemAspectListValueModelAdapter<E>
 
 	/**
 	 * Constructor - the collection holder is required.
+	 *
+	 * @param collectionHolder
+	 *            the collection holder
 	 */
 	protected ItemAspectListValueModelAdapter(CollectionValueModel<? extends E> collectionHolder) {
 		this(new CollectionListValueModelAdapter<E>(collectionHolder));
@@ -107,16 +118,38 @@ public abstract class ItemAspectListValueModelAdapter<E>
 		this.engageAllItems();
 	}
 
+	/**
+	 * Engage all items.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void engageAllItems() {
 		this.engageItems(this.listHolder.iterator());
 	}
 
+	/**
+	 * Engage items.
+	 *
+	 * @author mqfdy
+	 * @param stream
+	 *            the stream
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void engageItems(Iterator<? extends E> stream) {
 		while (stream.hasNext()) {
 			this.engageItem(stream.next());
 		}
 	}
 
+	/**
+	 * Engage item.
+	 *
+	 * @author mqfdy
+	 * @param item
+	 *            the item
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void engageItem(E item) {
 		// listen to an item only once
 		Counter counter = this.counters.get(item);
@@ -130,6 +163,11 @@ public abstract class ItemAspectListValueModelAdapter<E>
 
 	/**
 	 * Start listening to the specified item.
+	 *
+	 * @author mqfdy
+	 * @param item
+	 *            the item
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract void startListeningToItem(Model item);
 
@@ -142,16 +180,38 @@ public abstract class ItemAspectListValueModelAdapter<E>
 		super.disengageModel();
 	}
 
+	/**
+	 * Disengage all items.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void disengageAllItems() {
 		this.disengageItems(this.listHolder.iterator());
 	}
 
+	/**
+	 * Disengage items.
+	 *
+	 * @author mqfdy
+	 * @param stream
+	 *            the stream
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void disengageItems(Iterator<? extends E> stream) {
 		while (stream.hasNext()) {
 			this.disengageItem(stream.next());
 		}
 	}
 
+	/**
+	 * Disengage item.
+	 *
+	 * @author mqfdy
+	 * @param item
+	 *            the item
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void disengageItem(E item) {
 		// stop listening to an item only once
 		Counter counter = this.counters.get(item);
@@ -167,6 +227,11 @@ public abstract class ItemAspectListValueModelAdapter<E>
 
 	/**
 	 * Stop listening to the specified item.
+	 *
+	 * @author mqfdy
+	 * @param item
+	 *            the item
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract void stopListeningToItem(Model item);
 
@@ -253,8 +318,13 @@ public abstract class ItemAspectListValueModelAdapter<E>
 	// ********** item change support **********
 
 	/**
-	 * The specified item has a bound property that has changed.
-	 * Notify listeners of the change.
+	 * The specified item has a bound property that has changed. Notify
+	 * listeners of the change.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void itemAspectChanged(EventObject event) {
 		Object item = event.getSource();
@@ -266,24 +336,45 @@ public abstract class ItemAspectListValueModelAdapter<E>
 	}
 
 	/**
-	 * The specified item has a bound property that has changed.
-	 * Notify listeners of the change.
+	 * The specified item has a bound property that has changed. Notify
+	 * listeners of the change.
+	 *
+	 * @author mqfdy
+	 * @param index
+	 *            the index
+	 * @param item
+	 *            the item
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void itemAspectChanged(int index, Object item) {
 		this.fireItemReplaced(LIST_VALUES, index, item, item);		// hmmm...
 	}
 
 	/**
-	 * Return the last index of the specified item, using object
-	 * identity instead of equality.
+	 * Return the last index of the specified item, using object identity
+	 * instead of equality.
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	protected int lastIdentityIndexOf(Object o) {
 		return this.lastIdentityIndexOf(o, this.listHolder.size());
 	}
 
 	/**
-	 * Return the last index of the specified item, starting just before the
-	 * the specified endpoint, and using object identity instead of equality.
+	 * Return the last index of the specified item, starting just before the the
+	 * specified endpoint, and using object identity instead of equality.
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @param end
+	 *            the end
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	protected int lastIdentityIndexOf(Object o, int end) {
 		for (int i = end; i-- > 0; ) {

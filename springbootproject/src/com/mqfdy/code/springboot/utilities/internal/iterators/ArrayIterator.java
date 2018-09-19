@@ -16,9 +16,14 @@ import com.mqfdy.code.springboot.utilities.internal.CollectionTools;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * An <code>ArrayIterator</code> provides an <code>Iterator</code>
- * for an array of objects of type E.
+ * An <code>ArrayIterator</code> provides an <code>Iterator</code> for an array
+ * of objects of type E.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class ArrayIterator<E>
 	implements Iterator<E>
@@ -29,15 +34,24 @@ public class ArrayIterator<E>
 
 	/**
 	 * Construct an iterator for the specified array.
+	 *
+	 * @param array
+	 *            the array
 	 */
 	public ArrayIterator(E... array) {
 		this(array, 0, array.length);
 	}
 	
 	/**
-	 * Construct an iterator for the specified array,
-	 * starting at the specified start index and continuing for
-	 * the specified length.
+	 * Construct an iterator for the specified array, starting at the specified
+	 * start index and continuing for the specified length.
+	 *
+	 * @param array
+	 *            the array
+	 * @param start
+	 *            the start
+	 * @param length
+	 *            the length
 	 */
 	public ArrayIterator(E[] array, int start, int length) {
 		if ((start < 0) || (start > array.length)) {

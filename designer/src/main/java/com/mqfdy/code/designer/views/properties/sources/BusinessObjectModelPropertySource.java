@@ -7,15 +7,23 @@ import com.mqfdy.code.resource.validator.KeyWordsChecker;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务模型PropertyPropertySource
- * 
+ * 业务模型PropertyPropertySource.
+ *
  * @author mqfdy
- * 
  */
 public class BusinessObjectModelPropertySource extends ModelPropertySource {
+	
+	/** The element. */
 	public BusinessObjectModel element;
 
+	/**
+	 * Instantiates a new business object model property source.
+	 *
+	 * @param property
+	 *            the property
+	 */
 	public BusinessObjectModelPropertySource(AbstractModelElement property) {
 		super();
 		this.element = (BusinessObjectModel) property;
@@ -25,6 +33,9 @@ public class BusinessObjectModelPropertySource extends ModelPropertySource {
 		// }
 	}
 
+	/**
+	 * 
+	 */
 	protected void installModelProperty() {
 		if (element.getStereotype() != null
 				&& (IModelElement.STEREOTYPE_BUILDIN.equals(
@@ -110,6 +121,15 @@ public class BusinessObjectModelPropertySource extends ModelPropertySource {
 		}// addButtonModelProperty(IBusinessModelPropertyNames.PROPERTY_ENUMERARION_VALUES,IBusinessModelPropertyNames.CATEGORY_ENUMERARION,"","AbstractModelElement","06");
 	}
 
+	/**
+	 * Gets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return the property value
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -155,6 +175,16 @@ public class BusinessObjectModelPropertySource extends ModelPropertySource {
 			return "";
 	}
 
+	/**
+	 * Sets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPropertyValue(Object propertyId, Object value) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException(propertyId.toString());
@@ -224,10 +254,27 @@ public class BusinessObjectModelPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * Checks if is property set.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return true, if is property set
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isPropertySet(Object propertyId) {
 		return true;
 	}
 
+	/**
+	 * Reset property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @Date 2018-09-03 09:00
+	 */
 	public void resetPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -241,10 +288,16 @@ public class BusinessObjectModelPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public Object getEditableValue() {
 		return this;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void initializeDescriptors() {
 		// TODO Auto-generated method stub

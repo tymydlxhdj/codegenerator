@@ -15,15 +15,19 @@ import java.util.NoSuchElementException;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * A <code>SingleElementIterator</code> holds a single element
- * and returns it with the first call to <code>next()</code>, at
- * which point it will return <code>false</code> to any subsequent
- * call to <code>hasNext()</code>.
+ * A <code>SingleElementIterator</code> holds a single element and returns it
+ * with the first call to <code>next()</code>, at which point it will return
+ * <code>false</code> to any subsequent call to <code>hasNext()</code>.
  * <p>
  * A <code>SingleElementIterator</code> is equivalent to the
  * <code>Iterator</code> returned by:
- * 	<code>java.util.Collections.singleton(element).iterator()</code>
+ * <code>java.util.Collections.singleton(element).iterator()</code>
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class SingleElementIterator<E>
 	implements Iterator<E>
@@ -34,6 +38,9 @@ public class SingleElementIterator<E>
 
 	/**
 	 * Construct an iterator that returns only the specified element.
+	 *
+	 * @param element
+	 *            the element
 	 */
 	public SingleElementIterator(E element) {
 		super();

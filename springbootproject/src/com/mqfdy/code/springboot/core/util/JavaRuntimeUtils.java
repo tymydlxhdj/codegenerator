@@ -10,6 +10,7 @@ import org.eclipse.jdt.launching.JavaRuntime;
 import org.eclipse.jdt.launching.environments.IExecutionEnvironment;
 import org.eclipse.jdt.launching.environments.IExecutionEnvironmentsManager;
 
+// TODO: Auto-generated Javadoc
 /**
  * Utilities to retrieve info about JVMs configured in the workspace.
  * 
@@ -20,6 +21,13 @@ public class JavaRuntimeUtils {
 	private List<IVMInstall> allInstalls = null; //Lazy initialised
 	private IExecutionEnvironment[] allExecEnvs = null;
 	
+	/**
+	 * Gets the execution envs.
+	 *
+	 * @author mqfdy
+	 * @return the execution envs
+	 * @Date 2018-09-03 09:00
+	 */
 	public IExecutionEnvironment[] getExecutionEnvs() {
 		if (allExecEnvs==null) {
 			IExecutionEnvironmentsManager mgr = JavaRuntime.getExecutionEnvironmentsManager();
@@ -31,6 +39,13 @@ public class JavaRuntimeUtils {
 		return allExecEnvs;
 	}
 	
+	/**
+	 * Gets the execution env names.
+	 *
+	 * @author mqfdy
+	 * @return the execution env names
+	 * @Date 2018-09-03 09:00
+	 */
 	public String[] getExecutionEnvNames() {
 		IExecutionEnvironment[] envs = getExecutionEnvs();
 		if (envs!=null) {
@@ -43,6 +58,13 @@ public class JavaRuntimeUtils {
 		return new String[0];
 	}
 
+	/**
+	 * Gets the workspace JV ms.
+	 *
+	 * @author mqfdy
+	 * @return the workspace JV ms
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<IVMInstall> getWorkspaceJVMs() {
 		if (allInstalls==null) {
 			allInstalls = new ArrayList<IVMInstall>();
@@ -59,6 +81,13 @@ public class JavaRuntimeUtils {
 		return allInstalls;
 	}
 	
+	/**
+	 * Gets the workspace JVM names.
+	 *
+	 * @author mqfdy
+	 * @return the workspace JVM names
+	 * @Date 2018-09-03 09:00
+	 */
 	public String[] getWorkspaceJVMNames() {
 		List<IVMInstall> jvms = getWorkspaceJVMs();
 		String[] names = new String[jvms.size()];
@@ -68,6 +97,15 @@ public class JavaRuntimeUtils {
 		return names;
 	}
 
+	/**
+	 * Gets the install.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return the install
+	 * @Date 2018-09-03 09:00
+	 */
 	public IVMInstall getInstall(String name) {
 		List<IVMInstall> installs = getWorkspaceJVMs();
 		for (IVMInstall install : installs) {
@@ -79,8 +117,15 @@ public class JavaRuntimeUtils {
 	}
 	
 	/**
-	 * This method returns true if we are fairly certain that the given JVM is a JRE and not a proper
-	 * JDK. If we can't determine whether it is a JDK then we conservatively return false.
+	 * This method returns true if we are fairly certain that the given JVM is a
+	 * JRE and not a proper JDK. If we can't determine whether it is a JDK then
+	 * we conservatively return false.
+	 *
+	 * @author mqfdy
+	 * @param jvm
+	 *            the jvm
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean hasTheJREProblem(IVMInstall jvm) {
 		String os = System.getProperty("os.name");
@@ -101,6 +146,15 @@ public class JavaRuntimeUtils {
 		// or Java home doesn't exist  etc.
 	}
 
+	/**
+	 * Gets the install for EE.
+	 *
+	 * @author mqfdy
+	 * @param execEnvName
+	 *            the exec env name
+	 * @return the install for EE
+	 * @Date 2018-09-03 09:00
+	 */
 	public IVMInstall getInstallForEE(String execEnvName) {
 		IExecutionEnvironment[] ees = getExecutionEnvs();
 		IExecutionEnvironment found = null;

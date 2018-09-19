@@ -10,20 +10,38 @@ import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gef.requests.GroupRequest;
 
+// TODO: Auto-generated Javadoc
 /**
- * 透视图中包含的节点位置发生移动造成两个图形上下重合时的编辑策略
- * 
+ * 透视图中包含的节点位置发生移动造成两个图形上下重合时的编辑策略.
+ *
  * @author mqfdy
- * 
  */
 public class OmContainerEditPolicy extends
 		org.eclipse.gef.editpolicies.ContainerEditPolicy {
 
+	/**
+	 * Gets the creates the command.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @return the creates the command
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Command getCreateCommand(CreateRequest request) {
 		return null;
 	}
 
+	/**
+	 * Gets the orphan children command.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @return the orphan children command
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	/*
 	 * Called when one or more elements are removed from the associated
@@ -54,6 +72,15 @@ public class OmContainerEditPolicy extends
 		return commands.unwrap();
 	}
 
+	/**
+	 * Gets the command.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @return the command
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public Command getCommand(Request request) {
 		// TODO Auto-generated method stub

@@ -27,11 +27,11 @@ import com.mqfdy.code.designer.utils.BusinessModelUtil;
 import com.mqfdy.code.model.AbstractModelElement;
 import com.mqfdy.code.model.graph.Diagram;
 
+// TODO: Auto-generated Javadoc
 /**
- * 从模型资源管理器树上拖动树节点到图形编辑器
- * 
+ * 从模型资源管理器树上拖动树节点到图形编辑器.
+ *
  * @author mqfdy
- * 
  */
 @SuppressWarnings("deprecation")
 public class ModelOutlineDropTargetListener extends
@@ -39,43 +39,75 @@ public class ModelOutlineDropTargetListener extends
 
 	// private final static int INTERVAL = 50;
 
+	/** The transfer. */
 	private static LocalSelectionTransfer transfer = LocalSelectionTransfer
 			.getInstance();
 
+	/** The table list. */
 	private List<AbstractModelElement> tableList = new ArrayList<AbstractModelElement>();
 
+	/**
+	 * Instantiates a new model outline drop target listener.
+	 *
+	 * @param viewer
+	 *            the viewer
+	 * @param xfer
+	 *            the xfer
+	 */
 	public ModelOutlineDropTargetListener(EditPartViewer viewer, Transfer xfer) {
 		super(viewer, xfer);
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Instantiates a new model outline drop target listener.
+	 *
+	 * @param viewer
+	 *            the viewer
+	 */
 	public ModelOutlineDropTargetListener(EditPartViewer viewer) {
 		super(viewer, transfer);
 		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * 封装所选对象
-	 * 
+	 * 封装所选对象.
+	 *
 	 * @author ZHANGHE
 	 */
 	public class BusinessElementFactory implements CreationFactory {
 
+		/** The table. */
 		private Object table;
 
+		/**
+		 * Instantiates a new business element factory.
+		 *
+		 * @param table
+		 *            the table
+		 */
 		public BusinessElementFactory(Object table) {
 			this.table = table;
 		}
 
+		/**
+		 * @return
+		 */
 		public Object getNewObject() {
 			return table;
 		}
 
+		/**
+		 * @return
+		 */
 		public Object getObjectType() {
 			return table.getClass();
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	protected Request createTargetRequest() { // 创建请求
 		CreateRequest request = new CreateRequest();
 
@@ -98,6 +130,15 @@ public class ModelOutlineDropTargetListener extends
 		return null;
 	}
 
+	/**
+	 * Gets the factory.
+	 *
+	 * @author mqfdy
+	 * @param template
+	 *            the template
+	 * @return the factory
+	 * @Date 2018-09-03 09:00
+	 */
 	protected CreationFactory getFactory(Object template) {
 		if (template instanceof CreationFactory)
 			return ((CreationFactory) template);
@@ -105,6 +146,9 @@ public class ModelOutlineDropTargetListener extends
 			return null;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void updateTargetRequest() {// 创建请求，并设置坐标
 		if (getTargetRequest() == null)
@@ -112,6 +156,9 @@ public class ModelOutlineDropTargetListener extends
 		((CreateRequest) getTargetRequest()).setLocation(getDropLocation());// 创建请求，并设置坐标
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void handleDragOver() {
 		getCurrentEvent().detail = DND.DROP_COPY;
@@ -123,6 +170,9 @@ public class ModelOutlineDropTargetListener extends
 	 * default, the drop is performed by asking the target EditPart for a
 	 * Command using the target Request. This Command is then executed on the
 	 * CommandStack.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void handleDrop() {// 拖拽落地
 
@@ -142,11 +192,16 @@ public class ModelOutlineDropTargetListener extends
 	}
 
 	/**
-	 * 
+	 * Execute command.
+	 *
+	 * @author mqfdy
 	 * @param editPart
+	 *            the edit part
 	 * @param createRequest
-	 * @param tableElementList
+	 *            the create request
 	 * @param nodesList
+	 *            the nodes list
+	 * @Date 2018-09-03 09:00
 	 */
 	private void executeCommand(EditPart editPart, CreateRequest createRequest,
 			List<AbstractModelElement> nodesList) {

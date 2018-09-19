@@ -24,6 +24,7 @@ import org.apache.velocity.exception.MethodInvocationException;
 import org.apache.velocity.runtime.parser.Parser;
 import org.apache.velocity.util.TemplateNumber;
 
+// TODO: Auto-generated Javadoc
 /**
  *  Handles <code>arg1  == arg2</code>
  *
@@ -36,48 +37,66 @@ import org.apache.velocity.util.TemplateNumber;
  */
 public class ASTEQNode extends SimpleNode
 {
+    
     /**
-     * @param id
-     */
+	 * Instantiates a new ASTEQ node.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTEQNode(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new ASTEQ node.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTEQNode(Parser p, int id)
     {
         super(p, id);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     *   Calculates the value of the logical expression
-     *
-     *     arg1 == arg2
-     *
-     *   All class types are supported.   Uses equals() to
-     *   determine equivalence.  This should work as we represent
-     *   with the types we already support, and anything else that
-     *   implements equals() to mean more than identical references.
-     *
-     *
-     *  @param context  internal context used to evaluate the LHS and RHS
-     *  @return true if equivalent, false if not equivalent,
-     *          false if not compatible arguments, or false
-     *          if either LHS or RHS is null
-     * @throws MethodInvocationException
-     */
+	 * Calculates the value of the logical expression
+	 * 
+	 * arg1 == arg2
+	 * 
+	 * All class types are supported. Uses equals() to determine equivalence.
+	 * This should work as we represent with the types we already support, and
+	 * anything else that implements equals() to mean more than identical
+	 * references.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            internal context used to evaluate the LHS and RHS
+	 * @return true if equivalent, false if not equivalent, false if not
+	 *         compatible arguments, or false if either LHS or RHS is null
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-9-3 11:38:34
+	 */
     public boolean evaluate(InternalContextAdapter context)
         throws MethodInvocationException
     {
@@ -151,14 +170,30 @@ public class ASTEQNode extends SimpleNode
         }
     }
 
+    /**
+	 * Gets the literal.
+	 *
+	 * @author mqfdy
+	 * @param left
+	 *            the left
+	 * @return the literal
+	 * @Date 2018-9-3 11:38:34
+	 */
     private String getLiteral(boolean left)
     {
         return jjtGetChild(left ? 0 : 1).literal();
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#value(org.apache.velocity.context.InternalContextAdapter)
-     */
+	 * Value.
+	 *
+	 * @param context
+	 *            the context
+	 * @return the object
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#value(org.apache.velocity.context.InternalContextAdapter)
+	 */
     public Object value(InternalContextAdapter context)
         throws MethodInvocationException
     {

@@ -73,40 +73,100 @@ import com.mqfdy.code.reverse.views.providers.MultiTreeContentProvider;
 import com.mqfdy.code.reverse.views.providers.PackageTreeLabelProvider;
 import com.mqfdy.code.thirdparty.wizard.ThirdPartyWizard;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PackageDispachPage.
+ *
+ * @author mqfdy
+ */
 public class PackageDispachPage extends WizardPage {
+	
+	/** The Constant SUB_WIDTH. */
 	public static final int SUB_WIDTH = 120;
 	
+	/** The container. */
 	private Composite container;
+	
+	/** The down group. */
 	private Group downGroup;
+	
+	/** The table viewer. */
 	private TableViewer tableViewer;
+	
+	/** The sub container. */
 	private Composite subContainer;
+	
+	/** The dispath btn. */
 	private Button dispathBtn;
+	
+	/** The withdraw btn. */
 	private Button withdrawBtn;
+	
+	/** The tree viewer. */
 	private TreeViewer treeViewer;
+	
+	/** The tree. */
 	private Tree tree;
 
+	/** The biz node list. */
 	private List<TreeNode> bizNodeList;//业务实体节点集合
+	
+	/** The biz node map. */
 	private Map<String, TreeNode> bizNodeMap;//业务实体节点集合映射
 	
+	/** The table. */
 	private Table table;
+	
+	/** The select all btn. */
 	private Button selectAllBtn;
+	
+	/** The deselect all btn. */
 	private Button deselectAllBtn;
+	
+	/** The left container. */
 	private Composite leftContainer;
+	
+	/** The leftlabel. */
 	private Label leftlabel;
+	
+	/** The right container. */
 	private Composite rightContainer;
+	
+	/** The right label. */
 	private Label rightLabel;
 	
+	/** The new bu list. */
 	private List<BusinessClass> newBuList = new ArrayList<BusinessClass>();
 	
+	/**
+	 * Instantiates a new package dispach page.
+	 *
+	 * @param pageName
+	 *            the page name
+	 */
 	public PackageDispachPage(String pageName) {
 		super(pageName);
 		bizNodeList = new ArrayList<TreeNode>();
 	}
 
+	/**
+	 * Inits the message.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void initMessage() {
 		setMessage("选择左侧区域的业务实体，分配到右侧区域的业务包中。", IMessageProvider.INFORMATION);
 	}
 	
+	/**
+	 * Creates the control.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createControl(Composite parent) {
 		setTitle("选择业务包");
 		initMessage();
@@ -625,7 +685,10 @@ public class PackageDispachPage extends WizardPage {
 	}
 
 	/**
-	 * 重画
+	 * 重画.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void repaint() {
 		rebackAll();
@@ -721,9 +784,14 @@ public class PackageDispachPage extends WizardPage {
 			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
+	
 	/**
-	 * 验证是否可以Finish
+	 * 验证是否可以Finish.
+	 *
+	 * @author mqfdy
 	 * @param selectedList
+	 *            the selected list
+	 * @Date 2018-09-03 09:00
 	 */
 	private void validateFinish(List<BizBean> selectedList) {
 		if(selectedList != null && !selectedList.isEmpty()){					
@@ -739,6 +807,16 @@ public class PackageDispachPage extends WizardPage {
 		}
 	}
 	
+	/**
+	 * Sets the child package.
+	 *
+	 * @author mqfdy
+	 * @param modelPackage
+	 *            the model package
+	 * @param packageChildNode2
+	 *            the package child node 2
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setChildPackage(ModelPackage modelPackage, TreeNode packageChildNode2) {
 		for(AbstractModelElement child: modelPackage.getChildren()){
 			if(child instanceof ModelPackage){
@@ -759,9 +837,14 @@ public class PackageDispachPage extends WizardPage {
 	}
 
 	/**
-	 * 递归给所有的包节点设置模型
+	 * 递归给所有的包节点设置模型.
+	 *
+	 * @author mqfdy
 	 * @param packageNode
+	 *            the package node
 	 * @param packageModel
+	 *            the package model
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setPackageNodeModel(TreeNode packageNode, TreeModel packageModel) {
 		packageNode.setModel(packageModel);
@@ -772,10 +855,13 @@ public class PackageDispachPage extends WizardPage {
 	}
 	
 	/**
-	 * 读取视图包
+	 * 读取视图包.
+	 *
+	 * @author mqfdy
 	 * @param filePath
-	 * @return
-	 * @throws Exception
+	 *            the file path
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	private List<TreeNode> readPackages(String filePath) {
 		BufferedReader bufReader = null;
@@ -818,10 +904,15 @@ public class PackageDispachPage extends WizardPage {
 	}
 	
 	/**
-	 * 读取视图包
+	 * 读取视图包.
+	 *
+	 * @author mqfdy
 	 * @param rootElement
-	 * @return
+	 *            the root element
+	 * @return the list
 	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	private List<TreeNode> readPackages(Element rootElement) throws Exception {
@@ -862,9 +953,14 @@ public class PackageDispachPage extends WizardPage {
 	}
 
 	/**
-	 * 查找包下边的业务实体
+	 * 查找包下边的业务实体.
+	 *
+	 * @author mqfdy
 	 * @param packageElement
+	 *            the package element
 	 * @param packageTreeNode
+	 *            the package tree node
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings({"unchecked" })
 	private void findBusinessClassByPackage(Element packageElement, TreeNode packageTreeNode) {
@@ -889,6 +985,17 @@ public class PackageDispachPage extends WizardPage {
 		packageTreeNode.setBackup(businessClasses);
 	}
 	
+	/**
+	 * Find package.
+	 *
+	 * @author mqfdy
+	 * @param bom
+	 *            the bom
+	 * @param currentPackageNode
+	 *            the current package node
+	 * @return the model package
+	 * @Date 2018-09-03 09:00
+	 */
 	private ModelPackage findPackage(BusinessObjectModel bom, TreeNode currentPackageNode) {
 		List<ModelPackage> modelPackageList = bom.getPackages();
 		for(ModelPackage modelPackage: modelPackageList) {
@@ -899,6 +1006,17 @@ public class PackageDispachPage extends WizardPage {
 		return null;
 	}
 	
+	/**
+	 * Find business class.
+	 *
+	 * @author mqfdy
+	 * @param businessClasseList
+	 *            the business classe list
+	 * @param name
+	 *            the name
+	 * @return the business class
+	 * @Date 2018-09-03 09:00
+	 */
 	private BusinessClass findBusinessClass(List<BusinessClass> businessClasseList, String name) {
 		for(BusinessClass businessClass: businessClasseList) {
 			if(name.equals(businessClass.getId())) {
@@ -908,6 +1026,15 @@ public class PackageDispachPage extends WizardPage {
 		return null;
 	}
 	
+	/**
+	 * Checks for business class.
+	 *
+	 * @author mqfdy
+	 * @param currentNode
+	 *            the current node
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	@SuppressWarnings({"unchecked" })
 	private boolean hasBusinessClass(TreeNode currentNode) {
 		//所有子节点列表
@@ -930,6 +1057,12 @@ public class PackageDispachPage extends WizardPage {
 		return false;
 	}
 	
+	/**
+	 * Reback all.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void rebackAll(){
 		List<TreeNode> allList = new ArrayList<TreeNode>();
 		List<TreeModel> modelList = (List<TreeModel>) treeViewer.getInput();
@@ -952,8 +1085,12 @@ public class PackageDispachPage extends WizardPage {
 	}
 	
 	/**
-	 * 撤销业务实体
-	 * @param treeItems
+	 * 撤销业务实体.
+	 *
+	 * @author mqfdy
+	 * @param treeNodes
+	 *            the tree nodes
+	 * @Date 2018-09-03 09:00
 	 */
 	private void withdraw(List<TreeNode> treeNodes) {
 		BizTableModel tableModel = (BizTableModel) tableViewer.getInput();
@@ -994,9 +1131,14 @@ public class PackageDispachPage extends WizardPage {
 	}
 	
 	/**
-	 * 将左侧选中的业务实体分配到右侧的包中
-	 * @param selectedList 左侧选中的业务实体
-	 * @param currentPackageNode 当前待分配的包
+	 * 将左侧选中的业务实体分配到右侧的包中.
+	 *
+	 * @author mqfdy
+	 * @param selectedList
+	 *            左侧选中的业务实体
+	 * @param currentPackageNode
+	 *            当前待分配的包
+	 * @Date 2018-09-03 09:00
 	 */
 	private void dispatchToPackage(List<BizBean> selectedList, TreeNode currentPackageNode) {
 
@@ -1107,9 +1249,14 @@ public class PackageDispachPage extends WizardPage {
 	}
 	
 	/**
-	 * 添加子包
+	 * 添加子包.
+	 *
+	 * @author mqfdy
 	 * @param treeNode
+	 *            the tree node
 	 * @param selectedItem
+	 *            the selected item
+	 * @Date 2018-09-03 09:00
 	 */
 	private void addSubPackage(TreeNode treeNode, TreeItem selectedItem) {
 		InsertPackageDialog dialog = new InsertPackageDialog(getShell());
@@ -1163,10 +1310,14 @@ public class PackageDispachPage extends WizardPage {
 			ReverseContext.bom.addDiagram(diagram);
 		}
 	}
+	
 	/**
-	 * 添加包
-	 * @param treeNode
-	 * @param selectedItem
+	 * 添加包.
+	 *
+	 * @author mqfdy
+	 * @param dialog
+	 *            the dialog
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	private void addPackage(InsertPackageDialog dialog) {
@@ -1214,8 +1365,12 @@ public class PackageDispachPage extends WizardPage {
 	}
 	
 	/**
-	 * 删除包
+	 * 删除包.
+	 *
+	 * @author mqfdy
 	 * @param treeNode
+	 *            the tree node
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	private void deletePackage(TreeNode treeNode) {
@@ -1257,8 +1412,11 @@ public class PackageDispachPage extends WizardPage {
 	}
 	
 	/**
-	 * 返回未被选择转换成om对象的表个数
-	 * @return
+	 * 返回未被选择转换成om对象的表个数.
+	 *
+	 * @author mqfdy
+	 * @return the unselected to om tables count
+	 * @Date 2018-09-03 09:00
 	 */
 	public int getUnselectedToOmTablesCount(){
 		BizTableModel model = (BizTableModel) tableViewer.getInput();
@@ -1272,22 +1430,58 @@ public class PackageDispachPage extends WizardPage {
 		return objects.length;
 	}
 	
+	/**
+	 * Gets the biz node list.
+	 *
+	 * @author mqfdy
+	 * @return the biz node list
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<TreeNode> getBizNodeList() {
 		return bizNodeList;
 	}
 
+	/**
+	 * Sets the biz node list.
+	 *
+	 * @author mqfdy
+	 * @param bizNodeList
+	 *            the new biz node list
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBizNodeList(List<TreeNode> bizNodeList) {
 		this.bizNodeList = bizNodeList;
 	}
 
+	/**
+	 * Gets the tree viewer.
+	 *
+	 * @author mqfdy
+	 * @return the tree viewer
+	 * @Date 2018-09-03 09:00
+	 */
 	public TreeViewer getTreeViewer() {
 		return treeViewer;
 	}
 
+	/**
+	 * Gets the biz node map.
+	 *
+	 * @author mqfdy
+	 * @return the biz node map
+	 * @Date 2018-09-03 09:00
+	 */
 	public Map<String, TreeNode> getBizNodeMap() {
 		return bizNodeMap;
 	}
 
+	/**
+	 * Gets the new bu list.
+	 *
+	 * @author mqfdy
+	 * @return the new bu list
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<BusinessClass> getNewBuList() {
 		return newBuList;
 	}

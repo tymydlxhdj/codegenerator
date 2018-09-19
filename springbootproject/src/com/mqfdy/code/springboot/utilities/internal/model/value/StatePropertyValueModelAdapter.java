@@ -13,20 +13,21 @@ import com.mqfdy.code.springboot.utilities.model.Model;
 import com.mqfdy.code.springboot.utilities.model.event.StateChangeEvent;
 import com.mqfdy.code.springboot.utilities.model.listener.StateChangeListener;
 
+// TODO: Auto-generated Javadoc
 /**
- * This abstract class provides the infrastructure needed to wrap
- * a model, "lazily" listen to it, and convert
- * its state change notifications into property value model change
- * notifications.
+ * This abstract class provides the infrastructure needed to wrap a model,
+ * "lazily" listen to it, and convert its state change notifications into
+ * property value model change notifications.
  * 
- * Subclasses must override:
- * - #buildValue()
- *     to return the current property value, as derived from the
- *     current model
+ * Subclasses must override: - #buildValue() to return the current property
+ * value, as derived from the current model
  * 
- * Subclasses might want to override:
- * - #stateChanged(StateChangeEvent event)
- *     to improve performance (by not recalculating the value, if possible)
+ * Subclasses might want to override: - #stateChanged(StateChangeEvent event) to
+ * improve performance (by not recalculating the value, if possible)
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
  */
 public abstract class StatePropertyValueModelAdapter<T>
 	extends AspectPropertyValueModelAdapter<T>
@@ -42,6 +43,9 @@ public abstract class StatePropertyValueModelAdapter<T>
 
 	/**
 	 * Construct a property value model with the specified wrapped model.
+	 *
+	 * @param model
+	 *            the model
 	 */
 	protected StatePropertyValueModelAdapter(Model model) {
 		super();
@@ -49,6 +53,13 @@ public abstract class StatePropertyValueModelAdapter<T>
 		this.stateChangeListener = this.buildStateChangeListener();
 	}
 
+	/**
+	 * Builds the state change listener.
+	 *
+	 * @author mqfdy
+	 * @return the state change listener
+	 * @Date 2018-09-03 09:00
+	 */
 	protected StateChangeListener buildStateChangeListener() {
 		return new StateChangeListener() {
 			public void stateChanged(StateChangeEvent event) {
@@ -89,8 +100,13 @@ public abstract class StatePropertyValueModelAdapter<T>
 	// ********** state change support **********
 
 	/**
-	 * The model's state changed;
-	 * propagate the change notification appropriately.
+	 * The model's state changed; propagate the change notification
+	 * appropriately.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void stateChanged(StateChangeEvent event) {
 		// by default, simply recalculate the value and fire an event

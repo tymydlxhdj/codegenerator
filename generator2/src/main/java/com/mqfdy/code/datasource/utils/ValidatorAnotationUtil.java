@@ -5,15 +5,22 @@ import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.Validator;
 import com.mqfdy.code.model.utils.ValidatorType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 校验注解转字符串工具类
+ * 校验注解转字符串工具类.
+ *
  * @author mqfdy
  */
 public class ValidatorAnotationUtil {
+	
 	/**
-	 * 获取校验注解字符串
+	 * 获取校验注解字符串.
+	 *
+	 * @author mqfdy
 	 * @param validator
-	 * @return
+	 *            the validator
+	 * @return the validator anotation str
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String getValidatorAnotationStr(Validator validator) {
 		StringBuilder sbValidatorAnotationStr = new StringBuilder();
@@ -57,6 +64,18 @@ public class ValidatorAnotationUtil {
 		return sbValidatorAnotationStr.toString();
 	}
 
+	/**
+	 * Construct common validator anotation str.
+	 *
+	 * @author mqfdy
+	 * @param validator
+	 *            the validator
+	 * @param sbValidatorAnotationStr
+	 *            the sb validator anotation str
+	 * @param anotation
+	 *            the anotation
+	 * @Date 2018-9-3 11:38:33
+	 */
 	private static void constructCommonValidatorAnotationStr(Validator validator, StringBuilder sbValidatorAnotationStr,
 			String anotation) {
 		sbValidatorAnotationStr.append(anotation);

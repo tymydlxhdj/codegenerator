@@ -26,10 +26,16 @@ import com.mqfdy.code.springboot.utilities.model.value.PropertyValueModel;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
- * This extension of AspectAdapter provides ListChange support
- * by adapting a subject's state change events to a minimum set
- * of list change events.
+ * This extension of AspectAdapter provides ListChange support by adapting a
+ * subject's state change events to a minimum set of list change events.
+ *
+ * @author mqfdy
+ * @param <S>
+ *            the generic type
+ * @param <E>
+ *            the element type
  */
 public abstract class ListCurator<S extends Model, E>
 	extends AspectAdapter<S>
@@ -46,14 +52,20 @@ public abstract class ListCurator<S extends Model, E>
 
 	/**
 	 * Construct a Curator for the specified subject.
+	 *
+	 * @param subject
+	 *            the subject
 	 */
 	protected ListCurator(S subject) {
 		this(new StaticPropertyValueModel<S>(subject));
 	}
 
 	/**
-	 * Construct a curator for the specified subject holder.
-	 * The subject holder cannot be null.
+	 * Construct a curator for the specified subject holder. The subject holder
+	 * cannot be null.
+	 *
+	 * @param subjectHolder
+	 *            the subject holder
 	 */
 	protected ListCurator(PropertyValueModel<? extends S> subjectHolder) {
 		super(subjectHolder);
@@ -66,6 +78,10 @@ public abstract class ListCurator<S extends Model, E>
 
 	/**
 	 * The subject's state has changed, do inventory and report to listeners.
+	 *
+	 * @author mqfdy
+	 * @return the state change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected StateChangeListener buildStateChangeListener() {
 		return new StateChangeListener() {
@@ -167,9 +183,13 @@ public abstract class ListCurator<S extends Model, E>
 	// ********** ListCurator protocol **********
 
 	/**
-	 * This is intended to be different from #ListValueModel.iterator().
-	 * It is intended to be used only when the subject changes or the
-	 * subject's "state" changes (as signified by a state change event).
+	 * This is intended to be different from #ListValueModel.iterator(). It is
+	 * intended to be used only when the subject changes or the subject's
+	 * "state" changes (as signified by a state change event).
+	 *
+	 * @author mqfdy
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract Iterator<E> iteratorForRecord();
 

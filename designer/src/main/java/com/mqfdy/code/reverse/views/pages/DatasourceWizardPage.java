@@ -61,64 +61,164 @@ import com.mqfdy.code.reverse.views.providers.DataSourceTableContentProvider;
 import com.mqfdy.code.reverse.views.providers.DataSourceTableLabelProvider;
 import com.mqfdy.code.utils.ProjectUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DatasourceWizardPage.
+ *
+ * @author mqfdy
+ */
 public class DatasourceWizardPage extends WizardPage {
 
+	/** The Constant COLUMN1_WIDTH. */
 	public static final int COLUMN1_WIDTH = 300;
+	
+	/** The Constant COLUMN2_WIDTH. */
 	public static final int COLUMN2_WIDTH = 250;
+	
+	/** The om reverse. */
 	private IOmReverse omReverse;
+	
+	/** The data source map. */
 	private Map<String, DataSourceInfo> dataSourceMap;//数据源缓存 key:数据源名称，value:数据源对象
 	
+	/** The data source key. */
 	private String dataSourceKey;//数据源key
+	
+	/** The container. */
 	private Composite container;
+	
+	/** The table viewer. */
 	private TableViewer tableViewer;
+	
+	/** The table. */
 	private Table table;
 	
+	/** The current data source name. */
 	private String currentDataSourceName;	//当前数据源名称
+	
+	/** The add btn. */
 	private Button addBtn;
+	
+	/** The edit btn. */
 	private Button editBtn;
+	
+	/** The remove btn. */
 	private Button removeBtn;
+	
+	/** The up container. */
 	private Composite upContainer;
+	
+	/** The down container. */
 	private Composite downContainer;
+	
+	/** The right container. */
 	private Composite rightContainer;
+	
+	/** The om container. */
 	private Composite omContainer;
+	
+	/** The txt om. */
 	private Text txtOm;
+	
+	/** The btn om. */
 	private Button btnOm;
 	
+	/** The reverse wizard. */
 	private ReverseWizard reverseWizard;
 	
+	/**
+	 * Gets the current data source name.
+	 *
+	 * @author mqfdy
+	 * @return the current data source name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getCurrentDataSourceName() {
 		return currentDataSourceName;
 	}
 
+	/**
+	 * Sets the current data source name.
+	 *
+	 * @author mqfdy
+	 * @param currentDataSourceName
+	 *            the new current data source name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setCurrentDataSourceName(String currentDataSourceName) {
 		this.currentDataSourceName = currentDataSourceName;
 	}
 
+	/**
+	 * Gets the data source map.
+	 *
+	 * @author mqfdy
+	 * @return the data source map
+	 * @Date 2018-09-03 09:00
+	 */
 	public Map<String, DataSourceInfo> getDataSourceMap() {
 		return dataSourceMap;
 	}
 
+	/**
+	 * Sets the data source map.
+	 *
+	 * @author mqfdy
+	 * @param dataSourceMap
+	 *            the data source map
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setDataSourceMap(Map<String, DataSourceInfo> dataSourceMap) {
 		this.dataSourceMap = dataSourceMap;
 	}
 
+	/**
+	 * Gets the data source key.
+	 *
+	 * @author mqfdy
+	 * @return the data source key
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getDataSourceKey() {
 		return dataSourceKey;
 	}
 
+	/**
+	 * Sets the data source key.
+	 *
+	 * @author mqfdy
+	 * @param dataSourceKey
+	 *            the new data source key
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setDataSourceKey(String dataSourceKey) {
 		this.dataSourceKey = dataSourceKey;
 	}
 
+	/**
+	 * Instantiates a new datasource wizard page.
+	 *
+	 * @param reverseWizard
+	 *            the reverse wizard
+	 * @param pageName
+	 *            the page name
+	 * @throws ReverseException
+	 *             the reverse exception
+	 */
 	protected DatasourceWizardPage(ReverseWizard reverseWizard, String pageName) throws ReverseException {
 		super(pageName);
 		setTitle("连接数据库");
 		this.reverseWizard = reverseWizard;
 		initDatasource();
 	}
+	
 	/**
-	 * 初始化数据源
+	 * 初始化数据源.
+	 *
+	 * @author mqfdy
 	 * @throws ReverseException
+	 *             the reverse exception
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initDatasource() throws ReverseException {
 		IProject project = reverseWizard.getProject();
@@ -152,6 +252,14 @@ public class DatasourceWizardPage extends WizardPage {
 		}
 	}
 	
+	/**
+	 * Creates the control.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createControl(Composite parent) {
 		container = new Composite(parent, SWT.NULL);
 		
@@ -372,6 +480,12 @@ public class DatasourceWizardPage extends WizardPage {
 		setControl(container);
 	}
 
+	/**
+	 * Inits the datasource table.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void initDatasourceTable() {
 		//初始化列表
 		DataSourceTableModel input = new DataSourceTableModel();
@@ -393,8 +507,12 @@ public class DatasourceWizardPage extends WizardPage {
 		table.select(0);
 		setPageComplete(table.getItemCount() > 0);
 	}
+	
 	/**
-	 * 创建BOMUI
+	 * 创建BOMUI.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createSelectBOMUI() {
 		omContainer = new Composite(downContainer, SWT.NULL);
@@ -443,7 +561,10 @@ public class DatasourceWizardPage extends WizardPage {
 	}
 	
 	/**
-	 * 处理选择模块
+	 * 处理选择模块.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void handleSelect() {
 		
@@ -510,15 +631,29 @@ public class DatasourceWizardPage extends WizardPage {
 
 	}
 	
+	/**
+	 * Delete data source.
+	 *
+	 * @author mqfdy
+	 * @param dataSourceInfo
+	 *            the data source info
+	 * @throws ReverseException
+	 *             the reverse exception
+	 * @Date 2018-09-03 09:00
+	 */
 	public void deleteDataSource(DataSourceInfo dataSourceInfo) throws ReverseException {
 		IProject project = ReverseContext.wizard.getProject();
 		if(ProjectUtil.isBOMProject(project)){
 			ReverseUtil.deleteOMDatasourceXML(dataSourceInfo.getUapName(), dataSourceInfo.getDataSourceName());
 		}
 	}
+	
 	/**
-	 * 获取新增数据库对话框
-	 * @return
+	 * 获取新增数据库对话框.
+	 *
+	 * @author mqfdy
+	 * @return the connect database dialog
+	 * @Date 2018-09-03 09:00
 	 */
 	public ConnectDatabaseDetailDialog getConnectDatabaseDialog() {
 		IProject project = ReverseContext.wizard.getProject();
@@ -528,12 +663,23 @@ public class DatasourceWizardPage extends WizardPage {
 		return new OMConnectDatabaseDetailDialog(getShell(),project);
 	}
 	
+	/**
+	 * Gets the datasource relative path.
+	 *
+	 * @author mqfdy
+	 * @return the datasource relative path
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getDatasourceRelativePath() {
 		return IProjectConstant.BOM_DATASOURCE_XML_RALATIVE_PATH;
 	}
+	
 	/**
-	 * 获取修改数据源对话框
-	 * @return
+	 * 获取修改数据源对话框.
+	 *
+	 * @author mqfdy
+	 * @return the update datasource dialog
+	 * @Date 2018-09-03 09:00
 	 */
 	public UpdateDatasourceDialog getUpdateDatasourceDialog() {
 		IProject project = ReverseContext.wizard.getProject();
@@ -544,10 +690,15 @@ public class DatasourceWizardPage extends WizardPage {
 	}
 	
 	/**
-	 * 读取数据源
+	 * 读取数据源.
+	 *
+	 * @author mqfdy
 	 * @param project
-	 * @return
+	 *            the project
+	 * @return the list
 	 * @throws ReverseException
+	 *             the reverse exception
+	 * @Date 2018-09-03 09:00
 	 */
 	private List<DataSourceInfo> readDataSourceList(IProject project) throws ReverseException {
 		List<DataSourceInfo> dataSourceList = new ArrayList<DataSourceInfo>();
@@ -557,14 +708,20 @@ public class DatasourceWizardPage extends WizardPage {
 		return dataSourceList;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canFlipToNextPage() {
 		return isPageComplete();
 	}
 
 	/**
-	 * 获得下一个页面
-	 * @return
+	 * 获得下一个页面.
+	 *
+	 * @author mqfdy
+	 * @return the next page
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public IWizardPage getNextPage() {

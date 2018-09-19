@@ -45,58 +45,117 @@ import org.eclipse.ui.internal.forms.MessageManager;
 import org.eclipse.ui.internal.forms.widgets.FormImages;
 import org.eclipse.ui.internal.forms.widgets.FormsResources;
 
+// TODO: Auto-generated Javadoc
 /**
  * Form header moved out of the form class.
+ *
+ * @author mqfdy
  */
 @SuppressWarnings("restriction")
 public class FormHeading extends Canvas {
+	
+	/** The Constant TITLE_HMARGIN. */
 	private static final int TITLE_HMARGIN = 1;
+	
+	/** The Constant SPACING. */
 	private static final int SPACING = 5;
+	
+	/** The Constant VSPACING. */
 	private static final int VSPACING = 5;
+	
+	/** The Constant HMARGIN. */
 	private static final int HMARGIN = 6;
+	
+	/** The Constant VMARGIN. */
 	private static final int VMARGIN = 1;
+	
+	/** The Constant CLIENT_MARGIN. */
 	private static final int CLIENT_MARGIN = 1;
 
+	/** The Constant SEPARATOR. */
 	private static final int SEPARATOR = 1 << 1;
+	
+	/** The Constant BOTTOM_TOOLBAR. */
 	private static final int BOTTOM_TOOLBAR = 1 << 2;
+	
+	/** The Constant BACKGROUND_IMAGE_TILED. */
 	private static final int BACKGROUND_IMAGE_TILED = 1 << 3;
+	
+	/** The Constant SEPARATOR_HEIGHT. */
 	private static final int SEPARATOR_HEIGHT = 2;
+	
+	/** The Constant MESSAGE_AREA_LIMIT. */
 	private static final int MESSAGE_AREA_LIMIT = 50;
+	
+	/** The null message array. */
 	static IMessage[] NULL_MESSAGE_ARRAY = new IMessage[] {};
 
+	/** The Constant COLOR_BASE_BG. */
 	public static final String COLOR_BASE_BG = "baseBg"; //$NON-NLS-1$
 
+	/** The background image. */
 	private Image backgroundImage;
 
+	/** The gradient image. */
 	private Image gradientImage;
 
+	/** The colors. */
 	Hashtable colors = new Hashtable();
 
+	/** The flags. */
 	private int flags;
 
+	/** The gradient info. */
 	private GradientInfo gradientInfo;
 
+	/** The tool bar manager. */
 	private ToolBarManager toolBarManager;
 
+	/** The toolbar cache. */
 	private SizeCache toolbarCache = new SizeCache();
 
+	/** The client cache. */
 	private SizeCache clientCache = new SizeCache();
 
+	/** The message cache. */
 	private SizeCache messageCache = new SizeCache();
 
+	/** The title region. */
 	private TitleRegion titleRegion;
 
+	/** The message region. */
 	private MessageRegion messageRegion;
 
+	/** The message tool tip manager. */
 	private IMessageToolTipManager messageToolTipManager = new DefaultMessageToolTipManager();
 
+	/** The head client. */
 	private Control headClient;
 
+	/**
+	 * The Class DefaultMessageToolTipManager.
+	 *
+	 * @author mqfdy
+	 */
 	private class DefaultMessageToolTipManager implements
 			IMessageToolTipManager {
+		
+		/**
+		 * Creates the tool tip.
+		 *
+		 * @author mqfdy
+		 * @param control
+		 *            the control
+		 * @param imageLabel
+		 *            the image label
+		 * @Date 2018-09-03 09:00
+		 */
 		public void createToolTip(Control control, boolean imageLabel) {
 		}
 
+		/**
+		 * 
+		 */
 		public void update() {
 			String details = getMessageType() == 0 ? null : MessageManager
 					.createDetails(getChildrenMessages());
@@ -109,34 +168,117 @@ public class FormHeading extends Canvas {
 		}
 	}
 
+	/**
+	 * The Class GradientInfo.
+	 *
+	 * @author mqfdy
+	 */
 	private class GradientInfo {
+		
+		/** The gradient colors. */
 		Color[] gradientColors;
 
+		/** The percents. */
 		int[] percents;
 
+		/** The vertical. */
 		boolean vertical;
 	}
 
+	/**
+	 * The Class FormHeadingLayout.
+	 *
+	 * @author mqfdy
+	 */
 	private class FormHeadingLayout extends Layout implements ILayoutExtension {
+		
+		/**
+		 * Compute minimum width.
+		 *
+		 * @author mqfdy
+		 * @param composite
+		 *            the composite
+		 * @param flushCache
+		 *            the flush cache
+		 * @return the int
+		 * @Date 2018-09-03 09:00
+		 */
 		public int computeMinimumWidth(Composite composite, boolean flushCache) {
 			return computeSize(composite, 5, SWT.DEFAULT, flushCache).x;
 		}
 
+		/**
+		 * Compute maximum width.
+		 *
+		 * @author mqfdy
+		 * @param composite
+		 *            the composite
+		 * @param flushCache
+		 *            the flush cache
+		 * @return the int
+		 * @Date 2018-09-03 09:00
+		 */
 		public int computeMaximumWidth(Composite composite, boolean flushCache) {
 			return computeSize(composite, SWT.DEFAULT, SWT.DEFAULT, flushCache).x;
 		}
 
+		/**
+		 * Compute size.
+		 *
+		 * @author mqfdy
+		 * @param composite
+		 *            the composite
+		 * @param wHint
+		 *            the w hint
+		 * @param hHint
+		 *            the h hint
+		 * @param flushCache
+		 *            the flush cache
+		 * @return the point
+		 * @Date 2018-09-03 09:00
+		 */
 		public Point computeSize(Composite composite, int wHint, int hHint,
 				boolean flushCache) {
 			return layout(composite, false, 0, 0, wHint, hHint, flushCache);
 		}
 
+		/**
+		 * Layout.
+		 *
+		 * @author mqfdy
+		 * @param composite
+		 *            the composite
+		 * @param flushCache
+		 *            the flush cache
+		 * @Date 2018-09-03 09:00
+		 */
 		protected void layout(Composite composite, boolean flushCache) {
 			Rectangle rect = composite.getClientArea();
 			layout(composite, true, rect.x, rect.y, rect.width, rect.height,
 					flushCache);
 		}
 
+		/**
+		 * Layout.
+		 *
+		 * @author mqfdy
+		 * @param composite
+		 *            the composite
+		 * @param move
+		 *            the move
+		 * @param x
+		 *            the x
+		 * @param y
+		 *            the y
+		 * @param width
+		 *            the width
+		 * @param height
+		 *            the height
+		 * @param flushCache
+		 *            the flush cache
+		 * @return the point
+		 * @Date 2018-09-03 09:00
+		 */
 		private Point layout(Composite composite, boolean move, int x, int y,
 				int width, int height, boolean flushCache) {
 			Point tsize = null;
@@ -345,6 +487,9 @@ public class FormHeading extends Canvas {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	/* (non-Javadoc)
 	 * @see org.eclipse.swt.widgets.Control#forceFocus()
 	 */
@@ -352,33 +497,87 @@ public class FormHeading extends Canvas {
 		return false;
 	}
 
+	/**
+	 * Checks for tool bar.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean hasToolBar() {
 		return toolBarManager != null && !toolBarManager.isEmpty();
 	}
 
+	/**
+	 * Checks for message region.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean hasMessageRegion() {
 		return messageRegion != null && !messageRegion.isEmpty();
 	}
 
+	/**
+	 * The Class MessageRegion.
+	 *
+	 * @author mqfdy
+	 */
 	private class MessageRegion {
+		
+		/** The message. */
 		private String message;
+		
+		/** The message type. */
 		private int messageType;
+		
+		/** The message label. */
 		private CLabel messageLabel;
+		
+		/** The messages. */
 		private IMessage[] messages;
+		
+		/** The message hyperlink. */
 		private Hyperlink messageHyperlink;
+		
+		/** The listeners. */
 		private ListenerList listeners;
+		
+		/** The fg. */
 		private Color fg;
+		
+		/** The font height. */
 		private int fontHeight = -1;
+		
+		/** The font baseline height. */
 		private int fontBaselineHeight = -1;
 
+		/**
+		 * Instantiates a new message region.
+		 */
 		public MessageRegion() {
 		}
 
+		/**
+		 * Checks if is disposed.
+		 *
+		 * @author mqfdy
+		 * @return true, if is disposed
+		 * @Date 2018-09-03 09:00
+		 */
 		public boolean isDisposed() {
 			Control c = getMessageControl();
 			return c != null && c.isDisposed();
 		}
 
+		/**
+		 * Checks if is empty.
+		 *
+		 * @author mqfdy
+		 * @return true, if is empty
+		 * @Date 2018-09-03 09:00
+		 */
 		public boolean isEmpty() {
 			Control c = getMessageControl();
 			if (c == null)
@@ -386,6 +585,13 @@ public class FormHeading extends Canvas {
 			return !c.getVisible();
 		}
 
+		/**
+		 * Gets the font height.
+		 *
+		 * @author mqfdy
+		 * @return the font height
+		 * @Date 2018-09-03 09:00
+		 */
 		public int getFontHeight() {
 			if (fontHeight == -1) {
 				Control c = getMessageControl();
@@ -399,6 +605,13 @@ public class FormHeading extends Canvas {
 			return fontHeight;
 		}
 
+		/**
+		 * Gets the font baseline height.
+		 *
+		 * @author mqfdy
+		 * @return the font baseline height
+		 * @Date 2018-09-03 09:00
+		 */
 		public int getFontBaselineHeight() {
 			if (fontBaselineHeight == -1) {
 				Control c = getMessageControl();
@@ -413,6 +626,18 @@ public class FormHeading extends Canvas {
 			return fontBaselineHeight;
 		}
 
+		/**
+		 * Show message.
+		 *
+		 * @author mqfdy
+		 * @param newMessage
+		 *            the new message
+		 * @param newType
+		 *            the new type
+		 * @param messages
+		 *            the messages
+		 * @Date 2018-09-03 09:00
+		 */
 		public void showMessage(String newMessage, int newType,
 				IMessage[] messages) {
 			Control oldControl = getMessageControl();
@@ -437,30 +662,73 @@ public class FormHeading extends Canvas {
 				updateForeground();
 		}
 
+		/**
+		 * Update tool tip.
+		 *
+		 * @author mqfdy
+		 * @param toolTip
+		 *            the tool tip
+		 * @Date 2018-09-03 09:00
+		 */
 		public void updateToolTip(String toolTip) {
 			Control control = getMessageControl();
 			if (control != null)
 				control.setToolTipText(toolTip);
 		}
 
+		/**
+		 * Gets the message.
+		 *
+		 * @author mqfdy
+		 * @return the message
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getMessage() {
 			return message;
 		}
 
+		/**
+		 * Gets the message type.
+		 *
+		 * @author mqfdy
+		 * @return the message type
+		 * @Date 2018-09-03 09:00
+		 */
 		public int getMessageType() {
 			return messageType;
 		}
 
+		/**
+		 * Gets the children messages.
+		 *
+		 * @author mqfdy
+		 * @return the children messages
+		 * @Date 2018-09-03 09:00
+		 */
 		public IMessage[] getChildrenMessages() {
 			return messages;
 		}
 
+		/**
+		 * Gets the message control.
+		 *
+		 * @author mqfdy
+		 * @return the message control
+		 * @Date 2018-09-03 09:00
+		 */
 		public Control getMessageControl() {
 			if (needHyperlink() && messageHyperlink != null)
 				return messageHyperlink;
 			return messageLabel;
 		}
 
+		/**
+		 * Gets the message image.
+		 *
+		 * @author mqfdy
+		 * @return the message image
+		 * @Date 2018-09-03 09:00
+		 */
 		public Image getMessageImage() {
 			switch (messageType) {
 			case IMessageProvider.INFORMATION:
@@ -474,6 +742,14 @@ public class FormHeading extends Canvas {
 			}
 		}
 
+		/**
+		 * Adds the message hyperlink listener.
+		 *
+		 * @author mqfdy
+		 * @param listener
+		 *            the listener
+		 * @Date 2018-09-03 09:00
+		 */
 		public void addMessageHyperlinkListener(IHyperlinkListener listener) {
 			if (listeners == null)
 				listeners = new ListenerList();
@@ -485,6 +761,14 @@ public class FormHeading extends Canvas {
 				updateForeground();
 		}
 
+		/**
+		 * Removes the message hyperlink listener.
+		 *
+		 * @author mqfdy
+		 * @param listener
+		 *            the listener
+		 * @Date 2018-09-03 09:00
+		 */
 		private void removeMessageHyperlinkListener(IHyperlinkListener listener) {
 			if (listeners != null) {
 				listeners.remove(listener);
@@ -498,6 +782,12 @@ public class FormHeading extends Canvas {
 			}
 		}
 
+		/**
+		 * Ensure control exists.
+		 *
+		 * @author mqfdy
+		 * @Date 2018-09-03 09:00
+		 */
 		private void ensureControlExists() {
 			if (needHyperlink()) {
 				if (messageLabel != null)
@@ -535,10 +825,25 @@ public class FormHeading extends Canvas {
 			layout(true);
 		}
 
+		/**
+		 * Need hyperlink.
+		 *
+		 * @author mqfdy
+		 * @return true, if successful
+		 * @Date 2018-09-03 09:00
+		 */
 		private boolean needHyperlink() {
 			return messageType > 0 && listeners != null;
 		}
 
+		/**
+		 * Sets the background.
+		 *
+		 * @author mqfdy
+		 * @param bg
+		 *            the new background
+		 * @Date 2018-09-03 09:00
+		 */
 		public void setBackground(Color bg) {
 			if (messageHyperlink != null)
 				messageHyperlink.setBackground(bg);
@@ -546,10 +851,24 @@ public class FormHeading extends Canvas {
 				messageLabel.setBackground(bg);
 		}
 
+		/**
+		 * Sets the foreground.
+		 *
+		 * @author mqfdy
+		 * @param fg
+		 *            the new foreground
+		 * @Date 2018-09-03 09:00
+		 */
 		public void setForeground(Color fg) {
 			this.fg = fg;
 		}
 
+		/**
+		 * Update foreground.
+		 *
+		 * @author mqfdy
+		 * @Date 2018-09-03 09:00
+		 */
 		private void updateForeground() {
 			Color theFg;
 
@@ -569,9 +888,11 @@ public class FormHeading extends Canvas {
 
 	/**
 	 * Creates the form content control as a child of the provided parent.
-	 * 
+	 *
 	 * @param parent
 	 *            the parent widget
+	 * @param style
+	 *            the style
 	 */
 	public FormHeading(Composite parent, int style) {
 		super(parent, style);
@@ -619,6 +940,16 @@ public class FormHeading extends Canvas {
 
 	/**
 	 * Fully delegates the size computation to the internal layout manager.
+	 *
+	 * @author mqfdy
+	 * @param wHint
+	 *            the w hint
+	 * @param hHint
+	 *            the h hint
+	 * @param changed
+	 *            the changed
+	 * @return the point
+	 * @Date 2018-09-03 09:00
 	 */
 	public final Point computeSize(int wHint, int hHint, boolean changed) {
 		return ((FormHeadingLayout) getLayout()).computeSize(this, wHint,
@@ -627,14 +958,21 @@ public class FormHeading extends Canvas {
 
 	/**
 	 * Prevents from changing the custom control layout.
+	 *
+	 * @author mqfdy
+	 * @param layout
+	 *            the new layout
+	 * @Date 2018-09-03 09:00
 	 */
 	public final void setLayout(Layout layout) {
 	}
 
 	/**
 	 * Returns the title text that will be rendered at the top of the form.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return the title text
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getText() {
 		return titleRegion.getText();
@@ -652,12 +990,25 @@ public class FormHeading extends Canvas {
 
 	/**
 	 * Sets the background color of the header.
+	 *
+	 * @author mqfdy
+	 * @param bg
+	 *            the new background
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setBackground(Color bg) {
 		super.setBackground(bg);
 		internalSetBackground(bg);
 	}
 
+	/**
+	 * Internal set background.
+	 *
+	 * @author mqfdy
+	 * @param bg
+	 *            the bg
+	 * @Date 2018-09-03 09:00
+	 */
 	private void internalSetBackground(Color bg) {
 		titleRegion.setBackground(bg);
 		if (messageRegion != null)
@@ -669,6 +1020,11 @@ public class FormHeading extends Canvas {
 
 	/**
 	 * Sets the foreground color of the header.
+	 *
+	 * @author mqfdy
+	 * @param fg
+	 *            the new foreground
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setForeground(Color fg) {
 		super.setForeground(fg);
@@ -680,14 +1036,24 @@ public class FormHeading extends Canvas {
 	/**
 	 * Sets the text to be rendered at the top of the form above the body as a
 	 * title.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param text
 	 *            the title text
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setText(String text) {
 		titleRegion.setText(text);
 	}
 
+	/**
+	 * Sets the font.
+	 *
+	 * @author mqfdy
+	 * @param font
+	 *            the new font
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setFont(Font font) {
 		super.setFont(font);
 		titleRegion.setFont(font);
@@ -708,6 +1074,18 @@ public class FormHeading extends Canvas {
 			titleRegion.updateImage(null, true);
 	}
 
+	/**
+	 * Sets the text background.
+	 *
+	 * @author mqfdy
+	 * @param gradientColors
+	 *            the gradient colors
+	 * @param percents
+	 *            the percents
+	 * @param vertical
+	 *            the vertical
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setTextBackground(Color[] gradientColors, int[] percents,
 			boolean vertical) {
 		if (gradientColors != null) {
@@ -728,6 +1106,14 @@ public class FormHeading extends Canvas {
 		}
 	}
 
+	/**
+	 * Sets the heading background image.
+	 *
+	 * @author mqfdy
+	 * @param image
+	 *            the new heading background image
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setHeadingBackgroundImage(Image image) {
 		this.backgroundImage = image;
 		if (image != null)
@@ -738,10 +1124,25 @@ public class FormHeading extends Canvas {
 			updateGradientImage();
 	}
 
+	/**
+	 * Gets the heading background image.
+	 *
+	 * @author mqfdy
+	 * @return the heading background image
+	 * @Date 2018-09-03 09:00
+	 */
 	public Image getHeadingBackgroundImage() {
 		return backgroundImage;
 	}
 
+	/**
+	 * Sets the background image tiled.
+	 *
+	 * @author mqfdy
+	 * @param tiled
+	 *            the new background image tiled
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBackgroundImageTiled(boolean tiled) {
 		if (tiled)
 			flags |= BACKGROUND_IMAGE_TILED;
@@ -750,10 +1151,25 @@ public class FormHeading extends Canvas {
 		setHeadingBackgroundImage(this.backgroundImage);
 	}
 
+	/**
+	 * Checks if is background image tiled.
+	 *
+	 * @author mqfdy
+	 * @return true, if is background image tiled
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isBackgroundImageTiled() {
 		return (flags & BACKGROUND_IMAGE_TILED) != 0;
 	}
 
+	/**
+	 * Sets the background image.
+	 *
+	 * @author mqfdy
+	 * @param image
+	 *            the new background image
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBackgroundImage(Image image) {
 		super.setBackgroundImage(image);
 		if (image != null) {
@@ -764,8 +1180,10 @@ public class FormHeading extends Canvas {
 	/**
 	 * Returns the tool bar manager that is used to manage tool items in the
 	 * form's title area.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return form tool bar manager
+	 * @Date 2018-09-03 09:00
 	 */
 	public IToolBarManager getToolBarManager() {
 		if (toolBarManager == null) {
@@ -800,12 +1218,23 @@ public class FormHeading extends Canvas {
 	/**
 	 * Updates the local tool bar manager if used. Does nothing if local tool
 	 * bar manager has not been created yet.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void updateToolBar() {
 		if (toolBarManager != null)
 			toolBarManager.update(false);
 	}
 
+	/**
+	 * On paint.
+	 *
+	 * @author mqfdy
+	 * @param gc
+	 *            the gc
+	 * @Date 2018-09-03 09:00
+	 */
 	private void onPaint(GC gc) {
 		if (!isSeparatorVisible() && getBackgroundImage() == null)
 			return;
@@ -846,6 +1275,14 @@ public class FormHeading extends Canvas {
 		buffer.dispose();
 	}
 
+	/**
+	 * Update title region hover state.
+	 *
+	 * @author mqfdy
+	 * @param e
+	 *            the e
+	 * @Date 2018-09-03 09:00
+	 */
 	private void updateTitleRegionHoverState(MouseEvent e) {
 		Rectangle titleRect = titleRegion.getBounds();
 		titleRect.width += titleRect.x + 15;
@@ -858,6 +1295,12 @@ public class FormHeading extends Canvas {
 			titleRegion.setHoverState(TitleRegion.STATE_NORMAL);
 	}
 
+	/**
+	 * Update gradient image.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void updateGradientImage() {
 		Rectangle rect = getBounds();
 		if (gradientImage != null) {
@@ -878,10 +1321,25 @@ public class FormHeading extends Canvas {
 		setBackgroundImage(gradientImage);
 	}
 
+	/**
+	 * Checks if is separator visible.
+	 *
+	 * @author mqfdy
+	 * @return true, if is separator visible
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isSeparatorVisible() {
 		return (flags & SEPARATOR) != 0;
 	}
 
+	/**
+	 * Sets the separator visible.
+	 *
+	 * @author mqfdy
+	 * @param addSeparator
+	 *            the new separator visible
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setSeparatorVisible(boolean addSeparator) {
 		if (addSeparator)
 			flags |= SEPARATOR;
@@ -889,6 +1347,14 @@ public class FormHeading extends Canvas {
 			flags &= ~SEPARATOR;
 	}
 
+	/**
+	 * Sets the tool bar alignment.
+	 *
+	 * @author mqfdy
+	 * @param alignment
+	 *            the new tool bar alignment
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setToolBarAlignment(int alignment) {
 		if (alignment == SWT.BOTTOM)
 			flags |= BOTTOM_TOOLBAR;
@@ -896,39 +1362,101 @@ public class FormHeading extends Canvas {
 			flags &= ~BOTTOM_TOOLBAR;
 	}
 
+	/**
+	 * Gets the tool bar alignment.
+	 *
+	 * @author mqfdy
+	 * @return the tool bar alignment
+	 * @Date 2018-09-03 09:00
+	 */
 	public int getToolBarAlignment() {
 		return (flags & BOTTOM_TOOLBAR) != 0 ? SWT.BOTTOM : SWT.TOP;
 	}
 
+	/**
+	 * Adds the message hyperlink listener.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addMessageHyperlinkListener(IHyperlinkListener listener) {
 		ensureMessageRegionExists();
 		messageRegion.addMessageHyperlinkListener(listener);
 	}
 
+	/**
+	 * Removes the message hyperlink listener.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removeMessageHyperlinkListener(IHyperlinkListener listener) {
 		if (messageRegion != null)
 			messageRegion.removeMessageHyperlinkListener(listener);
 	}
 
+	/**
+	 * Gets the message.
+	 *
+	 * @author mqfdy
+	 * @return the message
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getMessage() {
 		return messageRegion != null ? messageRegion.getMessage() : null;
 	}
 
+	/**
+	 * Gets the message type.
+	 *
+	 * @author mqfdy
+	 * @return the message type
+	 * @Date 2018-09-03 09:00
+	 */
 	public int getMessageType() {
 		return messageRegion != null ? messageRegion.getMessageType() : 0;
 	}
 
+	/**
+	 * Gets the children messages.
+	 *
+	 * @author mqfdy
+	 * @return the children messages
+	 * @Date 2018-09-03 09:00
+	 */
 	public IMessage[] getChildrenMessages() {
 		return messageRegion != null ? messageRegion.getChildrenMessages()
 				: NULL_MESSAGE_ARRAY;
 	}
 
+	/**
+	 * Ensure message region exists.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void ensureMessageRegionExists() {
 		// ensure message region exists
 		if (messageRegion == null)
 			messageRegion = new MessageRegion();
 	}
 
+	/**
+	 * Show message.
+	 *
+	 * @author mqfdy
+	 * @param newMessage
+	 *            the new message
+	 * @param type
+	 *            the type
+	 * @param messages
+	 *            the messages
+	 * @Date 2018-09-03 09:00
+	 */
 	public void showMessage(String newMessage, int type, IMessage[] messages) {
 		if (messageRegion == null) {
 			// check the trivial case
@@ -947,8 +1475,10 @@ public class FormHeading extends Canvas {
 
 	/**
 	 * Tests if the form is in the 'busy' state.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return <code>true</code> if busy, <code>false</code> otherwise.
+	 * @Date 2018-09-03 09:00
 	 */
 
 	public boolean isBusy() {
@@ -958,9 +1488,11 @@ public class FormHeading extends Canvas {
 	/**
 	 * Sets the form's busy state. Busy form will display 'busy' animation in
 	 * the area of the title image.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param busy
 	 *            the form's busy state
+	 * @Date 2018-09-03 09:00
 	 */
 
 	public void setBusy(boolean busy) {
@@ -968,10 +1500,25 @@ public class FormHeading extends Canvas {
 			layout();
 	}
 
+	/**
+	 * Gets the head client.
+	 *
+	 * @author mqfdy
+	 * @return the head client
+	 * @Date 2018-09-03 09:00
+	 */
 	public Control getHeadClient() {
 		return headClient;
 	}
 
+	/**
+	 * Sets the head client.
+	 *
+	 * @author mqfdy
+	 * @param headClient
+	 *            the new head client
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setHeadClient(Control headClient) {
 		if (headClient != null)
 			Assert.isTrue(headClient.getParent() == this);
@@ -979,6 +1526,16 @@ public class FormHeading extends Canvas {
 		layout();
 	}
 
+	/**
+	 * Put color.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @param color
+	 *            the color
+	 * @Date 2018-09-03 09:00
+	 */
 	public void putColor(String key, Color color) {
 		if (color == null)
 			colors.remove(key);
@@ -986,28 +1543,85 @@ public class FormHeading extends Canvas {
 			colors.put(key, color);
 	}
 
+	/**
+	 * Gets the color.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @return the color
+	 * @Date 2018-09-03 09:00
+	 */
 	public Color getColor(String key) {
 		return (Color) colors.get(key);
 	}
 
+	/**
+	 * Checks for color.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean hasColor(String key) {
 		return colors.containsKey(key);
 	}
 
+	/**
+	 * Adds the drag support.
+	 *
+	 * @author mqfdy
+	 * @param operations
+	 *            the operations
+	 * @param transferTypes
+	 *            the transfer types
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addDragSupport(int operations, Transfer[] transferTypes,
 			DragSourceListener listener) {
 		titleRegion.addDragSupport(operations, transferTypes, listener);
 	}
 
+	/**
+	 * Adds the drop support.
+	 *
+	 * @author mqfdy
+	 * @param operations
+	 *            the operations
+	 * @param transferTypes
+	 *            the transfer types
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addDropSupport(int operations, Transfer[] transferTypes,
 			DropTargetListener listener) {
 		titleRegion.addDropSupport(operations, transferTypes, listener);
 	}
 
+	/**
+	 * Gets the message tool tip manager.
+	 *
+	 * @author mqfdy
+	 * @return the message tool tip manager
+	 * @Date 2018-09-03 09:00
+	 */
 	public IMessageToolTipManager getMessageToolTipManager() {
 		return messageToolTipManager;
 	}
 
+	/**
+	 * Sets the message tool tip manager.
+	 *
+	 * @author mqfdy
+	 * @param messageToolTipManager
+	 *            the new message tool tip manager
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setMessageToolTipManager(
 			IMessageToolTipManager messageToolTipManager) {
 		this.messageToolTipManager = messageToolTipManager;

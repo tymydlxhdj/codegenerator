@@ -23,14 +23,38 @@ import com.mqfdy.code.designer.utils.BusinessModelUtil;
 import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramStyle;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ZoomSelectMenuCreator.
+ *
+ * @author mqfdy
+ */
 public class ZoomSelectMenuCreator implements IMenuCreator ,ZoomListener {
 
+	/** The business model diagram editor. */
 	private BusinessModelDiagramEditor businessModelDiagramEditor; 
+	
+	/** The view list menu. */
 	private Menu viewListMenu;
+	
+	/** The zoom scale. */
 	private String zoomScale;
+	
+	/** The zoom manager. */
 	private ZoomManager zoomManager;
+	
+	/** The service. */
 	private IPartService service;
+	
+	/** The part listener. */
 	private IPartListener partListener;
+	
+	/**
+	 * Instantiates a new zoom select menu creator.
+	 *
+	 * @param businessModelDiagramEditor
+	 *            the business model diagram editor
+	 */
 	public ZoomSelectMenuCreator(
 			BusinessModelDiagramEditor businessModelDiagramEditor) {
 		setWebletVisualEditor(businessModelDiagramEditor);
@@ -55,18 +79,53 @@ public class ZoomSelectMenuCreator implements IMenuCreator ,ZoomListener {
 		});
 	}
 
+	/**
+	 * Sets the weblet visual editor.
+	 *
+	 * @author mqfdy
+	 * @param editor
+	 *            the new weblet visual editor
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setWebletVisualEditor(BusinessModelDiagramEditor editor) {
 		this.businessModelDiagramEditor = editor;
 	}
 
+	/**
+	 * Gets the menu.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the menu
+	 * @Date 2018-09-03 09:00
+	 */
 	public Menu getMenu(Control parent) {
 		return sharedGetMenu(parent);
 	}
 
+	/**
+	 * Gets the menu.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the menu
+	 * @Date 2018-09-03 09:00
+	 */
 	public Menu getMenu(Menu parent) {
 		return sharedGetMenu(parent);
 	}
 
+	/**
+	 * Shared get menu.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the menu
+	 * @Date 2018-09-03 09:00
+	 */
 	private Menu sharedGetMenu(Widget parent) {
 		if (this.viewListMenu != null) {
 			this.viewListMenu.dispose();
@@ -106,7 +165,10 @@ public class ZoomSelectMenuCreator implements IMenuCreator ,ZoomListener {
 
 		return this.viewListMenu;
 	}
+	
 	/**
+	 * Handle widget default selected.
+	 *
 	 * @see org.eclipse.swt.events.SelectionListener#widgetDefaultSelected(SelectionEvent)
 	 */
 	private void handleWidgetDefaultSelected() {
@@ -115,6 +177,10 @@ public class ZoomSelectMenuCreator implements IMenuCreator ,ZoomListener {
 		}
 		refresh(false);
 	}
+	
+	/**
+	 * 
+	 */
 	public void dispose() {
 		if (partListener == null)
 			return;
@@ -126,15 +192,34 @@ public class ZoomSelectMenuCreator implements IMenuCreator ,ZoomListener {
 		partListener = null;
 	}
 
+	/**
+	 * Gets the zoom scale.
+	 *
+	 * @author mqfdy
+	 * @return the zoom scale
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getZoomScale() {
 		return zoomScale;
 	}
 
+	/**
+	 * Sets the zoom scale.
+	 *
+	 * @author mqfdy
+	 * @param zoomScale
+	 *            the new zoom scale
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setZoomScale(String zoomScale) {
 		this.zoomScale = zoomScale;
 	}
 
 	/**
+	 * Zoom changed.
+	 *
+	 * @param zoom
+	 *            the zoom
 	 * @see ZoomListener#zoomChanged(double)
 	 */
 	public void zoomChanged(double zoom) {
@@ -154,6 +239,15 @@ public class ZoomSelectMenuCreator implements IMenuCreator ,ZoomListener {
 		}
 		refresh(false);
 	}
+	
+	/**
+	 * Refresh.
+	 *
+	 * @author mqfdy
+	 * @param repopulateCombo
+	 *            the repopulate combo
+	 * @Date 2018-09-03 09:00
+	 */
 	private void refresh(boolean repopulateCombo) {
 //		if (combo == null || combo.isDisposed())
 //			return;
@@ -187,20 +281,25 @@ public class ZoomSelectMenuCreator implements IMenuCreator ,ZoomListener {
 				throw exception;
 		}
 	}
+	
 	/**
 	 * Returns the zoomManager.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return ZoomManager
+	 * @Date 2018-09-03 09:00
 	 */
 	public ZoomManager getZoomManager() {
 		return zoomManager;
 	}
 
 	/**
-	 * Sets the ZoomManager
-	 * 
+	 * Sets the ZoomManager.
+	 *
+	 * @author mqfdy
 	 * @param zm
 	 *            The ZoomManager
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setZoomManager(ZoomManager zm) {
 		if (zoomManager == zm)

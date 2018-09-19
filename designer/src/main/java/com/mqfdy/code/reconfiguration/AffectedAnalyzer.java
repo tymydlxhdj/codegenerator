@@ -11,40 +11,71 @@ import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.model.utils.AssociationType;
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 受影响文件分析
- * 
+ * 受影响文件分析.
+ *
  * @author mqfdy
  */
 public class AffectedAnalyzer {
 
+	/** The infos. */
 	// 得到所有重构操作的集合
 	private List<OperationInfo> infos;
+	
+	/** The project path. */
 	// 工程路径
 	private String projectPath;
+	
+	/** The namespace. */
 	// 命名空间
 	private String namespace;
+	
+	/** The model package name. */
 	// 模型包名
 	private String modelPackageName;
 
+	/** The packagee. */
 	// src下的包名
 	private String packagee;
 
+	/** The controller list. */
 	// 工程路径下的所有生成Controller类文件集合
 	private List<File> controllerList = new ArrayList<File>();
+	
+	/** The bizc interface list. */
 	// 工程路径下的所有生成bizc接口文件集合
 	private List<File> bizcInterfaceList = new ArrayList<File>();
+	
+	/** The bizc list. */
 	// 工程路径下的所有生成bizc类文件集合
 	private List<File> bizcList = new ArrayList<File>();
+	
+	/** The java list. */
 	// 工程路径下的所有生成java类文件集合
 	private List<File> javaList = new ArrayList<File>();
+	
+	/** The hbm list. */
 	// 工程路径下的所有生成hbm文件集合
 	private List<File> hbmList = new ArrayList<File>();
+	
+	/** The ddl list. */
 	// ddl文件集合
 	private List<File> ddlList = new ArrayList<File>();
 
+	/** The associations. */
 	private List<Association> associations;
 
+	/**
+	 * Instantiates a new affected analyzer.
+	 *
+	 * @param infos
+	 *            the infos
+	 * @param projectPath
+	 *            the project path
+	 * @param bom
+	 *            the bom
+	 */
 	public AffectedAnalyzer(List<OperationInfo> infos, String projectPath,
 			BusinessObjectModel bom) {
 		this.infos = infos;
@@ -58,7 +89,10 @@ public class AffectedAnalyzer {
 	}
 
 	/**
-	 * 初始化文件集合
+	 * 初始化文件集合.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void init() {
 		// 获取所有的Controller文件集合
@@ -92,9 +126,12 @@ public class AffectedAnalyzer {
 	}
 
 	/**
-	 * 根据operationInfo集合分析受影响的文件及位置
-	 * 
+	 * 根据operationInfo集合分析受影响的文件及位置.
+	 *
+	 * @author mqfdy
 	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-09-03 09:00
 	 */
 	public void reconstruct() throws IOException {
 		for (OperationInfo info : infos) {
@@ -113,9 +150,12 @@ public class AffectedAnalyzer {
 	}
 
 	/**
-	 * 业务实体显示名改变
-	 * 
+	 * 业务实体显示名改变.
+	 *
+	 * @author mqfdy
 	 * @param info
+	 *            the info
+	 * @Date 2018-09-03 09:00
 	 */
 	private void bcDisplayNameModified(OperationInfo info) {
 		// 更改ddl中的表注释
@@ -137,9 +177,12 @@ public class AffectedAnalyzer {
 	}
 
 	/**
-	 * 业务实体名称被修改
-	 * 
+	 * 业务实体名称被修改.
+	 *
+	 * @author mqfdy
 	 * @param info
+	 *            the info
+	 * @Date 2018-09-03 09:00
 	 */
 	private void bcNameModified(OperationInfo info) {
 		// 首先得到该业务实体文件

@@ -17,19 +17,24 @@ import com.mqfdy.code.model.utils.StringUtil;
 import com.mqfdy.code.resource.BomManager;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 
+ * The Class ModelObjectManageUtil.
+ *
  * @author mqfdy
- * 
  */
 public class ModelObjectManageUtil {
 
 	/**
-	 * XML格式字符串转换为模型
-	 * 
+	 * XML格式字符串转换为模型.
+	 *
+	 * @author mqfdy
 	 * @param xmlStr
-	 * @return
+	 *            the xml str
+	 * @return the business object model
 	 * @throws DocumentException
+	 *             the document exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static BusinessObjectModel xml2Model(String xmlStr)
 			throws DocumentException {
@@ -45,11 +50,15 @@ public class ModelObjectManageUtil {
 	}
 	
 	/**
-	 * XML格式字符串转业务实体
-	 * 
+	 * XML格式字符串转业务实体.
+	 *
+	 * @author mqfdy
 	 * @param xmlStr
-	 * @return
+	 *            the xml str
+	 * @return the business class
 	 * @throws DocumentException
+	 *             the document exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static BusinessClass xml2BusinessClass(String xmlStr)
 			throws DocumentException {
@@ -63,11 +72,15 @@ public class ModelObjectManageUtil {
 	}
 	
 	/**
-	 * XML格式字符串转枚举
-	 * 
+	 * XML格式字符串转枚举.
+	 *
+	 * @author mqfdy
 	 * @param xmlStr
-	 * @return
+	 *            the xml str
+	 * @return the enumeration
 	 * @throws DocumentException
+	 *             the document exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Enumeration xml2Enumeration(String xmlStr)
 			throws DocumentException {
@@ -80,6 +93,14 @@ public class ModelObjectManageUtil {
 
 	}
 
+	/**
+	 * Assemble association.
+	 *
+	 * @author mqfdy
+	 * @param bom
+	 *            the bom
+	 * @Date 2018-09-03 09:00
+	 */
 	private static void assembleAssociation(BusinessObjectModel bom) {
 		List<Association> associations = bom.getAssociations();
 		List<BusinessClass> entities = bom.getBusinessClasses();
@@ -130,6 +151,15 @@ public class ModelObjectManageUtil {
 			}
 		}
 	}
+	
+	/**
+	 * Assemble links.
+	 *
+	 * @author mqfdy
+	 * @param bom
+	 *            the bom
+	 * @Date 2018-09-03 09:00
+	 */
 	private static void assembleLinks(BusinessObjectModel bom) {
 		List<LinkAnnotation> links = bom.getLinkAnnotations();
 		List<AbstractModelElement> ens = new ArrayList<AbstractModelElement>();

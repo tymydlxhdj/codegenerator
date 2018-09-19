@@ -26,6 +26,7 @@ import org.apache.log4j.RollingFileAppender;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.RuntimeServices;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p><em>This class is deprecated in favor of the new {@link Log4JLogChute},
  * which makes use of Log4J's <code>Logger</code> rather than its deprecated
@@ -42,22 +43,30 @@ import org.apache.velocity.runtime.RuntimeServices;
  */
 public class SimpleLog4JLogSystem implements LogSystem
 {
+    
+    /** The rsvc. */
     private RuntimeServices rsvc = null;
+    
+    /** The appender. */
     private RollingFileAppender appender = null;
 
-    /** log4java logging interface */
+    /** log4java logging interface. */
     protected Category logger = null;
 
     /**
-     *
-     */
+	 * Instantiates a new simple log 4 J log system.
+	 */
     public SimpleLog4JLogSystem()
     {
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.LogSystem#init(org.apache.velocity.runtime.RuntimeServices)
-     */
+	 * Inits the.
+	 *
+	 * @param rs
+	 *            the rs
+	 * @see org.apache.velocity.runtime.log.LogSystem#init(org.apache.velocity.runtime.RuntimeServices)
+	 */
     public void init( RuntimeServices rs )
     {
         rsvc = rs;
@@ -103,8 +112,15 @@ public class SimpleLog4JLogSystem implements LogSystem
     }
 
     /**
-     *  initializes the log system using the logfile argument
-     */
+	 * initializes the log system using the logfile argument.
+	 *
+	 * @author mqfdy
+	 * @param logfile
+	 *            the logfile
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:29
+	 */
     private void internalInit( String logfile )
         throws Exception
     {
@@ -132,11 +148,15 @@ public class SimpleLog4JLogSystem implements LogSystem
     }
 
     /**
-     *  logs messages
-     *
-     *  @param level severity level
-     *  @param message complete error message
-     */
+	 * logs messages.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            severity level
+	 * @param message
+	 *            complete error message
+	 * @Date 2018-9-3 11:38:29
+	 */
     public void logVelocityMessage(int level, String message)
     {
         switch (level)
@@ -158,15 +178,24 @@ public class SimpleLog4JLogSystem implements LogSystem
     }
 
     /**
-     * Also do a shutdown if the object is destroy()'d.
-     * @throws Throwable
-     */
+	 * Also do a shutdown if the object is destroy()'d.
+	 *
+	 * @author mqfdy
+	 * @throws Throwable
+	 *             the throwable
+	 * @Date 2018-9-3 11:38:29
+	 */
     protected void finalize() throws Throwable
     {
         shutdown();
     }
 
-    /** Close all destinations*/
+    /**
+	 * Close all destinations.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:29
+	 */
     public void shutdown()
     {
         if (appender != null)

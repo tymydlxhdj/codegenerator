@@ -17,15 +17,32 @@ import com.mqfdy.code.model.Enumeration;
 import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.PropertyEditor;
 import com.mqfdy.code.model.utils.StringUtil;
+// TODO: Auto-generated Javadoc
+
 /**
- * 
- * @author mqf
+ * The Class ConfigFileWriter.
  *
+ * @author mqf
  */
 public class ConfigFileWriter {
 
+	/** The Constant seperator. */
 	private static final String seperator = File.separator;
 
+	/**
+	 * Write enum to properties.
+	 *
+	 * @author mqfdy
+	 * @param exportPath
+	 *            the export path
+	 * @param bom
+	 *            the bom
+	 * @param context
+	 *            the context
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-09-03 09:00
+	 */
 	public void writeEnumToProperties(String exportPath, BusinessObjectModel bom, GeneratorContext context) throws IOException {
 		String[] paths = exportPath.split("java");
 		String path = exportPath.replace(bom.getNameSpace().replace(".", File.separator), "");
@@ -82,10 +99,15 @@ public class ConfigFileWriter {
 		
 		
 	}
+	
 	/**
-	 * 获取枚举id集合
+	 * 获取枚举id集合.
+	 *
+	 * @author mqfdy
 	 * @param bc
-	 * @return
+	 *            the bc
+	 * @return the enum ids
+	 * @Date 2018-9-3 11:38:30
 	 */
 	private List<String> getEnumIds(BusinessClass bc) {
 		List<String> enumIds = new ArrayList<String>();

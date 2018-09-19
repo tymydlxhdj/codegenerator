@@ -17,6 +17,7 @@ import java.lang.reflect.Modifier;
 import java.util.Collections;
 import java.util.Stack;
 
+// TODO: Auto-generated Javadoc
 /**
  * Convenience methods related to the java.lang.reflect package.
  * These methods provide shortcuts for manipulating objects via
@@ -35,40 +36,78 @@ import java.util.Stack;
  */
 public final class ClassTools {
 
+	/** The Constant ZERO_PARAMETER_TYPES. */
 	public static final Class<?>[] ZERO_PARAMETER_TYPES = new Class[0];
+	
+	/** The Constant ZERO_PARAMETERS. */
 	public static final Object[] ZERO_PARAMETERS = new Object[0];
 	private static final String CR = StringTools.CR;
 
+	/** The Constant NESTED_CLASS_NAME_SEPARATOR. */
 	public static final char NESTED_CLASS_NAME_SEPARATOR = '$';
 
+	/** The Constant ARRAY_INDICATOR. */
 	public static final char ARRAY_INDICATOR = '[';
+	
+	/** The Constant TYPE_DECLARATION_ARRAY_OPEN. */
 	public static final char TYPE_DECLARATION_ARRAY_OPEN = '[';
+	
+	/** The Constant TYPE_DECLARATION_ARRAY_CLOSE. */
 	public static final char TYPE_DECLARATION_ARRAY_CLOSE = ']';
 
+	/** The Constant REFERENCE_CLASS_CODE. */
 	public static final char REFERENCE_CLASS_CODE = 'L';
+	
+	/** The Constant REFERENCE_CLASS_NAME_DELIMITER. */
 	public static final char REFERENCE_CLASS_NAME_DELIMITER = ';';
 	
 	private static Primitive[] PRIMITIVES;  // pseudo-'final' - lazy-initialized
+	
+	/** The Constant BYTE_CODE. */
 	public static final char BYTE_CODE = 'B';
+	
+	/** The Constant CHAR_CODE. */
 	public static final char CHAR_CODE = 'C';
+	
+	/** The Constant DOUBLE_CODE. */
 	public static final char DOUBLE_CODE = 'D';
+	
+	/** The Constant FLOAT_CODE. */
 	public static final char FLOAT_CODE = 'F';
+	
+	/** The Constant INT_CODE. */
 	public static final char INT_CODE = 'I';
+	
+	/** The Constant LONG_CODE. */
 	public static final char LONG_CODE = 'J';
+	
+	/** The Constant SHORT_CODE. */
 	public static final char SHORT_CODE = 'S';
+	
+	/** The Constant BOOLEAN_CODE. */
 	public static final char BOOLEAN_CODE = 'Z';
+	
+	/** The Constant VOID_CODE. */
 	public static final char VOID_CODE = 'V';
 	private static int MAX_PRIMITIVE_CLASS_NAME_LENGTH = -1;  // pseudo-'final' - lazy-initialized
 	private static int MAX_PRIMITIVE_WRAPPER_CLASS_NAME_LENGTH = -1;  // pseudo-'final' - lazy-initialized
 
+	/** The Constant VOID_CLASS_NAME. */
 	public static final String VOID_CLASS_NAME = void.class.getName();
+	
+	/** The Constant VOID_WRAPPER_CLASS_NAME. */
 	public static final String VOID_WRAPPER_CLASS_NAME = java.lang.Void.class.getName();
 
 
 	/**
-	 * Return all the fields for the
-	 * specified class, including inherited fields.
-	 * Class#allFields()
+	 * Return all the fields for the specified class, including inherited
+	 * fields. Class#allFields()
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the field[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Field[] allFields(Class<?> javaClass) {
 		Stack<Field> stack = new Stack<Field>();
@@ -80,9 +119,14 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Return all the methods for the
-	 * specified class, including inherited methods.
-	 * Class#allMethods()
+	 * Return all the methods for the specified class, including inherited
+	 * methods. Class#allMethods()
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the method[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Method[] allMethods(Class<?> javaClass) {
 		Stack<Method> stack = new Stack<Method>();
@@ -94,21 +138,44 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return a new instance of the specified class,
-	 * using the class's default (zero-argument) constructor.
-	 * Throw an exception if the default constructor is not defined.
-	 * Class#newInstance() throws NoSuchMethodException
+	 * Convenience method. Return a new instance of the specified class, using
+	 * the class's default (zero-argument) constructor. Throw an exception if
+	 * the default constructor is not defined. Class#newInstance() throws
+	 * NoSuchMethodException
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param javaClass
+	 *            the java class
+	 * @return the t
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <T> T attemptNewInstance(Class<T> javaClass) throws NoSuchMethodException {
 		return attemptNewInstance(javaClass, ZERO_PARAMETER_TYPES, ZERO_PARAMETERS);
 	}
 	
 	/**
-	 * Return a new instance of the specified class,
-	 * given the constructor parameter types and parameters.
-	 * Throw an exception if the constructor is not defined.
-	 * Class#newInstance(Class<?>[] parameterTypes, Object[] parameters) throws NoSuchMethodException
+	 * Return a new instance of the specified class, given the constructor
+	 * parameter types and parameters. Throw an exception if the constructor is
+	 * not defined. Class#newInstance(Class<?>[] parameterTypes, Object[]
+	 * parameters) throws NoSuchMethodException
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param javaClass
+	 *            the java class
+	 * @param parameterTypes
+	 *            the parameter types
+	 * @param parameters
+	 *            the parameters
+	 * @return the t
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <T> T attemptNewInstance(Class<T> javaClass, Class<?>[] parameterTypes, Object[] parameters) throws NoSuchMethodException {
 		try {
@@ -123,11 +190,24 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return a new instance of the specified class,
-	 * given the constructor parameter type and parameter.
-	 * Throw an exception if the constructor is not defined.
-	 * Class#newInstance(Class<?> parameterType, Object parameter) throws NoSuchMethodException
+	 * Convenience method. Return a new instance of the specified class, given
+	 * the constructor parameter type and parameter. Throw an exception if the
+	 * constructor is not defined. Class#newInstance(Class<?> parameterType,
+	 * Object parameter) throws NoSuchMethodException
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param javaClass
+	 *            the java class
+	 * @param parameterType
+	 *            the parameter type
+	 * @param parameter
+	 *            the parameter
+	 * @return the t
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <T> T attemptNewInstance(Class<T> javaClass, Class<?> parameterType, Object parameter) throws NoSuchMethodException {
 		return attemptNewInstance(javaClass, new Class[] {parameterType}, new Object[] {parameter});
@@ -135,10 +215,19 @@ public final class ClassTools {
 	
 	/**
 	 * Attempt to get a field value, given the containing object and field name.
-	 * Return its result.
-	 * Useful for accessing private, package, or protected fields.
-	 * Throw an exception if the field is not defined.
+	 * Return its result. Useful for accessing private, package, or protected
+	 * fields. Throw an exception if the field is not defined.
 	 * Object#getFieldValue(String fieldName) throws NoSuchFieldException
+	 *
+	 * @author mqfdy
+	 * @param object
+	 *            the object
+	 * @param fieldName
+	 *            the field name
+	 * @return the object
+	 * @throws NoSuchFieldException
+	 *             the no such field exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object attemptToGetFieldValue(Object object, String fieldName) throws NoSuchFieldException {
 		try {
@@ -149,11 +238,20 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Attempt to get a static field value, given the containing object and field name.
-	 * Return its result.
-	 * Useful for accessing private, package, or protected fields.
-	 * Throw an exception if the field is not defined.
+	 * Attempt to get a static field value, given the containing object and
+	 * field name. Return its result. Useful for accessing private, package, or
+	 * protected fields. Throw an exception if the field is not defined.
 	 * Class#getStaticFieldValue(String fieldName) throws NoSuchFieldException
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param fieldName
+	 *            the field name
+	 * @return the object
+	 * @throws NoSuchFieldException
+	 *             the no such field exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object attemptToGetStaticFieldValue(Class<?> javaClass, String fieldName) throws NoSuchFieldException {
 		try {
@@ -164,51 +262,98 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Convenience method.
-	 * Attempt to execute a zero-argument method,
-	 * given the receiver and method name.
-	 * Return its result.
-	 * Throw an exception if the method is not found.
-	 * Useful for invoking private, package, or protected methods.
-	 * Object#execute(String methodName) throws NoSuchMethodException
+	 * Convenience method. Attempt to execute a zero-argument method, given the
+	 * receiver and method name. Return its result. Throw an exception if the
+	 * method is not found. Useful for invoking private, package, or protected
+	 * methods. Object#execute(String methodName) throws NoSuchMethodException
+	 *
+	 * @author mqfdy
+	 * @param receiver
+	 *            the receiver
+	 * @param methodName
+	 *            the method name
+	 * @return the object
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object attemptToExecuteMethod(Object receiver, String methodName) throws NoSuchMethodException {
 		return attemptToExecuteMethod(receiver, methodName, ZERO_PARAMETER_TYPES, ZERO_PARAMETERS);
 	}
 	
 	/**
-	 * Convenience method.
-	 * Attempt to execute a method, given the receiver,
-	 * method name, parameter type, and parameter.
-	 * Return its result.
-	 * Throw an exception if the method is not found.
-	 * Useful for invoking private, package, or protected methods.
-	 * Object#execute(String methodName, Class<?> parameterType, Object parameter) throws NoSuchMethodException
+	 * Convenience method. Attempt to execute a method, given the receiver,
+	 * method name, parameter type, and parameter. Return its result. Throw an
+	 * exception if the method is not found. Useful for invoking private,
+	 * package, or protected methods. Object#execute(String methodName, Class<?>
+	 * parameterType, Object parameter) throws NoSuchMethodException
+	 *
+	 * @author mqfdy
+	 * @param receiver
+	 *            the receiver
+	 * @param methodName
+	 *            the method name
+	 * @param parameterType
+	 *            the parameter type
+	 * @param parameter
+	 *            the parameter
+	 * @return the object
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object attemptToExecuteMethod(Object receiver, String methodName, Class<?> parameterType, Object parameter) throws NoSuchMethodException {
 		return attemptToExecuteMethod(receiver, methodName, new Class[] {parameterType}, new Object[] {parameter});
 	}
 	
 	/**
-	 * Attempt to execute a method, given the receiver,
-	 * method name, parameter types, and parameters.
-	 * Return its result.
-	 * Throw an exception if the method is not found.
-	 * Useful for invoking private, package, or protected methods.
-	 * Object#execute(String methodName, Class<?>[] parameterTypes, Object[] parameters) throws NoSuchMethodException
+	 * Attempt to execute a method, given the receiver, method name, parameter
+	 * types, and parameters. Return its result. Throw an exception if the
+	 * method is not found. Useful for invoking private, package, or protected
+	 * methods. Object#execute(String methodName, Class<?>[] parameterTypes,
+	 * Object[] parameters) throws NoSuchMethodException
+	 *
+	 * @author mqfdy
+	 * @param receiver
+	 *            the receiver
+	 * @param methodName
+	 *            the method name
+	 * @param parameterTypes
+	 *            the parameter types
+	 * @param parameters
+	 *            the parameters
+	 * @return the object
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object attemptToExecuteMethod(Object receiver, String methodName, Class<?>[] parameterTypes, Object[] parameters) throws NoSuchMethodException {
 		return executeMethod(method(receiver, methodName, parameterTypes), receiver, parameters);
 	}
 	
 	/**
-	 * Attempt to execute a method, given the receiver,
-	 * method name, parameter types, and parameters.
-	 * Return its result.
-	 * Throw an exception if the method is not found.
-	 * If the executed method throws an exception, rethrow that exception.
-	 * Useful for invoking private, package, or protected methods.
-	 * Object#execute(String methodName, Class<?>[] parameterTypes, Object[] parameters) throws NoSuchMethodException
+	 * Attempt to execute a method, given the receiver, method name, parameter
+	 * types, and parameters. Return its result. Throw an exception if the
+	 * method is not found. If the executed method throws an exception, rethrow
+	 * that exception. Useful for invoking private, package, or protected
+	 * methods. Object#execute(String methodName, Class<?>[] parameterTypes,
+	 * Object[] parameters) throws NoSuchMethodException
+	 *
+	 * @author mqfdy
+	 * @param receiver
+	 *            the receiver
+	 * @param methodName
+	 *            the method name
+	 * @param parameterTypes
+	 *            the parameter types
+	 * @param parameters
+	 *            the parameters
+	 * @return the object
+	 * @throws Throwable
+	 *             the throwable
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object attemptToExecuteMethodWithException(Object receiver, String methodName, Class<?>[] parameterTypes, Object[] parameters) 
 		throws Throwable, NoSuchMethodException 
@@ -217,49 +362,95 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Convenience method.
-	 * Attempt to execute a zero-argument static method,
-	 * given the class and method name.
-	 * Return its result.
-	 * Throw an exception if the method is not found.
-	 * Useful for invoking private, package, or protected methods.
-	 * Class#executeStaticMethod(String methodName) throws NoSuchMethodException
+	 * Convenience method. Attempt to execute a zero-argument static method,
+	 * given the class and method name. Return its result. Throw an exception if
+	 * the method is not found. Useful for invoking private, package, or
+	 * protected methods. Class#executeStaticMethod(String methodName) throws
+	 * NoSuchMethodException
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param methodName
+	 *            the method name
+	 * @return the object
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object attemptToExecuteStaticMethod(Class<?> javaClass, String methodName) throws NoSuchMethodException {
 		return attemptToExecuteStaticMethod(javaClass, methodName, ZERO_PARAMETER_TYPES, ZERO_PARAMETERS);
 	}
 	
 	/**
-	 * Attempt to execute a static method, given the class,
-	 * method name, parameter types, and parameters.
-	 * Return its result.
-	 * Throw an exception if the method is not found.
-	 * Useful for invoking private, package, or protected methods.
-	 * Class#executeStaticMethod(String methodName, Class<?>[] parameterTypes, Object[] parameters) throws NoSuchMethodException
+	 * Attempt to execute a static method, given the class, method name,
+	 * parameter types, and parameters. Return its result. Throw an exception if
+	 * the method is not found. Useful for invoking private, package, or
+	 * protected methods. Class#executeStaticMethod(String methodName,
+	 * Class<?>[] parameterTypes, Object[] parameters) throws
+	 * NoSuchMethodException
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param methodName
+	 *            the method name
+	 * @param parameterTypes
+	 *            the parameter types
+	 * @param parameters
+	 *            the parameters
+	 * @return the object
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object attemptToExecuteStaticMethod(Class<?> javaClass, String methodName, Class<?>[] parameterTypes, Object[] parameters) throws NoSuchMethodException {
 		return executeStaticMethod(staticMethod(javaClass, methodName, parameterTypes), parameters);
 	}
 	
 	/**
-	 * Convenience method.
-	 * Attempt to execute a static method, given the class,
-	 * method name, parameter type, and parameter.
-	 * Return its result.
-	 * Throw an exception if the method is not found.
-	 * Useful for invoking private, package, or protected methods.
-	 * Class#executeStaticMethod(String methodName, Class<?> parameterType, Object parameter) throws NoSuchMethodException
+	 * Convenience method. Attempt to execute a static method, given the class,
+	 * method name, parameter type, and parameter. Return its result. Throw an
+	 * exception if the method is not found. Useful for invoking private,
+	 * package, or protected methods. Class#executeStaticMethod(String
+	 * methodName, Class<?> parameterType, Object parameter) throws
+	 * NoSuchMethodException
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param methodName
+	 *            the method name
+	 * @param parameterType
+	 *            the parameter type
+	 * @param parameter
+	 *            the parameter
+	 * @return the object
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object attemptToExecuteStaticMethod(Class<?> javaClass, String methodName, Class<?> parameterType, Object parameter) throws NoSuchMethodException {
 		return attemptToExecuteStaticMethod(javaClass, methodName, new Class[] {parameterType}, new Object[] {parameter});
 	}
 	
 	/**
-	 * Attempt to set a field value, given the
-	 * containing object, field name, and new field value.
-	 * Useful for accessing private, package, or protected fields.
-	 * Throw an exception if the field is not defined.
-	 * Object#setFieldValue(String fieldName, Object fieldValue) throws NoSuchFieldException
+	 * Attempt to set a field value, given the containing object, field name,
+	 * and new field value. Useful for accessing private, package, or protected
+	 * fields. Throw an exception if the field is not defined.
+	 * Object#setFieldValue(String fieldName, Object fieldValue) throws
+	 * NoSuchFieldException
+	 *
+	 * @author mqfdy
+	 * @param object
+	 *            the object
+	 * @param fieldName
+	 *            the field name
+	 * @param fieldValue
+	 *            the field value
+	 * @throws NoSuchFieldException
+	 *             the no such field exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void attemptToSetFieldValue(Object object, String fieldName, Object fieldValue) throws NoSuchFieldException {
 		try {
@@ -270,11 +461,22 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Attempt to set a static field value, given the
-	 * containing class, field name, and new field value.
-	 * Useful for accessing private, package, or protected fields.
-	 * Throw an exception if the field is not defined.
-	 * Class#setStaticFieldValue(String fieldName, Object fieldValue) throws NoSuchFieldException
+	 * Attempt to set a static field value, given the containing class, field
+	 * name, and new field value. Useful for accessing private, package, or
+	 * protected fields. Throw an exception if the field is not defined.
+	 * Class#setStaticFieldValue(String fieldName, Object fieldValue) throws
+	 * NoSuchFieldException
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param fieldName
+	 *            the field name
+	 * @param fieldValue
+	 *            the field value
+	 * @throws NoSuchFieldException
+	 *             the no such field exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void attemptToSetStaticFieldValue(Class<?> javaClass, String fieldName, Object fieldValue) throws NoSuchFieldException {
 		try {
@@ -285,23 +487,42 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return the default (zero-argument) constructor
-	 * for the specified class.
-	 * Set accessible to true, so we can access
-	 * private/package/protected constructors.
-	 * Class#constructor() throws NoSuchMethodException
+	 * Convenience method. Return the default (zero-argument) constructor for
+	 * the specified class. Set accessible to true, so we can access
+	 * private/package/protected constructors. Class#constructor() throws
+	 * NoSuchMethodException
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param javaClass
+	 *            the java class
+	 * @return the constructor
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <T> Constructor<T> constructor(Class<T> javaClass) throws NoSuchMethodException {
 		return constructor(javaClass, ZERO_PARAMETER_TYPES);
 	}
 	
 	/**
-	 * Return the constructor for the specified class
-	 * and formal parameter types.
-	 * Set accessible to true, so we can access
-	 * private/package/protected constructors.
-	 * Class#constructor(Class<?>[] parameterTypes) throws NoSuchMethodException
+	 * Return the constructor for the specified class and formal parameter
+	 * types. Set accessible to true, so we can access private/package/protected
+	 * constructors. Class#constructor(Class<?>[] parameterTypes) throws
+	 * NoSuchMethodException
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param javaClass
+	 *            the java class
+	 * @param parameterTypes
+	 *            the parameter types
+	 * @return the constructor
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <T> Constructor<T> constructor(Class<T> javaClass, Class<?>[] parameterTypes) throws NoSuchMethodException {
 		Constructor<T> constructor = javaClass.getDeclaredConstructor(parameterTypes);
@@ -309,22 +530,37 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return the constructor for the specified class
-	 * and formal parameter type.
-	 * Set accessible to true, so we can access
-	 * private/package/protected constructors.
-	 * Class#constructor(Class<?> parameterType) throws NoSuchMethodException
+	 * Convenience method. Return the constructor for the specified class and
+	 * formal parameter type. Set accessible to true, so we can access
+	 * private/package/protected constructors. Class#constructor(Class<?>
+	 * parameterType) throws NoSuchMethodException
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param javaClass
+	 *            the java class
+	 * @param parameterType
+	 *            the parameter type
+	 * @return the constructor
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <T> Constructor<T> constructor(Class<T> javaClass, Class<?> parameterType) throws NoSuchMethodException {
 		return constructor(javaClass, new Class[] {parameterType});
 	}
 	
 	/**
-	 * Return the declared fields for the specified class.
-	 * Set accessible to true, so we can access
-	 * private/package/protected fields.
+	 * Return the declared fields for the specified class. Set accessible to
+	 * true, so we can access private/package/protected fields.
 	 * Class#accessibleDeclaredFields()
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the field[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Field[] declaredFields(Class<?> javaClass) {
 		Field[] fields = javaClass.getDeclaredFields();
@@ -334,11 +570,15 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Return the declared methods for the
-	 * specified class.
-	 * Set accessible to true, so we can access
-	 * private/package/protected methods.
+	 * Return the declared methods for the specified class. Set accessible to
+	 * true, so we can access private/package/protected methods.
 	 * Class#accessibleDeclaredMethods()
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the method[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Method[] declaredMethods(Class<?> javaClass) {
 		Method[] methods = javaClass.getDeclaredMethods();
@@ -348,22 +588,39 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Return the default (zero-argument) constructor
-	 * for the specified class.
-	 * Set accessible to true, so we can access
-	 * private/package/protected constructors.
-	 * Class#defaultConstructor()
+	 * Return the default (zero-argument) constructor for the specified class.
+	 * Set accessible to true, so we can access private/package/protected
+	 * constructors. Class#defaultConstructor()
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param javaClass
+	 *            the java class
+	 * @return the constructor
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <T> Constructor<T> defaultConstructor(Class<T> javaClass) throws NoSuchMethodException {
 		return constructor(javaClass);
 	}
 	
 	/**
-	 * Return a field for the specified class and field name.
-	 * If the class does not directly
-	 * define the field, look for it in the class's superclasses.
-	 * Set accessible to true, so we can access
-	 * private/package/protected fields.
+	 * Return a field for the specified class and field name. If the class does
+	 * not directly define the field, look for it in the class's superclasses.
+	 * Set accessible to true, so we can access private/package/protected
+	 * fields.
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param fieldName
+	 *            the field name
+	 * @return the field
+	 * @throws NoSuchFieldException
+	 *             the no such field exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Field field(Class<?> javaClass, String fieldName) throws NoSuchFieldException {
 		Field field = null;
@@ -381,12 +638,20 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return a field for the specified object and field name.
-	 * If the object's class does not directly
-	 * define the field, look for it in the class's superclasses.
-	 * Set accessible to true, so we can access
+	 * Convenience method. Return a field for the specified object and field
+	 * name. If the object's class does not directly define the field, look for
+	 * it in the class's superclasses. Set accessible to true, so we can access
 	 * private/package/protected fields.
+	 *
+	 * @author mqfdy
+	 * @param object
+	 *            the object
+	 * @param fieldName
+	 *            the field name
+	 * @return the field
+	 * @throws NoSuchFieldException
+	 *             the no such field exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Field field(Object object, String fieldName) throws NoSuchFieldException {
 		return field(object.getClass(), fieldName);
@@ -450,10 +715,17 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Get a field value, given the containing object and field name.
-	 * Return its result.
-	 * Useful for accessing private, package, or protected fields.
+	 * Get a field value, given the containing object and field name. Return its
+	 * result. Useful for accessing private, package, or protected fields.
 	 * Object#getFieldValue(String fieldName)
+	 *
+	 * @author mqfdy
+	 * @param object
+	 *            the object
+	 * @param fieldName
+	 *            the field name
+	 * @return the object
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object fieldValue(Object object, String fieldName) {
 		try {
@@ -465,9 +737,16 @@ public final class ClassTools {
 	
 	/**
 	 * Get a static field value, given the containing class and field name.
-	 * Return its result.
-	 * Useful for accessing private, package, or protected fields.
-	 * Class#getStaticFieldValue(String fieldName)
+	 * Return its result. Useful for accessing private, package, or protected
+	 * fields. Class#getStaticFieldValue(String fieldName)
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param fieldName
+	 *            the field name
+	 * @return the object
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object staticFieldValue(Class<?> javaClass, String fieldName) {
 		try {
@@ -478,22 +757,39 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Convenience method.
-	 * Execute a zero-argument method, given the receiver and method name.
-	 * Return its result.
-	 * Useful for invoking private, package, or protected methods.
-	 * Object#execute(String methodName)
+	 * Convenience method. Execute a zero-argument method, given the receiver
+	 * and method name. Return its result. Useful for invoking private, package,
+	 * or protected methods. Object#execute(String methodName)
+	 *
+	 * @author mqfdy
+	 * @param receiver
+	 *            the receiver
+	 * @param methodName
+	 *            the method name
+	 * @return the object
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object executeMethod(Object receiver, String methodName) {
 		return executeMethod(receiver, methodName, ZERO_PARAMETER_TYPES, ZERO_PARAMETERS);
 	}
 	
 	/**
-	 * Execute a method, given the receiver,
-	 * method name, parameter types, and parameters.
-	 * Return its result.
-	 * Useful for invoking private, package, or protected methods.
-	 * Object#execute(String methodName, Class<?>[] parameterTypes, Object[] parameters)
+	 * Execute a method, given the receiver, method name, parameter types, and
+	 * parameters. Return its result. Useful for invoking private, package, or
+	 * protected methods. Object#execute(String methodName, Class<?>[]
+	 * parameterTypes, Object[] parameters)
+	 *
+	 * @author mqfdy
+	 * @param receiver
+	 *            the receiver
+	 * @param methodName
+	 *            the method name
+	 * @param parameterTypes
+	 *            the parameter types
+	 * @param parameters
+	 *            the parameters
+	 * @return the object
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object executeMethod(Object receiver, String methodName, Class<?>[] parameterTypes, Object[] parameters) {
 		try {
@@ -504,24 +800,42 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Convenience method.
-	 * Execute a one-argument method, given the receiver,
-	 * method name, parameter type, and parameter.
-	 * Return its result.
-	 * Useful for invoking private, package, or protected methods.
-	 * Object#execute(String methodName, Class<?> parameterType, Object parameter)
+	 * Convenience method. Execute a one-argument method, given the receiver,
+	 * method name, parameter type, and parameter. Return its result. Useful for
+	 * invoking private, package, or protected methods. Object#execute(String
+	 * methodName, Class<?> parameterType, Object parameter)
+	 *
+	 * @author mqfdy
+	 * @param receiver
+	 *            the receiver
+	 * @param methodName
+	 *            the method name
+	 * @param parameterType
+	 *            the parameter type
+	 * @param parameter
+	 *            the parameter
+	 * @return the object
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object executeMethod(Object receiver, String methodName, Class<?> parameterType, Object parameter) {
 		return executeMethod(receiver, methodName, new Class[] {parameterType}, new Object[] {parameter});
 	}
 	
 	/**
-	 * Convenience method.
-	 * Execute a zero-argument method, given the receiver and method name.
-	 * Return its result.
-	 * If the method throws an exception, rethrow that exception.
-	 * Useful for invoking private, package, or protected methods.
-	 * Object#execute(String methodName)
+	 * Convenience method. Execute a zero-argument method, given the receiver
+	 * and method name. Return its result. If the method throws an exception,
+	 * rethrow that exception. Useful for invoking private, package, or
+	 * protected methods. Object#execute(String methodName)
+	 *
+	 * @author mqfdy
+	 * @param receiver
+	 *            the receiver
+	 * @param methodName
+	 *            the method name
+	 * @return the object
+	 * @throws Throwable
+	 *             the throwable
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object executeMethodWithException(Object receiver, String methodName) 
 		throws Throwable
@@ -530,13 +844,25 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Convenience method.
-	 * Execute a one-argument method, given the receiver,
-	 * method name, parameter type, and parameter.
-	 * Return its result.
-	 * If the method throws an exception, rethrow that exception.
-	 * Useful for invoking private, package, or protected methods.
-	 * Object#execute(String methodName, Class<?> parameterType, Object parameter)
+	 * Convenience method. Execute a one-argument method, given the receiver,
+	 * method name, parameter type, and parameter. Return its result. If the
+	 * method throws an exception, rethrow that exception. Useful for invoking
+	 * private, package, or protected methods. Object#execute(String methodName,
+	 * Class<?> parameterType, Object parameter)
+	 *
+	 * @author mqfdy
+	 * @param receiver
+	 *            the receiver
+	 * @param methodName
+	 *            the method name
+	 * @param parameterType
+	 *            the parameter type
+	 * @param parameter
+	 *            the parameter
+	 * @return the object
+	 * @throws Throwable
+	 *             the throwable
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object executeMethodWithException(Object receiver, String methodName, Class<?> parameterType, Object parameter) 
 		throws Throwable
@@ -545,12 +871,25 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Execute a method, given the receiver,
-	 * method name, parameter types, and parameters.
-	 * Return its result.
-	 * If the method throws an exception, rethrow that exception.
-	 * Useful for invoking private, package, or protected methods.
-	 * Object#execute(String methodName, Class<?>[] parameterTypes, Object[] parameters)
+	 * Execute a method, given the receiver, method name, parameter types, and
+	 * parameters. Return its result. If the method throws an exception, rethrow
+	 * that exception. Useful for invoking private, package, or protected
+	 * methods. Object#execute(String methodName, Class<?>[] parameterTypes,
+	 * Object[] parameters)
+	 *
+	 * @author mqfdy
+	 * @param receiver
+	 *            the receiver
+	 * @param methodName
+	 *            the method name
+	 * @param parameterTypes
+	 *            the parameter types
+	 * @param parameters
+	 *            the parameters
+	 * @return the object
+	 * @throws Throwable
+	 *             the throwable
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object executeMethodWithException(Object receiver, String methodName, Class<?>[] parameterTypes, Object[] parameters) 
 		throws Throwable
@@ -563,9 +902,18 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Execute the specified method with the specified parameters.
-	 * Return its result.
-	 * Convert exceptions to RuntimeExceptions.
+	 * Execute the specified method with the specified parameters. Return its
+	 * result. Convert exceptions to RuntimeExceptions.
+	 *
+	 * @author mqfdy
+	 * @param method
+	 *            the method
+	 * @param receiver
+	 *            the receiver
+	 * @param parameters
+	 *            the parameters
+	 * @return the object
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object executeMethod(Method method, Object receiver, Object[] parameters) {
 		try {
@@ -578,10 +926,21 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Execute the specified method with the specified parameters.
-	 * Return its result.
-	 * If the method throws an exception, rethrow that exception.
+	 * Execute the specified method with the specified parameters. Return its
+	 * result. If the method throws an exception, rethrow that exception.
 	 * Convert all other exceptions to RuntimeExceptions.
+	 *
+	 * @author mqfdy
+	 * @param method
+	 *            the method
+	 * @param receiver
+	 *            the receiver
+	 * @param parameters
+	 *            the parameters
+	 * @return the object
+	 * @throws Throwable
+	 *             the throwable
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object executeMethodWithException(Method method, Object receiver, Object[] parameters)
 		throws Throwable
@@ -600,23 +959,40 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Convenience method.
-	 * Execute a zero-argument static method,
-	 * given the class and method name.
-	 * Return its result.
-	 * Useful for invoking private, package, or protected methods.
-	 * Class#executeStaticMethod(String methodName)
+	 * Convenience method. Execute a zero-argument static method, given the
+	 * class and method name. Return its result. Useful for invoking private,
+	 * package, or protected methods. Class#executeStaticMethod(String
+	 * methodName)
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param methodName
+	 *            the method name
+	 * @return the object
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object executeStaticMethod(Class<?> javaClass, String methodName) {
 		return executeStaticMethod(javaClass, methodName, ZERO_PARAMETER_TYPES, ZERO_PARAMETERS);
 	}
 	
 	/**
-	 * Execute a static method, given the class,
-	 * method name, parameter types, and parameters.
-	 * Return its result.
-	 * Useful for invoking private, package, or protected methods.
-	 * Class#executeStaticMethod(String methodName, Class<?>[] parameterTypes, Object[] parameters)
+	 * Execute a static method, given the class, method name, parameter types,
+	 * and parameters. Return its result. Useful for invoking private, package,
+	 * or protected methods. Class#executeStaticMethod(String methodName,
+	 * Class<?>[] parameterTypes, Object[] parameters)
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param methodName
+	 *            the method name
+	 * @param parameterTypes
+	 *            the parameter types
+	 * @param parameters
+	 *            the parameters
+	 * @return the object
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object executeStaticMethod(Class<?> javaClass, String methodName, Class<?>[] parameterTypes, Object[] parameters) {
 		try {
@@ -627,44 +1003,81 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Convenience method.
-	 * Execute a static method, given the class,
-	 * method name, parameter type, and parameter.
-	 * Return its result.
-	 * Useful for invoking private, package, or protected methods.
-	 * Class#executeStaticMethod(String methodName, Class<?> parameterType, Object parameter)
+	 * Convenience method. Execute a static method, given the class, method
+	 * name, parameter type, and parameter. Return its result. Useful for
+	 * invoking private, package, or protected methods.
+	 * Class#executeStaticMethod(String methodName, Class<?> parameterType,
+	 * Object parameter)
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param methodName
+	 *            the method name
+	 * @param parameterType
+	 *            the parameter type
+	 * @param parameter
+	 *            the parameter
+	 * @return the object
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object executeStaticMethod(Class<?> javaClass, String methodName, Class<?> parameterType, Object parameter) {
 		return executeStaticMethod(javaClass, methodName, new Class[] {parameterType}, new Object[] {parameter});
 	}
 	
 	/**
-	 * Execute the specified static method with the specified parameters.
-	 * Return its result.
-	 * Convert exceptions to RuntimeExceptions.
+	 * Execute the specified static method with the specified parameters. Return
+	 * its result. Convert exceptions to RuntimeExceptions.
+	 *
+	 * @author mqfdy
+	 * @param method
+	 *            the method
+	 * @param parameters
+	 *            the parameters
+	 * @return the object
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object executeStaticMethod(Method method, Object[] parameters) {
 		return executeMethod(method, null, parameters);
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return a zero-argument method for the specified class
-	 * and method name. If the class does not directly
-	 * implement the method, look for it in the class's superclasses.
-	 * Set accessible to true, so we can access
-	 * private/package/protected methods.
+	 * Convenience method. Return a zero-argument method for the specified class
+	 * and method name. If the class does not directly implement the method,
+	 * look for it in the class's superclasses. Set accessible to true, so we
+	 * can access private/package/protected methods.
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param methodName
+	 *            the method name
+	 * @return the method
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Method method(Class<?> javaClass, String methodName) throws NoSuchMethodException {
 		return method(javaClass, methodName, ZERO_PARAMETER_TYPES);
 	}
 	
 	/**
-	 * Return a method for the specified class, method name,
-	 * and formal parameter types. If the class does not directly
-	 * implement the method, look for it in the class's superclasses.
-	 * Set accessible to true, so we can access
-	 * private/package/protected methods.
+	 * Return a method for the specified class, method name, and formal
+	 * parameter types. If the class does not directly implement the method,
+	 * look for it in the class's superclasses. Set accessible to true, so we
+	 * can access private/package/protected methods.
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param methodName
+	 *            the method name
+	 * @param parameterTypes
+	 *            the parameter types
+	 * @return the method
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Method method(Class<?> javaClass, String methodName, Class<?>[] parameterTypes) throws NoSuchMethodException {
 		Method method = null;
@@ -682,56 +1095,100 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return a method for the specified class, method name,
-	 * and formal parameter type. If the class does not directly
-	 * implement the method, look for it in the class's superclasses.
-	 * Set accessible to true, so we can access
-	 * private/package/protected methods.
+	 * Convenience method. Return a method for the specified class, method name,
+	 * and formal parameter type. If the class does not directly implement the
+	 * method, look for it in the class's superclasses. Set accessible to true,
+	 * so we can access private/package/protected methods.
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param methodName
+	 *            the method name
+	 * @param parameterType
+	 *            the parameter type
+	 * @return the method
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Method method(Class<?> javaClass, String methodName, Class<?> parameterType) throws NoSuchMethodException {
 		return method(javaClass, methodName, new Class[] {parameterType});
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return a zero-argument method for the specified object
-	 * and method name. If the object's class does not directly
-	 * implement the method, look for it in the class's superclasses.
-	 * Set accessible to true, so we can access
-	 * private/package/protected methods.
+	 * Convenience method. Return a zero-argument method for the specified
+	 * object and method name. If the object's class does not directly implement
+	 * the method, look for it in the class's superclasses. Set accessible to
+	 * true, so we can access private/package/protected methods.
+	 *
+	 * @author mqfdy
+	 * @param object
+	 *            the object
+	 * @param methodName
+	 *            the method name
+	 * @return the method
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Method method(Object object, String methodName) throws NoSuchMethodException {
 		return method(object.getClass(), methodName);
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return a method for the specified object, method name,
-	 * and formal parameter types. If the object's class does not directly
-	 * implement the method, look for it in the class's superclasses.
-	 * Set accessible to true, so we can access
-	 * private/package/protected methods.
+	 * Convenience method. Return a method for the specified object, method
+	 * name, and formal parameter types. If the object's class does not directly
+	 * implement the method, look for it in the class's superclasses. Set
+	 * accessible to true, so we can access private/package/protected methods.
+	 *
+	 * @author mqfdy
+	 * @param object
+	 *            the object
+	 * @param methodName
+	 *            the method name
+	 * @param parameterTypes
+	 *            the parameter types
+	 * @return the method
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Method method(Object object, String methodName, Class<?>[] parameterTypes) throws NoSuchMethodException {
 		return method(object.getClass(), methodName, parameterTypes);
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return a method for the specified object, method name,
-	 * and formal parameter type. If the object's class does not directly
-	 * implement the method, look for it in the class's superclasses.
-	 * Set accessible to true, so we can access
-	 * private/package/protected methods.
+	 * Convenience method. Return a method for the specified object, method
+	 * name, and formal parameter type. If the object's class does not directly
+	 * implement the method, look for it in the class's superclasses. Set
+	 * accessible to true, so we can access private/package/protected methods.
+	 *
+	 * @author mqfdy
+	 * @param object
+	 *            the object
+	 * @param methodName
+	 *            the method name
+	 * @param parameterType
+	 *            the parameter type
+	 * @return the method
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Method method(Object object, String methodName, Class<?> parameterType) throws NoSuchMethodException {
 		return method(object.getClass(), methodName, parameterType);
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return the specified class (without the checked exception).
+	 * Convenience method. Return the specified class (without the checked
+	 * exception).
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return the class
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Class<?> classForName(String className) {
 		try {
@@ -742,39 +1199,71 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return a new instance of the specified class,
-	 * using the class's default (zero-argument) constructor.
-	 * Class#newInstance()
+	 * Convenience method. Return a new instance of the specified class, using
+	 * the class's default (zero-argument) constructor. Class#newInstance()
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param javaClass
+	 *            the java class
+	 * @return the t
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <T> T newInstance(Class<T> javaClass) {
 		return newInstance(javaClass, ZERO_PARAMETER_TYPES, ZERO_PARAMETERS);
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return a new instance of the specified class,
-	 * using the class's default (zero-argument) constructor.
-	 * Class#newInstance()
+	 * Convenience method. Return a new instance of the specified class, using
+	 * the class's default (zero-argument) constructor. Class#newInstance()
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return the object
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object newInstance(String className) throws ClassNotFoundException {
 		return newInstance(className, null);
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return a new instance of the specified class,
-	 * using the class's default (zero-argument) constructor.
-	 * Class#newInstance()
+	 * Convenience method. Return a new instance of the specified class, using
+	 * the class's default (zero-argument) constructor. Class#newInstance()
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @param classLoader
+	 *            the class loader
+	 * @return the object
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object newInstance(String className, ClassLoader classLoader) throws ClassNotFoundException {
 		return newInstance(Class.forName(className, true, classLoader));
 	}
 	
 	/**
-	 * Return a new instance of the specified class,
-	 * given the constructor parameter types and parameters.
-	 * Class#newInstance(Class<?>[] parameterTypes, Object[] parameters)
+	 * Return a new instance of the specified class, given the constructor
+	 * parameter types and parameters. Class#newInstance(Class<?>[]
+	 * parameterTypes, Object[] parameters)
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param javaClass
+	 *            the java class
+	 * @param parameterTypes
+	 *            the parameter types
+	 * @param parameters
+	 *            the parameters
+	 * @return the t
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <T> T newInstance(Class<T> javaClass, Class<?>[] parameterTypes, Object[] parameters) {
 		try {
@@ -785,46 +1274,109 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Return a new instance of the specified class,
-	 * given the constructor parameter types and parameters.
-	 * Class#newInstance(Class<?>[] parameterTypes, Object[] parameters)
+	 * Return a new instance of the specified class, given the constructor
+	 * parameter types and parameters. Class#newInstance(Class<?>[]
+	 * parameterTypes, Object[] parameters)
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @param parameterTypes
+	 *            the parameter types
+	 * @param parameters
+	 *            the parameters
+	 * @return the object
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object newInstance(String className, Class<?>[] parameterTypes, Object[] parameters) throws ClassNotFoundException {
 		return newInstance(className, parameterTypes, parameters, null);
 	}
 	
 	/**
-	 * Return a new instance of the specified class,
-	 * given the constructor parameter types and parameters.
-	 * Class#newInstance(Class<?>[] parameterTypes, Object[] parameters)
+	 * Return a new instance of the specified class, given the constructor
+	 * parameter types and parameters. Class#newInstance(Class<?>[]
+	 * parameterTypes, Object[] parameters)
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @param parameterTypes
+	 *            the parameter types
+	 * @param parameters
+	 *            the parameters
+	 * @param classLoader
+	 *            the class loader
+	 * @return the object
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object newInstance(String className, Class<?>[] parameterTypes, Object[] parameters, ClassLoader classLoader) throws ClassNotFoundException {
 		return newInstance(Class.forName(className, true, classLoader), parameterTypes, parameters);
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return a new instance of the specified class,
-	 * given the constructor parameter type and parameter.
-	 * Class#newInstance(Class<?> parameterType, Object parameter)
+	 * Convenience method. Return a new instance of the specified class, given
+	 * the constructor parameter type and parameter. Class#newInstance(Class<?>
+	 * parameterType, Object parameter)
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param javaClass
+	 *            the java class
+	 * @param parameterType
+	 *            the parameter type
+	 * @param parameter
+	 *            the parameter
+	 * @return the t
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <T> T newInstance(Class<T> javaClass, Class<?> parameterType, Object parameter) {
 		return newInstance(javaClass, new Class[] {parameterType}, new Object[] {parameter});
 	}
 	
 	/**
-	 * Return a new instance of the specified class,
-	 * given the constructor parameter type and parameter.
-	 * Class#newInstance(Class<?> parameterType, Object parameter)
+	 * Return a new instance of the specified class, given the constructor
+	 * parameter type and parameter. Class#newInstance(Class<?> parameterType,
+	 * Object parameter)
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @param parameterType
+	 *            the parameter type
+	 * @param parameter
+	 *            the parameter
+	 * @return the object
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object newInstance(String className, Class<?> parameterType, Object parameter) throws ClassNotFoundException {
 		return newInstance(className, parameterType, parameter, null);
 	}
 	
 	/**
-	 * Return a new instance of the specified class,
-	 * given the constructor parameter type and parameter.
-	 * Class#newInstance(Class<?> parameterType, Object parameter)
+	 * Return a new instance of the specified class, given the constructor
+	 * parameter type and parameter. Class#newInstance(Class<?> parameterType,
+	 * Object parameter)
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @param parameterType
+	 *            the parameter type
+	 * @param parameter
+	 *            the parameter
+	 * @param classLoader
+	 *            the class loader
+	 * @return the object
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object newInstance(String className, Class<?> parameterType, Object parameter, ClassLoader classLoader) throws ClassNotFoundException {
 		return newInstance(Class.forName(className, false, classLoader), parameterType, parameter);
@@ -853,9 +1405,18 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Set a field value, given the containing object, field name, and new field value.
-	 * Useful for accessing private, package, or protected fields.
+	 * Set a field value, given the containing object, field name, and new field
+	 * value. Useful for accessing private, package, or protected fields.
 	 * Object#setFieldValue(String fieldName, Object fieldValue)
+	 *
+	 * @author mqfdy
+	 * @param object
+	 *            the object
+	 * @param fieldName
+	 *            the field name
+	 * @param fieldValue
+	 *            the field value
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void setFieldValue(Object object, String fieldName, Object fieldValue) {
 		try {
@@ -866,9 +1427,18 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Set a static field value, given the containing class, field name, and new field value.
-	 * Useful for accessing private, package, or protected fields.
+	 * Set a static field value, given the containing class, field name, and new
+	 * field value. Useful for accessing private, package, or protected fields.
 	 * Class#setStaticFieldValue(String fieldName, Object fieldValue)
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param fieldName
+	 *            the field name
+	 * @param fieldValue
+	 *            the field value
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void setStaticFieldValue(Class<?> javaClass, String fieldName, Object fieldValue) {
 		try {
@@ -879,48 +1449,78 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Return the short name of the object's class.
-	 * Class#getShortName()
+	 * Return the short name of the object's class. Class#getShortName()
+	 *
+	 * @author mqfdy
+	 * @param object
+	 *            the object
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String shortClassNameForObject(Object object) {
 		return shortNameFor(object.getClass());
 	}
 	
 	/**
-	 * Return the short name of the class (e.g. "Object").
-	 * Class#getShortName()
+	 * Return the short name of the class (e.g. "Object"). Class#getShortName()
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String shortNameForClassNamed(String className) {
 		return className.substring(className.lastIndexOf('.') + 1);
 	}
 	
 	/**
-	 * Return the short name of the class (e.g. "Object").
-	 * Class#getShortName()
+	 * Return the short name of the class (e.g. "Object"). Class#getShortName()
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String shortNameFor(Class<?> javaClass) {
 		return shortNameForClassNamed(javaClass.getName());
 	}
 	
 	/**
-	 * Return the nested name of the object's class.
-	 * Class#getNestedName()
+	 * Return the nested name of the object's class. Class#getNestedName()
+	 *
+	 * @author mqfdy
+	 * @param object
+	 *            the object
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String nestedClassNameForObject(Object object) {
 		return nestedNameFor(object.getClass());
 	}
 	
 	/**
-	 * Return the nested name of the class (e.g. "Entry").
-	 * Class#getNestedName()
+	 * Return the nested name of the class (e.g. "Entry"). Class#getNestedName()
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String nestedNameForClassNamed(String className) {
 		return className.substring(className.lastIndexOf(NESTED_CLASS_NAME_SEPARATOR) + 1);
 	}
 	
 	/**
-	 * Return the nested name of the class (e.g. "Entry").
-	 * Class#getNestedName()
+	 * Return the nested name of the class (e.g. "Entry"). Class#getNestedName()
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String nestedNameFor(Class<?> javaClass) {
 		return nestedNameForClassNamed(javaClass.getName());
@@ -928,21 +1528,31 @@ public final class ClassTools {
 	
 	/**
 	 * Return the "toString()" name of the object's class.
+	 *
+	 * @author mqfdy
+	 * @param object
+	 *            the object
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String toStringClassNameForObject(Object object) {
 		return toStringNameFor(object.getClass());
 	}
 	
 	/**
-	 * Return the "toString()" name of the class.
-	 * "Member" classes will return only the final name:
-	 *     "com.foo.bar.TopLevelClass$MemberClass$NestedMemberClass"
-	 *         => "NestedMemberClass"
-	 * "Local" and "anonymous" classes will still return the embedded '$'s:
-	 *     "com.foo.bar.TopLevelClass$1LocalClass"
-	 *         => "TopLevelClass$1LocalClass"
-	 *     "com.foo.bar.TopLevelClass$1"
-	 *         => "TopLevelClass$1"
+	 * Return the "toString()" name of the class. "Member" classes will return
+	 * only the final name:
+	 * "com.foo.bar.TopLevelClass$MemberClass$NestedMemberClass" =>
+	 * "NestedMemberClass" "Local" and "anonymous" classes will still return the
+	 * embedded '$'s: "com.foo.bar.TopLevelClass$1LocalClass" =>
+	 * "TopLevelClass$1LocalClass" "com.foo.bar.TopLevelClass$1" =>
+	 * "TopLevelClass$1"
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String toStringNameForClassNamed(String className) {
 		return classNamedIsMember(className) ?
@@ -953,6 +1563,12 @@ public final class ClassTools {
 	
 	/**
 	 * Return the "toString()" name of the class.
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String toStringNameFor(Class<?> javaClass) {
 		return toStringNameForClassNamed(javaClass.getName());
@@ -961,6 +1577,12 @@ public final class ClassTools {
 	/**
 	 * Return the package name of the class (e.g. "java.lang").
 	 * Class#getPackageName()
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String packageNameFor(Class<?> javaClass) {
 		return packageNameForClassNamed(javaClass.getName());
@@ -969,6 +1591,12 @@ public final class ClassTools {
 	/**
 	 * Return the package name of the class (e.g. "java.lang").
 	 * Class#getPackageName()
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String packageNameForClassNamed(String className) {
 		int lastPeriod = className.lastIndexOf('.');
@@ -979,9 +1607,14 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Return the short name of the class,
-	 * followed by its package name (e.g. "Object (java.lang)").
-	 * Class#getShortNameWithPackage()
+	 * Return the short name of the class, followed by its package name (e.g.
+	 * "Object (java.lang)"). Class#getShortNameWithPackage()
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String shortNameWithPackage(Class<?> javaClass) {
 		StringBuilder sb = new StringBuilder(200);
@@ -995,23 +1628,42 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return a zero-argument, static method for the specified class
-	 * and method name. If the class does not directly
-	 * implement the method, look for it in the class's superclasses.
-	 * Set accessible to true, so we can access
-	 * private/package/protected methods.
+	 * Convenience method. Return a zero-argument, static method for the
+	 * specified class and method name. If the class does not directly implement
+	 * the method, look for it in the class's superclasses. Set accessible to
+	 * true, so we can access private/package/protected methods.
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param methodName
+	 *            the method name
+	 * @return the method
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Method staticMethod(Class<?> javaClass, String methodName) throws NoSuchMethodException {
 		return staticMethod(javaClass, methodName, ZERO_PARAMETER_TYPES);
 	}
 	
 	/**
-	 * Return a static method for the specified class, method name,
-	 * and formal parameter types. If the class does not directly
-	 * implement the method, look for it in the class's superclasses.
-	 * Set accessible to true, so we can access
-	 * private/package/protected methods.
+	 * Return a static method for the specified class, method name, and formal
+	 * parameter types. If the class does not directly implement the method,
+	 * look for it in the class's superclasses. Set accessible to true, so we
+	 * can access private/package/protected methods.
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param methodName
+	 *            the method name
+	 * @param parameterTypes
+	 *            the parameter types
+	 * @return the method
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Method staticMethod(Class<?> javaClass, String methodName, Class<?>[] parameterTypes) throws NoSuchMethodException {
 		Method method = method(javaClass, methodName, parameterTypes);
@@ -1022,23 +1674,38 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Convenience method.
-	 * Return a static method for the specified class, method name,
-	 * and formal parameter type. If the class does not directly
-	 * implement the method, look for it in the class's superclasses.
-	 * Set accessible to true, so we can access
-	 * private/package/protected methods.
+	 * Convenience method. Return a static method for the specified class,
+	 * method name, and formal parameter type. If the class does not directly
+	 * implement the method, look for it in the class's superclasses. Set
+	 * accessible to true, so we can access private/package/protected methods.
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @param methodName
+	 *            the method name
+	 * @param parameterTypes
+	 *            the parameter types
+	 * @return the method
+	 * @throws NoSuchMethodException
+	 *             the no such method exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Method staticMethod(Class<?> javaClass, String methodName, Class<?> parameterTypes) throws NoSuchMethodException {
 		return staticMethod(javaClass, methodName, new Class[] {parameterTypes});
 	}
 
 	/**
-	 * Return whether the specified class can be "declared" in code;
-	 * i.e. it is either a "top-level" class or a "member" class, but it
-	 * is not an "array" class. This method rolls together all the checks
-	 * from the other methods for a bit of a performance tweak.
-	 * Class#isDeclarable()
+	 * Return whether the specified class can be "declared" in code; i.e. it is
+	 * either a "top-level" class or a "member" class, but it is not an "array"
+	 * class. This method rolls together all the checks from the other methods
+	 * for a bit of a performance tweak. Class#isDeclarable()
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean classNamedIsDeclarable(String className) {
 		if (className.charAt(0) == ARRAY_INDICATOR) {
@@ -1060,11 +1727,16 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Return whether the specified class is a "top-level" class,
-	 * as opposed to a "member", "local", or "anonymous" class,
-	 * using the standard jdk naming conventions (i.e. the class
-	 * name does NOT contain a '$': "TopLevelClass").
-	 * Class#isTopLevel()
+	 * Return whether the specified class is a "top-level" class, as opposed to
+	 * a "member", "local", or "anonymous" class, using the standard jdk naming
+	 * conventions (i.e. the class name does NOT contain a '$':
+	 * "TopLevelClass"). Class#isTopLevel()
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean classNamedIsTopLevel(String className) {
 		if (classNamedIsArray(className)) {
@@ -1074,13 +1746,17 @@ public final class ClassTools {
 	}
 
 	/**
-	 * Return whether the specified class is a "member" class,
-	 * as opposed to a "top-level", "local", or "anonymous" class,
-	 * using the standard jdk naming conventions (i.e. the class
-	 * name contains at least one '$' and all the names between
-	 * each '$' are legal class names:
-	 * "TopLevelClass$MemberClass$NestedMemberClass").
-	 * Class#isMember()
+	 * Return whether the specified class is a "member" class, as opposed to a
+	 * "top-level", "local", or "anonymous" class, using the standard jdk naming
+	 * conventions (i.e. the class name contains at least one '$' and all the
+	 * names between each '$' are legal class names:
+	 * "TopLevelClass$MemberClass$NestedMemberClass"). Class#isMember()
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean classNamedIsMember(String className) {
 		if (classNamedIsArray(className)) {
@@ -1102,16 +1778,20 @@ public final class ClassTools {
 	}
 
 	/**
-	 * Return whether the specified class is a "local" class,
-	 * as opposed to a "top-level", "member", or "anonymous" class,
-	 * using the standard jdk (or Eclipse) naming conventions.
-	 * In the jdk, the class name ends with '$nnnXXX' where the '$' is
-	 * followed by a series of numeric digits which are followed by the
-	 * local class name: "TopLevelClass$1LocalClass".
-	 * In Eclipse, the class name ends with '$nnn$XXX' where the '$' is
-	 * followed by a series of numeric digits which are separated from
-	 * the local class name by another '$': "TopLevelClass$1$LocalClass".
-	 * Class#isLocal()
+	 * Return whether the specified class is a "local" class, as opposed to a
+	 * "top-level", "member", or "anonymous" class, using the standard jdk (or
+	 * Eclipse) naming conventions. In the jdk, the class name ends with
+	 * '$nnnXXX' where the '$' is followed by a series of numeric digits which
+	 * are followed by the local class name: "TopLevelClass$1LocalClass". In
+	 * Eclipse, the class name ends with '$nnn$XXX' where the '$' is followed by
+	 * a series of numeric digits which are separated from the local class name
+	 * by another '$': "TopLevelClass$1$LocalClass". Class#isLocal()
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean classNamedIsLocal(String className) {
 		if (classNamedIsArray(className)) {
@@ -1135,12 +1815,17 @@ public final class ClassTools {
 	}
 
 	/**
-	 * Return whether the specified class is an "anonymous" class,
-	 * as opposed to a "top-level", "member", or "local" class,
-	 * using the standard jdk naming conventions (i.e. the class
-	 * name ends with '$nnn' where all the characters past the
-	 * last '$' are numeric digits: "TopLevelClass$1").
+	 * Return whether the specified class is an "anonymous" class, as opposed to
+	 * a "top-level", "member", or "local" class, using the standard jdk naming
+	 * conventions (i.e. the class name ends with '$nnn' where all the
+	 * characters past the last '$' are numeric digits: "TopLevelClass$1").
 	 * Class#isAnonymous()
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean classNamedIsAnonymous(String className) {
 		if (classNamedIsArray(className)) {
@@ -1161,10 +1846,15 @@ public final class ClassTools {
 	}
 
 	/**
-	 * Return the "array depth" of the specified class.
-	 * The depth is the number of dimensions for an array type.
-	 * Non-array types have a depth of zero.
+	 * Return the "array depth" of the specified class. The depth is the number
+	 * of dimensions for an array type. Non-array types have a depth of zero.
 	 * Class#getArrayDepth()
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int arrayDepthFor(Class<?> javaClass) {
 		int depth = 0;
@@ -1176,20 +1866,27 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Return the "array depth" of the specified object.
-	 * The depth is the number of dimensions for an array.
-	 * Non-arrays have a depth of zero.
+	 * Return the "array depth" of the specified object. The depth is the number
+	 * of dimensions for an array. Non-arrays have a depth of zero.
+	 *
+	 * @author mqfdy
+	 * @param object
+	 *            the object
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int arrayDepthForObject(Object object) {
 		return arrayDepthFor(object.getClass());
 	}
 	
 	/**
-	 * Return the "array depth" of the specified class.
-	 * The depth is the number of dimensions for an array type.
-	 * Non-array types have a depth of zero.
-	 * @see java.lang.Class#getName()
-	 * Class#getArrayDepth()
+	 * Return the "array depth" of the specified class. The depth is the number
+	 * of dimensions for an array type. Non-array types have a depth of zero.
+	 *
+	 * @param className
+	 *            the class name
+	 * @return the int
+	 * @see java.lang.Class#getName() Class#getArrayDepth()
 	 */
 	public static int arrayDepthForClassNamed(String className) {
 		int depth = 0;
@@ -1201,6 +1898,10 @@ public final class ClassTools {
 
 	/**
 	 * Return whether the specified class is an array type.
+	 *
+	 * @param className
+	 *            the class name
+	 * @return true, if successful
 	 * @see java.lang.Class#getName()
 	 */
 	public static boolean classNamedIsArray(String className) {
@@ -1208,10 +1909,15 @@ public final class ClassTools {
 	}
 
 	/**
-	 * Return the "element type" of the specified class.
-	 * The element type is the base type held by an array type.
-	 * A non-array type simply returns itself.
+	 * Return the "element type" of the specified class. The element type is the
+	 * base type held by an array type. A non-array type simply returns itself.
 	 * Class#getElementType()
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the class
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Class<?> elementTypeFor(Class<?> javaClass) {
 		while (javaClass.isArray()) {
@@ -1221,30 +1927,43 @@ public final class ClassTools {
 	}
 
 	/**
-	 * Return the "element type" of the specified object.
-	 * The element type is the base type held by an array.
-	 * A non-array simply returns its class.
+	 * Return the "element type" of the specified object. The element type is
+	 * the base type held by an array. A non-array simply returns its class.
+	 *
+	 * @author mqfdy
+	 * @param object
+	 *            the object
+	 * @return the class
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Class<?> elementTypeForObject(Object object) {
 		return elementTypeFor(object.getClass());
 	}
 
 	/**
-	 * Return the "element type" of the specified class.
-	 * The element type is the base type held by an array type.
-	 * Non-array types simply return themselves.
-	 * Class#getElementType()
+	 * Return the "element type" of the specified class. The element type is the
+	 * base type held by an array type. Non-array types simply return
+	 * themselves. Class#getElementType()
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String elementTypeNameFor(Class<?> javaClass) {
 		return elementTypeFor(javaClass).getName();
 	}
 
 	/**
-	 * Return the "element type" of the specified class.
-	 * The element type is the base type held by an array type.
-	 * Non-array types simply return themselves.
-	 * @see java.lang.Class#getName()
-	 * Class#getElementType()
+	 * Return the "element type" of the specified class. The element type is the
+	 * base type held by an array type. Non-array types simply return
+	 * themselves.
+	 *
+	 * @param className
+	 *            the class name
+	 * @return the string
+	 * @see java.lang.Class#getName() Class#getElementType()
 	 */
 	public static String elementTypeNameForClassNamed(String className) {
 		int depth = arrayDepthForClassNamed(className);
@@ -1262,20 +1981,30 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Return whether the specified class is a "reference"
-	 * class (i.e. neither 'void' nor one of the primitive variable classes,
-	 * ['boolean', 'int', 'float', etc.]).
-	 * NB: void.class.isPrimitive() == true
+	 * Return whether the specified class is a "reference" class (i.e. neither
+	 * 'void' nor one of the primitive variable classes, ['boolean', 'int',
+	 * 'float', etc.]). NB: void.class.isPrimitive() == true
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean classNamedIsReference(String className) {
 		return ! classNamedIsPrimitive(className);
 	}
 
 	/**
-	 * Return whether the specified class is a primitive
-	 * class (i.e. 'void' or one of the primitive variable classes,
-	 * ['boolean', 'int', 'float', etc.]).
-	 * NB: void.class.isPrimitive() == true
+	 * Return whether the specified class is a primitive class (i.e. 'void' or
+	 * one of the primitive variable classes, ['boolean', 'int', 'float',
+	 * etc.]). NB: void.class.isPrimitive() == true
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean classNamedIsPrimitive(String className) {
 		if (classNamedIsArray(className) || (className.length() > maxPrimitiveClassNameLength())) {
@@ -1291,9 +2020,15 @@ public final class ClassTools {
 	}
 
 	/**
-	 * Return whether the specified class is a "variable" primitive
-	 * class (i.e. 'boolean', 'int', 'float', etc., but not 'void').
-	 * NB: void.class.isPrimitive() == true
+	 * Return whether the specified class is a "variable" primitive class (i.e.
+	 * 'boolean', 'int', 'float', etc., but not 'void'). NB:
+	 * void.class.isPrimitive() == true
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean classNamedIsVariablePrimitive(String className) {
 		return classNamedIsPrimitive(className)
@@ -1301,10 +2036,16 @@ public final class ClassTools {
 	}
 
 	/**
-	 * Return whether the specified class is a primitive wrapper
-	 * class (i.e. 'java.lang.Void' or one of the primitive variable wrapper classes,
-	 * ['java.lang.Boolean', 'java.lang.Integer', 'java.lang.Float', etc.]).
-	 * NB: void.class.isPrimitive() == true
+	 * Return whether the specified class is a primitive wrapper class (i.e.
+	 * 'java.lang.Void' or one of the primitive variable wrapper classes,
+	 * ['java.lang.Boolean', 'java.lang.Integer', 'java.lang.Float', etc.]). NB:
+	 * void.class.isPrimitive() == true
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean classNamedIsPrimitiveWrapperClass(String className) {
 		if (classNamedIsArray(className) || (className.length() > maxPrimitiveWrapperClassNameLength())) {
@@ -1320,9 +2061,15 @@ public final class ClassTools {
 	}
 
 	/**
-	 * Return whether the specified class is a "variable" primitive
-	 * class (i.e. 'boolean', 'int', 'float', etc., but not 'void').
-	 * NB: void.class.isPrimitive() == true
+	 * Return whether the specified class is a "variable" primitive class (i.e.
+	 * 'boolean', 'int', 'float', etc., but not 'void'). NB:
+	 * void.class.isPrimitive() == true
+	 *
+	 * @author mqfdy
+	 * @param className
+	 *            the class name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean classNamedIsVariablePrimitiveWrapperClass(String className) {
 		return classNamedIsPrimitiveWrapperClass(className)
@@ -1330,10 +2077,16 @@ public final class ClassTools {
 	}
 
 	/**
-	 * Return whether the specified class is a primitive wrapper
-	 * class (i.e. 'java.lang.Void' or one of the primitive variable wrapper classes,
-	 * ['java.lang.Boolean', 'java.lang.Integer', 'java.lang.Float', etc.]).
-	 * NB: void.class.isPrimitive() == true
+	 * Return whether the specified class is a primitive wrapper class (i.e.
+	 * 'java.lang.Void' or one of the primitive variable wrapper classes,
+	 * ['java.lang.Boolean', 'java.lang.Integer', 'java.lang.Float', etc.]). NB:
+	 * void.class.isPrimitive() == true
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean classIsPrimitiveWrapperClass(Class<?> javaClass) {
 		if (javaClass.isArray() || (javaClass.getName().length() > maxPrimitiveWrapperClassNameLength())) {
@@ -1349,9 +2102,15 @@ public final class ClassTools {
 	}
 
 	/**
-	 * Return whether the specified class is a "variable" primitive
-	 * class (i.e. 'boolean', 'int', 'float', etc., but not 'void').
-	 * NB: void.class.isPrimitive() == true
+	 * Return whether the specified class is a "variable" primitive class (i.e.
+	 * 'boolean', 'int', 'float', etc., but not 'void'). NB:
+	 * void.class.isPrimitive() == true
+	 *
+	 * @author mqfdy
+	 * @param javaClass
+	 *            the java class
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean classIsVariablePrimitiveWrapperClass(Class<?> javaClass) {
 		return classIsPrimitiveWrapperClass(javaClass)
@@ -1360,6 +2119,10 @@ public final class ClassTools {
 
 	/**
 	 * Return the class name for the specified class code.
+	 *
+	 * @param classCode
+	 *            the class code
+	 * @return the string
 	 * @see java.lang.Class#getName()
 	 */
 	public static String classNameForCode(char classCode) {
@@ -1368,6 +2131,10 @@ public final class ClassTools {
 	
 	/**
 	 * Return the class name for the specified class code.
+	 *
+	 * @param classCode
+	 *            the class code
+	 * @return the string
 	 * @see java.lang.Class#getName()
 	 */
 	public static String classNameForCode(int classCode) {
@@ -1376,6 +2143,10 @@ public final class ClassTools {
 	
 	/**
 	 * Return the class for the specified class code.
+	 *
+	 * @param classCode
+	 *            the class code
+	 * @return the class
 	 * @see java.lang.Class#getName()
 	 */
 	public static Class<?> classForCode(char classCode) {
@@ -1390,6 +2161,10 @@ public final class ClassTools {
 
 	/**
 	 * Return the class for the specified class code.
+	 *
+	 * @param classCode
+	 *            the class code
+	 * @return the class
 	 * @see java.lang.Class#getName()
 	 */
 	public static Class<?> classForCode(int classCode) {
@@ -1398,6 +2173,10 @@ public final class ClassTools {
 	
 	/**
 	 * Return the class code for the specified class.
+	 *
+	 * @param javaClass
+	 *            the java class
+	 * @return the char
 	 * @see java.lang.Class#getName()
 	 */
 	public static char codeForClass(Class<?> javaClass) {
@@ -1414,6 +2193,10 @@ public final class ClassTools {
 	
 	/**
 	 * Return the class code for the specified class.
+	 *
+	 * @param className
+	 *            the class name
+	 * @return the char
 	 * @see java.lang.Class#getName()
 	 */
 	public static char codeForClassNamed(String className) {
@@ -1430,14 +2213,32 @@ public final class ClassTools {
 
 	/**
 	 * Return the class for the specified "type declaration".
+	 *
+	 * @author mqfdy
+	 * @param typeDeclaration
+	 *            the type declaration
+	 * @return the class
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Class<?> classForTypeDeclaration(String typeDeclaration) throws ClassNotFoundException {
 		return classForTypeDeclaration(typeDeclaration, ClassTools.class.getClassLoader());
 	}
 	
 	/**
-	 * Return the class for the specified "type declaration",
-	 * using the specified class loader.
+	 * Return the class for the specified "type declaration", using the
+	 * specified class loader.
+	 *
+	 * @author mqfdy
+	 * @param typeDeclaration
+	 *            the type declaration
+	 * @param classLoader
+	 *            the class loader
+	 * @return the class
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Class<?> classForTypeDeclaration(String typeDeclaration, ClassLoader classLoader) throws ClassNotFoundException {
 		TypeDeclaration td = typeDeclaration(typeDeclaration);
@@ -1453,14 +2254,36 @@ public final class ClassTools {
 
 	/**
 	 * Return the class for the specified "type declaration".
+	 *
+	 * @author mqfdy
+	 * @param elementTypeName
+	 *            the element type name
+	 * @param arrayDepth
+	 *            the array depth
+	 * @return the class
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Class<?> classForTypeDeclaration(String elementTypeName, int arrayDepth) throws ClassNotFoundException {
 		return classForTypeDeclaration(elementTypeName, arrayDepth, null);
 	}
 	
 	/**
-	 * Return the class for the specified "type declaration",
-	 * using the specified class loader.
+	 * Return the class for the specified "type declaration", using the
+	 * specified class loader.
+	 *
+	 * @author mqfdy
+	 * @param elementTypeName
+	 *            the element type name
+	 * @param arrayDepth
+	 *            the array depth
+	 * @param classLoader
+	 *            the class loader
+	 * @return the class
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @Date 2018-09-03 09:00
 	 */
 	// see the "Evaluation" of jdk bug 6446627 for a discussion of loading classes
 	public static Class<?> classForTypeDeclaration(String elementTypeName, int arrayDepth, ClassLoader classLoader) throws ClassNotFoundException {
@@ -1498,8 +2321,12 @@ public final class ClassTools {
 	}
 	
 	/**
-	 * Return the class name for the specified "type declaration"; e.g.
-	 *     "int[]" -> "[I"
+	 * Return the class name for the specified "type declaration"; e.g. "int[]"
+	 * -> "[I"
+	 *
+	 * @param typeDeclaration
+	 *            the type declaration
+	 * @return the string
 	 * @see java.lang.Class#getName()
 	 */
 	public static String classNameForTypeDeclaration(String typeDeclaration) {
@@ -1508,8 +2335,14 @@ public final class ClassTools {
 	}
 
 	/**
-	 * Return the array depth for the specified "type declaration"; e.g.
-	 *     "int[]" -> 1
+	 * Return the array depth for the specified "type declaration"; e.g. "int[]"
+	 * -> 1
+	 *
+	 * @author mqfdy
+	 * @param typeDeclaration
+	 *            the type declaration
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int arrayDepthForTypeDeclaration(String typeDeclaration) {
 		return arrayDepthForTypeDeclaration_(StringTools.removeAllWhitespace(typeDeclaration));
@@ -1535,6 +2368,12 @@ public final class ClassTools {
 	
 	/**
 	 * Return the class name for the specified "type declaration".
+	 *
+	 * @param elementTypeName
+	 *            the element type name
+	 * @param arrayDepth
+	 *            the array depth
+	 * @return the string
 	 * @see java.lang.Class#getName()
 	 */
 	public static String classNameForTypeDeclaration(String elementTypeName, int arrayDepth) {

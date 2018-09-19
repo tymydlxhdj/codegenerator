@@ -55,135 +55,233 @@ import com.mqfdy.code.model.utils.StringUtil;
 import com.mqfdy.code.resource.validator.KeyWordsChecker;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 关联关系对话框
- * 
+ * 关联关系对话框.
+ *
  * @author mqfdy
- * 
  */
 public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		implements IBusinessClassEditorPage {
+	
+	/** The association. */
 	private Association association;// 当前关系类
+	
+	/** The business class A. */
 	private BusinessClass businessClassA = null;// 关系相关BusinessClass
+	
+	/** The business class B. */
 	private BusinessClass businessClassB = null;// 关系相关BusinessClass
+	
+	/** The association type. */
 	private AssociationType associationType;// 当前关系类型
-	/**
-	 * 持久化策略区域
-	 */
+	
+	/** 持久化策略区域. */
 	private Group groupPersist;
+	
+	/** The lbl table. */
 	private Label lblTable;
+	
+	/** The lbl db field A. */
 	private Label lblDbFieldA;
+	
+	/** The lbl db field B. */
 	private Label lblDbFieldB;
+	
+	/** The lbl 5. */
 	private Label lbl5;//占位label
+	
+	/** The lbl 6. */
 	private Label lbl6;
+	
+	/** The lbl 7. */
 	private Label lbl7;//占位label
+	
+	/** The lbl 8. */
 	private Label lbl8;
+	
+	/** The lbl 7 1. */
 	private Label lbl7_1;//占位label
+	
+	/** The lbl 8 1. */
 	private Label lbl8_1;
+	
+	/** The lbl 9. */
 	private Label lbl9;//占位label
+	
+	/** The lbl 0. */
 	private Label lbl0;
+	
+	/** The lbl 9 1. */
 	private Label lbl9_1;//占位label
+	
+	/** The lbl 0 1. */
 	private Label lbl0_1;
+	
+	/** The lbl 11. */
 	private Label lbl11;
+	
+	/** The lbl 12. */
 	private Label lbl12;
+	
+	/** The lbl 11 1. */
 	private Label lbl11_1;
+	
+	/** The lbl 12 1. */
 	private Label lbl12_1;
+	
+	/** The lbl 13. */
 	private Label lbl13;
+	
+	/** The lbl 14. */
 	private Label lbl14;
+	
+	/** The lbl 13 1. */
 	private Label lbl13_1;
+	
+	/** The lbl 14 1. */
 	private Label lbl14_1;
+	
+	/** The btn A. */
 	private Button btnA;//实体展示区域按钮
+	
+	/** The btn B. */
 	private Button btnB;
+	
+	/** The btn find A. */
 	private Button btnFindA;//查找
+	
+	/** The btn find B. */
 	private Button btnFindB;
+	
+	/** The text ass name. */
 	private Text textAssName;// 关系名
+	
+	/** The text ass disp name. */
 	private Text textAssDispName;// 关系显示名
+	
+	/** The text entity A. */
 	private Text textEntityA;// 实体A
+	
+	/** The text entity B. */
 	private Text textEntityB;// 实体B
-	/**
-	 * 中间表
-	 */
+	
+	/** 中间表. */
 	private Text textTable;
+	
+	/** The styled text desc. */
 	private NullToEmptyText styledTextDesc;
-	/**
-	 * 关联类型
-	 */
+	
+	/** 关联类型. */
 	private Combo comboAssType;
+	
+	/** The check nav to B. */
 	private Button checkNavToB;// 导航到B
-	/**
-	 * 级联删除B
-	 */
+	
+	/** 级联删除B. */
 	//private Button checkCascadDelB;
 	/**
 	 * 设为主控端
 	 */
 	private Button checkControlA;
-	/**
-	 * 导航到A
-	 */
+	
+	/** 导航到A. */
 	private Button checkNavToA;
-	/**
-	 * 级联删除A
-	 */
+	
+	/** 级联删除A. */
 	//private Button checkCascadDelA;
 	/**
 	 * 设为主控端B
 	 */
 	private Button checkControlB;
-	/**
-	 * A的数据库关联字段
-	 */
+	
+	/** A的数据库关联字段. */
 	private Combo combo_DbFieldA;//
-	/**
-	 * B的数据库关联字段
-	 */
+	
+	/** B的数据库关联字段. */
 	private Combo combo_DbFieldB;
-	/**
-	 * 在实体A对应的数据库表中创建外键
-	 */
+	
+	/** 在实体A对应的数据库表中创建外键. */
 	private Button checkCreateFKA;
-	/**
-	 * 在实体B对应的数据库表中创建外键
-	 */
+	
+	/** 在实体B对应的数据库表中创建外键. */
 	private Button checkCreateFKB;
+	
+	/** The text FK column A. */
 	private Text textFKColumnA;// A端外键字段名
+	
+	/** The text FK column B. */
 	private Text textFKColumnB;// B端外键字段名
+	
+	/** The combo FK column A readonly. */
 	private Combo comboFKColumnAReadonly;// ReadonlyA端外键字段名
+	
+	/** The combo FK column B readonly. */
 	private Combo comboFKColumnBReadonly;// ReadonlyB端外键字段名
+	
+	/** The event type. */
 	private int eventType = 0;
+	
+	/** The title operation. */
 	private String TITLE_OPERATION = "";
+	
+	/** The title type. */
 	private String TITLE_TYPE = "关联关系";
-	/**
-	 * 配置编辑器按钮
-	 */
+	
+	/** 配置编辑器按钮. */
 	private Button editorDeployA;
+	
+	/** The not null A. */
 	private Button notNullA;
-	/**
-	 * 配置编辑器按钮
-	 */
+	
+	/** 配置编辑器按钮. */
 	private Button editorDeployB;
+	
+	/** The not null B. */
 	private Button notNullB;
-	/**
-	 * A-B导航属性名 
-	 */
+	
+	/** A-B导航属性名. */
 	private Text textNavigateToClassBRoleName;// 导航属性名 
-	/**
-	 * B-A导航属性名 
-	 */
+	
+	/** B-A导航属性名. */
 	private Text textNavigateToClassARoleName;// 导航属性名 
 	
+	/** The is reverse A. */
 	private boolean isReverseA;
+	
+	/** The is reverse B. */
 	private boolean isReverseB;
+	
+	/** The is reverse ass. */
 	private boolean isReverseAss;
 
+	/** The canvas. */
 	private BusinessClassCanvas canvas;// 上方画布
 
+	/** The manager. */
 	private BusinessModelManager manager = BusinessModelUtil
 			.getEditorBusinessModelManager();
 
+	/** The Constant DIALOG_WIDTH. */
 	public static final int DIALOG_WIDTH = 900;
+	
+	/** The Constant DIALOG_HEIGTH. */
 	public static final int DIALOG_HEIGTH = 730;
 
+	/**
+	 * Instantiates a new business class relation edit dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param association
+	 *            the association
+	 * @param parent
+	 *            the parent
+	 * @param eventType
+	 *            the event type
+	 * @param addAssType
+	 *            the add ass type
+	 */
 	public BusinessClassRelationEditDialog(Shell parentShell,
 			Association association, AbstractModelElement parent,
 			int eventType, String addAssType) {
@@ -234,6 +332,14 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		this.eventType = eventType;
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		if (BusinessModelEvent.MODEL_ELEMENT_ADD == eventType) {
@@ -262,6 +368,15 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		newShell.setImage(img);
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		/*
@@ -281,6 +396,14 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		return parent;
 	}
 
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent(Composite parent) {
 
 		// 实体展示区域
@@ -569,7 +692,10 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 初始化数据
+	 * 初始化数据.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initData() {
 		chooseCombo();
@@ -578,6 +704,12 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		fillBasicInfo();
 	}
 
+	/**
+	 * Adds the listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void addListeners() {
 		comboAssType.addSelectionListener(new SelectionListener() {
 			public void widgetDefaultSelected(SelectionEvent arg0) {
@@ -859,7 +991,10 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 当选择业务实体时，如果当前是内置实体，则更改导航关系
+	 * 当选择业务实体时，如果当前是内置实体，则更改导航关系.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void changeNavi() {
 		checkNavToB.setEnabled(true);
@@ -916,7 +1051,10 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 一对一关系初始化时默认是A端主控
+	 * 一对一关系初始化时默认是A端主控.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void changeControl() {
 		if (AssociationType.one2one.equals(this.associationType) || AssociationType.mult2mult.equals(this.associationType)) {
@@ -934,6 +1072,17 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		}
 	}
 
+	/**
+	 * Gets the role name.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @param bc
+	 *            the bc
+	 * @return the role name
+	 * @Date 2018-09-03 09:00
+	 */
 	private String getRoleName(String name ,BusinessClass bc){
 		if(name.trim().equalsIgnoreCase(bc.getName())){
 			name = name+"_1";
@@ -944,7 +1093,10 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 	
 	/**
-	 * 根据导航关系设置导航属性名
+	 * 根据导航关系设置导航属性名.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void changeRoleNameByNavi() {
 		if (checkNavToB != null && checkNavToB.getSelection()) {
@@ -1063,6 +1215,12 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		}
 	}
 
+	/**
+	 * Change control by build in.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void changeControlByBuildIn() {
 		setEditableControl(true);
 		if (businessClassA != null
@@ -1086,6 +1244,14 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		}
 	}
 	
+	/**
+	 * Sets the FK combo A display.
+	 *
+	 * @author mqfdy
+	 * @param b
+	 *            the new FK combo A display
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setFKComboADisplay(boolean b){
 		if(comboFKColumnAReadonly.getVisible()){
 			comboFKColumnAReadonly.setEnabled(b);
@@ -1094,6 +1260,15 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 			}
 		}
 	}
+	
+	/**
+	 * Sets the FK combo B display.
+	 *
+	 * @author mqfdy
+	 * @param b
+	 *            the new FK combo B display
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setFKComboBDisplay(boolean b){
 		if(comboFKColumnBReadonly.getVisible()){
 			comboFKColumnBReadonly.setEnabled(b);
@@ -1103,6 +1278,14 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		}
 	}
 	
+	/**
+	 * Sets the FK text A display.
+	 *
+	 * @author mqfdy
+	 * @param b
+	 *            the new FK text A display
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setFKTextADisplay(boolean b){
 		if(textFKColumnA.getVisible()){
 			textFKColumnA.setEnabled(b);
@@ -1110,6 +1293,14 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		}
 	}
 	
+	/**
+	 * Sets the FK text B display.
+	 *
+	 * @author mqfdy
+	 * @param b
+	 *            the new FK text B display
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setFKTextBDisplay(boolean b){
 		if(textFKColumnB.getVisible()){
 			textFKColumnB.setEnabled(b);
@@ -1117,6 +1308,12 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		}
 	}
 
+	/**
+	 * Change create FK by type.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void changeCreateFKByType() {
 		this.setErrorMessage(null);
 		if(IModelElement.STEREOTYPE_REVERSE.equals(association.getStereotype())){
@@ -1549,7 +1746,11 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 	
 	/**
-	 * 根据关联关系类型和实体类型判断合法性
+	 * 根据关联关系类型和实体类型判断合法性.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean validateByRelationType(){
 		if(businessClassA!=null && IModelElement.STEREOTYPE_REFERENCE.equals(businessClassA.getStereotype()) && businessClassB!=null && IModelElement.STEREOTYPE_REFERENCE.equals(businessClassB.getStereotype())){
@@ -1637,7 +1838,10 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 根据当前类型设置下拉框，如果改变的值不允许则还原原选项
+	 * 根据当前类型设置下拉框，如果改变的值不允许则还原原选项.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void chooseCombo() {
 		if (this.associationType != null) {
@@ -1656,7 +1860,10 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 设置各个控件的初始值
+	 * 设置各个控件的初始值.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void fillBasicInfo() {
 		if (association != null) {
@@ -1748,7 +1955,10 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 实体改变时 改变中间表名
+	 * 实体改变时 改变中间表名.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void changeTableName() {
 		StringBuffer tableName = new StringBuffer();
@@ -1794,7 +2004,10 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 改变缩略图显示
+	 * 改变缩略图显示.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void changeCanvasDisplay() {
 		computeArrowTip();
@@ -1804,7 +2017,10 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 根据导航关系设置图形箭头指向
+	 * 根据导航关系设置图形箭头指向.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void computeArrowTip() {
 		if (checkNavToB.getSelection()) {
@@ -1828,6 +2044,12 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		}
 	}
 
+	/**
+	 * Fill fields A.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void fillFieldsA() {
 		List<Property> propsA = null;
 		if (businessClassA != null) {
@@ -1866,6 +2088,12 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		}
 	}
 
+	/**
+	 * Fill fields B.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void fillFieldsB() {
 		List<Property> propsB = null;
 		if (businessClassB != null) {
@@ -1903,7 +2131,10 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 根据关系类型改变视图
+	 * 根据关系类型改变视图.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void changeViewByAssociationType() {
 		if (this.associationType == null) {
@@ -1915,9 +2146,13 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 根据当前选择项判断是否允许更改关联类型
-	 * 
+	 * 根据当前选择项判断是否允许更改关联类型.
+	 *
+	 * @author mqfdy
 	 * @param type
+	 *            the type
+	 * @return true, if is association type allow change
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean isAssociationTypeAllowChange(AssociationType type) {
 
@@ -1984,10 +2219,15 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	
 
 	/**
-	 * 判断是否允许自关联
+	 * 判断是否允许自关联.
+	 *
+	 * @author mqfdy
 	 * @param selBusinessClass
+	 *            the sel business class
 	 * @param otherBusinessClass
-	 * @return
+	 *            the other business class
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean checkAssSelf(BusinessClass selBusinessClass,
 			BusinessClass otherBusinessClass) {
@@ -2000,9 +2240,13 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 获取外键字段名
+	 * 获取外键字段名.
+	 *
+	 * @author mqfdy
 	 * @param params
-	 * @return
+	 *            the params
+	 * @return the FK column name
+	 * @Date 2018-09-03 09:00
 	 */
 	private String getFKColumnName(String params) {
 		if (association != null && association.getPersistencePloyParams() != null) {
@@ -2013,11 +2257,15 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 	
 	/**
-	 * 仅允许建立业务实体与built-in实体的 1对1和多对1关联(单向关联)
-	 * 
+	 * 仅允许建立业务实体与built-in实体的 1对1和多对1关联(单向关联).
+	 *
+	 * @author mqfdy
 	 * @param anotherBusinessClass
+	 *            the another business class
 	 * @param button
-	 * @return
+	 *            the button
+	 * @return true, if is allow choose build in
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean isAllowChooseBuildIn(BusinessClass anotherBusinessClass,
 			Button button) {
@@ -2056,11 +2304,15 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 	
 	/**
-	 * 仅允许建立自定义业务实体与反向实体的 1对1、多对多和多对1关联
-	 * 
+	 * 仅允许建立自定义业务实体与反向实体的 1对1、多对多和多对1关联.
+	 *
+	 * @author mqfdy
 	 * @param anotherBusinessClass
+	 *            the another business class
 	 * @param button
-	 * @return
+	 *            the button
+	 * @return true, if is allow choose reverse
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean isAllowChooseReverse(BusinessClass anotherBusinessClass,
 			Button button) {
@@ -2105,7 +2357,10 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 根据实体类型和关联关系类型判断控件只读
+	 * 根据实体类型和关联关系类型判断控件只读.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setEnableByStoreType(){
 		if(this.association != null 
@@ -2169,9 +2424,12 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 	
 	/**
-	 * 控制创建外键区域显示与否，true为显示；false为不显示
-	 * 
+	 * 控制创建外键区域显示与否，true为显示；false为不显示.
+	 *
+	 * @author mqfdy
 	 * @param b
+	 *            the new dis play create FK
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setDisPlayCreateFK(boolean b) {
 		groupPersist.layout();
@@ -2189,17 +2447,30 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		this.lbl12_1.setVisible(b);
 		groupPersist.layout();
 	}
+	
 	/**
-	 * 控制编辑器按钮 非空按钮 是否显示
-	 *  
+	 * 控制编辑器按钮 非空按钮 是否显示.
+	 *
+	 * @author mqfdy
 	 * @param bA
+	 *            the b A
 	 * @param bB
+	 *            the b B
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setEditorDisPlay(boolean bA,boolean bB) {
 		setEditorDisPlayA(bA);
 		setEditorDisPlayB(bB);
 	}
 	
+	/**
+	 * Sets the editor dis play A.
+	 *
+	 * @author mqfdy
+	 * @param bA
+	 *            the new editor dis play A
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setEditorDisPlayA(boolean bA) {
 		((GridData) editorDeployA.getLayoutData()).exclude = !bA;
 		editorDeployA.setVisible(bA);
@@ -2211,10 +2482,26 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		lbl13_1.setVisible(!bA);
 	}
 	
+	/**
+	 * Sets the editor editable A.
+	 *
+	 * @author mqfdy
+	 * @param bA
+	 *            the new editor editable A
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setEditorEditableA(boolean bA) {
 		editorDeployA.setEnabled(bA);
 	}
 	
+	/**
+	 * Sets the editor dis play B.
+	 *
+	 * @author mqfdy
+	 * @param bB
+	 *            the new editor dis play B
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setEditorDisPlayB(boolean bB) {
 		((GridData) editorDeployB.getLayoutData()).exclude = !bB;
 		editorDeployB.setVisible(bB);
@@ -2227,14 +2514,23 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		groupPersist.layout();
 	}
 	
+	/**
+	 * Sets the editor editable B.
+	 *
+	 * @author mqfdy
+	 * @param bB
+	 *            the new editor editable B
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setEditorEditableB(boolean bB) {
 		editorDeployB.setEnabled(bB);
 	}
 	
 	/**
-	 * 控制只读的外键字段名是否显示
-	 * @param bA
-	 * @param bB
+	 * 控制只读的外键字段名是否显示.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setFKColumnDisPlay() {
 		isReverseAss = BusinessClass.STEREOTYPE_REVERSE.equals(association.getStereotype());
@@ -2300,10 +2596,14 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		
 		groupPersist.layout();
 	}
+	
 	/**
-	 * 设置中间表区域是否显示
-	 * 
+	 * 设置中间表区域是否显示.
+	 *
+	 * @author mqfdy
 	 * @param b
+	 *            the new display table
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setDisplayTable(boolean b) {
 		((GridData) lblTable.getLayoutData()).exclude = !b;
@@ -2356,9 +2656,12 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 设置主控端checkbox是否显示
-	 * 
+	 * 设置主控端checkbox是否显示.
+	 *
+	 * @author mqfdy
 	 * @param b
+	 *            the new display main control
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setDisplayMainControl(boolean b) {
 		// ((GridData)checkControlA.getLayoutData()).exclude = !b;
@@ -2367,6 +2670,12 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		checkControlB.setVisible(b);
 	}
 
+	/**
+	 * Sets the display by assciation type.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setDisplayByAssciationType() {
 		// 显示控制 add by xuran
 		if (associationType == null) {
@@ -2403,6 +2712,12 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		groupPersist.getParent().layout();
 	}
 
+	/**
+	 * Sets the editable by assciation type.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setEditableByAssciationType() {
 		changeNavi();
 		changeCreateFKByType();
@@ -2411,20 +2726,29 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 设置创建外键的可编辑性
-	 * 
+	 * 设置创建外键的可编辑性.
+	 *
+	 * @author mqfdy
 	 * @param bA
+	 *            the b A
 	 * @param bB
+	 *            the b B
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setEditableFK(boolean bA, boolean bB) {
 		checkCreateFKA.setEnabled(bA);
 		checkCreateFKB.setEnabled(bB);
 	}
+	
 	/**
-	 * 设置级联删除的可编辑性
-	 * 
+	 * 设置级联删除的可编辑性.
+	 *
+	 * @author mqfdy
 	 * @param bA
+	 *            the b A
 	 * @param bB
+	 *            the b B
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setEditableCascade(boolean bA, boolean bB) {
 		/*checkCascadDelB.setEnabled(bA);// 级联删除B
@@ -2434,10 +2758,12 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 设置主控端的可编辑性
-	 * 
-	 * @param bA
-	 * @param bB
+	 * 设置主控端的可编辑性.
+	 *
+	 * @author mqfdy
+	 * @param b
+	 *            the new editable control
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setEditableControl(boolean b) {
 		checkControlA.setEnabled(b);
@@ -2445,7 +2771,10 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 设置标题和message
+	 * 设置标题和message.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setTitleAndMessage() {
 		if (BusinessModelEvent.MODEL_ELEMENT_ADD == eventType) {
@@ -2459,6 +2788,13 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		}
 	}
 
+	/**
+	 * Gets the business class A.
+	 *
+	 * @author mqfdy
+	 * @return the business class A
+	 * @Date 2018-09-03 09:00
+	 */
 	private BusinessClass getBusinessClassA() {
 		if (association == null) {
 			return null;
@@ -2466,6 +2802,13 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		return association.getClassA();
 	}
 
+	/**
+	 * Gets the business class B.
+	 *
+	 * @author mqfdy
+	 * @return the business class B
+	 * @Date 2018-09-03 09:00
+	 */
 	private BusinessClass getBusinessClassB() {
 		if (association == null) {
 			return null;
@@ -2481,14 +2824,27 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 //		}
 //	}
 	
-	public Association getAssociation() {
+	/**
+ * Gets the association.
+ *
+ * @author mqfdy
+ * @return the association
+ * @Date 2018-09-03 09:00
+ */
+public Association getAssociation() {
 		return association;
 	}
 
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		initData();
 	}
 	
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		if (validateInput() == true) {
@@ -2497,20 +2853,37 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 		}
 	}
 	
+	/**
+	 * @return
+	 */
 	@Override
 	protected Point getInitialSize() {
 		return new Point(DIALOG_WIDTH, DIALOG_HEIGTH);
 	}
 
+	/**
+	 * Gets the title.
+	 *
+	 * @author mqfdy
+	 * @return the title
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getTITLE() {
 		return TITLE_OPERATION + TITLE_TYPE;
 	}
+	
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 		doSave();
 		BusinessModelEvent event = new BusinessModelEvent(eventType,association);
 		manager.businessObjectModelChanged(event);
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		this.setErrorMessage(null);
 		
@@ -2945,7 +3318,10 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 	}
 
 	/**
-	 * 保存数据
+	 * 保存数据.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void doSave() {
 		String id = association == null ? null : association.getId();
@@ -3076,6 +3452,18 @@ public class BusinessClassRelationEditDialog extends ModelElementEditorDialog
 			}
 		}
 	}
+	
+	/**
+	 * Checks if is fk equals PK.
+	 *
+	 * @author mqfdy
+	 * @param businessClass
+	 *            the business class
+	 * @param fkName
+	 *            the fk name
+	 * @return true, if is fk equals PK
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean  isFkEqualsPK(BusinessClass businessClass, String fkName){
 		// 校验外键是否是主键
 		

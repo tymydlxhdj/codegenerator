@@ -25,18 +25,22 @@ import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.utils.AssociationType;
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 代码生成工具类
- * 
+ * 代码生成工具类.
+ *
  * @author mqfdy
  */
 public class GeneratorUitl {
 
 	/**
-	 * 获取路径下的文件
-	 * 
+	 * 获取路径下的文件.
+	 *
+	 * @author mqfdy
 	 * @param projectPath
-	 * @return
+	 *            the project path
+	 * @return the all files in the dir
+	 * @Date 2018-09-03 09:00
 	 */
 	public static List<String> getAllFilesInTheDir(String projectPath) {
 		List<String> fileList = new ArrayList<String>();
@@ -50,10 +54,15 @@ public class GeneratorUitl {
 	}
 
 	/**
-	 * 递归调用获取文件名
-	 * 
+	 * 递归调用获取文件名.
+	 *
+	 * @author mqfdy
 	 * @param f
+	 *            the f
 	 * @param list
+	 *            the list
+	 * @return the all files
+	 * @Date 2018-9-3 11:38:38
 	 */
 	private static void getAllFiles(File f, List<String> list) {
 		if (f.isDirectory() && f.exists()) {
@@ -69,11 +78,15 @@ public class GeneratorUitl {
 	}
 
 	/**
-	 * 创建中间表名称
-	 * 
+	 * 创建中间表名称.
+	 *
+	 * @author mqfdy
 	 * @param pc1
+	 *            the pc 1
 	 * @param pc2
-	 * @return
+	 *            the pc 2
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String createMiddleTableName(PersistentClass pc1, PersistentClass pc2) {
 		if (pc1 == null || pc2 == null) {
@@ -92,10 +105,13 @@ public class GeneratorUitl {
 	}
 
 	/**
-	 * 创建中间表的外键列名称
-	 * 
+	 * 创建中间表的外键列名称.
+	 *
+	 * @author mqfdy
 	 * @param pc1
-	 * @return
+	 *            the pc 1
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String createFKColName(PersistentClass pc1) {
 		String thirdTableFKColName = null;
@@ -108,10 +124,13 @@ public class GeneratorUitl {
 	}
 
 	/**
-	 * 创建映射文件中多方在一方存在的属性名称
-	 * 
-	 * @param pc1
-	 * @return
+	 * 创建映射文件中多方在一方存在的属性名称.
+	 *
+	 * @author mqfdy
+	 * @param pc
+	 *            the pc
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String createSetName(PersistentClass pc) {
 		String setName = null;
@@ -123,10 +142,13 @@ public class GeneratorUitl {
 	}
 
 	/**
-	 * 获取业务实体的主键名称
-	 * 
+	 * 获取业务实体的主键名称.
+	 *
+	 * @author mqfdy
 	 * @param bc
-	 * @return
+	 *            the bc
+	 * @return the pk name
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String getPkName(BusinessClass bc) {
 		String pkName = "id";
@@ -141,11 +163,17 @@ public class GeneratorUitl {
 	}
 
 	/**
-	 * 给定一组持久化实体，如果ddl脚本中存在和实体相关表的sql语句，就删除。
+	 * 给定一组持久化实体，如果ddl脚本中存在和实体相关表的sql语句，就删除。.
+	 *
 	 * @author rongxin.bian
-	 * @param deletedPersistentClasses 一组持久化实体，这些实体不生成对应的DDL语句.
-	 * @param ddlFilePath ddl 文件路径
-	 * @param remainingWord 保留的词 如果当前ddl语句中含有这个remainingWord，那么不删除。可以传空值。
+	 * @param model
+	 *            the model
+	 * @param deletedPersistentClasses
+	 *            一组持久化实体，这些实体不生成对应的DDL语句.
+	 * @param ddlFilePath
+	 *            ddl 文件路径
+	 * @param remainingWord
+	 *            保留的词 如果当前ddl语句中含有这个remainingWord，那么不删除。可以传空值。
 	 */
 	public static void deleteSentencesFromDDL(BusinessObjectModel model, List<PersistentClass> deletedPersistentClasses, String ddlFilePath, String remainingWord) {
 		
@@ -205,11 +233,15 @@ public class GeneratorUitl {
 	}
 
 	/**
-	 * 判断一条ddl语句中是否要删除
+	 * 判断一条ddl语句中是否要删除.
+	 *
 	 * @author rongxin.bian
-	 * @param ddlSentence ddl语句
-	 * @param tableName 给定的表名
-	 * @param remainingWord 保留的词 如果当前ddl语句中含有这个remainingWord，那么不删除。可以传空值。
+	 * @param ddlSentence
+	 *            ddl语句
+	 * @param tableName
+	 *            给定的表名
+	 * @param remainingWord
+	 *            保留的词 如果当前ddl语句中含有这个remainingWord，那么不删除。可以传空值。
 	 * @return 如果有返回true
 	 */
 	public static boolean isDelete(String ddlSentence, String tableName, String remainingWord) {
@@ -251,9 +283,11 @@ public class GeneratorUitl {
 	}
 	
 	/**
-	 * 读取指定文件中的内容
+	 * 读取指定文件中的内容.
+	 *
 	 * @author rongxin.bian
-	 * @param filePath 文件路径
+	 * @param filePath
+	 *            文件路径
 	 * @return 文件内容 字符串
 	 */
 	public static String readFileContent(String filePath) {
@@ -284,10 +318,13 @@ public class GeneratorUitl {
 	}
 	
 	/**
-	 * 向指定文件中写入内容
+	 * 向指定文件中写入内容.
+	 *
 	 * @author rongxin.bian
-	 * @param filePath 文件路径
-	 * @param content 文件内容 
+	 * @param filePath
+	 *            文件路径
+	 * @param content
+	 *            文件内容
 	 */
 	public static void writeFileContent(String filePath, String content) {
 		BufferedWriter writer = null;
@@ -310,11 +347,13 @@ public class GeneratorUitl {
 	}
 	
 	/**
-	 * 获取某节点所属的bom对象
-	 * 
+	 * 获取某节点所属的bom对象.
+	 *
+	 * @author mqfdy
 	 * @param element
 	 *            任意节点
-	 * @return
+	 * @return the business model of element
+	 * @Date 2018-09-03 09:00
 	 */
 	public static BusinessObjectModel getBusinessModelOfElement(AbstractModelElement element) {
 		if (element == null) {
@@ -336,10 +375,13 @@ public class GeneratorUitl {
 	}
 
 	/**
-	 * 判断bc主键是否首字母小写且第二个为字母且大写
-	 * 
-	 * @param bcName
-	 * @return
+	 * 判断bc主键是否首字母小写且第二个为字母且大写.
+	 *
+	 * @author mqfdy
+	 * @param pkName
+	 *            the pk name
+	 * @return true, if is special id
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isSpecialId(String pkName) {
 		if(pkName.length()<2){
@@ -355,10 +397,15 @@ public class GeneratorUitl {
 	}
 
 	/**
-	 * 
+	 * Gets the occur.
+	 *
+	 * @author mqfdy
 	 * @param src
+	 *            the src
 	 * @param find
-	 * @return
+	 *            the find
+	 * @return the occur
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int getOccur(String src, String find) {
 		int o = 0;
@@ -371,10 +418,13 @@ public class GeneratorUitl {
 	}
 
 	/**
-	 * 在一组持久化实体中检索当前持久化的对象，看是否存在。
+	 * 在一组持久化实体中检索当前持久化的对象，看是否存在。.
+	 *
 	 * @author rongxin.bian
 	 * @param objectClass
+	 *            the object class
 	 * @param persistentClasses
+	 *            the persistent classes
 	 * @return 存在返回true
 	 */
 	public static boolean isExsitPersistentClass(PersistentClass objectClass, List<PersistentClass> persistentClasses) {
@@ -387,6 +437,17 @@ public class GeneratorUitl {
 		return false;
 	}
 	
+	/**
+	 * Checks if is exsit table.
+	 *
+	 * @author mqfdy
+	 * @param table
+	 *            the table
+	 * @param persistentClasses
+	 *            the persistent classes
+	 * @return true, if is exsit table
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean isExsitTable(Table table, List<PersistentClass> persistentClasses) {
 		for(PersistentClass persistentClass: persistentClasses) {
 			if(table.getName().equals(persistentClass.getTable().getName())) {

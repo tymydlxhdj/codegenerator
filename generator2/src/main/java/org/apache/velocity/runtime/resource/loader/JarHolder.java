@@ -33,24 +33,36 @@ import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.exception.VelocityException;
 
+// TODO: Auto-generated Javadoc
 /**
- * A small wrapper around a Jar
+ * A small wrapper around a Jar.
  *
  * @author <a href="mailto:daveb@miceda-data.com">Dave Bryson</a>
  * @version $Id: JarHolder.java 687177 2008-08-19 22:00:32Z nbubna $
  */
 public class JarHolder
 {
+    
+    /** The urlpath. */
     private String urlpath = null;
+    
+    /** The jar. */
     private JarFile theJar = null;
+    
+    /** The conn. */
     private JarURLConnection conn = null;
 
+    /** The log. */
     private Log log = null;
 
     /**
-     * @param rs
-     * @param urlpath
-     */
+	 * Instantiates a new jar holder.
+	 *
+	 * @param rs
+	 *            the rs
+	 * @param urlpath
+	 *            the urlpath
+	 */
     public JarHolder( RuntimeServices rs, String urlpath )
     {
         this.log = rs.getLog();
@@ -65,8 +77,11 @@ public class JarHolder
     }
 
     /**
-     *
-     */
+	 * Inits the.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:24
+	 */
     public void init()
     {
         try
@@ -93,8 +108,11 @@ public class JarHolder
     }
 
     /**
-     *
-     */
+	 * Close.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:24
+	 */
     public void close()
     {
         try
@@ -114,10 +132,16 @@ public class JarHolder
     }
 
     /**
-     * @param theentry
-     * @return The requested resource.
-     * @throws ResourceNotFoundException
-     */
+	 * Gets the resource.
+	 *
+	 * @author mqfdy
+	 * @param theentry
+	 *            the theentry
+	 * @return The requested resource.
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @Date 2018-9-3 11:38:24
+	 */
     public InputStream getResource( String theentry )
      throws ResourceNotFoundException {
         InputStream data = null;
@@ -141,8 +165,12 @@ public class JarHolder
     }
 
     /**
-     * @return The entries of the jar as a hashtable.
-     */
+	 * Gets the entries.
+	 *
+	 * @author mqfdy
+	 * @return The entries of the jar as a hashtable.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public Hashtable getEntries()
     {
         Hashtable allEntries = new Hashtable(559);
@@ -162,8 +190,12 @@ public class JarHolder
     }
 
     /**
-     * @return The URL path of this jar holder.
-     */
+	 * Gets the url path.
+	 *
+	 * @author mqfdy
+	 * @return The URL path of this jar holder.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public String getUrlPath()
     {
         return urlpath;

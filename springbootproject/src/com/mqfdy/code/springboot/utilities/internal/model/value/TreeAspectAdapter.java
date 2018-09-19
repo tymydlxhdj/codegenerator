@@ -22,19 +22,22 @@ import com.mqfdy.code.springboot.utilities.model.value.PropertyValueModel;
 import com.mqfdy.code.springboot.utilities.model.value.TreeValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * This extension of PropertyAdapter provides TreeChange support.
- * This allows us to convert a set of one or more trees into
- * a single tree, NODES.
+ * This extension of PropertyAdapter provides TreeChange support. This allows us
+ * to convert a set of one or more trees into a single tree, NODES.
  * 
- * The typical subclass will override the following methods:
- * #nodes_()
- *     at the very minimum, override this method to return an iterator
- *     on the subject's tree aspect; it does not need to be overridden if
- *     #nodes() is overridden and its behavior changed
- * #nodes()
- *     override this method only if returning an empty iterator when the
- *     subject is null is unacceptable
+ * The typical subclass will override the following methods: #nodes_() at the
+ * very minimum, override this method to return an iterator on the subject's
+ * tree aspect; it does not need to be overridden if #nodes() is overridden and
+ * its behavior changed #nodes() override this method only if returning an empty
+ * iterator when the subject is null is unacceptable
+ *
+ * @author mqfdy
+ * @param <S>
+ *            the generic type
+ * @param <E>
+ *            the element type
  */
 public abstract class TreeAspectAdapter<S extends Model, E>
 	extends AspectAdapter<S>
@@ -44,6 +47,8 @@ public abstract class TreeAspectAdapter<S extends Model, E>
 	 * The name of the subject's trees that we use for the value.
 	 */
 	protected final String[] treeNames;
+		
+		/** The Constant EMPTY_TREE_NAMES. */
 		protected static final String[] EMPTY_TREE_NAMES = new String[0];
 
 	/** A listener that listens to the subject's tree aspect. */
@@ -53,24 +58,36 @@ public abstract class TreeAspectAdapter<S extends Model, E>
 	// ********** constructors **********
 
 	/**
-	 * Construct a TreeAspectAdapter for the specified subject
-	 * and tree.
+	 * Construct a TreeAspectAdapter for the specified subject and tree.
+	 *
+	 * @param treeName
+	 *            the tree name
+	 * @param subject
+	 *            the subject
 	 */
 	protected TreeAspectAdapter(String treeName, S subject) {
 		this(new String[] {treeName}, subject);
 	}
 
 	/**
-	 * Construct a TreeAspectAdapter for the specified subject
-	 * and trees.
+	 * Construct a TreeAspectAdapter for the specified subject and trees.
+	 *
+	 * @param treeNames
+	 *            the tree names
+	 * @param subject
+	 *            the subject
 	 */
 	protected TreeAspectAdapter(String[] treeNames, S subject) {
 		this(new StaticPropertyValueModel<S>(subject), treeNames);
 	}
 
 	/**
-	 * Construct a TreeAspectAdapter for the specified subject holder
-	 * and trees.
+	 * Construct a TreeAspectAdapter for the specified subject holder and trees.
+	 *
+	 * @param subjectHolder
+	 *            the subject holder
+	 * @param treeNames
+	 *            the tree names
 	 */
 	protected TreeAspectAdapter(PropertyValueModel<? extends S> subjectHolder, String... treeNames) {
 		super(subjectHolder);
@@ -79,18 +96,24 @@ public abstract class TreeAspectAdapter<S extends Model, E>
 	}
 
 	/**
-	 * Construct a TreeAspectAdapter for the specified subject holder
-	 * and trees.
+	 * Construct a TreeAspectAdapter for the specified subject holder and trees.
+	 *
+	 * @param subjectHolder
+	 *            the subject holder
+	 * @param treeNames
+	 *            the tree names
 	 */
 	protected TreeAspectAdapter(PropertyValueModel<? extends S> subjectHolder, Collection<String> treeNames) {
 		this(subjectHolder, treeNames.toArray(new String[treeNames.size()]));
 	}
 
 	/**
-	 * Construct a TreeAspectAdapter for an "unchanging" tree in
-	 * the specified subject. This is useful for a tree aspect that does not
-	 * change for a particular subject; but the subject will change, resulting in
-	 * a new tree.
+	 * Construct a TreeAspectAdapter for an "unchanging" tree in the specified
+	 * subject. This is useful for a tree aspect that does not change for a
+	 * particular subject; but the subject will change, resulting in a new tree.
+	 *
+	 * @param subjectHolder
+	 *            the subject holder
 	 */
 	protected TreeAspectAdapter(PropertyValueModel<? extends S> subjectHolder) {
 		this(subjectHolder, EMPTY_TREE_NAMES);
@@ -101,6 +124,10 @@ public abstract class TreeAspectAdapter<S extends Model, E>
 
 	/**
 	 * The subject's tree aspect has changed, notify the listeners.
+	 *
+	 * @author mqfdy
+	 * @return the tree change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected TreeChangeListener buildTreeChangeListener() {
 		// transform the subject's tree change events into VALUE tree change events
@@ -135,8 +162,10 @@ public abstract class TreeAspectAdapter<S extends Model, E>
 	}
 
 	/**
-	 * Return the nodes of the subject's tree aspect.
-	 * At this point we can be sure that the subject is not null.
+	 * Return the nodes of the subject's tree aspect. At this point we can be
+	 * sure that the subject is not null.
+	 *
+	 * @return the iterator
 	 * @see #nodes()
 	 */
 	protected Iterator<E> nodes_() {
@@ -198,18 +227,50 @@ public abstract class TreeAspectAdapter<S extends Model, E>
 
 	// ********** behavior **********
 
+	/**
+	 * Node added.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void nodeAdded(TreeChangeEvent event) {
 		this.fireNodeAdded(NODES, event.getPath());
 	}
 
+	/**
+	 * Node removed.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void nodeRemoved(TreeChangeEvent event) {
 		this.fireNodeRemoved(NODES, event.getPath());
 	}
 
+	/**
+	 * Tree cleared.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void treeCleared(TreeChangeEvent event) {
 		this.fireTreeCleared(NODES);
 	}
 
+	/**
+	 * Tree changed.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void treeChanged(TreeChangeEvent event) {
 		this.fireTreeChanged(NODES, event.getPath());
 	}

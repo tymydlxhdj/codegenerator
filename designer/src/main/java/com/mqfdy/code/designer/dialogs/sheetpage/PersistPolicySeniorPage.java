@@ -22,17 +22,46 @@ import com.mqfdy.code.designer.dialogs.IBusinessClassEditorPage;
 import com.mqfdy.code.designer.editor.utils.Logger;
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PersistPolicySeniorPage.
+ *
+ * @author mqfdy
+ */
 public class PersistPolicySeniorPage extends Composite implements
 		IBusinessClassEditorPage {
+	
+	/** The persist impl. */
 	private String PERSIST_IMPL = "持久化实现机制";
+	
+	/** The persist hibernate. */
 	private String PERSIST_HIBERNATE = "Hibernate";
+	
+	/** The import local. */
 	private String IMPORT_LOCAL = "从本地导入映射描述文件";
 
+	/** The combo persist impl. */
 	private Combo comboPersistImpl;// 持久化实现机制
+	
+	/** The button import. */
 	private Button buttonImport;
+	
+	/** The text file. */
 	private StyledText textFile;
+	
+	/** The parent page. */
 	private PersistPolicySheetPage parentPage;
 
+	/**
+	 * Instantiates a new persist policy senior page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param parentPage
+	 *            the parent page
+	 */
 	public PersistPolicySeniorPage(Composite parent, int style,
 			PersistPolicySheetPage parentPage) {
 		super(parent, style);
@@ -41,6 +70,12 @@ public class PersistPolicySeniorPage extends Composite implements
 		addListeners();
 	}
 
+	/**
+	 * Adds the listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void addListeners() {
 		buttonImport.addMouseListener(new MouseListener() {
 
@@ -67,6 +102,14 @@ public class PersistPolicySeniorPage extends Composite implements
 
 	}
 
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent(Composite parent) {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
@@ -98,19 +141,37 @@ public class PersistPolicySeniorPage extends Composite implements
 		textFile.setLayoutData(data);
 	}
 
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		comboPersistImpl.add(PERSIST_HIBERNATE, 0);
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		// TODO Auto-generated method stub
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 
 	}
 
+	/**
+	 * Read from file.
+	 *
+	 * @author mqfdy
+	 * @param fileName
+	 *            the file name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public String readFromFile(String fileName) {
 		String content = "";
 		FileWriter writer = null;
@@ -134,7 +195,13 @@ public class PersistPolicySeniorPage extends Composite implements
 	}
 
 	/**
-	 * 以行为单位读取文件，常用于读面向行的格式化文件
+	 * 以行为单位读取文件，常用于读面向行的格式化文件.
+	 *
+	 * @author mqfdy
+	 * @param fileName
+	 *            the file name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public String readFileByLines(String fileName) {
 		File file = new File(fileName);
@@ -173,6 +240,13 @@ public class PersistPolicySeniorPage extends Composite implements
 		return sb.toString();
 	}
 
+	/**
+	 * Gets the parent page.
+	 *
+	 * @author mqfdy
+	 * @return the parent page
+	 * @Date 2018-09-03 09:00
+	 */
 	public PersistPolicySheetPage getParentPage() {
 		return parentPage;
 	}

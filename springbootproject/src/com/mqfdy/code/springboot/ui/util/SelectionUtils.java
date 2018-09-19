@@ -11,6 +11,7 @@ import com.mqfdy.code.springboot.core.MicroProjectNature;
 import com.mqfdy.code.springboot.core.MicroProjectPlugin;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Various utility methods for extracting information from UI selections. Goal for these methods is to factor as much as
  * possible the logic for extracting objects of certain types (as expected by operations operating on selections) so
@@ -20,6 +21,15 @@ import com.mqfdy.code.springboot.core.MicroProjectPlugin;
  */
 public class SelectionUtils {
 
+	/**
+	 * Gets the gradle project.
+	 *
+	 * @author mqfdy
+	 * @param selection
+	 *            the selection
+	 * @return the gradle project
+	 * @Date 2018-09-03 09:00
+	 */
 	public static MicroProject getGradleProject(ISelection selection) {
 		IProject project = getProject(selection);
 		if (project!=null && MicroProjectNature.hasNature(project)) {
@@ -28,6 +38,15 @@ public class SelectionUtils {
 		return null;
 	}
 
+	/**
+	 * Gets the project.
+	 *
+	 * @author mqfdy
+	 * @param selection
+	 *            the selection
+	 * @return the project
+	 * @Date 2018-09-03 09:00
+	 */
 	public static IProject getProject(ISelection selection) {
 		IResource rsrc = getResource(selection);
 		if (rsrc!=null) {

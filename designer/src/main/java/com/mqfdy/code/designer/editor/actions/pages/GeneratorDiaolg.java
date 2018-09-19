@@ -40,25 +40,46 @@ import com.mqfdy.code.reverse.DataSourceInfo;
 import com.mqfdy.code.reverse.ReverseException;
 import com.mqfdy.code.reverse.utils.ReverseUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 代码生成对话框
- * 
+ * 代码生成对话框.
+ *
  * @author mqfdy
- * 
  */
 public class GeneratorDiaolg extends TitleAreaDialog {
-	/**
-	 * 标签页对象
-	 */
+	
+	/** 标签页对象. */
 	private TabFolder tabFolder;
+	
+	/** The os page. */
 	private GeneratorObjectSelectPage osPage;
+	
+	/** The p page. */
 	private ParametersPage pPage;
+	
+	/** The ok button. */
 	private Button okButton;
+	
+	/** The business object model. */
 	private BusinessObjectModel businessObjectModel;
+	
+	/** The project. */
 	private IProject project;
+	
+	/** The data source list. */
 	private List<DataSourceInfo> dataSourceList;//数据库连接
 	
 
+	/**
+	 * Instantiates a new generator diaolg.
+	 *
+	 * @param project
+	 *            the project
+	 * @param shell
+	 *            the shell
+	 * @param businessObjectModel
+	 *            the business object model
+	 */
 	public GeneratorDiaolg(IProject project, Shell shell,
 			BusinessObjectModel businessObjectModel) {
 		super(shell);
@@ -67,7 +88,12 @@ public class GeneratorDiaolg extends TitleAreaDialog {
 	}
 
 	/**
-	 * 操作按钮
+	 * 操作按钮.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void createButtonsForButtonBar(Composite parent) {
 		okButton = createButton(parent, IDialogConstants.OK_ID,
@@ -75,6 +101,14 @@ public class GeneratorDiaolg extends TitleAreaDialog {
 		okButton.setEnabled(true);
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void configureShell(Shell newShell) {
 		// TODO Auto-generated method stub
@@ -86,6 +120,15 @@ public class GeneratorDiaolg extends TitleAreaDialog {
 		newShell.setImage(icon);
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createDialogArea(Composite parent) {
 		// 初始化窗口
 		GridLayout gridLayout = new GridLayout(1, true);
@@ -117,7 +160,8 @@ public class GeneratorDiaolg extends TitleAreaDialog {
 	}
 
 	/**
-	 * 执行DDL中的SQL脚本
+	 * 执行DDL中的SQL脚本.
+	 *
 	 * @author rongxin.bian
 	 * @return List<String> 执行的语句
 	 */
@@ -228,16 +272,33 @@ public class GeneratorDiaolg extends TitleAreaDialog {
 		return excuteDDLSentences;
 	}
 	
+	/**
+	 * Gets the object select page.
+	 *
+	 * @author mqfdy
+	 * @return the object select page
+	 * @Date 2018-09-03 09:00
+	 */
 	public GeneratorObjectSelectPage getObjectSelectPage() {
 		return osPage;
 	}
 
+	/**
+	 * Gets the parameters page.
+	 *
+	 * @author mqfdy
+	 * @return the parameters page
+	 * @Date 2018-09-03 09:00
+	 */
 	public ParametersPage getParametersPage() {
 		return pPage;
 	}
 	
 	
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		// 验证选择项
@@ -286,14 +347,35 @@ public class GeneratorDiaolg extends TitleAreaDialog {
 		super.okPressed();
 	}
 
+	/**
+	 * Gets the ok button.
+	 *
+	 * @author mqfdy
+	 * @return the ok button
+	 * @Date 2018-09-03 09:00
+	 */
 	public Button getOkButton() {
 		return okButton;
 	}
 
+	/**
+	 * Gets the data sources list.
+	 *
+	 * @author mqfdy
+	 * @return the data sources list
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<DataSourceInfo> getDataSourcesList() {
 		return dataSourceList;
 	}
 
+	/**
+	 * Gets the pars map.
+	 *
+	 * @author mqfdy
+	 * @return the pars map
+	 * @Date 2018-09-03 09:00
+	 */
 	public Map getParsMap(){
 		Map map = new HashMap();
 		map.put("generateHbm", getParametersPage().getHbm());

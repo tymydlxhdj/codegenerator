@@ -25,15 +25,28 @@ import com.mqfdy.code.reverse.mappings.View;
 import com.mqfdy.code.reverse.utils.ReverseContants;
 import com.mqfdy.code.reverse.utils.ReverseUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JDBCReader.
+ *
+ * @author mqfdy
+ */
 public class JDBCReader {
 	
+	/** The table list. */
 	private List<Table> tableList =new ArrayList<Table>();
 	
 	/**
-	 * 针对oracle数据库，采取发送sql语句的方式读取表结构信息
+	 * 针对oracle数据库，采取发送sql语句的方式读取表结构信息.
+	 *
 	 * @author mqfdy
 	 * @param connection
-	 * @return List<Table> 表结构信息集合
+	 *            the connection
+	 * @param dbtype
+	 *            the dbtype
+	 * @return List
+	 *         <Table>
+	 *         表结构信息集合
 	 */
 	public List<Table> readTableInfoBySql(Connection connection,String dbtype) {
 
@@ -156,10 +169,15 @@ public class JDBCReader {
 	}
 	
 	/**
-	 * 查询schema下的所有Table信息
+	 * 查询schema下的所有Table信息.
+	 *
+	 * @author mqfdy
 	 * @param connection
+	 *            the connection
 	 * @param schema
-	 * @return
+	 *            the schema
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<Table> readTables(Connection connection, String schema) {
 		ReverseContext.allTables.clear();
@@ -190,11 +208,17 @@ public class JDBCReader {
 	}
 	
 	/**
-	 * 查询schema下的所有View名
+	 * 查询schema下的所有View名.
+	 *
+	 * @author mqfdy
 	 * @param connection
+	 *            the connection
 	 * @param schema
-	 * @return
-	 * @throws Exception 
+	 *            the schema
+	 * @return the list
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<View> readViews(Connection connection, String schema) throws Exception{
 		List<View> views = new ArrayList<View>();
@@ -210,11 +234,12 @@ public class JDBCReader {
 	}
 	
 	/**
-	 * 查询某表下的所有Column名集合
-	 * @param connection
-	 * @param schema
-	 * @param tableName
-	 * @return
+	 * 查询某表下的所有Column名集合.
+	 *
+	 * @author mqfdy
+	 * @param obj
+	 *            the obj
+	 * @Date 2018-09-03 09:00
 	 */
 	public void readColumns(Object obj){
 		ResultSet rs =null;
@@ -259,10 +284,13 @@ public class JDBCReader {
 	}
 	
 	/**
-	 * 读取表主外键约束
-	 * @param connection
-	 * @param schema
+	 * 读取表主外键约束.
+	 *
+	 * @author mqfdy
 	 * @param table
+	 *            the table
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean readConstraints(Table table) {
 		try {
@@ -280,9 +308,15 @@ public class JDBCReader {
 	}
 	
 	/**
-	 * 读取某用户下的所有sequence名
+	 * 读取某用户下的所有sequence名.
+	 *
+	 * @author mqfdy
 	 * @param userName
-	 * @throws SQLException 
+	 *            the user name
+	 * @return the list
+	 * @throws SQLException
+	 *             the SQL exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<String> readSequence(String userName) throws SQLException {
 		List<String> seqNames = new ArrayList<String>();
@@ -299,9 +333,18 @@ public class JDBCReader {
 	}
 	
 	/**
-	 * 组装表信息到Table对象中
+	 * 组装表信息到Table对象中.
+	 *
+	 * @author mqfdy
+	 * @param connection
+	 *            the connection
+	 * @param schema
+	 *            the schema
 	 * @param rs
-	 * @throws Exception 
+	 *            the rs
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unused")
 	private void readTable(Connection connection, String schema,ResultSet rs) throws Exception{
@@ -317,6 +360,20 @@ public class JDBCReader {
 		}
 	}
 	
+	/**
+	 * Read foreign key.
+	 *
+	 * @author mqfdy
+	 * @param connection
+	 *            the connection
+	 * @param schema
+	 *            the schema
+	 * @param table
+	 *            the table
+	 * @throws SQLException
+	 *             the SQL exception
+	 * @Date 2018-09-03 09:00
+	 */
 	//绑定ForeignKey信息
 	public void readForeignKey(Connection connection, String schema, Table table) throws SQLException {
 		
@@ -397,11 +454,18 @@ public class JDBCReader {
 	}
 
 	/**
-	 * 组装主键信息
-	 * @param connection
+	 * 组装主键信息.
+	 *
+	 * @author mqfdy
+	 * @param dbmd
+	 *            the dbmd
 	 * @param schema
+	 *            the schema
 	 * @param table
+	 *            the table
 	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void readPrimaryKey(DatabaseMetaData dbmd, String schema, Table table) throws Exception {
 		
@@ -486,9 +550,16 @@ public class JDBCReader {
 	}
 
 	/**
-	 * 组装column信息
-	 * @param tableName
-	 * @throws SQLException 
+	 * 组装column信息.
+	 *
+	 * @author mqfdy
+	 * @param table
+	 *            the table
+	 * @param colSet
+	 *            the col set
+	 * @throws SQLException
+	 *             the SQL exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void readColumn(Table table,Set<String> colSet) throws SQLException{
 		ResultSet rs = null;
@@ -532,6 +603,20 @@ public class JDBCReader {
 		}
 	}
 	
+	/**
+	 * Read column.
+	 *
+	 * @author mqfdy
+	 * @param table
+	 *            the table
+	 * @param colSet
+	 *            the col set
+	 * @param metaData
+	 *            the meta data
+	 * @throws SQLException
+	 *             the SQL exception
+	 * @Date 2018-09-03 09:00
+	 */
 	public void readColumn(Table table, Set<String> colSet, DatabaseMetaData metaData) throws SQLException{
 		ResultSet rs = null;
 		try {
@@ -574,6 +659,17 @@ public class JDBCReader {
 		}
 	}
 	
+	/**
+	 * Gets the table map.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @param tableMap
+	 *            the table map
+	 * @return the table map
+	 * @Date 2018-09-03 09:00
+	 */
 	//获取schema下所有非垃圾表的名称与注释
 	private void getTableMap(ResultSet rs,Map<String, String> tableMap) {
 		try {
@@ -589,6 +685,19 @@ public class JDBCReader {
 		}
 	}
 	
+	/**
+	 * Gets the oracle column default value.
+	 *
+	 * @author mqfdy
+	 * @param tableName
+	 *            the table name
+	 * @param colName
+	 *            the col name
+	 * @return the oracle column default value
+	 * @throws SQLException
+	 *             the SQL exception
+	 * @Date 2018-09-03 09:00
+	 */
 	//获取oracle字段默认值
 	public String getOracleColumnDefaultValue(String tableName ,String colName) throws SQLException{
 		
@@ -609,9 +718,17 @@ public class JDBCReader {
 	}
 
 	/**
-	 * 获取唯一约束字段集合
-	 * @param name
-	 * @throws SQLException 
+	 * 获取唯一约束字段集合.
+	 *
+	 * @author mqfdy
+	 * @param table
+	 *            the table
+	 * @param metaData
+	 *            the meta data
+	 * @return the unique cols
+	 * @throws SQLException
+	 *             the SQL exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public Set<String> getUniqueCols(Table table,DatabaseMetaData metaData) throws SQLException {
 		Set<String> colSet = new HashSet<String>();
@@ -663,10 +780,25 @@ public class JDBCReader {
 		return colSet;
 	}
 	
+	/**
+	 * Gets the table list.
+	 *
+	 * @author mqfdy
+	 * @return the table list
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Table> getTableList() {
 		return tableList;
 	}
 
+	/**
+	 * Sets the table list.
+	 *
+	 * @author mqfdy
+	 * @param tableList
+	 *            the new table list
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setTableList(List<Table> tableList) {
 		this.tableList = tableList;
 	}

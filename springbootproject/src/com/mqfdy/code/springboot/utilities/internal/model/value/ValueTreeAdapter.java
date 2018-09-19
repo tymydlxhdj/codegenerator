@@ -17,9 +17,14 @@ import com.mqfdy.code.springboot.utilities.model.listener.TreeChangeListener;
 import com.mqfdy.code.springboot.utilities.model.value.WritablePropertyValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * Extend ValueAspectAdapter to listen to one or more
- * tree aspects of the value in the wrapped value model.
+ * Extend ValueAspectAdapter to listen to one or more tree aspects of the value
+ * in the wrapped value model.
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
  */
 public class ValueTreeAdapter<T extends Model>
 	extends ValueAspectAdapter<T>
@@ -35,6 +40,11 @@ public class ValueTreeAdapter<T extends Model>
 
 	/**
 	 * Construct an adapter for the specified value trees.
+	 *
+	 * @param valueHolder
+	 *            the value holder
+	 * @param treeNames
+	 *            the tree names
 	 */
 	public ValueTreeAdapter(WritablePropertyValueModel<T> valueHolder, String... treeNames) {
 		super(valueHolder);
@@ -45,6 +55,13 @@ public class ValueTreeAdapter<T extends Model>
 
 	// ********** initialization **********
 
+	/**
+	 * Builds the value tree listener.
+	 *
+	 * @author mqfdy
+	 * @return the tree change listener
+	 * @Date 2018-09-03 09:00
+	 */
 	protected TreeChangeListener buildValueTreeListener() {
 		return new TreeChangeListener() {
 			public void nodeAdded(TreeChangeEvent event) {

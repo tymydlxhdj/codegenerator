@@ -3,6 +3,7 @@ package org.apache.velocity.app.event;
 import org.apache.velocity.context.Context;
 import org.apache.velocity.util.ContextAware;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -35,34 +36,65 @@ import org.apache.velocity.util.ContextAware;
  */
 public interface MethodExceptionEventHandler extends EventHandler
 {
+    
     /**
-     * Called when a method throws an exception.
-     * Only the first registered MethodExceptionEventHandler is called.  If
-     * none are registered a MethodInvocationException is thrown.
-     *
-     * @param claz the class of the object the method is being applied to
-     * @param method the method
-     * @param e the thrown exception
-     * @return an object to insert in the page
-     * @throws Exception an exception to be thrown instead inserting an object
-     */
+	 * Called when a method throws an exception. Only the first registered
+	 * MethodExceptionEventHandler is called. If none are registered a
+	 * MethodInvocationException is thrown.
+	 *
+	 * @author mqfdy
+	 * @param claz
+	 *            the class of the object the method is being applied to
+	 * @param method
+	 *            the method
+	 * @param e
+	 *            the thrown exception
+	 * @return an object to insert in the page
+	 * @throws Exception
+	 *             an exception to be thrown instead inserting an object
+	 * @Date 2018-9-3 11:38:31
+	 */
     public Object methodException( Class claz, String method, Exception e )
          throws Exception;
 
     /**
-     * Defines the execution strategy for methodException
-     * @since 1.5
-     */
+	 * Defines the execution strategy for methodException.
+	 *
+	 * @since 1.5
+	 */
     static class MethodExceptionExecutor implements EventHandlerMethodExecutor
     {
+        
+        /** The context. */
         private Context context;
+        
+        /** The claz. */
         private Class claz;
+        
+        /** The method. */
         private String method;
+        
+        /** The e. */
         private Exception e;
         
+        /** The result. */
         private Object result;
+        
+        /** The executed. */
         private boolean executed = false;
     
+        /**
+		 * Instantiates a new method exception executor.
+		 *
+		 * @param context
+		 *            the context
+		 * @param claz
+		 *            the claz
+		 * @param method
+		 *            the method
+		 * @param e
+		 *            the e
+		 */
         MethodExceptionExecutor(
                 Context context, 
                 Class claz,
@@ -76,11 +108,17 @@ public interface MethodExceptionEventHandler extends EventHandler
         }
 
         /**
-         * Call the method methodException()
-         *  
-         * @param handler call the appropriate method on this handler
-         * @exception Exception generic exception thrown by methodException event handler method call
-         */
+		 * Call the method methodException()
+		 * 
+		 *
+		 * @author mqfdy
+		 * @param handler
+		 *            call the appropriate method on this handler
+		 * @exception Exception
+		 *                generic exception thrown by methodException event
+		 *                handler method call
+		 * @Date 2018-9-3 11:38:31
+		 */
         public void execute(EventHandler handler) throws Exception
         {
             MethodExceptionEventHandler eh = (MethodExceptionEventHandler) handler;
@@ -92,16 +130,22 @@ public interface MethodExceptionEventHandler extends EventHandler
             result = ((MethodExceptionEventHandler) handler).methodException(claz, method, e);
         }
 
+        /**
+         * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
+         * @return MethodExceptionExecutor
+         */
         public Object getReturnValue()
         {
             return result;
         }
 
         /**
-         * Only run the first MethodExceptionEventHandler
-         * 
-         * @return true after this is executed once.
-         */
+		 * Only run the first MethodExceptionEventHandler.
+		 *
+		 * @author mqfdy
+		 * @return true after this is executed once.
+		 * @Date 2018-9-3 11:38:31
+		 */
         public boolean isDone()
         {
            return executed;

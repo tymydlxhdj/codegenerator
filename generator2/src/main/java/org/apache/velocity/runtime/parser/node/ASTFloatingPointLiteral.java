@@ -26,6 +26,7 @@ import org.apache.velocity.exception.TemplateInitException;
 import org.apache.velocity.runtime.parser.Parser;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Handles floating point numbers.  The value will be either a Double
  * or a BigDecimal.
@@ -36,21 +37,29 @@ import org.apache.velocity.runtime.parser.Parser;
 public class ASTFloatingPointLiteral extends SimpleNode
 {
 
+    /** The value. */
     // This may be of type Double or BigDecimal
     private Number value = null;
 
     /**
-     * @param id
-     */
+	 * Instantiates a new AST floating point literal.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTFloatingPointLiteral(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST floating point literal.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTFloatingPointLiteral(Parser p, int id)
     {
         super(p, id);
@@ -58,21 +67,35 @@ public class ASTFloatingPointLiteral extends SimpleNode
 
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     *  Initialization method - doesn't do much but do the object
-     *  creation.  We only need to do it once.
-     * @param context
-     * @param data
-     * @return The data object.
-     * @throws TemplateInitException
-     */
+	 * Initialization method - doesn't do much but do the object creation. We
+	 * only need to do it once.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param data
+	 *            the data
+	 * @return The data object.
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @Date 2018-9-3 11:38:37
+	 */
     public Object init( InternalContextAdapter context, Object data)
         throws TemplateInitException
     {
@@ -102,8 +125,13 @@ public class ASTFloatingPointLiteral extends SimpleNode
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#value(org.apache.velocity.context.InternalContextAdapter)
-     */
+	 * Value.
+	 *
+	 * @param context
+	 *            the context
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#value(org.apache.velocity.context.InternalContextAdapter)
+	 */
     public Object value( InternalContextAdapter context)
     {
         return value;

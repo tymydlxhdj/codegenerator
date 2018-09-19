@@ -26,19 +26,23 @@ import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
- * An adapter that allows us to make a CollectionValueModel behave like
- * a read-only ListValueModel, sorta.
+ * An adapter that allows us to make a CollectionValueModel behave like a
+ * read-only ListValueModel, sorta.
  * 
- * To maintain a reasonably consistent appearance to client code, we
- * keep an internal list somewhat in synch with the wrapped collection.
+ * To maintain a reasonably consistent appearance to client code, we keep an
+ * internal list somewhat in synch with the wrapped collection.
  * 
- * NB: Since we only listen to the wrapped collection when we have
- * listeners ourselves and we can only stay in synch with the wrapped
- * collection while we are listening to it, results to various methods
- * (e.g. #size(), getItem(int)) will be unpredictable whenever
- * we do not have any listeners. This should not be too painful since,
- * most likely, client objects will also be listeners.
+ * NB: Since we only listen to the wrapped collection when we have listeners
+ * ourselves and we can only stay in synch with the wrapped collection while we
+ * are listening to it, results to various methods (e.g. #size(), getItem(int))
+ * will be unpredictable whenever we do not have any listeners. This should not
+ * be too painful since, most likely, client objects will also be listeners.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class CollectionListValueModelAdapter<E>
 	extends AbstractModel
@@ -62,6 +66,9 @@ public class CollectionListValueModelAdapter<E>
 
 	/**
 	 * Wrap the specified CollectionValueModel.
+	 *
+	 * @param collectionHolder
+	 *            the collection holder
 	 */
 	public CollectionListValueModelAdapter(CollectionValueModel<? extends E> collectionHolder) {
 		super();
@@ -84,8 +91,12 @@ public class CollectionListValueModelAdapter<E>
 	}
 
 	/**
-	 * The wrapped collection has changed, forward an equivalent
-	 * list change event to our listeners.
+	 * The wrapped collection has changed, forward an equivalent list change
+	 * event to our listeners.
+	 *
+	 * @author mqfdy
+	 * @return the collection change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected CollectionChangeListener buildCollectionChangeListener() {
 		return new CollectionChangeListener() {
@@ -181,25 +192,53 @@ public class CollectionListValueModelAdapter<E>
 
 	// ********** queries **********
 
+	/**
+	 * Checks for listeners.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	protected boolean hasListeners() {
 		return this.hasAnyListChangeListeners(LIST_VALUES);
 	}
 
+	/**
+	 * Checks for no listeners.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	protected boolean hasNoListeners() {
 		return ! this.hasListeners();
 	}
 
 	/**
-	 * Return the index of the specified item, using object
-	 * identity instead of equality.
+	 * Return the index of the specified item, using object identity instead of
+	 * equality.
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	protected int lastIdentityIndexOf(Object o) {
 		return this.lastIdentityIndexOf(o, this.list.size());
 	}
 	
 	/**
-	 * Return the last index of the specified item, starting just before the
-	 * the specified endpoint, and using object identity instead of equality.
+	 * Return the last index of the specified item, starting just before the the
+	 * specified endpoint, and using object identity instead of equality.
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @param end
+	 *            the end
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	protected int lastIdentityIndexOf(Object o, int end) {
 		for (int i = end; i-- > 0; ) {
@@ -213,6 +252,12 @@ public class CollectionListValueModelAdapter<E>
 
 	// ********** behavior **********
 
+	/**
+	 * Builds the list.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void buildList() {
 		Iterator<? extends E> stream = this.collectionHolder.iterator();
 		// if the new collection is empty, do nothing
@@ -233,6 +278,12 @@ public class CollectionListValueModelAdapter<E>
 		// the default is to do nothing...
 	}
 
+	/**
+	 * Engage model.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void engageModel() {
 		this.collectionHolder.addCollectionChangeListener(CollectionValueModel.VALUES, this.collectionChangeListener);
 		// synch our list *after* we start listening to the collection holder,
@@ -240,25 +291,63 @@ public class CollectionListValueModelAdapter<E>
 		this.buildList();
 	}
 
+	/**
+	 * Disengage model.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void disengageModel() {
 		this.collectionHolder.removeCollectionChangeListener(CollectionValueModel.VALUES, this.collectionChangeListener);
 		// clear out the list when we are not listening to the collection holder
 		this.list.clear();
 	}
 
+	/**
+	 * Items added.
+	 *
+	 * @author mqfdy
+	 * @param e
+	 *            the e
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void itemsAdded(CollectionChangeEvent e) {
 		this.addItemsToList(this.indexToAddItems(), CollectionTools.list(this.items(e)), this.list, LIST_VALUES);
 	}
 	
+	/**
+	 * Index to add items.
+	 *
+	 * @author mqfdy
+	 * @return the int
+	 * @Date 2018-09-03 09:00
+	 */
 	protected int indexToAddItems() {
 		return this.list.size();
 	}
 
+	/**
+	 * Items.
+	 *
+	 * @author mqfdy
+	 * @param e
+	 *            the e
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
+	 */
 	@SuppressWarnings("unchecked")
 	protected Iterator<E> items(CollectionChangeEvent e) {
 		return (Iterator<E>) e.items();
 	}
 
+	/**
+	 * Items removed.
+	 *
+	 * @author mqfdy
+	 * @param e
+	 *            the e
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void itemsRemoved(CollectionChangeEvent e) {
 		// we have to remove the items individually,
 		// since they are probably not in sequence
@@ -267,13 +356,26 @@ public class CollectionListValueModelAdapter<E>
 		}
 	}
 
+	/**
+	 * Collection cleared.
+	 *
+	 * @author mqfdy
+	 * @param e
+	 *            the e
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void collectionCleared(CollectionChangeEvent e) {
 		this.clearList(this.list, LIST_VALUES);
 	}
 	
 	/**
-	 * synchronize our internal list with the wrapped collection
-	 * and fire the appropriate events
+	 * synchronize our internal list with the wrapped collection and fire the
+	 * appropriate events.
+	 *
+	 * @author mqfdy
+	 * @param e
+	 *            the e
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void collectionChanged(CollectionChangeEvent e) {
 		// put in empty check so we don't fire events unnecessarily

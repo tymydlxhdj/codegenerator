@@ -8,75 +8,97 @@ import org.dom4j.Element;
 
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 实体操作
- * 
+ * 实体操作.
+ *
  * @author LQR
- * 
  */
 public class BusinessOperation extends AbstractModelElement {
 
+	/** The sys operation add. */
 	public static String SYS_OPERATION_ADD = "add";
+	
+	/** The sys operation add displayname. */
 	public static String SYS_OPERATION_ADD_DISPLAYNAME = "新增";
 
+	/** The sys operation edit. */
 	public static String SYS_OPERATION_EDIT = "update";
+	
+	/** The sys operation edit displayname. */
 	public static String SYS_OPERATION_EDIT_DISPLAYNAME = "编辑";
 
+	/** The sys operation delete. */
 	public static String SYS_OPERATION_DELETE = "delete";
+	
+	/** The sys operation delete displayname. */
 	public static String SYS_OPERATION_DELETE_DISPLAYNAME = "删除";
 
+	/** The sys operation get. */
 	public static String SYS_OPERATION_GET = "get";
+	
+	/** The sys operation get displayname. */
 	public static String SYS_OPERATION_GET_DISPLAYNAME = "获取详情";
 
+	/** The sys operation query. */
 	public static String SYS_OPERATION_QUERY = "query";
+	
+	/** The sys operation query displayname. */
 	public static String SYS_OPERATION_QUERY_DISPLAYNAME = "查询列表";
 
-	/**
-	 * 操作类型
-	 */
+	/** 操作类型. */
 	public static String OPERATION_TYPE_CUSTOM = "custom";// 自定义
+	
+	/** The operation type standard. */
 	public static String OPERATION_TYPE_STANDARD = "standard";// 系统标准
 
-	/**
-	 * 所属业务实体
-	 */
+	/** 所属业务实体. */
 	private BusinessClass belongBusinessClass;
 
-	/**
-	 * 返回的数据类型
-	 */
+	/** 返回的数据类型. */
 	private String returnDataType;
 
-	/**
-	 * 事务类型
-	 */
+	/** 事务类型. */
 	private String transactionType;
 
-	/**
-	 * 错误提示
-	 */
+	/** 错误提示. */
 	private String errorMessage;
 
-	/**
-	 * 操作类型 系统标准操作或是自定义操作
-	 */
+	/** 操作类型 系统标准操作或是自定义操作. */
 	private String operationType;
 
-	/**
-	 * 操作参数列表
-	 */
+	/** 操作参数列表. */
 	private List<OperationParam> operationParams;
 
+	/**
+	 * Instantiates a new business operation.
+	 *
+	 * @param name
+	 *            the name
+	 * @param displayName
+	 *            the display name
+	 * @param operationType
+	 *            the operation type
+	 */
 	public BusinessOperation(String name, String displayName,
 			String operationType) {
 		super(name, displayName);
 		this.operationType = operationType;
 	}
 
+	/**
+	 * Instantiates a new business operation.
+	 */
 	public BusinessOperation() {
 		operationParams = new ArrayList<OperationParam>(10);
 	}
 
+	/**
+	 * Instantiates a new business operation.
+	 *
+	 * @param operationElement
+	 *            the operation element
+	 */
 	@SuppressWarnings("unchecked")
 	public BusinessOperation(Element operationElement) {
 
@@ -118,6 +140,10 @@ public class BusinessOperation extends AbstractModelElement {
 		}
 	}
 
+	/**
+	 * @param operationsElement
+	 * @return
+	 */
 	public Element generateXmlElement(Element operationsElement) {
 
 		Element operationElement = operationsElement.addElement("Operation");// Operation节点
@@ -152,6 +178,9 @@ public class BusinessOperation extends AbstractModelElement {
 		return operationElement;
 	}
 
+	/**
+	 * @param dest
+	 */
 	public void copy(AbstractModelElement dest) {
 		((BusinessOperation) dest).returnDataType = this.returnDataType;
 		((BusinessOperation) dest).transactionType = this.transactionType;
@@ -160,6 +189,9 @@ public class BusinessOperation extends AbstractModelElement {
 		((BusinessOperation) dest).operationParams = this.operationParams;
 	}
 
+	/**
+	 * @return
+	 */
 	public BusinessOperation clone() {
 		BusinessOperation operation = new BusinessOperation();
 		super.copy(operation);
@@ -167,6 +199,9 @@ public class BusinessOperation extends AbstractModelElement {
 		return operation;
 	}
 
+	/**
+	 * @return
+	 */
 	public BusinessOperation cloneChangeId() {
 		BusinessOperation operation = new BusinessOperation();
 		super.copyChangeId(operation);
@@ -174,10 +209,24 @@ public class BusinessOperation extends AbstractModelElement {
 		return operation;
 	}
 
+	/**
+	 * Gets the belong business class.
+	 *
+	 * @author mqfdy
+	 * @return the belong business class
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessClass getBelongBusinessClass() {
 		return belongBusinessClass;
 	}
 
+	/**
+	 * Gets the standard operations.
+	 *
+	 * @author mqfdy
+	 * @return the standard operations
+	 * @Date 2018-09-03 09:00
+	 */
 	public static List<BusinessOperation> getStandardOperations() {
 		List<BusinessOperation> list = new ArrayList<BusinessOperation>();
 		list.add(new BusinessOperation(SYS_OPERATION_ADD,
@@ -193,58 +242,155 @@ public class BusinessOperation extends AbstractModelElement {
 		return list;
 	}
 
+	/**
+	 * Sets the belong business class.
+	 *
+	 * @author mqfdy
+	 * @param belongBusinessClass
+	 *            the new belong business class
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBelongBusinessClass(BusinessClass belongBusinessClass) {
 		this.belongBusinessClass = belongBusinessClass;
 	}
 
+	/**
+	 * Adds the operation param.
+	 *
+	 * @author mqfdy
+	 * @param operationParam
+	 *            the operation param
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addOperationParam(OperationParam operationParam) {
 		operationParams.add(operationParam);
 	}
 
+	/**
+	 * Gets the return data type.
+	 *
+	 * @author mqfdy
+	 * @return the return data type
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getReturnDataType() {
 		return returnDataType;
 	}
 
+	/**
+	 * Sets the return data type.
+	 *
+	 * @author mqfdy
+	 * @param returnDataType
+	 *            the new return data type
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setReturnDataType(String returnDataType) {
 		this.returnDataType = returnDataType;
 	}
 
+	/**
+	 * Gets the transaction type.
+	 *
+	 * @author mqfdy
+	 * @return the transaction type
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getTransactionType() {
 		return transactionType;
 	}
 
+	/**
+	 * Sets the transaction type.
+	 *
+	 * @author mqfdy
+	 * @param transactionType
+	 *            the new transaction type
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setTransactionType(String transactionType) {
 		this.transactionType = transactionType;
 	}
 
+	/**
+	 * Gets the error message.
+	 *
+	 * @author mqfdy
+	 * @return the error message
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getErrorMessage() {
 		return errorMessage;
 	}
 
+	/**
+	 * Sets the error message.
+	 *
+	 * @author mqfdy
+	 * @param errorMessage
+	 *            the new error message
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
 
+	/**
+	 * Gets the operation params.
+	 *
+	 * @author mqfdy
+	 * @return the operation params
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<OperationParam> getOperationParams() {
 		return operationParams;
 	}
 
+	/**
+	 * Sets the operation params.
+	 *
+	 * @author mqfdy
+	 * @param operationParams
+	 *            the new operation params
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setOperationParams(List<OperationParam> operationParams) {
 		this.operationParams = operationParams;
 	}
 
+	/**
+	 * Gets the operation type.
+	 *
+	 * @author mqfdy
+	 * @return the operation type
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getOperationType() {
 		return operationType;
 	}
 
+	/**
+	 * Sets the operation type.
+	 *
+	 * @author mqfdy
+	 * @param operationType
+	 *            the new operation type
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setOperationType(String operationType) {
 		this.operationType = operationType;
 	}
 
+	/**
+	 * @return
+	 */
 	public AbstractModelElement getParent() {
 		return this.belongBusinessClass.getOperationPackage();
 	}
 
+	/**
+	 * @return
+	 */
 	public List<AbstractModelElement> getChildren() {
 		return EMPTY_CHILD;
 	}

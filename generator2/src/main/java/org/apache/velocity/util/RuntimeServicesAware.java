@@ -22,6 +22,7 @@ package org.apache.velocity.util;
 import org.apache.velocity.runtime.RuntimeServices;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Use this interface to automatically
  * have the method setRuntimeServices called at initialization.  
@@ -33,10 +34,15 @@ import org.apache.velocity.runtime.RuntimeServices;
  */
 public interface  RuntimeServicesAware
 {
+    
     /**
-     * Called automatically when event cartridge is initialized.
-     * @param rs RuntimeServices object assigned during initialization
-     */
+	 * Called automatically when event cartridge is initialized.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            RuntimeServices object assigned during initialization
+	 * @Date 2018-9-3 11:38:35
+	 */
     public void setRuntimeServices( RuntimeServices rs );
 
 }

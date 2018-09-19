@@ -38,19 +38,43 @@ import com.mqfdy.code.model.Enumeration;
 import com.mqfdy.code.model.utils.StringUtil;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 枚举信息页
- * 
+ * 枚举信息页.
+ *
+ * @author mqfdy
  */
 public class EnumBasicInfoEnumPage extends Composite implements
 		IBusinessClassEditorPage {
 
+	/** The enum parent dialog. */
 	private ImportEnumDialog enumParentDialog;//枚举导入对话框对象
+	
+	/** The enum properties. */
 	private EnumsPropertiesAnalyse enumProperties;// 解析平台的enums.
+	
+	/** The list item. */
 	private  org.eclipse.swt.widgets.List listItem;
+	
+	/** The list item right. */
 	private  org.eclipse.swt.widgets.List listItemRight;
+	
+	/** The list. */
 	private List<Enumeration> list;
+	
+	/** The button remove. */
 	private Button buttonAdd,buttonRemove;
+	
+	/**
+	 * Instantiates a new enum basic info enum page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param enumParentDialog
+	 *            the enum parent dialog
+	 */
 	public EnumBasicInfoEnumPage(Composite parent, int style, ImportEnumDialog enumParentDialog) {
 		super(parent, style);
 		this.enumParentDialog = enumParentDialog;
@@ -59,6 +83,12 @@ public class EnumBasicInfoEnumPage extends Composite implements
 		
 	}
 
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent() {
 		// 关联关系信息区域
 		GridLayout layout = new GridLayout();
@@ -100,7 +130,10 @@ public class EnumBasicInfoEnumPage extends Composite implements
 	}
 
 	/**
-	 * 初始化基本信息值
+	 * 初始化基本信息值.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void initControlValue()  {
 		// 解析平台的enums.properties枚举文件
@@ -193,9 +226,13 @@ public class EnumBasicInfoEnumPage extends Composite implements
 	}
 	
 	/**
-	 * 将序号,key,value插入tableview
-	 * @param index 所选中项的序号
-	 * @return
+	 * 将序号,key,value插入tableview.
+	 *
+	 * @author mqfdy
+	 * @param index
+	 *            所选中项的序号
+	 * @return the enum elements enum page
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("rawtypes")
 	private EnumElementsEnumPage setEnumOrderKeyValue(int index){
@@ -218,9 +255,13 @@ public class EnumBasicInfoEnumPage extends Composite implements
 	}
 	
 	/**
-	 * 将listItemRight 序号,key,value插入tableview
-	 * @param index 所选中项的序号
-	 * @return
+	 * 将listItemRight 序号,key,value插入tableview.
+	 *
+	 * @author mqfdy
+	 * @param index
+	 *            所选中项的序号
+	 * @return the enum elements enum page
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("rawtypes")
 	private EnumElementsEnumPage setEnumOrderKeyValueRight(int index){
@@ -244,9 +285,13 @@ public class EnumBasicInfoEnumPage extends Composite implements
 	
 	
 	/**
-	 * 根据enumName名称 将其中的value 值进行处理
-	 * @param enumName 枚举名称
+	 * 根据enumName名称 将其中的value 值进行处理.
+	 *
+	 * @author mqfdy
+	 * @param enumName
+	 *            枚举名称
 	 * @return list
+	 * @Date 2018-09-03 09:00
 	 */
 	private List<Map<String,String>> getKeyValueformEnumValue(String enumName) {
 		List<Map<String,String>> list = new ArrayList<Map<String,String>>();
@@ -279,6 +324,9 @@ public class EnumBasicInfoEnumPage extends Composite implements
 
 	
 	
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		for(String a :listItemRight.getItems()){
 			String textName = a.toString().trim();
@@ -322,8 +370,10 @@ public class EnumBasicInfoEnumPage extends Composite implements
 	}
 	
 	/**
-	 * 将选中的Enumeration处理,并加入list集合中
-	 * @param enumElementsEnumPage
+	 * 将选中的Enumeration处理,并加入list集合中.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void updateTheEditingElement() {
 		List<Enumeration> list = new ArrayList<Enumeration>();
@@ -344,14 +394,36 @@ public class EnumBasicInfoEnumPage extends Composite implements
 		setEnumerationList(list);
 	}
 	
+	/**
+	 * Sets the enumeration list.
+	 *
+	 * @author mqfdy
+	 * @param list
+	 *            the new enumeration list
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setEnumerationList(List<Enumeration> list){
 		this.list  = list;
 	} 
 	
+	/**
+	 * Gets the enumeration list.
+	 *
+	 * @author mqfdy
+	 * @return the enumeration list
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Enumeration> getEnumerationList(){
 		return this.list;
 	} 
 	
+	/**
+	 * Gets the project.
+	 *
+	 * @author mqfdy
+	 * @return the project
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * 获取项目名称
 	 */
@@ -390,7 +462,10 @@ public class EnumBasicInfoEnumPage extends Composite implements
     }
 
 	/**
-	 * 添加按钮监听事件
+	 * 添加按钮监听事件.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void addButtonListeners(){
 		buttonAdd.addSelectionListener(new SelectionAdapter() {

@@ -24,6 +24,7 @@ import java.lang.reflect.Method;
 
 import org.apache.velocity.runtime.log.Log;
 
+// TODO: Auto-generated Javadoc
 /**
  * Abstract class that is used to execute an arbitrary
  * method that is in introspected. This is the superclass
@@ -35,7 +36,8 @@ import org.apache.velocity.runtime.log.Log;
  */
 public abstract class AbstractExecutor
 {
-    /** */
+    
+    /** The log. */
     protected Log log = null;
 
     /**
@@ -44,38 +46,52 @@ public abstract class AbstractExecutor
     private Method method = null;
 
     /**
-     * Execute method against context.
-     * @param o
-     * @return The resulting object.
-     * @throws IllegalAccessException
-     * @throws InvocationTargetException
-     */
+	 * Execute method against context.
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @return The resulting object.
+	 * @throws IllegalAccessException
+	 *             the illegal access exception
+	 * @throws InvocationTargetException
+	 *             the invocation target exception
+	 * @Date 2018-09-03 09:00
+	 */
      public abstract Object execute(Object o)
          throws IllegalAccessException, InvocationTargetException;
 
     /**
-     * Tell whether the executor is alive by looking
-     * at the value of the method.
-     *
-     * @return True if executor is alive.
-     */
+	 * Tell whether the executor is alive by looking at the value of the method.
+	 *
+	 * @author mqfdy
+	 * @return True if executor is alive.
+	 * @Date 2018-9-3 11:38:37
+	 */
     public boolean isAlive()
     {
         return (method != null);
     }
 
     /**
-     * @return The current method.
-     */
+	 * Gets the method.
+	 *
+	 * @author mqfdy
+	 * @return The current method.
+	 * @Date 2018-09-03 09:00
+	 */
     public Method getMethod()
     {
         return method;
     }
 
     /**
-     * @param method
-     * @since 1.5
-     */
+	 * Sets the method.
+	 *
+	 * @param method
+	 *            the new method
+	 * @since 1.5
+	 */
     protected void setMethod(final Method method)
     {
         this.method = method;

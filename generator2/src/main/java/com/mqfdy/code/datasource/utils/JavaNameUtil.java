@@ -3,20 +3,23 @@ package com.mqfdy.code.datasource.utils;
 import java.util.Locale;
 import java.util.StringTokenizer;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class JavaNameUtil.
+ *
+ * @author mqfdy
  * @title:Java名称转换工具
  * @description:
- * @author mqfdy
  */
 public class JavaNameUtil {
 
 	/**
-	 * 取得表列所对应的java名称
-	 * 
-	 * @description:以-或_为分隔符，首段字符串的首位字母小写，其他字符串的首位字母大写，其它字母小写
+	 * 取得表列所对应的java名称.
+	 *
 	 * @param colName
 	 *            表列名称
-	 * @return
+	 * @return the col java name
+	 * @description:以-或_为分隔符，首段字符串的首位字母小写，其他字符串的首位字母大写，其它字母小写
 	 */
 	public static String getColJavaName(String colName) {
 		if (colName == null || colName.trim().equals(""))
@@ -46,12 +49,12 @@ public class JavaNameUtil {
 	}
 
 	/**
-	 * 取得数据库表所对应的java名称
-	 * 
-	 * @description:以-或_为分隔符，每段字符串的首位字母大写，其它字母小写
+	 * 取得数据库表所对应的java名称.
+	 *
 	 * @param tableName
 	 *            数据库表名称
-	 * @return
+	 * @return the table java name
+	 * @description:以-或_为分隔符，每段字符串的首位字母大写，其它字母小写
 	 */
 	public static String getTableJavaName(String tableName) {
 		if (tableName == null || tableName.trim().equals(""))

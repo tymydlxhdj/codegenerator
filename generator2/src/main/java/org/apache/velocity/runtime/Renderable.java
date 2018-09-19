@@ -27,6 +27,7 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import java.io.Writer;
 import java.io.IOException;
 
+// TODO: Auto-generated Javadoc
 /**
  *  This interface caraterize objects other than ASTNodes that can be rendered
  *  to a writer using a context.
@@ -38,6 +39,25 @@ import java.io.IOException;
 
 public interface Renderable {
 
+    /**
+	 * Render.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @return true, if successful
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @Date 2018-09-03 09:00
+	 */
     public boolean render( InternalContextAdapter context, Writer writer)
         throws IOException, MethodInvocationException, ParseErrorException, ResourceNotFoundException;
 

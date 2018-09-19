@@ -1,5 +1,6 @@
 package org.apache.velocity.context;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -20,34 +21,45 @@ package org.apache.velocity.context;
  */
 
 /**
- *  interface for internal context wrapping functionality
+ * interface for internal context wrapping functionality.
  *
- *  @author <a href="mailto:geirm@optonline.net">Geir Magnusson Jr.</a>
- *  @version $Id: InternalWrapperContext.java 471908 2006-11-06 22:39:28Z henning $
+ * @author <a href="mailto:geirm@optonline.net">Geir Magnusson Jr.</a>
+ * @version $Id: InternalWrapperContext.java 471908 2006-11-06 22:39:28Z henning
+ *          $
  */
 public interface InternalWrapperContext
 {
+    
     /**
-     * Returns the wrapped user context.
-     * @return The wrapped user context.
-     */
+	 * Returns the wrapped user context.
+	 *
+	 * @author mqfdy
+	 * @return The wrapped user context.
+	 * @Date 2018-9-3 11:38:31
+	 */
     Context getInternalUserContext();
 
     /**
-     * Returns the base full context impl.
-     * @return The base full context impl.
-     *
-     */
+	 * Returns the base full context impl.
+	 *
+	 * @author mqfdy
+	 * @return The base full context impl.
+	 * @Date 2018-9-3 11:38:31
+	 */
     InternalContextAdapter getBaseContext();
 
     /**
-     * Allows callers to explicitly put objects in the local context.
-     * Objects added to the context through this method always end up
-     * in the top-level context of possible wrapped contexts.
-     *
-     *  @param key name of item to set.
-     *  @param value object to set to key.
-     *  @return old stored object
-     */
+	 * Allows callers to explicitly put objects in the local context. Objects
+	 * added to the context through this method always end up in the top-level
+	 * context of possible wrapped contexts.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            name of item to set.
+	 * @param value
+	 *            object to set to key.
+	 * @return old stored object
+	 * @Date 2018-9-3 11:38:31
+	 */
     Object localPut(final String key, final Object value);
 }

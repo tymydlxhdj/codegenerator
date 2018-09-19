@@ -11,13 +11,27 @@ import org.eclipse.ui.IWorkbench;
 
 import com.mqfdy.code.wizard.wizardpages.MicroSelectProjectWizardPage;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MicroGeneratorWizard.
+ *
+ * @author mqfdy
+ */
 public class MicroGeneratorWizard extends Wizard implements INewWizard {
 	
+	/** The micro select project wizard page. */
 	private MicroSelectProjectWizardPage microSelectProjectWizardPage;
+	
+	/** The project. */
 	private IProject project;
+	
+	/** The selection. */
 	private IStructuredSelection selection;
 	
 	
+	/**
+	 * 
+	 */
 	public void addPages(){
 		microSelectProjectWizardPage = new MicroSelectProjectWizardPage("microSelectProjectWizardPage", project);
 		addPage(microSelectProjectWizardPage);
@@ -25,6 +39,16 @@ public class MicroGeneratorWizard extends Wizard implements INewWizard {
 	}
 
 
+	/**
+	 * Inits the.
+	 *
+	 * @author mqfdy
+	 * @param workbench
+	 *            the workbench
+	 * @param selection
+	 *            the selection
+	 * @Date 2018-09-03 09:00
+	 */
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		setWindowTitle("生成代码");
 		if (selection != null && !selection.isEmpty()) {
@@ -46,29 +70,65 @@ public class MicroGeneratorWizard extends Wizard implements INewWizard {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean performFinish() {
 		return false;
 	}
 	
-	 @Override
+	 /**
+ 	 * @return
+ 	 */
+ 	@Override
 		public boolean canFinish() {
 			return microSelectProjectWizardPage.getMicroGeneratorConfigWizard() != null;
 	    }
 
 
+	/**
+	 * Gets the project.
+	 *
+	 * @author mqfdy
+	 * @return the project
+	 * @Date 2018-09-03 09:00
+	 */
 	public IProject getProject() {
 		return project;
 	}
 
+	/**
+	 * Sets the project.
+	 *
+	 * @author mqfdy
+	 * @param project
+	 *            the new project
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setProject(IProject project) {
 		this.project = project;
 	}
 
+	/**
+	 * Gets the selection.
+	 *
+	 * @author mqfdy
+	 * @return the selection
+	 * @Date 2018-09-03 09:00
+	 */
 	public IStructuredSelection getSelection() {
 		return selection;
 	}
 
+	/**
+	 * Sets the selection.
+	 *
+	 * @author mqfdy
+	 * @param selection
+	 *            the new selection
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setSelection(IStructuredSelection selection) {
 		this.selection = selection;
 	}

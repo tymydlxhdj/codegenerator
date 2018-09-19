@@ -18,12 +18,31 @@ import org.eclipse.ui.statushandlers.IStatusAdapterConstants;
 import org.eclipse.ui.statushandlers.StatusAdapter;
 import org.eclipse.ui.statushandlers.StatusManager;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MicroGeneratorWizardNode.
+ *
+ * @author mqfdy
+ */
 public abstract class MicroGeneratorWizardNode implements IWizardNode {
 	
+	/** The parent wizard page. */
 	protected WizardPage parentWizardPage;
+	
+	/** The wizard. */
 	protected IWizard wizard;
+	
+	/** The current selection. */
 	protected IStructuredSelection currentSelection;
 	
+	/**
+	 * Instantiates a new micro generator wizard node.
+	 *
+	 * @param aWizardPage
+	 *            the a wizard page
+	 * @param selection
+	 *            the selection
+	 */
 	public MicroGeneratorWizardNode(WizardPage aWizardPage,
 			IStructuredSelection selection) {
 		super();
@@ -31,19 +50,37 @@ public abstract class MicroGeneratorWizardNode implements IWizardNode {
 		currentSelection = selection;
 	}
 	
+	/**
+	 * Creates the wizard.
+	 *
+	 * @author mqfdy
+	 * @return the i micro generator config wizard
+	 * @throws CoreException
+	 *             the core exception
+	 * @Date 2018-09-03 09:00
+	 */
 	public abstract IMicroGeneratorConfigWizard createWizard() throws CoreException;
 
 
+	/**
+	 * 
+	 */
 	public void dispose() {
 		// TODO Auto-generated method stub
 
 	}
 
 
+	/**
+	 * @return
+	 */
 	public Point getExtent() {
 		return new Point(-1, -1);
 	}
 
+	/**
+	 * @return
+	 */
 	public IWizard getWizard() {
 		if (wizard != null) {
 			return wizard; // we've already created it
@@ -89,30 +126,78 @@ public abstract class MicroGeneratorWizardNode implements IWizardNode {
 	}
 
 
+	/**
+	 * @return
+	 */
 	public boolean isContentCreated() {
 		return wizard != null;
 	}
 
+	/**
+	 * Gets the parent wizard page.
+	 *
+	 * @author mqfdy
+	 * @return the parent wizard page
+	 * @Date 2018-09-03 09:00
+	 */
 	public WizardPage getParentWizardPage() {
 		return parentWizardPage;
 	}
 
+	/**
+	 * Sets the parent wizard page.
+	 *
+	 * @author mqfdy
+	 * @param parentWizardPage
+	 *            the new parent wizard page
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setParentWizardPage(WizardPage parentWizardPage) {
 		this.parentWizardPage = parentWizardPage;
 	}
 
+	/**
+	 * Sets the wizard.
+	 *
+	 * @author mqfdy
+	 * @param wizard
+	 *            the new wizard
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setWizard(IWizard wizard) {
 		this.wizard = wizard;
 	}
 
+	/**
+	 * Gets the current selection.
+	 *
+	 * @author mqfdy
+	 * @return the current selection
+	 * @Date 2018-09-03 09:00
+	 */
 	public IStructuredSelection getCurrentSelection() {
 		return currentSelection;
 	}
 
+	/**
+	 * Sets the current selection.
+	 *
+	 * @author mqfdy
+	 * @param currentSelection
+	 *            the new current selection
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setCurrentSelection(IStructuredSelection currentSelection) {
 		this.currentSelection = currentSelection;
 	}
 	
+	/**
+	 * Gets the workbench.
+	 *
+	 * @author mqfdy
+	 * @return the workbench
+	 * @Date 2018-09-03 09:00
+	 */
 	protected IWorkbench getWorkbench() {
 		// return parentWizardPage.getWorkbench();
 		return PlatformUI.getWorkbench();

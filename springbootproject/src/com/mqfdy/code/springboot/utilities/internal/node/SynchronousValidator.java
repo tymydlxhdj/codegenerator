@@ -24,8 +24,10 @@ public class SynchronousValidator
 	private final Node node;
 
 	/**
-	 * Construct a validator that will immediately validate the
-	 * specified node.
+	 * Construct a validator that will immediately validate the specified node.
+	 *
+	 * @param node
+	 *            the node
 	 */
 	public SynchronousValidator(Node node) {
 		super();

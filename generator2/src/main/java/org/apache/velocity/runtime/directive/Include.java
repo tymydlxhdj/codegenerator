@@ -35,6 +35,7 @@ import org.apache.velocity.runtime.parser.ParserTreeConstants;
 import org.apache.velocity.runtime.parser.node.Node;
 import org.apache.velocity.runtime.resource.Resource;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>Pluggable directive that handles the #include() statement in VTL.
  * This #include() can take multiple arguments of either
@@ -72,44 +73,64 @@ import org.apache.velocity.runtime.resource.Resource;
  */
 public class Include extends InputBase
 {
+    
+    /** The output msg start. */
     private String outputMsgStart = "";
+    
+    /** The output msg end. */
     private String outputMsgEnd = "";
 
     /**
-     * Return name of this directive.
-     * @return The name of this directive.
-     */
+	 * Return name of this directive.
+	 *
+	 * @author mqfdy
+	 * @return The name of this directive.
+	 * @Date 2018-9-3 11:38:30
+	 */
     public String getName()
     {
         return "include";
     }
 
     /**
-     * Return type of this directive.
-     * @return The type of this directive.
-     */
+	 * Return type of this directive.
+	 *
+	 * @author mqfdy
+	 * @return The type of this directive.
+	 * @Date 2018-9-3 11:38:30
+	 */
     public int getType()
     {
         return LINE;
     }
 
     /**
-     * Since there is no processing of content,
-     * there is never a need for an internal scope.
-     */
+	 * Since there is no processing of content, there is never a need for an
+	 * internal scope.
+	 *
+	 * @author mqfdy
+	 * @return true, if is scope provided
+	 * @Date 2018-9-3 11:38:30
+	 */
     public boolean isScopeProvided()
     {
         return false;
     }
 
     /**
-     *  simple init - init the tree and get the elementKey from
-     *  the AST
-     * @param rs
-     * @param context
-     * @param node
-     * @throws TemplateInitException
-     */
+	 * simple init - init the tree and get the elementKey from the AST.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @param context
+	 *            the context
+	 * @param node
+	 *            the node
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @Date 2018-9-3 11:38:30
+	 */
     public void init(RuntimeServices rs, InternalContextAdapter context,
                      Node node)
         throws TemplateInitException
@@ -128,17 +149,26 @@ public class Include extends InputBase
     }
 
     /**
-     *  iterates through the argument list and renders every
-     *  argument that is appropriate.  Any non appropriate
-     *  arguments are logged, but render() continues.
-     * @param context
-     * @param writer
-     * @param node
-     * @return True if the directive rendered successfully.
-     * @throws IOException
-     * @throws MethodInvocationException
-     * @throws ResourceNotFoundException
-     */
+	 * iterates through the argument list and renders every argument that is
+	 * appropriate. Any non appropriate arguments are logged, but render()
+	 * continues.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @param node
+	 *            the node
+	 * @return True if the directive rendered successfully.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @Date 2018-9-3 11:38:30
+	 */
     public boolean render(InternalContextAdapter context,
                            Writer writer, Node node)
         throws IOException, MethodInvocationException,
@@ -180,16 +210,24 @@ public class Include extends InputBase
     }
 
     /**
-     *  does the actual rendering of the included file
-     *
-     *  @param node AST argument of type StringLiteral or Reference
-     *  @param context valid context so we can render References
-     *  @param writer output Writer
-     *  @return boolean success or failure.  failures are logged
-     *  @exception IOException
-     *  @exception MethodInvocationException
-     *  @exception ResourceNotFoundException
-     */
+	 * does the actual rendering of the included file.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            AST argument of type StringLiteral or Reference
+	 * @param context
+	 *            valid context so we can render References
+	 * @param writer
+	 *            output Writer
+	 * @return boolean success or failure. failures are logged
+	 * @exception IOException
+	 *                Signals that an I/O exception has occurred.
+	 * @exception MethodInvocationException
+	 *                the method invocation exception
+	 * @exception ResourceNotFoundException
+	 *                the resource not found exception
+	 * @Date 2018-9-3 11:38:30
+	 */
     private boolean renderOutput( Node node, InternalContextAdapter context,
                                   Writer writer )
         throws IOException, MethodInvocationException,
@@ -281,13 +319,18 @@ public class Include extends InputBase
     }
 
     /**
-     *  Puts a message to the render output stream if ERRORMSG_START / END
-     *  are valid property strings.  Mainly used for end-user template
-     *  debugging.
-     *  @param writer
-     *  @param msg
-     *  @throws IOException
-     */
+	 * Puts a message to the render output stream if ERRORMSG_START / END are
+	 * valid property strings. Mainly used for end-user template debugging.
+	 *
+	 * @author mqfdy
+	 * @param writer
+	 *            the writer
+	 * @param msg
+	 *            the msg
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-9-3 11:38:30
+	 */
     private void outputErrorToStream( Writer writer, String msg )
         throws IOException
     {

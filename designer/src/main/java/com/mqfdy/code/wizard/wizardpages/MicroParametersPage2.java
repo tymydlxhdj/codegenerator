@@ -53,25 +53,63 @@ import com.mqfdy.code.reverse.utils.ReverseUtil;
 import com.mqfdy.code.utils.DBType;
 import com.mqfdy.code.utils.ProjectUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 代码生成向导参数设置页面
- * 
+ * 代码生成向导参数设置页面.
+ *
  * @author mqfdy
- * 
  */
 @SuppressWarnings("restriction")
 public class MicroParametersPage2 extends ParametersPage {
 	
+	/** The wizard page. */
 	private MicroGeneratorWizardPage2 wizardPage;
+	
+	/** The txt micro project. */
 	private Text txtMicroProject;
+	
+	/** The txt package. */
 	private Text txtPackage;
+	
+	/** The select button. */
 	private Button selectButton;
+	
+	/** The btn select package. */
 	private Button btnSelectPackage;
 
+	/**
+	 * Instantiates a new micro parameters page 2.
+	 *
+	 * @param project
+	 *            the project
+	 * @param tabFolder
+	 *            the tab folder
+	 * @param style
+	 *            the style
+	 * @param generatorDiaolg
+	 *            the generator diaolg
+	 * @param fileName
+	 *            the file name
+	 */
 	public MicroParametersPage2(IProject project, TabFolder tabFolder, int style,
 			GeneratorDiaolg generatorDiaolg, String fileName) {
 		super(project, tabFolder, style, generatorDiaolg, fileName);
 	}
+	
+	/**
+	 * Instantiates a new micro parameters page 2.
+	 *
+	 * @param project
+	 *            the project
+	 * @param tabFolder
+	 *            the tab folder
+	 * @param style
+	 *            the style
+	 * @param wizardPage
+	 *            the wizard page
+	 * @param fileName
+	 *            the file name
+	 */
 	public MicroParametersPage2(IProject project, TabFolder tabFolder, int style,
 			MicroGeneratorWizardPage2 wizardPage, String fileName) {
 		super(project, tabFolder, style, fileName);
@@ -80,9 +118,14 @@ public class MicroParametersPage2 extends ParametersPage {
 		
 		createContents(this);
 	}
+	
 	/**
-	 * 初始化数据源
+	 * 初始化数据源.
+	 *
+	 * @author mqfdy
 	 * @param project
+	 *            the project
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initDatasource(IProject project) {
 		if(project != null){
@@ -96,9 +139,14 @@ public class MicroParametersPage2 extends ParametersPage {
 			}
 		}
 	}
+	
 	/**
-	 * 重写创建内容
+	 * 重写创建内容.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void createContents(Composite composite) {
@@ -376,8 +424,12 @@ public class MicroParametersPage2 extends ParametersPage {
 		dbListCombo = new Combo(db, SWT.READ_ONLY);
 		dbListCombo.setLayoutData(btGridData);
 	}
+	
 	/**
-	 * 打开选择包对话框
+	 * 打开选择包对话框.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void openSelectPackageDialog() {
 		ILabelProvider labelProvider = new JavaElementLabelProvider();
@@ -420,8 +472,12 @@ public class MicroParametersPage2 extends ParametersPage {
 		}
 		labelProvider.dispose();
 	}
+	
 	/**
-	 * 设置数据员下拉列表
+	 * 设置数据员下拉列表.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setDatasourceCombo() {
 		dbListCombo.setItems(getDataSourceComboContent());
@@ -453,8 +509,12 @@ public class MicroParametersPage2 extends ParametersPage {
 		}
 		dbListCombo.setEnabled(false);
 	}
+	
 	/**
-	 * 选择项目
+	 * 选择项目.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void handleSelectMicro(){
 		// 取得当前的shell
@@ -494,9 +554,14 @@ public class MicroParametersPage2 extends ParametersPage {
 			}
 		} 
 	}
+	
 	/**
-	 * 选择后初始化设置
+	 * 选择后初始化设置.
+	 *
+	 * @author mqfdy
 	 * @param project
+	 *            the project
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initParams(IProject project) {
 		txtMicroProject.setText(project.getName());
@@ -513,17 +578,26 @@ public class MicroParametersPage2 extends ParametersPage {
 			btnSelectPackage.setEnabled(true);
 		}
 	}
+	
 	/**
-	 * 获取输出目录对象
-	 * @return
+	 * 获取输出目录对象.
+	 *
+	 * @author mqfdy
+	 * @return the output folder path
+	 * @Date 2018-09-03 09:00
 	 */
 	public Folder getOutputFolderPath(){
 		return curLocation;
 	}
+	
 	/**
-	 * 获取基础包名
+	 * 获取基础包名.
+	 *
+	 * @author mqfdy
 	 * @param curProject
-	 * @return
+	 *            the cur project
+	 * @return the base package
+	 * @Date 2018-09-03 09:00
 	 */
 	private String getBasePackage(IProject curProject) {
 		IPackageFragment[] fragments = PDEJavaHelper.getPackageFragments(JavaCore.create(curProject), new Vector<>(), true);

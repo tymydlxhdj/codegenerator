@@ -26,6 +26,7 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.runtime.parser.CharStream;
 
+// TODO: Auto-generated Javadoc
 /**
  * This wraps the original parser SimplePool class.  It also handles
  * instantiating ad-hoc parsers if none are available.
@@ -36,13 +37,20 @@ import org.apache.velocity.runtime.parser.CharStream;
  */
 public class ParserPoolImpl implements ParserPool {
 
+    /** The pool. */
     SimplePool pool = null;
+    
+    /** The max. */
     int max = RuntimeConstants.NUMBER_OF_PARSERS;
 
     /**
-     * Create the underlying "pool".
-     * @param rsvc
-     */
+	 * Create the underlying "pool".
+	 *
+	 * @author mqfdy
+	 * @param rsvc
+	 *            the rsvc
+	 * @Date 2018-9-3 11:38:39
+	 */
     public void initialize(RuntimeServices rsvc)
     {
         max = rsvc.getInt(RuntimeConstants.PARSER_POOL_SIZE, RuntimeConstants.NUMBER_OF_PARSERS);
@@ -60,19 +68,26 @@ public class ParserPoolImpl implements ParserPool {
     }
 
     /**
-     * Call the wrapped pool.  If none are available, it will create a new
-     * temporary one.
-     * @return A parser Object.
-     */
+	 * Call the wrapped pool. If none are available, it will create a new
+	 * temporary one.
+	 *
+	 * @author mqfdy
+	 * @return A parser Object.
+	 * @Date 2018-9-3 11:38:39
+	 */
     public Parser get()
     {
         return (Parser) pool.get();
     }
 
     /**
-     * Call the wrapped pool.
-     * @param parser
-     */
+	 * Call the wrapped pool.
+	 *
+	 * @author mqfdy
+	 * @param parser
+	 *            the parser
+	 * @Date 2018-9-3 11:38:39
+	 */
     public void put(Parser parser)
     {
         parser.ReInit((CharStream) null);

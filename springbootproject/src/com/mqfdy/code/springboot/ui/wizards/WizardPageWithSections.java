@@ -18,8 +18,24 @@ import com.mqfdy.code.springboot.ui.IPageWithSections;
 import com.mqfdy.code.springboot.ui.util.PageSection;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class WizardPageWithSections.
+ *
+ * @author mqfdy
+ */
 public abstract class WizardPageWithSections extends WizardPage implements IPageWithSections, ValueListener<ValidationResult> {
 
+	/**
+	 * Instantiates a new wizard page with sections.
+	 *
+	 * @param pageName
+	 *            the page name
+	 * @param title
+	 *            the title
+	 * @param titleImage
+	 *            the title image
+	 */
 	protected WizardPageWithSections(String pageName, String title, ImageDescriptor titleImage) {
 		super(pageName, title, titleImage);
 	}
@@ -48,6 +64,13 @@ public abstract class WizardPageWithSections extends WizardPage implements IPage
         getContainer().updateMessage();
 	}
 	
+	/**
+	 * Gets the sections.
+	 *
+	 * @author mqfdy
+	 * @return the sections
+	 * @Date 2018-09-03 09:00
+	 */
 	protected synchronized List<WizardPageSection> getSections() {
 		if (sections==null) {
 			sections = createSections();
@@ -57,6 +80,10 @@ public abstract class WizardPageWithSections extends WizardPage implements IPage
 	
 	/**
 	 * This method should be implemented to generate the contents of the page.
+	 *
+	 * @author mqfdy
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract List<WizardPageSection> createSections();
 	

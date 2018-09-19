@@ -8,30 +8,63 @@ import org.eclipse.core.resources.IProject;
 
 import com.mqfdy.code.generator.GenProjectTypeUtilTools;
 import com.mqfdy.code.generator.persistence.IPersistenceModel;
+// TODO: Auto-generated Javadoc
+
 /**
- * 
- * @author mqfdy
+ * The Class DomainGenerator.
  *
+ * @author mqfdy
  */
 public class DomainGenerator extends EntityGenerator {
 	
+	/** The Constant TEMPLATE_FILE_PATH. */
 	private static final String TEMPLATE_FILE_PATH = "template/domain/Bean.vm";
 
+	/**
+	 * Instantiates a new domain generator.
+	 *
+	 * @param genProject
+	 *            the gen project
+	 * @param persistenceModel
+	 *            the persistence model
+	 */
 	public DomainGenerator(IProject genProject, IPersistenceModel persistenceModel) {
 		super(genProject, persistenceModel);
 	}
 
+
+
+	/**
+	 * getFileExtension.
+	 *
+	 * @author mqfdy
+	 * @return the object
+	 * @Date 2018-9-3 14:01:20
+	 */
 	@Override
 	protected String getFileExtension() {
 		return JAVA_FILE_EXTENSION;
 	}
 
+
+	/**
+	 * getTemplatePath.
+	 *
+	 * @author mqfdy
+	 * @return the object
+	 * @Date 2018-9-3 15:53:34
+	 */
 	@Override
 	protected String getTemplatePath() {
 		return TEMPLATE_FILE_PATH;
 	}
+	
 	/**
-	 * 获取生成文件路径
+	 * 获取生成文件路径.
+	 *
+	 * @author mqfdy
+	 * @return the output folder path
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	protected String getOutputFolderPath() {
@@ -55,6 +88,12 @@ public class DomainGenerator extends EntityGenerator {
 		}
 	}
 
+
+	/**
+	 * getFileName.
+	 *
+	 * @return the object
+	 */
 	public String getFileName() {
 		return persistenceModel.getJavaName();
 	}

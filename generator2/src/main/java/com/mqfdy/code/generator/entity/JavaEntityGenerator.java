@@ -12,36 +12,49 @@ import com.mqfdy.code.generator.model.AbstractGenerator;
 import com.mqfdy.code.generator.persistence.IPersistenceModel;
 import com.mqfdy.code.generator.utils.StringUtils;
 
+// TODO: Auto-generated Javadoc
 /**
- * java文件生成器的抽象基类
- * 
+ * java文件生成器的抽象基类.
+ *
  * @author mqfdy
  */
 public class JavaEntityGenerator extends AbstractGenerator {
 	
+	/** The template path. */
 	private String templatePath;
 	
+	/** The gen project. */
 	private IProject genProject;
 	
+	/** The file type. */
 	private String fileType;
 	
+	/** The persistence model. */
 	private IPersistenceModel persistenceModel;
 	
+	/** The Constant TEMPLATE_FILE_PATH_VO. */
 	private static final String TEMPLATE_FILE_PATH_VO = "template/controller/Controller.vm";
 	
+	/** The Constant TEMPLATE_FILE_PATH_BIZC. */
 	private static final String TEMPLATE_FILE_PATH_BIZC = "template/services/IService.vm";
 	
+	/** The Constant TEMPLATE_FILE_PATH_DAO. */
 	private static final String TEMPLATE_FILE_PATH_DAO = "template/repositories/Repository.vm";
 	
+	/** The file name. */
 	private String fileName = "";
 	
 	/**
-	 * JavaEntityGenerator
+	 * JavaEntityGenerator.
+	 *
 	 * @param genProject
-	 * @param scenePage
-	 * @param modelPage
-	 * @param templatePath
+	 *            the gen project
 	 * @param persistenceModel
+	 *            the persistence model
+	 * @param templatePath
+	 *            the template path
+	 * @param fileName
+	 *            the file name
 	 */
 	public JavaEntityGenerator(IProject genProject, IPersistenceModel persistenceModel, String templatePath, String fileName){
 		super(genProject);
@@ -51,15 +64,32 @@ public class JavaEntityGenerator extends AbstractGenerator {
 		this.templatePath = templatePath;
 	} 
 
+	/**
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileNameWithoutExtension()
+	 * @return JavaEntityGenerator
+	 */
 	@Override
 	final protected String getFileNameWithoutExtension() {
 		return null;
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.model.IGenerator#getOutputFilePath()
+	 * @return JavaEntityGenerator
+	 */
 	public String getOutputFilePath() {
 		return getOutputFolderPath() + fileName + getFileExtension();
 	}
 	
+	/**
+	 * Gets the package path.
+	 *
+	 * @author mqfdy
+	 * @param packageName
+	 *            the package name
+	 * @return the package path
+	 * @Date 2018-09-03 09:00
+	 */
 	//通过带“.”的包名获得路径，以"\"结尾
 	public String getPackagePath(String packageName){
 		String packagePath = packageName.replace(".", "\\");
@@ -67,7 +97,11 @@ public class JavaEntityGenerator extends AbstractGenerator {
 	}
 	
 	/**
-	 * 获取生成文件路径
+	 * 获取生成文件路径.
+	 *
+	 * @author mqfdy
+	 * @return the output folder path
+	 * @Date 2018-9-3 11:38:36
 	 */
 	@Override
 	protected String getOutputFolderPath() {
@@ -88,6 +122,10 @@ public class JavaEntityGenerator extends AbstractGenerator {
 					File.separator + StringUtils.getPackageAsPath(javaPkg);
 	}
 	
+	/**
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getSourceMap()
+	 * @return JavaEntityGenerator
+	 */
 	@Override
 	public Map<String, Object> getSourceMap() {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -95,11 +133,19 @@ public class JavaEntityGenerator extends AbstractGenerator {
 		return map;
 	}
 	
+	/**
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileExtension()
+	 * @return JavaEntityGenerator
+	 */
 	@Override
 	final protected String getFileExtension() {
 		return JAVA_FILE_EXTENSION;
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getTemplatePath()
+	 * @return JavaEntityGenerator
+	 */
 	@Override
 	public String getTemplatePath() {
 		if (AbstractGenerator.JAVA_FILE_TYPE_VO.equals(fileType)) {
@@ -113,10 +159,22 @@ public class JavaEntityGenerator extends AbstractGenerator {
 		}
 	}
 
+	/**
+	 * Sets the template path.
+	 *
+	 * @author mqfdy
+	 * @param templatePath
+	 *            the new template path
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setTemplatePath(String templatePath) {
 		this.templatePath = templatePath;
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.model.IGenerator#getFileName()
+	 * @return JavaEntityGenerator
+	 */
 	public String getFileName() {
 		return this.fileName;
 	}

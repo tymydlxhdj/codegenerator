@@ -12,6 +12,7 @@ package com.mqfdy.code.springboot.utilities.internal.node;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 import com.mqfdy.code.springboot.utilities.internal.SynchronizedBoolean;
 
+// TODO: Auto-generated Javadoc
 /**
  * This implementation of the Validator interface implements the
  * pause/resume portion of the protocol, but delegates the actual
@@ -27,6 +28,12 @@ public class PluggableValidator
 
 	/**
 	 * Convenience factory method.
+	 *
+	 * @author mqfdy
+	 * @param validateFlag
+	 *            the validate flag
+	 * @return the node. validator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Node.Validator buildAsynchronousValidator(SynchronizedBoolean validateFlag) {
 		return new PluggableValidator(new AsynchronousValidator(validateFlag));
@@ -34,6 +41,12 @@ public class PluggableValidator
 
 	/**
 	 * Convenience factory method.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @return the node. validator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Node.Validator buildSynchronousValidator(Node node) {
 		return new PluggableValidator(new SynchronousValidator(node));
@@ -41,6 +54,9 @@ public class PluggableValidator
 
 	/**
 	 * Construct a validator with the specified delegate.
+	 *
+	 * @param delegate
+	 *            the delegate
 	 */
 	public PluggableValidator(Delegate delegate) {
 		super();

@@ -22,31 +22,50 @@ package org.apache.velocity.runtime.parser.node;
 import org.apache.velocity.runtime.parser.Parser;
 
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ASTParameters.
  *
+ * @author mqfdy
  */
 public class ASTParameters extends SimpleNode
 {
+    
     /**
-     * @param id
-     */
+	 * Instantiates a new AST parameters.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTParameters(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST parameters.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTParameters(Parser p, int id)
     {
         super(p, id);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);

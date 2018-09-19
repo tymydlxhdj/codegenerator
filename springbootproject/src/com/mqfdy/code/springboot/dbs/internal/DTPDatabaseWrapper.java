@@ -97,6 +97,14 @@ final class DTPDatabaseWrapper
 		return this.caseSensitive;
 	}
 
+	/**
+	 * Sets the case sensitive.
+	 *
+	 * @author mqfdy
+	 * @param caseSensitive
+	 *            the new case sensitive
+	 * @Date 2018-09-03 09:00
+	 */
 	// TODO
 	public void setCaseSensitive(boolean caseSensitive) {
 		this.caseSensitive = caseSensitive;

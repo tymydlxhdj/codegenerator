@@ -19,34 +19,64 @@ import com.mqfdy.code.model.utils.DBType;
 import com.mqfdy.code.model.utils.DataType;
 import com.mqfdy.code.model.utils.SqlOperateType;
 import com.mqfdy.code.model.utils.StringUtil;
+// TODO: Auto-generated Javadoc
+
 /**
- * 
- * @author mqf
+ * The Class RepositoryClass.
  *
+ * @author mqf
  */
 public class RepositoryClass extends AbstractBusinessClass {
 	
 	
+	/** The db type. */
 	private String dbType;
 
+	/**
+	 * Instantiates a new repository class.
+	 *
+	 * @param bc
+	 *            the bc
+	 * @param persistenceModel
+	 *            the persistence model
+	 * @param project
+	 *            the project
+	 * @param bom
+	 *            the bom
+	 */
 	public RepositoryClass(BusinessClass bc, IPersistenceModel persistenceModel, IProject project, BusinessObjectModel bom) {
 		super(bc, persistenceModel, project,bom);
 	}
 
+	/**
+	 * Instantiates a new repository class.
+	 *
+	 * @param param
+	 *            the param
+	 */
 	public RepositoryClass(ClassParam param) {
 		super(param);
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initPackage() RepositoryClass
+	 */
 	@Override
 	public void initPackage() {
 		packageStr = packagePrefix +  ".repositories;";
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields() RepositoryClass
+	 */
 	@Override
 	public void initFields() {
 		
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initImports() RepositoryClass
+	 */
 	@Override
 	public void initImports() {
 		importSet.add("import org.springframework.data.jpa.repository.JpaRepository;\n");
@@ -57,6 +87,9 @@ public class RepositoryClass extends AbstractBusinessClass {
 		}
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods() RepositoryClass
+	 */
 	@Override
 	public void initMethods() {
 		ProjectPropertiesUtil mppu = new ProjectPropertiesUtil(project);
@@ -117,12 +150,20 @@ public class RepositoryClass extends AbstractBusinessClass {
 		}
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#getCustomMethod(com.mqfdy.code.model.BusinessOperation)
+	 * @param bop
+	 * @return RepositoryClass
+	 */
 	@Override
 	protected String getCustomMethod(BusinessOperation bop) {
 		
 		return null;
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#putToVelocityMap() RepositoryClass
+	 */
 	@Override
 	public void putToVelocityMap() {
 		putToVelocityMapDef();
@@ -132,8 +173,8 @@ public class RepositoryClass extends AbstractBusinessClass {
 	}
 	
 	/**
-	 * 生成设计查询条件的where条件sql
-	 * 
+	 * 生成设计查询条件的where条件sql.
+	 *
 	 * @author rongxin.bian
 	 * @param editor
 	 *            编辑器
@@ -273,12 +314,14 @@ public class RepositoryClass extends AbstractBusinessClass {
 	}
 	
 	/**
-	 * 字符串转换到日期
-	 * 
+	 * 字符串转换到日期.
+	 *
 	 * @author rongxin.bian
 	 * @param varchar
+	 *            the varchar
 	 * @param dbType
-	 * @return
+	 *            the db type
+	 * @return the string
 	 */
 	private String convertToDate(String varchar, String dbType) {
 		if (StringUtil.isEmpty(varchar)) {
@@ -308,6 +351,17 @@ public class RepositoryClass extends AbstractBusinessClass {
 		return result;
 	}
 
+	/**
+	 * Convert to time.
+	 *
+	 * @author mqfdy
+	 * @param varchar
+	 *            the varchar
+	 * @param dbType
+	 *            the db type
+	 * @return the string
+	 * @Date 2018-9-3 11:38:38
+	 */
 	private String convertToTime(String varchar, String dbType) {
 		if (StringUtil.isEmpty(varchar)) {
 			return null;
@@ -337,6 +391,17 @@ public class RepositoryClass extends AbstractBusinessClass {
 	}
 	
 
+	/**
+	 * Convert to time stamp.
+	 *
+	 * @author mqfdy
+	 * @param varchar
+	 *            the varchar
+	 * @param dbType
+	 *            the db type
+	 * @return the string
+	 * @Date 2018-9-3 11:38:38
+	 */
 	private String convertToTimeStamp(String varchar, String dbType) {
 		if (StringUtil.isEmpty(varchar)) {
 			return null;
@@ -363,10 +428,25 @@ public class RepositoryClass extends AbstractBusinessClass {
 	}
 	
 
+	/**
+	 * Gets the db type.
+	 *
+	 * @author mqfdy
+	 * @return the db type
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getDbType() {
 		return dbType;
 	}
 
+	/**
+	 * Sets the db type.
+	 *
+	 * @author mqfdy
+	 * @param dbType
+	 *            the new db type
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setDbType(String dbType) {
 		this.dbType = dbType;
 	}

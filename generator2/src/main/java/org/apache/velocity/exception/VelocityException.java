@@ -2,6 +2,7 @@ package org.apache.velocity.exception;
 
 import org.apache.velocity.util.ExceptionUtils;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -31,16 +32,19 @@ import org.apache.velocity.util.ExceptionUtils;
 public class VelocityException
         extends RuntimeException
 {
-    /**
-     * Version Id for serializable
-     */
+    
+    /** Version Id for serializable. */
     private static final long serialVersionUID = 1251243065134956045L;
 
+    /** The wrapped. */
     private final Throwable wrapped;
 
     /**
-     * @param exceptionMessage The message to register.
-     */
+	 * Instantiates a new velocity exception.
+	 *
+	 * @param exceptionMessage
+	 *            The message to register.
+	 */
     public VelocityException(final String exceptionMessage)
     {
         super(exceptionMessage);
@@ -48,10 +52,14 @@ public class VelocityException
     }
 
     /**
-     * @param exceptionMessage The message to register.
-     * @param wrapped A throwable object that caused the Exception.
-     * @since 1.5
-     */
+	 * Instantiates a new velocity exception.
+	 *
+	 * @param exceptionMessage
+	 *            The message to register.
+	 * @param wrapped
+	 *            A throwable object that caused the Exception.
+	 * @since 1.5
+	 */
     public VelocityException(final String exceptionMessage, final Throwable wrapped)
     {
         super(exceptionMessage);
@@ -60,9 +68,12 @@ public class VelocityException
     }
 
     /**
-     * @param wrapped A throwable object that caused the Exception.
-     * @since 1.5
-     */
+	 * Instantiates a new velocity exception.
+	 *
+	 * @param wrapped
+	 *            A throwable object that caused the Exception.
+	 * @since 1.5
+	 */
     public VelocityException(final Throwable wrapped)
     {
         super();
@@ -71,12 +82,12 @@ public class VelocityException
     }
 
     /**
-     *  returns the wrapped Throwable that caused this
-     *  MethodInvocationException to be thrown
-     *
-     *  @return Throwable thrown by method invocation
-     *  @since 1.5
-     */
+	 * returns the wrapped Throwable that caused this MethodInvocationException
+	 * to be thrown.
+	 *
+	 * @return Throwable thrown by method invocation
+	 * @since 1.5
+	 */
     public Throwable getWrappedThrowable()
     {
         return wrapped;

@@ -12,6 +12,7 @@ package com.mqfdy.code.springboot.utilities.internal;
 import java.io.PrintWriter;
 import java.io.Writer;
 
+// TODO: Auto-generated Javadoc
 /**
  * Extend PrintWriter to automatically indent new lines.
  */
@@ -21,11 +22,15 @@ public class IndentingPrintWriter extends PrintWriter {
 	private int indentLevel;
 	private boolean needsIndent;
 
+	/** The default indent. */
 	public static String DEFAULT_INDENT = "\t";
 
 
 	/**
 	 * Construct a writer that indents with tabs.
+	 *
+	 * @param out
+	 *            the out
 	 */
 	public IndentingPrintWriter(Writer out) {
 		this(out, DEFAULT_INDENT);
@@ -33,6 +38,11 @@ public class IndentingPrintWriter extends PrintWriter {
 	
 	/**
 	 * Construct a writer that indents with the specified string.
+	 *
+	 * @param out
+	 *            the out
+	 * @param indent
+	 *            the indent
 	 */
 	public IndentingPrintWriter(Writer out, String indent) {
 		super(out);
@@ -131,6 +141,10 @@ public class IndentingPrintWriter extends PrintWriter {
 	
 	/**
 	 * Return the current indent level.
+	 *
+	 * @author mqfdy
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public int indentLevel() {
 		return this.indentLevel;
@@ -138,6 +152,11 @@ public class IndentingPrintWriter extends PrintWriter {
 	
 	/**
 	 * Allow the indent level to be set directly.
+	 *
+	 * @author mqfdy
+	 * @param indentLevel
+	 *            the new indent level
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setIndentLevel(int indentLevel) {
 		synchronized (this.lock) {

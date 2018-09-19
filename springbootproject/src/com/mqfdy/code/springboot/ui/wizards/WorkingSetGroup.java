@@ -13,6 +13,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.WorkingSetConfigurationBlock;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Note: the initial version of this class was originally copied from org.eclipse.jdt.ui.wizards.NewJavaProjectWizardPageOne.WorkingSetGroup.
  * <p>
@@ -35,14 +36,26 @@ public final class WorkingSetGroup {
 	private String quickWorkingSetName;
 	private Button quickWorkingSetButton;
 
+	/**
+	 * Instantiates a new working set group.
+	 */
 	public WorkingSetGroup() {
 		String[] workingSetIds= new String[] { IWorkingSetIDs.JAVA, IWorkingSetIDs.RESOURCE };
 		fWorkingSetBlock= new WorkingSetConfigurationBlock(workingSetIds, JavaPlugin.getDefault().getDialogSettings());
 	}
 
 	/**
-	 * @param placeForQuickWorkingSetButton	The parent composite to which the quick workingSetButton will be added.
-	 * @param parent							The parent composite to which the "standard" working set group elements will be added. 
+	 * Creates the control.
+	 *
+	 * @author mqfdy
+	 * @param placeForQuickWorkingSetButton
+	 *            The parent composite to which the quick workingSetButton will
+	 *            be added.
+	 * @param parent
+	 *            The parent composite to which the "standard" working set group
+	 *            elements will be added.
+	 * @return the control
+	 * @Date 2018-09-03 09:00
 	 */
 	public Control createControl(Composite placeForQuickWorkingSetButton, Composite parent) {
 		Group workingSetGroup= new Group(parent, SWT.NONE);
@@ -61,6 +74,13 @@ public final class WorkingSetGroup {
 		return workingSetGroup;
 	}
 
+	/**
+	 * Gets the selected working sets.
+	 *
+	 * @author mqfdy
+	 * @return the selected working sets
+	 * @Date 2018-09-03 09:00
+	 */
 	public IWorkingSet[] getSelectedWorkingSets() {
 		return fWorkingSetBlock.getSelectedWorkingSets();
 	}
@@ -74,7 +94,14 @@ public final class WorkingSetGroup {
 //		}
 //	}
 	
-	public String getQuickWorkingSetName() {
+	/**
+ * Gets the quick working set name.
+ *
+ * @author mqfdy
+ * @return the quick working set name
+ * @Date 2018-09-03 09:00
+ */
+public String getQuickWorkingSetName() {
 		if (quickWorkingSetButton.getSelection()) {
 			return quickWorkingSetName;
 		}
@@ -83,6 +110,11 @@ public final class WorkingSetGroup {
 
 	/**
 	 * Sets the default working set name that will be automatically selected.
+	 *
+	 * @author mqfdy
+	 * @param quickWorkingSetName
+	 *            the new quick working set name
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setQuickWorkingSetName(String quickWorkingSetName) {
 		if (this.quickWorkingSetName==null && quickWorkingSetName == null) {
@@ -99,10 +131,25 @@ public final class WorkingSetGroup {
 		}
 	}
 	
+	/**
+	 * Gets the quick working set enabled.
+	 *
+	 * @author mqfdy
+	 * @return the quick working set enabled
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean getQuickWorkingSetEnabled() {
 		return quickWorkingSetButton.getSelection();
 	}
 	
+	/**
+	 * Sets the quick working set enabled.
+	 *
+	 * @author mqfdy
+	 * @param enabled
+	 *            the new quick working set enabled
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setQuickWorkingSetEnabled(boolean enabled) {
 		quickWorkingSetButton.setSelection(enabled);
 	}

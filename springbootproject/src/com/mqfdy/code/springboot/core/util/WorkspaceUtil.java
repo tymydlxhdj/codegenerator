@@ -7,6 +7,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 
+// TODO: Auto-generated Javadoc
 /**
  * Utility methods related workspace and resources in the workspace.
  * 
@@ -14,6 +15,15 @@ import org.eclipse.core.runtime.Path;
  */
 public class WorkspaceUtil {
 
+	/**
+	 * Gets the containing project.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @return the containing project
+	 * @Date 2018-09-03 09:00
+	 */
 	public static IProject getContainingProject(File file) {
 		IPath path = new Path(file.getAbsolutePath());
 		int longest = 0;
@@ -32,10 +42,26 @@ public class WorkspaceUtil {
 		return found;
 	}
 
+	/**
+	 * Gets the projects.
+	 *
+	 * @author mqfdy
+	 * @return the projects
+	 * @Date 2018-09-03 09:00
+	 */
 	public static IProject[] getProjects() {
 		return ResourcesPlugin.getWorkspace().getRoot().getProjects();
 	}
 
+	/**
+	 * Gets the project.
+	 *
+	 * @author mqfdy
+	 * @param projectName
+	 *            the project name
+	 * @return the project
+	 * @Date 2018-09-03 09:00
+	 */
 	public static IProject getProject(String projectName){
 		if(projectName != null && !"".equals(projectName)) {
 			for (IProject project : getProjects()) {

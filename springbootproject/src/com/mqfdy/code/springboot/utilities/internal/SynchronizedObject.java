@@ -14,10 +14,15 @@ import java.io.Serializable;
 import com.mqfdy.code.springboot.utilities.Command;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * This class provides synchronized access to an object of type T.
- * It also provides protocol for suspending a thread until the
- * value is set to null or a non-null value, with optional time-outs.
+ * This class provides synchronized access to an object of type T. It also
+ * provides protocol for suspending a thread until the value is set to null or a
+ * non-null value, with optional time-outs.
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
  */
 public class SynchronizedObject<T>
 	implements Cloneable, Serializable
@@ -34,8 +39,12 @@ public class SynchronizedObject<T>
 	// ********** constructors **********
 
 	/**
-	 * Create a synchronized object with the specified initial value
-	 * and mutex.
+	 * Create a synchronized object with the specified initial value and mutex.
+	 *
+	 * @param value
+	 *            the value
+	 * @param mutex
+	 *            the mutex
 	 */
 	public SynchronizedObject(T value, Object mutex) {
 		super();
@@ -45,6 +54,9 @@ public class SynchronizedObject<T>
 
 	/**
 	 * Create a synchronized object with the specified initial value.
+	 *
+	 * @param value
+	 *            the value
 	 */
 	public SynchronizedObject(T value) {
 		super();
@@ -64,6 +76,10 @@ public class SynchronizedObject<T>
 
 	/**
 	 * Return the current value.
+	 *
+	 * @author mqfdy
+	 * @return the t
+	 * @Date 2018-09-03 09:00
 	 */
 	public T value() {
 		synchronized (this.mutex) {
@@ -73,6 +89,10 @@ public class SynchronizedObject<T>
 
 	/**
 	 * Return whether the current value is null.
+	 *
+	 * @author mqfdy
+	 * @return true, if is null
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean isNull() {
 		synchronized (this.mutex) {
@@ -82,6 +102,10 @@ public class SynchronizedObject<T>
 
 	/**
 	 * Return whether the current value is not null.
+	 *
+	 * @author mqfdy
+	 * @return true, if is not null
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean isNotNull() {
 		synchronized (this.mutex) {
@@ -90,8 +114,12 @@ public class SynchronizedObject<T>
 	}
 
 	/**
-	 * Set the value. If the value changes, all waiting
-	 * threads are notified.
+	 * Set the value. If the value changes, all waiting threads are notified.
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            the new value
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setValue(T value) {
 		synchronized (this.mutex) {
@@ -113,8 +141,11 @@ public class SynchronizedObject<T>
 	}
 
 	/**
-	 * Return the object this object locks on while performing
-	 * its operations.
+	 * Return the object this object locks on while performing its operations.
+	 *
+	 * @author mqfdy
+	 * @return the object
+	 * @Date 2018-09-03 09:00
 	 */
 	public Object mutex() {
 		return this.mutex;
@@ -124,9 +155,15 @@ public class SynchronizedObject<T>
 	// ********** indefinite waits **********
 
 	/**
-	 * Suspend the current thread until the value changes
-	 * to the specified value. If the value is already the
-	 * specified value, return immediately.
+	 * Suspend the current thread until the value changes to the specified
+	 * value. If the value is already the specified value, return immediately.
+	 *
+	 * @author mqfdy
+	 * @param v
+	 *            the v
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void waitUntilValueIs(T v) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -137,9 +174,16 @@ public class SynchronizedObject<T>
 	}
 
 	/**
-	 * Suspend the current thread until the value changes
-	 * to something other than the specified value. If the
-	 * value is already NOT the specified value, return immediately.
+	 * Suspend the current thread until the value changes to something other
+	 * than the specified value. If the value is already NOT the specified
+	 * value, return immediately.
+	 *
+	 * @author mqfdy
+	 * @param v
+	 *            the v
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void waitUntilValueIsNot(T v) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -150,8 +194,13 @@ public class SynchronizedObject<T>
 	}
 
 	/**
-	 * Suspend the current thread until the value changes to null.
-	 * If the value is already null, return immediately.
+	 * Suspend the current thread until the value changes to null. If the value
+	 * is already null, return immediately.
+	 *
+	 * @author mqfdy
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void waitUntilNull() throws InterruptedException {
 		synchronized (this.mutex) {
@@ -160,9 +209,13 @@ public class SynchronizedObject<T>
 	}
 
 	/**
-	 * Suspend the current thread until the value changes
-	 * to something other than null.
-	 * If the value is already NOT null, return immediately.
+	 * Suspend the current thread until the value changes to something other
+	 * than null. If the value is already NOT null, return immediately.
+	 *
+	 * @author mqfdy
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void waitUntilNotNull() throws InterruptedException {
 		synchronized (this.mutex) {
@@ -171,11 +224,17 @@ public class SynchronizedObject<T>
 	}
 
 	/**
-	 * Suspend the current thread until the value changes to
-	 * something other than the specified value, then change
-	 * it back to the specified value and continue executing.
-	 * If the value is already NOT the specified value, set
+	 * Suspend the current thread until the value changes to something other
+	 * than the specified value, then change it back to the specified value and
+	 * continue executing. If the value is already NOT the specified value, set
 	 * the value immediately.
+	 *
+	 * @author mqfdy
+	 * @param v
+	 *            the v
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void waitToSetValue(T v) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -185,10 +244,14 @@ public class SynchronizedObject<T>
 	}
 
 	/**
-	 * Suspend the current thread until the value changes to
-	 * something other than null, then change it back to null
-	 * and continue executing. If the value is already NOT null,
-	 * set the value to null immediately.
+	 * Suspend the current thread until the value changes to something other
+	 * than null, then change it back to null and continue executing. If the
+	 * value is already NOT null, set the value to null immediately.
+	 *
+	 * @author mqfdy
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void waitToSetNull() throws InterruptedException {
 		synchronized (this.mutex) {
@@ -201,11 +264,21 @@ public class SynchronizedObject<T>
 	// ********** timed waits **********
 
 	/**
-	 * Suspend the current thread until the value changes
-	 * to the specified value or the specified time-out occurs.
-	 * The time-out is specified in milliseconds. Return true if the specified
-	 * value was achieved; return false if a time-out occurred.
-	 * If the value is already the specified value, return true immediately.
+	 * Suspend the current thread until the value changes to the specified value
+	 * or the specified time-out occurs. The time-out is specified in
+	 * milliseconds. Return true if the specified value was achieved; return
+	 * false if a time-out occurred. If the value is already the specified
+	 * value, return true immediately.
+	 *
+	 * @author mqfdy
+	 * @param v
+	 *            the v
+	 * @param timeout
+	 *            the timeout
+	 * @return true, if successful
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean waitUntilValueIs(T v, long timeout) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -225,11 +298,21 @@ public class SynchronizedObject<T>
 	}
 
 	/**
-	 * Suspend the current thread until the value changes to something
-	 * other than the specified value or the specified time-out occurs.
-	 * The time-out is specified in milliseconds. Return true if the specified
-	 * value was removed; return false if a time-out occurred.
-	 * If the value is already NOT the specified value, return true immediately.
+	 * Suspend the current thread until the value changes to something other
+	 * than the specified value or the specified time-out occurs. The time-out
+	 * is specified in milliseconds. Return true if the specified value was
+	 * removed; return false if a time-out occurred. If the value is already NOT
+	 * the specified value, return true immediately.
+	 *
+	 * @author mqfdy
+	 * @param v
+	 *            the v
+	 * @param timeout
+	 *            the timeout
+	 * @return true, if successful
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean waitUntilValueIsNot(T v, long timeout) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -249,11 +332,18 @@ public class SynchronizedObject<T>
 	}
 
 	/**
-	 * Suspend the current thread until the value changes
-	 * to null or the specified time-out occurs.
-	 * The time-out is specified in milliseconds. Return true if the specified
-	 * value was achieved; return false if a time-out occurred.
-	 * If the value is already null, return true immediately.
+	 * Suspend the current thread until the value changes to null or the
+	 * specified time-out occurs. The time-out is specified in milliseconds.
+	 * Return true if the specified value was achieved; return false if a
+	 * time-out occurred. If the value is already null, return true immediately.
+	 *
+	 * @author mqfdy
+	 * @param timeout
+	 *            the timeout
+	 * @return true, if successful
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean waitUntilNull(long timeout) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -262,11 +352,19 @@ public class SynchronizedObject<T>
 	}
 
 	/**
-	 * Suspend the current thread until the value changes
-	 * to something other than null or the specified time-out occurs.
-	 * The time-out is specified in milliseconds. Return true if the specified
-	 * value was achieved; return false if a time-out occurred.
-	 * If the value is already NOT null, return true immediately.
+	 * Suspend the current thread until the value changes to something other
+	 * than null or the specified time-out occurs. The time-out is specified in
+	 * milliseconds. Return true if the specified value was achieved; return
+	 * false if a time-out occurred. If the value is already NOT null, return
+	 * true immediately.
+	 *
+	 * @author mqfdy
+	 * @param timeout
+	 *            the timeout
+	 * @return true, if successful
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean waitUntilNotNull(long timeout) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -275,16 +373,24 @@ public class SynchronizedObject<T>
 	}
 
 	/**
-	 * Suspend the current thread until the value changes to
-	 * something other than the specified value, then change
-	 * it back to the specified value and continue executing.
-	 * If the value does not change to something other than the
-	 * specified before the time-out, simply continue executing
-	 * without changing the value.
-	 * The time-out is specified in milliseconds. Return true if the value was
-	 * set to true; return false if a time-out occurred.
-	 * If the value is already something other than the specified value, set
-	 * the value immediately and return true.
+	 * Suspend the current thread until the value changes to something other
+	 * than the specified value, then change it back to the specified value and
+	 * continue executing. If the value does not change to something other than
+	 * the specified before the time-out, simply continue executing without
+	 * changing the value. The time-out is specified in milliseconds. Return
+	 * true if the value was set to true; return false if a time-out occurred.
+	 * If the value is already something other than the specified value, set the
+	 * value immediately and return true.
+	 *
+	 * @author mqfdy
+	 * @param v
+	 *            the v
+	 * @param timeout
+	 *            the timeout
+	 * @return true, if successful
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean waitToSetValue(T v, long timeout) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -297,14 +403,21 @@ public class SynchronizedObject<T>
 	}
 
 	/**
-	 * Suspend the current thread until the value changes to something
-	 * other than null, then change it back to null and continue executing.
-	 * If the value does not change to something other than null before
-	 * the time-out, simply continue executing without changing the value.
-	 * The time-out is specified in milliseconds. Return true if the value was
-	 * set to false; return false if a time-out occurred.
-	 * If the value is already something other than null, set
-	 * the value to null immediately and return true.
+	 * Suspend the current thread until the value changes to something other
+	 * than null, then change it back to null and continue executing. If the
+	 * value does not change to something other than null before the time-out,
+	 * simply continue executing without changing the value. The time-out is
+	 * specified in milliseconds. Return true if the value was set to false;
+	 * return false if a time-out occurred. If the value is already something
+	 * other than null, set the value to null immediately and return true.
+	 *
+	 * @author mqfdy
+	 * @param timeout
+	 *            the timeout
+	 * @return true, if successful
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean waitToSetNull(long timeout) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -320,9 +433,16 @@ public class SynchronizedObject<T>
 	// ********** synchronized behavior **********
 
 	/**
-	 * If current thread is not interrupted, execute the specified command 
-	 * with the mutex locked. This is useful for initializing the value in another
+	 * If current thread is not interrupted, execute the specified command with
+	 * the mutex locked. This is useful for initializing the value in another
 	 * thread.
+	 *
+	 * @author mqfdy
+	 * @param command
+	 *            the command
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void execute(Command command) throws InterruptedException {
 		if (Thread.interrupted()) {

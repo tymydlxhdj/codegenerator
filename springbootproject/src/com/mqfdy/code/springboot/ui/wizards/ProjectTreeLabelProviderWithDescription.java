@@ -19,7 +19,11 @@ public class ProjectTreeLabelProviderWithDescription extends BaseLabelProvider i
 	private ProjectTreeLabelProvider wrapped;
 
 	/**
-	 * @param useTransparantIcons Determines whether transparant icon will be used when non-leaf project is already imported in the workspace.
+	 * Instantiates a new project tree label provider with description.
+	 *
+	 * @param useTransparantIcons
+	 *            Determines whether transparant icon will be used when non-leaf
+	 *            project is already imported in the workspace.
 	 */
 	public ProjectTreeLabelProviderWithDescription(boolean useTransparantIcons) {
 		wrapped = new ProjectTreeLabelProvider(useTransparantIcons);

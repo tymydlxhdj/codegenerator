@@ -3,15 +3,18 @@ package com.mqfdy.code.generator.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * hibernate类型类
- * 
+ * hibernate类型类.
+ *
  * @author mqfdy
  */
 public class HibernateDataType {
 
+	/** The origin data type. */
 	public static List<String> originDataType;
 
+	/** The collection type. */
 	public static List<String> collectionType;
 
 	static {

@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.apache.velocity.runtime.resource.loader.StringResourceLoader;
 
+// TODO: Auto-generated Javadoc
 /**
  * Default implementation of StringResourceRepository.
  * Uses a HashMap for storage
@@ -35,9 +36,8 @@ import org.apache.velocity.runtime.resource.loader.StringResourceLoader;
  */
 public class StringResourceRepositoryImpl implements StringResourceRepository
 {
-    /**
-     * mem store
-     */
+    
+    /** mem store. */
     protected Map resources = Collections.synchronizedMap(new HashMap());
 
     /**
@@ -46,49 +46,81 @@ public class StringResourceRepositoryImpl implements StringResourceRepository
     private String encoding = StringResourceLoader.REPOSITORY_ENCODING_DEFAULT;
     
     /**
-     * @see StringResourceRepository#getStringResource(java.lang.String)
-     */
+	 * Gets the string resource.
+	 *
+	 * @param name
+	 *            the name
+	 * @return the string resource
+	 * @see StringResourceRepository#getStringResource(java.lang.String)
+	 */
     public StringResource getStringResource(final String name)
     {
         return (StringResource)resources.get(name);
     }
 
     /**
-     * @see StringResourceRepository#putStringResource(java.lang.String, java.lang.String)
-     */
+	 * Put string resource.
+	 *
+	 * @param name
+	 *            the name
+	 * @param body
+	 *            the body
+	 * @see StringResourceRepository#putStringResource(java.lang.String,
+	 *      java.lang.String)
+	 */
     public void putStringResource(final String name, final String body)
     {
         resources.put(name, new StringResource(body, getEncoding()));
     }
 
     /**
-     * @see StringResourceRepository#putStringResource(java.lang.String, java.lang.String, java.lang.String)
-     * @since 1.6
-     */
+	 * Put string resource.
+	 *
+	 * @param name
+	 *            the name
+	 * @param body
+	 *            the body
+	 * @param encoding
+	 *            the encoding
+	 * @see StringResourceRepository#putStringResource(java.lang.String,
+	 *      java.lang.String, java.lang.String)
+	 * @since 1.6
+	 */
     public void putStringResource(final String name, final String body, final String encoding)
     {
         resources.put(name, new StringResource(body, encoding));
     }
 
     /**
-     * @see StringResourceRepository#removeStringResource(java.lang.String)
-     */
+	 * Removes the string resource.
+	 *
+	 * @param name
+	 *            the name
+	 * @see StringResourceRepository#removeStringResource(java.lang.String)
+	 */
     public void removeStringResource(final String name)
     {
         resources.remove(name);
     }
 
     /**
-     * @see org.apache.velocity.runtime.resource.util.StringResourceRepository#getEncoding()
-     */
+	 * Gets the encoding.
+	 *
+	 * @return the encoding
+	 * @see org.apache.velocity.runtime.resource.util.StringResourceRepository#getEncoding()
+	 */
     public String getEncoding()
     {
 	    return encoding;
     }
 
     /**
-     * @see org.apache.velocity.runtime.resource.util.StringResourceRepository#setEncoding(java.lang.String)
-     */
+	 * Sets the encoding.
+	 *
+	 * @param encoding
+	 *            the new encoding
+	 * @see org.apache.velocity.runtime.resource.util.StringResourceRepository#setEncoding(java.lang.String)
+	 */
     public void setEncoding(final String encoding)
     {
 	    this.encoding = encoding;

@@ -23,6 +23,7 @@ import java.util.Map;
 import org.apache.velocity.exception.VelocityException;
 import org.apache.velocity.runtime.log.Log;
 
+// TODO: Auto-generated Javadoc
 /**
  * GetExecutor that is smart about Maps. If it detects one, it does not
  * use Reflection but a cast to access the getter. 
@@ -34,8 +35,20 @@ import org.apache.velocity.runtime.log.Log;
 public class MapGetExecutor
         extends AbstractExecutor 
 {
+    
+    /** The property. */
     private final String property;
 
+    /**
+	 * Instantiates a new map get executor.
+	 *
+	 * @param log
+	 *            the log
+	 * @param clazz
+	 *            the clazz
+	 * @param property
+	 *            the property
+	 */
     public MapGetExecutor(final Log log, final Class clazz, final String property)
     {
         this.log = log;
@@ -43,6 +56,14 @@ public class MapGetExecutor
         discover(clazz);
     }
 
+    /**
+	 * Discover.
+	 *
+	 * @author mqfdy
+	 * @param clazz
+	 *            the clazz
+	 * @Date 2018-09-03 09:00
+	 */
     protected void discover (final Class clazz)
     {
         if (property != null && Map.class.isAssignableFrom(clazz))
@@ -67,6 +88,11 @@ public class MapGetExecutor
         }
     }
 
+    /**
+     * @see org.apache.velocity.runtime.parser.node.AbstractExecutor#execute(java.lang.Object)
+     * @param o
+     * @return MapGetExecutor
+     */
     public Object execute(final Object o)
     {
         return ((Map) o).get(property);

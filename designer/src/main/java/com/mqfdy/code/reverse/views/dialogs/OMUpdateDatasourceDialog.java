@@ -38,39 +38,101 @@ import com.mqfdy.code.reverse.OmReverse;
 import com.mqfdy.code.reverse.utils.ReverseUtil;
 import com.mqfdy.code.reverse.views.constant.IViewConstant;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class OMUpdateDatasourceDialog.
+ *
+ * @author mqfdy
+ */
 public class OMUpdateDatasourceDialog extends UpdateDatasourceDialog {
 
     
+	/** The uap path combo. */
 	private Combo uapPathCombo;			//数据源保存路径下拉框
+	
+	/** The ds name label. */
 	private Label dsNameLabel;			//数据源名标签
+	
+	/** The ds name text. */
 	private Text dsNameText;			//数据源名文本框
+	
+	/** The db type label. */
 	private Label dbTypeLabel;		    //数据库类型标签
+	
+	/** The db type combo. */
 	private Combo dbTypeCombo;			//数据库类型下拉框
+	
+	/** The sid label. */
 	private Label sidLabel;				//数据库id标签
+	
+	/** The sid text. */
 	private Text sidText;				//数据库id文本框
+	
+	/** The host label. */
 	private Label hostLabel;			//服务器地址标签
+	
+	/** The host text. */
 	private Text hostText;				//服务器地址文本框
+	
+	/** The port label. */
 	private Label portLabel;			//端口标签
+	
+	/** The port text. */
 	private Text portText;				//端口文本框
+	
+	/** The user label. */
 	private Label userLabel;			//用户名标签
+	
+	/** The user text. */
 	private Text userText;				//用户名文本框
+	
+	/** The password label. */
 	private Label passwordLabel;		//密码标签
+	
+	/** The password text. */
 	private Text passwordText;			//密码文本框
+	
+	/** The url label. */
 	private Label urlLabel;				//URL标签
+	
+	/** The url text. */
 	private Text urlText;				//URL文本框
+	
+	/** The check button. */
 	private Button checkButton;			//保存密码复选框
+	
+	/** The test button. */
 	private Button testButton;			//测试连接按钮
 
+	/** The connection URL. */
 	private String connectionURL;
+	
+	/** The om reverse. */
 	private IOmReverse omReverse;
+	
+	/** The data source. */
 	private DataSourceInfo dataSource;
 	
+	/** The is ok pressed. */
 	private boolean isOkPressed;		//完成按钮是否Ok
+	
+	/** The init ds name. */
 	private String initDsName;
 	
+	/** The project map. */
 	private Map<String, IProject> projectMap;
+	
+	/** The project. */
 	private IProject project;
 		
+	/**
+	 * Instantiates a new OM update datasource dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param project
+	 *            the project
+	 */
 	public OMUpdateDatasourceDialog(Shell parentShell,IProject project) {
 		super(parentShell);
 		isOkPressed = true;
@@ -79,6 +141,15 @@ public class OMUpdateDatasourceDialog extends UpdateDatasourceDialog {
 		this.project = project;
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		
@@ -283,23 +354,40 @@ public class OMUpdateDatasourceDialog extends UpdateDatasourceDialog {
 		return parent;
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText("修改数据源");
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected Point getInitialSize() {
 		return new Point( IViewConstant.SCREEN_WIDTH  * IViewConstant.DIALOG_WIDTH_PROPORTION/ 100
 		        , IViewConstant.SCREEN_HEIGHT * IViewConstant.DIALOG_HEIGHT_PROPORTION/ 100);
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected int getShellStyle() {
 		return super.getShellStyle() | SWT.RESIZE | SWT.MAX | SWT.MIN;
 	}
 	
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		validateInput();
@@ -348,8 +436,10 @@ public class OMUpdateDatasourceDialog extends UpdateDatasourceDialog {
 	}
 
 	/**
-	 * 校验
-	 * @return
+	 * 校验.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void validateInput(){
 		isOkPressed = true;
@@ -431,16 +521,41 @@ public class OMUpdateDatasourceDialog extends UpdateDatasourceDialog {
 		
 	}
 	
+	/**
+	 * @return
+	 */
 	public DataSourceInfo getDataSource() {
 		return dataSource;
 	}
 
+	/**
+	 * Sets the data source.
+	 *
+	 * @author mqfdy
+	 * @param dataSource
+	 *            the new data source
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setDataSource(DataSourceInfo dataSource) {
 		this.dataSource = dataSource;
 	}
 
 
+	/**
+	 * The Class ConnTextModifyAdapter.
+	 *
+	 * @author mqfdy
+	 */
 	class ConnTextModifyAdapter implements ModifyListener {
+		
+		/**
+		 * Modify text.
+		 *
+		 * @author mqfdy
+		 * @param event
+		 *            the event
+		 * @Date 2018-09-03 09:00
+		 */
 		public void modifyText(ModifyEvent event) {
 			connectionURL = ReverseUtil.getURL( dbTypeCombo.getText()
 											  , hostText.getText()
@@ -450,10 +565,21 @@ public class OMUpdateDatasourceDialog extends UpdateDatasourceDialog {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public String getInitDsName() {
 		return initDsName;
 	}
 
+	/**
+	 * Sets the inits the ds name.
+	 *
+	 * @author mqfdy
+	 * @param initDsName
+	 *            the new inits the ds name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setInitDsName(String initDsName) {
 		this.initDsName = initDsName;
 	}

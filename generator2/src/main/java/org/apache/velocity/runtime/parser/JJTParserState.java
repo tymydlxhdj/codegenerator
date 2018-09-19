@@ -3,14 +3,32 @@ package org.apache.velocity.runtime.parser;
 
 import org.apache.velocity.runtime.parser.node.Node;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class JJTParserState.
+ *
+ * @author mqfdy
+ */
 public class JJTParserState {
+  
+  /** The nodes. */
   private java.util.List nodes;
+  
+  /** The marks. */
   private java.util.List marks;
 
+  /** The sp. */
   private int sp;        // number of nodes on stack
+  
+  /** The mk. */
   private int mk;        // current mark
+  
+  /** The node created. */
   private boolean node_created;
 
+  /**
+	 * Instantiates a new JJT parser state.
+	 */
   public JJTParserState() {
     nodes = new java.util.ArrayList();
     marks = new java.util.ArrayList();
@@ -18,6 +36,13 @@ public class JJTParserState {
     mk = 0;
   }
 
+  /**
+	 * Node created.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
   /* Determines whether the current node was actually closed and
      pushed.  This should only be called in the final user action of a
      node scope.  */
@@ -25,6 +50,12 @@ public class JJTParserState {
     return node_created;
   }
 
+  /**
+	 * Reset.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
   /* Call this to reinitialize the node stack.  It is called
      automatically by the parser's ReInit() method. */
   public void reset() {
@@ -34,18 +65,40 @@ public class JJTParserState {
     mk = 0;
   }
 
+  /**
+	 * Root node.
+	 *
+	 * @author mqfdy
+	 * @return the node
+	 * @Date 2018-09-03 09:00
+	 */
   /* Returns the root node of the AST.  It only makes sense to call
      this after a successful parse. */
   public Node rootNode() {
     return (Node)nodes.get(0);
   }
 
+  /**
+	 * Push node.
+	 *
+	 * @author mqfdy
+	 * @param n
+	 *            the n
+	 * @Date 2018-09-03 09:00
+	 */
   /* Pushes a node on to the stack. */
   public void pushNode(Node n) {
     nodes.add(n);
     ++sp;
   }
 
+  /**
+	 * Pop node.
+	 *
+	 * @author mqfdy
+	 * @return the node
+	 * @Date 2018-09-03 09:00
+	 */
   /* Returns the node on the top of the stack, and remove it from the
      stack.  */
   public Node popNode() {
@@ -55,11 +108,25 @@ public class JJTParserState {
     return (Node)nodes.remove(nodes.size()-1);
   }
 
+  /**
+	 * Peek node.
+	 *
+	 * @author mqfdy
+	 * @return the node
+	 * @Date 2018-09-03 09:00
+	 */
   /* Returns the node currently on the top of the stack. */
   public Node peekNode() {
     return (Node)nodes.get(nodes.size()-1);
   }
 
+  /**
+	 * Node arity.
+	 *
+	 * @author mqfdy
+	 * @return the int
+	 * @Date 2018-09-03 09:00
+	 */
   /* Returns the number of children on the stack in the current node
      scope. */
   public int nodeArity() {
@@ -67,6 +134,14 @@ public class JJTParserState {
   }
 
 
+  /**
+	 * Clear node scope.
+	 *
+	 * @author mqfdy
+	 * @param n
+	 *            the n
+	 * @Date 2018-09-03 09:00
+	 */
   public void clearNodeScope(Node n) {
     while (sp > mk) {
       popNode();
@@ -75,6 +150,14 @@ public class JJTParserState {
   }
 
 
+  /**
+	 * Open node scope.
+	 *
+	 * @author mqfdy
+	 * @param n
+	 *            the n
+	 * @Date 2018-09-03 09:00
+	 */
   public void openNodeScope(Node n) {
     marks.add(new Integer(mk));
     mk = sp;
@@ -82,6 +165,16 @@ public class JJTParserState {
   }
 
 
+  /**
+	 * Close node scope.
+	 *
+	 * @author mqfdy
+	 * @param n
+	 *            the n
+	 * @param num
+	 *            the num
+	 * @Date 2018-09-03 09:00
+	 */
   /* A definite node is constructed from a specified number of
      children.  That number of nodes are popped from the stack and
      made the children of the definite node.  Then the definite node
@@ -99,6 +192,16 @@ public class JJTParserState {
   }
 
 
+  /**
+	 * Close node scope.
+	 *
+	 * @author mqfdy
+	 * @param n
+	 *            the n
+	 * @param condition
+	 *            the condition
+	 * @Date 2018-09-03 09:00
+	 */
   /* A conditional node is constructed if its condition is true.  All
      the nodes that have been pushed since the node was opened are
      made children of the conditional node, which is then pushed

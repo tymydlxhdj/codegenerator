@@ -26,24 +26,21 @@ import org.dom4j.io.XMLWriter;
 
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务实体
- * 
+ * 业务实体.
+ *
  * @author mqfdy
- * 
  */
 public class BusinessClass extends AbstractModelElement {
 
+	/** The belong package. */
 	private ModelPackage belongPackage;
 
-	/**
-	 * 是否抽象实体(当前版本为false)
-	 */
+	/** 是否抽象实体(当前版本为false). */
 	private boolean IsAbstract = false;
 
-	/**
-	 * 是否配置了权限
-	 */
+	/** 是否配置了权限. */
 	// private boolean iscRight = false;
 
 	/**
@@ -51,79 +48,78 @@ public class BusinessClass extends AbstractModelElement {
 	 */
 	private String tableName;
 
-	/**
-	 * 属性列表
-	 */
+	/** 属性列表. */
 	private List<Property> properties;
 
-	/**
-	 * 属性分组列表
-	 */
+	/** 属性分组列表. */
 	private List<PropertyGroup> groups;
 
-	/**
-	 * 操作列表
-	 */
+	/** 操作列表. */
 	private List<BusinessOperation> operations;
 
-	/**
-	 * 未注册到权限系统，该字段不存储在om文件
-	 */
+	/** 未注册到权限系统，该字段不存储在om文件. */
 	private boolean hasnotRegist = true;
 	
-	/**
-	 * 实体状态列表
-	 */
+	/** 实体状态列表. */
 	private List<BEStatus> statuses;
 
-	/**
-	 * 实体权限列表
-	 */
+	/** 实体权限列表. */
 	private List<BEPermission> permissions;
 
-	/**
-	 * 版本信息
-	 */
+	/** 版本信息. */
 	private VersionInfo versionInfo;
 
-	/**
-	 * 固化包（状态列表）
-	 */
+	/** 固化包（状态列表）. */
 	private SolidifyPackage statusPackage;
 
-	/**
-	 * 固化包（属性列表）
-	 */
+	/** 固化包（属性列表）. */
 	private SolidifyPackage propertyPackage;
 
-	/**
-	 * 固化包（操作列表）
-	 */
+	/** 固化包（操作列表）. */
 	private SolidifyPackage operationPackage;
 
-	/**
-	 * 固化包（权限列表）
-	 */
+	/** 固化包（权限列表）. */
 	private SolidifyPackage permissionPackage;
 
+	/**
+	 * Instantiates a new business class.
+	 */
 	public BusinessClass() {
 		super();
 		initInternalObjects();
 
 	}
 
+	/**
+	 * Instantiates a new business class.
+	 *
+	 * @param id the id
+	 */
 	public BusinessClass(String id) {
 		super(id);
 		initInternalObjects();
 
 	}
 
+	/**
+	 * Instantiates a new business class.
+	 *
+	 * @param name the name
+	 * @param displayName the display name
+	 */
 	public BusinessClass(String name, String displayName) {
 		super(name, displayName);
 		initInternalObjects();
 
 	}
 
+	/**
+	 * Instantiates a new business class.
+	 *
+	 * @param belongPackage the belong package
+	 * @param name the name
+	 * @param displayName the display name
+	 */
 	public BusinessClass(ModelPackage belongPackage, String name,
 			String displayName) {
 		super(name, displayName);
@@ -132,9 +128,9 @@ public class BusinessClass extends AbstractModelElement {
 	}
 
 	/**
-	 * 通过 XML 构造 BusinessClass
-	 * 
-	 * @param businessClassElement
+	 * 通过 XML 构造 BusinessClass.
+	 *
+	 * @param businessClassElement the business class element
 	 */
 	@SuppressWarnings("unchecked")
 	public BusinessClass(Element businessClassElement) {
@@ -245,6 +241,13 @@ public class BusinessClass extends AbstractModelElement {
 		}
 	}
 
+	/**
+	 * @param bcsElement
+	 * @return
+	 */
+	/* (non-Javadoc)
+	 * @see com.mqfdy.code.model.AbstractModelElement#generateXmlElement(org.dom4j.Element)
+	 */
 	public Element generateXmlElement(Element bcsElement) {
 		Element bcElement = bcsElement.addElement("BusinessClass");
 		generateBasicAttributes(bcElement);
@@ -327,6 +330,13 @@ public class BusinessClass extends AbstractModelElement {
 	
 	
 	
+	/**
+	 * Generate xml element.
+	 *
+	 * @author mqfdy
+	 * @return the document
+	 * @Date 2018-09-03 09:00
+	 */
 	//构造一个dom4结构的xml样式
 	public Document generateXmlElement() {
 		Document document = DocumentHelper.createDocument();
@@ -410,6 +420,14 @@ public class BusinessClass extends AbstractModelElement {
 		}
 		return document;
 	}
+	
+	/**
+	 * To xml.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	//针对Document XML文件转字符串
 	public String toXml(){
         String faceXml = "";
@@ -451,7 +469,10 @@ public class BusinessClass extends AbstractModelElement {
 	
 
 	/**
-	 * 初始化内部列表对象
+	 * 初始化内部列表对象.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initInternalObjects() {
 		properties = new ArrayList<Property>(50);
@@ -461,10 +482,23 @@ public class BusinessClass extends AbstractModelElement {
 		groups = new ArrayList<PropertyGroup>(10);
 	}
 
+	/**
+	 * @return
+	 */
+	/* (non-Javadoc)
+	 * @see com.mqfdy.code.model.AbstractModelElement#getPriority()
+	 */
 	public int getPriority() {
 		return IModelElement.PRIORITY_BUSINESSCLASS;
 	}
 
+	/**
+	 * Checks if is abstract.
+	 *
+	 * @author mqfdy
+	 * @return true, if is abstract
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isAbstract() {
 
 		return IsAbstract;
@@ -472,7 +506,11 @@ public class BusinessClass extends AbstractModelElement {
 
 	/**
 	 * 暂时忽略此功能 public void setAbstract(boolean isAbstract) { IsAbstract =
-	 * isAbstract; }
+	 * isAbstract; }.
+	 *
+	 * @author mqfdy
+	 * @return the table name
+	 * @Date 2018-09-03 09:00
 	 */
 
 	public String getTableName() {
@@ -480,6 +518,13 @@ public class BusinessClass extends AbstractModelElement {
 	}
 
 	
+	/**
+	 * Gets the property package.
+	 *
+	 * @author mqfdy
+	 * @return the property package
+	 * @Date 2018-09-03 09:00
+	 */
 	public SolidifyPackage getPropertyPackage() {
 		if (propertyPackage == null) {
 			propertyPackage = new SolidifyPackage(this,
@@ -490,6 +535,13 @@ public class BusinessClass extends AbstractModelElement {
 		return propertyPackage;
 	}
 
+	/**
+	 * Gets the operation package.
+	 *
+	 * @author mqfdy
+	 * @return the operation package
+	 * @Date 2018-09-03 09:00
+	 */
 	public SolidifyPackage getOperationPackage() {
 		if (operationPackage == null) {
 			operationPackage = new SolidifyPackage(this,
@@ -500,6 +552,13 @@ public class BusinessClass extends AbstractModelElement {
 		return operationPackage;
 	}
 
+	/**
+	 * Gets the permission package.
+	 *
+	 * @author mqfdy
+	 * @return the permission package
+	 * @Date 2018-09-03 09:00
+	 */
 	public SolidifyPackage getPermissionPackage() {
 		if (permissionPackage == null) {
 			permissionPackage = new SolidifyPackage(this,
@@ -510,6 +569,13 @@ public class BusinessClass extends AbstractModelElement {
 		return permissionPackage;
 	}
 
+	/**
+	 * Gets the status package.
+	 *
+	 * @author mqfdy
+	 * @return the status package
+	 * @Date 2018-09-03 09:00
+	 */
 	public SolidifyPackage getStatusPackage() {
 		if (statusPackage == null) {
 			statusPackage = new SolidifyPackage(this,
@@ -520,82 +586,235 @@ public class BusinessClass extends AbstractModelElement {
 		return statusPackage;
 	}
 
+	/**
+	 * Sets the table name.
+	 *
+	 * @author mqfdy
+	 * @param tableName
+	 *            the new table name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setTableName(String tableName) {
 		this.tableName = tableName;
 	}
 
+	/**
+	 * Gets the statuses.
+	 *
+	 * @author mqfdy
+	 * @return the statuses
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<BEStatus> getStatuses() {
 		return statuses;
 	}
 
+	/**
+	 * Sets the statuses.
+	 *
+	 * @author mqfdy
+	 * @param statuses
+	 *            the new statuses
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setStatuses(List<BEStatus> statuses) {
 		this.statuses = statuses;
 	}
 
+	/**
+	 * Adds the status.
+	 *
+	 * @author mqfdy
+	 * @param status
+	 *            the status
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addStatus(BEStatus status) {
 		this.statuses.add(status);
 	}
 	
+	/**
+	 * Adds the status.
+	 *
+	 * @author mqfdy
+	 * @param status
+	 *            the status
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addStatus(List<BEStatus> status) {
 		this.statuses.addAll(status);
 	}
 
+	/**
+	 * Gets the version info.
+	 *
+	 * @author mqfdy
+	 * @return the version info
+	 * @Date 2018-09-03 09:00
+	 */
 	public VersionInfo getVersionInfo() {
 		return versionInfo;
 	}
 
+	/**
+	 * Sets the version info.
+	 *
+	 * @author mqfdy
+	 * @param versionInfo
+	 *            the new version info
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setVersionInfo(VersionInfo versionInfo) {
 		this.versionInfo = versionInfo;
 	}
 
+	/**
+	 * Gets the properties.
+	 *
+	 * @author mqfdy
+	 * @return the properties
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Property> getProperties() {
 		return properties;
 	}
 
+	/**
+	 * Adds the property.
+	 *
+	 * @author mqfdy
+	 * @param property
+	 *            the property
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addProperty(Property property) {
 		this.properties.add(property);
 	}
 
+	/**
+	 * Gets the operations.
+	 *
+	 * @author mqfdy
+	 * @return the operations
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<BusinessOperation> getOperations() {
 		return operations;
 	}
 
+	/**
+	 * Adds the operation.
+	 *
+	 * @author mqfdy
+	 * @param operation
+	 *            the operation
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addOperation(BusinessOperation operation) {
 		this.operations.add(operation);
 	}
 
+	/**
+	 * Gets the permissions.
+	 *
+	 * @author mqfdy
+	 * @return the permissions
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<BEPermission> getPermissions() {
 		return permissions;
 	}
 
+	/**
+	 * Adds the permission.
+	 *
+	 * @author mqfdy
+	 * @param permission
+	 *            the permission
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addPermission(BEPermission permission) {
 		this.permissions.add(permission);
 	}
 
+	/**
+	 * Gets the belong package.
+	 *
+	 * @author mqfdy
+	 * @return the belong package
+	 * @Date 2018-09-03 09:00
+	 */
 	public ModelPackage getBelongPackage() {
 		return belongPackage;
 	}
 
+	/**
+	 * Sets the belong package.
+	 *
+	 * @author mqfdy
+	 * @param belongPackage
+	 *            the new belong package
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBelongPackage(ModelPackage belongPackage) {
 		this.belongPackage = belongPackage;
 	}
 
+	/**
+	 * Checks if is hasnot regist.
+	 *
+	 * @author mqfdy
+	 * @return true, if is hasnot regist
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isHasnotRegist() {
 		return hasnotRegist;
 	}
 
+	/**
+	 * Sets the hasnot regist.
+	 *
+	 * @author mqfdy
+	 * @param hasnotRegist
+	 *            the new hasnot regist
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setHasnotRegist(boolean hasnotRegist) {
 		this.hasnotRegist = hasnotRegist;
 	}
 
+	/**
+	 * Gets the groups.
+	 *
+	 * @author mqfdy
+	 * @return the groups
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<PropertyGroup> getGroups() {
 		return groups;
 	}
 
+	/**
+	 * Adds the group.
+	 *
+	 * @author mqfdy
+	 * @param group
+	 *            the group
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addGroup(PropertyGroup group) {
 		this.groups.add(group);
 	}
 
+	/**
+	 * Gets the group by id.
+	 *
+	 * @author mqfdy
+	 * @param groupId
+	 *            the group id
+	 * @return the group by id
+	 * @Date 2018-09-03 09:00
+	 */
 	public PropertyGroup getGroupById(String groupId) {
 		for (int i = 0; i < groups.size(); i++) {
 			if (groups.get(i).getId().equals(groupId)) {
@@ -605,6 +824,13 @@ public class BusinessClass extends AbstractModelElement {
 		return null;
 	}
 
+	/**
+	 * Gets the properties display name.
+	 *
+	 * @author mqfdy
+	 * @return the properties display name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String[] getPropertiesDisplayName() {
 		String[] results = new String[properties.size()];
 		for (int i = 0; i < properties.size(); i++) {
@@ -613,10 +839,22 @@ public class BusinessClass extends AbstractModelElement {
 		return results;
 	}
 
+	/**
+	 * @return
+	 */
+	/* (non-Javadoc)
+	 * @see com.mqfdy.code.model.IModelElement#getParent()
+	 */
 	public AbstractModelElement getParent() {
 		return this.belongPackage.getEntityPackage();
 	}
 
+	/**
+	 * @return
+	 */
+	/* (non-Javadoc)
+	 * @see com.mqfdy.code.model.IModelElement#getChildren()
+	 */
 	public List<SolidifyPackage> getChildren() {
 		List<SolidifyPackage> children = new ArrayList<SolidifyPackage>();
 
@@ -636,7 +874,11 @@ public class BusinessClass extends AbstractModelElement {
 	}
 
 	/**
-	 * 判断业务实体是否包含主键属性
+	 * 判断业务实体是否包含主键属性.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean hasPkProperty() {
 		boolean flag = false;
@@ -648,6 +890,13 @@ public class BusinessClass extends AbstractModelElement {
 		return flag;
 	}
 
+	/**
+	 * Gets the pk property.
+	 *
+	 * @author mqfdy
+	 * @return the pk property
+	 * @Date 2018-09-03 09:00
+	 */
 	public Property getPkProperty() {
 		Property result = null;
 		for (Property pro : getProperties()) {
@@ -659,10 +908,23 @@ public class BusinessClass extends AbstractModelElement {
 		return result;
 	}
 
+	/**
+	 * Gets the pk property key.
+	 *
+	 * @author mqfdy
+	 * @return the pk property key
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getPkPropertyKey() {
 		return getPkProperty().getName();
 	}
 
+	/**
+	 * @return
+	 */
+	/* (non-Javadoc)
+	 * @see com.mqfdy.code.model.AbstractModelElement#getFullName()
+	 */
 	public String getFullName() {
 		if (this.getParent() != null) {
 			return this.getParent().getFullName() + ".po." + this.getName();
@@ -672,6 +934,12 @@ public class BusinessClass extends AbstractModelElement {
 
 	}
 
+	/**
+	 * @param dest
+	 */
+	/* (non-Javadoc)
+	 * @see com.mqfdy.code.model.AbstractModelElement#copy(com.mqfdy.code.model.AbstractModelElement)
+	 */
 	protected void copy(AbstractModelElement dest) {
 		super.copy(dest);
 		BusinessClass destBc = ((BusinessClass) dest);
@@ -693,18 +961,36 @@ public class BusinessClass extends AbstractModelElement {
 
 	}
 
+	/**
+	 * @return
+	 */
+	/* (non-Javadoc)
+	 * @see com.mqfdy.code.model.AbstractModelElement#clone()
+	 */
 	public BusinessClass clone() {
 		BusinessClass bc = new BusinessClass();
 		copy(bc);
 		return bc;
 	}
 
+	/**
+	 * @return
+	 */
+	/* (non-Javadoc)
+	 * @see com.mqfdy.code.model.AbstractModelElement#cloneChangeId()
+	 */
 	public BusinessClass cloneChangeId() {
 		BusinessClass bc = new BusinessClass();
 		copyChangeId(bc);
 		return bc;
 	}
 
+	/**
+	 * @param dest
+	 */
+	/* (non-Javadoc)
+	 * @see com.mqfdy.code.model.AbstractModelElement#copyChangeId(com.mqfdy.code.model.AbstractModelElement)
+	 */
 	protected void copyChangeId(AbstractModelElement dest) {
 		super.copyChangeId(dest);
 		BusinessClass destBc = ((BusinessClass) dest);

@@ -8,27 +8,49 @@ import com.mqfdy.code.model.PKProperty;
 import com.mqfdy.code.model.PersistenceProperty;
 import com.mqfdy.code.model.Property;
 
+// TODO: Auto-generated Javadoc
 /**
- * 重构操作分析
- * 
+ * 重构操作分析.
+ *
  * @author mqfdy
  */
 @Deprecated
 public class OperationInfoAnalyzer {
 
+	/** The old one. */
 	private Object oldOne;// 原对象
+	
+	/** The new one. */
 	private Object newOne;// 新对象
+	
+	/** The infos. */
 	private List<OperationInfo> infos = new ArrayList<OperationInfo>();
 
-	/** 无参构造 */
+	/**
+	 * 无参构造.
+	 */
 	public OperationInfoAnalyzer() {
 	}
 
+	/**
+	 * Instantiates a new operation info analyzer.
+	 *
+	 * @param oldOne
+	 *            the old one
+	 * @param newOne
+	 *            the new one
+	 */
 	public OperationInfoAnalyzer(Object oldOne, Object newOne) {
 		this.oldOne = oldOne;
 		this.newOne = newOne;
 	}
 
+	/**
+	 * Analyse.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void analyse() {
 		// 如果重构的对象时业务实体
 		if (oldOne instanceof BusinessClass && newOne instanceof BusinessClass) {
@@ -69,10 +91,16 @@ public class OperationInfoAnalyzer {
 	}
 
 	/**
-	 * 分析业务实体中的属性操作信息
-	 * 
+	 * 分析业务实体中的属性操作信息.
+	 *
+	 * @author mqfdy
 	 * @param oldBps
+	 *            the old bps
 	 * @param newBps
+	 *            the new bps
+	 * @param oldBc
+	 *            the old bc
+	 * @Date 2018-09-03 09:00
 	 */
 	private void generateBpInfo(List<Property> oldBps, List<Property> newBps,
 			BusinessClass oldBc) {
@@ -115,10 +143,16 @@ public class OperationInfoAnalyzer {
 	}
 
 	/**
-	 * 根据属性被修改情况统计信息 主键到普通属性的改变，可被分解为新增主键和删除普通属性 普通属性到主键的改变，可被分解为删除主键和新增普通属性
-	 * 
+	 * 根据属性被修改情况统计信息 主键到普通属性的改变，可被分解为新增主键和删除普通属性 普通属性到主键的改变，可被分解为删除主键和新增普通属性.
+	 *
+	 * @author mqfdy
 	 * @param oldProperty
+	 *            the old property
 	 * @param newProperty
+	 *            the new property
+	 * @param oldBc
+	 *            the old bc
+	 * @Date 2018-09-03 09:00
 	 */
 	private void propertyModified(Property oldProperty, Property newProperty,
 			BusinessClass oldBc) {
@@ -203,12 +237,20 @@ public class OperationInfoAnalyzer {
 	}
 
 	/**
-	 * 生成具体的修改操作OperationInfo对象
-	 * 
+	 * 生成具体的修改操作OperationInfo对象.
+	 *
+	 * @author mqfdy
 	 * @param type
+	 *            the type
 	 * @param target
+	 *            the target
 	 * @param oldValue
+	 *            the old value
 	 * @param newValue
+	 *            the new value
+	 * @param belongBc
+	 *            the belong bc
+	 * @Date 2018-09-03 09:00
 	 */
 	private void generateInfo(String type, String target, Object oldValue,
 			Object newValue, BusinessClass belongBc) {
@@ -222,10 +264,25 @@ public class OperationInfoAnalyzer {
 
 	}
 
+	/**
+	 * Gets the infos.
+	 *
+	 * @author mqfdy
+	 * @return the infos
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<OperationInfo> getInfos() {
 		return infos;
 	}
 
+	/**
+	 * Sets the infos.
+	 *
+	 * @author mqfdy
+	 * @param infos
+	 *            the new infos
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setInfos(List<OperationInfo> infos) {
 		this.infos = infos;
 	}

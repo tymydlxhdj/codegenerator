@@ -45,18 +45,47 @@ import com.mqfdy.code.model.ModelPackage;
 import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.graph.Diagram;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FindObjectResultPage.
+ *
+ * @author mqfdy
+ */
 public class FindObjectResultPage extends Composite {
 
+	/** The table viewer. */
 	private TableViewer tableViewer;
+	
+	/** The table. */
 	private Table table;
+	
+	/** The result. */
 	private List<AbstractModelElement> result;
+	
+	/** The file path. */
 	private String filePath;
 	
+	/**
+	 * Instantiates a new find object result page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 */
 	public FindObjectResultPage(Composite parent, int style) {
 		super(parent, style);
 		createContents(this);
 	}
 
+	/**
+	 * Creates the contents.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContents(Composite composite) {
 		GridData gridData = new GridData();
 		gridData.horizontalAlignment = SWT.FILL;
@@ -258,20 +287,50 @@ public class FindObjectResultPage extends Composite {
 		});
 	}
 
+	/**
+	 * Sets the data.
+	 *
+	 * @author mqfdy
+	 * @param result
+	 *            the new data
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setData(List<AbstractModelElement> result) {
 		this.result = result;
 		tableViewer.setInput(result);
 		tableViewer.refresh();
 	}
 
+	/**
+	 * Refresh.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void refresh() {
 		tableViewer.setInput(result);
 		tableViewer.refresh();
 	}
 
+	/**
+	 * Gets the result.
+	 *
+	 * @author mqfdy
+	 * @return the result
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<AbstractModelElement> getResult() {
 		return result;
 	}
+	
+	/**
+	 * Sets the file path.
+	 *
+	 * @author mqfdy
+	 * @param filePath
+	 *            the new file path
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}

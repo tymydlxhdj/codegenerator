@@ -9,23 +9,40 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 import com.mqfdy.code.designer.editor.utils.Logger;
 import com.mqfdy.code.designer.models.BusinessModelManager;
 
+// TODO: Auto-generated Javadoc
 /**
- * 属性页
- * 
+ * 属性页.
+ *
  * @author mqfdy
- * 
  */
 public class BusinessPropertySheetPage extends PropertySheetPage {
 
+	/** The business model manager. */
 	// private static Tree tree;
 	private BusinessModelManager businessModelManager;
+	
+	/** The component count. */
 	public static Map<String, Integer> componentCount = new HashMap<String, Integer>();
 
+	/**
+	 * Instantiates a new business property sheet page.
+	 *
+	 * @param businessModelManager
+	 *            the business model manager
+	 */
 	public BusinessPropertySheetPage(BusinessModelManager businessModelManager) {
 		super();
 		this.businessModelManager = businessModelManager;
 	}
 
+	/**
+	 * Adds the component.
+	 *
+	 * @author mqfdy
+	 * @param componentName
+	 *            the component name
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void addComponent(String componentName) {
 		if (componentCount.containsKey(componentName)) {
 			Integer count = componentCount.get(componentName);
@@ -36,6 +53,15 @@ public class BusinessPropertySheetPage extends PropertySheetPage {
 		}
 	}
 
+	/**
+	 * Gets the component exist count.
+	 *
+	 * @author mqfdy
+	 * @param componentName
+	 *            the component name
+	 * @return the component exist count
+	 * @Date 2018-09-03 09:00
+	 */
 	public static int getComponentExistCount(String componentName) {
 		int count = 0;
 		if (componentCount.containsKey(componentName)) {
@@ -44,10 +70,26 @@ public class BusinessPropertySheetPage extends PropertySheetPage {
 		return count;
 	}
 
+	/**
+	 * Reset count.
+	 *
+	 * @author mqfdy
+	 * @param initMap
+	 *            the init map
+	 * @Date 2018-09-03 09:00
+	 */
 	public static void resetCount(Map<String, Integer> initMap) {
 		componentCount = initMap;
 	}
 
+	/**
+	 * Creates the control.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public void createControl(Composite parent) {
 		// TODO Auto-generated method stub

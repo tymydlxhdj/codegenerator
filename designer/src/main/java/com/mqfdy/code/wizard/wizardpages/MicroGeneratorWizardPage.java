@@ -37,27 +37,60 @@ import com.mqfdy.code.resource.validator.ValidatorUtil;
 import com.mqfdy.code.reverse.DataSourceInfo;
 import com.mqfdy.code.reverse.utils.ReverseUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MicroGeneratorWizardPage.
+ *
+ * @author mqfdy
+ */
 public class MicroGeneratorWizardPage extends WizardPage {
 	
-	/**
-	 * 标签页对象
-	 */
+	/** 标签页对象. */
 	private TabFolder tabFolder;
+	
+	/** The os page. */
 	private GeneratorObjectSelectPage osPage;
+	
+	/** The p page. */
 	private MicroParametersPage pPage;
+	
+	/** The business object model. */
 	private BusinessObjectModel businessObjectModel;
+	
+	/** The project. */
 	private IProject project;
+	
+	/** The data source list. */
 	private List<DataSourceInfo> dataSourceList;//数据库连接
 	
+	/** The package name. */
 	private String packageName;
 
 
+	/**
+	 * Instantiates a new micro generator wizard page.
+	 *
+	 * @param pageName
+	 *            the page name
+	 * @param project
+	 *            the project
+	 * @param businessObjectModel
+	 *            the business object model
+	 */
 	public MicroGeneratorWizardPage(String pageName,IProject project, BusinessObjectModel businessObjectModel) {
 		super(pageName);
 		this.project = project;
 		this.businessObjectModel = businessObjectModel;
 	}
 
+	/**
+	 * Creates the control.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		// 初始化窗口
@@ -83,7 +116,8 @@ public class MicroGeneratorWizardPage extends WizardPage {
 	}
 	
 	/**
-	 * 执行DDL中的SQL脚本
+	 * 执行DDL中的SQL脚本.
+	 *
 	 * @author mqfdy
 	 * @return List<String> 执行的语句
 	 */
@@ -194,6 +228,13 @@ public class MicroGeneratorWizardPage extends WizardPage {
 		return excuteDDLSentences;
 	}
 	
+	/**
+	 * Validate package.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	@SuppressWarnings("static-access")
 	public boolean validatePackage(){
 		String errorMessage = null;
@@ -210,6 +251,13 @@ public class MicroGeneratorWizardPage extends WizardPage {
 		return errorMessage != null;
 	}
 	
+	/**
+	 * Validate.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean validate(){
 		if(validatePackage()){
 			setPageComplete(false);
@@ -267,64 +315,181 @@ public class MicroGeneratorWizardPage extends WizardPage {
 	}
 	
 
+	/**
+	 * Gets the business object model.
+	 *
+	 * @author mqfdy
+	 * @return the business object model
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessObjectModel getBusinessObjectModel() {
 		return businessObjectModel;
 	}
 
+	/**
+	 * Sets the business object model.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the new business object model
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBusinessObjectModel(BusinessObjectModel businessObjectModel) {
 		this.businessObjectModel = businessObjectModel;
 	}
 
+	/**
+	 * Gets the project.
+	 *
+	 * @author mqfdy
+	 * @return the project
+	 * @Date 2018-09-03 09:00
+	 */
 	public IProject getProject() {
 		return project;
 	}
 
+	/**
+	 * Sets the project.
+	 *
+	 * @author mqfdy
+	 * @param project
+	 *            the new project
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setProject(IProject project) {
 		this.project = project;
 	}
 
+	/**
+	 * Gets the data source list.
+	 *
+	 * @author mqfdy
+	 * @return the data source list
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<DataSourceInfo> getDataSourceList() {
 		return dataSourceList;
 	}
 
+	/**
+	 * Sets the data source list.
+	 *
+	 * @author mqfdy
+	 * @param dataSourceList
+	 *            the new data source list
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setDataSourceList(List<DataSourceInfo> dataSourceList) {
 		this.dataSourceList = dataSourceList;
 	}
 
+	/**
+	 * Gets the tab folder.
+	 *
+	 * @author mqfdy
+	 * @return the tab folder
+	 * @Date 2018-09-03 09:00
+	 */
 	public TabFolder getTabFolder() {
 		return tabFolder;
 	}
 
+	/**
+	 * Sets the tab folder.
+	 *
+	 * @author mqfdy
+	 * @param tabFolder
+	 *            the new tab folder
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setTabFolder(TabFolder tabFolder) {
 		this.tabFolder = tabFolder;
 	}
 
+	/**
+	 * Gets the os page.
+	 *
+	 * @author mqfdy
+	 * @return the os page
+	 * @Date 2018-09-03 09:00
+	 */
 	public GeneratorObjectSelectPage getOsPage() {
 		return osPage;
 	}
 
+	/**
+	 * Sets the os page.
+	 *
+	 * @author mqfdy
+	 * @param osPage
+	 *            the new os page
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setOsPage(GeneratorObjectSelectPage osPage) {
 		this.osPage = osPage;
 	}
 
+	/**
+	 * Gets the p page.
+	 *
+	 * @author mqfdy
+	 * @return the p page
+	 * @Date 2018-09-03 09:00
+	 */
 	public MicroParametersPage getpPage() {
 		return pPage;
 	}
 	
+	/**
+	 * Gets the parameters page.
+	 *
+	 * @author mqfdy
+	 * @return the parameters page
+	 * @Date 2018-09-03 09:00
+	 */
 	public ParametersPage getParametersPage(){
 		return pPage;
 	}
 
+	/**
+	 * Sets the p page.
+	 *
+	 * @author mqfdy
+	 * @param pPage
+	 *            the new p page
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setpPage(MicroParametersPage pPage) {
 		this.pPage = pPage;
 	}
+	
+	/**
+	 * Gets the object select page.
+	 *
+	 * @author mqfdy
+	 * @return the object select page
+	 * @Date 2018-09-03 09:00
+	 */
 	public GeneratorObjectSelectPage getObjectSelectPage() {
 		return osPage;
 	}
+	
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canFlipToNextPage() {
 		return false;
 	}
+	
+	/**
+	 * Gets the pars map.
+	 *
+	 * @author mqfdy
+	 * @return the pars map
+	 * @Date 2018-09-03 09:00
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Map getParsMap(){
 		Map map = new HashMap();
@@ -340,9 +505,13 @@ public class MicroGeneratorWizardPage extends WizardPage {
 		map.put("isOverride",pPage.getSe() == 0 ? false: true);
 		return map;
 	}
+	
 	/**
-	 * 0代表“提示用户确认”，2代表“直接覆盖”
-	 * @return
+	 * 0代表“提示用户确认”，2代表“直接覆盖”.
+	 *
+	 * @author mqfdy
+	 * @return the option
+	 * @Date 2018-09-03 09:00
 	 */
 	public int getOption() {
 		if(pPage.getSe() > 0){
@@ -350,18 +519,37 @@ public class MicroGeneratorWizardPage extends WizardPage {
 		}
 		return 0;
 	}
+	
 	/**
-	 * 获取输出目录路径
-	 * @return
+	 * 获取输出目录路径.
+	 *
+	 * @author mqfdy
+	 * @return the output folder path
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getOutputFolderPath(){
 		return pPage.getCurPath();
 	}
 
+	/**
+	 * Gets the package name.
+	 *
+	 * @author mqfdy
+	 * @return the package name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getPackageName() {
 		return packageName;
 	}
 
+	/**
+	 * Sets the package name.
+	 *
+	 * @author mqfdy
+	 * @param packageName
+	 *            the new package name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPackageName(String packageName) {
 		this.packageName = packageName;
 		businessObjectModel.setNameSpace(packageName);

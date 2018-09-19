@@ -15,9 +15,14 @@ import java.util.Iterator;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * A <code>ReadOnlyIterator</code> wraps another <code>Iterator</code>
- * and removes support for #remove().
+ * A <code>ReadOnlyIterator</code> wraps another <code>Iterator</code> and
+ * removes support for #remove().
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class ReadOnlyIterator<E>
 	implements Iterator<E>
@@ -25,16 +30,21 @@ public class ReadOnlyIterator<E>
 	private final Iterator<? extends E> nestedIterator;
 
 	/**
-	 * Construct an iterator on the specified collection that
-	 * disallows removes.
+	 * Construct an iterator on the specified collection that disallows removes.
+	 *
+	 * @param c
+	 *            the c
 	 */
 	public ReadOnlyIterator(Collection<? extends E> c) {
 		this(c.iterator());
 	}
 
 	/**
-	 * Construct an iterator with the specified nested iterator
-	 * and disallow removes.
+	 * Construct an iterator with the specified nested iterator and disallow
+	 * removes.
+	 *
+	 * @param nestedIterator
+	 *            the nested iterator
 	 */
 	public ReadOnlyIterator(Iterator<? extends E> nestedIterator) {
 		super();

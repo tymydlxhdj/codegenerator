@@ -28,38 +28,100 @@ import com.mqfdy.code.model.SolidifyPackage;
 import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class BusinessClassInheritanceRelationEditDialog.
+ *
+ * @author mqfdy
+ */
 public class BusinessClassInheritanceRelationEditDialog extends
 		ModelElementEditorDialog implements IBusinessClassEditorPage {
+	
+	/** The inheritance. */
 	private Inheritance inheritance;// 当前关系类
+	
+	/** The child class. */
 	BusinessClass childClass = null;// 关系相关BusinessClass
+	
+	/** The parent class. */
 	BusinessClass parentClass = null;// 关系相关BusinessClass
 
+	/** The group persist. */
 	private Group groupPersist; // 持久化策略区域
+	
+	/** The lbl 5. */
 	Label lbl5;
+	
+	/** The lbl 6. */
 	Label lbl6;
+	
+	/** The btn A. */
 	Button btnA;
+	
+	/** The btn B. */
 	Button btnB;
+	
+	/** The btn find A. */
 	Button btnFindA;
+	
+	/** The btn find B. */
 	Button btnFindB;
+	
+	/** The text ass name. */
 	private Text textAssName;// 关系名
+	
+	/** The text ass disp name. */
 	private Text textAssDispName;// 关系显示名
+	
+	/** The text entity A. */
 	private Text textEntityA;// 实体A
+	
+	/** The text entity B. */
 	private Text textEntityB;// 实体B
+	
+	/** The styled text desc. */
 	StyledText styledTextDesc;
+	
+	/** The check one table. */
 	private Button checkOneTable;// 父子实体类生成同一张表
+	
+	/** The check two table. */
 	private Button checkTwoTable;// 父类和子类各生成表
+	
+	/** The event type. */
 	private int eventType;
 
+	/** The title operation. */
 	private String TITLE_OPERATION = "";
+	
+	/** The title type. */
 	private String TITLE_TYPE = "继承关系";
 
+	/** The canvas. */
 	BusinessClassCanvas canvas;// 上方画布
+	
+	/** The manager. */
 	BusinessModelManager manager = BusinessModelUtil
 			.getEditorBusinessModelManager();
 
+	/** The Constant DIALOG_WIDTH. */
 	public static final int DIALOG_WIDTH = 700;
+	
+	/** The Constant DIALOG_HEIGTH. */
 	public static final int DIALOG_HEIGTH = 650;
 
+	/**
+	 * Instantiates a new business class inheritance relation edit dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param inheritance
+	 *            the inheritance
+	 * @param parent
+	 *            the parent
+	 * @param eventType
+	 *            the event type
+	 */
 	public BusinessClassInheritanceRelationEditDialog(Shell parentShell,
 			Inheritance inheritance, AbstractModelElement parent, int eventType) {
 		super(parentShell);
@@ -85,12 +147,24 @@ public class BusinessClassInheritanceRelationEditDialog extends
 		this.eventType = eventType;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected Point getInitialSize() {
 		// TODO Auto-generated method stub
 		return new Point(DIALOG_WIDTH, DIALOG_HEIGTH);
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		/*
@@ -104,6 +178,14 @@ public class BusinessClassInheritanceRelationEditDialog extends
 		return parent;
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 
@@ -118,6 +200,9 @@ public class BusinessClassInheritanceRelationEditDialog extends
 				ImageKeys.IMG_MODEL_TYPE_INHERITANCE));
 	}
 
+	/**
+	 * 
+	 */
 	public void create() {
 		super.create();
 		if (BusinessModelEvent.MODEL_ELEMENT_ADD == eventType) {
@@ -131,6 +216,14 @@ public class BusinessClassInheritanceRelationEditDialog extends
 
 	}
 
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent(Composite parent) {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
@@ -335,8 +428,11 @@ public class BusinessClassInheritanceRelationEditDialog extends
 //	}
 
 	/**
-	 * 初始化数据
-	 */
+ * 初始化数据.
+ *
+ * @author mqfdy
+ * @Date 2018-09-03 09:00
+ */
 	private void initData() {
 		if (inheritance != null) {
 
@@ -378,6 +474,12 @@ public class BusinessClassInheritanceRelationEditDialog extends
 
 	}
 
+	/**
+	 * Fill fields A.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void fillFieldsA() {
 		if (childClass != null) {
 			btnA.setText("子实体");
@@ -386,6 +488,12 @@ public class BusinessClassInheritanceRelationEditDialog extends
 		}
 	}
 
+	/**
+	 * Fill fields B.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void fillFieldsB() {
 		if (parentClass != null) {
 			btnB.setText("父实体");
@@ -395,9 +503,12 @@ public class BusinessClassInheritanceRelationEditDialog extends
 	}
 
 	/**
-	 * 控制创建外键区域显示与否，true为显示；false为不显示
-	 * 
+	 * 控制创建外键区域显示与否，true为显示；false为不显示.
+	 *
+	 * @author mqfdy
 	 * @param b
+	 *            the new dis play create FK
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setDisPlayCreateFK(boolean b) {
 		((GridData) checkOneTable.getLayoutData()).exclude = !b;
@@ -407,6 +518,13 @@ public class BusinessClassInheritanceRelationEditDialog extends
 		groupPersist.layout();
 	}
 
+	/**
+	 * Gets the business class A.
+	 *
+	 * @author mqfdy
+	 * @return the business class A
+	 * @Date 2018-09-03 09:00
+	 */
 	private BusinessClass getBusinessClassA() {
 		if (inheritance.getChildClass() == null) {
 			return null;
@@ -419,6 +537,13 @@ public class BusinessClassInheritanceRelationEditDialog extends
 		return childClass;
 	}
 
+	/**
+	 * Gets the business class B.
+	 *
+	 * @author mqfdy
+	 * @return the business class B
+	 * @Date 2018-09-03 09:00
+	 */
 	private BusinessClass getBusinessClassB() {
 		if (inheritance.getParentClass() == null) {
 			return null;
@@ -431,15 +556,28 @@ public class BusinessClassInheritanceRelationEditDialog extends
 		return parentClass;
 	}
 
+	/**
+	 * Gets the inheritance.
+	 *
+	 * @author mqfdy
+	 * @return the inheritance
+	 * @Date 2018-09-03 09:00
+	 */
 	public Inheritance getInheritance() {
 		return inheritance;
 	}
 
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		// 初始化数据
 		initData();
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		if (textAssName.getText().trim().length() == 0) {
 			this.setErrorMessage(ERROR_MESSAGE_NAME_NULLABLE);
@@ -467,6 +605,9 @@ public class BusinessClassInheritanceRelationEditDialog extends
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 		// 保存数据
 		inheritance.setName(textAssName.getText().trim());
@@ -487,6 +628,14 @@ public class BusinessClassInheritanceRelationEditDialog extends
 				inheritance));
 	}
 
+	/**
+	 * Creates the buttons for button bar.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void createButtonsForButtonBar(Composite composite) {
 		// if(operationType.equals(OPERATION_TYPE_EDIT))
 		// createButton(composite, 12000, "重构", true);
@@ -498,6 +647,9 @@ public class BusinessClassInheritanceRelationEditDialog extends
 //		createButton(composite, APPLY_ID, APPLY_LABEL, true);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		if (validateAllInput() == true) {
@@ -506,6 +658,12 @@ public class BusinessClassInheritanceRelationEditDialog extends
 		}
 	}
 
+	/**
+	 * Applyl pressed.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void applylPressed() {
 		if (validateAllInput() == true) {
 			updateTheEditingElement();
@@ -514,6 +672,14 @@ public class BusinessClassInheritanceRelationEditDialog extends
 
 	}
 
+	/**
+	 * Button pressed.
+	 *
+	 * @author mqfdy
+	 * @param buttonId
+	 *            the button id
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void buttonPressed(int buttonId) {
 //		if (APPLY_ID == buttonId) {
@@ -523,11 +689,25 @@ public class BusinessClassInheritanceRelationEditDialog extends
 //		}
 	}
 
+	/**
+	 * Validate all input.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean validateAllInput() {
 		boolean isOk = this.validateInput();
 		return isOk;
 	}
 
+	/**
+	 * Gets the title.
+	 *
+	 * @author mqfdy
+	 * @return the title
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getTITLE() {
 		return TITLE_OPERATION + TITLE_TYPE;
 	}

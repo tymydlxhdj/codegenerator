@@ -42,8 +42,9 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.util.ClassUtils;
 
+// TODO: Auto-generated Javadoc
 /**
- * A text/code generator class
+ * A text/code generator class.
  *
  * @author <a href="mailto:leon@opticode.co.za">Leon Messerschmidt</a>
  * @author <a href="mailto:jvanzyl@apache.org">Jason van Zyl</a>
@@ -119,19 +120,25 @@ public class Generator
     }
 
     /**
-     * Create a new generator object with default properties.
-     *
-     * @return Generator generator used in the control context.
-     */
+	 * Create a new generator object with default properties.
+	 *
+	 * @author mqfdy
+	 * @return Generator generator used in the control context.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static Generator getInstance()
     {
         return instance;
     }
 
     /**
-     * Set the velocity engine.
-     * @param ve
-     */
+	 * Set the velocity engine.
+	 *
+	 * @author mqfdy
+	 * @param ve
+	 *            the new velocity engine
+	 * @Date 2018-9-3 11:38:32
+	 */
     public void setVelocityEngine(VelocityEngine ve)
     {
         this.ve = ve;
@@ -187,8 +194,11 @@ public class Generator
     }
 
     /**
-     * Set default properties.
-     */
+	 * Set default properties.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:32
+	 */
     protected void setDefaultProps()
     {
         ClassLoader classLoader = VelocityEngine.class.getClassLoader();
@@ -217,73 +227,94 @@ public class Generator
     }
 
     /**
-     * Set the template path, where Texen will look
-     * for Velocity templates.
-     *
-     * @param templatePath template path for velocity templates.
-     */
+	 * Set the template path, where Texen will look for Velocity templates.
+	 *
+	 * @author mqfdy
+	 * @param templatePath
+	 *            template path for velocity templates.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public void setTemplatePath(String templatePath)
     {
         props.put(TEMPLATE_PATH, templatePath);
     }
 
     /**
-     * Get the template path.
-     *
-     * @return String template path for velocity templates.
-     */
+	 * Get the template path.
+	 *
+	 * @author mqfdy
+	 * @return String template path for velocity templates.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public String getTemplatePath()
     {
         return props.getProperty(TEMPLATE_PATH);
     }
 
     /**
-     * Set the output path for the generated
-     * output.
-     * @param outputPath
-     */
+	 * Set the output path for the generated output.
+	 *
+	 * @author mqfdy
+	 * @param outputPath
+	 *            the new output path
+	 * @Date 2018-9-3 11:38:32
+	 */
     public void setOutputPath(String outputPath)
     {
         props.put(OUTPUT_PATH, outputPath);
     }
 
     /**
-     * Get the output path for the generated
-     * output.
-     *
-     * @return String output path for texen output.
-     */
+	 * Get the output path for the generated output.
+	 *
+	 * @author mqfdy
+	 * @return String output path for texen output.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public String getOutputPath()
     {
         return props.getProperty(OUTPUT_PATH);
     }
 
     /**
-     * Set the output encoding.
-     * @param outputEncoding
-     */
+	 * Set the output encoding.
+	 *
+	 * @author mqfdy
+	 * @param outputEncoding
+	 *            the new output encoding
+	 * @Date 2018-9-3 11:38:32
+	 */
     public void setOutputEncoding(String outputEncoding)
     {
         this.outputEncoding = outputEncoding;
     }
 
     /**
-     * Set the input (template) encoding.
-     * @param inputEncoding
-     */
+	 * Set the input (template) encoding.
+	 *
+	 * @author mqfdy
+	 * @param inputEncoding
+	 *            the new input encoding
+	 * @Date 2018-9-3 11:38:32
+	 */
     public void setInputEncoding(String inputEncoding)
     {
         this.inputEncoding = inputEncoding;
     }
 
     /**
-     * Returns a writer, based on encoding and path.
-     *
-     * @param path      path to the output file
-     * @param encoding  output encoding
-     * @return A Writer for this generator.
-     * @throws Exception
-     */
+	 * Returns a writer, based on encoding and path.
+	 *
+	 * @author mqfdy
+	 * @param path
+	 *            path to the output file
+	 * @param encoding
+	 *            output encoding
+	 * @return A Writer for this generator.
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:32
+	 */
     public Writer getWriter(String path, String encoding) throws Exception {
         Writer writer;
         if (encoding == null || encoding.length() == 0 || encoding.equals("8859-1") || encoding.equals("8859_1")) {
@@ -297,13 +328,18 @@ public class Generator
     }
 
     /**
-     * Returns a template, based on encoding and path.
-     *
-     * @param templateName  name of the template
-     * @param encoding      template encoding
-     * @return A Template.
-     * @throws Exception
-     */
+	 * Returns a template, based on encoding and path.
+	 *
+	 * @author mqfdy
+	 * @param templateName
+	 *            name of the template
+	 * @param encoding
+	 *            template encoding
+	 * @return A Template.
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:32
+	 */
     public Template getTemplate(String templateName, String encoding) throws Exception {
         Template template;
         if (encoding == null || encoding.length() == 0 || encoding.equals("8859-1") || encoding.equals("8859_1")) {
@@ -316,15 +352,20 @@ public class Generator
     }
 
     /**
-     * Parse an input and write the output to an output file.  If the
-     * output file parameter is null or an empty string the result is
-     * returned as a string object.  Otherwise an empty string is returned.
-     *
-     * @param inputTemplate input template
-     * @param outputFile output file
-     * @return The parsed file.
-     * @throws Exception
-     */
+	 * Parse an input and write the output to an output file. If the output file
+	 * parameter is null or an empty string the result is returned as a string
+	 * object. Otherwise an empty string is returned.
+	 *
+	 * @author mqfdy
+	 * @param inputTemplate
+	 *            input template
+	 * @param outputFile
+	 *            output file
+	 * @return The parsed file.
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:32
+	 */
     public String parse (String inputTemplate, String outputFile)
         throws Exception
     {
@@ -332,18 +373,25 @@ public class Generator
     }
 
     /**
-     * Parse an input and write the output to an output file.  If the
-     * output file parameter is null or an empty string the result is
-     * returned as a string object.  Otherwise an empty string is returned.
-     * You can add objects to the context with the objs Hashtable.
-     *
-     * @param inputTemplate input template
-     * @param outputFile output file
-     * @param objectID id for object to be placed in the control context
-     * @param object object to be placed in the context
-     * @return String generated output from velocity
-     * @throws Exception
-     */
+	 * Parse an input and write the output to an output file. If the output file
+	 * parameter is null or an empty string the result is returned as a string
+	 * object. Otherwise an empty string is returned. You can add objects to the
+	 * context with the objs Hashtable.
+	 *
+	 * @author mqfdy
+	 * @param inputTemplate
+	 *            input template
+	 * @param outputFile
+	 *            output file
+	 * @param objectID
+	 *            id for object to be placed in the control context
+	 * @param object
+	 *            object to be placed in the context
+	 * @return String generated output from velocity
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:32
+	 */
     public String parse (String inputTemplate,
                          String outputFile,
                          String objectID,
@@ -352,21 +400,31 @@ public class Generator
     {
         return parse(inputTemplate, null, outputFile, null, objectID, object);
     }
+    
     /**
-     * Parse an input and write the output to an output file.  If the
-     * output file parameter is null or an empty string the result is
-     * returned as a string object.  Otherwise an empty string is returned.
-     * You can add objects to the context with the objs Hashtable.
-     *
-     * @param inputTemplate input template
-     * @param inputEncoding template encoding
-     * @param outputFile output file
-     * @param outputEncoding outputEncoding encoding of output file
-     * @param objectID id for object to be placed in the control context
-     * @param object object to be placed in the context
-     * @return String generated output from velocity
-     * @throws Exception
-     */
+	 * Parse an input and write the output to an output file. If the output file
+	 * parameter is null or an empty string the result is returned as a string
+	 * object. Otherwise an empty string is returned. You can add objects to the
+	 * context with the objs Hashtable.
+	 *
+	 * @author mqfdy
+	 * @param inputTemplate
+	 *            input template
+	 * @param inputEncoding
+	 *            template encoding
+	 * @param outputFile
+	 *            output file
+	 * @param outputEncoding
+	 *            outputEncoding encoding of output file
+	 * @param objectID
+	 *            id for object to be placed in the control context
+	 * @param object
+	 *            object to be placed in the context
+	 * @return String generated output from velocity
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:32
+	 */
     public String parse (String inputTemplate,
                          String inputEncoding,
                          String outputFile,
@@ -425,14 +483,19 @@ public class Generator
     }
 
     /**
-     * Parse the control template and merge it with the control
-     * context. This is the starting point in texen.
-     *
-     * @param controlTemplate control template
-     * @param controlContext control context
-     * @return String generated output
-     * @throws Exception
-     */
+	 * Parse the control template and merge it with the control context. This is
+	 * the starting point in texen.
+	 *
+	 * @author mqfdy
+	 * @param controlTemplate
+	 *            control template
+	 * @param controlContext
+	 *            control context
+	 * @return String generated output
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:32
+	 */
     public String parse (String controlTemplate, Context controlContext)
         throws Exception
     {
@@ -449,13 +512,16 @@ public class Generator
 
 
     /**
-     * Create a new context and fill it with the elements of the
-     * objs Hashtable.  Default objects and objects that comes from
-     * the properties of this Generator object is also added.
-     *
-     * @param objs objects to place in the control context
-     * @return Context context filled with objects
-     */
+	 * Create a new context and fill it with the elements of the objs Hashtable.
+	 * Default objects and objects that comes from the properties of this
+	 * Generator object is also added.
+	 *
+	 * @author mqfdy
+	 * @param objs
+	 *            objects to place in the control context
+	 * @return Context context filled with objects
+	 * @Date 2018-9-3 11:38:32
+	 */
     protected Context getContext (Hashtable objs)
     {
         fillContextHash (controlContext,objs);
@@ -463,11 +529,15 @@ public class Generator
     }
 
     /**
-     * Add all the contents of a Hashtable to the context.
-     *
-     * @param context context to fill with objects
-     * @param objs source of objects
-     */
+	 * Add all the contents of a Hashtable to the context.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            context to fill with objects
+	 * @param objs
+	 *            source of objects
+	 * @Date 2018-9-3 11:38:32
+	 */
     protected void fillContextHash (Context context, Hashtable objs)
     {
         Enumeration enumeration = objs.keys();
@@ -479,10 +549,13 @@ public class Generator
     }
 
     /**
-     * Add properties that will aways be in the context by default
-     *
-     * @param context control context to fill with default values.
-     */
+	 * Add properties that will aways be in the context by default.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            control context to fill with default values.
+	 * @Date 2018-9-3 11:38:32
+	 */
     protected void fillContextDefaults (Context context)
     {
         context.put ("generator", instance);
@@ -490,12 +563,14 @@ public class Generator
     }
 
     /**
-     * Add objects to the context from the current properties.
-     *
-     * @param context control context to fill with objects
-     *                that are specified in the default.properties
-     *                file
-     */
+	 * Add objects to the context from the current properties.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            control context to fill with objects that are specified in the
+	 *            default.properties file
+	 * @Date 2018-9-3 11:38:32
+	 */
     protected void fillContextProperties (Context context)
     {
         Enumeration enumeration = props.propertyNames();
@@ -525,10 +600,12 @@ public class Generator
     }
 
     /**
-     * Properly shut down the generator, right now
-     * this is simply flushing and closing the file
-     * writers that we have been holding on to.
-     */
+	 * Properly shut down the generator, right now this is simply flushing and
+	 * closing the file writers that we have been holding on to.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:32
+	 */
     public void shutdown()
     {
         Iterator iterator = writers.values().iterator();

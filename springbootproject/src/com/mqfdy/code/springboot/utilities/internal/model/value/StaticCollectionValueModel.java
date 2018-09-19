@@ -18,10 +18,16 @@ import com.mqfdy.code.springboot.utilities.internal.model.AbstractModel;
 import com.mqfdy.code.springboot.utilities.model.value.CollectionValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * Implementation of CollectionValueModel that can be used for
- * returning an iterator on a static collection, but still allows listeners to be added.
- * Listeners will NEVER be notified of any changes, because there should be none.
+ * Implementation of CollectionValueModel that can be used for returning an
+ * iterator on a static collection, but still allows listeners to be added.
+ * Listeners will NEVER be notified of any changes, because there should be
+ * none.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class StaticCollectionValueModel<E>
 	extends AbstractModel
@@ -35,6 +41,9 @@ public class StaticCollectionValueModel<E>
 
 	/**
 	 * Construct a static CollectionValueModel for the specified collection.
+	 *
+	 * @param collection
+	 *            the collection
 	 */
 	public StaticCollectionValueModel(Collection<? extends E> collection) {
 		super();

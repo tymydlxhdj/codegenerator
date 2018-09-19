@@ -1,5 +1,6 @@
 package com.mqfdy.code.generator.directive;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -27,9 +28,10 @@ package com.mqfdy.code.generator.directive;
  */
 public interface DirectiveConstants
 {
-    /** Block directive indicator */
+    
+    /** Block directive indicator. */
     public static final int BLOCK = 1;
 
-    /** Line directive indicator */
+    /** Line directive indicator. */
     public static final int LINE = 2;
 }

@@ -33,6 +33,12 @@ import com.mqfdy.code.springboot.utilities.internal.iterators.GenericIteratorWra
 import com.mqfdy.code.springboot.utilities.internal.iterators.SingleElementIterator;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CollectionTools.
+ *
+ * @author mqfdy
+ */
 public final class CollectionTools {
 
 	@SuppressWarnings("unchecked")
@@ -41,9 +47,19 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array followed by the specified object to be added.
+	 * Return a new array that contains the elements in the specified array
+	 * followed by the specified object to be added.
 	 * java.util.Arrays#add(Object[] array, Object o)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] add(E[] array, E value) {
 		int len = array.length;
@@ -56,9 +72,21 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the specified object added at the specified index.
+	 * Return a new array that contains the elements in the specified array with
+	 * the specified object added at the specified index.
 	 * java.util.Arrays#add(Object[] array, int index, Object o)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param index
+	 *            the index
+	 * @param value
+	 *            the value
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] add(E[] array, int index, E value) {
 		int len = array.length;
@@ -74,9 +102,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array followed by the specified value to be added.
-	 * java.util.Arrays#add(char[] array, char value)
+	 * Return a new array that contains the elements in the specified array
+	 * followed by the specified value to be added. java.util.Arrays#add(char[]
+	 * array, char value)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] add(char[] array, char value) {
 		int len = array.length;
@@ -89,9 +125,19 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the specified value added at the specified index.
+	 * Return a new array that contains the elements in the specified array with
+	 * the specified value added at the specified index.
 	 * java.util.Arrays#add(char[] array, int index, char value)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param index
+	 *            the index
+	 * @param value
+	 *            the value
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] add(char[] array, int index, char value) {
 		int len = array.length;
@@ -107,9 +153,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array followed by the specified value to be added.
-	 * java.util.Arrays#add(int[] array, int value)
+	 * Return a new array that contains the elements in the specified array
+	 * followed by the specified value to be added. java.util.Arrays#add(int[]
+	 * array, int value)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] add(int[] array, int value) {
 		int len = array.length;
@@ -122,9 +176,19 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the specified value added at the specified index.
+	 * Return a new array that contains the elements in the specified array with
+	 * the specified value added at the specified index.
 	 * java.util.Arrays#add(int[] array, int index, int value)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param index
+	 *            the index
+	 * @param value
+	 *            the value
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] add(int[] array, int index, int value) {
 		int len = array.length;
@@ -140,110 +204,227 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Add all the elements returned by the specified iterable
-	 * to the specified collection.
-	 * Return whether the collection changed as a result.
+	 * Add all the elements returned by the specified iterable to the specified
+	 * collection. Return whether the collection changed as a result.
 	 * java.util.Collection#addAll(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param collection
+	 *            the collection
+	 * @param iterable
+	 *            the iterable
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> boolean addAll(Collection<? super E> collection, Iterable<? extends E> iterable) {
 		return addAll(collection, iterable.iterator());
 	}
 
 	/**
-	 * Add all the elements returned by the specified iterable
-	 * to the specified collection.
-	 * Return whether the collection changed as a result.
+	 * Add all the elements returned by the specified iterable to the specified
+	 * collection. Return whether the collection changed as a result.
 	 * java.util.Collection#addAll(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param collection
+	 *            the collection
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> boolean addAll(Collection<? super E> collection, Iterable<? extends E> iterable, int size) {
 		return addAll(collection, iterable.iterator(), size);
 	}
 
 	/**
-	 * Add all the elements returned by the specified iterator
-	 * to the specified collection.
-	 * Return whether the collection changed as a result.
+	 * Add all the elements returned by the specified iterator to the specified
+	 * collection. Return whether the collection changed as a result.
 	 * java.util.Collection#addAll(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param collection
+	 *            the collection
+	 * @param iterator
+	 *            the iterator
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> boolean addAll(Collection<? super E> collection, Iterator<? extends E> iterator) {
 		return (iterator.hasNext()) ? collection.addAll(list(iterator)) : false;
 	}
 
 	/**
-	 * Add all the elements returned by the specified iterator
-	 * to the specified collection.
-	 * Return whether the collection changed as a result.
+	 * Add all the elements returned by the specified iterator to the specified
+	 * collection. Return whether the collection changed as a result.
 	 * java.util.Collection#addAll(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param collection
+	 *            the collection
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> boolean addAll(Collection<? super E> collection, Iterator<? extends E> iterator, int size) {
 		return (iterator.hasNext()) ? collection.addAll(list(iterator, size)) : false;
 	}
 
 	/**
-	 * Add all the elements in the specified array
-	 * to the specified collection.
+	 * Add all the elements in the specified array to the specified collection.
 	 * Return whether the collection changed as a result.
 	 * java.util.Collection#addAll(Object[] array)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param collection
+	 *            the collection
+	 * @param array
+	 *            the array
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> boolean addAll(Collection<? super E> collection, E[] array) {
 		return (array.length == 0) ? false : collection.addAll(Arrays.asList(array));
 	}
 
 	/**
-	 * Add all the elements returned by the specified iterable
-	 * to the specified list at the specified index.
-	 * Return whether the list changed as a result.
+	 * Add all the elements returned by the specified iterable to the specified
+	 * list at the specified index. Return whether the list changed as a result.
 	 * java.util.List#addAll(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @param index
+	 *            the index
+	 * @param iterable
+	 *            the iterable
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> boolean addAll(List<? super E> list, int index, Iterable<E> iterable) {
 		return addAll(list, index, iterable.iterator());
 	}
 
 	/**
-	 * Add all the elements returned by the specified iterable
-	 * to the specified list at the specified index.
-	 * Return whether the list changed as a result.
+	 * Add all the elements returned by the specified iterable to the specified
+	 * list at the specified index. Return whether the list changed as a result.
 	 * java.util.List#addAll(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @param index
+	 *            the index
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> boolean addAll(List<? super E> list, int index, Iterable<E> iterable, int size) {
 		return addAll(list, index, iterable.iterator(), size);
 	}
 
 	/**
-	 * Add all the elements returned by the specified iterator
-	 * to the specified list at the specified index.
-	 * Return whether the list changed as a result.
+	 * Add all the elements returned by the specified iterator to the specified
+	 * list at the specified index. Return whether the list changed as a result.
 	 * java.util.List#addAll(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @param index
+	 *            the index
+	 * @param iterator
+	 *            the iterator
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> boolean addAll(List<? super E> list, int index, Iterator<? extends E> iterator) {
 		return (iterator.hasNext()) ? list.addAll(index, list(iterator)) : false;
 	}
 
 	/**
-	 * Add all the elements returned by the specified iterator
-	 * to the specified list at the specified index.
-	 * Return whether the list changed as a result.
+	 * Add all the elements returned by the specified iterator to the specified
+	 * list at the specified index. Return whether the list changed as a result.
 	 * java.util.List#addAll(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @param index
+	 *            the index
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> boolean addAll(List<? super E> list, int index, Iterator<? extends E> iterator, int size) {
 		return (iterator.hasNext()) ? list.addAll(index, list(iterator, size)) : false;
 	}
 
 	/**
-	 * Add all the elements in the specified array
-	 * to the specified list at the specified index.
-	 * Return whether the list changed as a result.
+	 * Add all the elements in the specified array to the specified list at the
+	 * specified index. Return whether the list changed as a result.
 	 * java.util.List#addAll(Object[] array)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @param index
+	 *            the index
+	 * @param array
+	 *            the array
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> boolean addAll(List<? super E> list, int index, E[] array) {
 		return (array.length == 0) ? false : list.addAll(index, Arrays.asList(array));
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array followed by the elements
-	 * in the specified collection.
+	 * Return a new array that contains the elements in the specified array
+	 * followed by the elements in the specified collection.
 	 * java.util.Arrays#addAll(Object[] array, java.util.Collection c)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param collection
+	 *            the collection
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] addAll(E[] array, Collection<? extends E> collection) {
 		int size = collection.size();
@@ -274,50 +455,99 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array followed by the elements
-	 * in the specified iterable.
+	 * Return a new array that contains the elements in the specified array
+	 * followed by the elements in the specified iterable.
 	 * java.util.Arrays#addAll(Object[] array, java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param iterable
+	 *            the iterable
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] addAll(E[] array, Iterable<? extends E> iterable) {
 		return addAll(array, iterable.iterator());
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array followed by the elements
-	 * in the specified iterable.
+	 * Return a new array that contains the elements in the specified array
+	 * followed by the elements in the specified iterable.
 	 * java.util.Arrays#addAll(Object[] array, java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] addAll(E[] array, Iterable<? extends E> iterable, int size) {
 		return addAll(array, iterable.iterator(), size);
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array followed by the elements
-	 * in the specified iterator.
+	 * Return a new array that contains the elements in the specified array
+	 * followed by the elements in the specified iterator.
 	 * java.util.Arrays#addAll(Object[] array, java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param iterator
+	 *            the iterator
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] addAll(E[] array, Iterator<? extends E> iterator) {
 		return (iterator.hasNext()) ? addAll_(array, list(iterator)) : array;
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array followed by the elements
-	 * in the specified iterator.
+	 * Return a new array that contains the elements in the specified array
+	 * followed by the elements in the specified iterator.
 	 * java.util.Arrays#addAll(Object[] array, java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] addAll(E[] array, Iterator<? extends E> iterator, int size) {
 		return (iterator.hasNext()) ? addAll_(array, list(iterator, size)) : array;
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array 1 followed by the elements
-	 * in the specified array 2.
+	 * Return a new array that contains the elements in the specified array 1
+	 * followed by the elements in the specified array 2.
 	 * java.util.Arrays#addAll(Object[] array1, Object[] array2)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] addAll(E[] array1, E[] array2) {
 		int array2Length = array2.length;
@@ -343,10 +573,22 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * first specified array with the objects in the second
-	 * specified array added at the specified index.
-	 * java.util.Arrays#add(Object[] array1, int index, Object[] array2)
+	 * Return a new array that contains the elements in the first specified
+	 * array with the objects in the second specified array added at the
+	 * specified index. java.util.Arrays#add(Object[] array1, int index,
+	 * Object[] array2)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array1
+	 *            the array 1
+	 * @param index
+	 *            the index
+	 * @param array2
+	 *            the array 2
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] addAll(E[] array1, int index, E[] array2) {
 		int array2Length = array2.length;
@@ -376,10 +618,22 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the elements
-	 * in the specified collection inserted at the specified index.
-	 * java.util.Arrays#addAll(Object[] array, int index, java.util.Collection c)
+	 * Return a new array that contains the elements in the specified array with
+	 * the elements in the specified collection inserted at the specified index.
+	 * java.util.Arrays#addAll(Object[] array, int index, java.util.Collection
+	 * c)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param index
+	 *            the index
+	 * @param collection
+	 *            the collection
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] addAll(E[] array, int index, Collection<? extends E> collection) {
 		int size = collection.size();
@@ -412,50 +666,109 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the elements
-	 * in the specified iterable inserted at the specified index.
-	 * java.util.Arrays#addAll(Object[] array, int index, java.lang.Iterable iterable)
+	 * Return a new array that contains the elements in the specified array with
+	 * the elements in the specified iterable inserted at the specified index.
+	 * java.util.Arrays#addAll(Object[] array, int index, java.lang.Iterable
+	 * iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param index
+	 *            the index
+	 * @param iterable
+	 *            the iterable
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] addAll(E[] array, int index, Iterable<? extends E> iterable) {
 		return addAll(array, index, iterable.iterator());
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the elements
-	 * in the specified iterable inserted at the specified index.
-	 * java.util.Arrays#addAll(Object[] array, int index, java.lang.Iterable iterable)
+	 * Return a new array that contains the elements in the specified array with
+	 * the elements in the specified iterable inserted at the specified index.
+	 * java.util.Arrays#addAll(Object[] array, int index, java.lang.Iterable
+	 * iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param index
+	 *            the index
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] addAll(E[] array, int index, Iterable<? extends E> iterable, int size) {
 		return addAll(array, index, iterable.iterator(), size);
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the elements
-	 * in the specified iterator inserted at the specified index.
-	 * java.util.Arrays#addAll(Object[] array, int index, java.util.Iterator iterator)
+	 * Return a new array that contains the elements in the specified array with
+	 * the elements in the specified iterator inserted at the specified index.
+	 * java.util.Arrays#addAll(Object[] array, int index, java.util.Iterator
+	 * iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param index
+	 *            the index
+	 * @param iterator
+	 *            the iterator
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] addAll(E[] array, int index, Iterator<? extends E> iterator) {
 		return (iterator.hasNext()) ? addAll_(array, index, list(iterator)) : array;
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the elements
-	 * in the specified iterator inserted at the specified index.
-	 * java.util.Arrays#addAll(Object[] array, int index, java.util.Iterator iterator)
+	 * Return a new array that contains the elements in the specified array with
+	 * the elements in the specified iterator inserted at the specified index.
+	 * java.util.Arrays#addAll(Object[] array, int index, java.util.Iterator
+	 * iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param index
+	 *            the index
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] addAll(E[] array, int index, Iterator<? extends E> iterator, int size) {
 		return (iterator.hasNext()) ? addAll_(array, index, list(iterator, size)) : array;
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array 1 followed by the elements
-	 * in the specified array 2.
+	 * Return a new array that contains the elements in the specified array 1
+	 * followed by the elements in the specified array 2.
 	 * java.util.Arrays#addAll(char[] array1, char[] array2)
+	 *
+	 * @author mqfdy
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] addAll(char[] array1, char[] array2) {
 		int array2Length = array2.length;
@@ -481,10 +794,20 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * first specified array with the objects in the second
-	 * specified array added at the specified index.
-	 * java.util.Arrays#add(char[] array1, int index, char[] array2)
+	 * Return a new array that contains the elements in the first specified
+	 * array with the objects in the second specified array added at the
+	 * specified index. java.util.Arrays#add(char[] array1, int index, char[]
+	 * array2)
+	 *
+	 * @author mqfdy
+	 * @param array1
+	 *            the array 1
+	 * @param index
+	 *            the index
+	 * @param array2
+	 *            the array 2
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] addAll(char[] array1, int index, char[] array2) {
 		int array2Length = array2.length;
@@ -514,10 +837,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array 1 followed by the elements
-	 * in the specified array 2.
+	 * Return a new array that contains the elements in the specified array 1
+	 * followed by the elements in the specified array 2.
 	 * java.util.Arrays#addAll(int[] array1, int[] array2)
+	 *
+	 * @author mqfdy
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] addAll(int[] array1, int[] array2) {
 		int array2Length = array2.length;
@@ -543,10 +873,20 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * first specified array with the objects in the second
-	 * specified array added at the specified index.
-	 * java.util.Arrays#add(int[] array1, int index, int[] array2)
+	 * Return a new array that contains the elements in the first specified
+	 * array with the objects in the second specified array added at the
+	 * specified index. java.util.Arrays#add(int[] array1, int index, int[]
+	 * array2)
+	 *
+	 * @author mqfdy
+	 * @param array1
+	 *            the array 1
+	 * @param index
+	 *            the index
+	 * @param array2
+	 *            the array 2
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] addAll(int[] array1, int index, int[] array2) {
 		int array2Length = array2.length;
@@ -577,8 +917,11 @@ public final class CollectionTools {
 
 	/**
 	 * Return an array corresponding to the specified iterable.
-	 * @see java.util.Collection#toArray()
-	 * java.lang.Iterable#toArray()
+	 *
+	 * @param iterable
+	 *            the iterable
+	 * @return the object[]
+	 * @see java.util.Collection#toArray() java.lang.Iterable#toArray()
 	 */
 	public static Object[] array(Iterable<?> iterable) {
 		return array(iterable.iterator());
@@ -586,34 +929,57 @@ public final class CollectionTools {
 
 	/**
 	 * Return an array corresponding to the specified iterable.
-	 * @see java.util.Collection#toArray()
-	 * java.lang.Iterable#toArray()
+	 *
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @return the object[]
+	 * @see java.util.Collection#toArray() java.lang.Iterable#toArray()
 	 */
 	public static Object[] array(Iterable<?> iterable, int size) {
 		return array(iterable.iterator(), size);
 	}
 
 	/**
-	 * Return an array corresponding to the specified iterable;
-	 * the runtime type of the returned array is that of the specified array.
-	 * If the collection fits in the specified array, it is returned therein.
-	 * Otherwise, a new array is allocated with the runtime type of the
-	 * specified array and the size of this collection.
+	 * Return an array corresponding to the specified iterable; the runtime type
+	 * of the returned array is that of the specified array. If the collection
+	 * fits in the specified array, it is returned therein. Otherwise, a new
+	 * array is allocated with the runtime type of the specified array and the
+	 * size of this collection.
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @param array
+	 *            the array
+	 * @return the e[]
 	 * @see java.util.Collection#toArray(java.lang.Object[])
-	 * java.lang.Iterable#toArray(Object[])
+	 *      java.lang.Iterable#toArray(Object[])
 	 */
 	public static <E> E[] array(Iterable<? extends E> iterable, E[] array) {
 		return array(iterable.iterator(), array);
 	}
 
 	/**
-	 * Return an array corresponding to the specified iterable;
-	 * the runtime type of the returned array is that of the specified array.
-	 * If the collection fits in the specified array, it is returned therein.
-	 * Otherwise, a new array is allocated with the runtime type of the
-	 * specified array and the size of this collection.
+	 * Return an array corresponding to the specified iterable; the runtime type
+	 * of the returned array is that of the specified array. If the collection
+	 * fits in the specified array, it is returned therein. Otherwise, a new
+	 * array is allocated with the runtime type of the specified array and the
+	 * size of this collection.
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @param array
+	 *            the array
+	 * @return the e[]
 	 * @see java.util.Collection#toArray(java.lang.Object[])
-	 * java.lang.Iterable#toArray(Object[])
+	 *      java.lang.Iterable#toArray(Object[])
 	 */
 	public static <E> E[] array(Iterable<? extends E> iterable, int size, E[] array) {
 		return array(iterable.iterator(), size, array);
@@ -621,8 +987,11 @@ public final class CollectionTools {
 
 	/**
 	 * Return an array corresponding to the specified iterator.
-	 * @see java.util.Collection#toArray()
-	 * java.util.Iterator#toArray()
+	 *
+	 * @param iterator
+	 *            the iterator
+	 * @return the object[]
+	 * @see java.util.Collection#toArray() java.util.Iterator#toArray()
 	 */
 	public static Object[] array(Iterator<?> iterator) {
 		return (iterator.hasNext()) ? list(iterator).toArray() : EMPTY_OBJECT_ARRAY;
@@ -631,34 +1000,57 @@ public final class CollectionTools {
 
 	/**
 	 * Return an array corresponding to the specified iterator.
-	 * @see java.util.Collection#toArray()
-	 * java.util.Iterator#toArray()
+	 *
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @return the object[]
+	 * @see java.util.Collection#toArray() java.util.Iterator#toArray()
 	 */
 	public static Object[] array(Iterator<?> iterator, int size) {
 		return (iterator.hasNext()) ? list(iterator, size).toArray() : EMPTY_OBJECT_ARRAY;
 	}
 
 	/**
-	 * Return an array corresponding to the specified iterator;
-	 * the runtime type of the returned array is that of the specified array.
-	 * If the collection fits in the specified array, it is returned therein.
-	 * Otherwise, a new array is allocated with the runtime type of the
-	 * specified array and the size of this collection.
+	 * Return an array corresponding to the specified iterator; the runtime type
+	 * of the returned array is that of the specified array. If the collection
+	 * fits in the specified array, it is returned therein. Otherwise, a new
+	 * array is allocated with the runtime type of the specified array and the
+	 * size of this collection.
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @param array
+	 *            the array
+	 * @return the e[]
 	 * @see java.util.Collection#toArray(java.lang.Object[])
-	 * java.util.Iterator#toArray(Object[])
+	 *      java.util.Iterator#toArray(Object[])
 	 */
 	public static <E> E[] array(Iterator<? extends E> iterator, E[] array) {
 		return (iterator.hasNext()) ? list(iterator).toArray(array) : newArray(array, 0);
 	}
 
 	/**
-	 * Return an array corresponding to the specified iterator;
-	 * the runtime type of the returned array is that of the specified array.
-	 * If the collection fits in the specified array, it is returned therein.
-	 * Otherwise, a new array is allocated with the runtime type of the
-	 * specified array and the size of this collection.
+	 * Return an array corresponding to the specified iterator; the runtime type
+	 * of the returned array is that of the specified array. If the collection
+	 * fits in the specified array, it is returned therein. Otherwise, a new
+	 * array is allocated with the runtime type of the specified array and the
+	 * size of this collection.
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @param array
+	 *            the array
+	 * @return the e[]
 	 * @see java.util.Collection#toArray(java.lang.Object[])
-	 * java.util.Iterator#toArray(Object[])
+	 *      java.util.Iterator#toArray(Object[])
 	 */
 	public static <E> E[] array(Iterator<? extends E> iterator, int size, E[] array) {
 		return (iterator.hasNext()) ? list(iterator, size).toArray(array) : newArray(array, 0);
@@ -667,6 +1059,14 @@ public final class CollectionTools {
 	/**
 	 * Return a bag corresponding to the specified enumeration.
 	 * HashBag(java.util.Enumeration enumeration)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param enumeration
+	 *            the enumeration
+	 * @return the bag
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Bag<E> bag(Enumeration<? extends E> enumeration) {
 		return (enumeration.hasMoreElements()) ?
@@ -678,6 +1078,16 @@ public final class CollectionTools {
 	/**
 	 * Return a bag corresponding to the specified enumeration.
 	 * HashBag(java.util.Enumeration enumeration)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param enumeration
+	 *            the enumeration
+	 * @param size
+	 *            the size
+	 * @return the bag
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Bag<E> bag(Enumeration<? extends E> enumeration, int size) {
 		return (enumeration.hasMoreElements()) ?
@@ -696,6 +1106,14 @@ public final class CollectionTools {
 	/**
 	 * Return a bag corresponding to the specified iterable.
 	 * HashBag(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @return the bag
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Bag<E> bag(Iterable<? extends E> iterable) {
 		return bag(iterable.iterator());
@@ -704,6 +1122,16 @@ public final class CollectionTools {
 	/**
 	 * Return a bag corresponding to the specified iterable.
 	 * HashBag(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @return the bag
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Bag<E> bag(Iterable<? extends E> iterable, int size) {
 		return bag(iterable.iterator(), size);
@@ -712,6 +1140,14 @@ public final class CollectionTools {
 	/**
 	 * Return a bag corresponding to the specified iterator.
 	 * HashBag(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @return the bag
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Bag<E> bag(Iterator<? extends E> iterator) {
 		return (iterator.hasNext()) ?
@@ -723,6 +1159,16 @@ public final class CollectionTools {
 	/**
 	 * Return a bag corresponding to the specified iterator.
 	 * HashBag(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @return the bag
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Bag<E> bag(Iterator<? extends E> iterator, int size) {
 		return (iterator.hasNext()) ?
@@ -739,8 +1185,16 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a bag corresponding to the specified array.
-	 * HashBag(Object[] array)
+	 * Return a bag corresponding to the specified array. HashBag(Object[]
+	 * array)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @return the bag
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Bag<E> bag(E... array) {
 		int len = array.length;
@@ -756,6 +1210,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return a collection corresponding to the specified enumeration.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param enumeration
+	 *            the enumeration
+	 * @return the collection
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Collection<E> collection(Enumeration<? extends E> enumeration) {
 		return bag(enumeration);
@@ -763,6 +1225,16 @@ public final class CollectionTools {
 
 	/**
 	 * Return a collection corresponding to the specified enumeration.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param enumeration
+	 *            the enumeration
+	 * @param size
+	 *            the size
+	 * @return the collection
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Collection<E> collection(Enumeration<? extends E> enumeration, int size) {
 		return bag(enumeration, size);
@@ -770,6 +1242,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return a collection corresponding to the specified iterable.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @return the collection
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Collection<E> collection(Iterable<? extends E> iterable) {
 		return collection(iterable.iterator());
@@ -777,6 +1257,16 @@ public final class CollectionTools {
 
 	/**
 	 * Return a collection corresponding to the specified iterable.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @return the collection
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Collection<E> collection(Iterable<? extends E> iterable, int size) {
 		return collection(iterable.iterator(), size);
@@ -784,6 +1274,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return a collection corresponding to the specified iterator.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @return the collection
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Collection<E> collection(Iterator<? extends E> iterator) {
 		return bag(iterator);
@@ -791,6 +1289,16 @@ public final class CollectionTools {
 
 	/**
 	 * Return a collection corresponding to the specified iterator.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @return the collection
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Collection<E> collection(Iterator<? extends E> iterator, int size) {
 		return bag(iterator, size);
@@ -798,15 +1306,30 @@ public final class CollectionTools {
 
 	/**
 	 * Return a collection corresponding to the specified array.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @return the collection
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Collection<E> collection(E... array) {
 		return bag(array);
 	}
 
 	/**
-	 * Return whether the specified enumeration contains the
-	 * specified element.
+	 * Return whether the specified enumeration contains the specified element.
 	 * java.util.Enumeration#contains(Object o)
+	 *
+	 * @author mqfdy
+	 * @param enumeration
+	 *            the enumeration
+	 * @param value
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean contains(Enumeration<?> enumeration, Object value) {
 		if (value == null) {
@@ -826,18 +1349,32 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return whether the specified iterable contains the
-	 * specified element.
+	 * Return whether the specified iterable contains the specified element.
 	 * java.lang.Iterable#contains(Object o)
+	 *
+	 * @author mqfdy
+	 * @param iterable
+	 *            the iterable
+	 * @param value
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean contains(Iterable<?> iterable, Object value) {
 		return contains(iterable.iterator(), value);
 	}
 
 	/**
-	 * Return whether the specified iterator contains the
-	 * specified element.
+	 * Return whether the specified iterator contains the specified element.
 	 * java.util.Iterator#contains(Object o)
+	 *
+	 * @author mqfdy
+	 * @param iterator
+	 *            the iterator
+	 * @param value
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean contains(Iterator<?> iterator, Object value) {
 		if (value == null) {
@@ -857,9 +1394,16 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return whether the specified array contains the
-	 * specified element.
+	 * Return whether the specified array contains the specified element.
 	 * java.util.Arrays#contains(Object[] array, Object o)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean contains(Object[] array, Object value) {
 		if (value == null) {
@@ -879,9 +1423,16 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return whether the specified array contains the
-	 * specified element.
+	 * Return whether the specified array contains the specified element.
 	 * java.util.Arrays#contains(char[] array, char value)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean contains(char[] array, char value) {
 		for (int i = array.length; i-- > 0; ) {
@@ -893,9 +1444,16 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return whether the specified array contains the
-	 * specified element.
+	 * Return whether the specified array contains the specified element.
 	 * java.util.Arrays#contains(int[] array, int value)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean contains(int[] array, int value) {
 		for (int i = array.length; i-- > 0; ) {
@@ -907,18 +1465,34 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return whether the specified collection contains all of the
-	 * elements in the specified iterable.
+	 * Return whether the specified collection contains all of the elements in
+	 * the specified iterable.
 	 * java.util.Collection#containsAll(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param collection
+	 *            the collection
+	 * @param iterable
+	 *            the iterable
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Collection<?> collection, Iterable<?> iterable) {
 		return containsAll(collection, iterable.iterator());
 	}
 
 	/**
-	 * Return whether the specified collection contains all of the
-	 * elements in the specified iterator.
+	 * Return whether the specified collection contains all of the elements in
+	 * the specified iterator.
 	 * java.util.Collection#containsAll(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param collection
+	 *            the collection
+	 * @param iterator
+	 *            the iterator
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Collection<?> collection, Iterator<?> iterator) {
 		while (iterator.hasNext()) {
@@ -930,9 +1504,16 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return whether the specified collection contains all of the
-	 * elements in the specified array.
-	 * java.util.Collection#containsAll(Object[] array)
+	 * Return whether the specified collection contains all of the elements in
+	 * the specified array. java.util.Collection#containsAll(Object[] array)
+	 *
+	 * @author mqfdy
+	 * @param collection
+	 *            the collection
+	 * @param array
+	 *            the array
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Collection<?> collection, Object[] array) {
 		for (int i = array.length; i-- > 0; ) {
@@ -944,171 +1525,335 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return whether the specified iterable contains all of the
-	 * elements in the specified collection.
-	 * java.lang.Iterable#containsAll(java.util.Collection collection)
+	 * Return whether the specified iterable contains all of the elements in the
+	 * specified collection. java.lang.Iterable#containsAll(java.util.Collection
+	 * collection)
+	 *
+	 * @author mqfdy
+	 * @param iterable
+	 *            the iterable
+	 * @param collection
+	 *            the collection
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Iterable<?> iterable, Collection<?> collection) {
 		return containsAll(iterable.iterator(), collection);
 	}
 
 	/**
-	 * Return whether the specified iterable contains all of the
-	 * elements in the specified collection.
-	 * java.lang.Iterable#containsAll(java.util.Collection collection)
+	 * Return whether the specified iterable contains all of the elements in the
+	 * specified collection. java.lang.Iterable#containsAll(java.util.Collection
+	 * collection)
+	 *
+	 * @author mqfdy
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @param collection
+	 *            the collection
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Iterable<?> iterable, int size, Collection<?> collection) {
 		return containsAll(iterable.iterator(), size, collection);
 	}
 
 	/**
-	 * Return whether the specified iterable 1 contains all of the
-	 * elements in the specified iterable 2.
+	 * Return whether the specified iterable 1 contains all of the elements in
+	 * the specified iterable 2.
 	 * java.lang.Iterable#containsAll(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param iterable1
+	 *            the iterable 1
+	 * @param iterable2
+	 *            the iterable 2
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Iterable<?> iterable1, Iterable<?> iterable2) {
 		return containsAll(iterable1.iterator(), iterable2.iterator());
 	}
 
 	/**
-	 * Return whether the specified iterable 1 contains all of the
-	 * elements in the specified iterable 2.
+	 * Return whether the specified iterable 1 contains all of the elements in
+	 * the specified iterable 2.
 	 * java.lang.Iterable#containsAll(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param iterable1
+	 *            the iterable 1
+	 * @param size
+	 *            the size
+	 * @param iterable2
+	 *            the iterable 2
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Iterable<?> iterable1, int size, Iterable<?> iterable2) {
 		return containsAll(iterable1.iterator(), size, iterable2.iterator());
 	}
 
 	/**
-	 * Return whether the specified iterable contains all of the
-	 * elements in the specified iterator.
-	 * java.lang.Iterable#containsAll(java.util.Iterator iterator)
+	 * Return whether the specified iterable contains all of the elements in the
+	 * specified iterator. java.lang.Iterable#containsAll(java.util.Iterator
+	 * iterator)
+	 *
+	 * @author mqfdy
+	 * @param iterable
+	 *            the iterable
+	 * @param iterator
+	 *            the iterator
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Iterable<?> iterable, Iterator<?> iterator) {
 		return containsAll(iterable.iterator(), iterator);
 	}
 
 	/**
-	 * Return whether the specified iterable contains all of the
-	 * elements in the specified iterator.
-	 * java.lang.Iterable#containsAll(java.util.Iterator iterator)
+	 * Return whether the specified iterable contains all of the elements in the
+	 * specified iterator. java.lang.Iterable#containsAll(java.util.Iterator
+	 * iterator)
+	 *
+	 * @author mqfdy
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @param iterator
+	 *            the iterator
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Iterable<?> iterable, int size, Iterator<?> iterator) {
 		return containsAll(iterable.iterator(), size, iterator);
 	}
 
 	/**
-	 * Return whether the specified iterable contains all of the
-	 * elements in the specified array.
-	 * java.lang.Iterable#containsAll(Object[] array)
+	 * Return whether the specified iterable contains all of the elements in the
+	 * specified array. java.lang.Iterable#containsAll(Object[] array)
+	 *
+	 * @author mqfdy
+	 * @param iterable
+	 *            the iterable
+	 * @param array
+	 *            the array
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Iterable<?> iterable, Object[] array) {
 		return containsAll(iterable.iterator(), array);
 	}
 
 	/**
-	 * Return whether the specified iterable contains all of the
-	 * elements in the specified array.
-	 * java.lang.Iterable#containsAll(Object[] array)
+	 * Return whether the specified iterable contains all of the elements in the
+	 * specified array. java.lang.Iterable#containsAll(Object[] array)
+	 *
+	 * @author mqfdy
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @param array
+	 *            the array
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Iterable<?> iterable, int size, Object[] array) {
 		return containsAll(iterable.iterator(), size, array);
 	}
 
 	/**
-	 * Return whether the specified iterator contains all of the
-	 * elements in the specified collection.
-	 * java.util.Iterator#containsAll(java.util.Collection collection)
+	 * Return whether the specified iterator contains all of the elements in the
+	 * specified collection. java.util.Iterator#containsAll(java.util.Collection
+	 * collection)
+	 *
+	 * @author mqfdy
+	 * @param iterator
+	 *            the iterator
+	 * @param collection
+	 *            the collection
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Iterator<?> iterator, Collection<?> collection) {
 		return collection(iterator).containsAll(collection);
 	}
 
 	/**
-	 * Return whether the specified iterator contains all of the
-	 * elements in the specified collection.
-	 * java.util.Iterator#containsAll(java.util.Collection collection)
+	 * Return whether the specified iterator contains all of the elements in the
+	 * specified collection. java.util.Iterator#containsAll(java.util.Collection
+	 * collection)
+	 *
+	 * @author mqfdy
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @param collection
+	 *            the collection
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Iterator<?> iterator, int size, Collection<?> collection) {
 		return collection(iterator, size).containsAll(collection);
 	}
 
 	/**
-	 * Return whether the specified iterator contains all of the
-	 * elements in the specified iterable.
-	 * java.util.Iterator#containsAll(java.lang.Iterable iterable)
+	 * Return whether the specified iterator contains all of the elements in the
+	 * specified iterable. java.util.Iterator#containsAll(java.lang.Iterable
+	 * iterable)
+	 *
+	 * @author mqfdy
+	 * @param iterator
+	 *            the iterator
+	 * @param iterable
+	 *            the iterable
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Iterator<?> iterator, Iterable<?> iterable) {
 		return containsAll(collection(iterator), iterable);
 	}
 
 	/**
-	 * Return whether the specified iterator contains all of the
-	 * elements in the specified iterable.
-	 * java.util.Iterator#containsAll(java.lang.Iterable iterable)
+	 * Return whether the specified iterator contains all of the elements in the
+	 * specified iterable. java.util.Iterator#containsAll(java.lang.Iterable
+	 * iterable)
+	 *
+	 * @author mqfdy
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @param iterable
+	 *            the iterable
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Iterator<?> iterator, int size, Iterable<?> iterable) {
 		return containsAll(collection(iterator, size), iterable);
 	}
 
 	/**
-	 * Return whether the specified iterator 1 contains all of the
-	 * elements in the specified iterator 2.
+	 * Return whether the specified iterator 1 contains all of the elements in
+	 * the specified iterator 2.
 	 * java.util.Iterator#containsAll(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param iterator1
+	 *            the iterator 1
+	 * @param iterator2
+	 *            the iterator 2
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Iterator<?> iterator1, Iterator<?> iterator2) {
 		return containsAll(collection(iterator1), iterator2);
 	}
 
 	/**
-	 * Return whether the specified iterator 1 contains all of the
-	 * elements in the specified iterator 2.
+	 * Return whether the specified iterator 1 contains all of the elements in
+	 * the specified iterator 2.
 	 * java.util.Iterator#containsAll(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param iterator1
+	 *            the iterator 1
+	 * @param size
+	 *            the size
+	 * @param iterator2
+	 *            the iterator 2
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Iterator<?> iterator1, int size, Iterator<?> iterator2) {
 		return containsAll(collection(iterator1, size), iterator2);
 	}
 
 	/**
-	 * Return whether the specified iterator contains all of the
-	 * elements in the specified array.
-	 * java.util.Iterator#containsAll(Object[] array)
+	 * Return whether the specified iterator contains all of the elements in the
+	 * specified array. java.util.Iterator#containsAll(Object[] array)
+	 *
+	 * @author mqfdy
+	 * @param iterator
+	 *            the iterator
+	 * @param array
+	 *            the array
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Iterator<?> iterator, Object[] array) {
 		return containsAll(collection(iterator), array);
 	}
 
 	/**
-	 * Return whether the specified iterator contains all of the
-	 * elements in the specified array.
-	 * java.util.Iterator#containsAll(Object[] array)
+	 * Return whether the specified iterator contains all of the elements in the
+	 * specified array. java.util.Iterator#containsAll(Object[] array)
+	 *
+	 * @author mqfdy
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @param array
+	 *            the array
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Iterator<?> iterator, int size, Object[] array) {
 		return containsAll(collection(iterator, size), array);
 	}
 
 	/**
-	 * Return whether the specified array contains all of the
-	 * elements in the specified collection.
-	 * java.util.Arrays#containsAll(Object[] array, java.util.Collection collection)
+	 * Return whether the specified array contains all of the elements in the
+	 * specified collection. java.util.Arrays#containsAll(Object[] array,
+	 * java.util.Collection collection)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param collection
+	 *            the collection
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Object[] array, Collection<?> collection) {
 		return containsAll(array, collection.iterator());
 	}
 
 	/**
-	 * Return whether the specified array contains all of the
-	 * elements in the specified iterable.
-	 * java.util.Arrays#containsAll(Object[] array, java.lang.Iterable iterable)
+	 * Return whether the specified array contains all of the elements in the
+	 * specified iterable. java.util.Arrays#containsAll(Object[] array,
+	 * java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param iterable
+	 *            the iterable
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Object[] array, Iterable<?> iterable) {
 		return containsAll(array, iterable.iterator());
 	}
 
 	/**
-	 * Return whether the specified array contains all of the
-	 * elements in the specified iterator.
-	 * java.util.Arrays#containsAll(Object[] array, java.util.Iterator iterator)
+	 * Return whether the specified array contains all of the elements in the
+	 * specified iterator. java.util.Arrays#containsAll(Object[] array,
+	 * java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param iterator
+	 *            the iterator
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Object[] array, Iterator<?> iterator) {
 		while (iterator.hasNext()) {
@@ -1120,9 +1865,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return whether the specified array 1 contains all of the
-	 * elements in the specified array 2.
-	 * java.util.Arrays#containsAll(Object[] array1, Object[] array2)
+	 * Return whether the specified array 1 contains all of the elements in the
+	 * specified array 2. java.util.Arrays#containsAll(Object[] array1, Object[]
+	 * array2)
+	 *
+	 * @author mqfdy
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(Object[] array1, Object[] array2) {
 		for (int i = array2.length; i-- > 0; ) {
@@ -1134,9 +1887,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return whether the specified array 1 contains all of the
-	 * elements in the specified array 2.
-	 * java.util.Arrays#containsAll(char[] array1, char[] array2)
+	 * Return whether the specified array 1 contains all of the elements in the
+	 * specified array 2. java.util.Arrays#containsAll(char[] array1, char[]
+	 * array2)
+	 *
+	 * @author mqfdy
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(char[] array1, char[] array2) {
 		for (int i = array2.length; i-- > 0; ) {
@@ -1148,9 +1909,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return whether the specified array 1 contains all of the
-	 * elements in the specified array 2.
-	 * java.util.Arrays#containsAll(int[] array1, int[] array2)
+	 * Return whether the specified array 1 contains all of the elements in the
+	 * specified array 2. java.util.Arrays#containsAll(int[] array1, int[]
+	 * array2)
+	 *
+	 * @author mqfdy
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean containsAll(int[] array1, int[] array2) {
 		for (int i = array2.length; i-- > 0; ) {
@@ -1162,26 +1931,38 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the index of the first elements in the specified
-	 * arrays that are different, beginning at the end.
-	 * If the arrays are identical, return -1.
-	 * If the arrays are different sizes, return the index of the
-	 * last element in the longer array.
-	 * Use the elements' #equals() method to compare the
+	 * Return the index of the first elements in the specified arrays that are
+	 * different, beginning at the end. If the arrays are identical, return -1.
+	 * If the arrays are different sizes, return the index of the last element
+	 * in the longer array. Use the elements' #equals() method to compare the
 	 * elements.
+	 *
+	 * @author mqfdy
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int diffEnd(Object[] array1, Object[] array2) {
 		return diffEnd(Arrays.asList(array1), Arrays.asList(array2));
 	}
 
 	/**
-	 * Return the index of the first elements in the specified
-	 * lists that are different, beginning at the end.
-	 * If the lists are identical, return -1.
-	 * If the lists are different sizes, return the index of the
-	 * last element in the longer list.
-	 * Use the elements' #equals() method to compare the
+	 * Return the index of the first elements in the specified lists that are
+	 * different, beginning at the end. If the lists are identical, return -1.
+	 * If the lists are different sizes, return the index of the last element in
+	 * the longer list. Use the elements' #equals() method to compare the
 	 * elements.
+	 *
+	 * @author mqfdy
+	 * @param list1
+	 *            the list 1
+	 * @param list2
+	 *            the list 2
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int diffEnd(List<?> list1, List<?> list2) {
 		int size1 = list1.size();
@@ -1210,11 +1991,15 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the range of elements in the specified
-	 * arrays that are different.
-	 * If the arrays are identical, return [size, -1].
-	 * Use the elements' #equals() method to compare the
-	 * elements.
+	 * Return the range of elements in the specified arrays that are different.
+	 * If the arrays are identical, return [size, -1]. Use the elements'
+	 * #equals() method to compare the elements.
+	 *
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return the range
 	 * @see #diffStart(Object[], Object[])
 	 * @see #diffEnd(Object[], Object[])
 	 */
@@ -1223,11 +2008,15 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the range of elements in the specified
-	 * arrays that are different.
-	 * If the arrays are identical, return [size, -1].
-	 * Use the elements' #equals() method to compare the
-	 * elements.
+	 * Return the range of elements in the specified arrays that are different.
+	 * If the arrays are identical, return [size, -1]. Use the elements'
+	 * #equals() method to compare the elements.
+	 *
+	 * @param list1
+	 *            the list 1
+	 * @param list2
+	 *            the list 2
+	 * @return the range
 	 * @see #diffStart(java.util.List, java.util.List)
 	 * @see #diffEnd(java.util.List, java.util.List)
 	 */
@@ -1242,30 +2031,42 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the index of the first elements in the specified
-	 * arrays that are different. If the arrays are identical, return
-	 * the size of the two arrays (i.e. one past the last index).
-	 * If the arrays are different sizes and all the elements in
-	 * the shorter array match their corresponding elements in
-	 * the longer array, return the size of the shorter array
-	 * (i.e. one past the last index of the shorter array).
-	 * Use the elements' #equals() method to compare the
-	 * elements.
+	 * Return the index of the first elements in the specified arrays that are
+	 * different. If the arrays are identical, return the size of the two arrays
+	 * (i.e. one past the last index). If the arrays are different sizes and all
+	 * the elements in the shorter array match their corresponding elements in
+	 * the longer array, return the size of the shorter array (i.e. one past the
+	 * last index of the shorter array). Use the elements' #equals() method to
+	 * compare the elements.
+	 *
+	 * @author mqfdy
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int diffStart(Object[] array1, Object[] array2) {
 		return diffStart(Arrays.asList(array1), Arrays.asList(array2));
 	}
 
 	/**
-	 * Return the index of the first elements in the specified
-	 * lists that are different. If the lists are identical, return
-	 * the size of the two lists (i.e. one past the last index).
-	 * If the lists are different sizes and all the elements in
-	 * the shorter list match their corresponding elements in
-	 * the longer list, return the size of the shorter list
-	 * (i.e. one past the last index of the shorter list).
-	 * Use the elements' #equals() method to compare the
-	 * elements.
+	 * Return the index of the first elements in the specified lists that are
+	 * different. If the lists are identical, return the size of the two lists
+	 * (i.e. one past the last index). If the lists are different sizes and all
+	 * the elements in the shorter list match their corresponding elements in
+	 * the longer list, return the size of the shorter list (i.e. one past the
+	 * last index of the shorter list). Use the elements' #equals() method to
+	 * compare the elements.
+	 *
+	 * @author mqfdy
+	 * @param list1
+	 *            the list 1
+	 * @param list2
+	 *            the list 2
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int diffStart(List<?> list1, List<?> list2) {
 		int end = Math.min(list1.size(), list2.size());
@@ -1292,6 +2093,14 @@ public final class CollectionTools {
 	/**
 	 * Return whether the specified iterators return equal elements.
 	 * java.util.Iterator#equals(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param iterator1
+	 *            the iterator 1
+	 * @param iterator2
+	 *            the iterator 2
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean equals(Iterator<?> iterator1, Iterator<?> iterator2) {
 		while (iterator1.hasNext() && iterator2.hasNext()) {
@@ -1305,9 +2114,18 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the element corresponding to the specified index
-	 * in the specified iterator.
-	 * java.util.ListIterator#get(int index)
+	 * Return the element corresponding to the specified index in the specified
+	 * iterator. java.util.ListIterator#get(int index)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @param index
+	 *            the index
+	 * @return the e
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E get(ListIterator<? extends E> iterator, int index) {
 		while (iterator.hasNext()) {
@@ -1322,6 +2140,14 @@ public final class CollectionTools {
 	/**
 	 * Return whether the specified arrays contain the same elements.
 	 * java.util.Arrays#identical(Object[] array1, Object[] array2)
+	 *
+	 * @author mqfdy
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean identical(Object[] array1, Object[] array2) {
 		if (array1 == array2) {
@@ -1345,6 +2171,14 @@ public final class CollectionTools {
 	/**
 	 * Return whether the specified iterators return the same elements.
 	 * java.util.Iterator#identical(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param iterator1
+	 *            the iterator 1
+	 * @param iterator2
+	 *            the iterator 2
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean identical(Iterator<?> iterator1, Iterator<?> iterator2) {
 		while (iterator1.hasNext() && iterator2.hasNext()) {
@@ -1356,24 +2190,36 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the index of the first elements in the specified
-	 * arrays that are different, beginning at the end.
-	 * If the arrays are identical, return -1.
-	 * If the arrays are different sizes, return the index of the
-	 * last element in the longer array.
-	 * Use object identity to compare the elements.
+	 * Return the index of the first elements in the specified arrays that are
+	 * different, beginning at the end. If the arrays are identical, return -1.
+	 * If the arrays are different sizes, return the index of the last element
+	 * in the longer array. Use object identity to compare the elements.
+	 *
+	 * @author mqfdy
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int identityDiffEnd(Object[] array1, Object[] array2) {
 		return identityDiffEnd(Arrays.asList(array1), Arrays.asList(array2));
 	}
 
 	/**
-	 * Return the index of the first elements in the specified
-	 * lists that are different, beginning at the end.
-	 * If the lists are identical, return -1.
-	 * If the lists are different sizes, return the index of the
-	 * last element in the longer list.
-	 * Use object identity to compare the elements.
+	 * Return the index of the first elements in the specified lists that are
+	 * different, beginning at the end. If the lists are identical, return -1.
+	 * If the lists are different sizes, return the index of the last element in
+	 * the longer list. Use object identity to compare the elements.
+	 *
+	 * @author mqfdy
+	 * @param list1
+	 *            the list 1
+	 * @param list2
+	 *            the list 2
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int identityDiffEnd(List<?> list1, List<?> list2) {
 		int size1 = list1.size();
@@ -1393,10 +2239,15 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the range of elements in the specified
-	 * arrays that are different.
-	 * If the arrays are identical, return [size, -1].
-	 * Use object identity to compare the elements.
+	 * Return the range of elements in the specified arrays that are different.
+	 * If the arrays are identical, return [size, -1]. Use object identity to
+	 * compare the elements.
+	 *
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return the range
 	 * @see #identityDiffStart(Object[], Object[])
 	 * @see #identityDiffEnd(Object[], Object[])
 	 */
@@ -1405,10 +2256,15 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the range of elements in the specified
-	 * arrays that are different.
-	 * If the arrays are identical, return [size, -1].
-	 * Use object identity to compare the elements.
+	 * Return the range of elements in the specified arrays that are different.
+	 * If the arrays are identical, return [size, -1]. Use object identity to
+	 * compare the elements.
+	 *
+	 * @param list1
+	 *            the list 1
+	 * @param list2
+	 *            the list 2
+	 * @return the range
 	 * @see #identityDiffStart(java.util.List, java.util.List)
 	 * @see #identityDiffEnd(java.util.List, java.util.List)
 	 */
@@ -1423,28 +2279,42 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the index of the first elements in the specified
-	 * arrays that are different. If the arrays are identical, return
-	 * the size of the two arrays (i.e. one past the last index).
-	 * If the arrays are different sizes and all the elements in
-	 * the shorter array match their corresponding elements in
-	 * the longer array, return the size of the shorter array
-	 * (i.e. one past the last index of the shorter array).
-	 * Use object identity to compare the elements.
+	 * Return the index of the first elements in the specified arrays that are
+	 * different. If the arrays are identical, return the size of the two arrays
+	 * (i.e. one past the last index). If the arrays are different sizes and all
+	 * the elements in the shorter array match their corresponding elements in
+	 * the longer array, return the size of the shorter array (i.e. one past the
+	 * last index of the shorter array). Use object identity to compare the
+	 * elements.
+	 *
+	 * @author mqfdy
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int identityDiffStart(Object[] array1, Object[] array2) {
 		return identityDiffStart(Arrays.asList(array1), Arrays.asList(array2));
 	}
 
 	/**
-	 * Return the index of the first elements in the specified
-	 * lists that are different. If the lists are identical, return
-	 * the size of the two lists (i.e. one past the last index).
-	 * If the lists are different sizes and all the elements in
-	 * the shorter list match their corresponding elements in
-	 * the longer list, return the size of the shorter list
-	 * (i.e. one past the last index of the shorter list).
-	 * Use object identity to compare the elements.
+	 * Return the index of the first elements in the specified lists that are
+	 * different. If the lists are identical, return the size of the two lists
+	 * (i.e. one past the last index). If the lists are different sizes and all
+	 * the elements in the shorter list match their corresponding elements in
+	 * the longer list, return the size of the shorter list (i.e. one past the
+	 * last index of the shorter list). Use object identity to compare the
+	 * elements.
+	 *
+	 * @author mqfdy
+	 * @param list1
+	 *            the list 1
+	 * @param list2
+	 *            the list 2
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int identityDiffStart(List<?> list1, List<?> list2) {
 		int end = Math.min(list1.size(), list2.size());
@@ -1460,10 +2330,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the index of the first occurrence of the
-	 * specified element in the specified iterator,
-	 * or return -1 if there is no such index.
+	 * Return the index of the first occurrence of the specified element in the
+	 * specified iterator, or return -1 if there is no such index.
 	 * java.util.Iterator#indexOf(Object o)
+	 *
+	 * @author mqfdy
+	 * @param iterator
+	 *            the iterator
+	 * @param value
+	 *            the value
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int indexOf(Iterator<?> iterator, Object value) {
 		if (value == null) {
@@ -1483,10 +2360,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the index of the first occurrence of the
-	 * specified element in the specified array,
-	 * or return -1 if there is no such index.
+	 * Return the index of the first occurrence of the specified element in the
+	 * specified array, or return -1 if there is no such index.
 	 * java.util.Arrays#indexOf(Object[] array, Object o)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int indexOf(Object[] array, Object value) {
 		int len = array.length;
@@ -1507,10 +2391,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the index of the first occurrence of the
-	 * specified element in the specified array,
-	 * or return -1 if there is no such index.
+	 * Return the index of the first occurrence of the specified element in the
+	 * specified array, or return -1 if there is no such index.
 	 * java.util.Arrays#indexOf(char[] array, char value)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int indexOf(char[] array, char value) {
 		int len = array.length;
@@ -1523,10 +2414,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the index of the first occurrence of the
-	 * specified element in the specified array,
-	 * or return -1 if there is no such index.
+	 * Return the index of the first occurrence of the specified element in the
+	 * specified array, or return -1 if there is no such index.
 	 * java.util.Arrays#indexOf(int[] array, int value)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int indexOf(int[] array, int value) {
 		int len = array.length;
@@ -1539,9 +2437,19 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the maximum index of where the specified comparable object
-	 * should be inserted into the specified sorted list and still keep
-	 * the list sorted.
+	 * Return the maximum index of where the specified comparable object should
+	 * be inserted into the specified sorted list and still keep the list
+	 * sorted.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param sortedList
+	 *            the sorted list
+	 * @param value
+	 *            the value
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E extends Comparable<? super E>> int insertionIndexOf(List<E> sortedList, Comparable<E> value) {
 		int len = sortedList.size();
@@ -1554,9 +2462,20 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the maximum index of where the specified object
-	 * should be inserted into the specified sorted list and still keep
-	 * the list sorted.
+	 * Return the maximum index of where the specified object should be inserted
+	 * into the specified sorted list and still keep the list sorted.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param sortedList
+	 *            the sorted list
+	 * @param value
+	 *            the value
+	 * @param comparator
+	 *            the comparator
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> int insertionIndexOf(List<E> sortedList, E value, Comparator<? super E> comparator) {
 		int len = sortedList.size();
@@ -1569,9 +2488,19 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the maximum index of where the specified comparable object
-	 * should be inserted into the specified sorted array and still keep
-	 * the array sorted.
+	 * Return the maximum index of where the specified comparable object should
+	 * be inserted into the specified sorted array and still keep the array
+	 * sorted.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param sortedArray
+	 *            the sorted array
+	 * @param value
+	 *            the value
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E extends Comparable<? super E>> int insertionIndexOf(E[] sortedArray, Comparable<E> value) {
 		int len = sortedArray.length;
@@ -1584,9 +2513,21 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the maximum index of where the specified comparable object
-	 * should be inserted into the specified sorted array and still keep
-	 * the array sorted.
+	 * Return the maximum index of where the specified comparable object should
+	 * be inserted into the specified sorted array and still keep the array
+	 * sorted.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param sortedArray
+	 *            the sorted array
+	 * @param value
+	 *            the value
+	 * @param comparator
+	 *            the comparator
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> int insertionIndexOf(E[] sortedArray, E value, Comparator<? super E> comparator) {
 		int len = sortedArray.length;
@@ -1599,10 +2540,18 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a one-use Iterable for the Iterator given.
-	 * Throws an IllegalStateException if iterable() is called more than once.
-	 * As such, this utility should only be used in one-use situations, such as
-	 * a "for" loop.
+	 * Return a one-use Iterable for the Iterator given. Throws an
+	 * IllegalStateException if iterable() is called more than once. As such,
+	 * this utility should only be used in one-use situations, such as a "for"
+	 * loop.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @return the iterable
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Iterable<E> iterable(Iterator<? extends E> iterator) {
 		return new SingleUseIterable<E>(iterator);
@@ -1611,6 +2560,14 @@ public final class CollectionTools {
 	/**
 	 * Return an iterable on the elements in the specified array.
 	 * java.util.Arrays#iterable(Object[] array)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @return the iterable
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Iterable<E> iterable(E... array) {
 		return Arrays.asList(array);
@@ -1619,36 +2576,67 @@ public final class CollectionTools {
 	/**
 	 * Return an iterator on the elements in the specified array.
 	 * java.util.Arrays#iterator(Object[] array)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Iterator<E> iterator(E... array) {
 		return new ArrayIterator<E>(array);
 	}
 
 	/**
-	 * Return the index of the last occurrence of the
-	 * specified element in the specified iterator,
-	 * or return -1 if there is no such index.
+	 * Return the index of the last occurrence of the specified element in the
+	 * specified iterator, or return -1 if there is no such index.
 	 * java.util.Iterator#lastIndexOf(Object o)
+	 *
+	 * @author mqfdy
+	 * @param iterator
+	 *            the iterator
+	 * @param value
+	 *            the value
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int lastIndexOf(Iterator<?> iterator, Object value) {
 		return (iterator.hasNext()) ? list(iterator).lastIndexOf(value) : -1;
 	}
 
 	/**
-	 * Return the index of the last occurrence of the
-	 * specified element in the specified iterator,
-	 * or return -1 if there is no such index.
+	 * Return the index of the last occurrence of the specified element in the
+	 * specified iterator, or return -1 if there is no such index.
 	 * java.util.Iterator#lastIndexOf(Object o)
+	 *
+	 * @author mqfdy
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @param value
+	 *            the value
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int lastIndexOf(Iterator<?> iterator, int size, Object value) {
 		return (iterator.hasNext()) ? list(iterator, size).lastIndexOf(value) : -1;
 	}
 
 	/**
-	 * Return the index of the last occurrence of the
-	 * specified element in the specified array,
-	 * or return -1 if there is no such index.
+	 * Return the index of the last occurrence of the specified element in the
+	 * specified array, or return -1 if there is no such index.
 	 * java.util.Arrays#lastIndexOf(Object[] array, Object o)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int lastIndexOf(Object[] array, Object value) {
 		int len = array.length;
@@ -1669,10 +2657,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the index of the last occurrence of the
-	 * specified element in the specified array,
-	 * or return -1 if there is no such index.
+	 * Return the index of the last occurrence of the specified element in the
+	 * specified array, or return -1 if there is no such index.
 	 * java.util.Arrays#lastIndexOf(char[] array, char value)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int lastIndexOf(char[] array, char value) {
 		for (int i = array.length; i-- > 0; ) {
@@ -1684,10 +2679,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the index of the last occurrence of the
-	 * specified element in the specified array,
-	 * or return -1 if there is no such index.
+	 * Return the index of the last occurrence of the specified element in the
+	 * specified array, or return -1 if there is no such index.
 	 * java.util.Arrays#lastIndexOf(int[] array, int value)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int lastIndexOf(int[] array, int value) {
 		for (int i = array.length; i-- > 0; ) {
@@ -1701,6 +2703,14 @@ public final class CollectionTools {
 	/**
 	 * Return a list corresponding to the specified iterable.
 	 * java.lang.Iterable#toList()
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> List<E> list(Iterable<? extends E> iterable) {
 		return list(iterable.iterator());
@@ -1709,6 +2719,16 @@ public final class CollectionTools {
 	/**
 	 * Return a list corresponding to the specified iterable.
 	 * java.lang.Iterable#toList()
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> List<E> list(Iterable<? extends E> iterable, int size) {
 		return list(iterable.iterator(), size);
@@ -1717,6 +2737,14 @@ public final class CollectionTools {
 	/**
 	 * Return a list corresponding to the specified iterator.
 	 * java.util.Iterator#toList()
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> List<E> list(Iterator<? extends E> iterator) {
 		return (iterator.hasNext()) ? list(iterator, new ArrayList<E>()) : Collections.<E>emptyList();
@@ -1725,6 +2753,16 @@ public final class CollectionTools {
 	/**
 	 * Return a list corresponding to the specified iterator.
 	 * java.util.Iterator#toList()
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> List<E> list(Iterator<? extends E> iterator, int size) {
 		return (iterator.hasNext()) ? list(iterator, new ArrayList<E>(size)) : Collections.<E>emptyList();
@@ -1738,9 +2776,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a list corresponding to the specified array.
-	 * Unlike java.util.Arrays.asList(Object[]), the list
-	 * is modifiable and is not backed by the array.
+	 * Return a list corresponding to the specified array. Unlike
+	 * java.util.Arrays.asList(Object[]), the list is modifiable and is not
+	 * backed by the array.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> List<E> list(E... array) {
 		List<E> list = new ArrayList<E>(array.length);
@@ -1753,15 +2799,33 @@ public final class CollectionTools {
 	/**
 	 * Return a list iterator for the specified array.
 	 * java.util.Arrays#listIterator(Object[] array)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @return the list iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> ListIterator<E> listIterator(E... array) {
 		return listIterator(array, 0);
 	}
 
 	/**
-	 * Return a list iterator for the specified array
-	 * starting at the specified position in the array.
-	 * java.util.Arrays#listIterator(Object[] array, int index)
+	 * Return a list iterator for the specified array starting at the specified
+	 * position in the array. java.util.Arrays#listIterator(Object[] array, int
+	 * index)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param index
+	 *            the index
+	 * @return the list iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> ListIterator<E> listIterator(E[] array, int index) {
 		return Arrays.asList(array).listIterator(index);
@@ -1770,6 +2834,12 @@ public final class CollectionTools {
 	/**
 	 * Return the character from the specified array with the maximum value.
 	 * java.util.Arrays#max(char[] array)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @return the char
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char max(char... array) {
 		int len = array.length;
@@ -1790,6 +2860,12 @@ public final class CollectionTools {
 	/**
 	 * Return the integer from the specified array with the maximum value.
 	 * java.util.Arrays#max(int[] array)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int max(int... array) {
 		int len = array.length;
@@ -1810,6 +2886,12 @@ public final class CollectionTools {
 	/**
 	 * Return the character from the specified array with the minimum value.
 	 * java.util.Arrays#min(char[] array)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @return the char
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char min(char... array) {
 		int len = array.length;
@@ -1830,6 +2912,12 @@ public final class CollectionTools {
 	/**
 	 * Return the integer from the specified array with the minimum value.
 	 * java.util.Arrays#min(int[] array)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int min(int... array) {
 		int len = array.length;
@@ -1849,8 +2937,20 @@ public final class CollectionTools {
 
 	/**
 	 * Move an element from the specified source index to the specified target
-	 * index. Return the altered array.
-	 * java.util.Arrays#move(Object[] array, int targetIndex, int sourceIndex)
+	 * index. Return the altered array. java.util.Arrays#move(Object[] array,
+	 * int targetIndex, int sourceIndex)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param targetIndex
+	 *            the target index
+	 * @param sourceIndex
+	 *            the source index
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] move(E[] array, int targetIndex, int sourceIndex) {
 		return (targetIndex == sourceIndex) ? array : move_(array, targetIndex, sourceIndex);
@@ -1872,8 +2972,22 @@ public final class CollectionTools {
 
 	/**
 	 * Move elements from the specified source index to the specified target
-	 * index. Return the altered array.
-	 * java.util.Arrays#move(Object[] array, int targetIndex, int sourceIndex, int length)
+	 * index. Return the altered array. java.util.Arrays#move(Object[] array,
+	 * int targetIndex, int sourceIndex, int length)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param targetIndex
+	 *            the target index
+	 * @param sourceIndex
+	 *            the source index
+	 * @param length
+	 *            the length
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] move(E[] array, int targetIndex, int sourceIndex, int length) {
 		if ((targetIndex == sourceIndex) || (length == 0)) {
@@ -1895,8 +3009,18 @@ public final class CollectionTools {
 
 	/**
 	 * Move an element from the specified source index to the specified target
-	 * index. Return the altered array.
-	 * java.util.Arrays#move(int[] array, int targetIndex, int sourceIndex)
+	 * index. Return the altered array. java.util.Arrays#move(int[] array, int
+	 * targetIndex, int sourceIndex)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param targetIndex
+	 *            the target index
+	 * @param sourceIndex
+	 *            the source index
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] move(int[] array, int targetIndex, int sourceIndex) {
 		return (targetIndex == sourceIndex) ? array : move_(array, targetIndex, sourceIndex);
@@ -1918,8 +3042,20 @@ public final class CollectionTools {
 
 	/**
 	 * Move elements from the specified source index to the specified target
-	 * index. Return the altered array.
-	 * java.util.Arrays#move(int[] array, int targetIndex, int sourceIndex, int length)
+	 * index. Return the altered array. java.util.Arrays#move(int[] array, int
+	 * targetIndex, int sourceIndex, int length)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param targetIndex
+	 *            the target index
+	 * @param sourceIndex
+	 *            the source index
+	 * @param length
+	 *            the length
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] move(int[] array, int targetIndex, int sourceIndex, int length) {
 		if ((targetIndex == sourceIndex) || (length == 0)) {
@@ -1941,8 +3077,18 @@ public final class CollectionTools {
 
 	/**
 	 * Move an element from the specified source index to the specified target
-	 * index. Return the altered array.
-	 * java.util.Arrays#move(char[] array, int targetIndex, int sourceIndex)
+	 * index. Return the altered array. java.util.Arrays#move(char[] array, int
+	 * targetIndex, int sourceIndex)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param targetIndex
+	 *            the target index
+	 * @param sourceIndex
+	 *            the source index
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] move(char[] array, int targetIndex, int sourceIndex) {
 		return (targetIndex == sourceIndex) ? array : move_(array, targetIndex, sourceIndex);
@@ -1964,8 +3110,20 @@ public final class CollectionTools {
 
 	/**
 	 * Move elements from the specified source index to the specified target
-	 * index. Return the altered array.
-	 * java.util.Arrays#move(char[] array, int targetIndex, int sourceIndex, int length)
+	 * index. Return the altered array. java.util.Arrays#move(char[] array, int
+	 * targetIndex, int sourceIndex, int length)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param targetIndex
+	 *            the target index
+	 * @param sourceIndex
+	 *            the source index
+	 * @param length
+	 *            the length
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] move(char[] array, int targetIndex, int sourceIndex, int length) {
 		if ((targetIndex == sourceIndex) || (length == 0)) {
@@ -1987,8 +3145,20 @@ public final class CollectionTools {
 
 	/**
 	 * Move an element from the specified source index to the specified target
-	 * index. Return the altered list.
-	 * java.util.List#move(int targetIndex, int sourceIndex)
+	 * index. Return the altered list. java.util.List#move(int targetIndex, int
+	 * sourceIndex)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @param targetIndex
+	 *            the target index
+	 * @param sourceIndex
+	 *            the source index
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> List<E> move(List<E> list, int targetIndex, int sourceIndex) {
 		return (targetIndex == sourceIndex) ? list : move_(list, targetIndex, sourceIndex);
@@ -2020,8 +3190,22 @@ public final class CollectionTools {
 
 	/**
 	 * Move elements from the specified source index to the specified target
-	 * index. Return the altered list.
-	 * java.util.List#move(int targetIndex, int sourceIndex, int length)
+	 * index. Return the altered list. java.util.List#move(int targetIndex, int
+	 * sourceIndex, int length)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @param targetIndex
+	 *            the target index
+	 * @param sourceIndex
+	 *            the source index
+	 * @param length
+	 *            the length
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> List<E> move(List<E> list, int targetIndex, int sourceIndex, int length) {
 		if ((targetIndex == sourceIndex) || (length == 0)) {
@@ -2053,9 +3237,21 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Replace all occurrences of the specified old value with
-	 * the specified new value.
-	 * java.util.Arrays#replaceAll(Object[] array, Object oldValue, Object newValue)
+	 * Replace all occurrences of the specified old value with the specified new
+	 * value. java.util.Arrays#replaceAll(Object[] array, Object oldValue,
+	 * Object newValue)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param oldValue
+	 *            the old value
+	 * @param newValue
+	 *            the new value
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] replaceAll(E[] array, Object oldValue, E newValue) {
 		if (oldValue == null) {
@@ -2075,9 +3271,19 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Replace all occurrences of the specified old value with
-	 * the specified new value.
-	 * java.util.Arrays#replaceAll(int[] array, int oldValue, int newValue)
+	 * Replace all occurrences of the specified old value with the specified new
+	 * value. java.util.Arrays#replaceAll(int[] array, int oldValue, int
+	 * newValue)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param oldValue
+	 *            the old value
+	 * @param newValue
+	 *            the new value
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] replaceAll(int[] array, int oldValue, int newValue) {
 		for (int i = array.length; i-- > 0; ) {
@@ -2089,9 +3295,19 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Replace all occurrences of the specified old value with
-	 * the specified new value.
-	 * java.util.Arrays#replaceAll(char[] array, char oldValue, char newValue)
+	 * Replace all occurrences of the specified old value with the specified new
+	 * value. java.util.Arrays#replaceAll(char[] array, char oldValue, char
+	 * newValue)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param oldValue
+	 *            the old value
+	 * @param newValue
+	 *            the new value
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] replaceAll(char[] array, char oldValue, char newValue) {
 		for (int i = array.length; i-- > 0; ) {
@@ -2103,122 +3319,241 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the specified element removed.
-	 * java.util.Arrays#remove(Object[] array, Object value)
+	 * Return a new array that contains the elements in the specified array with
+	 * the specified element removed. java.util.Arrays#remove(Object[] array,
+	 * Object value)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] remove(E[] array, Object value) {
 		return removeElementAtIndex(array, indexOf(array, value));
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the specified element removed.
-	 * java.util.Arrays#remove(char[] array, char value)
+	 * Return a new array that contains the elements in the specified array with
+	 * the specified element removed. java.util.Arrays#remove(char[] array, char
+	 * value)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] remove(char[] array, char value) {
 		return removeElementAtIndex(array, indexOf(array, value));
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the specified element removed.
-	 * java.util.Arrays#remove(int[] array, int value)
+	 * Return a new array that contains the elements in the specified array with
+	 * the specified element removed. java.util.Arrays#remove(int[] array, int
+	 * value)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] remove(int[] array, int value) {
 		return removeElementAtIndex(array, indexOf(array, value));
 	}
 
 	/**
-	 * Remove all the elements returned by the specified iterable
-	 * from the specified collection.
-	 * Return whether the collection changed as a result.
+	 * Remove all the elements returned by the specified iterable from the
+	 * specified collection. Return whether the collection changed as a result.
 	 * java.util.Collection#removeAll(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param collection
+	 *            the collection
+	 * @param iterable
+	 *            the iterable
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean removeAll(Collection<?> collection, Iterable<?> iterable) {
 		return removeAll(collection, iterable.iterator());
 	}
 
 	/**
-	 * Remove all the elements returned by the specified iterable
-	 * from the specified collection.
-	 * Return whether the collection changed as a result.
+	 * Remove all the elements returned by the specified iterable from the
+	 * specified collection. Return whether the collection changed as a result.
 	 * java.util.Collection#removeAll(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param collection
+	 *            the collection
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean removeAll(Collection<?> collection, Iterable<?> iterable, int size) {
 		return removeAll(collection, iterable.iterator(), size);
 	}
 
 	/**
-	 * Remove all the elements returned by the specified iterator
-	 * from the specified collection.
-	 * Return whether the collection changed as a result.
+	 * Remove all the elements returned by the specified iterator from the
+	 * specified collection. Return whether the collection changed as a result.
 	 * java.util.Collection#removeAll(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param collection
+	 *            the collection
+	 * @param iterator
+	 *            the iterator
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean removeAll(Collection<?> collection, Iterator<?> iterator) {
 		return (iterator.hasNext()) ? collection.removeAll(set(iterator)) : false;
 	}
 
 	/**
-	 * Remove all the elements returned by the specified iterator
-	 * from the specified collection.
-	 * Return whether the collection changed as a result.
+	 * Remove all the elements returned by the specified iterator from the
+	 * specified collection. Return whether the collection changed as a result.
 	 * java.util.Collection#removeAll(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param collection
+	 *            the collection
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean removeAll(Collection<?> collection, Iterator<?> iterator, int size) {
 		return (iterator.hasNext()) ? collection.removeAll(set(iterator, size)) : false;
 	}
 
 	/**
-	 * Remove all the elements in the specified array
-	 * from the specified collection.
-	 * Return whether the collection changed as a result.
+	 * Remove all the elements in the specified array from the specified
+	 * collection. Return whether the collection changed as a result.
 	 * java.util.Collection#removeAll(Object[] array)
+	 *
+	 * @author mqfdy
+	 * @param collection
+	 *            the collection
+	 * @param array
+	 *            the array
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean removeAll(Collection<?> collection, Object[] array) {
 		return collection.removeAll(set(array));
 	}
 
 	/**
-	 * Remove from the specified array all the elements in
-	 * the specified iterable and return the result.
-	 * java.util.Arrays#removeAll(Object[] array, Iterable iterable)
+	 * Remove from the specified array all the elements in the specified
+	 * iterable and return the result. java.util.Arrays#removeAll(Object[]
+	 * array, Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param iterable
+	 *            the iterable
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] removeAll(E[] array, Iterable<?> iterable) {
 		return removeAll(array, iterable.iterator());
 	}
 
 	/**
-	 * Remove from the specified array all the elements in
-	 * the specified iterable and return the result.
-	 * java.util.Arrays#removeAll(Object[] array, Iterable iterable)
+	 * Remove from the specified array all the elements in the specified
+	 * iterable and return the result. java.util.Arrays#removeAll(Object[]
+	 * array, Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] removeAll(E[] array, Iterable<?> iterable, int size) {
 		return removeAll(array, iterable.iterator(), size);
 	}
 
 	/**
-	 * Remove from the specified array all the elements in
-	 * the specified iterator and return the result.
-	 * java.util.Arrays#removeAll(Object[] array, Iterator iterator)
+	 * Remove from the specified array all the elements in the specified
+	 * iterator and return the result. java.util.Arrays#removeAll(Object[]
+	 * array, Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param iterator
+	 *            the iterator
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] removeAll(E[] array, Iterator<?> iterator) {
 		return (iterator.hasNext()) ? removeAll_(array, set(iterator)) : array;
 	}
 
 	/**
-	 * Remove from the specified array all the elements in
-	 * the specified iterator and return the result.
-	 * java.util.Arrays#removeAll(Object[] array, Iterator iterator)
+	 * Remove from the specified array all the elements in the specified
+	 * iterator and return the result. java.util.Arrays#removeAll(Object[]
+	 * array, Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] removeAll(E[] array, Iterator<?> iterator, int size) {
 		return (iterator.hasNext()) ? removeAll_(array, set(iterator, size)) : array;
 	}
 
 	/**
-	 * Remove from the specified array all the elements in
-	 * the specified collection and return the result.
-	 * java.util.Arrays#removeAll(Object[] array, Collection collection)
+	 * Remove from the specified array all the elements in the specified
+	 * collection and return the result. java.util.Arrays#removeAll(Object[]
+	 * array, Collection collection)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param collection
+	 *            the collection
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] removeAll(E[] array, Collection<?> collection) {
 		return (collection.isEmpty()) ? array : removeAll_(array, collection);
@@ -2255,9 +3590,19 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Remove from the first specified array all the elements in
-	 * the second specified array and return the result.
+	 * Remove from the first specified array all the elements in the second
+	 * specified array and return the result.
 	 * java.util.Arrays#removeAll(Object[] array1, Object[] array2)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] removeAll(E[] array1, Object[] array2) {
 		// convert to a bag to take advantage of hashed look-up
@@ -2265,9 +3610,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Remove from the first specified array all the elements in
-	 * the second specified array and return the result.
-	 * java.util.Arrays#removeAll(char[] array1, char[] array2)
+	 * Remove from the first specified array all the elements in the second
+	 * specified array and return the result. java.util.Arrays#removeAll(char[]
+	 * array1, char[] array2)
+	 *
+	 * @author mqfdy
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] removeAll(char[] array1, char[] array2) {
 		if (array2.length == 0) {
@@ -2296,9 +3649,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Remove from the first specified array all the elements in
-	 * the second specified array and return the result.
-	 * java.util.Arrays#removeAll(int[] array1, int[] array2)
+	 * Remove from the first specified array all the elements in the second
+	 * specified array and return the result. java.util.Arrays#removeAll(int[]
+	 * array1, int[] array2)
+	 *
+	 * @author mqfdy
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] removeAll(int[] array1, int[] array2) {
 		if (array2.length == 0) {
@@ -2327,10 +3688,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Remove all occurrences of the specified element
-	 * from the specified collection.
-	 * Return whether the collection changed as a result.
+	 * Remove all occurrences of the specified element from the specified
+	 * collection. Return whether the collection changed as a result.
 	 * java.util.Collection#removeAllOccurrences(Object value)
+	 *
+	 * @author mqfdy
+	 * @param collection
+	 *            the collection
+	 * @param value
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean removeAllOccurrences(Collection<?> collection, Object value) {
 		boolean modified = false;
@@ -2354,9 +3722,19 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Remove from the specified array all occurrences of
-	 * the specified element and return the result.
-	 * java.util.Arrays#removeAllOccurrences(Object[] array, Object value)
+	 * Remove from the specified array all occurrences of the specified element
+	 * and return the result. java.util.Arrays#removeAllOccurrences(Object[]
+	 * array, Object value)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] removeAllOccurrences(E[] array, Object value) {
 		int arrayLength = array.length;
@@ -2390,9 +3768,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Remove from the specified array all occurrences of
-	 * the specified element and return the result.
-	 * java.util.Arrays#removeAllOccurrences(char[] array, char value)
+	 * Remove from the specified array all occurrences of the specified element
+	 * and return the result. java.util.Arrays#removeAllOccurrences(char[]
+	 * array, char value)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] removeAllOccurrences(char[] array, char value) {
 		int arrayLength = array.length;
@@ -2418,9 +3804,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Remove from the specified array all occurrences of
-	 * the specified element and return the result.
-	 * java.util.Arrays#removeAllOccurrences(int[] array, int value)
+	 * Remove from the specified array all occurrences of the specified element
+	 * and return the result. java.util.Arrays#removeAllOccurrences(int[] array,
+	 * int value)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] removeAllOccurrences(int[] array, int value) {
 		int arrayLength = array.length;
@@ -2446,36 +3840,73 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the specified element removed.
+	 * Return a new array that contains the elements in the specified array with
+	 * the specified element removed.
 	 * java.util.Arrays#removeElementAtIndex(Object[] array, int index)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param index
+	 *            the index
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] removeElementAtIndex(E[] array, int index) {
 		return removeElementsAtIndex(array, index, 1);
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the specified element removed.
+	 * Return a new array that contains the elements in the specified array with
+	 * the specified element removed.
 	 * java.util.Arrays#removeElementAtIndex(char[] array, int index)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param index
+	 *            the index
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] removeElementAtIndex(char[] array, int index) {
 		return removeElementsAtIndex(array, index, 1);
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the specified element removed.
+	 * Return a new array that contains the elements in the specified array with
+	 * the specified element removed.
 	 * java.util.Arrays#removeElementAtIndex(int[] array, int index)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param index
+	 *            the index
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] removeElementAtIndex(int[] array, int index) {
 		return removeElementsAtIndex(array, index, 1);
 	}
 
 	/**
-	 * Remove the elements at the specified index.
-	 * Return the removed elements.
+	 * Remove the elements at the specified index. Return the removed elements.
 	 * java.util.List#remove(int index, int length)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @param index
+	 *            the index
+	 * @param length
+	 *            the length
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> List<E> removeElementsAtIndex(List<E> list, int index, int length) {
 		List<E> subList = list.subList(index, index + length);
@@ -2485,9 +3916,22 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the specified elements removed.
-	 * java.util.Arrays#removeElementsAtIndex(Object[] array, int index, int length)
+	 * Return a new array that contains the elements in the specified array with
+	 * the specified elements removed.
+	 * java.util.Arrays#removeElementsAtIndex(Object[] array, int index, int
+	 * length)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param index
+	 *            the index
+	 * @param length
+	 *            the length
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] removeElementsAtIndex(E[] array, int index, int length) {
 		int arrayLength = array.length;
@@ -2502,9 +3946,20 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the specified elements removed.
-	 * java.util.Arrays#removeElementAtIndex(char[] array, int index, int length)
+	 * Return a new array that contains the elements in the specified array with
+	 * the specified elements removed.
+	 * java.util.Arrays#removeElementAtIndex(char[] array, int index, int
+	 * length)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param index
+	 *            the index
+	 * @param length
+	 *            the length
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] removeElementsAtIndex(char[] array, int index, int length) {
 		int arrayLength = array.length;
@@ -2520,9 +3975,19 @@ public final class CollectionTools {
 	private static final char[] EMPTY_CHAR_ARRAY = new char[0];
 
 	/**
-	 * Return a new array that contains the elements in the
-	 * specified array with the specified elements removed.
+	 * Return a new array that contains the elements in the specified array with
+	 * the specified elements removed.
 	 * java.util.Arrays#removeElementAtIndex(int[] array, int index, int length)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param index
+	 *            the index
+	 * @param length
+	 *            the length
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] removeElementsAtIndex(int[] array, int index, int length) {
 		int arrayLength = array.length;
@@ -2538,8 +4003,16 @@ public final class CollectionTools {
 	private static final int[] EMPTY_INT_ARRAY = new int[0];
 
 	/**
-	 * Remove any duplicate elements from the specified array,
-	 * while maintaining the order.
+	 * Remove any duplicate elements from the specified array, while maintaining
+	 * the order.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] removeDuplicateElements(E... array) {
 		int len = array.length;
@@ -2551,8 +4024,16 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Remove any duplicate elements from the specified list,
-	 * while maintaining the order.
+	 * Remove any duplicate elements from the specified list, while maintaining
+	 * the order.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> List<E> removeDuplicateElements(List<E> list) {
 		int size = list.size();
@@ -2577,30 +4058,53 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Retain only the elements in the specified iterable
-	 * in the specified collection.
-	 * Return whether the collection changed as a result.
+	 * Retain only the elements in the specified iterable in the specified
+	 * collection. Return whether the collection changed as a result.
 	 * java.util.Collection#retainAll(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param collection
+	 *            the collection
+	 * @param iterable
+	 *            the iterable
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean retainAll(Collection<?> collection, Iterable<?> iterable) {
 		return retainAll(collection, iterable.iterator());
 	}
 
 	/**
-	 * Retain only the elements in the specified iterable
-	 * in the specified collection.
-	 * Return whether the collection changed as a result.
+	 * Retain only the elements in the specified iterable in the specified
+	 * collection. Return whether the collection changed as a result.
 	 * java.util.Collection#retainAll(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param collection
+	 *            the collection
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean retainAll(Collection<?> collection, Iterable<?> iterable, int size) {
 		return retainAll(collection, iterable.iterator(), size);
 	}
 
 	/**
-	 * Retain only the elements in the specified iterator
-	 * in the specified collection.
-	 * Return whether the collection changed as a result.
+	 * Retain only the elements in the specified iterator in the specified
+	 * collection. Return whether the collection changed as a result.
 	 * java.util.Collection#retainAll(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param collection
+	 *            the collection
+	 * @param iterator
+	 *            the iterator
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean retainAll(Collection<?> collection, Iterator<?> iterator) {
 		if (iterator.hasNext()) {
@@ -2614,10 +4118,19 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Retain only the elements in the specified iterator
-	 * in the specified collection.
-	 * Return whether the collection changed as a result.
+	 * Retain only the elements in the specified iterator in the specified
+	 * collection. Return whether the collection changed as a result.
 	 * java.util.Collection#retainAll(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param collection
+	 *            the collection
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean retainAll(Collection<?> collection, Iterator<?> iterator, int size) {
 		if (iterator.hasNext()) {
@@ -2631,10 +4144,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Retain only the elements in the specified array
-	 * in the specified collection.
-	 * Return whether the collection changed as a result.
+	 * Retain only the elements in the specified array in the specified
+	 * collection. Return whether the collection changed as a result.
 	 * java.util.Collection#retainAll(Object[] array)
+	 *
+	 * @author mqfdy
+	 * @param collection
+	 *            the collection
+	 * @param array
+	 *            the array
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean retainAll(Collection<?> collection, Object[] array) {
 		if (array.length > 0) {
@@ -2648,9 +4168,19 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Retain in the specified array all the elements in
-	 * the specified iterable and return the result.
-	 * java.util.Arrays#retainAll(Object[] array, Iterable iterable)
+	 * Retain in the specified array all the elements in the specified iterable
+	 * and return the result. java.util.Arrays#retainAll(Object[] array,
+	 * Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param iterable
+	 *            the iterable
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] retainAll(E[] array, Iterable<?> iterable) {
 		int arrayLength = array.length;
@@ -2658,9 +4188,21 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Retain in the specified array all the elements in
-	 * the specified iterable and return the result.
-	 * java.util.Arrays#retainAll(Object[] array, Iterable iterable)
+	 * Retain in the specified array all the elements in the specified iterable
+	 * and return the result. java.util.Arrays#retainAll(Object[] array,
+	 * Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] retainAll(E[] array, Iterable<?> iterable, int size) {
 		int arrayLength = array.length;
@@ -2668,9 +4210,19 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Retain in the specified array all the elements in
-	 * the specified iterator and return the result.
-	 * java.util.Arrays#retainAll(Object[] array, Iterator iterator)
+	 * Retain in the specified array all the elements in the specified iterator
+	 * and return the result. java.util.Arrays#retainAll(Object[] array,
+	 * Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param iterator
+	 *            the iterator
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] retainAll(E[] array, Iterator<?> iterator) {
 		int arrayLength = array.length;
@@ -2678,9 +4230,21 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Retain in the specified array all the elements in
-	 * the specified iterator and return the result.
-	 * java.util.Arrays#retainAll(Object[] array, Iterator iterator)
+	 * Retain in the specified array all the elements in the specified iterator
+	 * and return the result. java.util.Arrays#retainAll(Object[] array,
+	 * Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] retainAll(E[] array, Iterator<?> iterator, int size) {
 		int arrayLength = array.length;
@@ -2708,9 +4272,19 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Retain in the specified array all the elements in
-	 * the specified collection and return the result.
-	 * java.util.Arrays#retainAll(Object[] array, Collection collection)
+	 * Retain in the specified array all the elements in the specified
+	 * collection and return the result. java.util.Arrays#retainAll(Object[]
+	 * array, Collection collection)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param collection
+	 *            the collection
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] retainAll(E[] array, Collection<?> collection) {
 		int arrayLength = array.length;
@@ -2750,9 +4324,19 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Remove from the first specified array all the elements in
-	 * the second specified array and return the result.
+	 * Remove from the first specified array all the elements in the second
+	 * specified array and return the result.
 	 * java.util.Arrays#retainAll(Object[] array1, Object[] array2)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] retainAll(E[] array1, Object[] array2) {
 		int array1Length = array1.length;
@@ -2763,9 +4347,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Remove from the first specified array all the elements in
-	 * the second specified array and return the result.
-	 * java.util.Arrays#retainAll(char[] array1, char[] array2)
+	 * Remove from the first specified array all the elements in the second
+	 * specified array and return the result. java.util.Arrays#retainAll(char[]
+	 * array1, char[] array2)
+	 *
+	 * @author mqfdy
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] retainAll(char[] array1, char[] array2) {
 		int array1Length = array1.length;
@@ -2803,9 +4395,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Remove from the first specified array all the elements in
-	 * the second specified array and return the result.
-	 * java.util.Arrays#retainAll(int[] array1, int[] array2)
+	 * Remove from the first specified array all the elements in the second
+	 * specified array and return the result. java.util.Arrays#retainAll(int[]
+	 * array1, int[] array2)
+	 *
+	 * @author mqfdy
+	 * @param array1
+	 *            the array 1
+	 * @param array2
+	 *            the array 2
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] retainAll(int[] array1, int[] array2) {
 		int array1Length = array1.length;
@@ -2843,8 +4443,15 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the array reversed.
-	 * java.util.Arrays.reverse(Object[] array)
+	 * Return the array reversed. java.util.Arrays.reverse(Object[] array)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] reverse(E... array) {
 		int len = array.length;
@@ -2855,8 +4462,13 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the array reversed.
-	 * java.util.Arrays.reverse(char[] array)
+	 * Return the array reversed. java.util.Arrays.reverse(char[] array)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] reverse(char... array) {
 		int len = array.length;
@@ -2867,8 +4479,13 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the array reversed.
-	 * java.util.Arrays.reverse(int[] array)
+	 * Return the array reversed. java.util.Arrays.reverse(int[] array)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] reverse(int... array) {
 		int len = array.length;
@@ -2879,32 +4496,68 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a list with entries in reverse order from those
-	 * returned by the specified iterable.
+	 * Return a list with entries in reverse order from those returned by the
+	 * specified iterable.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> List<E> reverseList(Iterable<? extends E> iterable) {
 		return reverse(list(iterable));
 	}
 
 	/**
-	 * Return a list with entries in reverse order from those
-	 * returned by the specified iterable.
+	 * Return a list with entries in reverse order from those returned by the
+	 * specified iterable.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> List<E> reverseList(Iterable<? extends E> iterable, int size) {
 		return reverse(list(iterable, size));
 	}
 
 	/**
-	 * Return a list with entries in reverse order from those
-	 * returned by the specified iterator.
+	 * Return a list with entries in reverse order from those returned by the
+	 * specified iterator.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> List<E> reverseList(Iterator<? extends E> iterator) {
 		return reverse(list(iterator));
 	}
 
 	/**
-	 * Return a list with entries in reverse order from those
-	 * returned by the specified iterator.
+	 * Return a list with entries in reverse order from those returned by the
+	 * specified iterator.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> List<E> reverseList(Iterator<? extends E> iterator, int size) {
 		return reverse(list(iterator, size));
@@ -2913,6 +4566,14 @@ public final class CollectionTools {
 	/**
 	 * Return the rotated array after rotating it one position.
 	 * java.util.Arrays.rotate(Object[] array)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] rotate(E... array) {
 		return rotate(array, 1);
@@ -2921,6 +4582,16 @@ public final class CollectionTools {
 	/**
 	 * Return the rotated array after rotating it the specified distance.
 	 * java.util.Arrays.rotate(Object[] array, int distance)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param distance
+	 *            the distance
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] rotate(E[] array, int distance) {
 		int len = array.length;
@@ -2954,6 +4625,12 @@ public final class CollectionTools {
 	/**
 	 * Return the rotated array after rotating it one position.
 	 * java.util.Arrays.rotate(char[] array)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] rotate(char... array) {
 		return rotate(array, 1);
@@ -2962,6 +4639,14 @@ public final class CollectionTools {
 	/**
 	 * Return the rotated array after rotating it the specified distance.
 	 * java.util.Arrays.rotate(char[] array, int distance)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param distance
+	 *            the distance
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] rotate(char[] array, int distance) {
 		int len = array.length;
@@ -2995,6 +4680,12 @@ public final class CollectionTools {
 	/**
 	 * Return the rotated array after rotating it one position.
 	 * java.util.Arrays.rotate(int[] array)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] rotate(int... array) {
 		return rotate(array, 1);
@@ -3003,6 +4694,14 @@ public final class CollectionTools {
 	/**
 	 * Return the rotated array after rotating it the specified distance.
 	 * java.util.Arrays.rotate(int[] array, int distance)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param distance
+	 *            the distance
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] rotate(int[] array, int distance) {
 		int len = array.length;
@@ -3036,6 +4735,14 @@ public final class CollectionTools {
 	/**
 	 * Return a set corresponding to the specified iterable.
 	 * java.util.HashSet(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @return the sets the
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Set<E> set(Iterable<? extends E> iterable) {
 		return set(iterable.iterator());
@@ -3044,6 +4751,16 @@ public final class CollectionTools {
 	/**
 	 * Return a set corresponding to the specified iterable.
 	 * java.util.HashSet(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @return the sets the
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Set<E> set(Iterable<? extends E> iterable, int size) {
 		return set(iterable.iterator(), size);
@@ -3052,6 +4769,14 @@ public final class CollectionTools {
 	/**
 	 * Return a set corresponding to the specified iterator.
 	 * java.util.HashSet(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @return the sets the
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Set<E> set(Iterator<? extends E> iterator) {
 		return set(iterator, new HashSet<E>());
@@ -3060,6 +4785,16 @@ public final class CollectionTools {
 	/**
 	 * Return a set corresponding to the specified iterator.
 	 * java.util.HashSet(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @return the sets the
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Set<E> set(Iterator<? extends E> iterator, int size) {
 		return set(iterator, new HashSet<E>(size));
@@ -3075,6 +4810,14 @@ public final class CollectionTools {
 	/**
 	 * Return a set corresponding to the specified array.
 	 * java.util.HashSet(Object[] array)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @return the sets the
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Set<E> set(E... array) {
 		Set<E> set = new HashSet<E>(array.length);
@@ -3087,16 +4830,34 @@ public final class CollectionTools {
 	private static final Random RANDOM = new Random();
 
 	/**
-	 * Return the array after "shuffling" it.
-	 * java.util.Arrays#shuffle(Object[] array)
+	 * Return the array after "shuffling" it. java.util.Arrays#shuffle(Object[]
+	 * array)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] shuffle(E... array) {
 		return shuffle(array, RANDOM);
 	}
 
 	/**
-	 * Return the array after "shuffling" it.
-	 * java.util.Arrays#shuffle(Object[] array, Random r)
+	 * Return the array after "shuffling" it. java.util.Arrays#shuffle(Object[]
+	 * array, Random r)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param random
+	 *            the random
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] shuffle(E[] array, Random random) {
 		int len = array.length;
@@ -3111,16 +4872,30 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the array after "shuffling" it.
-	 * java.util.Arrays#shuffle(char[] array)
+	 * Return the array after "shuffling" it. java.util.Arrays#shuffle(char[]
+	 * array)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] shuffle(char... array) {
 		return shuffle(array, RANDOM);
 	}
 
 	/**
-	 * Return the array after "shuffling" it.
-	 * java.util.Arrays#shuffle(char[] array, Random r)
+	 * Return the array after "shuffling" it. java.util.Arrays#shuffle(char[]
+	 * array, Random r)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param random
+	 *            the random
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] shuffle(char[] array, Random random) {
 		int len = array.length;
@@ -3135,16 +4910,30 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return the array after "shuffling" it.
-	 * java.util.Arrays#shuffle(int[] array)
+	 * Return the array after "shuffling" it. java.util.Arrays#shuffle(int[]
+	 * array)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] shuffle(int... array) {
 		return shuffle(array, RANDOM);
 	}
 
 	/**
-	 * Return the array after "shuffling" it.
-	 * java.util.Arrays#shuffle(int[] array, Random r)
+	 * Return the array after "shuffling" it. java.util.Arrays#shuffle(int[]
+	 * array, Random r)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param random
+	 *            the random
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] shuffle(int[] array, Random random) {
 		int len = array.length;
@@ -3159,9 +4948,16 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return an iterator that returns only the single,
-	 * specified object.
+	 * Return an iterator that returns only the single, specified object.
 	 * Object#toIterator() ?!
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param value
+	 *            the value
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Iterator<E> singletonIterator(E value) {
 		return new SingleElementIterator<E>(value);
@@ -3170,6 +4966,12 @@ public final class CollectionTools {
 	/**
 	 * Return the number of elements returned by the specified iterable.
 	 * java.lang.Iterable#size()
+	 *
+	 * @author mqfdy
+	 * @param iterable
+	 *            the iterable
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int size(Iterable<?> iterable) {
 		return size(iterable.iterator());
@@ -3178,6 +4980,12 @@ public final class CollectionTools {
 	/**
 	 * Return the number of elements returned by the specified iterator.
 	 * java.util.Iterator#size()
+	 *
+	 * @author mqfdy
+	 * @param iterator
+	 *            the iterator
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int size(Iterator<?> iterator) {
 		int size = 0;
@@ -3191,6 +4999,14 @@ public final class CollectionTools {
 	/**
 	 * Return a sorted set corresponding to the specified iterable.
 	 * java.util.TreeSet(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @return the sorted set
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E extends Comparable<? super E>> SortedSet<E> sortedSet(Iterable<? extends E> iterable) {
 		return sortedSet(iterable, null);
@@ -3199,24 +5015,56 @@ public final class CollectionTools {
 	/**
 	 * Return a sorted set corresponding to the specified iterable.
 	 * java.util.TreeSet(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @return the sorted set
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E extends Comparable<? super E>> SortedSet<E> sortedSet(Iterable<? extends E> iterable, int size) {
 		return sortedSet(iterable, size, null);
 	}
 
 	/**
-	 * Return a sorted set corresponding to the specified iterable
-	 * and comparator.
-	 * java.util.TreeSet(java.lang.Iterable iterable, java.util.Comparator c)
+	 * Return a sorted set corresponding to the specified iterable and
+	 * comparator. java.util.TreeSet(java.lang.Iterable iterable,
+	 * java.util.Comparator c)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @param comparator
+	 *            the comparator
+	 * @return the sorted set
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> SortedSet<E> sortedSet(Iterable<? extends E> iterable, Comparator<? super E> comparator) {
 		return sortedSet(iterable.iterator(), comparator);
 	}
 
 	/**
-	 * Return a sorted set corresponding to the specified iterable
-	 * and comparator.
-	 * java.util.TreeSet(java.lang.Iterable iterable, java.util.Comparator c)
+	 * Return a sorted set corresponding to the specified iterable and
+	 * comparator. java.util.TreeSet(java.lang.Iterable iterable,
+	 * java.util.Comparator c)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @param comparator
+	 *            the comparator
+	 * @return the sorted set
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> SortedSet<E> sortedSet(Iterable<? extends E> iterable, int size, Comparator<? super E> comparator) {
 		return sortedSet(iterable.iterator(), size, comparator);
@@ -3225,6 +5073,14 @@ public final class CollectionTools {
 	/**
 	 * Return a sorted set corresponding to the specified iterator.
 	 * java.util.TreeSet(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @return the sorted set
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E extends Comparable<? super E>> SortedSet<E> sortedSet(Iterator<? extends E> iterator) {
 		return sortedSet(iterator, null);
@@ -3233,24 +5089,56 @@ public final class CollectionTools {
 	/**
 	 * Return a sorted set corresponding to the specified iterator.
 	 * java.util.TreeSet(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @return the sorted set
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E extends Comparable<? super E>> SortedSet<E> sortedSet(Iterator<? extends E> iterator, int size) {
 		return sortedSet(iterator, size, null);
 	}
 
 	/**
-	 * Return a sorted set corresponding to the specified iterator
-	 * and comparator.
-	 * java.util.TreeSet(java.util.Iterator iterator, java.util.Comparator c)
+	 * Return a sorted set corresponding to the specified iterator and
+	 * comparator. java.util.TreeSet(java.util.Iterator iterator,
+	 * java.util.Comparator c)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @param comparator
+	 *            the comparator
+	 * @return the sorted set
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> SortedSet<E> sortedSet(Iterator<? extends E> iterator, Comparator<? super E> comparator) {
 		return sortedSet(list(iterator), comparator);
 	}
 
 	/**
-	 * Return a sorted set corresponding to the specified iterator
-	 * and comparator.
-	 * java.util.TreeSet(java.util.Iterator iterator, java.util.Comparator c)
+	 * Return a sorted set corresponding to the specified iterator and
+	 * comparator. java.util.TreeSet(java.util.Iterator iterator,
+	 * java.util.Comparator c)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @param comparator
+	 *            the comparator
+	 * @return the sorted set
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> SortedSet<E> sortedSet(Iterator<? extends E> iterator, int size, Comparator<? super E> comparator) {
 		return sortedSet(list(iterator, size), comparator);
@@ -3265,15 +5153,32 @@ public final class CollectionTools {
 	/**
 	 * Return a sorted set corresponding to the specified array.
 	 * java.util.TreeSet(Object[] array)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @return the sorted set
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E extends Comparable<? super E>> SortedSet<E> sortedSet(E... array) {
 		return sortedSet(array, null);
 	}
 
 	/**
-	 * Return a sorted set corresponding to the specified array
-	 * and comparator.
+	 * Return a sorted set corresponding to the specified array and comparator.
 	 * java.util.TreeSet(Object[] array, java.util.Comparator c)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param comparator
+	 *            the comparator
+	 * @return the sorted set
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> SortedSet<E> sortedSet(E[] array, Comparator<? super E> comparator) {
 		SortedSet<E> sortedSet = new TreeSet<E>(comparator);
@@ -3283,8 +5188,20 @@ public final class CollectionTools {
 
 	/**
 	 * Return a sub-array of the specified array, starting at the specified
-	 * position with the specified length.
-	 * java.util.Arrays#subArray(E[] array, int start, int length)
+	 * position with the specified length. java.util.Arrays#subArray(E[] array,
+	 * int start, int length)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param start
+	 *            the start
+	 * @param length
+	 *            the length
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] subArray(E[] array, int start, int length) {
 		E[] result = newArray(array, length);
@@ -3296,8 +5213,18 @@ public final class CollectionTools {
 
 	/**
 	 * Return a sub-array of the specified array, starting at the specified
-	 * position with the specified length.
-	 * java.util.Arrays#subArray(int[] array, int start, int length)
+	 * position with the specified length. java.util.Arrays#subArray(int[]
+	 * array, int start, int length)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param start
+	 *            the start
+	 * @param length
+	 *            the length
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] subArray(int[] array, int start, int length) {
 		int[] result = new int[length];
@@ -3309,8 +5236,18 @@ public final class CollectionTools {
 
 	/**
 	 * Return a sub-array of the specified array, starting at the specified
-	 * position with the specified length.
-	 * java.util.Arrays#subArray(char[] array, int start, int length)
+	 * position with the specified length. java.util.Arrays#subArray(char[]
+	 * array, int start, int length)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param start
+	 *            the start
+	 * @param length
+	 *            the length
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] subArray(char[] array, int start, int length) {
 		char[] result = new char[length];
@@ -3323,6 +5260,18 @@ public final class CollectionTools {
 	/**
 	 * Return the array after the specified elements have been "swapped".
 	 * java.util.Arrays#swap(Object[] array, int i, int j)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param i
+	 *            the i
+	 * @param j
+	 *            the j
+	 * @return the e[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> E[] swap(E[] array, int i, int j) {
 		E temp = array[i];
@@ -3334,6 +5283,16 @@ public final class CollectionTools {
 	/**
 	 * Return the array after the specified elements have been "swapped".
 	 * java.util.Arrays#swap(char[] array, int i, int j)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param i
+	 *            the i
+	 * @param j
+	 *            the j
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] swap(char[] array, int i, int j) {
 		char temp = array[i];
@@ -3345,6 +5304,16 @@ public final class CollectionTools {
 	/**
 	 * Return the array after the specified elements have been "swapped".
 	 * java.util.Arrays#swap(int[] array, int i, int j)
+	 *
+	 * @author mqfdy
+	 * @param array
+	 *            the array
+	 * @param i
+	 *            the i
+	 * @param j
+	 *            the j
+	 * @return the int[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int[] swap(int[] array, int i, int j) {
 		int temp = array[i];
@@ -3354,36 +5323,72 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a vector corresponding to the specified iterable.
-	 * This is useful for legacy code that requires a java.util.Vector.
+	 * Return a vector corresponding to the specified iterable. This is useful
+	 * for legacy code that requires a java.util.Vector.
 	 * java.util.Vector(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @return the vector
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Vector<E> vector(Iterable<? extends E> iterable) {
 		return vector(iterable.iterator());
 	}
 
 	/**
-	 * Return a vector corresponding to the specified iterable.
-	 * This is useful for legacy code that requires a java.util.Vector.
+	 * Return a vector corresponding to the specified iterable. This is useful
+	 * for legacy code that requires a java.util.Vector.
 	 * java.util.Vector(java.lang.Iterable iterable)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @param size
+	 *            the size
+	 * @return the vector
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Vector<E> vector(Iterable<? extends E> iterable, int size) {
 		return vector(iterable.iterator(), size);
 	}
 
 	/**
-	 * Return a vector corresponding to the specified iterator.
-	 * This is useful for legacy code that requires a java.util.Vector.
+	 * Return a vector corresponding to the specified iterator. This is useful
+	 * for legacy code that requires a java.util.Vector.
 	 * java.util.Vector(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @return the vector
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Vector<E> vector(Iterator<? extends E> iterator) {
 		return vector(iterator, new Vector<E>());
 	}
 
 	/**
-	 * Return a vector corresponding to the specified iterator.
-	 * This is useful for legacy code that requires a java.util.Vector.
+	 * Return a vector corresponding to the specified iterator. This is useful
+	 * for legacy code that requires a java.util.Vector.
 	 * java.util.Vector(java.util.Iterator iterator)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @param size
+	 *            the size
+	 * @return the vector
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Vector<E> vector(Iterator<? extends E> iterator, int size) {
 		return vector(iterator, new Vector<E>(size));
@@ -3397,9 +5402,17 @@ public final class CollectionTools {
 	}
 
 	/**
-	 * Return a vector corresponding to the specified array.
-	 * This is useful for legacy code that requires a java.util.Vector.
-	 * java.util.Vector(Object[] array)
+	 * Return a vector corresponding to the specified array. This is useful for
+	 * legacy code that requires a java.util.Vector. java.util.Vector(Object[]
+	 * array)
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @return the vector
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Vector<E> vector(E... array) {
 		Vector<E> v = new Vector<E>(array.length);
@@ -3413,14 +5426,24 @@ public final class CollectionTools {
 	// ********** single-use Iterable **********
 
 	/**
-	 * This is a one-time use iterable that can return a single iterator.
-	 * Once the iterator is returned the iterable is no longer valid.
-	 * As such, this utility should only be used in one-time use situations,
-	 * such as a 'for-each' loop.
+	 * This is a one-time use iterable that can return a single iterator. Once
+	 * the iterator is returned the iterable is no longer valid. As such, this
+	 * utility should only be used in one-time use situations, such as a
+	 * 'for-each' loop.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
 	 */
 	public static class SingleUseIterable<E> implements Iterable<E> {
 		private Iterator<E> iterator;
 
+		/**
+		 * Instantiates a new single use iterable.
+		 *
+		 * @param iterator
+		 *            the iterator
+		 */
 		public SingleUseIterable(Iterator<? extends E> iterator) {
 			super();
 			if (iterator == null) {
@@ -3449,7 +5472,16 @@ public final class CollectionTools {
 	// ********** java.util.Collections enhancements **********
 
 	/**
-	 * Return the destination list after the source list has been copied into it.
+	 * Return the destination list after the source list has been copied into
+	 * it.
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param dest
+	 *            the dest
+	 * @param src
+	 *            the src
+	 * @return the list<? super e>
 	 * @see java.util.Collections#copy(java.util.List, java.util.List)
 	 */
 	public static <E> List<? super E> copy(List<? super E> dest, List<? extends E> src) {
@@ -3459,6 +5491,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return the list after it has been "filled".
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @param value
+	 *            the value
+	 * @return the list<? super e>
 	 * @see java.util.Collections#fill(java.util.List, java.lang.Object)
 	 */
 	public static <E> List<? super E> fill(List<? super E> list, E value) {
@@ -3468,6 +5508,12 @@ public final class CollectionTools {
 
 	/**
 	 * Return the list after it has been "reversed".
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @return the list
 	 * @see java.util.Collections#reverse(java.util.List)
 	 */
 	public static <E> List<E> reverse(List<E> list) {
@@ -3477,6 +5523,12 @@ public final class CollectionTools {
 
 	/**
 	 * Return the list after it has been "rotated" by one position.
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @return the list
 	 * @see java.util.Collections#rotate(java.util.List, int)
 	 */
 	public static <E> List<E> rotate(List<E> list) {
@@ -3485,6 +5537,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return the list after it has been "rotated".
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @param distance
+	 *            the distance
+	 * @return the list
 	 * @see java.util.Collections#rotate(java.util.List, int)
 	 */
 	public static <E> List<E> rotate(List<E> list, int distance) {
@@ -3494,6 +5554,12 @@ public final class CollectionTools {
 
 	/**
 	 * Return the list after it has been "shuffled".
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @return the list
 	 * @see java.util.Collections#shuffle(java.util.List)
 	 */
 	public static <E> List<E> shuffle(List<E> list) {
@@ -3503,6 +5569,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return the list after it has been "shuffled".
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @param random
+	 *            the random
+	 * @return the list
 	 * @see java.util.Collections#shuffle(java.util.List, java.util.Random)
 	 */
 	public static <E> List<E> shuffle(List<E> list, Random random) {
@@ -3512,6 +5586,12 @@ public final class CollectionTools {
 
 	/**
 	 * Return the list after it has been "sorted".
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @return the list
 	 * @see java.util.Collections#sort(java.util.List)
 	 */
 	public static <E extends Comparable<? super E>> List<E> sort(List<E> list) {
@@ -3521,6 +5601,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return the list after it has been "sorted".
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @param comparator
+	 *            the comparator
+	 * @return the list
 	 * @see java.util.Collections#sort(java.util.List, java.util.Comparator)
 	 */
 	public static <E> List<E> sort(List<E> list, Comparator<? super E> comparator) {
@@ -3530,6 +5618,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return the iterable after it has been "sorted".
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @return the iterable
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E extends Comparable<? super E>> Iterable<E> sort(Iterable<E> iterable) {
 		return sort(iterable, null);
@@ -3537,6 +5633,16 @@ public final class CollectionTools {
 
 	/**
 	 * Return the iterable after it has been "sorted".
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterable
+	 *            the iterable
+	 * @param comparator
+	 *            the comparator
+	 * @return the iterable
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Iterable<E> sort(Iterable<E> iterable, Comparator<? super E> comparator) {
 		return sort(list(iterable), comparator);
@@ -3544,6 +5650,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return the iterator after it has been "sorted".
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @return the iterator<? extends e>
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E extends Comparable<? super E>> Iterator<? extends E> sort(Iterator<? extends E> iterator) {
 		return sort(iterator, null);
@@ -3551,6 +5665,16 @@ public final class CollectionTools {
 
 	/**
 	 * Return the iterator after it has been "sorted".
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @param iterator
+	 *            the iterator
+	 * @param comparator
+	 *            the comparator
+	 * @return the iterator<? extends e>
+	 * @Date 2018-09-03 09:00
 	 */
 	public static <E> Iterator<? extends E> sort(Iterator<? extends E> iterator, Comparator<? super E> comparator) {
 		return sort(list(iterator), comparator).iterator();
@@ -3558,6 +5682,16 @@ public final class CollectionTools {
 
 	/**
 	 * Return the list after the specified elements have been "swapped".
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param list
+	 *            the list
+	 * @param i
+	 *            the i
+	 * @param j
+	 *            the j
+	 * @return the list
 	 * @see java.util.Collections#swap(java.util.List, int, int)
 	 */
 	public static <E> List<E> swap(List<E> list, int i, int j) {
@@ -3570,6 +5704,12 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the boolean[]
 	 * @see java.util.Arrays#fill(boolean[], boolean)
 	 */
 	public static boolean[] fill(boolean[] array, boolean value) {
@@ -3579,6 +5719,16 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @param value
+	 *            the value
+	 * @return the boolean[]
 	 * @see java.util.Arrays#fill(boolean[], int, int, boolean)
 	 */
 	public static boolean[] fill(boolean[] array, int fromIndex, int toIndex, boolean value) {
@@ -3588,6 +5738,12 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the byte[]
 	 * @see java.util.Arrays#fill(byte[], byte)
 	 */
 	public static byte[] fill(byte[] array, byte value) {
@@ -3597,6 +5753,16 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @param value
+	 *            the value
+	 * @return the byte[]
 	 * @see java.util.Arrays#fill(byte[], int, int, byte)
 	 */
 	public static byte[] fill(byte[] array, int fromIndex, int toIndex, byte value) {
@@ -3606,6 +5772,12 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the char[]
 	 * @see java.util.Arrays#fill(char[], char)
 	 */
 	public static char[] fill(char[] array, char value) {
@@ -3615,6 +5787,16 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @param value
+	 *            the value
+	 * @return the char[]
 	 * @see java.util.Arrays#fill(char[], int, int, char)
 	 */
 	public static char[] fill(char[] array, int fromIndex, int toIndex, char value) {
@@ -3624,6 +5806,12 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the double[]
 	 * @see java.util.Arrays#fill(double[], double)
 	 */
 	public static double[] fill(double[] array, double value) {
@@ -3633,6 +5821,16 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @param value
+	 *            the value
+	 * @return the double[]
 	 * @see java.util.Arrays#fill(double[], int, int, double)
 	 */
 	public static double[] fill(double[] array, int fromIndex, int toIndex, double value) {
@@ -3642,6 +5840,12 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the float[]
 	 * @see java.util.Arrays#fill(float[], float)
 	 */
 	public static float[] fill(float[] array, float value) {
@@ -3651,6 +5855,16 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @param value
+	 *            the value
+	 * @return the float[]
 	 * @see java.util.Arrays#fill(float[], int, int, float)
 	 */
 	public static float[] fill(float[] array, int fromIndex, int toIndex, float value) {
@@ -3660,6 +5874,12 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the int[]
 	 * @see java.util.Arrays#fill(int[], int)
 	 */
 	public static int[] fill(int[] array, int value) {
@@ -3669,6 +5889,16 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @param value
+	 *            the value
+	 * @return the int[]
 	 * @see java.util.Arrays#fill(int[], int, int, int)
 	 */
 	public static int[] fill(int[] array, int fromIndex, int toIndex, int value) {
@@ -3678,6 +5908,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the e[]
 	 * @see java.util.Arrays#fill(Object[], Object)
 	 */
 	public static <E> E[] fill(E[] array, E value) {
@@ -3687,6 +5925,18 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @param value
+	 *            the value
+	 * @return the e[]
 	 * @see java.util.Arrays#fill(Object[], int, int, Object)
 	 */
 	public static <E> E[] fill(E[] array, int fromIndex, int toIndex, E value) {
@@ -3696,6 +5946,12 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the long[]
 	 * @see java.util.Arrays#fill(long[], long)
 	 */
 	public static long[] fill(long[] array, long value) {
@@ -3705,6 +5961,16 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @param value
+	 *            the value
+	 * @return the long[]
 	 * @see java.util.Arrays#fill(long[], int, int, long)
 	 */
 	public static long[] fill(long[] array, int fromIndex, int toIndex, long value) {
@@ -3714,6 +5980,12 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param array
+	 *            the array
+	 * @param value
+	 *            the value
+	 * @return the short[]
 	 * @see java.util.Arrays#fill(short[], short)
 	 */
 	public static short[] fill(short[] array, short value) {
@@ -3723,6 +5995,16 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "filled".
+	 *
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @param value
+	 *            the value
+	 * @return the short[]
 	 * @see java.util.Arrays#fill(short[], int, int, short)
 	 */
 	public static short[] fill(short[] array, int fromIndex, int toIndex, short value) {
@@ -3732,6 +6014,10 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param array
+	 *            the array
+	 * @return the byte[]
 	 * @see java.util.Arrays#sort(byte[])
 	 */
 	public static byte[] sort(byte... array) {
@@ -3741,6 +6027,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @return the byte[]
 	 * @see java.util.Arrays#sort(byte[], int, int)
 	 */
 	public static byte[] sort(byte[] array, int fromIndex, int toIndex) {
@@ -3750,6 +6044,10 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param array
+	 *            the array
+	 * @return the char[]
 	 * @see java.util.Arrays#sort(char[])
 	 */
 	public static char[] sort(char... array) {
@@ -3759,6 +6057,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @return the char[]
 	 * @see java.util.Arrays#sort(char[], int, int)
 	 */
 	public static char[] sort(char[] array, int fromIndex, int toIndex) {
@@ -3768,6 +6074,10 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param array
+	 *            the array
+	 * @return the double[]
 	 * @see java.util.Arrays#sort(double[])
 	 */
 	public static double[] sort(double... array) {
@@ -3777,6 +6087,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @return the double[]
 	 * @see java.util.Arrays#sort(double[], int, int)
 	 */
 	public static double[] sort(double[] array, int fromIndex, int toIndex) {
@@ -3786,6 +6104,10 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param array
+	 *            the array
+	 * @return the float[]
 	 * @see java.util.Arrays#sort(float[])
 	 */
 	public static float[] sort(float... array) {
@@ -3795,6 +6117,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @return the float[]
 	 * @see java.util.Arrays#sort(float[], int, int)
 	 */
 	public static float[] sort(float[] array, int fromIndex, int toIndex) {
@@ -3804,6 +6134,10 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param array
+	 *            the array
+	 * @return the int[]
 	 * @see java.util.Arrays#sort(int[])
 	 */
 	public static int[] sort(int... array) {
@@ -3813,6 +6147,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @return the int[]
 	 * @see java.util.Arrays#sort(int[], int, int)
 	 */
 	public static int[] sort(int[] array, int fromIndex, int toIndex) {
@@ -3822,6 +6164,12 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @return the e[]
 	 * @see java.util.Arrays#sort(Object[])
 	 */
 	public static <E> E[] sort(E... array) {
@@ -3831,6 +6179,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param comparator
+	 *            the comparator
+	 * @return the e[]
 	 * @see java.util.Arrays#sort(Object[], java.util.Comparator)
 	 */
 	public static <E> E[] sort(E[] array, Comparator<? super E> comparator) {
@@ -3840,6 +6196,16 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @return the e[]
 	 * @see java.util.Arrays#sort(Object[], int, int)
 	 */
 	public static <E> E[] sort(E[] array, int fromIndex, int toIndex) {
@@ -3849,6 +6215,18 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param <E>
+	 *            the element type
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @param comparator
+	 *            the comparator
+	 * @return the e[]
 	 * @see java.util.Arrays#sort(Object[], int, int, java.util.Comparator)
 	 */
 	public static <E> E[] sort(E[] array, int fromIndex, int toIndex, Comparator<? super E> comparator) {
@@ -3858,6 +6236,10 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param array
+	 *            the array
+	 * @return the long[]
 	 * @see java.util.Arrays#sort(long[])
 	 */
 	public static long[] sort(long... array) {
@@ -3867,6 +6249,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @return the long[]
 	 * @see java.util.Arrays#sort(long[], int, int)
 	 */
 	public static long[] sort(long[] array, int fromIndex, int toIndex) {
@@ -3876,6 +6266,10 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param array
+	 *            the array
+	 * @return the short[]
 	 * @see java.util.Arrays#sort(short[])
 	 */
 	public static short[] sort(short... array) {
@@ -3885,6 +6279,14 @@ public final class CollectionTools {
 
 	/**
 	 * Return the array after it has been "sorted".
+	 *
+	 * @param array
+	 *            the array
+	 * @param fromIndex
+	 *            the from index
+	 * @param toIndex
+	 *            the to index
+	 * @return the short[]
 	 * @see java.util.Arrays#sort(short[], int, int)
 	 */
 	public static short[] sort(short[] array, int fromIndex, int toIndex) {

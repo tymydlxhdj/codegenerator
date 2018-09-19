@@ -21,40 +21,84 @@ import com.mqfdy.code.model.ModelPackage;
 import com.mqfdy.code.resource.validator.KeyWordsChecker;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务模型包编辑器(用于新增或修改)
- * 
+ * 业务模型包编辑器(用于新增或修改).
+ *
  * @author mqfdy
- * 
  */
 public class PackageEditorDialog extends ModelElementEditorDialog {
 
+	/** The Constant DIALOG_TITLE_ADD. */
 	public static final String DIALOG_TITLE_ADD = "创建业务模型包";
+	
+	/** The Constant DIALOG_TITLE_EDIT. */
 	public static final String DIALOG_TITLE_EDIT = "修改业务模型包";
 
+	/** The Constant MESSAGE_TITLE. */
 	public static final String MESSAGE_TITLE = "业务模型包";
+	
+	/** The Constant DIALOG_MESSAGE_ADD. */
 	public static final String DIALOG_MESSAGE_ADD = "创建业务模型包";
+	
+	/** The Constant DIALOG_MESSAGE_EDIT. */
 	public static final String DIALOG_MESSAGE_EDIT = "修改业务模型包";
 
+	/** The label display name. */
 	// 显示组件
 	private Label label_displayName;
+	
+	/** The text display name. */
 	private Text text_displayName;
 
+	/** The label remark. */
 	private Label label_remark;
+	
+	/** The text remark. */
 	private Text text_remark;
 
+	/** The label name. */
 	private Label label_name;
+	
+	/** The text name. */
 	private Text text_name;
 
+	/**
+	 * Instantiates a new package editor dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param parent
+	 *            the parent
+	 */
 	public PackageEditorDialog(Shell parentShell, AbstractModelElement parent) {
 		super(parentShell, parent);
 	}
 
+	/**
+	 * Instantiates a new package editor dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param editingElement
+	 *            the editing element
+	 * @param parent
+	 *            the parent
+	 */
 	public PackageEditorDialog(Shell parentShell,
 			AbstractModelElement editingElement, AbstractModelElement parent) {
 		super(parentShell, editingElement, parent);
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createDialogArea(Composite parent) {
 		Composite area = (Composite) super.createDialogArea(parent);
 		Composite container = new Composite(area, SWT.NONE);
@@ -96,7 +140,10 @@ public class PackageEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 初始化弹出框控件的值
+	 * 初始化弹出框控件的值.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initControlValue() {
 		if (OPERATION_TYPE_EDIT.equals(operationType)) {
@@ -122,7 +169,10 @@ public class PackageEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 设置标题和信息
+	 * 设置标题和信息.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setTitleAndMessage() {
 		setTitle(MESSAGE_TITLE);
@@ -137,9 +187,11 @@ public class PackageEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 输入校验
-	 * 
-	 * @return
+	 * 输入校验.
+	 *
+	 * @author mqfdy
+	 * @return true, if is valid input
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean isValidInput() {
 		boolean valid = true;
@@ -214,6 +266,14 @@ public class PackageEditorDialog extends ModelElementEditorDialog {
 		return valid;
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -232,6 +292,14 @@ public class PackageEditorDialog extends ModelElementEditorDialog {
 				ImageKeys.IMG_MODEL_TYPE_PACKAGE));
 	}
 
+	/**
+	 * Button pressed.
+	 *
+	 * @author mqfdy
+	 * @param buttonId
+	 *            the button id
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void buttonPressed(int buttonId) {
 //		if (APPLY_ID == buttonId) {
 //			applylPressed();
@@ -240,6 +308,9 @@ public class PackageEditorDialog extends ModelElementEditorDialog {
 //		}
 	}
 
+	/**
+	 * 
+	 */
 	protected void okPressed() {
 		if (isValidInput()) {
 			createPackage();
@@ -248,10 +319,22 @@ public class PackageEditorDialog extends ModelElementEditorDialog {
 
 	}
 
+	/**
+	 * Applyl pressed.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void applylPressed() {
 		isValidInput();
 	}
 
+	/**
+	 * Creates the package.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createPackage() {
 		String name = this.text_name.getText().trim();
 		String displayName = this.text_displayName.getText().trim();

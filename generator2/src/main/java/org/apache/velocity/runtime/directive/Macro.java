@@ -30,6 +30,7 @@ import org.apache.velocity.runtime.parser.ParserTreeConstants;
 import org.apache.velocity.runtime.parser.Token;
 import org.apache.velocity.runtime.parser.node.Node;
 
+// TODO: Auto-generated Javadoc
 /**
  *  Macro implements the macro definition directive of VTL.
  *
@@ -50,44 +51,63 @@ import org.apache.velocity.runtime.parser.node.Node;
  */
 public class Macro extends Directive
 {
+    
+    /** The debug mode. */
     private static  boolean debugMode = false;
 
     /**
-     * Return name of this directive.
-     * @return The name of this directive.
-     */
+	 * Return name of this directive.
+	 *
+	 * @author mqfdy
+	 * @return The name of this directive.
+	 * @Date 2018-9-3 11:38:30
+	 */
     public String getName()
     {
         return "macro";
     }
 
     /**
-     * Return type of this directive.
-     * @return The type of this directive.
-     */
+	 * Return type of this directive.
+	 *
+	 * @author mqfdy
+	 * @return The type of this directive.
+	 * @Date 2018-9-3 11:38:30
+	 */
     public int getType()
     {
         return BLOCK;
     }
 
     /**
-     * Since this class does no processing of content,
-     * there is never a need for an internal scope.
-     */
+	 * Since this class does no processing of content, there is never a need for
+	 * an internal scope.
+	 *
+	 * @author mqfdy
+	 * @return true, if is scope provided
+	 * @Date 2018-9-3 11:38:30
+	 */
     public boolean isScopeProvided()
     {
         return false;
     }
 
     /**
-     *   render() doesn't do anything in the final output rendering.
-     *   There is no output from a #macro() directive.
-     * @param context
-     * @param writer
-     * @param node
-     * @return True if the directive rendered successfully.
-     * @throws IOException
-     */
+	 * render() doesn't do anything in the final output rendering. There is no
+	 * output from a #macro() directive.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @param node
+	 *            the node
+	 * @return True if the directive rendered successfully.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-9-3 11:38:30
+	 */
     public boolean render(InternalContextAdapter context,
                            Writer writer, Node node)
         throws IOException
@@ -100,8 +120,20 @@ public class Macro extends Directive
     }
 
     /**
-     * @see org.apache.velocity.runtime.directive.Directive#init(org.apache.velocity.runtime.RuntimeServices, org.apache.velocity.context.InternalContextAdapter, org.apache.velocity.runtime.parser.node.Node)
-     */
+	 * Inits the.
+	 *
+	 * @param rs
+	 *            the rs
+	 * @param context
+	 *            the context
+	 * @param node
+	 *            the node
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @see org.apache.velocity.runtime.directive.Directive#init(org.apache.velocity.runtime.RuntimeServices,
+	 *      org.apache.velocity.context.InternalContextAdapter,
+	 *      org.apache.velocity.runtime.parser.node.Node)
+	 */
     public void init(RuntimeServices rs, InternalContextAdapter context,
                      Node node)
        throws TemplateInitException
@@ -116,8 +148,23 @@ public class Macro extends Directive
     }
     
     /**
-     *  Used by Parser.java to do further parameter checking for macro arguments.
-     */
+	 * Used by Parser.java to do further parameter checking for macro arguments.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @param t
+	 *            the t
+	 * @param node
+	 *            the node
+	 * @param sourceTemplate
+	 *            the source template
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws ParseException
+	 *             the parse exception
+	 * @Date 2018-09-03 09:00
+	 */
     public static void checkArgs(RuntimeServices rs,  Token t, Node node,
                                           String sourceTemplate)
         throws IOException, ParseException
@@ -161,15 +208,18 @@ public class Macro extends Directive
     }
 
     /**
-     * Creates an array containing the literal text from the macro
-     * arguement(s) (including the macro's name as the first arg).
-     *
-     * @param node The parse node from which to grok the argument
-     * list.  It's expected to include the block node tree (for the
-     * macro body).
-     * @param rsvc For debugging purposes only.
-     * @return array of arguments
-     */
+	 * Creates an array containing the literal text from the macro arguement(s)
+	 * (including the macro's name as the first arg).
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            The parse node from which to grok the argument list. It's
+	 *            expected to include the block node tree (for the macro body).
+	 * @param rsvc
+	 *            For debugging purposes only.
+	 * @return array of arguments
+	 * @Date 2018-9-3 11:38:30
+	 */
     private static String[] getArgArray(Node node, RuntimeServices rsvc)
     {
         /*

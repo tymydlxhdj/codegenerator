@@ -11,6 +11,7 @@ import com.mqfdy.code.designer.editor.part.NodeEditPart;
 import com.mqfdy.code.designer.editor.utils.EditorOperation;
 import com.mqfdy.code.model.graph.DiagramElement;
 
+// TODO: Auto-generated Javadoc
 /**
  * 设置节点的位置
  * 
@@ -23,16 +24,31 @@ import com.mqfdy.code.model.graph.DiagramElement;
  */
 public class NodeSetConstraintCommand extends Command {
 
+	/** The node. */
 	private DiagramElement node;
 
+	/** The req. */
 	private ChangeBoundsRequest req;
 
+	/** The old bounds. */
 	private Rectangle oldBounds;
 
+	/** The new bounds. */
 	private Rectangle newBounds;
 
+	/** The node edit part. */
 	private NodeEditPart nodeEditPart;
 
+	/**
+	 * Instantiates a new node set constraint command.
+	 *
+	 * @param nodeEditPart
+	 *            the node edit part
+	 * @param req
+	 *            the req
+	 * @param newBounds
+	 *            the new bounds
+	 */
 	public NodeSetConstraintCommand(NodeEditPart nodeEditPart,
 			ChangeBoundsRequest req, Rectangle newBounds) {
 
@@ -47,6 +63,9 @@ public class NodeSetConstraintCommand extends Command {
 		this.newBounds = newBounds;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		Object type = req.getType();
@@ -58,6 +77,9 @@ public class NodeSetConstraintCommand extends Command {
 					.equals(type));
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 		oldBounds = new Rectangle(new Point(node.getStyle().getPositionX(),
@@ -66,6 +88,9 @@ public class NodeSetConstraintCommand extends Command {
 		redo();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void redo() {
 		node.getStyle().setPositionX(newBounds.getLocation().x);
@@ -76,6 +101,9 @@ public class NodeSetConstraintCommand extends Command {
 		EditorOperation.refreshNodeEditParts();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void undo() {
 		node.getStyle().setPositionX(oldBounds.getLocation().x);

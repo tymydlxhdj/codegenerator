@@ -29,39 +29,74 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.runtime.parser.Parser;
 
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ASTBlock.
  *
+ * @author mqfdy
  */
 public class ASTBlock extends SimpleNode
 {
+    
     /**
-     * @param id
-     */
+	 * Instantiates a new AST block.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTBlock(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST block.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTBlock(Parser p, int id)
     {
         super(p, id);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#render(org.apache.velocity.context.InternalContextAdapter, java.io.Writer)
-     */
+	 * Render.
+	 *
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @return true, if successful
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#render(org.apache.velocity.context.InternalContextAdapter,
+	 *      java.io.Writer)
+	 */
     public boolean render( InternalContextAdapter context, Writer writer)
         throws IOException, MethodInvocationException,
         	ResourceNotFoundException, ParseErrorException

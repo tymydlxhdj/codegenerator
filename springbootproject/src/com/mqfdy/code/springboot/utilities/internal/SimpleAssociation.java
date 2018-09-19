@@ -11,8 +11,15 @@ package com.mqfdy.code.springboot.utilities.internal;
 
 import java.io.Serializable;
 
+// TODO: Auto-generated Javadoc
 /**
  * Straightforward implementation of Association.
+ *
+ * @author mqfdy
+ * @param <K>
+ *            the key type
+ * @param <V>
+ *            the value type
  */
 public class SimpleAssociation<K, V>
 	extends AbstractAssociation<K, V>
@@ -25,8 +32,10 @@ public class SimpleAssociation<K, V>
 
 
 	/**
-	 * Construct an association with the specified key
-	 * and a null value.
+	 * Construct an association with the specified key and a null value.
+	 *
+	 * @param key
+	 *            the key
 	 */
 	public SimpleAssociation(K key) {
 		super();
@@ -35,6 +44,11 @@ public class SimpleAssociation<K, V>
 
 	/**
 	 * Construct an association with the specified key and value.
+	 *
+	 * @param key
+	 *            the key
+	 * @param value
+	 *            the value
 	 */
 	public SimpleAssociation(K key, V value) {
 		this(key);

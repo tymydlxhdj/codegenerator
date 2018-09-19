@@ -25,6 +25,12 @@ public class AWTPropertyChangeListenerWrapper
 	private final PropertyChangeListener listener;
 
 
+	/**
+	 * Instantiates a new AWT property change listener wrapper.
+	 *
+	 * @param listener
+	 *            the listener
+	 */
 	public AWTPropertyChangeListenerWrapper(PropertyChangeListener listener) {
 		super();
 		if (listener == null) {

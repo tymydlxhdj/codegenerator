@@ -14,6 +14,12 @@ import com.mqfdy.code.springboot.core.util.JobUtil;
 import com.mqfdy.code.springboot.core.util.Operation2Runnable;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class NewMicroProjectWizard.
+ *
+ * @author mqfdy
+ */
 public class NewMicroProjectWizard extends Wizard implements INewWizard {
 
 	private final NewMicroProjectOperation operation = new NewMicroProjectOperation();
@@ -21,6 +27,9 @@ public class NewMicroProjectWizard extends Wizard implements INewWizard {
 	private DBWizardPage pageTwo;
 	private BasePackageWizardPage pageBasePackage;
 
+	/**
+	 * Instantiates a new new micro project wizard.
+	 */
 	public NewMicroProjectWizard() {
 		setWindowTitle("新建Springboot项目");
 	}

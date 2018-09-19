@@ -36,6 +36,7 @@ import org.apache.velocity.runtime.parser.node.Node;
 import org.apache.velocity.runtime.parser.node.SimpleNode;
 import org.apache.velocity.util.introspection.Info;
 
+// TODO: Auto-generated Javadoc
 /**
  * Evaluates the directive argument as a VTL string, using the existing
  * context.
@@ -48,30 +49,43 @@ public class Evaluate extends Directive
 {
 
     /**
-     * Return name of this directive.
-     * @return The name of this directive.
-     */
+	 * Return name of this directive.
+	 *
+	 * @author mqfdy
+	 * @return The name of this directive.
+	 * @Date 2018-9-3 11:38:37
+	 */
     public String getName()
     {
         return "evaluate";
     }
 
     /**
-     * Return type of this directive.
-     * @return The type of this directive.
-     */
+	 * Return type of this directive.
+	 *
+	 * @author mqfdy
+	 * @return The type of this directive.
+	 * @Date 2018-9-3 11:38:37
+	 */
     public int getType()
     {
         return LINE;
     }
 
     /**
-     * Initialize and check arguments.
-     * @param rs
-     * @param context
-     * @param node
-     * @throws TemplateInitException
-     */
+	 * Initialize and check arguments.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @param context
+	 *            the context
+	 * @param node
+	 *            the node
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @Date 2018-9-3 11:38:37
+	 */
     public void init(RuntimeServices rs, InternalContextAdapter context,
                      Node node)
         throws TemplateInitException
@@ -117,17 +131,27 @@ public class Evaluate extends Directive
     }
     
     /**
-     * Evaluate the argument, convert to a String, and evaluate again 
-     * (with the same context).
-     * @param context
-     * @param writer
-     * @param node
-     * @return True if the directive rendered successfully.
-     * @throws IOException
-     * @throws ResourceNotFoundException
-     * @throws ParseErrorException 
-     * @throws MethodInvocationException
-     */
+	 * Evaluate the argument, convert to a String, and evaluate again (with the
+	 * same context).
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @param node
+	 *            the node
+	 * @return True if the directive rendered successfully.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-9-3 11:38:37
+	 */
     public boolean render(InternalContextAdapter context, Writer writer,
             Node node) throws IOException, ResourceNotFoundException,
             ParseErrorException, MethodInvocationException

@@ -345,6 +345,15 @@ public interface Node extends Model, Comparable<Node> {
 	public class SimpleReference implements Reference {
 		private Node source;
 		private Node target;
+		
+		/**
+		 * Instantiates a new simple reference.
+		 *
+		 * @param source
+		 *            the source
+		 * @param target
+		 *            the target
+		 */
 		public SimpleReference(Node source, Node target) {
 			super();
 			if (source == null || target == null) {

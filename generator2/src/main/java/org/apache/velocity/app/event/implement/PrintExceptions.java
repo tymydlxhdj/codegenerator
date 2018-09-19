@@ -25,6 +25,7 @@ import org.apache.velocity.app.event.MethodExceptionEventHandler;
 import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.util.RuntimeServicesAware;
 
+// TODO: Auto-generated Javadoc
 /**
  * Simple event handler that renders method exceptions in the page
  * rather than throwing the exception.  Useful for debugging.
@@ -42,21 +43,31 @@ import org.apache.velocity.util.RuntimeServicesAware;
 public class PrintExceptions implements MethodExceptionEventHandler, RuntimeServicesAware
 {
 
+    /** The show message. */
     private static String SHOW_MESSAGE = "eventhandler.methodexception.message";
+    
+    /** The show stack trace. */
     private static String SHOW_STACK_TRACE = "eventhandler.methodexception.stacktrace";
 
-    /** Reference to the runtime service */
+    /** Reference to the runtime service. */
     private RuntimeServices rs = null;
 
     /**
-     * Render the method exception, and optionally the exception message and stack trace.
-     * 
-     * @param claz the class of the object the method is being applied to
-     * @param method the method
-     * @param e the thrown exception
-     * @return an object to insert in the page
-     * @throws Exception an exception to be thrown instead inserting an object
-     */
+	 * Render the method exception, and optionally the exception message and
+	 * stack trace.
+	 *
+	 * @author mqfdy
+	 * @param claz
+	 *            the class of the object the method is being applied to
+	 * @param method
+	 *            the method
+	 * @param e
+	 *            the thrown exception
+	 * @return an object to insert in the page
+	 * @throws Exception
+	 *             an exception to be thrown instead inserting an object
+	 * @Date 2018-9-3 11:38:36
+	 */
     public Object methodException(Class claz, String method, Exception e) throws Exception
     {
         boolean showMessage = rs.getBoolean(SHOW_MESSAGE,false);
@@ -93,6 +104,15 @@ public class PrintExceptions implements MethodExceptionEventHandler, RuntimeServ
     }
 
 
+    /**
+	 * Gets the stack trace.
+	 *
+	 * @author mqfdy
+	 * @param throwable
+	 *            the throwable
+	 * @return the stack trace
+	 * @Date 2018-9-3 11:38:36
+	 */
     private static String getStackTrace(Throwable throwable)
     {
         PrintWriter printWriter = null;
@@ -115,8 +135,12 @@ public class PrintExceptions implements MethodExceptionEventHandler, RuntimeServ
 
 
     /**
-     * @see org.apache.velocity.util.RuntimeServicesAware#setRuntimeServices(org.apache.velocity.runtime.RuntimeServices)
-     */
+	 * Sets the runtime services.
+	 *
+	 * @param rs
+	 *            the new runtime services
+	 * @see org.apache.velocity.util.RuntimeServicesAware#setRuntimeServices(org.apache.velocity.runtime.RuntimeServices)
+	 */
     public void setRuntimeServices(RuntimeServices rs)
     {
         this.rs = rs;

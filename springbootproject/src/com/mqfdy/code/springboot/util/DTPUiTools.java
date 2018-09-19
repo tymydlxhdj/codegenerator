@@ -34,10 +34,16 @@ public class DTPUiTools {
 
 	
 	/**
-	 * Launch the DTP New Connection Profile wizard to create a new database connection profile.
+	 * Launch the DTP New Connection Profile wizard to create a new database
+	 * connection profile.
 	 * 
-	 * Returns the name of the added profile, or null if the wizard is cancelled. ConnectionProfileRepository 
-	 * can be used to retrieve the added connection profile.
+	 * Returns the name of the added profile, or null if the wizard is
+	 * cancelled. ConnectionProfileRepository can be used to retrieve the added
+	 * connection profile.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String createNewProfile() {
 		NewCPWizard wizard;

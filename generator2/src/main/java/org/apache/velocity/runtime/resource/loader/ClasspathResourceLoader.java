@@ -28,6 +28,7 @@ import org.apache.velocity.runtime.resource.Resource;
 import org.apache.velocity.util.ClassUtils;
 import org.apache.velocity.util.ExceptionUtils;
 
+// TODO: Auto-generated Javadoc
 /**
  *  ClasspathResourceLoader is a simple loader that will load
  *  templates from the classpath.
@@ -79,9 +80,13 @@ public class ClasspathResourceLoader extends ResourceLoader
 {
 
     /**
-     *  This is abstract in the base class, so we need it
-     * @param configuration
-     */
+	 * This is abstract in the base class, so we need it.
+	 *
+	 * @author mqfdy
+	 * @param configuration
+	 *            the configuration
+	 * @Date 2018-9-3 11:38:31
+	 */
     public void init( ExtendedProperties configuration)
     {
         if (log.isTraceEnabled())
@@ -91,14 +96,16 @@ public class ClasspathResourceLoader extends ResourceLoader
     }
 
     /**
-     * Get an InputStream so that the Runtime can build a
-     * template with it.
-     *
-     * @param name name of template to get
-     * @return InputStream containing the template
-     * @throws ResourceNotFoundException if template not found
-     *         in  classpath.
-     */
+	 * Get an InputStream so that the Runtime can build a template with it.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            name of template to get
+	 * @return InputStream containing the template
+	 * @throws ResourceNotFoundException
+	 *             if template not found in classpath.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public InputStream getResourceStream( String name )
         throws ResourceNotFoundException
     {
@@ -135,16 +142,26 @@ public class ClasspathResourceLoader extends ResourceLoader
     }
 
     /**
-     * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#isSourceModified(org.apache.velocity.runtime.resource.Resource)
-     */
+	 * Checks if is source modified.
+	 *
+	 * @param resource
+	 *            the resource
+	 * @return true, if is source modified
+	 * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#isSourceModified(org.apache.velocity.runtime.resource.Resource)
+	 */
     public boolean isSourceModified(Resource resource)
     {
         return false;
     }
 
     /**
-     * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#getLastModified(org.apache.velocity.runtime.resource.Resource)
-     */
+	 * Gets the last modified.
+	 *
+	 * @param resource
+	 *            the resource
+	 * @return the last modified
+	 * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#getLastModified(org.apache.velocity.runtime.resource.Resource)
+	 */
     public long getLastModified(Resource resource)
     {
         return 0;

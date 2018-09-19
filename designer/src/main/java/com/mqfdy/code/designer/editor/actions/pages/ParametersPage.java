@@ -32,46 +32,111 @@ import org.eclipse.ui.PlatformUI;
 import com.mqfdy.code.model.utils.DBType;
 import com.mqfdy.code.reverse.DataSourceInfo;
 
+// TODO: Auto-generated Javadoc
 /**
- * 代码生成向导参数设置页面
- * 
+ * 代码生成向导参数设置页面.
+ *
  * @author mqfdy
- * 
  */
 public class ParametersPage extends Composite {
+	
+	/** The generator diaolg. */
 	protected GeneratorDiaolg generatorDiaolg;
+	
+	/** The src. */
 	protected Text src;
+	
+	/** The cur location. */
 	protected Folder curLocation;// 路径
 
+	/** The cur project. */
 	protected IProject curProject;
 
+	/** The db type. */
 	// private Text pkgName;//包名
 	protected Combo dbType;// 数据库类型
 
+	/** The java. */
 	protected Button java;// 生成Java文件
+	
+	/** The hbm. */
 	protected Button hbm;// 生成HBM文件
+	
+	/** The ddl. */
 	protected Button ddl;// 生成DDL
+	
+	/** The is gen F kddl. */
 	protected Button isGenFKddl;// 生成外键的DDL
+	
+	/** The p. */
 	protected Button p;// 生成配置文件
+	
+	/** The v. */
 	protected Button v;// 生成前校验模型
+	
+	/** The test. */
 	protected Button test;// 生成测试代码
+	
+	/** The se. */
 	protected Combo se;// 遇到同名文件时提示或覆盖
+	
+	/** The db types. */
 	protected String dbTypes;// 数据库类型
+	
+	/** The javas. */
 	protected boolean javas = true;// 生成Java文件
+	
+	/** The hbms. */
 	protected boolean hbms = true;// 生成HBM文件
+	
+	/** The ddls. */
 	protected boolean ddls = true;// 生成DDL
+	
+	/** The is gen F kddls. */
 	protected boolean isGenFKddls = true;// 生成DDL
+	
+	/** The config. */
 	protected boolean config = true;// 生成配置文件
+	
+	/** The vs. */
 	protected boolean vs = true;// 生成前校验模型
+	
+	/** The test code. */
 	protected boolean testCode = false;// 生成测试代码
+	
+	/** The ses. */
 	protected int ses;// 遇到同名文件时提示或覆盖
+	
+	/** The data source list. */
 	protected List<DataSourceInfo> dataSourceList;//数据库连接
+	
+	/** The model id. */
 	protected String modelId;
+	
+	/** The is sync dbs. */
 	protected boolean isSyncDbs = false;//是否同步到数据库
+	
+	/** The is sync db. */
 	protected Button isSyncDb;//是否同步到数据库
+	
+	/** The db list combo. */
 	protected Combo dbListCombo;//数据库连接下拉框
+	
+	/** The data source name. */
 	protected String dataSourceName;//数据库连接下拉框
 	
+	/**
+	 * Instantiates a new parameters page.
+	 *
+	 * @param project
+	 *            the project
+	 * @param tabFolder
+	 *            the tab folder
+	 * @param style
+	 *            the style
+	 * @param fileName
+	 *            the file name
+	 */
 	public ParametersPage(IProject project, TabFolder tabFolder, int style,String fileName) {
 		super(tabFolder, style);
 		this.modelId = fileName;
@@ -84,6 +149,20 @@ public class ParametersPage extends Composite {
 		setCurLocation(null);
 	}
 
+	/**
+	 * Instantiates a new parameters page.
+	 *
+	 * @param project
+	 *            the project
+	 * @param tabFolder
+	 *            the tab folder
+	 * @param style
+	 *            the style
+	 * @param generatorDiaolg
+	 *            the generator diaolg
+	 * @param fileName
+	 *            the file name
+	 */
 	public ParametersPage(IProject project, TabFolder tabFolder, int style,
 			GeneratorDiaolg generatorDiaolg, String fileName) {
 		super(tabFolder, style);
@@ -100,6 +179,14 @@ public class ParametersPage extends Composite {
 		createContents(this);
 	}
 	
+	/**
+	 * Sets the cur location.
+	 *
+	 * @author mqfdy
+	 * @param path
+	 *            the new cur location
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void setCurLocation(String path){
 		if(curProject != null){
 			if(path ==null || path.equals("")){
@@ -118,9 +205,13 @@ public class ParametersPage extends Composite {
 
 	
 	/**
-	 * 获取SRC路径列表
+	 * 获取SRC路径列表.
+	 *
+	 * @author mqfdy
 	 * @param project
-	 * @return
+	 *            the project
+	 * @return the src path list
+	 * @Date 2018-09-03 09:00
 	 */
 	protected List<String> getSrcPathList(IProject project){
 		List<String> pathList = new ArrayList();
@@ -141,6 +232,14 @@ public class ParametersPage extends Composite {
 		return pathList;
 	}
 
+	/**
+	 * Creates the contents.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createContents(Composite composite) {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
@@ -466,6 +565,12 @@ public class ParametersPage extends Composite {
 	}
 	
 	
+	/**
+	 * Change db type.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void changeDbType(){
 		dataSourceName = dbListCombo.getText();
 		String type = getDataSourceInfo() == null ?"":getDataSourceInfo().getDbType();
@@ -477,9 +582,13 @@ public class ParametersPage extends Composite {
 		}
 		dbTypes = dbType.getText();
 	}
+	
 	/**
-	 * 获取数据源名称数组
-	 * @return
+	 * 获取数据源名称数组.
+	 *
+	 * @author mqfdy
+	 * @return the data source combo content
+	 * @Date 2018-09-03 09:00
 	 */
 	protected String[] getDataSourceComboContent(){
 		String[] items = new String[dataSourceList.size()];
@@ -490,9 +599,13 @@ public class ParametersPage extends Composite {
 		}
 		return items;
 	}
+	
 	/**
-	 * 根据数据源名称获取数据源
-	 * @return
+	 * 根据数据源名称获取数据源.
+	 *
+	 * @author mqfdy
+	 * @return the data source info
+	 * @Date 2018-09-03 09:00
 	 */
 	public DataSourceInfo getDataSourceInfo(){
 		for(DataSourceInfo dsi : dataSourceList){
@@ -501,8 +614,13 @@ public class ParametersPage extends Composite {
 		}
 		return null;
 	}
+	
 	/**
-	 * 取得位置
+	 * 取得位置.
+	 *
+	 * @author mqfdy
+	 * @return the select path
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getSelectPath() {
 		Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
@@ -518,49 +636,136 @@ public class ParametersPage extends Composite {
 
 	// public String getPkgName() {
 	// return pkgNames;
+	/**
+	 * Gets the db type.
+	 *
+	 * @author mqfdy
+	 * @return the db type
+	 * @Date 2018-09-03 09:00
+	 */
 	// }
 	public String getDbType() {
 		return dbTypes;
 	}
 
+	/**
+	 * Gets the java.
+	 *
+	 * @author mqfdy
+	 * @return the java
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean getJava() {
 		return javas;
 	}
 
+	/**
+	 * Gets the hbm.
+	 *
+	 * @author mqfdy
+	 * @return the hbm
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean getHbm() {
 		return hbms;
 	}
 
+	/**
+	 * Gets the ddl.
+	 *
+	 * @author mqfdy
+	 * @return the ddl
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean getDdl() {
 		return ddls;
 	}
 	
+	/**
+	 * Gets the gen FK ddl.
+	 *
+	 * @author mqfdy
+	 * @return the gen FK ddl
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean getGenFKDdl() {
 		return isGenFKddls;
 	}
 
+	/**
+	 * Gets the config.
+	 *
+	 * @author mqfdy
+	 * @return the config
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean getConfig() {
 		return config;
 	}
 
+	/**
+	 * Gets the v.
+	 *
+	 * @author mqfdy
+	 * @return the v
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean getV() {
 		return vs;
 	}
 	
+	/**
+	 * Gets the test code.
+	 *
+	 * @author mqfdy
+	 * @return the test code
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean getTestCode() {
 		return testCode;
 	}
 
+	/**
+	 * Gets the se.
+	 *
+	 * @author mqfdy
+	 * @return the se
+	 * @Date 2018-09-03 09:00
+	 */
 	public int getSe() {
 		return ses;
 	}
+	
+	/**
+	 * Gets the cur project.
+	 *
+	 * @author mqfdy
+	 * @return the cur project
+	 * @Date 2018-09-03 09:00
+	 */
 	public IProject getCurProject() {
 		return curProject;
 	}
+	
+	/**
+	 * Sets the cur project.
+	 *
+	 * @author mqfdy
+	 * @param curProject
+	 *            the new cur project
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setCurProject(IProject curProject) {
 		this.curProject = curProject;
 	}
 
+	/**
+	 * Gets the cur path.
+	 *
+	 * @author mqfdy
+	 * @return the cur path
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getCurPath() {
 		String srcPath = curLocation.getLocation().toOSString();
 		// String pkgPath = getPkgName();
@@ -568,10 +773,25 @@ public class ParametersPage extends Composite {
 		return srcPath + File.separator;// +pkgPath;
 	}
 
+	/**
+	 * Checks if is sync dbs.
+	 *
+	 * @author mqfdy
+	 * @return true, if is sync dbs
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isSyncDbs() {
 		return isSyncDbs;
 	}
 
+	/**
+	 * Sets the sync dbs.
+	 *
+	 * @author mqfdy
+	 * @param isSyncDbs
+	 *            the new sync dbs
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setSyncDbs(boolean isSyncDbs) {
 		this.isSyncDbs = isSyncDbs;
 	}

@@ -27,7 +27,9 @@ import java.util.Map;
 
 import org.apache.velocity.util.MapFactory;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class MethodMap.
  *
  * @author <a href="mailto:jvanzyl@apache.org">Jason van Zyl</a>
  * @author <a href="mailto:bob@werken.com">Bob McWhirter</a>
@@ -38,8 +40,14 @@ import org.apache.velocity.util.MapFactory;
  */
 public class MethodMap
 {
+    
+    /** The Constant MORE_SPECIFIC. */
     private static final int MORE_SPECIFIC = 0;
+    
+    /** The Constant LESS_SPECIFIC. */
     private static final int LESS_SPECIFIC = 1;
+    
+    /** The Constant INCOMPARABLE. */
     private static final int INCOMPARABLE = 2;
 
     /**
@@ -48,11 +56,14 @@ public class MethodMap
     Map methodByNameMap = MapFactory.create(false);
 
     /**
-     * Add a method to a list of methods by name.
-     * For a particular class we are keeping track
-     * of all the methods with the same name.
-     * @param method
-     */
+	 * Add a method to a list of methods by name. For a particular class we are
+	 * keeping track of all the methods with the same name.
+	 *
+	 * @author mqfdy
+	 * @param method
+	 *            the method
+	 * @Date 2018-9-3 11:38:32
+	 */
     public void add(Method method)
     {
         String methodName = method.getName();
@@ -69,44 +80,47 @@ public class MethodMap
     }
 
     /**
-     * Return a list of methods with the same name.
-     *
-     * @param key
-     * @return List list of methods
-     */
+	 * Return a list of methods with the same name.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @return List list of methods
+	 * @Date 2018-9-3 11:38:32
+	 */
     public List get(String key)
     {
         return (List) methodByNameMap.get(key);
     }
 
     /**
-     *  <p>
-     *  Find a method.  Attempts to find the
-     *  most specific applicable method using the
-     *  algorithm described in the JLS section
-     *  15.12.2 (with the exception that it can't
-     *  distinguish a primitive type argument from
-     *  an object type argument, since in reflection
-     *  primitive type arguments are represented by
-     *  their object counterparts, so for an argument of
-     *  type (say) java.lang.Integer, it will not be able
-     *  to decide between a method that takes int and a
-     *  method that takes java.lang.Integer as a parameter.
-     *  </p>
-     *
-     *  <p>
-     *  This turns out to be a relatively rare case
-     *  where this is needed - however, functionality
-     *  like this is needed.
-     *  </p>
-     *
-     *  @param methodName name of method
-     *  @param args the actual arguments with which the method is called
-     *  @return the most specific applicable method, or null if no
-     *  method is applicable.
-     *  @throws AmbiguousException if there is more than one maximally
-     *  specific applicable method
-     */
+	 * <p>
+	 * Find a method. Attempts to find the most specific applicable method using
+	 * the algorithm described in the JLS section 15.12.2 (with the exception
+	 * that it can't distinguish a primitive type argument from an object type
+	 * argument, since in reflection primitive type arguments are represented by
+	 * their object counterparts, so for an argument of type (say)
+	 * java.lang.Integer, it will not be able to decide between a method that
+	 * takes int and a method that takes java.lang.Integer as a parameter.
+	 * </p>
+	 * 
+	 * <p>
+	 * This turns out to be a relatively rare case where this is needed -
+	 * however, functionality like this is needed.
+	 * </p>
+	 *
+	 * @author mqfdy
+	 * @param methodName
+	 *            name of method
+	 * @param args
+	 *            the actual arguments with which the method is called
+	 * @return the most specific applicable method, or null if no method is
+	 *         applicable.
+	 * @throws AmbiguousException
+	 *             if there is more than one maximally specific applicable
+	 *             method
+	 * @Date 2018-9-3 11:38:32
+	 */
     public Method find(String methodName, Object[] args)
         throws AmbiguousException
     {
@@ -135,6 +149,17 @@ public class MethodMap
         return getBestMatch(methodList, classes);
     }
 
+    /**
+	 * Gets the best match.
+	 *
+	 * @author mqfdy
+	 * @param methods
+	 *            the methods
+	 * @param args
+	 *            the args
+	 * @return the best match
+	 * @Date 2018-9-3 11:38:32
+	 */
     private static Method getBestMatch(List methods, Class[] args)
     {
         List equivalentMatches = null;
@@ -216,26 +241,31 @@ public class MethodMap
     }
 
     /**
-     *  Simple distinguishable exception, used when
-     *  we run across ambiguous overloading.  Caught
-     *  by the introspector.
-     */
+	 * Simple distinguishable exception, used when we run across ambiguous
+	 * overloading. Caught by the introspector.
+	 *
+	 * @author mqfdy
+	 */
     public static class AmbiguousException extends RuntimeException
     {
-        /**
-         * Version Id for serializable
-         */
+        
+        /** Version Id for serializable. */
         private static final long serialVersionUID = -2314636505414551663L;
     }
 
     /**
-     * Determines which method signature (represented by a class array) is more
-     * specific. This defines a partial ordering on the method signatures.
-     * @param c1 first signature to compare
-     * @param c2 second signature to compare
-     * @return MORE_SPECIFIC if c1 is more specific than c2, LESS_SPECIFIC if
-     * c1 is less specific than c2, INCOMPARABLE if they are incomparable.
-     */
+	 * Determines which method signature (represented by a class array) is more
+	 * specific. This defines a partial ordering on the method signatures.
+	 *
+	 * @author mqfdy
+	 * @param c1
+	 *            first signature to compare
+	 * @param c2
+	 *            second signature to compare
+	 * @return MORE_SPECIFIC if c1 is more specific than c2, LESS_SPECIFIC if c1
+	 *         is less specific than c2, INCOMPARABLE if they are incomparable.
+	 * @Date 2018-9-3 11:38:32
+	 */
     private static int compare(Class[] c1, Class[] c2)
     {
         boolean c1MoreSpecific = false;
@@ -313,13 +343,17 @@ public class MethodMap
     }
 
     /**
-     * Returns true if the supplied method is applicable to actual
-     * argument types.
-     * 
-     * @param method method that will be called
-     * @param classes arguments to method
-     * @return true if method is applicable to arguments
-     */
+	 * Returns true if the supplied method is applicable to actual argument
+	 * types.
+	 *
+	 * @author mqfdy
+	 * @param method
+	 *            method that will be called
+	 * @param classes
+	 *            arguments to method
+	 * @return true if method is applicable to arguments
+	 * @Date 2018-9-3 11:38:32
+	 */
     private static boolean isApplicable(Method method, Class[] classes)
     {
         Class[] methodArgs = method.getParameterTypes();
@@ -398,6 +432,19 @@ public class MethodMap
         return true;
     }
 
+    /**
+	 * Checks if is convertible.
+	 *
+	 * @author mqfdy
+	 * @param formal
+	 *            the formal
+	 * @param actual
+	 *            the actual
+	 * @param possibleVarArg
+	 *            the possible var arg
+	 * @return true, if is convertible
+	 * @Date 2018-9-3 11:38:32
+	 */
     private static boolean isConvertible(Class formal, Class actual,
                                          boolean possibleVarArg)
     {
@@ -405,6 +452,19 @@ public class MethodMap
             isMethodInvocationConvertible(formal, actual, possibleVarArg);
     }
 
+    /**
+	 * Checks if is strict convertible.
+	 *
+	 * @author mqfdy
+	 * @param formal
+	 *            the formal
+	 * @param actual
+	 *            the actual
+	 * @param possibleVarArg
+	 *            the possible var arg
+	 * @return true, if is strict convertible
+	 * @Date 2018-9-3 11:38:32
+	 */
     private static boolean isStrictConvertible(Class formal, Class actual,
                                                boolean possibleVarArg)
     {

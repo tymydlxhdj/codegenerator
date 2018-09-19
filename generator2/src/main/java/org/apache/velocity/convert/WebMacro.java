@@ -27,6 +27,7 @@ import org.apache.oro.text.perl.Perl5Util;
 import org.apache.velocity.util.StringUtils;
 import org.apache.tools.ant.DirectoryScanner;
 
+// TODO: Auto-generated Javadoc
 /**
  * This is deprecated without replacement.
  *
@@ -37,14 +38,11 @@ import org.apache.tools.ant.DirectoryScanner;
  */
 public class WebMacro
 {
-    /**
-     *
-     */
+    
+    /** The Constant VM_EXT. */
     protected static final String VM_EXT = ".vm";
 
-    /**
-     *
-     */
+    /** The Constant WM_EXT. */
     protected static final String WM_EXT = ".wm";
 
     /**
@@ -110,10 +108,14 @@ public class WebMacro
     };
 
     /**
-     * Iterate through the set of find/replace regexes
-     * that will convert a given WM template to a VM template
-     * @param target
-     */
+	 * Iterate through the set of find/replace regexes that will convert a given
+	 * WM template to a VM template.
+	 *
+	 * @author mqfdy
+	 * @param target
+	 *            the target
+	 * @Date 2018-09-03 09:00
+	 */
     public void convert(String target)
     {
         File file = new File(target);
@@ -146,9 +148,19 @@ public class WebMacro
     }
 
     /**
-     * Write out the converted template to the given named file
-     * and base directory.
-     */
+	 * Write out the converted template to the given named file and base
+	 * directory.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @param basedir
+	 *            the basedir
+	 * @param newBasedir
+	 *            the new basedir
+	 * @return true, if successful
+	 * @Date 2018-9-3 11:38:29
+	 */
     private boolean writeTemplate(String file, String basedir,
                                   String newBasedir)
     {
@@ -209,9 +221,15 @@ public class WebMacro
     }
 
     /**
-     * Gets the path segment of the full path to a file (i.e. one
-     * which originally included the file name).
-     */
+	 * Gets the path segment of the full path to a file (i.e. one which
+	 * originally included the file name).
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @return the string
+	 * @Date 2018-9-3 11:38:29
+	 */
     private final String extractPath(String file)
     {
         int lastSepPos = file.lastIndexOf(File.separator);
@@ -220,8 +238,14 @@ public class WebMacro
     }
 
     /**
-     * Simple extension conversion of .wm to .vm
-     */
+	 * Simple extension conversion of .wm to .vm
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return the string
+	 * @Date 2018-9-3 11:38:29
+	 */
     private String convertName(String name)
     {
         return (name.indexOf(WM_EXT) < 0)
@@ -230,18 +254,25 @@ public class WebMacro
     }
 
     /**
-     * How to use this little puppy :-)
-     */
+	 * How to use this little puppy :-).
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:29
+	 */
     private static final void usage()
     {
         System.err.println("Usage: convert-wm <template.wm | directory>");
     }
 
     /**
-     * Apply find/replace regexes to our WM template
-     * @param template
-     * @return Returns the template with all regexprs applied.
-     */
+	 * Apply find/replace regexes to our WM template.
+	 *
+	 * @author mqfdy
+	 * @param template
+	 *            the template
+	 * @return Returns the template with all regexprs applied.
+	 * @Date 2018-09-03 09:00
+	 */
     public String convertTemplate(String template)
     {
         String contents = StringUtils.fileContentsToString(template);
@@ -277,17 +308,25 @@ public class WebMacro
     }
 
     /**
-     * Makes a Perl 5 regular expression for use by ORO.
-     */
+	 * Makes a Perl 5 regular expression for use by ORO.
+	 *
+	 * @author mqfdy
+	 * @param i
+	 *            the i
+	 * @return the string
+	 * @Date 2018-9-3 11:38:29
+	 */
     private final String makeSubstRE(int i)
     {
         return ("s/" + perLineREs[i] + '/' + perLineREs[i + 1] + "/g");
     }
 
     /**
-     * Main hook for the conversion process.
-     * @param args
-     */
+	 * Main hook for the conversion process.
+	 *
+	 * @param args
+	 *            the arguments
+	 */
     public static void main(String[] args)
     {
         if (args.length > 0)

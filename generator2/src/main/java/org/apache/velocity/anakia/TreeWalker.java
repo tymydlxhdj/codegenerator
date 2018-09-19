@@ -25,6 +25,7 @@ import java.util.Iterator;
 
 import org.jdom.Element;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class allows you to walk a tree of JDOM Element objects.
  * It first walks the tree itself starting at the Element passed
@@ -40,20 +41,24 @@ import org.jdom.Element;
  */
 public class TreeWalker
 {
+    
     /**
-     * Empty constructor
-     */
+	 * Empty constructor.
+	 */
     public TreeWalker()
     {
         // Left blank
     }
 
     /**
-     * Creates a new Vector and walks the Element tree.
-     *
-     * @param e the starting Element node
-     * @return Vector a vector of Element nodes
-     */
+	 * Creates a new Vector and walks the Element tree.
+	 *
+	 * @author mqfdy
+	 * @param e
+	 *            the starting Element node
+	 * @return Vector a vector of Element nodes
+	 * @Date 2018-9-3 11:38:30
+	 */
     public NodeList allElements(Element e)
     {
         ArrayList theElements = new ArrayList();
@@ -62,9 +67,15 @@ public class TreeWalker
     }
 
     /**
-     * A recursive method to walk the Element tree.
-     * @param Element the current Element
-     */
+	 * A recursive method to walk the Element tree.
+	 *
+	 * @author mqfdy
+	 * @param e
+	 *            the e
+	 * @param theElements
+	 *            the the elements
+	 * @Date 2018-9-3 11:38:30
+	 */
     private final void treeWalk(Element e, Collection theElements )
     {
         for (Iterator i=e.getChildren().iterator(); i.hasNext(); )

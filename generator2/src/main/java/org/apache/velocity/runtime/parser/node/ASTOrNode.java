@@ -23,6 +23,7 @@ import org.apache.velocity.context.InternalContextAdapter;
 import org.apache.velocity.exception.MethodInvocationException;
 import org.apache.velocity.runtime.parser.Parser;
 
+// TODO: Auto-generated Javadoc
 /**
  * Please look at the Parser.jjt file which is
  * what controls the generation of this class.
@@ -33,39 +34,59 @@ import org.apache.velocity.runtime.parser.Parser;
 */
 public class ASTOrNode extends SimpleNode
 {
+    
     /**
-     * @param id
-     */
+	 * Instantiates a new AST or node.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTOrNode(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST or node.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTOrNode(Parser p, int id)
     {
         super(p, id);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     *  Returns the value of the expression.
-     *  Since the value of the expression is simply the boolean
-     *  result of evaluate(), lets return that.
-     * @param context
-     * @return The Expression value.
-     * @throws MethodInvocationException
-     */
+	 * Returns the value of the expression. Since the value of the expression is
+	 * simply the boolean result of evaluate(), lets return that.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @return The Expression value.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-9-3 11:38:32
+	 */
     public Object value(InternalContextAdapter context )
         throws MethodInvocationException
     {
@@ -75,16 +96,17 @@ public class ASTOrNode extends SimpleNode
     }
 
     /**
-     *  the logical or :
-     *    the rule :
-     *      left || null -> left
-     *      null || right -> right
-     *      null || null -> false
-     *      left || right ->  left || right
-     * @param context
-     * @return The evaluation result.
-     * @throws MethodInvocationException
-     */
+	 * the logical or : the rule : left || null -> left null || right -> right
+	 * null || null -> false left || right -> left || right.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @return The evaluation result.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-9-3 11:38:32
+	 */
     public boolean evaluate( InternalContextAdapter context)
         throws MethodInvocationException
     {

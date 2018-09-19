@@ -15,6 +15,12 @@ import com.mqfdy.code.springboot.utilities.internal.iterators.CloneIterator;
 import com.mqfdy.code.springboot.utilities.internal.iterators.TransformationIterator;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DTPConnectionProfileRepository.
+ *
+ * @author mqfdy
+ */
 public final class DTPConnectionProfileRepository implements
 		ConnectionProfileRepository {
 	private ProfileManager dtpProfileManager;
@@ -27,6 +33,13 @@ public final class DTPConnectionProfileRepository implements
 
 	private static final DTPConnectionProfileRepository INSTANCE = new DTPConnectionProfileRepository();
 
+	/**
+	 * Instance.
+	 *
+	 * @author mqfdy
+	 * @return the DTP connection profile repository
+	 * @Date 2018-09-03 09:00
+	 */
 	public static DTPConnectionProfileRepository instance() {
 		return INSTANCE;
 	}

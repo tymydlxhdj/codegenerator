@@ -35,6 +35,7 @@ import org.apache.velocity.util.ClassUtils;
 import org.apache.velocity.util.introspection.Info;
 import org.apache.velocity.util.introspection.VelMethod;
 
+// TODO: Auto-generated Javadoc
 /**
  *  ASTMethod.java
  *
@@ -53,9 +54,14 @@ import org.apache.velocity.util.introspection.VelMethod;
  */
 public class ASTMethod extends SimpleNode
 {
+    
+    /** The method name. */
     private String methodName = "";
+    
+    /** The param count. */
     private int paramCount = 0;
 
+    /** The uber info. */
     protected Info uberInfo;
 
     /**
@@ -64,38 +70,58 @@ public class ASTMethod extends SimpleNode
     protected boolean strictRef = false;
 
     /**
-     * @param id
-     */
+	 * Instantiates a new AST method.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTMethod(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST method.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTMethod(Parser p, int id)
     {
         super(p, id);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     *  simple init - init our subtree and get what we can from
-     *  the AST
-     * @param context
-     * @param data
-     * @return The init result
-     * @throws TemplateInitException
-     */
+	 * simple init - init our subtree and get what we can from the AST.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param data
+	 *            the data
+	 * @return The init result
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @Date 2018-9-3 11:38:24
+	 */
     public Object init(  InternalContextAdapter context, Object data)
         throws TemplateInitException
     {
@@ -120,14 +146,20 @@ public class ASTMethod extends SimpleNode
     }
 
     /**
-     *  invokes the method.  Returns null if a problem, the
-     *  actual return if the method returns something, or
-     *  an empty string "" if the method returns void
-     * @param o
-     * @param context
-     * @return Result or null.
-     * @throws MethodInvocationException
-     */
+	 * invokes the method. Returns null if a problem, the actual return if the
+	 * method returns something, or an empty string "" if the method returns
+	 * void
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @param context
+	 *            the context
+	 * @return Result or null.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-9-3 11:38:24
+	 */
     public Object execute(Object o, InternalContextAdapter context)
         throws MethodInvocationException
     {
@@ -209,6 +241,19 @@ public class ASTMethod extends SimpleNode
         }
     }
 
+    /**
+	 * Handle invocation exception.
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @param context
+	 *            the context
+	 * @param t
+	 *            the t
+	 * @return the object
+	 * @Date 2018-9-3 11:38:24
+	 */
     private Object handleInvocationException(Object o, InternalContextAdapter context, Throwable t)
     {
         /*
@@ -276,9 +321,21 @@ public class ASTMethod extends SimpleNode
      */
     public static class MethodCacheKey
     {
+        
+        /** The method name. */
         private final String methodName;  
+        
+        /** The params. */
         private final Class[] params;
 
+        /**
+		 * Instantiates a new method cache key.
+		 *
+		 * @param methodName
+		 *            the method name
+		 * @param params
+		 *            the params
+		 */
         public MethodCacheKey(String methodName, Class[] params)
         {
             /** 
@@ -290,8 +347,13 @@ public class ASTMethod extends SimpleNode
         }
 
         /**
-         * @see java.lang.Object#equals(java.lang.Object)
-         */
+		 * Equals.
+		 *
+		 * @param o
+		 *            the o
+		 * @return true, if successful
+		 * @see java.lang.Object#equals(java.lang.Object)
+		 */
         public boolean equals(Object o)
         {
             /** 
@@ -326,8 +388,11 @@ public class ASTMethod extends SimpleNode
         
 
         /**
-         * @see java.lang.Object#hashCode()
-         */
+		 * Hash code.
+		 *
+		 * @return the int
+		 * @see java.lang.Object#hashCode()
+		 */
         public int hashCode()
         {
             int result = 17;
@@ -352,9 +417,11 @@ public class ASTMethod extends SimpleNode
     }
 
     /**
-     * @return Returns the methodName.
-     * @since 1.5
-     */
+	 * Gets the method name.
+	 *
+	 * @return Returns the methodName.
+	 * @since 1.5
+	 */
     public String getMethodName()
     {
         return methodName;

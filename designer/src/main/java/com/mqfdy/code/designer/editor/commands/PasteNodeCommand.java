@@ -35,30 +35,46 @@ import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramElement;
 import com.mqfdy.code.model.graph.ElementStyle;
 
+// TODO: Auto-generated Javadoc
 /**
- * 粘贴图形
- * 
+ * 粘贴图形.
+ *
  * @author mqfdy
- * 
  */
 
 public class PasteNodeCommand extends Command {
+	
+	/** The edit part list. */
 	// 内存中复制或剪切的对象AbstractGraphicalEditPart
 	List editPartList = new ArrayList();
+	
+	/** The new bu list. */
 	// 复制出的对象
 	List<AbstractModelElement> newBuList = new ArrayList<AbstractModelElement>();
+	
+	/** The new con list. */
 	// 复制出的关联关系
 	List<AbstractModelElement> newConList = new ArrayList<AbstractModelElement>();
+	
+	/** The new dia list. */
 	// 粘贴对象的图元
 	List<DiagramElement> newDiaList = new ArrayList<DiagramElement>();
+	
+	/** The bu map. */
 	// 新旧模型对象的Map
 	Map<AbstractModelElement, AbstractModelElement> buMap = new HashMap<AbstractModelElement, AbstractModelElement>();
 	// private DiagramElement newDiaEle;
 	// private BusinessClass newBu;
+	/** The px. */
 	// 计算偏移
 	private int px = 0;
+	
+	/** The py. */
 	private int py = 0;
 
+	/**
+	 * Instantiates a new paste node command.
+	 */
 	public PasteNodeCommand() {
 		super();
 		if (Clipboard.getDefault().getContents() != null)
@@ -66,6 +82,9 @@ public class PasteNodeCommand extends Command {
 					.getDefault().getContents());
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		if (editPartList.isEmpty())
@@ -85,6 +104,9 @@ public class PasteNodeCommand extends Command {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 		if (!canExecute())
@@ -92,6 +114,9 @@ public class PasteNodeCommand extends Command {
 		redo();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void redo() {
 		Diagram diagram = ((Diagram) BusinessModelUtil
@@ -424,11 +449,17 @@ public class PasteNodeCommand extends Command {
 				.getContents().refresh();
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canUndo() {
 		return !(editPartList.isEmpty());
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void undo() {
 
@@ -460,6 +491,18 @@ public class PasteNodeCommand extends Command {
 				.getContents().refresh();
 	}
 
+	/**
+	 * Copy diagram element.
+	 *
+	 * @author mqfdy
+	 * @param editPart
+	 *            the edit part
+	 * @param diagram
+	 *            the diagram
+	 * @param objectId
+	 *            the object id
+	 * @Date 2018-09-03 09:00
+	 */
 	private void copyDiagramElement(AbstractGraphicalEditPart editPart,
 			Diagram diagram, String objectId) {
 		ElementStyle style = ((DiagramElement) editPart.getModel()).getStyle();

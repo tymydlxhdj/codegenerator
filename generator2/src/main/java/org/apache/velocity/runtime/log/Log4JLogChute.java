@@ -29,6 +29,7 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.util.ExceptionUtils;
 
+// TODO: Auto-generated Javadoc
 /**
  * Implementation of a simple log4j system that will either latch onto
  * an existing category, or just do a simple rolling file log.
@@ -42,13 +43,22 @@ import org.apache.velocity.util.ExceptionUtils;
  */
 public class Log4JLogChute implements LogChute
 {
+    
+    /** The Constant RUNTIME_LOG_LOG4J_LOGGER. */
     public static final String RUNTIME_LOG_LOG4J_LOGGER =
             "runtime.log.logsystem.log4j.logger";
+    
+    /** The Constant RUNTIME_LOG_LOG4J_LOGGER_LEVEL. */
     public static final String RUNTIME_LOG_LOG4J_LOGGER_LEVEL =
             "runtime.log.logsystem.log4j.logger.level";
 
+    /** The rsvc. */
     private RuntimeServices rsvc = null;
+    
+    /** The has trace. */
     private boolean hasTrace = false;
+    
+    /** The appender. */
     private RollingFileAppender appender = null;
 
     /**
@@ -57,8 +67,14 @@ public class Log4JLogChute implements LogChute
     protected Logger logger = null;
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
-     */
+	 * Inits the.
+	 *
+	 * @param rs
+	 *            the rs
+	 * @throws Exception
+	 *             the exception
+	 * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
+	 */
     public void init(RuntimeServices rs) throws Exception
     {
         rsvc = rs;
@@ -108,6 +124,16 @@ public class Log4JLogChute implements LogChute
         }
     }
 
+    /**
+	 * Inits the appender.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:32
+	 */
     // This tries to create a file appender for the specified file name.
     private void initAppender(String file) throws Exception
     {
@@ -135,11 +161,15 @@ public class Log4JLogChute implements LogChute
     }
 
     /**
-     *  logs messages
-     *
-     *  @param level severity level
-     *  @param message complete error message
-     */
+	 * logs messages.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            severity level
+	 * @param message
+	 *            complete error message
+	 * @Date 2018-9-3 11:38:32
+	 */
     public void log(int level, String message)
     {
         switch (level)
@@ -171,8 +201,17 @@ public class Log4JLogChute implements LogChute
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#log(int, java.lang.String, java.lang.Throwable)
-     */
+	 * Log.
+	 *
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @see org.apache.velocity.runtime.log.LogChute#log(int, java.lang.String,
+	 *      java.lang.Throwable)
+	 */
     public void log(int level, String message, Throwable t)
     {
         switch (level)
@@ -204,8 +243,13 @@ public class Log4JLogChute implements LogChute
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#isLevelEnabled(int)
-     */
+	 * Checks if is level enabled.
+	 *
+	 * @param level
+	 *            the level
+	 * @return true, if is level enabled
+	 * @see org.apache.velocity.runtime.log.LogChute#isLevelEnabled(int)
+	 */
     public boolean isLevelEnabled(int level)
     {
         switch (level)
@@ -234,15 +278,24 @@ public class Log4JLogChute implements LogChute
     }
 
     /**
-     * Also do a shutdown if the object is destroy()'d.
-     * @throws Throwable
-     */
+	 * Also do a shutdown if the object is destroy()'d.
+	 *
+	 * @author mqfdy
+	 * @throws Throwable
+	 *             the throwable
+	 * @Date 2018-9-3 11:38:32
+	 */
     protected void finalize() throws Throwable
     {
         shutdown();
     }
 
-    /** Close all destinations*/
+    /**
+	 * Close all destinations.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:32
+	 */
     public void shutdown()
     {
         if (appender != null)

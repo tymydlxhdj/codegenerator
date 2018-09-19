@@ -15,6 +15,12 @@ public class PlatformProjectUtil {
 	
 	/**
 	 * Returns true if given resource is a Java project.
+	 *
+	 * @author mqfdy
+	 * @param resource
+	 *            the resource
+	 * @return true, if is java project
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isJavaProject(IResource resource) {
 		return isProjectHasNature(resource, JavaCore.NATURE_ID);

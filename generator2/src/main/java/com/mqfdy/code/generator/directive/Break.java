@@ -27,6 +27,7 @@ import org.apache.velocity.runtime.directive.Directive;
 import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.runtime.parser.node.Node;
 
+// TODO: Auto-generated Javadoc
 /**
  * Break directive used for interrupting scopes.
  *
@@ -36,43 +37,59 @@ import org.apache.velocity.runtime.parser.node.Node;
  */
 public class Break extends Directive
 {
+    
+    /** The scoped. */
     private boolean scoped = false;
 
     /**
-     * Return name of this directive.
-     * @return The name of this directive.
-     */
+	 * Return name of this directive.
+	 *
+	 * @author mqfdy
+	 * @return The name of this directive.
+	 * @Date 2018-9-3 11:38:27
+	 */
     public String getName()
     {
         return "break";
     }
 
     /**
-     * Return type of this directive.
-     * @return The type of this directive.
-     */
+	 * Return type of this directive.
+	 *
+	 * @author mqfdy
+	 * @return The type of this directive.
+	 * @Date 2018-9-3 11:38:27
+	 */
     public int getType()
     {
         return LINE;
     }
 
     /**
-     * Since there is no processing of content,
-     * there is never a need for an internal scope.
-     */
+	 * Since there is no processing of content, there is never a need for an
+	 * internal scope.
+	 *
+	 * @author mqfdy
+	 * @return true, if is scope provided
+	 * @Date 2018-9-3 11:38:27
+	 */
     public boolean isScopeProvided()
     {
         return false;
     }
 
     /**
-     *  simple init - init the tree and get the elementKey from
-     *  the AST
-     * @param rs
-     * @param context
-     * @param node
-     * @throws TemplateInitException
-     */
+	 * simple init - init the tree and get the elementKey from the AST.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @param context
+	 *            the context
+	 * @param node
+	 *            the node
+	 * @Date 2018-9-3 11:38:27
+	 */
     public void init(RuntimeServices rs, InternalContextAdapter context, Node node)
     {
         super.init(rs, context, node);
@@ -90,17 +107,21 @@ public class Break extends Directive
     }
 
     /**
-     * Break directive does not actually do any rendering. 
-     * 
-     * This directive throws a StopCommand which signals either
-     * the nearest Scope or the specified scope to stop rendering
-     * its content.
-     * 
-     * @param context
-     * @param writer
-     * @param node
-     * @return never, always throws a StopCommand
-     */
+	 * Break directive does not actually do any rendering.
+	 * 
+	 * This directive throws a StopCommand which signals either the nearest
+	 * Scope or the specified scope to stop rendering its content.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @param node
+	 *            the node
+	 * @return never, always throws a StopCommand
+	 * @Date 2018-9-3 11:38:27
+	 */
     public boolean render(InternalContextAdapter context, Writer writer, Node node)
     {
         if (!scoped)

@@ -12,13 +12,18 @@ package com.mqfdy.code.springboot.utilities.internal.iterators;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
+// TODO: Auto-generated Javadoc
 /**
- * An <code>ArrayListIterator</code> provides a <code>ListIterator</code>
- * for an array of objects.
+ * An <code>ArrayListIterator</code> provides a <code>ListIterator</code> for an
+ * array of objects.
  * 
- * The name might be a bit confusing:
- * This is a <code>ListIterator</code> for an <code>Array</code>;
- * <em>not</em> an <code>Iterator</code> for an <code>ArrayList</code>.
+ * The name might be a bit confusing: This is a <code>ListIterator</code> for an
+ * <code>Array</code>; <em>not</em> an <code>Iterator</code> for an
+ * <code>ArrayList</code>.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class ArrayListIterator<E>
 	extends ArrayIterator<E>
@@ -28,15 +33,24 @@ public class ArrayListIterator<E>
 
 	/**
 	 * Construct a list iterator for the specified array.
+	 *
+	 * @param array
+	 *            the array
 	 */
 	public ArrayListIterator(E... array) {
 		this(array, 0, array.length);
 	}
 	
 	/**
-	 * Construct a list iterator for the specified array,
-	 * starting at the specified start index and continuing for
-	 * the specified length.
+	 * Construct a list iterator for the specified array, starting at the
+	 * specified start index and continuing for the specified length.
+	 *
+	 * @param array
+	 *            the array
+	 * @param start
+	 *            the start
+	 * @param length
+	 *            the length
 	 */
 	public ArrayListIterator(E[] array, int start, int length) {
 		super(array, start, length);

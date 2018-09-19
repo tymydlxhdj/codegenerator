@@ -39,23 +39,34 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.runtime.parser.Parser;
 
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ASTIfStatement.
  *
+ * @author mqfdy
  */
 public class ASTIfStatement extends SimpleNode
 {
+    
     /**
-     * @param id
-     */
+	 * Instantiates a new AST if statement.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTIfStatement(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST if statement.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTIfStatement(Parser p, int id)
     {
         super(p, id);
@@ -63,16 +74,40 @@ public class ASTIfStatement extends SimpleNode
 
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#render(org.apache.velocity.context.InternalContextAdapter, java.io.Writer)
-     */
+	 * Render.
+	 *
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @return true, if successful
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#render(org.apache.velocity.context.InternalContextAdapter,
+	 *      java.io.Writer)
+	 */
     public boolean render( InternalContextAdapter context, Writer writer)
         throws IOException,MethodInvocationException,
         	ResourceNotFoundException, ParseErrorException
@@ -117,9 +152,15 @@ public class ASTIfStatement extends SimpleNode
     }
 
     /**
-     * @param context
-     * @param visitor
-     */
+	 * Process.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param visitor
+	 *            the visitor
+	 * @Date 2018-09-03 09:00
+	 */
     public void process( InternalContextAdapter context, ParserVisitor visitor)
     {
     }

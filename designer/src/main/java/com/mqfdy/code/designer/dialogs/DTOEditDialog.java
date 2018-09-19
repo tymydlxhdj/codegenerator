@@ -22,43 +22,62 @@ import com.mqfdy.code.model.ModelPackage;
 import com.mqfdy.code.model.SolidifyPackage;
 import com.mqfdy.code.model.graph.Diagram;
 
+// TODO: Auto-generated Javadoc
 /**
- * DTO编辑对话框
- * 
+ * DTO编辑对话框.
+ *
  * @author mqfdy
- * 
  */
 public class DTOEditDialog extends ModelElementEditorDialog implements
 		IBusinessClassEditorPage {
 
+	/** The dialog title. */
 	public String DIALOG_TITLE = "";
+	
+	/** The dialog title operation. */
 	public final String DIALOG_TITLE_OPERATION = "";
+	
+	/** The dialog message add. */
 	public final String DIALOG_MESSAGE_ADD = "创建数据传输对象 ";
+	
+	/** The dialog message edit. */
 	public final String DIALOG_MESSAGE_EDIT = "修改数据传输对象 ";
 
+	/** The parent. */
 	private AbstractModelElement parent;
 
+	/** The dto. */
 	DataTransferObject dto;
-	/**
-	 * 基本信息标签页
-	 */
+	
+	/** 基本信息标签页. */
 	private TabFolder tabBasic;
 
+	/** The dto basic info page. */
 	private DTOBasicInfoPage dtoBasicInfoPage;
-	/**
-	 * 属性信息标签页
-	 */
+	
+	/** 属性信息标签页. */
 	private TabFolder tabProperties;
 
+	/** The dto properties page. */
 	private DTOPropertiesPage dtoPropertiesPage;
-	/**
-	 * 版本信息
-	 */
+	
+	/** 版本信息. */
 	private VersionInfoPanel versionPanel;
 
+	/** The manager. */
 	private BusinessModelManager manager = BusinessModelUtil
 			.getEditorBusinessModelManager();
 
+	/**
+	 * Instantiates a new DTO edit dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param parent
+	 *            the parent
+	 * @param dto
+	 *            the dto
+	 */
 	public DTOEditDialog(Shell parentShell, AbstractModelElement parent,
 			DataTransferObject dto) {
 		super(parentShell);
@@ -82,10 +101,22 @@ public class DTOEditDialog extends ModelElementEditorDialog implements
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	protected int getShellStyle() {
 		return super.getShellStyle() | SWT.RESIZE | SWT.MAX;
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Control createDialogArea(Composite composite) {
 		// 初始化窗口
@@ -99,6 +130,14 @@ public class DTOEditDialog extends ModelElementEditorDialog implements
 		return composite;
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		if (operationType.equals(OPERATION_TYPE_ADD)) {
@@ -111,7 +150,10 @@ public class DTOEditDialog extends ModelElementEditorDialog implements
 	}
 
 	/**
-	 * 设置标题和信息
+	 * 设置标题和信息.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setTitleAndMessage() {
 		setTitle("数据传输对象");
@@ -124,7 +166,12 @@ public class DTOEditDialog extends ModelElementEditorDialog implements
 	}
 
 	/**
-	 * 初始化创建 标签页
+	 * 初始化创建 标签页.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createtabFolder(Composite composite) {
 		tabBasic = new TabFolder(composite, SWT.NONE);
@@ -147,6 +194,14 @@ public class DTOEditDialog extends ModelElementEditorDialog implements
 		versionPanel.setVisible(false);
 	}
 
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent(Composite parent) {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
@@ -165,6 +220,14 @@ public class DTOEditDialog extends ModelElementEditorDialog implements
 		tabProperties.getItem(0).setControl(dtoPropertiesPage);
 	}
 
+	/**
+	 * Creates the buttons for button bar.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void createButtonsForButtonBar(Composite composite) {
 		// if(operationType.equals(OPERATION_TYPE_EDIT))
 		// createButton(composite, 12000, "重构", true);
@@ -176,6 +239,9 @@ public class DTOEditDialog extends ModelElementEditorDialog implements
 //		createButton(composite, APPLY_ID, APPLY_LABEL, true);
 	}
 
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		if (this.dto != null) {
 			dtoBasicInfoPage.initControlValue();
@@ -184,6 +250,9 @@ public class DTOEditDialog extends ModelElementEditorDialog implements
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		boolean isOk = dtoBasicInfoPage.validateInput();
 		if (isOk == false) {
@@ -192,6 +261,9 @@ public class DTOEditDialog extends ModelElementEditorDialog implements
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 
 		dtoBasicInfoPage.updateTheEditingElement();
@@ -210,6 +282,9 @@ public class DTOEditDialog extends ModelElementEditorDialog implements
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		if (validateAllInput() == true) {
@@ -218,6 +293,12 @@ public class DTOEditDialog extends ModelElementEditorDialog implements
 		}
 	}
 
+	/**
+	 * Applyl pressed.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void applylPressed() {
 		if (validateAllInput() == true) {
 			updateTheEditingElement();
@@ -225,6 +306,14 @@ public class DTOEditDialog extends ModelElementEditorDialog implements
 
 	}
 
+	/**
+	 * Button pressed.
+	 *
+	 * @author mqfdy
+	 * @param buttonId
+	 *            the button id
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void buttonPressed(int buttonId) {
 //		if (APPLY_ID == buttonId) {
@@ -234,6 +323,13 @@ public class DTOEditDialog extends ModelElementEditorDialog implements
 //		}
 	}
 
+	/**
+	 * Validate all input.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean validateAllInput() {
 		boolean isOk = this.validateInput();
 		return isOk;

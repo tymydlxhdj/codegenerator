@@ -31,35 +31,56 @@ import com.mqfdy.code.model.utils.DataType;
 import com.mqfdy.code.model.utils.EditorType;
 import com.mqfdy.code.model.utils.PrimaryKeyPloyType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 校验规则类
- * 
+ * 校验规则类.
+ *
  * @author mqfdy
- * 
  */
 public class ValidatorRules {
 
+	/** The error. */
 	public static String ERROR = "Error";
+	
+	/** The warning. */
 	public static String WARNING = "Warning";
-	/**
-	 * 规则id
-	 */
+	
+	/** 规则id. */
 	private String id;
 
-	/**
-	 * 规则名称
-	 */
+	/** 规则名称. */
 	private String name;
-	/**
-	 * 所属的校验器
-	 */
+	
+	/** 所属的校验器. */
 	private Validator validator;
+	
+	/** The is selection valid. */
 	private boolean isSelectionValid;
+	
+	/** The id list. */
 	private List<String> idList;
+	
+	/** The name list. */
 	private List<String> nameList;
+	
+	/** The flag. */
 	private boolean flag = true;
+	
+	/** The result list. */
 	private List<ValiResult> resultList;
 
+	/**
+	 * Instantiates a new validator rules.
+	 *
+	 * @param id
+	 *            the id
+	 * @param name
+	 *            the name
+	 * @param isSelectionValid
+	 *            the is selection valid
+	 * @param validator
+	 *            the validator
+	 */
 	public ValidatorRules(String id, String name, boolean isSelectionValid,
 			Validator validator) {
 		this.setId(id);
@@ -68,6 +89,15 @@ public class ValidatorRules {
 		this.setValidator(validator);
 	}
 
+	/**
+	 * Gets the rules.
+	 *
+	 * @author mqfdy
+	 * @param validator
+	 *            the validator
+	 * @return the rules
+	 * @Date 2018-09-03 09:00
+	 */
 	public static List<ValidatorRules> getRules(Validator validator) {
 
 		List<ValidatorRules> rules = new ArrayList<ValidatorRules>();
@@ -111,6 +141,21 @@ public class ValidatorRules {
 		return rules;
 	}
 
+	/**
+	 * Validate.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @param ele
+	 *            the ele
+	 * @param con
+	 *            the con
+	 * @param resultList
+	 *            the result list
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean validate(BusinessObjectModel businessObjectModel,
 			AbstractModelElement ele, ValidatorContext con,
 			List<ValiResult> resultList) {
@@ -152,6 +197,18 @@ public class ValidatorRules {
 		return flag;
 	}
 	
+	/**
+	 * Validate editor enum.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @param editor
+	 *            the editor
+	 * @param con
+	 *            the con
+	 * @Date 2018-09-03 09:00
+	 */
 	private void validateEditorEnum(BusinessObjectModel businessObjectModel,PropertyEditor editor, ValidatorContext con){
 		if("01".equals(this.getId()))
 			if(businessObjectModel!=null){
@@ -183,6 +240,18 @@ public class ValidatorRules {
 			}
 	}
 
+	/**
+	 * Validate inheritance.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @param ele
+	 *            the ele
+	 * @param con
+	 *            the con
+	 * @Date 2018-09-03 09:00
+	 */
 	private void validateInheritance(BusinessObjectModel businessObjectModel,
 			Inheritance ele, ValidatorContext con) {
 		if (this.isSelectionValid()) {
@@ -287,6 +356,18 @@ public class ValidatorRules {
 
 	}
 
+	/**
+	 * Validate association.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @param ele
+	 *            the ele
+	 * @param con
+	 *            the con
+	 * @Date 2018-09-03 09:00
+	 */
 	private void validateAssociation(BusinessObjectModel businessObjectModel,
 			Association ele, ValidatorContext con) {
 		if (this.isSelectionValid()) {
@@ -767,6 +848,16 @@ public class ValidatorRules {
 
 	}
 
+	/**
+	 * Validate abstract model element.
+	 *
+	 * @author mqfdy
+	 * @param ele
+	 *            the ele
+	 * @param con
+	 *            the con
+	 * @Date 2018-09-03 09:00
+	 */
 	public void validateAbstractModelElement(AbstractModelElement ele,
 			ValidatorContext con) {
 		con.printToConsole("校验模型:" + ele.getName(), ValidatorContext.INFO);
@@ -874,6 +965,16 @@ public class ValidatorRules {
 		// }
 	}
 
+	/**
+	 * Validate diagram.
+	 *
+	 * @author mqfdy
+	 * @param ele
+	 *            the ele
+	 * @param con
+	 *            the con
+	 * @Date 2018-09-03 09:00
+	 */
 	public void validateDiagram(AbstractModelElement ele, ValidatorContext con) {
 		con.printToConsole("校验图:" + ele.getDisplayName(), ValidatorContext.INFO);
 		if (this.isSelectionValid()) {
@@ -982,6 +1083,16 @@ public class ValidatorRules {
 		// }
 	}
 
+	/**
+	 * Validate model package.
+	 *
+	 * @author mqfdy
+	 * @param ele
+	 *            the ele
+	 * @param con
+	 *            the con
+	 * @Date 2018-09-03 09:00
+	 */
 	public void validateModelPackage(ModelPackage ele, ValidatorContext con) {
 		con.printToConsole("校验包:" + ele.getDisplayName(), ValidatorContext.INFO);
 		if (this.isSelectionValid()) {
@@ -1109,6 +1220,18 @@ public class ValidatorRules {
 		// }
 	}
 
+	/**
+	 * Validate business class.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @param ele
+	 *            the ele
+	 * @param con
+	 *            the con
+	 * @Date 2018-09-03 09:00
+	 */
 	public void validateBusinessClass(BusinessObjectModel businessObjectModel,
 			BusinessClass ele, ValidatorContext con) {
 		if (this.isSelectionValid()) {
@@ -1293,6 +1416,16 @@ public class ValidatorRules {
 		}
 	}
 
+	/**
+	 * Validate operation.
+	 *
+	 * @author mqfdy
+	 * @param ele
+	 *            the ele
+	 * @param con
+	 *            the con
+	 * @Date 2018-09-03 09:00
+	 */
 	private void validateOperation(BusinessOperation ele, ValidatorContext con) {
 		if (this.isSelectionValid()) {
 			if (this.getId().equals("01")) {
@@ -1417,6 +1550,16 @@ public class ValidatorRules {
 
 	}
 
+	/**
+	 * Validate property.
+	 *
+	 * @author mqfdy
+	 * @param ele
+	 *            the ele
+	 * @param con
+	 *            the con
+	 * @Date 2018-09-03 09:00
+	 */
 	public void validateProperty(Property ele, ValidatorContext con) {
 		if (this.isSelectionValid()) {
 			if (this.getId().equals("01")) {
@@ -1759,6 +1902,16 @@ public class ValidatorRules {
 		}
 	}
 
+	/**
+	 * Validate property group.
+	 *
+	 * @author mqfdy
+	 * @param ele
+	 *            the ele
+	 * @param con
+	 *            the con
+	 * @Date 2018-09-03 09:00
+	 */
 	public void validatePropertyGroup(PropertyGroup ele, ValidatorContext con) {
 		if (this.isSelectionValid()) {
 			if (this.getId().equals("01")) {
@@ -1865,6 +2018,16 @@ public class ValidatorRules {
 		}
 	}
 
+	/**
+	 * Validate property editor.
+	 *
+	 * @author mqfdy
+	 * @param ele
+	 *            the ele
+	 * @param con
+	 *            the con
+	 * @Date 2018-09-03 09:00
+	 */
 	public void validatePropertyEditor(PropertyEditor ele, ValidatorContext con) {
 		if (this.isSelectionValid()) {
 			if (this.getId().equals("01")) {
@@ -1972,6 +2135,16 @@ public class ValidatorRules {
 		}
 	}
 
+	/**
+	 * Validate diagram element.
+	 *
+	 * @author mqfdy
+	 * @param ele
+	 *            the ele
+	 * @param con
+	 *            the con
+	 * @Date 2018-09-03 09:00
+	 */
 	public void validateDiagramElement(DiagramElement ele, ValidatorContext con) {
 		con.printToConsole("    校验图元:" + ele.getId(), ValidatorContext.INFO);
 		if (this.isSelectionValid()) {
@@ -2027,6 +2200,18 @@ public class ValidatorRules {
 		}
 	}
 
+	/**
+	 * Validate DTO.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @param ele
+	 *            the ele
+	 * @param con
+	 *            the con
+	 * @Date 2018-09-03 09:00
+	 */
 	public void validateDTO(BusinessObjectModel businessObjectModel,
 			DataTransferObject ele, ValidatorContext con) {
 		if (this.isSelectionValid()) {
@@ -2105,6 +2290,16 @@ public class ValidatorRules {
 		}
 	}
 
+	/**
+	 * Validate enumeration.
+	 *
+	 * @author mqfdy
+	 * @param ele
+	 *            the ele
+	 * @param con
+	 *            the con
+	 * @Date 2018-09-03 09:00
+	 */
 	public void validateEnumeration(Enumeration ele, ValidatorContext con) {
 		if (this.isSelectionValid()) {
 			if (this.getId().equals("01")) {
@@ -2248,6 +2443,15 @@ public class ValidatorRules {
 		}
 	}
 
+	/**
+	 * Gets the all ids.
+	 *
+	 * @author mqfdy
+	 * @param businessObjectModel
+	 *            the business object model
+	 * @return the all ids
+	 * @Date 2018-09-03 09:00
+	 */
 	private List<String> getAllIds(BusinessObjectModel businessObjectModel) {
 		List<String> idList = new ArrayList<String>();
 		idList.add(businessObjectModel.getId());
@@ -2302,34 +2506,94 @@ public class ValidatorRules {
 		return idList;
 	}
 
+	/**
+	 * Gets the id.
+	 *
+	 * @author mqfdy
+	 * @return the id
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getId() {
 		return id;
 	}
 
+	/**
+	 * Sets the id.
+	 *
+	 * @author mqfdy
+	 * @param id
+	 *            the new id
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setId(String id) {
 		this.id = id;
 	}
 
+	/**
+	 * Gets the name.
+	 *
+	 * @author mqfdy
+	 * @return the name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Sets the name.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the new name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * Checks if is selection valid.
+	 *
+	 * @author mqfdy
+	 * @return true, if is selection valid
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isSelectionValid() {
 		return isSelectionValid;
 	}
 
+	/**
+	 * Sets the selection valid.
+	 *
+	 * @author mqfdy
+	 * @param isSelectionValid
+	 *            the new selection valid
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setSelectionValid(boolean isSelectionValid) {
 		this.isSelectionValid = isSelectionValid;
 	}
 
+	/**
+	 * Gets the validator.
+	 *
+	 * @author mqfdy
+	 * @return the validator
+	 * @Date 2018-09-03 09:00
+	 */
 	public Validator getValidator() {
 		return validator;
 	}
 
+	/**
+	 * Sets the validator.
+	 *
+	 * @author mqfdy
+	 * @param validator
+	 *            the new validator
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setValidator(Validator validator) {
 		this.validator = validator;
 	}

@@ -23,6 +23,7 @@ import com.mqfdy.code.model.ReferenceObject;
 import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramElement;
 import com.mqfdy.code.model.graph.ElementStyle;
+// TODO: Auto-generated Javadoc
 /**
  * 从outline视图中拖动对象到图中创建对象
  * 
@@ -33,20 +34,47 @@ import com.mqfdy.code.model.graph.ElementStyle;
  */
 public class NodesCreateFromOutlineCommand extends Command {
 
+	/** The can del object. */
 	// private AbstractModelElement newNode;
 	private boolean canDelObject = false;
+	
+	/** The container. */
 	// can be model modelRoot or package
 	private AbstractModelElement container;
 
+	/** The bounds. */
 	private Rectangle bounds;
 
+	/** The edit part. */
 	private EditPart editPart;
+	
+	/** The old node list. */
 	private List<AbstractModelElement> oldNodeList = new ArrayList<AbstractModelElement>();
+	
+	/** The new node list. */
 	private List<AbstractModelElement> newNodeList = new ArrayList<AbstractModelElement>();
+	
+	/** The ele list. */
 	private List<DiagramElement> eleList = new ArrayList<DiagramElement>();
+	
+	/** The ele. */
 	private DiagramElement ele;
+	
+	/** The id string. */
 	private List<String> idString = new ArrayList<String>();
 
+	/**
+	 * Instantiates a new nodes create from outline command.
+	 *
+	 * @param nodesList
+	 *            the nodes list
+	 * @param container
+	 *            the container
+	 * @param bounds
+	 *            the bounds
+	 * @param editPart
+	 *            the edit part
+	 */
 	public NodesCreateFromOutlineCommand(List<AbstractModelElement> nodesList,
 			AbstractModelElement container, Rectangle bounds, EditPart editPart) {
 		if (nodesList == null || container == null || bounds == null) {
@@ -60,6 +88,9 @@ public class NodesCreateFromOutlineCommand extends Command {
 		setLabel("add new node");
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		return container instanceof Diagram;
@@ -72,11 +103,17 @@ public class NodesCreateFromOutlineCommand extends Command {
 		// DataTransferObject);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 		redo();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void redo() {
 		int x = bounds.x;
@@ -203,6 +240,9 @@ public class NodesCreateFromOutlineCommand extends Command {
 	
 	
 	    
+	/**
+	 * 
+	 */
 	@Override
 	public void undo() {
 		for (AbstractModelElement newNode : newNodeList) {

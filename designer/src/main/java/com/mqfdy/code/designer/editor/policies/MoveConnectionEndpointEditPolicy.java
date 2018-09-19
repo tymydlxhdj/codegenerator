@@ -30,21 +30,35 @@ import com.mqfdy.code.designer.editor.part.RelationEditPart;
 import com.mqfdy.code.designer.utils.BusinessModelUtil;
 import com.mqfdy.code.model.Association;
 
+// TODO: Auto-generated Javadoc
 /**
- * 连线终点移动以及连线整个拖动的编辑策略 显示连线拖动时的反馈
- * 
+ * 连线终点移动以及连线整个拖动的编辑策略 显示连线拖动时的反馈.
+ *
  * @author mqfdy
- * 
  */
 public class MoveConnectionEndpointEditPolicy extends
 		ConnectionEndpointEditPolicy {
+	
+	/** The x. */
 	int x = 0;
+	
+	/** The y. */
 	int y = 0;
+	
+	/** The list. */
 	private PointList list = new PointList();
+	
+	/** The is re load. */
 	private boolean isReLoad = true;
 
 	/**
-	 * 添加移动连线的MoveConnectionCommand
+	 * 添加移动连线的MoveConnectionCommand.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @return the command
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public Command getCommand(Request request) {
@@ -62,7 +76,12 @@ public class MoveConnectionEndpointEditPolicy extends
 	}
 
 	/**
-	 * 在原基础上添加连线移动的反馈
+	 * 在原基础上添加连线移动的反馈.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @Date 2018-09-03 09:00
 	 */
 	public void showSourceFeedback(Request request) {
 		if (REQ_RECONNECT_SOURCE.equals(request.getType())
@@ -71,9 +90,14 @@ public class MoveConnectionEndpointEditPolicy extends
 		if (REQ_MOVE.equals(request.getType()))
 			showConnectionMoveFeedbacks((ChangeBoundsRequest) request);
 	}
+	
 	/**
-	 * 显示连线移动时的反馈
+	 * 显示连线移动时的反馈.
+	 *
+	 * @author mqfdy
 	 * @param request
+	 *            the request
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void showConnectionMoveFeedbacks(ChangeBoundsRequest request) {
 		OmConnectionEditPart node = null;
@@ -176,14 +200,38 @@ public class MoveConnectionEndpointEditPolicy extends
 		}
 	}
 
+	/**
+	 * Sets the x.
+	 *
+	 * @author mqfdy
+	 * @param x
+	 *            the new x
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setX(int x) {
 		this.x = x;
 	}
 
+	/**
+	 * Sets the y.
+	 *
+	 * @author mqfdy
+	 * @param y
+	 *            the new y
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setY(int y) {
 		this.y = y;
 	}
 
+	/**
+	 * Sets the checks if is re load.
+	 *
+	 * @author mqfdy
+	 * @param isReLoad
+	 *            the new checks if is re load
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setIsReLoad(boolean isReLoad) {
 		this.isReLoad  = isReLoad;
 	}

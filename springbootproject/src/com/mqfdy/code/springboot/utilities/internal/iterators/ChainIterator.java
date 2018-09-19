@@ -15,18 +15,22 @@ import java.util.NoSuchElementException;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * A <code>ChainIterator</code> provides a pluggable <code>Iterator</code>
- * that loops over a chain of arbitrarily linked objects. The chain
- * should be null-terminated (i.e. a call to the <code>nextLink(Object)</code>
- * method should return <code>null</code> when it is passed the last
- * link of the chain).
- * To use, supply a starting link and supply a <code>Linker</code> or 
+ * A <code>ChainIterator</code> provides a pluggable <code>Iterator</code> that
+ * loops over a chain of arbitrarily linked objects. The chain should be
+ * null-terminated (i.e. a call to the <code>nextLink(Object)</code> method
+ * should return <code>null</code> when it is passed the last link of the
+ * chain). To use, supply a starting link and supply a <code>Linker</code> or
  * subclass <code>ChainIterator</code> and override the
- * <code>nextLink(Object)</code> method.
- * The starting link will be the first object returned by the iterator.
- * If the starting link is <code>null</code>, the iterator will be empty.
- * Note that the iterator does not support <code>null</code> elements.
+ * <code>nextLink(Object)</code> method. The starting link will be the first
+ * object returned by the iterator. If the starting link is <code>null</code>,
+ * the iterator will be empty. Note that the iterator does not support
+ * <code>null</code> elements.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class ChainIterator<E>
 	implements Iterator<E>
@@ -36,19 +40,25 @@ public class ChainIterator<E>
 
 
 	/**
-	 * Construct an iterator with the specified starting link
-	 * and a disabled linker.
-	 * Use this constructor if you want to override the
-	 * <code>nextLink(Object)</code> method instead of building
-	 * a <code>Linker</code>.
+	 * Construct an iterator with the specified starting link and a disabled
+	 * linker. Use this constructor if you want to override the
+	 * <code>nextLink(Object)</code> method instead of building a
+	 * <code>Linker</code>.
+	 *
+	 * @param startLink
+	 *            the start link
 	 */
 	public ChainIterator(E startLink) {
 		this(startLink, Linker.Disabled.<E>instance());
 	}
 	
 	/**
-	 * Construct an iterator with the specified starting link
-	 * and linker.
+	 * Construct an iterator with the specified starting link and linker.
+	 *
+	 * @param startLink
+	 *            the start link
+	 * @param linker
+	 *            the linker
 	 */
 	public ChainIterator(E startLink, Linker<E> linker) {
 		super();
@@ -75,6 +85,12 @@ public class ChainIterator<E>
 	
 	/**
 	 * Return the next link in the chain.
+	 *
+	 * @author mqfdy
+	 * @param currentLink
+	 *            the current link
+	 * @return the e
+	 * @Date 2018-09-03 09:00
 	 */
 	protected E nextLink(E currentLink) {
 		return this.linker.nextLink(currentLink);
@@ -89,8 +105,11 @@ public class ChainIterator<E>
 	//********** inner classes **********
 
 	/**
-	 * Used by <code>ChainIterator</code> to link
-	 * the elements in the chain.
+	 * Used by <code>ChainIterator</code> to link the elements in the chain.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
 	 */
 	public interface Linker<T> {
 

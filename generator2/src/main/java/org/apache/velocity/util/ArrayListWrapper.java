@@ -22,6 +22,7 @@ package org.apache.velocity.util;
 import java.lang.reflect.Array;
 import java.util.AbstractList;
 
+// TODO: Auto-generated Javadoc
 /**
  * A class that wraps an array with a List interface.
  *
@@ -31,18 +32,37 @@ import java.util.AbstractList;
  */
 public class ArrayListWrapper extends AbstractList
 {
+    
+    /** The array. */
     private Object array;
 
+    /**
+	 * Instantiates a new array list wrapper.
+	 *
+	 * @param array
+	 *            the array
+	 */
     public ArrayListWrapper(Object array)
     {
         this.array = array;
     }
 
+    /**
+     * @see java.util.AbstractList#get(int)
+     * @param index
+     * @return ArrayListWrapper
+     */
     public Object get(int index)
     {
         return Array.get(array, index);
     }
 
+    /**
+     * @see java.util.AbstractList#set(int, java.lang.Object)
+     * @param index
+     * @param element
+     * @return ArrayListWrapper
+     */
     public Object set(int index, Object element)
     {
         Object old = get(index);
@@ -50,6 +70,10 @@ public class ArrayListWrapper extends AbstractList
         return old;
     }
 
+    /**
+     * @see java.util.AbstractCollection#size()
+     * @return ArrayListWrapper
+     */
     public int size()
     {
         return Array.getLength(array);

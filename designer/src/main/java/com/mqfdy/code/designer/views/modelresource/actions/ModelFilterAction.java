@@ -16,20 +16,28 @@ import com.mqfdy.code.designer.views.modelresource.tree.FilteredTree;
 import com.mqfdy.code.designer.views.modelresource.tree.ModelResourceView;
 import com.mqfdy.code.designer.views.modelresource.tree.RepositoryModelView;
 
+// TODO: Auto-generated Javadoc
 /**
- * 过滤树动作
- * 
+ * 过滤树动作.
+ *
  * @author mqfdy
- * 
  */
 public class ModelFilterAction extends Action {
 
-	/**
-	 * 对应动作操作的树显示器
-	 */
+	/** 对应动作操作的树显示器. */
 	private TreeViewer treeViewer;
+	
+	/** The object model outline page. */
 	private ObjectModelOutlinePage objectModelOutlinePage;
 
+	/**
+	 * Instantiates a new model filter action.
+	 *
+	 * @param text
+	 *            the text
+	 * @param objectModelOutlinePage
+	 *            the object model outline page
+	 */
 	public ModelFilterAction(String text,
 			ObjectModelOutlinePage objectModelOutlinePage) {
 		super(text);
@@ -39,6 +47,9 @@ public class ModelFilterAction extends Action {
 		this.objectModelOutlinePage = objectModelOutlinePage;
 	}
 
+	/**
+	 * 
+	 */
 	public void run() {
 		ModelFilterDialog dialog = new ModelFilterDialog(null);
 		int returnKey = dialog.open();

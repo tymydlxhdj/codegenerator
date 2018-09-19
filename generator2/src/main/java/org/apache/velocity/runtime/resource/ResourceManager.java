@@ -24,6 +24,7 @@ import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.exception.ParseErrorException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Class to manage the text resource for the Velocity
  * Runtime.
@@ -46,37 +47,49 @@ public interface ResourceManager
     public static final int RESOURCE_CONTENT = 2;
 
     /**
-     * Initialize the ResourceManager.
-     * @param rs
-     */
+	 * Initialize the ResourceManager.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @Date 2018-09-03 09:00
+	 */
     public void initialize( RuntimeServices rs );
 
     /**
-     * Gets the named resource.  Returned class type corresponds to specified type
-     * (i.e. <code>Template</code> to <code>RESOURCE_TEMPLATE</code>).
-     *
-     * @param resourceName The name of the resource to retrieve.
-     * @param resourceType The type of resource (<code>RESOURCE_TEMPLATE</code>,
-     *                     <code>RESOURCE_CONTENT</code>, etc.).
-     * @param encoding  The character encoding to use.
-     * @return Resource with the template parsed and ready.
-     * @throws ResourceNotFoundException if template not found
-     *          from any available source.
-     * @throws ParseErrorException if template cannot be parsed due
-     *          to syntax (or other) error.
-     */
+	 * Gets the named resource. Returned class type corresponds to specified
+	 * type (i.e. <code>Template</code> to <code>RESOURCE_TEMPLATE</code>).
+	 *
+	 * @author mqfdy
+	 * @param resourceName
+	 *            The name of the resource to retrieve.
+	 * @param resourceType
+	 *            The type of resource (<code>RESOURCE_TEMPLATE</code>,
+	 *            <code>RESOURCE_CONTENT</code>, etc.).
+	 * @param encoding
+	 *            The character encoding to use.
+	 * @return Resource with the template parsed and ready.
+	 * @throws ResourceNotFoundException
+	 *             if template not found from any available source.
+	 * @throws ParseErrorException
+	 *             if template cannot be parsed due to syntax (or other) error.
+	 * @Date 2018-9-3 11:38:27
+	 */
     public Resource getResource(String resourceName, int resourceType, String encoding )
         throws ResourceNotFoundException, ParseErrorException;
 
     /**
-     *  Determines is a template exists, and returns name of the loader that
-     *  provides it.  This is a slightly less hokey way to support
-     *  the Velocity.templateExists() utility method, which was broken
-     *  when per-template encoding was introduced.  We can revisit this.
-     *
-     *  @param resourceName Name of template or content resource
-     *  @return class name of loader than can provide it
-     */
+	 * Determines is a template exists, and returns name of the loader that
+	 * provides it. This is a slightly less hokey way to support the
+	 * Velocity.templateExists() utility method, which was broken when
+	 * per-template encoding was introduced. We can revisit this.
+	 *
+	 * @author mqfdy
+	 * @param resourceName
+	 *            Name of template or content resource
+	 * @return class name of loader than can provide it
+	 * @Date 2018-9-3 11:38:27
+	 */
     public String getLoaderNameForResource(String resourceName );
 
 }

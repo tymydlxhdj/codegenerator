@@ -13,6 +13,15 @@ import org.eclipse.swt.graphics.Image;
  */
 public abstract class LabelProvider extends BaseLabelProvider {
 
+	/**
+	 * Gets the image.
+	 *
+	 * @author mqfdy
+	 * @param location
+	 *            the location
+	 * @return the image
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Image getImage(String location) {
 		InputStream imageStream = getClass().getClassLoader().getResourceAsStream(location);
 		try {

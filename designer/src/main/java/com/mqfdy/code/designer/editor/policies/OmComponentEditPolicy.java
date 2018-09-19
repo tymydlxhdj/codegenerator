@@ -13,14 +13,24 @@ import com.mqfdy.code.model.Association;
 import com.mqfdy.code.model.BusinessClass;
 import com.mqfdy.code.model.BusinessObjectModel;
 
+// TODO: Auto-generated Javadoc
 /**
- * 一组组合编辑策略 主要包含删除command
- * 
+ * 一组组合编辑策略 主要包含删除command.
+ *
  * @author mqfdy
- * 
  */
 public class OmComponentEditPolicy extends
 		org.eclipse.gef.editpolicies.ComponentEditPolicy {
+	
+	/**
+	 * Creates the delete command.
+	 *
+	 * @author mqfdy
+	 * @param deleteRequest
+	 *            the delete request
+	 * @return the command
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Command createDeleteCommand(GroupRequest deleteRequest) {
 		Object parent = getHost().getParent().getModel();// 图

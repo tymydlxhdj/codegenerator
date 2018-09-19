@@ -13,25 +13,24 @@ import com.mqfdy.code.springboot.utilities.model.event.ListChangeEvent;
 import com.mqfdy.code.springboot.utilities.model.listener.ListChangeListener;
 import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
+// TODO: Auto-generated Javadoc
 /**
- * This abstract class provides the infrastructure needed to wrap
- * a list value model, "lazily" listen to it, and convert
- * its change notifications into property value model change
- * notifications.
+ * This abstract class provides the infrastructure needed to wrap a list value
+ * model, "lazily" listen to it, and convert its change notifications into
+ * property value model change notifications.
  * 
- * Subclasses must override:
- * - #buildValue()
- *     to return the current property value, as derived from the
- *     current list value
+ * Subclasses must override: - #buildValue() to return the current property
+ * value, as derived from the current list value
  * 
- * Subclasses might want to override:
- * - #itemsAdded(ListChangeEvent event)
- * - #itemsRemoved(ListChangeEvent event)
- * - #itemsReplaced(ListChangeEvent event)
- * - #itemsMoved(ListChangeEvent event)
- * - #listCleared(ListChangeEvent event)
- * - #listChanged(ListChangeEvent event)
- *     to improve performance (by not recalculating the value, if possible)
+ * Subclasses might want to override: - #itemsAdded(ListChangeEvent event) -
+ * #itemsRemoved(ListChangeEvent event) - #itemsReplaced(ListChangeEvent event)
+ * - #itemsMoved(ListChangeEvent event) - #listCleared(ListChangeEvent event) -
+ * #listChanged(ListChangeEvent event) to improve performance (by not
+ * recalculating the value, if possible)
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
  */
 public abstract class ListPropertyValueModelAdapter<T>
 	extends AspectPropertyValueModelAdapter<T>
@@ -46,8 +45,11 @@ public abstract class ListPropertyValueModelAdapter<T>
 	// ********** constructor/initialization **********
 
 	/**
-	 * Construct a property value model with the specified wrapped
-	 * list value model.
+	 * Construct a property value model with the specified wrapped list value
+	 * model.
+	 *
+	 * @param listHolder
+	 *            the list holder
 	 */
 	protected ListPropertyValueModelAdapter(ListValueModel<?> listHolder) {
 		super();
@@ -55,6 +57,13 @@ public abstract class ListPropertyValueModelAdapter<T>
 		this.listChangeListener = this.buildListChangeListener();
 	}
 
+	/**
+	 * Builds the list change listener.
+	 *
+	 * @author mqfdy
+	 * @return the list change listener
+	 * @Date 2018-09-03 09:00
+	 */
 	protected ListChangeListener buildListChangeListener() {
 		return new ListChangeListener() {
 			public void itemsAdded(ListChangeEvent event) {
@@ -110,8 +119,13 @@ public abstract class ListPropertyValueModelAdapter<T>
 	// ********** collection change support **********
 
 	/**
-	 * Items were added to the wrapped list holder;
-	 * propagate the change notification appropriately.
+	 * Items were added to the wrapped list holder; propagate the change
+	 * notification appropriately.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void itemsAdded(ListChangeEvent event) {
 		// by default, simply recalculate the value and fire an event
@@ -119,8 +133,13 @@ public abstract class ListPropertyValueModelAdapter<T>
 	}
 
 	/**
-	 * Items were removed from the wrapped list holder;
-	 * propagate the change notification appropriately.
+	 * Items were removed from the wrapped list holder; propagate the change
+	 * notification appropriately.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void itemsRemoved(ListChangeEvent event) {
 		// by default, simply recalculate the value and fire an event
@@ -128,8 +147,13 @@ public abstract class ListPropertyValueModelAdapter<T>
 	}
 
 	/**
-	 * Items were replaced in the wrapped list holder;
-	 * propagate the change notification appropriately.
+	 * Items were replaced in the wrapped list holder; propagate the change
+	 * notification appropriately.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void itemsReplaced(ListChangeEvent event) {
 		// by default, simply recalculate the value and fire an event
@@ -137,8 +161,13 @@ public abstract class ListPropertyValueModelAdapter<T>
 	}
 
 	/**
-	 * Items were moved in the wrapped list holder;
-	 * propagate the change notification appropriately.
+	 * Items were moved in the wrapped list holder; propagate the change
+	 * notification appropriately.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void itemsMoved(ListChangeEvent event) {
 		// by default, simply recalculate the value and fire an event
@@ -146,8 +175,13 @@ public abstract class ListPropertyValueModelAdapter<T>
 	}
 
 	/**
-	 * The wrapped list holder was cleared;
-	 * propagate the change notification appropriately.
+	 * The wrapped list holder was cleared; propagate the change notification
+	 * appropriately.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void listCleared(ListChangeEvent event) {
 		// by default, simply recalculate the value and fire an event
@@ -155,8 +189,13 @@ public abstract class ListPropertyValueModelAdapter<T>
 	}
 
 	/**
-	 * The value of the wrapped list holder has changed;
-	 * propagate the change notification appropriately.
+	 * The value of the wrapped list holder has changed; propagate the change
+	 * notification appropriately.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void listChanged(ListChangeEvent event) {
 		// by default, simply recalculate the value and fire an event

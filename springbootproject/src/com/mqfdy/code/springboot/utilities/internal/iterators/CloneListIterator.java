@@ -16,20 +16,24 @@ import com.mqfdy.code.springboot.utilities.internal.CollectionTools;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * A <code>CloneListIterator</code> iterates over a copy of a list,
- * allowing for concurrent access to the original list.
+ * A <code>CloneListIterator</code> iterates over a copy of a list, allowing for
+ * concurrent access to the original list.
  * <p>
- * The original list passed to the <code>CloneListIterator</code>'s
- * constructor should be synchronized; otherwise you run the risk of
- * a corrupted list.
+ * The original list passed to the <code>CloneListIterator</code>'s constructor
+ * should be synchronized; otherwise you run the risk of a corrupted list.
  * <p>
  * By default, a <code>CloneListIterator</code> does not support the
- * modification operations; this is because it does not have
- * access to the original list. But if the <code>CloneListIterator</code>
- * is supplied with a <code>Mutator</code> it will delegate the
- * modification operations to the <code>Mutator</code>.
- * Alternatively, a subclass can override the modification methods.
+ * modification operations; this is because it does not have access to the
+ * original list. But if the <code>CloneListIterator</code> is supplied with a
+ * <code>Mutator</code> it will delegate the modification operations to the
+ * <code>Mutator</code>. Alternatively, a subclass can override the modification
+ * methods.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class CloneListIterator<E>
 	implements ListIterator<E>
@@ -47,17 +51,25 @@ public class CloneListIterator<E>
 	// ********** constructors **********
 
 	/**
-	 * Construct a list iterator on a copy of the specified list.
-	 * The modification methods will not be supported,
-	 * unless a subclass overrides them.
+	 * Construct a list iterator on a copy of the specified list. The
+	 * modification methods will not be supported, unless a subclass overrides
+	 * them.
+	 *
+	 * @param list
+	 *            the list
 	 */
 	public CloneListIterator(List<? extends E> list) {
 		this(list, Mutator.ReadOnly.<E>instance());
 	}
 
 	/**
-	 * Construct a list iterator on a copy of the specified list.
-	 * Use the specified list mutator to modify the original list.
+	 * Construct a list iterator on a copy of the specified list. Use the
+	 * specified list mutator to modify the original list.
+	 *
+	 * @param list
+	 *            the list
+	 * @param mutator
+	 *            the mutator
 	 */
 	public CloneListIterator(List<? extends E> list, Mutator<E> mutator) {
 		super();
@@ -136,10 +148,13 @@ public class CloneListIterator<E>
 	// ********** internal methods **********
 
 	/**
-	 * The list passed in during construction held Es,
-	 * so this cast is not a problem. We need this cast because
-	 * all the elements of the original collection were copied into
-	 * an object array (Object[]).
+	 * The list passed in during construction held Es, so this cast is not a
+	 * problem. We need this cast because all the elements of the original
+	 * collection were copied into an object array (Object[]).
+	 *
+	 * @author mqfdy
+	 * @return the e
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	protected E nestedNext() {
@@ -147,10 +162,13 @@ public class CloneListIterator<E>
 	}
 
 	/**
-	 * The list passed in during construction held Es,
-	 * so this cast is not a problem. We need this cast because
-	 * all the elements of the original collection were copied into
-	 * an object array (Object[]).
+	 * The list passed in during construction held Es, so this cast is not a
+	 * problem. We need this cast because all the elements of the original
+	 * collection were copied into an object array (Object[]).
+	 *
+	 * @author mqfdy
+	 * @return the e
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	protected E nestedPrevious() {
@@ -160,8 +178,15 @@ public class CloneListIterator<E>
 	/**
 	 * Add the specified element to the original list.
 	 * <p>
-	 * This method can be overridden by a subclass as an
-	 * alternative to building a <code>Mutator</code>.
+	 * This method can be overridden by a subclass as an alternative to building
+	 * a <code>Mutator</code>.
+	 *
+	 * @author mqfdy
+	 * @param index
+	 *            the index
+	 * @param o
+	 *            the o
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void add(int index, E o) {
 		this.mutator.add(index, o);
@@ -170,8 +195,13 @@ public class CloneListIterator<E>
 	/**
 	 * Remove the specified element from the original list.
 	 * <p>
-	 * This method can be overridden by a subclass as an
-	 * alternative to building a <code>Mutator</code>.
+	 * This method can be overridden by a subclass as an alternative to building
+	 * a <code>Mutator</code>.
+	 *
+	 * @author mqfdy
+	 * @param index
+	 *            the index
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void remove(int index) {
 		this.mutator.remove(index);
@@ -180,8 +210,15 @@ public class CloneListIterator<E>
 	/**
 	 * Set the specified element in the original list.
 	 * <p>
-	 * This method can be overridden by a subclass as an
-	 * alternative to building a <code>Mutator</code>.
+	 * This method can be overridden by a subclass as an alternative to building
+	 * a <code>Mutator</code>.
+	 *
+	 * @author mqfdy
+	 * @param index
+	 *            the index
+	 * @param o
+	 *            the o
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void set(int index, E o) {
 		this.mutator.set(index, o);
@@ -199,9 +236,13 @@ public class CloneListIterator<E>
 	//********** member interface **********
 
 	/**
-	 * Used by <code>CloneListIterator</code> to remove
-	 * elements from the original list; since the list iterator
-	 * does not have direct access to the original list.
+	 * Used by <code>CloneListIterator</code> to remove elements from the
+	 * original list; since the list iterator does not have direct access to the
+	 * original list.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
 	 */
 	public interface Mutator<T> {
 

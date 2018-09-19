@@ -14,6 +14,7 @@ import java.io.Serializable;
 import com.mqfdy.code.springboot.utilities.Command;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * This class provides synchronized access to a boolean value.
  * It also provides protocol for suspending a thread until the
@@ -34,8 +35,12 @@ public class SynchronizedBoolean
 	// ********** constructors **********
 
 	/**
-	 * Create a synchronized boolean with the specified initial value
-	 * and mutex.
+	 * Create a synchronized boolean with the specified initial value and mutex.
+	 *
+	 * @param value
+	 *            the value
+	 * @param mutex
+	 *            the mutex
 	 */
 	public SynchronizedBoolean(boolean value, Object mutex) {
 		super();
@@ -45,6 +50,9 @@ public class SynchronizedBoolean
 
 	/**
 	 * Create a synchronized boolean with the specified initial value.
+	 *
+	 * @param value
+	 *            the value
 	 */
 	public SynchronizedBoolean(boolean value) {
 		super();
@@ -53,8 +61,11 @@ public class SynchronizedBoolean
 	}
 
 	/**
-	 * Create a synchronized boolean with an initial value of false
-	 * and specified mutex.
+	 * Create a synchronized boolean with an initial value of false and
+	 * specified mutex.
+	 *
+	 * @param mutex
+	 *            the mutex
 	 */
 	public SynchronizedBoolean(Object mutex) {
 		this(false, mutex);
@@ -72,6 +83,10 @@ public class SynchronizedBoolean
 
 	/**
 	 * Return the current boolean value.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean value() {
 		synchronized (this.mutex) {
@@ -81,6 +96,10 @@ public class SynchronizedBoolean
 
 	/**
 	 * Return whether the current boolean value is true.
+	 *
+	 * @author mqfdy
+	 * @return true, if is true
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean isTrue() {
 		synchronized (this.mutex) {
@@ -90,6 +109,10 @@ public class SynchronizedBoolean
 
 	/**
 	 * Return whether the current boolean value is false.
+	 *
+	 * @author mqfdy
+	 * @return true, if is false
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean isFalse() {
 		synchronized (this.mutex) {
@@ -98,8 +121,13 @@ public class SynchronizedBoolean
 	}
 
 	/**
-	 * Set the boolean value. If the value changes, all waiting
-	 * threads are notified.
+	 * Set the boolean value. If the value changes, all waiting threads are
+	 * notified.
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            the new value
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setValue(boolean value) {
 		synchronized (this.mutex) {
@@ -131,8 +159,11 @@ public class SynchronizedBoolean
 	}
 
 	/**
-	 * Return the object this object locks on while performing
-	 * its operations.
+	 * Return the object this object locks on while performing its operations.
+	 *
+	 * @author mqfdy
+	 * @return the object
+	 * @Date 2018-09-03 09:00
 	 */
 	public Object mutex() {
 		return this.mutex;
@@ -142,9 +173,16 @@ public class SynchronizedBoolean
 	// ********** indefinite waits **********
 
 	/**
-	 * Suspend the current thread until the boolean value changes
-	 * to the specified value. If the boolean value is already the
-	 * specified value, return immediately.
+	 * Suspend the current thread until the boolean value changes to the
+	 * specified value. If the boolean value is already the specified value,
+	 * return immediately.
+	 *
+	 * @author mqfdy
+	 * @param v
+	 *            the v
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void waitUntilValueIs(boolean v) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -155,8 +193,13 @@ public class SynchronizedBoolean
 	}
 
 	/**
-	 * Suspend the current thread until the boolean value changes to true.
-	 * If the boolean value is already true, return immediately.
+	 * Suspend the current thread until the boolean value changes to true. If
+	 * the boolean value is already true, return immediately.
+	 *
+	 * @author mqfdy
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void waitUntilTrue() throws InterruptedException {
 		synchronized (this.mutex) {
@@ -165,8 +208,13 @@ public class SynchronizedBoolean
 	}
 
 	/**
-	 * Suspend the current thread until the boolean value changes to false.
-	 * If the boolean value is already false, return immediately.
+	 * Suspend the current thread until the boolean value changes to false. If
+	 * the boolean value is already false, return immediately.
+	 *
+	 * @author mqfdy
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void waitUntilFalse() throws InterruptedException {
 		synchronized (this.mutex) {
@@ -175,11 +223,17 @@ public class SynchronizedBoolean
 	}
 
 	/**
-	 * Suspend the current thread until the boolean value changes to
-	 * NOT the specified value, then change it back to the specified
-	 * value and continue executing. If the boolean value is already
-	 * NOT the specified value, set the value to the specified value
-	 * immediately.
+	 * Suspend the current thread until the boolean value changes to NOT the
+	 * specified value, then change it back to the specified value and continue
+	 * executing. If the boolean value is already NOT the specified value, set
+	 * the value to the specified value immediately.
+	 *
+	 * @author mqfdy
+	 * @param v
+	 *            the v
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void waitToSetValue(boolean v) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -189,9 +243,14 @@ public class SynchronizedBoolean
 	}
 
 	/**
-	 * Suspend the current thread until the boolean value changes to false,
-	 * then change it back to true and continue executing. If the boolean
-	 * value is already false, set the value to true immediately.
+	 * Suspend the current thread until the boolean value changes to false, then
+	 * change it back to true and continue executing. If the boolean value is
+	 * already false, set the value to true immediately.
+	 *
+	 * @author mqfdy
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void waitToSetTrue() throws InterruptedException {
 		synchronized (this.mutex) {
@@ -200,9 +259,14 @@ public class SynchronizedBoolean
 	}
 
 	/**
-	 * Suspend the current thread until the boolean value changes to true,
-	 * then change it back to false and continue executing. If the boolean
-	 * value is already true, set the value to false immediately.
+	 * Suspend the current thread until the boolean value changes to true, then
+	 * change it back to false and continue executing. If the boolean value is
+	 * already true, set the value to false immediately.
+	 *
+	 * @author mqfdy
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void waitToSetFalse() throws InterruptedException {
 		synchronized (this.mutex) {
@@ -214,12 +278,21 @@ public class SynchronizedBoolean
 	// ********** timed waits **********
 
 	/**
-	 * Suspend the current thread until the boolean value changes
-	 * to the specified value or the specified time-out occurs.
-	 * The time-out is specified in milliseconds. Return true if the specified
-	 * value was achieved; return false if a time-out occurred.
-	 * If the boolean value is already the specified value, return true
-	 * immediately.
+	 * Suspend the current thread until the boolean value changes to the
+	 * specified value or the specified time-out occurs. The time-out is
+	 * specified in milliseconds. Return true if the specified value was
+	 * achieved; return false if a time-out occurred. If the boolean value is
+	 * already the specified value, return true immediately.
+	 *
+	 * @author mqfdy
+	 * @param v
+	 *            the v
+	 * @param timeout
+	 *            the timeout
+	 * @return true, if successful
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean waitUntilValueIs(boolean v, long timeout) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -239,11 +312,19 @@ public class SynchronizedBoolean
 	}
 
 	/**
-	 * Suspend the current thread until the boolean value changes
-	 * to true or the specified time-out occurs.
-	 * The time-out is specified in milliseconds. Return true if the specified
-	 * value was achieved; return false if a time-out occurred.
-	 * If the boolean value is already true, return true immediately.
+	 * Suspend the current thread until the boolean value changes to true or the
+	 * specified time-out occurs. The time-out is specified in milliseconds.
+	 * Return true if the specified value was achieved; return false if a
+	 * time-out occurred. If the boolean value is already true, return true
+	 * immediately.
+	 *
+	 * @author mqfdy
+	 * @param timeout
+	 *            the timeout
+	 * @return true, if successful
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean waitUntilTrue(long timeout) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -252,11 +333,19 @@ public class SynchronizedBoolean
 	}
 
 	/**
-	 * Suspend the current thread until the boolean value changes
-	 * to false or the specified time-out occurs.
-	 * The time-out is specified in milliseconds. Return true if the specified
-	 * value was achieved; return false if a time-out occurred.
-	 * If the boolean value is already true, return true immediately.
+	 * Suspend the current thread until the boolean value changes to false or
+	 * the specified time-out occurs. The time-out is specified in milliseconds.
+	 * Return true if the specified value was achieved; return false if a
+	 * time-out occurred. If the boolean value is already true, return true
+	 * immediately.
+	 *
+	 * @author mqfdy
+	 * @param timeout
+	 *            the timeout
+	 * @return true, if successful
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean waitUntilFalse(long timeout) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -268,11 +357,21 @@ public class SynchronizedBoolean
 	 * Suspend the current thread until the boolean value changes to NOT the
 	 * specified value, then change it back to the specified value and continue
 	 * executing. If the boolean value does not change to false before the
-	 * time-out, simply continue executing without changing the value.
-	 * The time-out is specified in milliseconds. Return true if the value was
-	 * set to the specified value; return false if a time-out occurred.
-	 * If the boolean value is already NOT the specified value, set the value
-	 * to the specified value immediately and return true.
+	 * time-out, simply continue executing without changing the value. The
+	 * time-out is specified in milliseconds. Return true if the value was set
+	 * to the specified value; return false if a time-out occurred. If the
+	 * boolean value is already NOT the specified value, set the value to the
+	 * specified value immediately and return true.
+	 *
+	 * @author mqfdy
+	 * @param v
+	 *            the v
+	 * @param timeout
+	 *            the timeout
+	 * @return true, if successful
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean waitToSetValue(boolean v, long timeout) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -285,13 +384,21 @@ public class SynchronizedBoolean
 	}
 
 	/**
-	 * Suspend the current thread until the boolean value changes to false,
-	 * then change it back to true and continue executing. If the boolean
-	 * value does not change to false before the time-out, simply continue
-	 * executing without changing the value. The time-out is specified in
-	 * milliseconds. Return true if the value was set to true; return false
-	 * if a time-out occurred. If the boolean value is already false, set the
-	 * value to true immediately and return true.
+	 * Suspend the current thread until the boolean value changes to false, then
+	 * change it back to true and continue executing. If the boolean value does
+	 * not change to false before the time-out, simply continue executing
+	 * without changing the value. The time-out is specified in milliseconds.
+	 * Return true if the value was set to true; return false if a time-out
+	 * occurred. If the boolean value is already false, set the value to true
+	 * immediately and return true.
+	 *
+	 * @author mqfdy
+	 * @param timeout
+	 *            the timeout
+	 * @return true, if successful
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean waitToSetTrue(long timeout) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -300,13 +407,21 @@ public class SynchronizedBoolean
 	}
 
 	/**
-	 * Suspend the current thread until the boolean value changes to true,
-	 * then change it back to false and continue executing. If the boolean
-	 * value does not change to true before the time-out, simply continue
-	 * executing without changing the value. The time-out is specified in
-	 * milliseconds. Return true if the value was set to false; return false
-	 * if a time-out occurred. If the boolean value is already true, set the
-	 * value to false immediately and return true.
+	 * Suspend the current thread until the boolean value changes to true, then
+	 * change it back to false and continue executing. If the boolean value does
+	 * not change to true before the time-out, simply continue executing without
+	 * changing the value. The time-out is specified in milliseconds. Return
+	 * true if the value was set to false; return false if a time-out occurred.
+	 * If the boolean value is already true, set the value to false immediately
+	 * and return true.
+	 *
+	 * @author mqfdy
+	 * @param timeout
+	 *            the timeout
+	 * @return true, if successful
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean waitToSetFalse(long timeout) throws InterruptedException {
 		synchronized (this.mutex) {
@@ -318,9 +433,16 @@ public class SynchronizedBoolean
 	// ********** synchronized behavior **********
 
 	/**
-	 * If the current thread is not interrupted, execute the specified command 
-	 * with the mutex locked. This is useful for initializing the value in another
-	 * thread.
+	 * If the current thread is not interrupted, execute the specified command
+	 * with the mutex locked. This is useful for initializing the value in
+	 * another thread.
+	 *
+	 * @author mqfdy
+	 * @param command
+	 *            the command
+	 * @throws InterruptedException
+	 *             the interrupted exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public void execute(Command command) throws InterruptedException {
 		if (Thread.interrupted()) {

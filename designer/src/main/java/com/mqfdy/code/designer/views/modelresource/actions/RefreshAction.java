@@ -16,18 +16,19 @@ import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.designer.utils.BusinessModelUtil;
 import com.mqfdy.code.model.graph.DiagramElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * 新增包动作
- * 
+ * 新增包动作.
+ *
  * @author mqfdy
- * 
  */
 public class RefreshAction extends TreeAction {
 
 	/**
-	 * 构造函数(采用默认名称和图标，通过树来创建，通过树来查找上级节点)
-	 * 
-	 * @param parent
+	 * 构造函数(采用默认名称和图标，通过树来创建，通过树来查找上级节点).
+	 *
+	 * @param treeViewer
+	 *            the tree viewer
 	 */
 	public RefreshAction(TreeViewer treeViewer) {
 		super(ActionTexts.REFRESH, treeViewer);
@@ -36,15 +37,23 @@ public class RefreshAction extends TreeAction {
 	}
 
 	/**
-	 * 构造函数(通过树来创建，通过树来查找上级节点)
-	 * 
-	 * @param parent
+	 * 构造函数(通过树来创建，通过树来查找上级节点).
+	 *
+	 * @param text
+	 *            the text
+	 * @param imageDescriptor
+	 *            the image descriptor
+	 * @param treeViewer
+	 *            the tree viewer
 	 */
 	public RefreshAction(String text, ImageDescriptor imageDescriptor,
 			TreeViewer treeViewer) {
 		super(text, imageDescriptor, treeViewer);
 	}
 
+	/**
+	 * 
+	 */
 	public void run() {
 		if (treeViewer != null && treeViewer.getSelection() != null) {
 			BusinessModelUtil.getOutlinePage().getMrViewer()

@@ -25,6 +25,7 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.util.RuntimeServicesAware;
 
+// TODO: Auto-generated Javadoc
 /**
  * Use a custom introspector that prevents classloader related method 
  * calls.  Use this introspector for situations in which template 
@@ -42,18 +43,26 @@ import org.apache.velocity.util.RuntimeServicesAware;
  */
 public class SecureUberspector extends UberspectImpl implements RuntimeServicesAware
 {
+    
+    /** The runtime services. */
     RuntimeServices runtimeServices;
     
+    /**
+	 * Instantiates a new secure uberspector.
+	 */
     public SecureUberspector()
     {
         super();
     }
 
     /**
-     *  init - generates the Introspector. As the setup code
-     *  makes sure that the log gets set before this is called,
-     *  we can initialize the Introspector using the log object.
-     */
+	 * init - generates the Introspector. As the setup code makes sure that the
+	 * log gets set before this is called, we can initialize the Introspector
+	 * using the log object.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:31
+	 */
     public void init()
     {
         String [] badPackages = runtimeServices.getConfiguration()
@@ -66,13 +75,19 @@ public class SecureUberspector extends UberspectImpl implements RuntimeServicesA
     }
     
     /**
-     * Get an iterator from the given object.  Since the superclass method
-     * this secure version checks for execute permission.
-     * 
-     * @param obj object to iterate over
-     * @param i line, column, template info
-     * @return Iterator for object
-     */
+	 * Get an iterator from the given object. Since the superclass method this
+	 * secure version checks for execute permission.
+	 *
+	 * @author mqfdy
+	 * @param obj
+	 *            object to iterate over
+	 * @param i
+	 *            line, column, template info
+	 * @return Iterator for object
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:31
+	 */
     public Iterator getIterator(Object obj, Info i) throws Exception
     {
         if (obj != null)
@@ -92,9 +107,13 @@ public class SecureUberspector extends UberspectImpl implements RuntimeServicesA
     }
 
     /**
-     * Store the RuntimeServices before the object is initialized..
-     * @param rs RuntimeServices object for initialization
-     */
+	 * Store the RuntimeServices before the object is initialized..
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            RuntimeServices object for initialization
+	 * @Date 2018-9-3 11:38:31
+	 */
     public void setRuntimeServices(RuntimeServices rs)
     {
         this.runtimeServices = rs;

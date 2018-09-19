@@ -31,6 +31,7 @@ import org.eclipse.jdt.ui.PreferenceConstants;
 import com.mqfdy.code.springboot.core.util.ExceptionUtil;
 import com.mqfdy.code.springboot.core.util.NatureUtils;
 
+// TODO: Auto-generated Javadoc
 /**
  * An instance of this class is responsible for managing the creation of
  * MicroProject instances.
@@ -39,6 +40,7 @@ import com.mqfdy.code.springboot.core.util.NatureUtils;
  */
 public class MicroProjectManager {
 	
+	/** The Constant GRADLE_CLASSPATH_ID. */
 	public static final String GRADLE_CLASSPATH_ID = "org.springsource.ide.eclipse.gradle.classpathcontainer";
 
 	private static String MICROSERVICE_PROJECT_IDENTIFIER = "com.mqfdy.code.springboot.nature";
@@ -49,6 +51,15 @@ public class MicroProjectManager {
 	 */
 	private Map<String, MicroProject> gradleProjects = new HashMap<String, MicroProject>();
 
+	/**
+	 * Gets the or create.
+	 *
+	 * @author mqfdy
+	 * @param location
+	 *            the location
+	 * @return the or create
+	 * @Date 2018-09-03 09:00
+	 */
 	public synchronized MicroProject getOrCreate(File location) {
 		File canonicalFile = toCanonicalFile(location);
 		MicroProject project = get(canonicalFile);
@@ -68,19 +79,42 @@ public class MicroProjectManager {
 		}
 	}
 
+	/**
+	 * Gets the.
+	 *
+	 * @author mqfdy
+	 * @param canonicalFile
+	 *            the canonical file
+	 * @return the micro project
+	 * @Date 2018-09-03 09:00
+	 */
 	public MicroProject get(File canonicalFile) {
 		return gradleProjects.get(canonicalFile.getPath());
 	}
 
+	/**
+	 * Gets the or create.
+	 *
+	 * @author mqfdy
+	 * @param project
+	 *            the project
+	 * @return the or create
+	 * @Date 2018-09-03 09:00
+	 */
 	public MicroProject getOrCreate(IProject project) {
 		return getOrCreate(project.getLocation().toFile().getAbsoluteFile());
 	}
 
 	/**
-	 * 在ECLIPSE中创建JAVA项目(入口)
-	 * 
-	 * @param projectName
-	 * @return
+	 * 在ECLIPSE中创建JAVA项目(入口).
+	 *
+	 * @author mqfdy
+	 * @param location
+	 *            the location
+	 * @param monitor
+	 *            the monitor
+	 * @return the micro project
+	 * @Date 2018-09-03 09:00
 	 */
 	public MicroProject newInstance(File location, IProgressMonitor monitor) {
 
@@ -106,6 +140,18 @@ public class MicroProjectManager {
 		return microProject;
 	}
 	
+	/**
+	 * Adds the to classpath.
+	 *
+	 * @author mqfdy
+	 * @param jproj
+	 *            the jproj
+	 * @param entry
+	 *            the entry
+	 * @throws CoreException
+	 *             the core exception
+	 * @Date 2018-09-03 09:00
+	 */
 	protected static void addToClasspath(final IJavaProject jproj,
 			final IClasspathEntry[] entry) throws CoreException {
 		
@@ -275,6 +321,10 @@ public class MicroProjectManager {
 
 	/**
 	 * Retrieve a collection of all Gradle projects in the workspace.
+	 *
+	 * @author mqfdy
+	 * @return the gradle projects
+	 * @Date 2018-09-03 09:00
 	 */
 	public Collection<MicroProject> getGradleProjects()  {
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();

@@ -14,16 +14,27 @@ import com.mqfdy.code.designer.utils.BusinessModelUtil;
 import com.mqfdy.code.model.AbstractModelElement;
 import com.mqfdy.code.model.IModelElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * 下拉框单元格编辑器
- * 
+ * 下拉框单元格编辑器.
+ *
  * @author mqfdy
- * 
  */
 public class ComboDialogCellEditor extends ComboBoxDialogCellEditor {
 
+	/** The dialog. */
 	ModelElementSelecterDailog dialog;
 
+	/**
+	 * Instantiates a new combo dialog cell editor.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param list
+	 *            the list
+	 * @param dialog
+	 *            the dialog
+	 */
 	public ComboDialogCellEditor(Composite parent, List list,
 			ModelElementSelecterDailog dialog) {
 		super(parent, new String[] {});
@@ -31,6 +42,16 @@ public class ComboDialogCellEditor extends ComboBoxDialogCellEditor {
 		addListeners();
 	}
 
+	/**
+	 * Inits the.
+	 *
+	 * @author mqfdy
+	 * @param list
+	 *            the list
+	 * @param selecterDialog
+	 *            the selecter dialog
+	 * @Date 2018-09-03 09:00
+	 */
 	public void init(List list, ModelElementSelecterDailog selecterDialog) {
 		BusinessModelManager manager = BusinessModelUtil
 				.getEditorBusinessModelManager();
@@ -52,6 +73,12 @@ public class ComboDialogCellEditor extends ComboBoxDialogCellEditor {
 		}
 	}
 
+	/**
+	 * Adds the listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void addListeners() {
 		getComboBox().addSelectionListener(new SelectionListener() {
 
@@ -68,6 +95,15 @@ public class ComboDialogCellEditor extends ComboBoxDialogCellEditor {
 
 	}
 
+	/**
+	 * Open dialog box.
+	 *
+	 * @author mqfdy
+	 * @param cellEditorWindow
+	 *            the cell editor window
+	 * @return the object
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Object openDialogBox(Control cellEditorWindow) {
 		BusinessModelManager manager = BusinessModelUtil

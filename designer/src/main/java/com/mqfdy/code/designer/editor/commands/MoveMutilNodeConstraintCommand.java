@@ -7,6 +7,7 @@ import org.eclipse.gef.commands.Command;
 
 import com.mqfdy.code.designer.editor.part.NodeEditPart;
 
+// TODO: Auto-generated Javadoc
 /**
  * 设置节点的位置
  * 
@@ -19,10 +20,23 @@ import com.mqfdy.code.designer.editor.part.NodeEditPart;
  */
 public class MoveMutilNodeConstraintCommand extends Command {
 
+	/** The node edit part list. */
 	private List<NodeEditPart> nodeEditPartList;
+	
+	/** The cmd list. */
 	private List<MoveNodeConstraintCommand> cmdList = new ArrayList<MoveNodeConstraintCommand>();
+	
+	/** The type. */
 	private int type;
 
+	/**
+	 * Instantiates a new move mutil node constraint command.
+	 *
+	 * @param nodeEditPartList
+	 *            the node edit part list
+	 * @param type
+	 *            the type
+	 */
 	public MoveMutilNodeConstraintCommand(List<NodeEditPart> nodeEditPartList,
 			int type) {
 
@@ -34,11 +48,17 @@ public class MoveMutilNodeConstraintCommand extends Command {
 		this.nodeEditPartList = nodeEditPartList;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 		for (NodeEditPart node : nodeEditPartList) {
@@ -47,18 +67,27 @@ public class MoveMutilNodeConstraintCommand extends Command {
 		redo();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void redo() {
 		for (MoveNodeConstraintCommand cmd : cmdList)
 			cmd.execute();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void undo() {
 		for (MoveNodeConstraintCommand cmd : cmdList)
 			cmd.undo();
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canUndo() {
 		return true;

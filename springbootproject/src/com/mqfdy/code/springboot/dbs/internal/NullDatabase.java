@@ -95,6 +95,13 @@ final class NullDatabase
 		return null;
 	}
 
+	/**
+	 * Default catalog name.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public String defaultCatalogName() {
 		return EMPTY_STRING;
 	}

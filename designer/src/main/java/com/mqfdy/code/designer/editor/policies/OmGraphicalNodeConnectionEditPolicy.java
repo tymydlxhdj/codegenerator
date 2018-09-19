@@ -9,15 +9,26 @@ import com.mqfdy.code.designer.editor.commands.ConnectionReconnectCommand;
 import com.mqfdy.code.designer.editor.part.OmConnectionEditPart;
 import com.mqfdy.code.model.AbstractModelElement;
 
+// TODO: Auto-generated Javadoc
 /**
  * 模型连线的编辑策略。在要求模型连线的应用中，一般要处理几种类型的请求，
- * 包括创建模型之间的连线、完成模型的连线、重定位连线输入端的位置和重定位连线输出端的位置
- * 
+ * 包括创建模型之间的连线、完成模型的连线、重定位连线输入端的位置和重定位连线输出端的位置.
+ *
  * @author mqfdy
  * @since 1.5.2
  */
 public class OmGraphicalNodeConnectionEditPolicy extends
 		org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy {
+	
+	/**
+	 * Gets the connection create command.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @return the connection create command
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * 创建连线
 	 * 
@@ -44,6 +55,15 @@ public class OmGraphicalNodeConnectionEditPolicy extends
 		return cmd;
 	}
 
+	/**
+	 * Gets the connection complete command.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @return the connection complete command
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * 完成连线
 	 * 
@@ -66,6 +86,15 @@ public class OmGraphicalNodeConnectionEditPolicy extends
 		return cmd;
 	}
 
+	/**
+	 * Gets the reconnect source command.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @return the reconnect source command
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * 重定位输出连线起点
 	 * 
@@ -87,6 +116,15 @@ public class OmGraphicalNodeConnectionEditPolicy extends
 		return cmd;
 	}
 
+	/**
+	 * Gets the reconnect target command.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @return the reconnect target command
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * 重定位输入连线终点
 	 * 

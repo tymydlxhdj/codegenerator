@@ -28,20 +28,31 @@ import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.runtime.log.RuntimeLoggerLog;
 import org.apache.velocity.util.introspection.Introspector;
 
+// TODO: Auto-generated Javadoc
 /**
  * Returned the value of object property when executed.
+ *
+ * @author mqfdy
  */
 public class PropertyExecutor extends AbstractExecutor
 {
+    
+    /** The introspector. */
     private final Introspector introspector;
 
     /**
-     * @param log
-     * @param introspector
-     * @param clazz
-     * @param property
-     * @since 1.5
-     */
+	 * Instantiates a new property executor.
+	 *
+	 * @param log
+	 *            the log
+	 * @param introspector
+	 *            the introspector
+	 * @param clazz
+	 *            the clazz
+	 * @param property
+	 *            the property
+	 * @since 1.5
+	 */
     public PropertyExecutor(final Log log, final Introspector introspector,
             final Class clazz, final String property)
     {
@@ -58,12 +69,18 @@ public class PropertyExecutor extends AbstractExecutor
     }
 
     /**
-     * @param r
-     * @param introspector
-     * @param clazz
-     * @param property
-     * @deprecated RuntimeLogger is deprecated. Use the other constructor.
-     */
+	 * Instantiates a new property executor.
+	 *
+	 * @param r
+	 *            the r
+	 * @param introspector
+	 *            the introspector
+	 * @param clazz
+	 *            the clazz
+	 * @param property
+	 *            the property
+	 * @deprecated RuntimeLogger is deprecated. Use the other constructor.
+	 */
     public PropertyExecutor(final RuntimeLogger r, final Introspector introspector,
             final Class clazz, final String property)
     {
@@ -71,18 +88,26 @@ public class PropertyExecutor extends AbstractExecutor
     }
 
     /**
-     * @return The current introspector.
-     * @since 1.5
-     */
+	 * Gets the introspector.
+	 *
+	 * @return The current introspector.
+	 * @since 1.5
+	 */
     protected Introspector getIntrospector()
     {
         return this.introspector;
     }
 
     /**
-     * @param clazz
-     * @param property
-     */
+	 * Discover.
+	 *
+	 * @author mqfdy
+	 * @param clazz
+	 *            the clazz
+	 * @param property
+	 *            the property
+	 * @Date 2018-09-03 09:00
+	 */
     protected void discover(final Class clazz, final String property)
     {
         /*
@@ -134,8 +159,17 @@ public class PropertyExecutor extends AbstractExecutor
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.AbstractExecutor#execute(java.lang.Object)
-     */
+	 * Execute.
+	 *
+	 * @param o
+	 *            the o
+	 * @return the object
+	 * @throws IllegalAccessException
+	 *             the illegal access exception
+	 * @throws InvocationTargetException
+	 *             the invocation target exception
+	 * @see org.apache.velocity.runtime.parser.node.AbstractExecutor#execute(java.lang.Object)
+	 */
     public Object execute(Object o)
         throws IllegalAccessException,  InvocationTargetException
     {

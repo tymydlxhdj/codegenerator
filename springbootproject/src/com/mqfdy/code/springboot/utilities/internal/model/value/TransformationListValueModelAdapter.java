@@ -21,23 +21,28 @@ import com.mqfdy.code.springboot.utilities.model.value.CollectionValueModel;
 import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * An adapter that allows us to transform a ListValueModel
- * (or CollectionValueModel) into a read-only ListValueModel
- * whose items are tranformations of the items in the wrapped
- * ListValueModel. It will keep its contents in synch with
- * the contents of the wrapped ListValueModel and notifies its
- * listeners of any changes.
+ * An adapter that allows us to transform a ListValueModel (or
+ * CollectionValueModel) into a read-only ListValueModel whose items are
+ * tranformations of the items in the wrapped ListValueModel. It will keep its
+ * contents in synch with the contents of the wrapped ListValueModel and
+ * notifies its listeners of any changes.
  * <p>
- * The transformer can be changed at any time; allowing the same
- * adapter to be used with different transformations.
+ * The transformer can be changed at any time; allowing the same adapter to be
+ * used with different transformations.
  * <p>
- * NB: Since we only listen to the wrapped list when we have
- * listeners ourselves and we can only stay in synch with the wrapped
- * list while we are listening to it, results to various methods
- * (e.g. #size(), #getItem(int)) will be unpredictable whenever
- * we do not have any listeners. This should not be too painful since,
- * most likely, client objects will also be listeners.
+ * NB: Since we only listen to the wrapped list when we have listeners ourselves
+ * and we can only stay in synch with the wrapped list while we are listening to
+ * it, results to various methods (e.g. #size(), #getItem(int)) will be
+ * unpredictable whenever we do not have any listeners. This should not be too
+ * painful since, most likely, client objects will also be listeners.
+ *
+ * @author mqfdy
+ * @param <E1>
+ *            the generic type
+ * @param <E2>
+ *            the generic type
  */
 public class TransformationListValueModelAdapter<E1, E2>
 	extends ListValueModelWrapper<E1>
@@ -55,6 +60,11 @@ public class TransformationListValueModelAdapter<E1, E2>
 
 	/**
 	 * Constructor - the list holder is required.
+	 *
+	 * @param listHolder
+	 *            the list holder
+	 * @param transformer
+	 *            the transformer
 	 */
 	public TransformationListValueModelAdapter(ListValueModel<? extends E1> listHolder, Transformer<E1, E2> transformer) {
 		super(listHolder);
@@ -64,6 +74,9 @@ public class TransformationListValueModelAdapter<E1, E2>
 
 	/**
 	 * Constructor - the list holder is required.
+	 *
+	 * @param listHolder
+	 *            the list holder
 	 */
 	public TransformationListValueModelAdapter(ListValueModel<? extends E1> listHolder) {
 		this(listHolder, Transformer.Null.<E1, E2>instance());
@@ -71,6 +84,11 @@ public class TransformationListValueModelAdapter<E1, E2>
 
 	/**
 	 * Constructor - the collection holder is required.
+	 *
+	 * @param collectionHolder
+	 *            the collection holder
+	 * @param transformer
+	 *            the transformer
 	 */
 	public TransformationListValueModelAdapter(CollectionValueModel<? extends E1> collectionHolder, Transformer<E1, E2> transformer) {
 		this(new CollectionListValueModelAdapter<E1>(collectionHolder), transformer);
@@ -78,6 +96,9 @@ public class TransformationListValueModelAdapter<E1, E2>
 
 	/**
 	 * Constructor - the collection holder is required.
+	 *
+	 * @param collectionHolder
+	 *            the collection holder
 	 */
 	public TransformationListValueModelAdapter(CollectionValueModel<? extends E1> collectionHolder) {
 		this(new CollectionListValueModelAdapter<E1>(collectionHolder));
@@ -125,6 +146,12 @@ public class TransformationListValueModelAdapter<E1, E2>
 
 	/**
 	 * Transform the items associated with the specified event.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	protected List<E2> transformItems(ListChangeEvent event) {
 		return this.transformItems(this.items(event), event.itemsSize());
@@ -132,6 +159,12 @@ public class TransformationListValueModelAdapter<E1, E2>
 
 	/**
 	 * Transform the items in the specified list value model.
+	 *
+	 * @author mqfdy
+	 * @param lvm
+	 *            the lvm
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	protected List<E2> transformItems(ListValueModel<? extends E1> lvm) {
 		return this.transformItems(lvm.listIterator(), lvm.size());
@@ -139,6 +172,12 @@ public class TransformationListValueModelAdapter<E1, E2>
 
 	/**
 	 * Transform the replaced items associated with the specified event.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	protected List<E2> transformReplacedItems(ListChangeEvent event) {
 		return this.transformItems(this.replacedItems(event), event.itemsSize());
@@ -146,6 +185,14 @@ public class TransformationListValueModelAdapter<E1, E2>
 
 	/**
 	 * Transform the specified items.
+	 *
+	 * @author mqfdy
+	 * @param items
+	 *            the items
+	 * @param size
+	 *            the size
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	protected List<E2> transformItems(ListIterator<? extends E1> items, int size) {
 		List<E2> result = new ArrayList<E2>(size);
@@ -157,6 +204,12 @@ public class TransformationListValueModelAdapter<E1, E2>
 
 	/**
 	 * Transform the specified item.
+	 *
+	 * @author mqfdy
+	 * @param item
+	 *            the item
+	 * @return the e2
+	 * @Date 2018-09-03 09:00
 	 */
 	protected E2 transformItem(E1 item) {
 		return this.transformer.transform(item);
@@ -164,6 +217,11 @@ public class TransformationListValueModelAdapter<E1, E2>
 
 	/**
 	 * Change the transformer and rebuild the collection.
+	 *
+	 * @author mqfdy
+	 * @param transformer
+	 *            the transformer
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setTransformer(Transformer<E1, E2> transformer) {
 		this.transformer = transformer;

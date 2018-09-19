@@ -31,6 +31,7 @@ import org.apache.velocity.runtime.resource.Resource;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.commons.collections.ExtendedProperties;
 
+// TODO: Auto-generated Javadoc
 /**
  * <p>
  * ResourceLoader to load templates from multiple Jar files.
@@ -64,24 +65,24 @@ import org.apache.commons.collections.ExtendedProperties;
  */
 public class JarResourceLoader extends ResourceLoader
 {
+    
     /**
-     * Maps entries to the parent JAR File
-     * Key = the entry *excluding* plain directories
-     * Value = the JAR URL
-     */
+	 * Maps entries to the parent JAR File Key = the entry *excluding* plain
+	 * directories Value = the JAR URL.
+	 */
     private Map entryDirectory = new HashMap(559);
 
-    /**
-     * Maps JAR URLs to the actual JAR
-     * Key = the JAR URL
-     * Value = the JAR
-     */
+    /** Maps JAR URLs to the actual JAR Key = the JAR URL Value = the JAR. */
     private Map jarfiles = new HashMap(89);
 
     /**
-     * Called by Velocity to initialize the loader
-     * @param configuration
-     */
+	 * Called by Velocity to initialize the loader.
+	 *
+	 * @author mqfdy
+	 * @param configuration
+	 *            the configuration
+	 * @Date 2018-9-3 11:38:38
+	 */
     public void init( ExtendedProperties configuration)
     {
         log.trace("JarResourceLoader : initialization starting.");
@@ -122,6 +123,14 @@ public class JarResourceLoader extends ResourceLoader
         log.trace("JarResourceLoader : initialization complete.");
     }
 
+    /**
+	 * Load jar.
+	 *
+	 * @author mqfdy
+	 * @param path
+	 *            the path
+	 * @Date 2018-9-3 11:38:38
+	 */
     private void loadJar( String path )
     {
         if (log.isDebugEnabled())
@@ -160,9 +169,13 @@ public class JarResourceLoader extends ResourceLoader
     }
 
     /**
-     * Closes a Jar file and set its URLConnection
-     * to null.
-     */
+	 * Closes a Jar file and set its URLConnection to null.
+	 *
+	 * @author mqfdy
+	 * @param path
+	 *            the path
+	 * @Date 2018-9-3 11:38:38
+	 */
     private void closeJar( String path )
     {
         if ( jarfiles.containsKey(path) )
@@ -173,23 +186,30 @@ public class JarResourceLoader extends ResourceLoader
     }
 
     /**
-     * Copy all the entries into the entryDirectory
-     * It will overwrite any duplicate keys.
-     */
+	 * Copy all the entries into the entryDirectory It will overwrite any
+	 * duplicate keys.
+	 *
+	 * @author mqfdy
+	 * @param entries
+	 *            the entries
+	 * @Date 2018-9-3 11:38:38
+	 */
     private void addEntries( Hashtable entries )
     {
         entryDirectory.putAll( entries );
     }
 
     /**
-     * Get an InputStream so that the Runtime can build a
-     * template with it.
-     *
-     * @param source name of template to get
-     * @return InputStream containing the template
-     * @throws ResourceNotFoundException if template not found
-     *         in the file template path.
-     */
+	 * Get an InputStream so that the Runtime can build a template with it.
+	 *
+	 * @author mqfdy
+	 * @param source
+	 *            name of template to get
+	 * @return InputStream containing the template
+	 * @throws ResourceNotFoundException
+	 *             if template not found in the file template path.
+	 * @Date 2018-9-3 11:38:38
+	 */
     public InputStream getResourceStream( String source )
         throws ResourceNotFoundException
     {
@@ -242,16 +262,26 @@ public class JarResourceLoader extends ResourceLoader
     // TODO: SHOULD BE DELEGATED TO THE JARHOLDER
 
     /**
-     * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#isSourceModified(org.apache.velocity.runtime.resource.Resource)
-     */
+	 * Checks if is source modified.
+	 *
+	 * @param resource
+	 *            the resource
+	 * @return true, if is source modified
+	 * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#isSourceModified(org.apache.velocity.runtime.resource.Resource)
+	 */
     public boolean isSourceModified(Resource resource)
     {
         return true;
     }
 
     /**
-     * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#getLastModified(org.apache.velocity.runtime.resource.Resource)
-     */
+	 * Gets the last modified.
+	 *
+	 * @param resource
+	 *            the resource
+	 * @return the last modified
+	 * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#getLastModified(org.apache.velocity.runtime.resource.Resource)
+	 */
     public long getLastModified(Resource resource)
     {
         return 0;

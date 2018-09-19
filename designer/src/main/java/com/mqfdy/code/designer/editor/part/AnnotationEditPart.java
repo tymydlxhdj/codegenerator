@@ -33,19 +33,36 @@ import com.mqfdy.code.model.IModelElement;
 import com.mqfdy.code.model.graph.DiagramElement;
 import com.mqfdy.code.model.graph.ElementStyle;
 
+// TODO: Auto-generated Javadoc
 /**
- * 透视图中业务实体的控制器
- * 
+ * 透视图中业务实体的控制器.
+ *
  * @author mqfdy
- * 
  */
 public class AnnotationEditPart extends NodeEditPart {
+	
+	/** The annotation. */
 	Annotation annotation;
 
+	/** The model element. */
 	DiagramElement modelElement;
+	
+	/** The business object model. */
 	BusinessObjectModel businessObjectModel;
 
+	/** The figure 1. */
 	private Polygon figure1;
+	
+	/**
+	 * Instantiates a new annotation edit part.
+	 *
+	 * @param bu
+	 *            the bu
+	 * @param modelElement
+	 *            the model element
+	 * @param businessObjectModel
+	 *            the business object model
+	 */
 	public AnnotationEditPart(Annotation bu, DiagramElement modelElement,
 			BusinessObjectModel businessObjectModel) {
 		super(modelElement);
@@ -54,10 +71,20 @@ public class AnnotationEditPart extends NodeEditPart {
 		this.businessObjectModel = businessObjectModel;
 	}
 
+	/**
+	 * Gets the anno.
+	 *
+	 * @author mqfdy
+	 * @return the anno
+	 * @Date 2018-09-03 09:00
+	 */
 	public Annotation getAnno() {
 		return annotation;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected IFigure createFigure() {
 		// NodeModelElement classEl = getCastedModel();
@@ -70,6 +97,10 @@ public class AnnotationEditPart extends NodeEditPart {
 		// repaintFigure();
 		return figure;
 	}
+	
+	/**
+	 * 
+	 */
 	@Override
 	public void activate() {
 		if (!isActive()) {
@@ -78,6 +109,9 @@ public class AnnotationEditPart extends NodeEditPart {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void deactivate() {
 		if (isActive()) {
@@ -87,7 +121,12 @@ public class AnnotationEditPart extends NodeEditPart {
 	}
 
 	/**
-	 * 执行用户请求 点击透视图中的对象时，执行该方法 同时创建窗口
+	 * 执行用户请求 点击透视图中的对象时，执行该方法 同时创建窗口.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void performRequest(final Request request) {
@@ -113,13 +152,20 @@ public class AnnotationEditPart extends NodeEditPart {
 	}
 
 	/**
-	 * 取得模型DiagramElement
+	 * 取得模型DiagramElement.
+	 *
+	 * @author mqfdy
+	 * @return the casted model
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	protected AbstractModelElement getCastedModel() {
 		return (AbstractModelElement) getModel();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void refreshVisuals() {
 		if (modelElement != null) {
@@ -138,7 +184,10 @@ public class AnnotationEditPart extends NodeEditPart {
 	}
 
 	/**
-	 * 重新绘制界面对象
+	 * 重新绘制界面对象.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void repaintFigure() {
@@ -147,6 +196,14 @@ public class AnnotationEditPart extends NodeEditPart {
 		c.paintFigure(annotation);
 	}
 
+	/**
+	 * Property change.
+	 *
+	 * @author mqfdy
+	 * @param evt
+	 *            the evt
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		String propertyId = evt.getPropertyName();
@@ -164,6 +221,9 @@ public class AnnotationEditPart extends NodeEditPart {
 
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void createEditPolicies() {
 		super.createEditPolicies();

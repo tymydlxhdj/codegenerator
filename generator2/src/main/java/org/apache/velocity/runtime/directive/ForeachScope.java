@@ -1,5 +1,6 @@
 package org.apache.velocity.runtime.directive;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -28,49 +29,117 @@ package org.apache.velocity.runtime.directive;
  */
 public class ForeachScope extends Scope
 {
+    
+    /** The index. */
     protected int index = -1;
+    
+    /** The has next. */
     protected boolean hasNext = false;
 
+    /**
+	 * Instantiates a new foreach scope.
+	 *
+	 * @param owner
+	 *            the owner
+	 * @param replaces
+	 *            the replaces
+	 */
     public ForeachScope(Object owner, Object replaces)
     {
         super(owner, replaces);
     }
 
+    /**
+	 * Gets the index.
+	 *
+	 * @author mqfdy
+	 * @return the index
+	 * @Date 2018-09-03 09:00
+	 */
     public int getIndex()
     {
         return index;
     }
 
+    /**
+	 * Gets the count.
+	 *
+	 * @author mqfdy
+	 * @return the count
+	 * @Date 2018-09-03 09:00
+	 */
     public int getCount()
     {
         return index + 1;
     }
 
+    /**
+	 * Checks for next.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
     public boolean hasNext()
     {
         return getHasNext();
     }
 
+    /**
+	 * Gets the checks for next.
+	 *
+	 * @author mqfdy
+	 * @return the checks for next
+	 * @Date 2018-09-03 09:00
+	 */
     public boolean getHasNext()
     {
         return hasNext;
     }
 
+    /**
+	 * Checks if is first.
+	 *
+	 * @author mqfdy
+	 * @return true, if is first
+	 * @Date 2018-09-03 09:00
+	 */
     public boolean isFirst()
     {
         return index < 1;
     }
 
+    /**
+	 * Gets the first.
+	 *
+	 * @author mqfdy
+	 * @return the first
+	 * @Date 2018-09-03 09:00
+	 */
     public boolean getFirst()
     {
         return isFirst();
     }
 
+    /**
+	 * Checks if is last.
+	 *
+	 * @author mqfdy
+	 * @return true, if is last
+	 * @Date 2018-09-03 09:00
+	 */
     public boolean isLast()
     {
         return !hasNext;
     }
 
+    /**
+	 * Gets the last.
+	 *
+	 * @author mqfdy
+	 * @return the last
+	 * @Date 2018-09-03 09:00
+	 */
     public boolean getLast()
     {
         return isLast();

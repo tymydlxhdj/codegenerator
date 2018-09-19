@@ -17,16 +17,40 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ChooseFileWizardPage.
+ *
+ * @author mqfdy
+ */
 public class ChooseFileWizardPage extends WizardPage {
+	
+	/** The file path text. */
 	private Text filePathText;
+	
+	/** The file path. */
 	private String filePath;
 	
+	/**
+	 * Instantiates a new choose file wizard page.
+	 *
+	 * @param name
+	 *            the name
+	 */
 	protected ChooseFileWizardPage(String name) {
 		super(name);
 		setTitle("PDM文件");
 		setDescription("导入*.pdm文件");
 	}
 
+	/**
+	 * Creates the control.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
@@ -59,6 +83,12 @@ public class ChooseFileWizardPage extends WizardPage {
 		
 	}
 
+	/**
+	 * Sets the data.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setData(){
 		if(filePathText.getText()!=null && !"".equals(filePathText.getText())){
 			this.filePath = filePathText.getText();
@@ -66,7 +96,10 @@ public class ChooseFileWizardPage extends WizardPage {
 	}
 	
 	/**
-	 * 浏览文件夹hu
+	 * 浏览文件夹hu.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void handleBrowse2() {
 		FileDialog dlg = new FileDialog(this.getShell(), SWT.OPEN);
@@ -86,12 +119,19 @@ public class ChooseFileWizardPage extends WizardPage {
 		
 	}
 	
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canFlipToNextPage() {
 		return !"".equals(filePathText.getText());
 	}
+	
 	/**
-	 * 初始化监听器
+	 * 初始化监听器.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initializeListener() {
 		filePathText.addModifyListener(new DataValidateListener());
@@ -101,14 +141,28 @@ public class ChooseFileWizardPage extends WizardPage {
 	}
 
 	/**
-	 * 数据校验监听器
+	 * 数据校验监听器.
+	 *
+	 * @see DataValidateEvent
 	 */
 	class DataValidateListener implements ModifyListener {
+		
+		/**
+		 * Modify text.
+		 *
+		 * @author mqfdy
+		 * @param e
+		 *            the e
+		 * @Date 2018-09-03 09:00
+		 */
 		public void modifyText(ModifyEvent e) {
 			validateData();
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public IWizardPage getNextPage() {
 		TableStructureWizardPage nextPage = (TableStructureWizardPage) super.getWizard().getPage("tsPage");
@@ -117,6 +171,12 @@ public class ChooseFileWizardPage extends WizardPage {
 		return nextPage;
 	}
 
+	/**
+	 * Validate data.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void validateData() {
 		String errorMessage = null;
 		if(filePathText.getText()==null || "".equals(filePathText.getText())){
@@ -125,6 +185,14 @@ public class ChooseFileWizardPage extends WizardPage {
 		setErrorMessage(errorMessage);
 		setPageComplete(errorMessage == null);
 	}
+	
+	/**
+	 * Gets the file path.
+	 *
+	 * @author mqfdy
+	 * @return the file path
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getFilePath(){
 		return this.filePath;
 	}

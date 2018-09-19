@@ -24,12 +24,17 @@ import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 import com.mqfdy.code.springboot.utilities.model.value.PropertyValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * An adapter that allows us to make a PropertyValueModel behave like
- * a read-only, single-element ListValueModel, sorta.
+ * An adapter that allows us to make a PropertyValueModel behave like a
+ * read-only, single-element ListValueModel, sorta.
  * 
- * If the property's value is null, an empty iterator is returned
- * (i.e. you can't have a list with a null element).
+ * If the property's value is null, an empty iterator is returned (i.e. you
+ * can't have a list with a null element).
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class PropertyListValueModelAdapter<E>
 	extends AbstractModel
@@ -50,6 +55,9 @@ public class PropertyListValueModelAdapter<E>
 
 	/**
 	 * Wrap the specified property value model.
+	 *
+	 * @param valueHolder
+	 *            the value holder
 	 */
 	public PropertyListValueModelAdapter(PropertyValueModel<? extends E> valueHolder) {
 		super();
@@ -68,8 +76,12 @@ public class PropertyListValueModelAdapter<E>
 	}
 
 	/**
-	 * The wrapped value has changed, forward an equivalent
-	 * list change event to our listeners.
+	 * The wrapped value has changed, forward an equivalent list change event to
+	 * our listeners.
+	 *
+	 * @author mqfdy
+	 * @return the property change listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected PropertyChangeListener buildPropertyChangeListener() {
 		return new PropertyChangeListener() {
@@ -112,6 +124,7 @@ public class PropertyListValueModelAdapter<E>
 		return this.value;
 	}
 
+	/** The Constant EMPTY_OBJECT_ARRAY. */
 	protected static final Object[] EMPTY_OBJECT_ARRAY = new Object[0];
 	public Object[] toArray() {
 		return (this.value == null) ? EMPTY_OBJECT_ARRAY : new Object[] {this.value};
@@ -167,10 +180,24 @@ public class PropertyListValueModelAdapter<E>
 
 	// ********** queries **********
 
+	/**
+	 * Checks for listeners.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	protected boolean hasListeners() {
 		return this.hasAnyListChangeListeners(LIST_VALUES);
 	}
 
+	/**
+	 * Checks for no listeners.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	protected boolean hasNoListeners() {
 		return ! this.hasListeners();
 	}
@@ -178,10 +205,27 @@ public class PropertyListValueModelAdapter<E>
 
 	// ********** behavior **********
 
+	/**
+	 * Ioobe.
+	 *
+	 * @author mqfdy
+	 * @param index
+	 *            the index
+	 * @param size
+	 *            the size
+	 * @return the index out of bounds exception
+	 * @Date 2018-09-03 09:00
+	 */
 	protected IndexOutOfBoundsException ioobe(int index, int size) {
 		return new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
 	}
 
+	/**
+	 * Engage model.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void engageModel() {
 		this.valueHolder.addPropertyChangeListener(PropertyValueModel.VALUE, this.propertyChangeListener);
 		// synch our value *after* we start listening to the value holder,
@@ -189,6 +233,12 @@ public class PropertyListValueModelAdapter<E>
 		this.value = this.valueHolder.getValue();
 	}
 
+	/**
+	 * Disengage model.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void disengageModel() {
 		this.valueHolder.removePropertyChangeListener(PropertyValueModel.VALUE, this.propertyChangeListener);
 		// clear out the value when we are not listening to the value holder
@@ -196,8 +246,13 @@ public class PropertyListValueModelAdapter<E>
 	}
 
 	/**
-	 * synchronize our internal value with the wrapped value
-	 * and fire the appropriate events
+	 * synchronize our internal value with the wrapped value and fire the
+	 * appropriate events.
+	 *
+	 * @author mqfdy
+	 * @param newValue
+	 *            the new value
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void valueChanged(E newValue) {
 		E oldValue = this.value;

@@ -11,21 +11,46 @@ import com.mqfdy.code.model.BusinessClass;
 import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.model.BusinessOperation;
 import com.mqfdy.code.model.OperationParam;
+// TODO: Auto-generated Javadoc
+
 /**
- * 
- * @author mqf
+ * The Class ControllerClass.
  *
+ * @author mqf
  */
 public class ControllerClass extends AbstractBusinessClass {
 	
+	/**
+	 * Instantiates a new controller class.
+	 *
+	 * @param bc
+	 *            the bc
+	 * @param persistenceModel
+	 *            the persistence model
+	 * @param project
+	 *            the project
+	 * @param bom
+	 *            the bom
+	 */
 	public ControllerClass(BusinessClass bc, IPersistenceModel persistenceModel, IProject project, BusinessObjectModel bom) {
 		super(bc, persistenceModel, project,bom);
 	}
+	
+	/**
+	 * Instantiates a new controller class.
+	 *
+	 * @param param
+	 *            the param
+	 */
 	public ControllerClass(ClassParam param) {
 		super(param);
 	}
+	
 	/**
-	 * 设置 Velocity Map
+	 * 设置 Velocity Map.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:31
 	 */
 	public void putToVelocityMap() {
 		putToVelocityMapDef();
@@ -44,16 +69,25 @@ public class ControllerClass extends AbstractBusinessClass {
 		
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initPackage() ControllerClass
+	 */
 	@Override
 	public void initPackage() {
 		packageStr = packagePrefix + ".controller;";
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields() ControllerClass
+	 */
 	@Override
 	public void initFields() {
 		
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initImports() ControllerClass
+	 */
 	@Override
 	public void initImports() {
 		
@@ -83,6 +117,9 @@ public class ControllerClass extends AbstractBusinessClass {
 		}
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods() ControllerClass
+	 */
 	@Override
 	public void initMethods() {
 		List<BusinessOperation> operations = bc.getOperations();
@@ -122,7 +159,13 @@ public class ControllerClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * 获取自定义方法
+	 * 获取自定义方法.
+	 *
+	 * @author mqfdy
+	 * @param bop
+	 *            the bop
+	 * @return the custom method
+	 * @Date 2018-9-3 11:38:31
 	 */
 	protected String getCustomMethod(BusinessOperation bop) {
 		StringBuffer sb = new StringBuffer();

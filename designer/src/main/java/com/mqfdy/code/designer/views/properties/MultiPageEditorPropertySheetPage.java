@@ -15,25 +15,54 @@ import org.eclipse.ui.part.PageBook;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 
+// TODO: Auto-generated Javadoc
 /**
- * 属性页
- * 
+ * 属性页.
+ *
  * @author mqfdy
- * 
  */
 public class MultiPageEditorPropertySheetPage extends PropertySheetPage
 		implements IPropertySheetPage {
+	
+	/** The pagebook. */
 	private PageBook pagebook;
+	
+	/** The rec map. */
 	private Map recMap = new HashMap();
+	
+	/** The default page. */
 	private PropertySheetPage defaultPage;
+	
+	/** The action bars. */
 	private IActionBars actionBars;
+	
+	/** The current page. */
 	private IPropertySheetPage currentPage;
+	
+	/** The disposed. */
 	private boolean disposed = false;
 
+	/**
+	 * The Class PageRec.
+	 *
+	 * @author mqfdy
+	 */
 	class PageRec {
+		
+		/** The page. */
 		IPropertySheetPage page;
+		
+		/** The bars. */
 		SubActionBars bars;
 
+		/**
+		 * Sets the bars active.
+		 *
+		 * @author mqfdy
+		 * @param active
+		 *            the new bars active
+		 * @Date 2018-09-03 09:00
+		 */
 		void setBarsActive(boolean active) {
 			if (active)
 				bars.activate();
@@ -42,10 +71,21 @@ public class MultiPageEditorPropertySheetPage extends PropertySheetPage
 		}
 	}
 
+	/**
+	 * Instantiates a new multi page editor property sheet page.
+	 */
 	public MultiPageEditorPropertySheetPage() {
 		defaultPage = new BusinessPropertySheetPage(null);
 	}
 
+	/**
+	 * Update property sheet.
+	 *
+	 * @author mqfdy
+	 * @param editor
+	 *            the editor
+	 * @Date 2018-09-03 09:00
+	 */
 	public void updatePropertySheet(IEditorPart editor) {
 		// System.out.print("\r\n updatePropertySheet: "+editor.getClass().getName());
 		if (editor != null) {
@@ -59,6 +99,14 @@ public class MultiPageEditorPropertySheetPage extends PropertySheetPage
 		}
 	}
 
+	/**
+	 * Creates the control.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createControl(Composite parent) {
 		pagebook = new PageBook(parent, SWT.NULL);
 		defaultPage.createControl(pagebook);
@@ -66,6 +114,15 @@ public class MultiPageEditorPropertySheetPage extends PropertySheetPage
 			setPageActive(currentPage);
 	}
 
+	/**
+	 * Creates the page rec.
+	 *
+	 * @author mqfdy
+	 * @param page
+	 *            the page
+	 * @return the page rec
+	 * @Date 2018-09-03 09:00
+	 */
 	private PageRec createPageRec(IPropertySheetPage page) {
 		if (actionBars == null)
 			return null;
@@ -80,6 +137,9 @@ public class MultiPageEditorPropertySheetPage extends PropertySheetPage
 		return rec;
 	}
 
+	/**
+	 * 
+	 */
 	public void dispose() {
 		updateActionBars();
 
@@ -90,14 +150,33 @@ public class MultiPageEditorPropertySheetPage extends PropertySheetPage
 		super.dispose();
 	}
 
+	/**
+	 * Checks if is disposed.
+	 *
+	 * @author mqfdy
+	 * @return true, if is disposed
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isDisposed() {
 		return disposed;
 	}
 
+	/**
+	 * @return
+	 */
 	public Control getControl() {
 		return pagebook;
 	}
 
+	/**
+	 * Gets the page control.
+	 *
+	 * @author mqfdy
+	 * @param page
+	 *            the page
+	 * @return the page control
+	 * @Date 2018-09-03 09:00
+	 */
 	private Control getPageControl(IPropertySheetPage page) {
 		Control control = page.getControl();
 		if (control == null || control.isDisposed()) {
@@ -108,11 +187,29 @@ public class MultiPageEditorPropertySheetPage extends PropertySheetPage
 		return control;
 	}
 
+	/**
+	 * Selection changed.
+	 *
+	 * @author mqfdy
+	 * @param part
+	 *            the part
+	 * @param sel
+	 *            the sel
+	 * @Date 2018-09-03 09:00
+	 */
 	public void selectionChanged(IWorkbenchPart part, ISelection sel) {
 		if (currentPage != null)
 			currentPage.selectionChanged(part, sel);
 	}
 
+	/**
+	 * Sets the action bars.
+	 *
+	 * @author mqfdy
+	 * @param bars
+	 *            the new action bars
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setActionBars(IActionBars bars) {
 		this.actionBars = bars;
 
@@ -125,15 +222,32 @@ public class MultiPageEditorPropertySheetPage extends PropertySheetPage
 		}
 	}
 
+	/**
+	 * Sets the default page active.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setDefaultPageActive() {
 		setPageActive(defaultPage);
 	}
 
+	/**
+	 * 
+	 */
 	public void setFocus() {
 		if (currentPage != null)
 			currentPage.setFocus();
 	}
 
+	/**
+	 * Sets the page active.
+	 *
+	 * @author mqfdy
+	 * @param pageRec
+	 *            the new page active
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setPageActive(PageRec pageRec) {
 		IPropertySheetPage page = pageRec.page;
 		Control control = getPageControl(page);
@@ -141,6 +255,14 @@ public class MultiPageEditorPropertySheetPage extends PropertySheetPage
 		pageRec.setBarsActive(true);
 	}
 
+	/**
+	 * Sets the page active.
+	 *
+	 * @author mqfdy
+	 * @param page
+	 *            the new page active
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPageActive(IPropertySheetPage page) {
 		IPropertySheetPage oldPage = currentPage;
 		this.currentPage = page;
@@ -163,6 +285,12 @@ public class MultiPageEditorPropertySheetPage extends PropertySheetPage
 		}
 	}
 
+	/**
+	 * Update action bars.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void updateActionBars() {
 		actionBars.updateActionBars();
 	}

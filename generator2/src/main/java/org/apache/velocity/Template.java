@@ -42,6 +42,7 @@ import org.apache.velocity.runtime.parser.node.SimpleNode;
 import org.apache.velocity.runtime.resource.Resource;
 import org.apache.velocity.runtime.resource.ResourceManager;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class is used for controlling all template
  * operations. This class uses a parser created
@@ -66,16 +67,23 @@ import org.apache.velocity.runtime.resource.ResourceManager;
  */
 public class Template extends Resource
 {
+    
+    /** The scope name. */
     /*
      * The name of the variable to use when placing
      * the scope object into the context.
      */
     private String scopeName = "template";
+    
+    /** The provide scope. */
     private boolean provideScope = false;
 
+    /** The error condition. */
     private VelocityException errorCondition = null;
 
-    /** Default constructor */
+    /**
+	 * Default constructor.
+	 */
     public Template()
     {
         super();
@@ -84,15 +92,16 @@ public class Template extends Resource
     }
 
     /**
-     *  gets the named resource as a stream, parses and inits
-     *
-     * @return true if successful
-     * @throws ResourceNotFoundException if template not found
-     *          from any available source.
-     * @throws ParseErrorException if template cannot be parsed due
-     *          to syntax (or other) error.
-     * @throws IOException problem reading input stream
-     */
+	 * gets the named resource as a stream, parses and inits.
+	 *
+	 * @author mqfdy
+	 * @return true if successful
+	 * @throws ResourceNotFoundException
+	 *             if template not found from any available source.
+	 * @throws ParseErrorException
+	 *             if template cannot be parsed due to syntax (or other) error.
+	 * @Date 2018-9-3 11:38:28
+	 */
     public boolean process()
         throws ResourceNotFoundException, ParseErrorException
     {
@@ -196,12 +205,15 @@ public class Template extends Resource
     }
 
     /**
-     *  initializes the document.  init() is not longer
-     *  dependant upon context, but we need to let the
-     *  init() carry the template name down throught for VM
-     *  namespace features
-     * @throws TemplateInitException When a problem occurs during the document initialization.
-     */
+	 * initializes the document. init() is not longer dependant upon context,
+	 * but we need to let the init() carry the template name down throught for
+	 * VM namespace features
+	 *
+	 * @author mqfdy
+	 * @throws TemplateInitException
+	 *             When a problem occurs during the document initialization.
+	 * @Date 2018-9-3 11:38:28
+	 */
     public void initDocument()
     throws TemplateInitException
     {
@@ -243,17 +255,23 @@ public class Template extends Resource
     }
 
     /**
-     * The AST node structure is merged with the
-     * context to produce the final output.
-     *
-     *  @param context Conext with data elements accessed by template
-     *  @param writer output writer for rendered template
-     *  @throws ResourceNotFoundException if template not found
-     *          from any available source.
-     *  @throws ParseErrorException if template cannot be parsed due
-     *          to syntax (or other) error.
-     *  @throws MethodInvocationException When a method on a referenced object in the context could not invoked.
-     */
+	 * The AST node structure is merged with the context to produce the final
+	 * output.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            Conext with data elements accessed by template
+	 * @param writer
+	 *            output writer for rendered template
+	 * @throws ResourceNotFoundException
+	 *             if template not found from any available source.
+	 * @throws ParseErrorException
+	 *             if template cannot be parsed due to syntax (or other) error.
+	 * @throws MethodInvocationException
+	 *             When a method on a referenced object in the context could not
+	 *             invoked.
+	 * @Date 2018-9-3 11:38:28
+	 */
     public void merge( Context context, Writer writer)
         throws ResourceNotFoundException, ParseErrorException, MethodInvocationException
     {

@@ -15,53 +15,95 @@ import com.mqfdy.code.model.VersionInfo;
 import com.mqfdy.code.model.utils.DateTimeUtil;
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 版本信息显示面板
- * 
+ * 版本信息显示面板.
+ *
  * @author mqfdy
- * 
  */
 public class VersionInfoPanel extends Composite {
 
+	/** The Constant GROUP_TITLE_VERSION. */
 	public static final String GROUP_TITLE_VERSION = "版本信息";
 
+	/** The Constant VERSIONNUMBER_LABEL_TEXT. */
 	public static final String VERSIONNUMBER_LABEL_TEXT = "版本号：";
+	
+	/** The Constant CREATOR_LABEL_TEXT. */
 	public static final String CREATOR_LABEL_TEXT = "创建人：";
+	
+	/** The Constant MODIFIER_LABEL_TEXT. */
 	public static final String MODIFIER_LABEL_TEXT = "修改人：";
+	
+	/** The Constant CREATEDTIME_LABEL_TEXT. */
 	public static final String CREATEDTIME_LABEL_TEXT = "创建时间：";
+	
+	/** The Constant CHANGEDTIME_LABEL_TEXT. */
 	public static final String CHANGEDTIME_LABEL_TEXT = "修改时间：";
+	
+	/** The Constant DESCRIPTION_LABEL_TEXT. */
 	public static final String DESCRIPTION_LABEL_TEXT = "描述：";
 
+	/** The label version number. */
 	private Label label_versionNumber;
+	
+	/** The text version number. */
 	private Text text_versionNumber;
 
+	/** The label creator. */
 	private Label label_creator;
+	
+	/** The text creator. */
 	private Text text_creator;
 
+	/** The label modifier. */
 	private Label label_modifier;
+	
+	/** The text modifier. */
 	private Text text_modifier;
 
+	/** The label created time. */
 	private Label label_createdTime;
+	
+	/** The text created time. */
 	private Text text_createdTime;
 
+	/** The label changed time. */
 	private Label label_changedTime;
+	
+	/** The text changed time. */
 	private Text text_changedTime;
 
 	// private Label label_description;
 	// private Text text_description;
 
+	/** The group version info. */
 	private Group group_versionInfo;
 
-	/**
-	 * 版本信息
-	 */
+	/** 版本信息. */
 	private VersionInfo versionInfo;
 
+	/**
+	 * Instantiates a new version info panel.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 */
 	public VersionInfoPanel(Composite parent, int style) {
 		super(parent, style);
 		createContent(this);
 	}
 
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent(Composite parent) {
 		parent.setLayout(new FillLayout());
 		group_versionInfo = new Group(parent, SWT.NONE | SWT.FILL);
@@ -116,6 +158,14 @@ public class VersionInfoPanel extends Composite {
 
 	}
 
+	/**
+	 * Inits the control value.
+	 *
+	 * @author mqfdy
+	 * @param versionInfo
+	 *            the version info
+	 * @Date 2018-09-03 09:00
+	 */
 	public void initControlValue(VersionInfo versionInfo) {
 		this.versionInfo = versionInfo;
 		if (versionInfo != null) {
@@ -134,6 +184,13 @@ public class VersionInfoPanel extends Composite {
 		}
 	}
 
+	/**
+	 * Gets the version info.
+	 *
+	 * @author mqfdy
+	 * @return the version info
+	 * @Date 2018-09-03 09:00
+	 */
 	public VersionInfo getVersionInfo() {
 		if (this.versionInfo == null) {
 			this.versionInfo = new VersionInfo();

@@ -2,37 +2,92 @@ package com.mqfdy.code.datasource.utils;
 
 import com.mqfdy.code.datasource.mapping.DBType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ReverseContants.
+ *
+ * @author mqfdy
+ */
 public class ReverseContants {
 
+	/** The Constant SEPERATOR. */
 	public final static String SEPERATOR = "\\";
+	
+	/** The Constant DOT. */
 	public final static String DOT = ".";
 
+	/** The Constant NOPKTABLE. */
 	public final static String NOPKTABLE = "noPkTable";
+	
+	/** The Constant MUTILPKTABLE. */
 	public final static String MUTILPKTABLE = "mutilPkTable";
 
+	/**
+	 * The Class DataSource.
+	 *
+	 * @author mqfdy
+	 */
 	public final static class DataSource {
 		
+		/** The Constant DS_NAME. */
 		// 数据源信息
 		public static final String DS_NAME = "DataSourceName";
+		
+		/** The Constant SID. */
 		public static final String SID = "Sid";
+		
+		/** The Constant URL. */
 		public static final String URL = "Url";
+		
+		/** The Constant USER. */
 		public static final String USER = "User";
+		
+		/** The Constant PPP. */
 		public static final String PPP = "Password";
+		
+		/** The Constant DRIVER_URL. */
 		public static final String DRIVER_URL = "DriverUrl";
+		
+		/** The Constant DRIVER_CLASS. */
 		public static final String DRIVER_CLASS = "DriverClass";
+		
+		/** The Constant DB_TYPE. */
 		public static final String DB_TYPE = "DbType";
+		
+		/** The Constant DB_SELECT. */
 		public static final String DB_SELECT = "Select";
+		
+		/** The Constant DB_IP. */
 		public static final String DB_IP = "Ip";
+		
+		/** The Constant DB_PORT. */
 		public static final String DB_PORT = "Port";
 
+		/** The Constant DRIVER_JAR_PARENT. */
 		public static final String DRIVER_JAR_PARENT = "plugins";
+		
+		/** The plugin driver. */
 		public static String PLUGIN_DRIVER = "com.sgcc.uap.ide.database.drivers";
+		
+		/** The Constant DRIVER_JAR_CHILD. */
 		public static final String DRIVER_JAR_CHILD = "lib";
 
 	}
 
+	/**
+	 * The Class Oracle_SQL.
+	 *
+	 * @author mqfdy
+	 */
 	public final static class Oracle_SQL {
 		
+		/**
+		 * Sql oracle default.
+		 *
+		 * @author mqfdy
+		 * @return the string
+		 * @Date 2018-09-03 09:00
+		 */
 		// 查询oracle下的字段默认值
 		public static String SQL_ORACLE_DEFAULT() {
 
@@ -42,6 +97,13 @@ public class ReverseContants {
 					" AND COLUMN_NAME=?";
 		}
 
+		/**
+		 * Sql oracle tablepk cols.
+		 *
+		 * @author mqfdy
+		 * @return the string
+		 * @Date 2018-09-03 09:00
+		 */
 		// 查询某表的主键列集合
 		public static String SQL_ORACLE_TABLEPK_COLS() {
 
@@ -54,9 +116,13 @@ public class ReverseContants {
 
 		
 		/**
-		 * 查询表下具有唯一约束的字段名集合的sql语句 
+		 * 查询表下具有唯一约束的字段名集合的sql语句 .
+		 *
+		 * @author mqfdy
 		 * @param dbType
+		 *            the db type
 		 * @return String
+		 * @Date 2018-09-03 09:00
 		 */
 		public static String getUniqueColumnsSQL(String dbType) {
 			StringBuffer buffer = new StringBuffer();
@@ -77,6 +143,7 @@ public class ReverseContants {
 			return buffer.toString();
 		}
 		
+		/** The sql oracle unique. */
 		// 查询表下具有唯一约束的字段名集合
 		public static String SQL_ORACLE_UNIQUE = "select column_name " + 
 												   "from user_cons_columns cu, user_constraints au " + 
@@ -84,20 +151,31 @@ public class ReverseContants {
 													"and au.constraint_type = 'U' " +
 													"and au.table_name =";
 		
+		/** The sql kingbase unique. */
 		// 查询金仓数据库表下具有唯一约束的字段名集合
 		public static String SQL_KINGBASE_UNIQUE = "select col.column_name column_name from   " +
 													" user_constraints au, all_objects obj ,user_ind_columns col"+
 				  									" where au.constraint_name=obj.object_name "+
 				  									" and au.constraint_type = 'U' and col.index_name=obj.object_name   and au.table_name=";
 		
+		/**
+		 * Sql oracle sequence.
+		 *
+		 * @author mqfdy
+		 * @return the string
+		 * @Date 2018-09-03 09:00
+		 */
 		// 查询某用户下的所有sequence名集合
 		public static String SQL_ORACLE_SEQUENCE() {
 			return "SELECT SEQUENCE_NAME FROM ALL_SEQUENCES WHERE SEQUENCE_OWNER=?";
 		}
 
 		/**
-		 * 查询某表下所有外键信息
+		 * 查询某表下所有外键信息.
+		 *
+		 * @author mqfdy
 		 * @return 查询某表下所有外键信息SQL
+		 * @Date 2018-9-3 11:38:36
 		 */
 		public static String SQL_ORACLE_FK_INFO() {
 
@@ -109,6 +187,13 @@ public class ReverseContants {
 					  "and c.table_name = ?";
 		}
 
+		/**
+		 * Sql oracle zibiao.
+		 *
+		 * @author mqfdy
+		 * @return the string
+		 * @Date 2018-09-03 09:00
+		 */
 		public static String SQL_ORACLE_ZIBIAO() {
 
 			return "SELECT a.table_name FKTABLE_NAME " +
@@ -119,8 +204,11 @@ public class ReverseContants {
 		}
 
 		/**
-		 * 根据外键约束名获取该外键引用table名与引用的字段名
-		 * @return
+		 * 根据外键约束名获取该外键引用table名与引用的字段名.
+		 *
+		 * @author mqfdy
+		 * @return the string
+		 * @Date 2018-09-03 09:00
 		 */
 		public static String SQL_ORACLE_FKCOLUMNS_INFO() {
 			return "select table_name,column_name " +
@@ -128,6 +216,13 @@ public class ReverseContants {
 					"where cl.constraint_name =?";
 		}
 
+		/**
+		 * Sql oracle columns info.
+		 *
+		 * @author mqfdy
+		 * @return the string
+		 * @Date 2018-09-03 09:00
+		 */
 		// 读取表列信息
 		public static String SQL_ORACLE_COLUMNS_INFO() {
 
@@ -148,8 +243,11 @@ public class ReverseContants {
 		}
 		
 		/**
-		 * 查询当前用户下所有的列信息的sql语句
+		 * 查询当前用户下所有的列信息的sql语句.
+		 *
+		 * @author mqfdy
 		 * @return String sql语句
+		 * @Date 2018-9-3 11:38:36
 		 */
 		public static String SQL_ORACLE_TABLES_INFO() {
 
@@ -177,8 +275,11 @@ public class ReverseContants {
 		}
 		
 		/**
-		 * 查询达梦数据库当前用户下所有的列信息的sql语句
+		 * 查询达梦数据库当前用户下所有的列信息的sql语句.
+		 *
+		 * @author mqfdy
 		 * @return String sql语句
+		 * @Date 2018-9-3 11:38:36
 		 */
 		public static String SQL_DM_TABLES_INFO() {
 			StringBuffer buffer = new StringBuffer();

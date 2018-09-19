@@ -44,14 +44,25 @@ import com.mqfdy.code.model.ReferenceObject;
 import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * 获取bean对应的IPropertySource
- * 
+ * 获取bean对应的IPropertySource.
+ *
  * @author mqfdy
- * 
  */
 public class BusinessPropertiesAdapterFactory implements IAdapterFactory {
 
+	/**
+	 * Gets the adapter.
+	 *
+	 * @author mqfdy
+	 * @param adaptableObject
+	 *            the adaptable object
+	 * @param adapterType
+	 *            the adapter type
+	 * @return the adapter
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getAdapter(Object adaptableObject, Class adapterType) {
 		if (adaptableObject instanceof AbstractGraphicalEditPart) {
 			adaptableObject = ((AbstractGraphicalEditPart) adaptableObject)
@@ -79,6 +90,9 @@ public class BusinessPropertiesAdapterFactory implements IAdapterFactory {
 				(AbstractModelElement) adaptableObject);
 	}
 
+	/**
+	 * @return
+	 */
 	public Class<AbstractModelElement>[] getAdapterList() {
 		return new Class[] { AbstractModelElement.class };
 	}

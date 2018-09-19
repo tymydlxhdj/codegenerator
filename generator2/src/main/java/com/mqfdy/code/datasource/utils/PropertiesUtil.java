@@ -12,20 +12,25 @@ import java.util.Properties;
 import java.util.Set;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * Properties文件操作类
- * 
- * @author mqfdy
+ * Properties文件操作类.
  *
+ * @author mqfdy
  */
 public class PropertiesUtil {
 
 	/**
-	 * 保存属性（追加 如果重复则覆盖）
+	 * 保存属性（追加 如果重复则覆盖）.
+	 *
+	 * @author mqfdy
 	 * @param enumFile
+	 *            the enum file
 	 * @param map
+	 *            the map
 	 * @throws FileNotFoundException
-	 * @throws IOException
+	 *             the file not found exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void save(File enumFile,Map<String,String> map) throws FileNotFoundException {
 		Properties prop = new Properties();

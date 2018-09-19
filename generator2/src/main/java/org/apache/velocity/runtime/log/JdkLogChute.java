@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 
 import org.apache.velocity.runtime.RuntimeServices;
 
+// TODO: Auto-generated Javadoc
 /**
  * Implementation of a simple java.util.logging LogChute.
  *
@@ -33,24 +34,28 @@ import org.apache.velocity.runtime.RuntimeServices;
  */
 public class JdkLogChute implements LogChute
 {
-    /** Property key for specifying the name for the logger instance */
+    
+    /** Property key for specifying the name for the logger instance. */
     public static final String RUNTIME_LOG_JDK_LOGGER =
         "runtime.log.logsystem.jdk.logger";
 
+    /** The Constant RUNTIME_LOG_JDK_LOGGER_LEVEL. */
     public static final String RUNTIME_LOG_JDK_LOGGER_LEVEL =
         "runtime.log.logsystem.jdk.logger.level";
 
-    /** Default name for the JDK logger instance */
+    /** Default name for the JDK logger instance. */
     public static final String DEFAULT_LOG_NAME = "org.apache.velocity";
 
-    /**
-     *
-     */
+    /** The logger. */
     protected Logger logger = null;
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
-     */
+	 * Inits the.
+	 *
+	 * @param rs
+	 *            the rs
+	 * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
+	 */
     public void init(RuntimeServices rs)
     {
         String name = (String)rs.getProperty(RUNTIME_LOG_JDK_LOGGER);
@@ -73,11 +78,15 @@ public class JdkLogChute implements LogChute
     }
 
     /**
-     * Returns the java.util.logging.Level that matches
-     * to the specified LogChute level.
-     * @param level
-     * @return The current log level of the JDK Logger.
-     */
+	 * Returns the java.util.logging.Level that matches to the specified
+	 * LogChute level.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the level
+	 * @return The current log level of the JDK Logger.
+	 * @Date 2018-09-03 09:00
+	 */
     protected Level getJdkLevel(int level)
     {
         switch (level)
@@ -98,22 +107,32 @@ public class JdkLogChute implements LogChute
     }
 
     /**
-     * Logs messages
-     *
-     * @param level severity level
-     * @param message complete error message
-     */
+	 * Logs messages.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            severity level
+	 * @param message
+	 *            complete error message
+	 * @Date 2018-9-3 11:38:28
+	 */
     public void log(int level, String message)
     {
         log(level, message, null);
     }
 
     /**
-     * Send a log message from Velocity along with an exception or error
-     * @param level
-     * @param message
-     * @param t
-     */
+	 * Send a log message from Velocity along with an exception or error.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @Date 2018-9-3 11:38:28
+	 */
     public void log(int level, String message, Throwable t)
     {
         Level jdkLevel = getJdkLevel(level);
@@ -128,8 +147,13 @@ public class JdkLogChute implements LogChute
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#isLevelEnabled(int)
-     */
+	 * Checks if is level enabled.
+	 *
+	 * @param level
+	 *            the level
+	 * @return true, if is level enabled
+	 * @see org.apache.velocity.runtime.log.LogChute#isLevelEnabled(int)
+	 */
     public boolean isLevelEnabled(int level)
     {
         Level jdkLevel = getJdkLevel(level);

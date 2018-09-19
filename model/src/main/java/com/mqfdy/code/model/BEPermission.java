@@ -3,27 +3,21 @@ package com.mqfdy.code.model;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务实体权限
- * 
+ * 业务实体权限.
+ *
  * @author mqfdy
- * 
  */
 public class BEPermission extends AbstractModelElement {
 
-	/**
-	 * 所属业务实体
-	 */
+	/** 所属业务实体. */
 	private BusinessClass belongBusinessClass;
 
-	/**
-	 * 业务状态
-	 */
+	/** 业务状态. */
 	private BEStatus beStatus;// (考虑删掉，业务状态树使用BEPermission-BusinessClass-BeStatus列表展示)
 
-	/**
-	 * 权限条目。key：资源ID 资源ID：属性或操作的ID
-	 */
+	/** 权限条目。key：资源ID 资源ID：属性或操作的ID. */
 	// private Map<String , List<BEPermissionItem>> permissionItemsCache;
 
 	/**
@@ -31,6 +25,14 @@ public class BEPermission extends AbstractModelElement {
 	 */
 	private List<BEPermissionItem> permissionItems;
 
+	/**
+	 * Instantiates a new BE permission.
+	 *
+	 * @param belongBusinessClass
+	 *            the belong business class
+	 * @param beStatus
+	 *            the be status
+	 */
 	public BEPermission(BusinessClass belongBusinessClass, BEStatus beStatus) {
 		permissionItems = new ArrayList<BEPermissionItem>();
 		//beStatus.setBelongBusinessClass(belongBusinessClass);
@@ -39,18 +41,48 @@ public class BEPermission extends AbstractModelElement {
 		this.beStatus = beStatus;
 	}
 
+	/**
+	 * Gets the belong business class.
+	 *
+	 * @author mqfdy
+	 * @return the belong business class
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessClass getBelongBusinessClass() {
 		return belongBusinessClass;
 	}
 
+	/**
+	 * Gets the be status.
+	 *
+	 * @author mqfdy
+	 * @return the be status
+	 * @Date 2018-09-03 09:00
+	 */
 	public BEStatus getBeStatus() {
 		return beStatus;
 	}
 
+	/**
+	 * Gets the permission items.
+	 *
+	 * @author mqfdy
+	 * @return the permission items
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<BEPermissionItem> getPermissionItems() {
 		return permissionItems;
 	}
 
+	/**
+	 * Gets the permission items.
+	 *
+	 * @author mqfdy
+	 * @param resourceId
+	 *            the resource id
+	 * @return the permission items
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<BEPermissionItem> getPermissionItems(String resourceId) {
 		/*
 		 * List<BEPermissionItem> resourcePermissionItems =
@@ -72,9 +104,12 @@ public class BEPermission extends AbstractModelElement {
 	}
 
 	/**
-	 * 删除权限条目
-	 * 
+	 * 删除权限条目.
+	 *
+	 * @author mqfdy
 	 * @param item
+	 *            the item
+	 * @Date 2018-09-03 09:00
 	 */
 	public void removePermissionItems(BEPermissionItem item) {
 		if (permissionItems != null) {
@@ -91,12 +126,21 @@ public class BEPermission extends AbstractModelElement {
 	}
 
 	/**
-	 * 添加条目的同时，注册到缓存
-	 * 
+	 * 添加条目的同时，注册到缓存.
+	 *
+	 * @author mqfdy
+	 * @param ISCResourceId
+	 *            the ISC resource id
 	 * @param role
+	 *            the role
 	 * @param resourceType
+	 *            the resource type
 	 * @param resourceId
+	 *            the resource id
 	 * @param right
+	 *            the right
+	 * @return the BE permission item
+	 * @Date 2018-09-03 09:00
 	 */
 	public BEPermissionItem addPermissionItem(String ISCResourceId,
 			String role, String resourceType, String resourceId, String right) {
@@ -115,6 +159,21 @@ public class BEPermission extends AbstractModelElement {
 		 */
 	}
 
+	/**
+	 * Adds the permission item.
+	 *
+	 * @author mqfdy
+	 * @param role
+	 *            the role
+	 * @param resourceType
+	 *            the resource type
+	 * @param resourceId
+	 *            the resource id
+	 * @param right
+	 *            the right
+	 * @return the BE permission item
+	 * @Date 2018-09-03 09:00
+	 */
 	public BEPermissionItem addPermissionItem(String role, String resourceType,
 			String resourceId, String right) {
 		BEPermissionItem item = new BEPermissionItem(role, resourceType,
@@ -132,6 +191,15 @@ public class BEPermission extends AbstractModelElement {
 		 */
 	}
 
+	/**
+	 * Gets the permissoin by status.
+	 *
+	 * @author mqfdy
+	 * @param status
+	 *            the status
+	 * @return the permissoin by status
+	 * @Date 2018-09-03 09:00
+	 */
 	public static BEPermission getPermissoinByStatus(BEStatus status) {
 		/*if (status != null && status.getBelongBusinessClass() != null) {
 			List<BEPermission> listPermissions = status
@@ -150,6 +218,17 @@ public class BEPermission extends AbstractModelElement {
 		return null;
 	}
 
+	/**
+	 * Gets the by ISC resource id.
+	 *
+	 * @author mqfdy
+	 * @param status
+	 *            the status
+	 * @param ISCResourceId
+	 *            the ISC resource id
+	 * @return the by ISC resource id
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getByISCResourceId(BEStatus status,
 			String ISCResourceId) {
 		if (status == null) {
@@ -173,6 +252,17 @@ public class BEPermission extends AbstractModelElement {
 		}
 	}
 
+	/**
+	 * Gets the ISC resource id.
+	 *
+	 * @author mqfdy
+	 * @param status
+	 *            the status
+	 * @param resourceId
+	 *            the resource id
+	 * @return the ISC resource id
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getISCResourceId(BEStatus status, String resourceId) {
 		BEPermission permission = getPermissoinByStatus(status);
 		if (permission == null) {
@@ -191,10 +281,16 @@ public class BEPermission extends AbstractModelElement {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public AbstractModelElement getParent() {
 		return this.belongBusinessClass.getPermissionPackage();
 	}
 
+	/**
+	 * @return
+	 */
 	public List<AbstractModelElement> getChildren() {
 		return EMPTY_CHILD;
 	}

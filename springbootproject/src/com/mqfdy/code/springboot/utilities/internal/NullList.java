@@ -18,17 +18,19 @@ import com.mqfdy.code.springboot.utilities.internal.iterators.EmptyIterator;
 import com.mqfdy.code.springboot.utilities.internal.iterators.EmptyListIterator;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * A "null" list is a bit different from an "empty" list: it allows clients to
- * add/remove elements to/from it but never changes. This is useful
- * for passing to methods that require a "collecting parameter" but the
- * client will ignore the resulting "collection".
+ * add/remove elements to/from it but never changes. This is useful for passing
+ * to methods that require a "collecting parameter" but the client will ignore
+ * the resulting "collection".
  * 
- * NB: We return 'null' from the following methods (as opposed to throwing
- * an exception):
- *     get(int) : E
- *     remove(int) : E
- *     set(int, E) : E
+ * NB: We return 'null' from the following methods (as opposed to throwing an
+ * exception): get(int) : E remove(int) : E set(int, E) : E
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public final class NullList<E> implements List<E> {
 
@@ -38,6 +40,12 @@ public final class NullList<E> implements List<E> {
 
 	/**
 	 * Return the singleton.
+	 *
+	 * @author mqfdy
+	 * @param <E>
+	 *            the element type
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	public static <E> List<E> instance() {

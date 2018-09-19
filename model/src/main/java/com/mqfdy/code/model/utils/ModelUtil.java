@@ -27,13 +27,21 @@ import com.mqfdy.code.model.SolidifyPackage;
 import com.mqfdy.code.model.Validator;
 import com.mqfdy.code.model.graph.Diagram;
 
+// TODO: Auto-generated Javadoc
 /**
- * 模型工具类
- * 
+ * 模型工具类.
+ *
  * @author mqfdy
- * 
  */
 public class ModelUtil {
+	
+	/**
+	 * Gets the model type displays.
+	 *
+	 * @author mqfdy
+	 * @return the model type displays
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String[] getModelTypeDisplays() {
 		String[] types = new String[] { "",
 				IModelElement.MODEL_STEREOTYPE_BUSINESSCLASSOBJECTMODEL,
@@ -52,10 +60,13 @@ public class ModelUtil {
 	}
 
 	/**
-	 * 获取模型类型的显示名称
-	 * 
+	 * 获取模型类型的显示名称.
+	 *
+	 * @author mqfdy
 	 * @param type
-	 * @return
+	 *            the type
+	 * @return the model type display
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String getModelTypeDisplay(String type) {
 		String display = "";
@@ -147,11 +158,15 @@ public class ModelUtil {
 	}
 
 	/**
-	 * 转换模型的构造类型
-	 * 
+	 * 转换模型的构造类型.
+	 *
+	 * @author mqfdy
 	 * @param bom
+	 *            the bom
 	 * @param stereotype
-	 * @return
+	 *            the stereotype
+	 * @return the business object model
+	 * @Date 2018-09-03 09:00
 	 */
 	public static BusinessObjectModel transformModelStereotype(
 			BusinessObjectModel bom, String stereotype) {
@@ -203,6 +218,15 @@ public class ModelUtil {
 		return bom;
 	}
 
+	/**
+	 * Gets the business model of element.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @return the business model of element
+	 * @Date 2018-09-03 09:00
+	 */
 	public static BusinessObjectModel getBusinessModelOfElement(
 			AbstractModelElement element) {
 		if (element == null) {
@@ -223,6 +247,19 @@ public class ModelUtil {
 		}
 	}
 
+	/**
+	 * Gets the associate business class.
+	 *
+	 * @author mqfdy
+	 * @param bom
+	 *            the bom
+	 * @param bc
+	 *            the bc
+	 * @param associateClassName
+	 *            the associate class name
+	 * @return the associate business class
+	 * @Date 2018-09-03 09:00
+	 */
 	public static BusinessClass getAssociateBusinessClass(
 			BusinessObjectModel bom, BusinessClass bc, String associateClassName) {
 		BusinessClass associateBc = null;

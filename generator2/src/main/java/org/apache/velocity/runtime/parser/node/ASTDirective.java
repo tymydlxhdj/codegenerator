@@ -35,6 +35,7 @@ import org.apache.velocity.runtime.parser.ParseException;
 import org.apache.velocity.runtime.parser.Parser;
 import org.apache.velocity.util.ExceptionUtils;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class is responsible for handling the pluggable
  * directives in VTL.
@@ -51,23 +52,38 @@ import org.apache.velocity.util.ExceptionUtils;
  */
 public class ASTDirective extends SimpleNode
 {
+    
+    /** The directive. */
     private Directive directive = null;
+    
+    /** The directive name. */
     private String directiveName = "";
+    
+    /** The is directive. */
     private boolean isDirective;
+    
+    /** The is initialized. */
     private boolean isInitialized;
 
     /**
-     * @param id
-     */
+	 * Instantiates a new AST directive.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTDirective(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST directive.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTDirective(Parser p, int id)
     {
         super(p, id);
@@ -75,16 +91,34 @@ public class ASTDirective extends SimpleNode
 
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#init(org.apache.velocity.context.InternalContextAdapter, java.lang.Object)
-     */
+	 * Inits the.
+	 *
+	 * @param context
+	 *            the context
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#init(org.apache.velocity.context.InternalContextAdapter,
+	 *      java.lang.Object)
+	 */
     public synchronized Object init( InternalContextAdapter context, Object data)
     throws TemplateInitException
     {
@@ -193,8 +227,24 @@ public class ASTDirective extends SimpleNode
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#render(org.apache.velocity.context.InternalContextAdapter, java.io.Writer)
-     */
+	 * Render.
+	 *
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @return true, if successful
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#render(org.apache.velocity.context.InternalContextAdapter,
+	 *      java.io.Writer)
+	 */
     public boolean render( InternalContextAdapter context, Writer writer)
         throws IOException,MethodInvocationException, ResourceNotFoundException, ParseErrorException
     {
@@ -216,27 +266,38 @@ public class ASTDirective extends SimpleNode
     }
 
     /**
-     *   Sets the directive name.  Used by the parser.  This keeps us from having to
-     *   dig it out of the token stream and gives the parse the change to override.
-     * @param str
-     */
+	 * Sets the directive name. Used by the parser. This keeps us from having to
+	 * dig it out of the token stream and gives the parse the change to
+	 * override.
+	 *
+	 * @author mqfdy
+	 * @param str
+	 *            the new directive name
+	 * @Date 2018-09-03 09:00
+	 */
     public void setDirectiveName( String str )
     {
         directiveName = str;
     }
 
     /**
-     *  Gets the name of this directive.
-     *  @return The name of this directive.
-     */
+	 * Gets the name of this directive.
+	 *
+	 * @author mqfdy
+	 * @return The name of this directive.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public String getDirectiveName()
     {
         return directiveName;
     }
     
     /**
-     * @since 1.5
-     */
+	 * To string.
+	 *
+	 * @return the string
+	 * @since 1.5
+	 */
     public String toString()
     {
         return new ToStringBuilder(this)

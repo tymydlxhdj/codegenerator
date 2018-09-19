@@ -22,26 +22,37 @@ package org.apache.velocity.runtime.log;
 import java.util.Date;
 import org.apache.log.format.PatternFormatter;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class VelocityFormatter.
  *
+ * @author mqfdy
  */
 public class VelocityFormatter extends PatternFormatter
 {
+    
     /**
-     * @param format
-     */
+	 * Instantiates a new velocity formatter.
+	 *
+	 * @param format
+	 *            the format
+	 */
     public VelocityFormatter( String format )
     {
 	super( format );
     }
 
     /**
-     * Utility method to format time.
-     *
-     * @param time the time
-     * @param format ancilliary format parameter - allowed to be null
-     * @return the formatted string
-     */
+	 * Utility method to format time.
+	 *
+	 * @author mqfdy
+	 * @param time
+	 *            the time
+	 * @param format
+	 *            ancilliary format parameter - allowed to be null
+	 * @return the formatted string
+	 * @Date 2018-9-3 11:38:37
+	 */
     protected String getTime( final long time, final String format )
     {
         return new Date().toString();

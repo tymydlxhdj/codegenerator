@@ -17,22 +17,37 @@ import com.mqfdy.code.designer.models.ImageKeys;
 import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.model.BusinessObjectModel;
 
+// TODO: Auto-generated Javadoc
 /**
- * 模型校验Dialog
- * 
+ * 模型校验Dialog.
+ *
  * @author ZHANGHE
- * 
  */
 public class ModelValidatorDiaolg extends TitleAreaDialog {
-	/**
-	 * 标签页对象
-	 */
+	
+	/** 标签页对象. */
 	private TabFolder tabFolder;
+	
+	/** The vos page. */
 	private ValidatorObjectSelectPage vosPage;
+	
+	/** The sel page. */
 	private ModelValidatorSelectPage selPage;
+	
+	/** The business object model. */
 	private BusinessObjectModel businessObjectModel;
+	
+	/** The ok button. */
 	private Button okButton;
 
+	/**
+	 * Instantiates a new model validator diaolg.
+	 *
+	 * @param shell
+	 *            the shell
+	 * @param businessObjectModel
+	 *            the business object model
+	 */
 	public ModelValidatorDiaolg(Shell shell,
 			BusinessObjectModel businessObjectModel) {
 		// TODO Auto-generated constructor stub
@@ -41,7 +56,12 @@ public class ModelValidatorDiaolg extends TitleAreaDialog {
 	}
 
 	/**
-	 * 操作按钮
+	 * 操作按钮.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void createButtonsForButtonBar(Composite parent) {
 		okButton = createButton(parent, IDialogConstants.OK_ID,
@@ -51,6 +71,14 @@ public class ModelValidatorDiaolg extends TitleAreaDialog {
 				IDialogConstants.CANCEL_LABEL, false);
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void configureShell(Shell newShell) {
 		// TODO Auto-generated method stub
@@ -62,6 +90,15 @@ public class ModelValidatorDiaolg extends TitleAreaDialog {
 		newShell.setImage(icon);
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createDialogArea(Composite parent) {
 		// 初始化窗口
 		GridLayout gridLayout = new GridLayout(1, true);
@@ -87,19 +124,43 @@ public class ModelValidatorDiaolg extends TitleAreaDialog {
 		return parent;
 	}
 
+	/**
+	 * Gets the object select page.
+	 *
+	 * @author mqfdy
+	 * @return the object select page
+	 * @Date 2018-09-03 09:00
+	 */
 	public ValidatorObjectSelectPage getObjectSelectPage() {
 		return vosPage;
 	}
 
+	/**
+	 * Gets the model validator select page.
+	 *
+	 * @author mqfdy
+	 * @return the model validator select page
+	 * @Date 2018-09-03 09:00
+	 */
 	public ModelValidatorSelectPage getModelValidatorSelectPage() {
 		return selPage;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		super.okPressed();
 	}
 
+	/**
+	 * Gets the ok button.
+	 *
+	 * @author mqfdy
+	 * @return the ok button
+	 * @Date 2018-09-03 09:00
+	 */
 	public Button getOkButton() {
 		return okButton;
 	}

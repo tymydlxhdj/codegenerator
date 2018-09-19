@@ -24,13 +24,37 @@ import com.mqfdy.code.model.PKProperty;
 import com.mqfdy.code.model.PersistenceProperty;
 import com.mqfdy.code.model.Property;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PasteModelToTableAction.
+ *
+ * @author mqfdy
+ */
 public class PasteModelToTableAction extends Action {
+	
+	/** The pro list. */
 	private List<AbstractModelElement> proList = new ArrayList<AbstractModelElement>();
+	
+	/** The table viewer. */
 	private TableViewer tableViewer;
+	
+	/** The type. */
 	// 类型 1为属性 2为操作
 	private int type;
+	
+	/** The business class. */
 	private ModelElementEditorDialog businessClass;
 
+	/**
+	 * Instantiates a new paste model to table action.
+	 *
+	 * @param tableViewer
+	 *            the table viewer
+	 * @param type
+	 *            the type
+	 * @param businessClass2
+	 *            the business class 2
+	 */
 	public PasteModelToTableAction(TableViewer tableViewer, int type,
 			ModelElementEditorDialog businessClass2) {
 		super(ActionTexts.MODEL_ELEMENT_PASTE);
@@ -50,6 +74,9 @@ public class PasteModelToTableAction extends Action {
 
 	}
 
+	/**
+	 * 
+	 */
 	public void run() {
 		if (!isEnabled())
 			return;
@@ -165,6 +192,9 @@ public class PasteModelToTableAction extends Action {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean isEnabled() {
 		proList.clear();

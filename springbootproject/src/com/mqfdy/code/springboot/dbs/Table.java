@@ -109,6 +109,10 @@ public interface Table extends Comparable<Table> {
 	/**
 	 * Return the table's name, converted to a Java-appropriate field
 	 * identifier, respecting the database's case-sensitivity.
+	 *
+	 * @author mqfdy
+	 * @return the java field name
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getJavaFieldName();
 

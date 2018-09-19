@@ -26,6 +26,7 @@ import java.util.StringTokenizer;
 
 import org.apache.velocity.texen.Generator;
 
+// TODO: Auto-generated Javadoc
 /**
  * A property utility class for the texen text/code generator
  * Usually this class is only used from a Velocity context.
@@ -36,15 +37,19 @@ import org.apache.velocity.texen.Generator;
  */
 public class PropertiesUtil
 {
+    
     /**
-     * Load properties from either a file in the templatePath if there
-     * is one or the classPath.
-     *
-     * @param propertiesFile the properties file to load through
-     * either the templatePath or the classpath.
-     * @return a properties instance filled with the properties found
-     * in the file or an empty instance if no file was found.
-     */
+	 * Load properties from either a file in the templatePath if there is one or
+	 * the classPath.
+	 *
+	 * @author mqfdy
+	 * @param propertiesFile
+	 *            the properties file to load through either the templatePath or
+	 *            the classpath.
+	 * @return a properties instance filled with the properties found in the
+	 *         file or an empty instance if no file was found.
+	 * @Date 2018-9-3 11:38:30
+	 */
     public Properties load(final String propertiesFile)
     {
         Properties properties = null;
@@ -74,19 +79,21 @@ public class PropertiesUtil
     }
 
     /**
-     * Load a properties file from the templatePath defined in the
-     * generator. As the templatePath can contains multiple paths,
-     * it will cycle through them to find the file. The first file
-     * that can be successfully loaded is considered. (kind of
-     * like the java classpath), it is done to clone the Velocity
-     * process of loading templates.
-     *
-     * @param propertiesFile the properties file to load. It must be
-     * a relative pathname.
-     * @return a properties instance loaded with the properties from
-     * the file. If no file can be found it returns an empty instance.
-     * @throws Exception
-     */
+	 * Load a properties file from the templatePath defined in the generator. As
+	 * the templatePath can contains multiple paths, it will cycle through them
+	 * to find the file. The first file that can be successfully loaded is
+	 * considered. (kind of like the java classpath), it is done to clone the
+	 * Velocity process of loading templates.
+	 *
+	 * @author mqfdy
+	 * @param propertiesFile
+	 *            the properties file to load. It must be a relative pathname.
+	 * @return a properties instance loaded with the properties from the file.
+	 *         If no file can be found it returns an empty instance.
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:30
+	 */
     protected Properties loadFromTemplatePath(final String propertiesFile)
     	throws Exception
     {
@@ -150,13 +157,17 @@ public class PropertiesUtil
     }
 
     /**
-     * Load a properties file from the classpath
-     *
-     * @param propertiesName the properties file to load.
-     * @return a properties instance loaded with the properties from
-     * the file. If no file can be found it returns an empty instance.
-     * @throws Exception
-     */
+	 * Load a properties file from the classpath.
+	 *
+	 * @author mqfdy
+	 * @param propertiesName
+	 *            the properties file to load.
+	 * @return a properties instance loaded with the properties from the file.
+	 *         If no file can be found it returns an empty instance.
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:30
+	 */
     protected Properties loadFromClassPath(final String propertiesName)
     	throws Exception
     {

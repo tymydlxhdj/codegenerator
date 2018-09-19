@@ -35,6 +35,7 @@ import org.apache.velocity.runtime.resource.util.StringResourceRepository;
 import org.apache.velocity.runtime.resource.util.StringResourceRepositoryImpl;
 import org.apache.velocity.util.ClassUtils;
 
+// TODO: Auto-generated Javadoc
 /**
  * Resource loader that works with Strings. Users should manually add
  * resources to the repository that is used by the resource loader instance.
@@ -150,42 +151,60 @@ public class StringResourceLoader extends ResourceLoader
     public static final String REPOSITORY_ENCODING_DEFAULT = "UTF-8";
 
 
+    /** The Constant STATIC_REPOSITORIES. */
     protected static final Map STATIC_REPOSITORIES =
         Collections.synchronizedMap(new HashMap());
 
     /**
-     * Returns a reference to the default static repository.
-     */
+	 * Returns a reference to the default static repository.
+	 *
+	 * @author mqfdy
+	 * @return the repository
+	 * @Date 2018-9-3 11:38:28
+	 */
     public static StringResourceRepository getRepository()
     {
         return getRepository(REPOSITORY_NAME_DEFAULT);
     }
 
     /**
-     * Returns a reference to the repository stored statically under the
-     * specified name.
-     * @since 1.6
-     */
+	 * Returns a reference to the repository stored statically under the
+	 * specified name.
+	 *
+	 * @param name
+	 *            the name
+	 * @return the repository
+	 * @since 1.6
+	 */
     public static StringResourceRepository getRepository(String name)
     {
         return (StringResourceRepository)STATIC_REPOSITORIES.get(name);
     }
 
     /**
-     * Sets the specified {@link StringResourceRepository} in static storage
-     * under the specified name.
-     * @since 1.6
-     */
+	 * Sets the specified {@link StringResourceRepository} in static storage
+	 * under the specified name.
+	 *
+	 * @param name
+	 *            the name
+	 * @param repo
+	 *            the repo
+	 * @since 1.6
+	 */
     public static void setRepository(String name, StringResourceRepository repo)
     {
         STATIC_REPOSITORIES.put(name, repo);
     }
 
     /**
-     * Removes the {@link StringResourceRepository} stored under the specified
-     * name.
-     * @since 1.6
-     */
+	 * Removes the {@link StringResourceRepository} stored under the specified
+	 * name.
+	 *
+	 * @param name
+	 *            the name
+	 * @return the string resource repository
+	 * @since 1.6
+	 */
     public static StringResourceRepository removeRepository(String name)
     {
         return (StringResourceRepository)STATIC_REPOSITORIES.remove(name);
@@ -201,13 +220,18 @@ public class StringResourceLoader extends ResourceLoader
     }
 
 
+    /** The repository. */
     // the repository used internally by this resource loader
     protected StringResourceRepository repository;
 
 
     /**
-     * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#init(org.apache.commons.collections.ExtendedProperties)
-     */
+	 * Inits the.
+	 *
+	 * @param configuration
+	 *            the configuration
+	 * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#init(org.apache.commons.collections.ExtendedProperties)
+	 */
     public void init(final ExtendedProperties configuration)
     {
         log.trace("StringResourceLoader : initialization starting.");
@@ -279,8 +303,15 @@ public class StringResourceLoader extends ResourceLoader
     }
 
     /**
-     * @since 1.6
-     */
+	 * Creates the repository.
+	 *
+	 * @param className
+	 *            the class name
+	 * @param encoding
+	 *            the encoding
+	 * @return the string resource repository
+	 * @since 1.6
+	 */
     public StringResourceRepository createRepository(final String className,
                                                      final String encoding)
     {
@@ -324,9 +355,13 @@ public class StringResourceLoader extends ResourceLoader
     }
 
     /**
-     * Overrides superclass for better performance.
-     * @since 1.6
-     */
+	 * Overrides superclass for better performance.
+	 *
+	 * @param name
+	 *            the name
+	 * @return true, if successful
+	 * @since 1.6
+	 */
     public boolean resourceExists(final String name)
     {
         if (name == null)
@@ -337,14 +372,16 @@ public class StringResourceLoader extends ResourceLoader
     }
 
     /**
-     * Get an InputStream so that the Runtime can build a
-     * template with it.
-     *
-     * @param name name of template to get.
-     * @return InputStream containing the template.
-     * @throws ResourceNotFoundException Ff template not found
-     *         in the RepositoryFactory.
-     */
+	 * Get an InputStream so that the Runtime can build a template with it.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            name of template to get.
+	 * @return InputStream containing the template.
+	 * @throws ResourceNotFoundException
+	 *             Ff template not found in the RepositoryFactory.
+	 * @Date 2018-9-3 11:38:28
+	 */
     public InputStream getResourceStream(final String name)
             throws ResourceNotFoundException
     {
@@ -374,8 +411,13 @@ public class StringResourceLoader extends ResourceLoader
     }
 
     /**
-     * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#isSourceModified(org.apache.velocity.runtime.resource.Resource)
-     */
+	 * Checks if is source modified.
+	 *
+	 * @param resource
+	 *            the resource
+	 * @return true, if is source modified
+	 * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#isSourceModified(org.apache.velocity.runtime.resource.Resource)
+	 */
     public boolean isSourceModified(final Resource resource)
     {
         StringResource original = null;
@@ -392,8 +434,13 @@ public class StringResourceLoader extends ResourceLoader
     }
 
     /**
-     * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#getLastModified(org.apache.velocity.runtime.resource.Resource)
-     */
+	 * Gets the last modified.
+	 *
+	 * @param resource
+	 *            the resource
+	 * @return the last modified
+	 * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#getLastModified(org.apache.velocity.runtime.resource.Resource)
+	 */
     public long getLastModified(final Resource resource)
     {
         StringResource original = null;

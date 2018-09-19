@@ -15,9 +15,14 @@ import com.mqfdy.code.springboot.utilities.model.listener.StateChangeListener;
 import com.mqfdy.code.springboot.utilities.model.value.CollectionValueModel;
 import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
+// TODO: Auto-generated Javadoc
 /**
- * Extend ItemAspectListValueModelAdapter to listen to the
- * "state" of each item in the wrapped list model.
+ * Extend ItemAspectListValueModelAdapter to listen to the "state" of each item
+ * in the wrapped list model.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class ItemStateListValueModelAdapter<E>
 	extends ItemAspectListValueModelAdapter<E>
@@ -30,6 +35,9 @@ public class ItemStateListValueModelAdapter<E>
 
 	/**
 	 * Construct an adapter for the item state.
+	 *
+	 * @param listHolder
+	 *            the list holder
 	 */
 	public ItemStateListValueModelAdapter(ListValueModel<E> listHolder) {
 		super(listHolder);
@@ -38,6 +46,9 @@ public class ItemStateListValueModelAdapter<E>
 
 	/**
 	 * Construct an adapter for the item state.
+	 *
+	 * @param collectionHolder
+	 *            the collection holder
 	 */
 	public ItemStateListValueModelAdapter(CollectionValueModel<E> collectionHolder) {
 		this(new CollectionListValueModelAdapter<E>(collectionHolder));
@@ -46,6 +57,13 @@ public class ItemStateListValueModelAdapter<E>
 
 	// ********** initialization **********
 
+	/**
+	 * Builds the item state listener.
+	 *
+	 * @author mqfdy
+	 * @return the state change listener
+	 * @Date 2018-09-03 09:00
+	 */
 	protected StateChangeListener buildItemStateListener() {
 		return new StateChangeListener() {
 			public void stateChanged(StateChangeEvent event) {

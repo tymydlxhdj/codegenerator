@@ -37,34 +37,68 @@ import com.mqfdy.code.model.IModelElement;
 import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * DTO属性页签
- * 
+ * DTO属性页签.
+ *
  * @author mqfdy
- * 
  */
 public class DTOPropertiesPage extends Composite implements
 		IBusinessClassEditorPage {
 
+	/** The dto dialog. */
 	private DTOEditDialog dtoDialog;
+	
+	/** The tool bar. */
 	private ToolBar toolBar = null;
+	
+	/** The property table. */
 	private Table propertyTable = null;
+	
+	/** The property table viewer. */
 	private TableViewer propertyTableViewer = null;// tableview
 
+	/** The manager. */
 	BusinessModelManager manager = BusinessModelUtil
 			.getEditorBusinessModelManager();
 
+	/** The add property action. */
 	private Action addPropertyAction;
+	
+	/** The delete action. */
 	private Action deleteAction;
+	
+	/** The save action. */
 	private Action saveAction;
+	
+	/** The bottom action. */
 	private Action bottomAction;
+	
+	/** The down action. */
 	private Action downAction;
+	
+	/** The top action. */
 	private Action topAction;
+	
+	/** The up action. */
 	private Action upAction;
+	
+	/** The import action. */
 	private Action importAction;
 
+	/** The list properties. */
 	private List<Property> listProperties = new ArrayList<Property>();;
 
+	/**
+	 * Instantiates a new DTO properties page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param dtoDialog
+	 *            the dto dialog
+	 */
 	DTOPropertiesPage(Composite parent, int style, DTOEditDialog dtoDialog) {
 		super(parent, style);
 		this.dtoDialog = dtoDialog;
@@ -74,6 +108,12 @@ public class DTOPropertiesPage extends Composite implements
 		addListeners();
 	}
 
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent() {
 		// 属性信息区域
 		GridLayout layout = new GridLayout();
@@ -109,6 +149,12 @@ public class DTOPropertiesPage extends Composite implements
 		}
 	}
 
+	/**
+	 * Creates the tool bar.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createToolBar() {
 		GridData gridData = new GridData();
 		gridData.horizontalAlignment = SWT.FILL;
@@ -117,6 +163,12 @@ public class DTOPropertiesPage extends Composite implements
 		toolBar.setLayoutData(gridData);
 	}
 
+	/**
+	 * Adds the listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void addListeners() {
 		propertyTable.addMouseListener(new MouseListener() {
 
@@ -145,6 +197,12 @@ public class DTOPropertiesPage extends Composite implements
 		});
 	}
 
+	/**
+	 * Make actions.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void makeActions() {
 
 		// 新增操作
@@ -284,6 +342,16 @@ public class DTOPropertiesPage extends Composite implements
 
 	}
 
+	/**
+	 * Reset order num.
+	 *
+	 * @author mqfdy
+	 * @param property
+	 *            the property
+	 * @param type
+	 *            the type
+	 * @Date 2018-09-03 09:00
+	 */
 	private void resetOrderNum(Property property, String type) {
 		if ("up".equals(type)) {
 			for (int i = 0; i < listProperties.size(); i++) {
@@ -326,14 +394,30 @@ public class DTOPropertiesPage extends Composite implements
 		}
 	}
 
+	/**
+	 * Gets the next order number.
+	 *
+	 * @author mqfdy
+	 * @return the next order number
+	 * @Date 2018-09-03 09:00
+	 */
 	private int getNextOrderNumber() {
 		return listProperties.size() + 1;
 	}
 
+	/**
+	 * Refresh table.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void refreshTable() {
 		this.propertyTableViewer.refresh();
 	}
 
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		listProperties = dtoDialog.dto.getProperties();
 		if (dtoDialog.operationType
@@ -346,10 +430,16 @@ public class DTOPropertiesPage extends Composite implements
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		return false;
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 		for (int i = 0; i < listProperties.size(); i++) {
 			Property temp = listProperties.get(i);
@@ -357,24 +447,52 @@ public class DTOPropertiesPage extends Composite implements
 		}
 	}
 
+	/**
+	 * Gets the list properties.
+	 *
+	 * @author mqfdy
+	 * @return the list properties
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Property> getListProperties() {
 		return listProperties;
 	}
 
 	/**
-	 * LabelProvider
-	 * 
+	 * LabelProvider.
+	 *
 	 * @author xuran
-	 * 
 	 */
 	static class TableLabelProvider extends LabelProvider implements
 			ITableLabelProvider {
 
+		/**
+		 * Gets the column image.
+		 *
+		 * @author mqfdy
+		 * @param arg0
+		 *            the arg 0
+		 * @param arg1
+		 *            the arg 1
+		 * @return the column image
+		 * @Date 2018-09-03 09:00
+		 */
 		public Image getColumnImage(Object arg0, int arg1) {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
+		/**
+		 * Gets the column text.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param columnIndex
+		 *            the column index
+		 * @return the column text
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getColumnText(Object element, int columnIndex) {
 			if (element instanceof DTOProperty) {
 				DTOProperty property = (DTOProperty) element;
@@ -410,12 +528,21 @@ public class DTOPropertiesPage extends Composite implements
 	}
 
 	/**
-	 * contentProvider
-	 * 
+	 * contentProvider.
+	 *
 	 * @author xuran
-	 * 
 	 */
 	static class ContentProvider implements IStructuredContentProvider {
+		
+		/**
+		 * Gets the elements.
+		 *
+		 * @author mqfdy
+		 * @param inputElement
+		 *            the input element
+		 * @return the elements
+		 * @Date 2018-09-03 09:00
+		 */
 		public Object[] getElements(Object inputElement) {
 			if (inputElement instanceof List) {
 				Object[] objects = ((List) inputElement).toArray();
@@ -430,13 +557,35 @@ public class DTOPropertiesPage extends Composite implements
 			return new Object[0];
 		}
 
+		/**
+		 * 
+		 */
 		public void dispose() {
 		}
 
+		/**
+		 * Input changed.
+		 *
+		 * @author mqfdy
+		 * @param viewer
+		 *            the viewer
+		 * @param oldInput
+		 *            the old input
+		 * @param newInput
+		 *            the new input
+		 * @Date 2018-09-03 09:00
+		 */
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		}
 	}
 
+	/**
+	 * Gets the dto dialog.
+	 *
+	 * @author mqfdy
+	 * @return the dto dialog
+	 * @Date 2018-09-03 09:00
+	 */
 	public DTOEditDialog getDtoDialog() {
 		return dtoDialog;
 	}

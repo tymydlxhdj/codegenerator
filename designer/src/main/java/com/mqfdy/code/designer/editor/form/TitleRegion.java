@@ -39,48 +39,138 @@ import org.eclipse.ui.internal.forms.IMessageToolTipManager;
 import org.eclipse.ui.internal.forms.widgets.BusyIndicator;
 import org.eclipse.ui.internal.forms.widgets.FormUtil;
 
+// TODO: Auto-generated Javadoc
 /**
  * Form heading title.
+ *
+ * @author mqfdy
  */
 public class TitleRegion extends Canvas {
+	
+	/** The Constant STATE_NORMAL. */
 	public static final int STATE_NORMAL = 0;
+	
+	/** The Constant STATE_HOVER_LIGHT. */
 	public static final int STATE_HOVER_LIGHT = 1;
+	
+	/** The Constant STATE_HOVER_FULL. */
 	public static final int STATE_HOVER_FULL = 2;
+	
+	/** The hover state. */
 	private int hoverState;
+	
+	/** The Constant HMARGIN. */
 	private static final int HMARGIN = 1;
+	
+	/** The Constant VMARGIN. */
 	private static final int VMARGIN = 5;
+	
+	/** The Constant SPACING. */
 	private static final int SPACING = 5;
+	
+	/** The Constant ARC_WIDTH. */
 	private static final int ARC_WIDTH = 20;
+	
+	/** The Constant ARC_HEIGHT. */
 	private static final int ARC_HEIGHT = 20;
+	
+	/** The image. */
 	private Image image;
+	
+	/** The busy label. */
 	private BusyIndicator busyLabel;
+	
+	/** The title label. */
 	private Label titleLabel;
+	
+	/** The title cache. */
 	private SizeCache titleCache;
+	
+	/** The font height. */
 	private int fontHeight = -1;
+	
+	/** The font baseline height. */
 	private int fontBaselineHeight = -1;
+	
+	/** The menu hyperlink. */
 	private MenuHyperlink menuHyperlink;
+	
+	/** The menu manager. */
 	private MenuManager menuManager;
+	
+	/** The drag support. */
 	private boolean dragSupport;
+	
+	/** The drag operations. */
 	private int dragOperations;
+	
+	/** The drag transfer types. */
 	private Transfer[] dragTransferTypes;
+	
+	/** The drag listener. */
 	private DragSourceListener dragListener;
+	
+	/** The drag source. */
 	private DragSource dragSource;
+	
+	/** The drag image. */
 	private Image dragImage;
 
+	/**
+	 * The listener interface for receiving hover events. The class that is
+	 * interested in processing a hover event implements this interface, and the
+	 * object created with that class is registered with a component using the
+	 * component's <code>addHoverListener<code> method. When the hover event
+	 * occurs, that object's appropriate method is invoked.
+	 *
+	 * @see HoverEvent
+	 */
 	private class HoverListener implements MouseTrackListener,
 			MouseMoveListener {
 
+		/**
+		 * Mouse enter.
+		 *
+		 * @author mqfdy
+		 * @param e
+		 *            the e
+		 * @Date 2018-09-03 09:00
+		 */
 		public void mouseEnter(MouseEvent e) {
 			setHoverState(STATE_HOVER_FULL);
 		}
 
+		/**
+		 * Mouse exit.
+		 *
+		 * @author mqfdy
+		 * @param e
+		 *            the e
+		 * @Date 2018-09-03 09:00
+		 */
 		public void mouseExit(MouseEvent e) {
 			setHoverState(STATE_NORMAL);
 		}
 
+		/**
+		 * Mouse hover.
+		 *
+		 * @author mqfdy
+		 * @param e
+		 *            the e
+		 * @Date 2018-09-03 09:00
+		 */
 		public void mouseHover(MouseEvent e) {
 		}
 
+		/**
+		 * Mouse move.
+		 *
+		 * @author mqfdy
+		 * @param e
+		 *            the e
+		 * @Date 2018-09-03 09:00
+		 */
 		public void mouseMove(MouseEvent e) {
 			if (e.button > 0)
 				setHoverState(STATE_NORMAL);
@@ -89,14 +179,37 @@ public class TitleRegion extends Canvas {
 		}
 	}
 
+	/**
+	 * The Class MenuHyperlink.
+	 *
+	 * @author mqfdy
+	 */
 	private class MenuHyperlink extends Twistie {
+		
+		/** The first time. */
 		private boolean firstTime = true;
 
+		/**
+		 * Instantiates a new menu hyperlink.
+		 *
+		 * @param parent
+		 *            the parent
+		 * @param style
+		 *            the style
+		 */
 		public MenuHyperlink(Composite parent, int style) {
 			super(parent, style);
 			setExpanded(true);
 		}
 
+		/**
+		 * Sets the expanded.
+		 *
+		 * @author mqfdy
+		 * @param expanded
+		 *            the new expanded
+		 * @Date 2018-09-03 09:00
+		 */
 		public void setExpanded(boolean expanded) {
 			if (firstTime) {
 				super.setExpanded(expanded);
@@ -108,19 +221,70 @@ public class TitleRegion extends Canvas {
 		}
 	}
 
+	/**
+	 * The Class TitleRegionLayout.
+	 *
+	 * @author mqfdy
+	 */
 	private class TitleRegionLayout extends Layout implements ILayoutExtension {
 
+		/**
+		 * Compute size.
+		 *
+		 * @author mqfdy
+		 * @param composite
+		 *            the composite
+		 * @param wHint
+		 *            the w hint
+		 * @param hHint
+		 *            the h hint
+		 * @param flushCache
+		 *            the flush cache
+		 * @return the point
+		 * @Date 2018-09-03 09:00
+		 */
 		protected Point computeSize(Composite composite, int wHint, int hHint,
 				boolean flushCache) {
 			return layout(composite, false, 0, 0, wHint, hHint, flushCache);
 		}
 
+		/**
+		 * Layout.
+		 *
+		 * @author mqfdy
+		 * @param composite
+		 *            the composite
+		 * @param flushCache
+		 *            the flush cache
+		 * @Date 2018-09-03 09:00
+		 */
 		protected void layout(Composite composite, boolean flushCache) {
 			Rectangle carea = composite.getClientArea();
 			layout(composite, true, carea.x, carea.y, carea.width,
 					carea.height, flushCache);
 		}
 
+		/**
+		 * Layout.
+		 *
+		 * @author mqfdy
+		 * @param composite
+		 *            the composite
+		 * @param move
+		 *            the move
+		 * @param x
+		 *            the x
+		 * @param y
+		 *            the y
+		 * @param width
+		 *            the width
+		 * @param height
+		 *            the height
+		 * @param flushCache
+		 *            the flush cache
+		 * @return the point
+		 * @Date 2018-09-03 09:00
+		 */
 		private Point layout(Composite composite, boolean move, int x, int y,
 				int width, int height, boolean flushCache) {
 			int iwidth = width == SWT.DEFAULT ? SWT.DEFAULT : width - HMARGIN
@@ -208,15 +372,43 @@ public class TitleRegion extends Canvas {
 			return size;
 		}
 
+		/**
+		 * Compute maximum width.
+		 *
+		 * @author mqfdy
+		 * @param parent
+		 *            the parent
+		 * @param changed
+		 *            the changed
+		 * @return the int
+		 * @Date 2018-09-03 09:00
+		 */
 		public int computeMaximumWidth(Composite parent, boolean changed) {
 			return computeSize(parent, SWT.DEFAULT, SWT.DEFAULT, changed).x;
 		}
 
+		/**
+		 * Compute minimum width.
+		 *
+		 * @author mqfdy
+		 * @param parent
+		 *            the parent
+		 * @param changed
+		 *            the changed
+		 * @return the int
+		 * @Date 2018-09-03 09:00
+		 */
 		public int computeMinimumWidth(Composite parent, boolean changed) {
 			return computeSize(parent, 0, SWT.DEFAULT, changed).x;
 		}
 	}
 
+	/**
+	 * Instantiates a new title region.
+	 *
+	 * @param parent
+	 *            the parent
+	 */
 	public TitleRegion(Composite parent) {
 		super(parent, SWT.NULL);
 		titleLabel = new Label(this, SWT.None);
@@ -234,6 +426,9 @@ public class TitleRegion extends Canvas {
 		});
 	}
 
+	/**
+	 * @return
+	 */
 	/* (non-Javadoc)
 	 * @see org.eclipse.swt.widgets.Control#forceFocus()
 	 */
@@ -241,10 +436,25 @@ public class TitleRegion extends Canvas {
 		return false;
 	}
 
+	/**
+	 * Gets the color.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @return the color
+	 * @Date 2018-09-03 09:00
+	 */
 	private Color getColor(String key) {
 		return (Color) ((FormHeading) getParent()).colors.get(key);
 	}
 
+	/**
+	 * Hook hover listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void hookHoverListeners() {
 		HoverListener listener = new HoverListener();
 		addMouseTrackListener(listener);
@@ -258,6 +468,14 @@ public class TitleRegion extends Canvas {
 		});
 	}
 
+	/**
+	 * On paint.
+	 *
+	 * @author mqfdy
+	 * @param e
+	 *            the e
+	 * @Date 2018-09-03 09:00
+	 */
 	private void onPaint(PaintEvent e) {
 		if (hoverState == STATE_NORMAL)
 			return;
@@ -271,6 +489,13 @@ public class TitleRegion extends Canvas {
 		FormUtil.setAntialias(gc, savedAntialias);
 	}
 
+	/**
+	 * Gets the hover background.
+	 *
+	 * @author mqfdy
+	 * @return the hover background
+	 * @Date 2018-09-03 09:00
+	 */
 	private Color getHoverBackground() {
 		if (hoverState == STATE_NORMAL)
 			return null;
@@ -284,6 +509,14 @@ public class TitleRegion extends Canvas {
 		return color;
 	}
 
+	/**
+	 * Sets the hover state.
+	 *
+	 * @author mqfdy
+	 * @param state
+	 *            the new hover state
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setHoverState(int state) {
 		if (dragSource == null || this.hoverState == state)
 			return;
@@ -302,24 +535,67 @@ public class TitleRegion extends Canvas {
 
 	/**
 	 * Fully delegates the size computation to the internal layout manager.
+	 *
+	 * @author mqfdy
+	 * @param wHint
+	 *            the w hint
+	 * @param hHint
+	 *            the h hint
+	 * @param changed
+	 *            the changed
+	 * @return the point
+	 * @Date 2018-09-03 09:00
 	 */
 	public final Point computeSize(int wHint, int hHint, boolean changed) {
 		return ((TitleRegionLayout) getLayout()).computeSize(this, wHint,
 				hHint, changed);
 	}
 
+	/**
+	 * Sets the layout.
+	 *
+	 * @author mqfdy
+	 * @param layout
+	 *            the new layout
+	 * @Date 2018-09-03 09:00
+	 */
 	public final void setLayout(Layout layout) {
 		// do nothing
 	}
 
+	/**
+	 * Gets the image.
+	 *
+	 * @author mqfdy
+	 * @return the image
+	 * @Date 2018-09-03 09:00
+	 */
 	public Image getImage() {
 		return image;
 	}
 
+	/**
+	 * Sets the image.
+	 *
+	 * @author mqfdy
+	 * @param image
+	 *            the new image
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setImage(Image image) {
 		this.image = image;
 	}
 
+	/**
+	 * Update image.
+	 *
+	 * @author mqfdy
+	 * @param newImage
+	 *            the new image
+	 * @param doLayout
+	 *            the do layout
+	 * @Date 2018-09-03 09:00
+	 */
 	public void updateImage(Image newImage, boolean doLayout) {
 		Image theImage = newImage != null ? newImage : this.image;
 
@@ -338,11 +614,27 @@ public class TitleRegion extends Canvas {
 			layout();
 	}
 
+	/**
+	 * Update tool tip.
+	 *
+	 * @author mqfdy
+	 * @param toolTip
+	 *            the tool tip
+	 * @Date 2018-09-03 09:00
+	 */
 	public void updateToolTip(String toolTip) {
 		if (busyLabel != null)
 			busyLabel.setToolTipText(toolTip);
 	}
 
+	/**
+	 * Sets the background.
+	 *
+	 * @author mqfdy
+	 * @param bg
+	 *            the new background
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBackground(Color bg) {
 		super.setBackground(bg);
 		titleLabel.setBackground(bg);
@@ -352,6 +644,14 @@ public class TitleRegion extends Canvas {
 			menuHyperlink.setBackground(bg);
 	}
 
+	/**
+	 * Sets the foreground.
+	 *
+	 * @author mqfdy
+	 * @param fg
+	 *            the new foreground
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setForeground(Color fg) {
 		super.setForeground(fg);
 		titleLabel.setForeground(fg);
@@ -359,6 +659,14 @@ public class TitleRegion extends Canvas {
 			menuHyperlink.setForeground(fg);
 	}
 
+	/**
+	 * Sets the text.
+	 *
+	 * @author mqfdy
+	 * @param text
+	 *            the new text
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setText(String text) {
 		if (text != null)
 			titleLabel.setText(text);
@@ -367,10 +675,25 @@ public class TitleRegion extends Canvas {
 		redraw();
 	}
 
+	/**
+	 * Gets the text.
+	 *
+	 * @author mqfdy
+	 * @return the text
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getText() {
 		return titleLabel.getText();
 	}
 
+	/**
+	 * Sets the font.
+	 *
+	 * @author mqfdy
+	 * @param font
+	 *            the new font
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setFont(Font font) {
 		super.setFont(font);
 		titleLabel.setFont(font);
@@ -379,6 +702,12 @@ public class TitleRegion extends Canvas {
 		layout();
 	}
 
+	/**
+	 * Ensure busy label exists.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void ensureBusyLabelExists() {
 		if (busyLabel == null) {
 			busyLabel = new BusyIndicator(this, SWT.NULL);
@@ -397,6 +726,12 @@ public class TitleRegion extends Canvas {
 		}
 	}
 
+	/**
+	 * Creates the menu hyperlink.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createMenuHyperlink() {
 		menuHyperlink = new MenuHyperlink(this, SWT.NULL);
 		menuHyperlink.setBackground(getColor(FormHeading.COLOR_BASE_BG));
@@ -412,9 +747,12 @@ public class TitleRegion extends Canvas {
 	/**
 	 * Sets the form's busy state. Busy form will display 'busy' animation in
 	 * the area of the title image.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param busy
 	 *            the form's busy state
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 
 	public boolean setBusy(boolean busy) {
@@ -432,10 +770,24 @@ public class TitleRegion extends Canvas {
 		return false;
 	}
 
+	/**
+	 * Checks if is busy.
+	 *
+	 * @author mqfdy
+	 * @return true, if is busy
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isBusy() {
 		return busyLabel != null && busyLabel.isBusy();
 	}
 
+	/**
+	 * Gets the font height.
+	 *
+	 * @author mqfdy
+	 * @return the font height
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * Returns the complete height of the font.
 	 */
@@ -451,6 +803,13 @@ public class TitleRegion extends Canvas {
 		return fontHeight;
 	}
 
+	/**
+	 * Gets the font baseline height.
+	 *
+	 * @author mqfdy
+	 * @return the font baseline height
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * Returns the height of the font starting at the baseline,
 	 * i.e. without the descent.
@@ -467,6 +826,13 @@ public class TitleRegion extends Canvas {
 		return fontBaselineHeight;
 	}
 
+	/**
+	 * Gets the menu manager.
+	 *
+	 * @author mqfdy
+	 * @return the menu manager
+	 * @Date 2018-09-03 09:00
+	 */
 	public IMenuManager getMenuManager() {
 		if (menuManager == null) {
 			menuManager = new MenuManager();
@@ -480,6 +846,18 @@ public class TitleRegion extends Canvas {
 		return menuManager;
 	}
 
+	/**
+	 * Adds the drag support.
+	 *
+	 * @author mqfdy
+	 * @param operations
+	 *            the operations
+	 * @param transferTypes
+	 *            the transfer types
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addDragSupport(int operations, Transfer[] transferTypes,
 			DragSourceListener listener) {
 		dragSupport = true;
@@ -495,6 +873,21 @@ public class TitleRegion extends Canvas {
 			addDragSupport(menuHyperlink, operations, transferTypes, listener);
 	}
 
+	/**
+	 * Adds the drag support.
+	 *
+	 * @author mqfdy
+	 * @param control
+	 *            the control
+	 * @param operations
+	 *            the operations
+	 * @param transferTypes
+	 *            the transfer types
+	 * @param listener
+	 *            the listener
+	 * @return the drag source
+	 * @Date 2018-09-03 09:00
+	 */
 	private DragSource addDragSupport(Control control, int operations,
 			Transfer[] transferTypes, DragSourceListener listener) {
 		DragSource source = new DragSource(control, operations);
@@ -508,6 +901,13 @@ public class TitleRegion extends Canvas {
 		return source;
 	}
 
+	/**
+	 * Creates the drag effect image.
+	 *
+	 * @author mqfdy
+	 * @return the image
+	 * @Date 2018-09-03 09:00
+	 */
 	private Image createDragEffectImage() {
 		/*
 		 * if (dragImage != null) { dragImage.dispose(); } GC gc = new GC(this);
@@ -518,6 +918,18 @@ public class TitleRegion extends Canvas {
 		return null;
 	}
 
+	/**
+	 * Adds the drop support.
+	 *
+	 * @author mqfdy
+	 * @param operations
+	 *            the operations
+	 * @param transferTypes
+	 *            the transfer types
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addDropSupport(int operations, Transfer[] transferTypes,
 			DropTargetListener listener) {
 		final DropTarget target = new DropTarget(this, operations);

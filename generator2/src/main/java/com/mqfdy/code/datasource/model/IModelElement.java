@@ -3,60 +3,72 @@ package com.mqfdy.code.datasource.model;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @author mqfdy
+ * The Interface IModelElement.
  *
+ * @author mqfdy
  */
 public interface IModelElement extends IAdaptable {
 
-	/** Character used for delimiting nodes within an element's unique id */
+	/** Character used for delimiting nodes within an element's unique id. */
 	char ID_DELIMITER = '|';
 
 	/**
 	 * Character used separate an element's type and name within an element's
-	 * unique id
+	 * unique id.
 	 */
 	char ID_SEPARATOR = ':';
 
+	/** The no children. */
 	IModelElement[] NO_CHILDREN = new IModelElement[0];
 
 	/**
 	 * Returns the element directly containing this element, or
 	 * <code>null</code> if this element has no parent.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return the parent element, or <code>null</code> if this element has no
 	 *         parent
+	 * @Date 2018-9-3 11:38:31
 	 */
 	IModelElement getElementParent();
 
 	/**
 	 * Returns an array with all children of this element.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return an array with the children elements
+	 * @Date 2018-9-3 11:38:31
 	 */
 	IModelElement[] getElementChildren();
 
 	/**
 	 * Returns the name of this element.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return the element's name
+	 * @Date 2018-9-3 11:38:31
 	 */
 	String getElementName();
 
 	/**
 	 * Returns this element's kind encoded as an integer. This is a handle-only
 	 * method.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return the kind of element; e.g. one of the constants declared in
 	 *         {@link ISpringModelElementTypes}
+	 * @Date 2018-9-3 11:38:31
 	 */
 	int getElementType();
 
 	/**
 	 * Returns the unique ID of this element.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return the element's unique ID
+	 * @Date 2018-9-3 11:38:31
 	 */
 	String getElementID();
 

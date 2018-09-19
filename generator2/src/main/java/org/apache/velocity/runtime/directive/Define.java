@@ -28,6 +28,7 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.runtime.parser.node.Node;
 
+// TODO: Auto-generated Javadoc
 /**
  * Directive that puts an unrendered AST block in the context
  * under the specified key, postponing rendering until the
@@ -39,17 +40,33 @@ import org.apache.velocity.runtime.parser.node.Node;
  */
 public class Define extends Block
 {
+    
     /**
-     * Return name of this directive.
-     */
+	 * Return name of this directive.
+	 *
+	 * @author mqfdy
+	 * @return the name
+	 * @Date 2018-9-3 11:38:35
+	 */
     public String getName()
     {
         return "define";
     }
 
     /**
-     *  simple init - get the key
-     */
+	 * simple init - get the key.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @param context
+	 *            the context
+	 * @param node
+	 *            the node
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @Date 2018-9-3 11:38:35
+	 */
     public void init(RuntimeServices rs, InternalContextAdapter context, Node node)
         throws TemplateInitException
     {
@@ -77,9 +94,19 @@ public class Define extends Block
     }
 
     /**
-     * directive.render() simply makes an instance of the Block inner class
-     * and places it into the context as indicated.
-     */
+	 * directive.render() simply makes an instance of the Block inner class and
+	 * places it into the context as indicated.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @param node
+	 *            the node
+	 * @return true, if successful
+	 * @Date 2018-9-3 11:38:35
+	 */
     public boolean render(InternalContextAdapter context, Writer writer, Node node)
     {
         /* put a Block.Reference instance into the context,

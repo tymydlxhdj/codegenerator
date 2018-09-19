@@ -26,9 +26,19 @@ import com.mqfdy.code.designer.views.properties.MultiPageEditorPropertySheetPage
 import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.model.graph.DiagramElement;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EditorOperation.
+ *
+ * @author mqfdy
+ */
 public class EditorOperation {
+	
 	/**
-	 * 刷新图形节点
+	 * 刷新图形节点.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void refreshNodeEditParts() {
 		IWorkbenchPage acPage = BusinessModelEditorPlugin
@@ -49,9 +59,14 @@ public class EditorOperation {
 			e.refresh();
 		}
 	}
+	
 	/**
-	 * 刷新属性视图
+	 * 刷新属性视图.
+	 *
+	 * @author mqfdy
 	 * @param sel
+	 *            the sel
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void refreshProperties(ISelection sel) {
 		IViewPart[] views = PlatformUI.getWorkbench()
@@ -67,10 +82,15 @@ public class EditorOperation {
 			}
 		}
 	}
+	
 	/**
-	 * 获取绝对路径
+	 * 获取绝对路径.
+	 *
+	 * @author mqfdy
 	 * @param path
-	 * @return
+	 *            the path
+	 * @return the project path
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String getProjectPath(String path){
 		String proName = "";
@@ -99,8 +119,16 @@ public class EditorOperation {
 		}
 		return "";
 	}
+	
 	/**
-	 * 查找文件被打开的编辑器
+	 * 查找文件被打开的编辑器.
+	 *
+	 * @author mqfdy
+	 * @param om
+	 *            the om
+	 * @param pages
+	 *            the pages
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void refreshEditorByFile(String om ,IWorkbenchPage[] pages){
 		BusinessModelEditor editor = null;

@@ -50,33 +50,81 @@ import com.mqfdy.code.model.graph.DiagramElement;
 import com.mqfdy.code.model.graph.ElementStyle;
 import com.mqfdy.code.resource.BomManager;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FindModelDialog.
+ *
+ * @author mqfdy
+ */
 public class FindModelDialog extends TitleAreaDialog {
+	
+	/** The store. */
 	private static IPreferenceStore store = BusinessModelEditorPlugin.getDefault()
 			.getPreferenceStore();
+	
+	/** The url. */
 	public static String URL="http://"+ store.getString(ModelPreferencePage.SHAREMODELIP)+":"+ store.getString(ModelPreferencePage.SHAREMODELPORT)+"/sguap-mdd";
 //	public static String URL="http://localhost:8080/share_model";
 
-	private static final String TITLE = "查询获取共享模型";
+	/** The Constant TITLE. */
+private static final String TITLE = "查询获取共享模型";
+	
+	/** The filepath. */
 	public  String filepath=null;
+	
+	/** The project. */
 	public  IProject project=null;
 	
+	/** The manager. */
 	private BusinessModelManager manager = BusinessModelUtil
 			.getEditorBusinessModelManager();
+	
+	/** The browser. */
 	private Browser browser;
+	
+	/** The image manager. */
 	public ImageManager imageManager=new ImageManager();
+	
+	/** The model. */
 	public ModelMessage model=new ModelMessage();
+	
+	/** The selected object. */
 	public static Object selectedObject;
 	
+	/** The layout. */
 	private GridLayout layout = new GridLayout(1, false);
+	
+	/** The container. */
 	public Composite container ;
+	
+	/** The folder. */
 	public TabFolder folder;
+	
+	/** The view page. */
 	public ViewTablePage viewPage;
+	
+	/** The serch page. */
 	public SerchTablePage serchPage;
 
+	/**
+	 * Instantiates a new find model dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 */
 	public FindModelDialog(Shell parentShell) {
 		super(parentShell);
 	}
 	
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createDialogArea(Composite parent) {
 		Composite area = (Composite) super.createDialogArea(parent);
 		container = new Composite(area, SWT.NONE);
@@ -109,6 +157,9 @@ public class FindModelDialog extends TitleAreaDialog {
 	    return parent; 
   }
 	
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		boolean bool=false;
@@ -147,8 +198,12 @@ public class FindModelDialog extends TitleAreaDialog {
 
 	
 	/**
-	 * 复制模型到设计器中
+	 * 复制模型到设计器中.
+	 *
+	 * @author mqfdy
 	 * @param obj
+	 *            the obj
+	 * @Date 2018-09-03 09:00
 	 */
 	private void copyObjectToEditor(Object obj) {
 		if(obj instanceof Enumeration){
@@ -237,9 +292,13 @@ public class FindModelDialog extends TitleAreaDialog {
 	}
 
 	/**
-	 * 构建图形
+	 * 构建图形.
+	 *
+	 * @author mqfdy
 	 * @param id
-	 * @return
+	 *            the id
+	 * @return the diagram element
+	 * @Date 2018-09-03 09:00
 	 */
 	private DiagramElement getDiagramElement(String id){
 		DiagramElement ele=new DiagramElement();
@@ -261,8 +320,12 @@ public class FindModelDialog extends TitleAreaDialog {
 	}
 	
 	/**
-	 * 刷新或打开设计器
+	 * 刷新或打开设计器.
+	 *
+	 * @author mqfdy
 	 * @param filePath
+	 *            the file path
+	 * @Date 2018-09-03 09:00
 	 */
 	public void refreshEditor(String filePath){
 	
@@ -292,9 +355,13 @@ public class FindModelDialog extends TitleAreaDialog {
 	}
 	
 	/**
-	 * 获取选中的模型
+	 * 获取选中的模型.
+	 *
+	 * @author mqfdy
 	 * @param id
-	 * @return
+	 *            the id
+	 * @return the modle desc
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Object getModleDesc(String id){
 		Map<String,String> params=new HashMap<String,String>();
@@ -325,47 +392,109 @@ public class FindModelDialog extends TitleAreaDialog {
 	
 	
 	
+	/**
+	 * Gets the selected object.
+	 *
+	 * @author mqfdy
+	 * @return the selected object
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getSelectedObject() {
 		return selectedObject;
 	}
 
+	/**
+	 * Sets the selected object.
+	 *
+	 * @author mqfdy
+	 * @param selectedObject
+	 *            the new selected object
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setSelectedObject(Object selectedObject) {
 		this.selectedObject = selectedObject;
 	}
 
 	
 	
+	/**
+	 * Gets the newompath.
+	 *
+	 * @author mqfdy
+	 * @return the newompath
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getNEWOMPATH() {
 		return filepath;
 	}
 
+	/**
+	 * Sets the newompath.
+	 *
+	 * @author mqfdy
+	 * @param nEWOMPATH
+	 *            the new newompath
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setNEWOMPATH(String nEWOMPATH) {
 		filepath = nEWOMPATH;
 	}
 
+	/**
+	 * Gets the project.
+	 *
+	 * @author mqfdy
+	 * @return the project
+	 * @Date 2018-09-03 09:00
+	 */
 	public IProject getPROJECT() {
 		return project;
 	}
 
+	/**
+	 * Sets the project.
+	 *
+	 * @author mqfdy
+	 * @param pROJECT
+	 *            the new project
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPROJECT(IProject pROJECT) {
 		project = pROJECT;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected Point getInitialSize() {
 		return new Point(1000, 700);
 	}
 	
 	
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText("共享模型库");
 	}
 	
+	/**
+	 * @return
+	 */
 	protected int getShellStyle() {
 		return super.getShellStyle() | SWT.RESIZE | SWT.MAX |SWT.MIN ;
 	}
 	
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean isHelpAvailable() {
 		return false;

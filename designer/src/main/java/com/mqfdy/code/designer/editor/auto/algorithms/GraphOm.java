@@ -18,6 +18,7 @@ import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 
 import com.mqfdy.code.designer.editor.utils.Logger;
 
+// TODO: Auto-generated Javadoc
 //布局管理器名称	描述
 //CompositeLayoutAlgorithm	 组合其他布局方法来设置图形显示
 //DirectedGraphLayoutAlgorithm	 以全部重叠的方式来设置图形显示
@@ -28,16 +29,39 @@ import com.mqfdy.code.designer.editor.utils.Logger;
 //RadialLayoutAlgorithm	 以放射状的布局来设置图形显示
 //SpringLayoutAlgorithm	 以相同关联长度，图形节点重叠最少来设置图形显示
 //TreeLayoutAlgorithm	 以垂直树状方式来设置图形显示
+/**
+ * The Class GraphOm.
+ *
+ * @author mqfdy
+ */
 //VerticalLayoutAlgorithm	 以垂直方式来设置图形的显示
 public class GraphOm extends Graph {
+	
+	/** The node style. */
 	private int nodeStyle;
+	
+	/** The layout algorithm. */
 	LayoutAlgorithm layoutAlgorithm = null;
 //	private Dimension preferredSize = null;
 
-	public GraphOm(Composite parent, int style) {
+	/**
+ * Instantiates a new graph om.
+ *
+ * @param parent
+ *            the parent
+ * @param style
+ *            the style
+ */
+public GraphOm(Composite parent, int style) {
 		super(parent, style);
 	}
 
+	/**
+	 * Apply layout internal.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void applyLayoutInternal() {
 
 		if ((this.getNodes().size() == 0)) {
@@ -98,6 +122,17 @@ public class GraphOm extends Graph {
 			Logger.log(e.getMessage());
 		}
 	}
+	
+	/**
+	 * Sets the layout algorithm.
+	 *
+	 * @author mqfdy
+	 * @param algorithm
+	 *            the algorithm
+	 * @param applyLayout
+	 *            the apply layout
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public void setLayoutAlgorithm(LayoutAlgorithm algorithm,
 			boolean applyLayout) {

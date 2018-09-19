@@ -20,39 +20,81 @@ import com.mqfdy.code.model.ModelPackage;
 import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务模型图编辑弹出框(用于新增或修改)
- * 
+ * 业务模型图编辑弹出框(用于新增或修改).
+ *
  * @author mqfdy
- * 
  */
 public class DiagramEditorDialog extends ModelElementEditorDialog {
 
+	/** The Constant DIALOG_TITLE. */
 	public static final String DIALOG_TITLE = "创建业务模型图";
 
+	/** The Constant MESSAGE_TITLE. */
 	public static final String MESSAGE_TITLE = "业务模型图";
+	
+	/** The Constant DIALOG_MESSAGE_ADD. */
 	public static final String DIALOG_MESSAGE_ADD = "创建业务模型图";
+	
+	/** The Constant DIALOG_MESSAGE_EDIT. */
 	public static final String DIALOG_MESSAGE_EDIT = "修改业务模型图";
 
+	/** The label display name. */
 	// 显示组件
 	private Label label_displayName;
+	
+	/** The text display name. */
 	private Text text_displayName;
 
+	/** The label remark. */
 	private Label label_remark;
+	
+	/** The text remark. */
 	private Text text_remark;
 
+	/** The label name. */
 	private Label label_name;
+	
+	/** The text name. */
 	private Text text_name;
 
+	/**
+	 * Instantiates a new diagram editor dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param parent
+	 *            the parent
+	 */
 	public DiagramEditorDialog(Shell parentShell, AbstractModelElement parent) {
 		super(parentShell, parent);
 	}
 
+	/**
+	 * Instantiates a new diagram editor dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param thePackage
+	 *            the the package
+	 * @param parent
+	 *            the parent
+	 */
 	public DiagramEditorDialog(Shell parentShell, ModelPackage thePackage,
 			AbstractModelElement parent) {
 		super(parentShell, thePackage, parent);
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createDialogArea(Composite parent) {
 		Composite area = (Composite) super.createDialogArea(parent);
 		Composite container = new Composite(area, SWT.NONE);
@@ -93,6 +135,14 @@ public class DiagramEditorDialog extends ModelElementEditorDialog {
 		return area;
 	}
 
+	/**
+	 * Button pressed.
+	 *
+	 * @author mqfdy
+	 * @param buttonId
+	 *            the button id
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void buttonPressed(int buttonId) {
 //		if (APPLY_ID == buttonId) {
 //			applylPressed();
@@ -101,6 +151,9 @@ public class DiagramEditorDialog extends ModelElementEditorDialog {
 //		}
 	}
 
+	/**
+	 * 
+	 */
 	protected void okPressed() {
 		if (isValidInput()) {
 			createDiagram();
@@ -108,10 +161,22 @@ public class DiagramEditorDialog extends ModelElementEditorDialog {
 		}
 	}
 
+	/**
+	 * Applyl pressed.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void applylPressed() {
 		isValidInput();
 	}
 
+	/**
+	 * Creates the diagram.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createDiagram() {
 		String name = this.text_name.getText().trim();
 		String displayName = this.text_displayName.getText().trim();
@@ -121,9 +186,11 @@ public class DiagramEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 输入校验
-	 * 
-	 * @return
+	 * 输入校验.
+	 *
+	 * @author mqfdy
+	 * @return true, if is valid input
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean isValidInput() {
 		boolean valid = true;
@@ -177,7 +244,10 @@ public class DiagramEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 设置标题和信息
+	 * 设置标题和信息.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setTitleAndMessage() {
 		setTitle(MESSAGE_TITLE);
@@ -191,7 +261,10 @@ public class DiagramEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 初始化弹出框控件的值
+	 * 初始化弹出框控件的值.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initControlValue() {
 
@@ -217,6 +290,14 @@ public class DiagramEditorDialog extends ModelElementEditorDialog {
 		}
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 

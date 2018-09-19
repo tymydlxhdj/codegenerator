@@ -24,27 +24,66 @@ import com.mqfdy.code.reverse.views.models.SpecialTableModel;
 import com.mqfdy.code.reverse.views.providers.TableContentProvider;
 import com.mqfdy.code.reverse.views.providers.TableLabelProvider;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SpecialTableWizardPage.
+ *
+ * @author mqfdy
+ */
 public class SpecialTableWizardPage extends WizardPage {
 
+	/** The Constant COLUMN1_WIDTH. */
 	public static final int COLUMN1_WIDTH = 300;
+	
+	/** The Constant COLUMN2_WIDTH. */
 	public static final int COLUMN2_WIDTH = 100;
+	
+	/** The Constant COLUMN3_WIDTH. */
 	public static final int COLUMN3_WIDTH = 250;
 	
+	/** The container. */
 	private Composite container;
+	
+	/** The viewer. */
 	private TableViewer viewer;
 	
+	/** The no PK table list. */
 	private List<Table> noPKTableList = new ArrayList<Table>();
+	
+	/** The muti pk table list. */
 	private List<Table> mutiPkTableList = new ArrayList<Table>();
+	
+	/** The special char table list. */
 	private List<Table> specialCharTableList = new ArrayList<Table>();
+	
+	/** The start with figure table list. */
 	private List<Table> startWithFigureTableList = new ArrayList<Table>();
+	
+	/** The om reverse. */
 	private IOmReverse omReverse;
+	
+	/** The label. */
 	private Label label;
 	
+	/**
+	 * Instantiates a new special table wizard page.
+	 *
+	 * @param pageName
+	 *            the page name
+	 */
 	public SpecialTableWizardPage(String pageName) {
 		super(pageName);
 		omReverse = new OmReverse();
 	}
 
+	/**
+	 * Creates the control.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createControl(Composite parent) {
 		setTitle("无主键、复合主键、非法字段名称的处理");
 		setMessage("对于无主键、复合主键、含有非法字段名称的表，系统暂不支持", IMessageProvider.INFORMATION);
@@ -86,6 +125,12 @@ public class SpecialTableWizardPage extends WizardPage {
 
 	}
   
+	/**
+	 * Repaint.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void repaint() {
 		
 		SpecialTableModel input = new SpecialTableModel();
@@ -150,11 +195,17 @@ public class SpecialTableWizardPage extends WizardPage {
 		container.layout();
 	}
 	
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canFlipToNextPage() {
 		return  isPageComplete();
 	}
 
+	/**
+	 * @return
+	 */
 	public IWizardPage getNextPage() {
 		
 		SpecialTableModel input = (SpecialTableModel) viewer.getInput();
@@ -175,34 +226,94 @@ public class SpecialTableWizardPage extends WizardPage {
 		return super.getNextPage();
 	}
 
+	/**
+	 * Gets the no PK table list.
+	 *
+	 * @author mqfdy
+	 * @return the no PK table list
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Table> getNoPKTableList() {
 		return noPKTableList;
 	}
 
+	/**
+	 * Sets the no PK table list.
+	 *
+	 * @author mqfdy
+	 * @param noPKTableList
+	 *            the new no PK table list
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setNoPKTableList(List<Table> noPKTableList) {
 		this.noPKTableList = noPKTableList;
 	}
 
+	/**
+	 * Gets the muti pk table list.
+	 *
+	 * @author mqfdy
+	 * @return the muti pk table list
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Table> getMutiPkTableList() {
 		return mutiPkTableList;
 	}
 
+	/**
+	 * Sets the muti pk table list.
+	 *
+	 * @author mqfdy
+	 * @param mutiPkTableList
+	 *            the new muti pk table list
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setMutiPkTableList(List<Table> mutiPkTableList) {
 		this.mutiPkTableList = mutiPkTableList;
 	}
 	
+	/**
+	 * Gets the special char table list.
+	 *
+	 * @author mqfdy
+	 * @return the special char table list
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Table> getSpecialCharTableList() {
 		return specialCharTableList;
 	}
 
+	/**
+	 * Sets the special char table list.
+	 *
+	 * @author mqfdy
+	 * @param specialCharTableList
+	 *            the new special char table list
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setSpecialCharTableList(List<Table> specialCharTableList) {
 		this.specialCharTableList = specialCharTableList;
 	}
 
+	/**
+	 * Gets the start with figure table list.
+	 *
+	 * @author mqfdy
+	 * @return the start with figure table list
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Table> getStartWithFigureTableList() {
 		return startWithFigureTableList;
 	}
 
+	/**
+	 * Sets the start with figure table list.
+	 *
+	 * @author mqfdy
+	 * @param startWithFigureTableList
+	 *            the new start with figure table list
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setStartWithFigureTableList(List<Table> startWithFigureTableList) {
 		this.startWithFigureTableList = startWithFigureTableList;
 	}

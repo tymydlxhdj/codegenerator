@@ -10,31 +10,77 @@ import java.util.regex.Pattern;
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ValidatorUtil.
+ *
+ * @author mqfdy
+ */
 public class ValidatorUtil {
 
 	
+	/** The displaynameregex. */
 	public static String DISPLAYNAMEREGEX = "[a-z A-Z_0-9(){}\u4E00-\u9FA5]*$";
+	
+	/** The nameregex. */
 	public static String NAMEREGEX = "^[a-z_A-Z][a-zA-Z_0-9]*$";
+	
+	/** The package name. */
 	public static String PACKAGE_NAME="[a-z]+[[.][a-z]+]*$";
+	
+	/** The firstno nameregex. */
 	public static String FIRSTNO_NAMEREGEX = "^[a-zA-Z][a-zA-Z_0-9]*$";
+	
+	/** The firstletteruppercase. */
 	public static String FIRSTLETTERUPPERCASE = "^[A-Z_][a-zA-Z_0-9]*$";
+	
+	/** The firstletterlowercase. */
 	public static String FIRSTLETTERLOWERCASE = "^[a-z_][a-zA-Z_0-9]*$";
+	
+	/** The packagename. */
 	public static String PACKAGENAME = "^[a-z_][a-z._0-9]*$";
+	
+	/** The packagename1. */
 	public static String PACKAGENAME1 = "^[a-z_][a-z_0-9]*$";
+	
+	/** The datetime. */
 	public static String DATETIME = "^((\\d{2}(([02468][048])|([13579][26]))[\\-]((((0?[13578])|(1[02]))[\\-]((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-]((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-]((0?[1-9])|([1-2][0-9])))))|(\\d{2}(([02468][1235679])|([13579][01345789]))[\\-]((((0?[13578])|(1[02]))[\\-]((0?[1-9])|([1-2][0-9])|(3[01])))|(((0?[469])|(11))[\\-]((0?[1-9])|([1-2][0-9])|(30)))|(0?2[\\-]((0?[1-9])|(1[0-9])|(2[0-8]))))))(\\s(((0?[0-9])|(1[0-9])|(2[0-3]))\\:([0-5]?[0-9])((\\s)|(\\:([0-5]?[0-9])))))?$";
+	
+	/** The time. */
 	public static String TIME = "^(\\d|[0-1]\\d|2[0-3]):[0-5][0-9]:[0-5][0-9]$";
+	
+	/** The chinese. */
 	public static String CHINESE= "^[\u4e00-\u9fa5]*$"; 
+	
+	/** The directory. */
 	public static String DIRECTORY = "[0-9a-zA-Z][0-9a-zA-Z/{1}0-9a-zA-Z]*$";
 
+	/** The p date time. */
 	public static Pattern pDateTime = Pattern.compile(DATETIME);
+	
+	/** The p time. */
 	public static Pattern pTime = Pattern.compile(TIME);
 	
 	private static final char DOT = '.';
+	
+	/** The Constant MAX_OBVIOUS. */
 	public final static int MAX_OBVIOUS = 128;
+	
+	/** The Constant OBVIOUS_IDENT_CHAR_NATURES. */
 	public final static int[] OBVIOUS_IDENT_CHAR_NATURES = new int[MAX_OBVIOUS];
 
+	/** The Constant C_JLS_SPACE. */
 	public final static int C_JLS_SPACE = 0x100;
 
+	/**
+	 * Checks if is valid model name.
+	 *
+	 * @author mqfdy
+	 * @param str
+	 *            the str
+	 * @return true, if is valid model name
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean isValidModelName(String str) {
 		if (str.length() == 0
 				|| !Character.isJavaIdentifierStart(str.charAt(0)))
@@ -47,6 +93,15 @@ public class ValidatorUtil {
 		return true;
 	}
 	
+	/**
+	 * Vali package name.
+	 *
+	 * @author mqfdy
+	 * @param pkgName
+	 *            the pkg name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean valiPackageName(String pkgName) {
 		if (!pkgName.matches(PACKAGENAME)) {
 			return false;
@@ -58,9 +113,13 @@ public class ValidatorUtil {
 	}
 	
 	/**
-	 * 校验命名空间名
-	 * @param pkgName
-	 * @return
+	 * 校验命名空间名.
+	 *
+	 * @author mqfdy
+	 * @param nameSpaceName
+	 *            the name space name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiNameSpaceName(String nameSpaceName) {
 		if(nameSpaceName.startsWith("com")&&nameSpaceName.length()>3){
@@ -74,10 +133,13 @@ public class ValidatorUtil {
 	
 	
 	/**
-	 * 校验包名
-	 * 
+	 * 校验包名.
+	 *
+	 * @author mqfdy
 	 * @param name
-	 * @return
+	 *            the name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean validatePackageName(String name) {
 
@@ -115,11 +177,15 @@ public class ValidatorUtil {
 		}
 		return true;
 	}
+	
 	/**
-	 * 是否空格
-	 * 
+	 * 是否空格.
+	 *
+	 * @author mqfdy
 	 * @param c
-	 * @return
+	 *            the c
+	 * @return true, if is whitespace
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isWhitespace(char c) {
 		return c < MAX_OBVIOUS
@@ -128,14 +194,41 @@ public class ValidatorUtil {
 	
 	
 
+	/**
+	 * Vali name.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean valiName(String name) {
 		return name.matches(NAMEREGEX);
 	}
 	
+	/**
+	 * Vali pacakge.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean valiPacakge(String name) {
 		return name.matches(PACKAGE_NAME);
 	}
 
+	/**
+	 * Validate chinese.
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean validateChinese(String value){
         Pattern p=Pattern.compile(CHINESE);  
         Matcher result=p.matcher(value);                  
@@ -143,38 +236,105 @@ public class ValidatorUtil {
 	}
 	
 	/**
-	 * 开头不能是下划线的名称格式
+	 * 开头不能是下划线的名称格式.
+	 *
+	 * @author mqfdy
 	 * @param name
-	 * @return
+	 *            the name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiFirstNo_Name(String name) {
 		return name.matches(FIRSTNO_NAMEREGEX);
 	}
 
+	/**
+	 * Checks if is first uppercase.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return true, if is first uppercase
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean isFirstUppercase(String name) {
 		return name.matches(FIRSTLETTERUPPERCASE);
 	}
 
+	/**
+	 * Checks if is first lowercase.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return true, if is first lowercase
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean isFirstLowercase(String name) {
 		return name.matches(FIRSTLETTERLOWERCASE);
 	}
 
+	/**
+	 * Vali display name.
+	 *
+	 * @author mqfdy
+	 * @param displayName
+	 *            the display name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean valiDisplayName(String displayName) {
 		return displayName.matches(DISPLAYNAMEREGEX);
 	}
 
+	/**
+	 * Vali name length.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean valiNameLength(String name) {
 		return valiStringLength(name, 30);
 	}
 
+	/**
+	 * Vali display name length.
+	 *
+	 * @author mqfdy
+	 * @param displayName
+	 *            the display name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean valiDisplayNameLength(String displayName) {
 		return valiStringLength(displayName, 30);
 	}
 
+	/**
+	 * Vali remark length.
+	 *
+	 * @author mqfdy
+	 * @param remark
+	 *            the remark
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean valiRemarkLength(String remark) {
 		return valiStringLength(remark, 128);
 	}
 	
+	/**
+	 * Validate reg.
+	 *
+	 * @author mqfdy
+	 * @param reg
+	 *            the reg
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean validateReg(String reg) {
 		if (reg == null) {
 			return false;
@@ -225,10 +385,13 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 用于校验日期
-	 * 
+	 * 用于校验日期.
+	 *
+	 * @author mqfdy
 	 * @param value
-	 * @return
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiDate(String value) {
 		if (value == null) {
@@ -244,10 +407,13 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 用于校验日期时间
-	 * 
+	 * 用于校验日期时间.
+	 *
+	 * @author mqfdy
 	 * @param value
-	 * @return
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiDateTime(String value) {
 		if (value == null) {
@@ -264,10 +430,13 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 用于校验时间
-	 * 
+	 * 用于校验时间.
+	 *
+	 * @author mqfdy
 	 * @param value
-	 * @return
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiTime(String value) {
 		if (value == null) {
@@ -304,11 +473,14 @@ public class ValidatorUtil {
 //	}
 
 	/**
-	 * 用于校验数字
-	 * 
-	 * @param value
-	 * @return
-	 */
+ * 用于校验数字.
+ *
+ * @author mqfdy
+ * @param value
+ *            the value
+ * @return true, if successful
+ * @Date 2018-09-03 09:00
+ */
 	public static boolean valiLong(String value) {
 		try {
 			long i = Long.parseLong(value);
@@ -322,10 +494,13 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 用于校验数字
-	 * 
+	 * 用于校验数字.
+	 *
+	 * @author mqfdy
 	 * @param value
-	 * @return
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiInteger(String value) {
 		try {
@@ -340,10 +515,13 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 用于校验数字
-	 * 
+	 * 用于校验数字.
+	 *
+	 * @author mqfdy
 	 * @param value
-	 * @return
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiShort(String value) {
 		try {
@@ -358,10 +536,13 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 用于校验数字
-	 * 
+	 * 用于校验数字.
+	 *
+	 * @author mqfdy
 	 * @param value
-	 * @return
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiFloat(String value) {
 		try {
@@ -373,10 +554,13 @@ public class ValidatorUtil {
 	}
 
 	/**
-	 * 用于校验数字
-	 * 
+	 * 用于校验数字.
+	 *
+	 * @author mqfdy
 	 * @param value
-	 * @return
+	 *            the value
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean valiDouble(String value) {
 		try {
@@ -387,11 +571,32 @@ public class ValidatorUtil {
 		return true;
 	}
 
+	/**
+	 * Vali string length.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @param length
+	 *            the length
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean valiStringLength(String name, int length) {
 		if (name.length() > length)
 			return false;
 		return true;
 	}
+	
+	/**
+	 * Del error string.
+	 *
+	 * @author mqfdy
+	 * @param displayName
+	 *            the display name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String delErrorString(String displayName){
 		String newString = "";
 		if(valiDisplayName(displayName) && valiDisplayNameLength(displayName))
@@ -408,9 +613,13 @@ public class ValidatorUtil {
 	}
 	
 	/**
-	 * 校验IP是否输入正确
+	 * 校验IP是否输入正确.
+	 *
+	 * @author mqfdy
 	 * @param ip
-	 * @return
+	 *            the ip
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean validateIP(String ip){
 		if(ip.trim().split("\\.").length!=4){
@@ -431,9 +640,13 @@ public class ValidatorUtil {
 	
 	
 	/**
-	 * 校验端口是否输入正确
+	 * 校验端口是否输入正确.
+	 *
+	 * @author mqfdy
 	 * @param port
-	 * @return
+	 *            the port
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean validatePort(String port){
 		try{
@@ -446,6 +659,16 @@ public class ValidatorUtil {
 		}
 		return true;		
 	}
+	
+	/**
+	 * Validate dirctory.
+	 *
+	 * @author mqfdy
+	 * @param dir
+	 *            the dir
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean validateDirctory(String dir){
 		if (!dir.matches(DIRECTORY)) {
 			return false;

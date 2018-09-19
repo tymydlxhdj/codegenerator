@@ -16,22 +16,26 @@ import java.util.LinkedList;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * A <code>TreeIterator</code> simplifies the traversal of a
- * tree of objects, where the objects' protocol(s) provides
- * a method for getting the immediate children of the given
- * node but does not provide a method for getting all the
+ * A <code>TreeIterator</code> simplifies the traversal of a tree of objects,
+ * where the objects' protocol(s) provides a method for getting the immediate
+ * children of the given node but does not provide a method for getting all the
  * descendants (children, grandchildren, etc.) of the given node.
  * <p>
- * To use, supply:<ul>
- * <li> either the root element of the tree or, if the tree has
- * multiple roots, an <code>Iterator</code> over the set of roots
- * <li> a <code>Midwife</code> that delivers the children
- * of each child
- * (alternatively, subclass <code>TreeIterator</code>
- * and override the <code>children(Object)</code> method)
+ * To use, supply:
+ * <ul>
+ * <li>either the root element of the tree or, if the tree has multiple roots,
+ * an <code>Iterator</code> over the set of roots
+ * <li>a <code>Midwife</code> that delivers the children of each child
+ * (alternatively, subclass <code>TreeIterator</code> and override the
+ * <code>children(Object)</code> method)
  * </ul>
  * <p>
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class TreeIterator<E>
 	implements Iterator<E>
@@ -42,38 +46,50 @@ public class TreeIterator<E>
 
 
 	/**
-	 * Construct an iterator with the specified collection of roots
-	 * and a disabled midwife.
-	 * Use this constructor if you want to override the
-	 * <code>children(Object)</code> method instead of building
-	 * a <code>Midwife</code>.
+	 * Construct an iterator with the specified collection of roots and a
+	 * disabled midwife. Use this constructor if you want to override the
+	 * <code>children(Object)</code> method instead of building a
+	 * <code>Midwife</code>.
+	 *
+	 * @param roots
+	 *            the roots
 	 */
 	public TreeIterator(Iterator<? extends E> roots) {
 		this(roots, Midwife.Disabled.<E>instance());
 	}
 
 	/**
-	 * Construct an iterator with the specified root
-	 * and a disabled midwife.
-	 * Use this constructor if you want to override the
-	 * <code>children(Object)</code> method instead of building
-	 * a <code>Midwife</code>.
+	 * Construct an iterator with the specified root and a disabled midwife. Use
+	 * this constructor if you want to override the
+	 * <code>children(Object)</code> method instead of building a
+	 * <code>Midwife</code>.
+	 *
+	 * @param root
+	 *            the root
 	 */
 	public TreeIterator(E root) {
 		this(root, Midwife.Disabled.<E>instance());
 	}
 
 	/**
-	 * Construct an iterator with the specified root
-	 * and midwife.
+	 * Construct an iterator with the specified root and midwife.
+	 *
+	 * @param root
+	 *            the root
+	 * @param midwife
+	 *            the midwife
 	 */
 	public TreeIterator(E root, Midwife<E> midwife) {
 		this(new SingleElementIterator<E>(root), midwife);
 	}
 
 	/**
-	 * Construct an iterator with the specified roots
-	 * and midwife.
+	 * Construct an iterator with the specified roots and midwife.
+	 *
+	 * @param roots
+	 *            the roots
+	 * @param midwife
+	 *            the midwife
 	 */
 	public TreeIterator(Iterator<? extends E> roots, Midwife<E> midwife) {
 		super();
@@ -124,6 +140,12 @@ public class TreeIterator<E>
 
 	/**
 	 * Return the immediate children of the specified object.
+	 *
+	 * @author mqfdy
+	 * @param next
+	 *            the next
+	 * @return the iterator<? extends e>
+	 * @Date 2018-09-03 09:00
 	 */
 	protected Iterator<? extends E> children(E next) {
 		return this.midwife.children(next);
@@ -138,8 +160,12 @@ public class TreeIterator<E>
 	//********** inner classes **********
 
 	/**
-	 * Used by <code>TreeIterator</code> to retrieve
-	 * the immediate children of a node in the tree.
+	 * Used by <code>TreeIterator</code> to retrieve the immediate children of a
+	 * node in the tree.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
 	 */
 	public interface Midwife<T> {
 

@@ -10,11 +10,16 @@
 package com.mqfdy.code.springboot.utilities.internal;
 
 /**
- * Used by various "pluggable" classes to transform objects
- * in both directions.
+ * Used by various "pluggable" classes to transform objects in both directions.
  * 
- * If anyone can come up with a better class name
- * and/or method name, I would love to hear it.  ~bjv
+ * If anyone can come up with a better class name and/or method name, I would
+ * love to hear it. ~bjv
+ *
+ * @author mqfdy
+ * @param <T1>
+ *            the generic type
+ * @param <T2>
+ *            the generic type
  */
 public interface BidiTransformer<T1, T2> extends Transformer<T1, T2> {
 

@@ -15,20 +15,49 @@ import com.mqfdy.code.model.Enumeration;
 import com.mqfdy.code.model.IModelElement;
 import com.mqfdy.code.model.ReferenceObject;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LocalSelectionDragAdapter.
+ *
+ * @author mqfdy
+ */
 class LocalSelectionDragAdapter extends DragSourceAdapter {
 
+	/** The selection provider. */
 	ISelectionProvider selectionProvider;
 
+	/**
+	 * Instantiates a new local selection drag adapter.
+	 *
+	 * @param provider
+	 *            the provider
+	 */
 	public LocalSelectionDragAdapter(ISelectionProvider provider) {
 		selectionProvider = provider;
 	}
 
+	/**
+	 * Drag finished.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	public void dragFinished(DragSourceEvent event) {
 		// TODO Auto-generated method stub
 		super.dragFinished(event);
 		// LocalSelectionTransfer.getInstance().setSelection(null);
 	}
 
+	/**
+	 * Drag set data.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	public void dragSetData(DragSourceEvent event) {
 		DragSource dragSource = (DragSource) event.widget;
 		Control control = dragSource.getControl();
@@ -67,6 +96,14 @@ class LocalSelectionDragAdapter extends DragSourceAdapter {
 		}
 	}
 
+	/**
+	 * Drag start.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	public void dragStart(DragSourceEvent event) {
 		dragSetData(event);
 	}

@@ -15,16 +15,26 @@ import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.wizard.wizard.IMicroGeneratorConfigWizard;
 import com.mqfdy.code.wizard.wizard.MicroGeneratorConfigWizard2;
 
+// TODO: Auto-generated Javadoc
 /**
- * 代码生成
- * 
+ * 代码生成.
+ *
  * @author mqfdy
- * 
  */
 public class GenerateAction extends SelectionAction {
+	
+	/** The business model manager. */
 	private BusinessModelManager businessModelManager;
+	
+	/** The test project. */
 	public static IProject testProject;
     
+	/**
+	 * Instantiates a new generate action.
+	 *
+	 * @param businessModelManager
+	 *            the business model manager
+	 */
 	public GenerateAction(BusinessModelManager businessModelManager) {
 		super(null);
 		// force calculateEnabled() to be called in every context
@@ -32,6 +42,9 @@ public class GenerateAction extends SelectionAction {
 		this.businessModelManager = businessModelManager;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void init() {
 		super.init();
@@ -43,11 +56,17 @@ public class GenerateAction extends SelectionAction {
 		setEnabled(false);
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected boolean calculateEnabled() {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void run() {
 		Shell shell = BusinessModelEditorPlugin.getActiveWorkbenchWindow()

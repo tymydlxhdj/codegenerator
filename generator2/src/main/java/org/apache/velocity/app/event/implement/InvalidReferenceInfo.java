@@ -21,6 +21,7 @@ package org.apache.velocity.app.event.implement;
 
 import org.apache.velocity.util.introspection.Info;
 
+// TODO: Auto-generated Javadoc
 /**
  * Convenience class to use when reporting out invalid syntax 
  * with line, column, and template name.
@@ -31,8 +32,18 @@ import org.apache.velocity.util.introspection.Info;
  */
 public class InvalidReferenceInfo extends Info
 {
+    
+    /** The invalid reference. */
     private String invalidReference;
     
+    /**
+	 * Instantiates a new invalid reference info.
+	 *
+	 * @param invalidReference
+	 *            the invalid reference
+	 * @param info
+	 *            the info
+	 */
     public InvalidReferenceInfo(String invalidReference, Info info)
     {
         super(info.getTemplateName(),info.getLine(),info.getColumn());
@@ -40,9 +51,12 @@ public class InvalidReferenceInfo extends Info
     }
 
     /**
-     * Get the specific invalid reference string.
-     * @return the invalid reference string
-     */
+	 * Get the specific invalid reference string.
+	 *
+	 * @author mqfdy
+	 * @return the invalid reference string
+	 * @Date 2018-9-3 11:38:35
+	 */
     public String getInvalidReference()
     {
         return invalidReference;
@@ -51,11 +65,13 @@ public class InvalidReferenceInfo extends Info
     
 
     /**
-     * Formats a textual representation of this object as <code>SOURCE
-     * [line X, column Y]: invalidReference</code>.
-     *
-     * @return String representing this object.
-     */
+	 * Formats a textual representation of this object as <code>SOURCE
+	 * [line X, column Y]: invalidReference</code>.
+	 *
+	 * @author mqfdy
+	 * @return String representing this object.
+	 * @Date 2018-9-3 11:38:35
+	 */
     public String toString()
     {
         return getTemplateName() + " [line " + getLine() + ", column " +

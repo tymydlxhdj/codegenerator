@@ -34,44 +34,109 @@ import com.mqfdy.code.reverse.views.models.SpecialTableModel;
 import com.mqfdy.code.reverse.views.providers.DupliTableLabelProvider;
 import com.mqfdy.code.reverse.views.providers.TableContentProvider;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DuplicateNameWizardPage.
+ *
+ * @author mqfdy
+ */
 public class DuplicateNameWizardPage extends WizardPage {
 
+	/** The Constant COLUMN1_WIDTH. */
 	public static final int COLUMN1_WIDTH = 250;
+	
+	/** The Constant COLUMN2_WIDTH. */
 	public static final int COLUMN2_WIDTH = 250;
+	
+	/** The Constant COLUMN3_WIDTH. */
 	public static final int COLUMN3_WIDTH = 170;
 	
+	/** The container. */
 	private Composite container;
+	
+	/** The viewer. */
 	private TableViewer viewer;
+	
+	/** The special tables. */
 	private List<SpecialTable> specialTables = new ArrayList<SpecialTable>();
 	
+	/** The Constant HANDLE_TYPES. */
 	public static final String[] HANDLE_TYPES = new String[] {"忽略", "替换"};
 
+	/** The duplication table names. */
 	private List<Table> duplicationTableNames = new ArrayList<Table>();//重复表名集合
 	
+	/** The om reverse. */
 	private IOmReverse omReverse;
+	
+	/** The label. */
 	private Label label;
 	
+	/**
+	 * Gets the special tables.
+	 *
+	 * @author mqfdy
+	 * @return the special tables
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<SpecialTable> getSpecialTables() {
 		return specialTables;
 	}
 
+	/**
+	 * Sets the special tables.
+	 *
+	 * @author mqfdy
+	 * @param specialTables
+	 *            the new special tables
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setSpecialTables(List<SpecialTable> specialTables) {
 		this.specialTables = specialTables;
 	}
 
+	/**
+	 * Gets the duplication table names.
+	 *
+	 * @author mqfdy
+	 * @return the duplication table names
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Table> getDuplicationTableNames() {
 		return duplicationTableNames;
 	}
 
+	/**
+	 * Sets the duplication table names.
+	 *
+	 * @author mqfdy
+	 * @param duplicationTableNames
+	 *            the new duplication table names
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setDuplicationTableNames(List<Table> duplicationTableNames) {
 		this.duplicationTableNames = duplicationTableNames;
 	}
 
+	/**
+	 * Instantiates a new duplicate name wizard page.
+	 *
+	 * @param pageName
+	 *            the page name
+	 */
 	public DuplicateNameWizardPage(String pageName) {
 		super(pageName);
 		omReverse = new OmReverse();
 	}
 
+	/**
+	 * Creates the control.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createControl(Composite parent) {
 		setTitle("以下表名与现有模型重复");
 		setMessage("选择“替换”,会替换业务实体的所有信息.", IMessageProvider.INFORMATION);
@@ -193,6 +258,13 @@ public class DuplicateNameWizardPage extends WizardPage {
 
 	}
   
+	/**
+	 * Vali finish.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean valiFinish() {
 		SpecialTableModel model = (SpecialTableModel)viewer.getInput();
 		if(model == null){
@@ -218,6 +290,15 @@ public class DuplicateNameWizardPage extends WizardPage {
 		return isFinish;
 	}
 
+	/**
+	 * Gets the name index.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return the name index
+	 * @Date 2018-09-03 09:00
+	 */
 	private int getNameIndex(String name) {
 		for (int i = 0; i < HANDLE_TYPES.length; i++) {
 			if (HANDLE_TYPES[i].equals(name)) {
@@ -227,6 +308,12 @@ public class DuplicateNameWizardPage extends WizardPage {
 		return -1;
 	}
 	  
+	/**
+	 * Repaint.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void repaint() {
 		SpecialTableModel input = new SpecialTableModel();
 		
@@ -247,6 +334,13 @@ public class DuplicateNameWizardPage extends WizardPage {
 		container.layout();
 	}
 	
+	/**
+	 * Checks if is can next.
+	 *
+	 * @author mqfdy
+	 * @return true, if is can next
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean isCanNext(){
 		boolean bNext = true;
 		SpecialTableModel model = (SpecialTableModel)viewer.getInput();
@@ -264,11 +358,17 @@ public class DuplicateNameWizardPage extends WizardPage {
 		return bNext;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canFlipToNextPage() {
 		return isCanNext();
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public IWizardPage getNextPage() {
 		List<SpecialTable> sTables = new ArrayList<SpecialTable>();

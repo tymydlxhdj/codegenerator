@@ -25,6 +25,7 @@ import com.mqfdy.code.model.ReferenceObject;
 import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramElement;
 
+// TODO: Auto-generated Javadoc
 /**
  * 删除
  * 
@@ -36,26 +37,53 @@ import com.mqfdy.code.model.graph.DiagramElement;
  */
 public class NodesDeleteCommand extends Command {
 
+	/** The edit part list. */
 	private List<AbstractGraphicalEditPart> editPartList = new ArrayList<AbstractGraphicalEditPart>();
 
+	/** The was removed. */
 	private boolean wasRemoved = false;
 
+	/** The was opened. */
 	private boolean wasOpened = false;
+	
+	/** The s. */
 	private int s = 0;
+	
+	/** The del way dlg. */
 	private SelectDeleteWayDialog delWayDlg = null;
 
+	/** The parent. */
 	private AbstractModelElement parent;
 
+	/** The edit part. */
 	private EditPart editPart;// 图的EditPart
 
+	/** The id string. */
 	private List<String> idString = new ArrayList<String>();
+	
+	/** The conn list. */
 	private List<AbstractModelElement> connList = new ArrayList<AbstractModelElement>();
+	
+	/** The del model list. */
 	private List<AbstractModelElement> delModelList = new ArrayList<AbstractModelElement>();
+	
+	/** The con ele. */
 	private List<DiagramElement> conEle = new ArrayList<DiagramElement>();
 	// private AbstractModelElement node;
 
+	/** The is del object. */
 	private boolean isDelObject;
 
+	/**
+	 * Instantiates a new nodes delete command.
+	 *
+	 * @param list
+	 *            the list
+	 * @param parent
+	 *            the parent
+	 * @param editPart
+	 *            the edit part
+	 */
 	public NodesDeleteCommand(List<AbstractGraphicalEditPart> list,
 			AbstractModelElement parent, EditPart editPart) {
 		if (list == null || parent == null) {
@@ -68,11 +96,17 @@ public class NodesDeleteCommand extends Command {
 
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		return (editPartList != null && !wasRemoved);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 		connList.clear();
@@ -223,6 +257,9 @@ public class NodesDeleteCommand extends Command {
 		EditorOperation.refreshNodeEditParts();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void undo() {
 		BusinessModelManager manager = BusinessModelUtil.getEditorBusinessModelManager();
@@ -286,6 +323,9 @@ public class NodesDeleteCommand extends Command {
 		EditorOperation.refreshNodeEditParts();
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canUndo() {
 		return s == 0;

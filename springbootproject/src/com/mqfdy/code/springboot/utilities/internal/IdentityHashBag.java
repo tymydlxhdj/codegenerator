@@ -16,48 +16,45 @@ import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+// TODO: Auto-generated Javadoc
 /**
- * This class implements the <code>Bag</code> interface with a
- * hash table, using object-identity in place of object-equality when
- * comparing elements. In other words, in an <code>IdentityHashBag</code>,
- * two objects <code>k1</code> and <code>k2</code> are considered
- * equal if and only if <code>(k1 == k2)</code>. (In normal <code>Bag</code>
- * implementations (like <code>HashBag</code>) two objects <code>k1</code>
- * and <code>k2</code> are considered equal if and only if
- * <code>(k1 == null ? k2 == null : k1.equals(k2))</code>.)
+ * This class implements the <code>Bag</code> interface with a hash table, using
+ * object-identity in place of object-equality when comparing elements. In other
+ * words, in an <code>IdentityHashBag</code>, two objects <code>k1</code> and
+ * <code>k2</code> are considered equal if and only if <code>(k1 == k2)</code>.
+ * (In normal <code>Bag</code> implementations (like <code>HashBag</code>) two
+ * objects <code>k1</code> and <code>k2</code> are considered equal if and only
+ * if <code>(k1 == null ? k2 == null : k1.equals(k2))</code>.)
  * <p>
- * <b>
- * This class is <i>not</i> a general-purpose <code>Bag</code>
- * implementation! While this class implements the <code>Bag</code> interface, it
- * intentionally violates <code>Bag's</code> general contract, which mandates the
- * use of the <code>equals</code> method when comparing objects. This class is
- * designed for use only in the rare cases wherein object-identity
- * semantics are required.
- * </b>
+ * <b> This class is <i>not</i> a general-purpose <code>Bag</code>
+ * implementation! While this class implements the <code>Bag</code> interface,
+ * it intentionally violates <code>Bag's</code> general contract, which mandates
+ * the use of the <code>equals</code> method when comparing objects. This class
+ * is designed for use only in the rare cases wherein object-identity semantics
+ * are required. </b>
  * <p>
- * This class makes no guarantees as to the iteration order of
- * the bag's elements; in particular, it does not guarantee that the order
- * will remain constant over time. This class permits the <code>null</code>
- * element.
+ * This class makes no guarantees as to the iteration order of the bag's
+ * elements; in particular, it does not guarantee that the order will remain
+ * constant over time. This class permits the <code>null</code> element.
  * <p>
  * This class offers constant time performance for the basic operations
  * (<code>add</code>, <code>remove</code>, <code>contains</code> and
  * <code>size</code>), assuming the system identity hash function
- * ({@link System#identityHashCode(Object)}) disperses elements properly
- * among the buckets. Iterating over this bag requires time
- * proportional to the sum of the bag's size (the number of elements) plus the
- * "capacity" of the backing hash table (the number of buckets). Thus, it is
- * important not to set the initial capacity too high (or the load factor too
- * low) if iteration performance is important.
+ * ({@link System#identityHashCode(Object)}) disperses elements properly among
+ * the buckets. Iterating over this bag requires time proportional to the sum of
+ * the bag's size (the number of elements) plus the "capacity" of the backing
+ * hash table (the number of buckets). Thus, it is important not to set the
+ * initial capacity too high (or the load factor too low) if iteration
+ * performance is important.
  * <p>
- * <b>Note that this implementation is not synchronized.</b> If multiple
- * threads access a bag concurrently, and at least one of the threads modifies
- * the bag, it <i>must</i> be synchronized externally. This is typically
- * accomplished by synchronizing on some object that naturally encapsulates
- * the bag. If no such object exists, the bag should be "wrapped" using the
- * <code>Collections.synchronizedCollection</code> method. This is
- * best done at creation time, to prevent accidental unsynchronized access
- * to the bag:
+ * <b>Note that this implementation is not synchronized.</b> If multiple threads
+ * access a bag concurrently, and at least one of the threads modifies the bag,
+ * it <i>must</i> be synchronized externally. This is typically accomplished by
+ * synchronizing on some object that naturally encapsulates the bag. If no such
+ * object exists, the bag should be "wrapped" using the
+ * <code>Collections.synchronizedCollection</code> method. This is best done at
+ * creation time, to prevent accidental unsynchronized access to the bag:
+ * 
  * <pre>
  * Collection c = Collections.synchronizedCollection(new IdentityHashBag(...));
  * </pre>
@@ -66,11 +63,13 @@ import java.util.NoSuchElementException;
  * <i>fail-fast</i>: if the bag is modified at any time after the iterator is
  * created, in any way except through the iterator's own <code>remove</code>
  * method, the iterator throws a <code>ConcurrentModificationException</code>.
- * Thus, in the face of concurrent modification, the iterator fails quickly
- * and cleanly, rather than risking arbitrary, non-deterministic behavior at
- * an undetermined time in the future.
- * 
- * @see	Collections#synchronizedCollection(Collection)
+ * Thus, in the face of concurrent modification, the iterator fails quickly and
+ * cleanly, rather than risking arbitrary, non-deterministic behavior at an
+ * undetermined time in the future.
+ *
+ * @param <E>
+ *            the element type
+ * @see Collections#synchronizedCollection(Collection)
  */
 
 public class IdentityHashBag<E> extends AbstractCollection<E>

@@ -18,21 +18,40 @@ import com.mqfdy.code.model.Enumeration;
 import com.mqfdy.code.model.utils.StringUtil;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 枚举信息页
- * 
+ * 枚举信息页.
+ *
  * @author mqfdy
- * 
  */
 public class EnumBasicInfoPage extends Composite implements
 		IBusinessClassEditorPage {
+	
+	/** The text name. */
 	private Text textName;// 名称
+	
+	/** The text disp name. */
 	private Text textDispName;// 显示名
+	
+	/** The styled text desc. */
 	StyledText styledTextDesc; // 备注
 
+	/** The parent dialog. */
 	private EnumEditDialog parentDialog;
+	
+	/** The enum disp name. */
 	protected Object enumDispName;
 
+	/**
+	 * Instantiates a new enum basic info page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param parentDialog
+	 *            the parent dialog
+	 */
 	EnumBasicInfoPage(Composite parent, int style, EnumEditDialog parentDialog) {
 		super(parent, style);
 		this.parentDialog = parentDialog;
@@ -41,6 +60,12 @@ public class EnumBasicInfoPage extends Composite implements
 		initControlValue();
 	}
 
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent() {
 		// 关联关系信息区域
 		GridLayout layout = new GridLayout();
@@ -90,6 +115,12 @@ public class EnumBasicInfoPage extends Composite implements
 		styledTextDesc.setLayoutData(data);
 	}
 
+	/**
+	 * Adds the listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void addListeners() {
 		textName.addKeyListener(new KeyListener() {
 
@@ -116,6 +147,9 @@ public class EnumBasicInfoPage extends Composite implements
 		});
 	}
 
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		if (parentDialog.getEnumeration() != null) {
 			Enumeration enu = parentDialog.getEnumeration();
@@ -137,6 +171,9 @@ public class EnumBasicInfoPage extends Composite implements
 
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		if (textName.getText().trim().length() == 0) {
 			parentDialog.setErrorMessage(ERROR_MESSAGE_NAME_NULLABLE);
@@ -183,6 +220,9 @@ public class EnumBasicInfoPage extends Composite implements
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 		String name = StringUtil
 				.convertNull2EmptyStr(textName.getText().trim());

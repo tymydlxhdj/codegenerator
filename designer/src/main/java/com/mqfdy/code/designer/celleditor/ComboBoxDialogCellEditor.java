@@ -26,33 +26,56 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Layout;
 
+// TODO: Auto-generated Javadoc
 /**
- * 下拉框单元格编辑器
- * 
+ * 下拉框单元格编辑器.
+ *
  * @author mqfdy
- * 
  */
 public abstract class ComboBoxDialogCellEditor extends CellEditor {
+	
+	/** The items. */
 	// Combo Items
 	private String[] items;
 
+	/** The editor. */
 	private Composite editor;
 
+	/** The combo box. */
 	private CCombo comboBox;
 
+	/** The contents. */
 	private Control contents;
 
+	/** The button. */
 	private Button button;
+	
+	/** The button focus listener. */
 	private FocusListener buttonFocusListener;
 
+	/** The modify listener. */
 	private ModifyListener modifyListener;
 
+	/** The value. */
 	private Object value = null;
 
 	/**
 	 * Internal class for laying out the dialog.
+	 *
+	 * @author mqfdy
 	 */
 	private class DialogCellLayout extends Layout {
+		
+		/**
+		 * Layout.
+		 *
+		 * @author mqfdy
+		 * @param editor
+		 *            the editor
+		 * @param force
+		 *            the force
+		 * @Date 2018-09-03 09:00
+		 */
 		@Override
 		public void layout(Composite editor, boolean force) {
 			Rectangle bounds = editor.getClientArea();
@@ -66,6 +89,21 @@ public abstract class ComboBoxDialogCellEditor extends CellEditor {
 					- size.x, 0, size.x, bounds.height);
 		}
 
+		/**
+		 * Compute size.
+		 *
+		 * @author mqfdy
+		 * @param editor
+		 *            the editor
+		 * @param wHint
+		 *            the w hint
+		 * @param hHint
+		 *            the h hint
+		 * @param force
+		 *            the force
+		 * @return the point
+		 * @Date 2018-09-03 09:00
+		 */
 		@Override
 		public Point computeSize(Composite editor, int wHint, int hHint,
 				boolean force) {
@@ -85,38 +123,93 @@ public abstract class ComboBoxDialogCellEditor extends CellEditor {
 		}
 	}
 
+	/** The Constant defaultStyle. */
 	// Combo default style
 	private static final int defaultStyle = SWT.NONE;
 
+	/**
+	 * Instantiates a new combo box dialog cell editor.
+	 */
 	public ComboBoxDialogCellEditor() {
 		setStyle(defaultStyle);
 	}
 
+	/**
+	 * Instantiates a new combo box dialog cell editor.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param items
+	 *            the items
+	 */
 	public ComboBoxDialogCellEditor(Composite parent, String[] items) {
 		this(parent, items, defaultStyle);
 	}
 
+	/**
+	 * Instantiates a new combo box dialog cell editor.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param items
+	 *            the items
+	 * @param style
+	 *            the style
+	 */
 	public ComboBoxDialogCellEditor(Composite parent, String[] items, int style) {
 		super(parent, style);
 		setItems(items);
 	}
 
+	/**
+	 * Gets the items.
+	 *
+	 * @author mqfdy
+	 * @return the items
+	 * @Date 2018-09-03 09:00
+	 */
 	public String[] getItems() {
 		return this.items;
 	}
 
+	/**
+	 * Sets the items.
+	 *
+	 * @author mqfdy
+	 * @param items
+	 *            the new items
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setItems(String[] items) {
 		Assert.isNotNull(items);
 		this.items = items;
 		populateComboBoxItems();
 	}
 
+	/**
+	 * Creates the button.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the button
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Button createButton(Composite parent) {
 		Button result = new Button(parent, SWT.DOWN);
 		result.setText(""); //$NON-NLS-1$  
 		return result;
 	}
 
+	/**
+	 * Creates the contents.
+	 *
+	 * @author mqfdy
+	 * @param cell
+	 *            the cell
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createContents(Composite cell) {
 		this.comboBox = new CCombo(cell, getStyle());
 		this.comboBox.setFont(cell.getFont());
@@ -165,6 +258,15 @@ public abstract class ComboBoxDialogCellEditor extends CellEditor {
 		return this.comboBox;
 	}
 
+	/**
+	 * Creates the control.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Control createControl(Composite parent) {
 		Font font = parent.getFont();
@@ -217,6 +319,9 @@ public abstract class ComboBoxDialogCellEditor extends CellEditor {
 		return this.editor;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void deactivate() {
 		if (this.button != null && !this.button.isDisposed()) {
@@ -226,11 +331,17 @@ public abstract class ComboBoxDialogCellEditor extends CellEditor {
 		super.deactivate();
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected Object doGetValue() {
 		return this.value;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void doSetFocus() {
 		if (this.comboBox != null) {
@@ -238,12 +349,26 @@ public abstract class ComboBoxDialogCellEditor extends CellEditor {
 		}
 	}
 
+	/**
+	 * Do set value.
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void doSetValue(Object value) {
 		this.value = value;
 		updateContents(value);
 	}
 
+	/**
+	 * Populate combo box items.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void populateComboBoxItems() {
 		if (this.comboBox != null && this.items != null) {
 			this.comboBox.removeAll();
@@ -254,6 +379,12 @@ public abstract class ComboBoxDialogCellEditor extends CellEditor {
 		}
 	}
 
+	/**
+	 * Apply editor value and deactivate.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	void applyEditorValueAndDeactivate() {
 		String newValue = this.comboBox.getText();
 		if (newValue != null && !newValue.equals(this.value.toString())) {
@@ -270,6 +401,9 @@ public abstract class ComboBoxDialogCellEditor extends CellEditor {
 		deactivate();
 	}
 
+	/**
+	 * 
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -282,6 +416,14 @@ public abstract class ComboBoxDialogCellEditor extends CellEditor {
 		}
 	}
 
+	/**
+	 * Key release occured.
+	 *
+	 * @author mqfdy
+	 * @param keyEvent
+	 *            the key event
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -300,6 +442,14 @@ public abstract class ComboBoxDialogCellEditor extends CellEditor {
 		}
 	}
 
+	/**
+	 * Edits the occured.
+	 *
+	 * @author mqfdy
+	 * @param e
+	 *            the e
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void editOccured(ModifyEvent e) {
 		String value = this.comboBox.getText();
 		if (value == null) {
@@ -320,6 +470,13 @@ public abstract class ComboBoxDialogCellEditor extends CellEditor {
 		valueChanged(oldValidState, newValidState);
 	}
 
+	/**
+	 * Gets the modify listener.
+	 *
+	 * @author mqfdy
+	 * @return the modify listener
+	 * @Date 2018-09-03 09:00
+	 */
 	private ModifyListener getModifyListener() {
 		if (this.modifyListener == null) {
 			this.modifyListener = new ModifyListener() {
@@ -331,6 +488,13 @@ public abstract class ComboBoxDialogCellEditor extends CellEditor {
 		return this.modifyListener;
 	}
 
+	/**
+	 * Gets the button focus listener.
+	 *
+	 * @author mqfdy
+	 * @return the button focus listener
+	 * @Date 2018-09-03 09:00
+	 */
 	private FocusListener getButtonFocusListener() {
 		if (this.buttonFocusListener == null) {
 			this.buttonFocusListener = new FocusListener() {
@@ -346,6 +510,14 @@ public abstract class ComboBoxDialogCellEditor extends CellEditor {
 		return this.buttonFocusListener;
 	}
 
+	/**
+	 * Update contents.
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
 	private void updateContents(Object value) {
 		Assert.isTrue(this.comboBox != null);
 
@@ -356,8 +528,24 @@ public abstract class ComboBoxDialogCellEditor extends CellEditor {
 		}
 	}
 
+	/**
+	 * Open dialog box.
+	 *
+	 * @author mqfdy
+	 * @param cellEditorWindow
+	 *            the cell editor window
+	 * @return the object
+	 * @Date 2018-09-03 09:00
+	 */
 	protected abstract Object openDialogBox(Control cellEditorWindow);
 
+	/**
+	 * Gets the combo box.
+	 *
+	 * @author mqfdy
+	 * @return the combo box
+	 * @Date 2018-09-03 09:00
+	 */
 	public CCombo getComboBox() {
 		return comboBox;
 	}

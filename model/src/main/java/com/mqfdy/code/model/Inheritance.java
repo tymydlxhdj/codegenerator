@@ -9,45 +9,56 @@ import org.dom4j.Element;
 
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 继承关系
- * 
+ * 继承关系.
+ *
  * @author mqfdy
- * 
  */
 public class Inheritance extends AbstractModelElement {
 
+	/** The Constant PERSIST_POLICY. */
 	public static final String PERSIST_POLICY = "PersistPolicy";
 
+	/** The Constant TABLE_PER_CLASS_HIERARCHY. */
 	public static final String TABLE_PER_CLASS_HIERARCHY = "1";
+	
+	/** The Constant TABLE_PER_CONCRETECLASS. */
 	public static final String TABLE_PER_CONCRETECLASS = "2";
+	
+	/** The Constant TABLE_PER_SUBCLASS. */
 	public static final String TABLE_PER_SUBCLASS = "3";
+	
+	/** The belong package. */
 	private ModelPackage belongPackage;
 
-	/**
-	 * 父类
-	 */
+	/** 父类. */
 	private BusinessClass parentClass;
 
-	/**
-	 * 子类
-	 */
+	/** 子类. */
 	private BusinessClass childClass;
 
-	/**
-	 * 持久化策略
-	 */
+	/** 持久化策略. */
 	private String persistencePloy;
 
-	/**
-	 * 持久化策略参数列表
-	 */
+	/** 持久化策略参数列表. */
 	private Map<String, String> persistencePloyParams;
 
+	/**
+	 * Instantiates a new inheritance.
+	 */
 	public Inheritance() {
 		this.persistencePloyParams = new HashMap<String, String>();
 	}
 
+	/**
+	 * Instantiates a new inheritance.
+	 *
+	 * @param parentClass
+	 *            the parent class
+	 * @param childClass
+	 *            the child class
+	 */
 	public Inheritance(BusinessClass parentClass, BusinessClass childClass) {
 		this.persistencePloyParams = new HashMap<String, String>();
 		this.parentClass = parentClass;
@@ -56,9 +67,12 @@ public class Inheritance extends AbstractModelElement {
 	}
 
 	/**
-	 * 通过 XML 对象构造 Inheritance
-	 * 
-	 * @param associationElement
+	 * 通过 XML 对象构造 Inheritance.
+	 *
+	 * @param inheritanceElement
+	 *            the inheritance element
+	 * @param bom
+	 *            the bom
 	 */
 	@SuppressWarnings("unchecked")
 	public Inheritance(Element inheritanceElement, BusinessObjectModel bom) {
@@ -110,6 +124,10 @@ public class Inheritance extends AbstractModelElement {
 		}
 	}
 
+	/**
+	 * @param inheritancesElement
+	 * @return
+	 */
 	public Element generateXmlElement(Element inheritancesElement) {
 		Element inheritanceElement = inheritancesElement
 				.addElement("Inheritance");
@@ -136,57 +154,148 @@ public class Inheritance extends AbstractModelElement {
 		return inheritanceElement;
 	}
 
+	/**
+	 * Gets the parent class.
+	 *
+	 * @author mqfdy
+	 * @return the parent class
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessClass getParentClass() {
 		return parentClass;
 	}
 
+	/**
+	 * Sets the parent class.
+	 *
+	 * @author mqfdy
+	 * @param parentClass
+	 *            the new parent class
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setParentClass(BusinessClass parentClass) {
 		this.parentClass = parentClass;
 	}
 
+	/**
+	 * Gets the child class.
+	 *
+	 * @author mqfdy
+	 * @return the child class
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessClass getChildClass() {
 		return childClass;
 	}
 
+	/**
+	 * Sets the child class.
+	 *
+	 * @author mqfdy
+	 * @param childClass
+	 *            the new child class
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setChildClass(BusinessClass childClass) {
 		this.childClass = childClass;
 	}
 
+	/**
+	 * Gets the persistence ploy.
+	 *
+	 * @author mqfdy
+	 * @return the persistence ploy
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getPersistencePloy() {
 		return persistencePloy;
 	}
 
+	/**
+	 * Sets the persistence ploy.
+	 *
+	 * @author mqfdy
+	 * @param persistencePloy
+	 *            the new persistence ploy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPersistencePloy(String persistencePloy) {
 		this.persistencePloy = persistencePloy;
 	}
 
+	/**
+	 * Sets the persistence ploy.
+	 *
+	 * @author mqfdy
+	 * @param persistencePloy
+	 *            the persistence ploy
+	 * @param params
+	 *            the params
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPersistencePloy(String persistencePloy,
 			Map<String, String> params) {
 		this.persistencePloy = persistencePloy;
 		this.persistencePloyParams = params;
 	}
 
+	/**
+	 * Gets the persistence ploy params.
+	 *
+	 * @author mqfdy
+	 * @return the persistence ploy params
+	 * @Date 2018-09-03 09:00
+	 */
 	public Map<String, String> getPersistencePloyParams() {
 		return this.persistencePloyParams;
 	}
 
+	/**
+	 * Sets the persistence ploy params.
+	 *
+	 * @author mqfdy
+	 * @param persistencePloyParams
+	 *            the persistence ploy params
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPersistencePloyParams(
 			Map<String, String> persistencePloyParams) {
 		this.persistencePloyParams = persistencePloyParams;
 	}
 
+	/**
+	 * Gets the belong package.
+	 *
+	 * @author mqfdy
+	 * @return the belong package
+	 * @Date 2018-09-03 09:00
+	 */
 	public ModelPackage getBelongPackage() {
 		return belongPackage;
 	}
 
+	/**
+	 * Sets the belong package.
+	 *
+	 * @author mqfdy
+	 * @param belongPackage
+	 *            the new belong package
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBelongPackage(ModelPackage belongPackage) {
 		this.belongPackage = belongPackage;
 	}
 
+	/**
+	 * @return
+	 */
 	public AbstractModelElement getParent() {
 		return null;// this.belongPackage.getInheritancePackage();
 	}
 
+	/**
+	 * @return
+	 */
 	public List<AbstractModelElement> getChildren() {
 		return EMPTY_CHILD;
 	}

@@ -16,21 +16,51 @@ import com.mqfdy.code.designer.editor.BusinessModelEditorPlugin;
 import com.mqfdy.code.designer.models.ImageKeys;
 import com.mqfdy.code.designer.models.ImageManager;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ModelFilterDialog.
+ *
+ * @author mqfdy
+ */
 public class ModelFilterDialog extends TrayDialog {
 	
+	/** The is include property. */
 	private boolean isIncludeProperty = false;;
+	
+	/** The is include operation. */
 	private boolean isIncludeOperation = false;
+	
+	/** The is include enum element. */
 	private boolean isIncludeEnumElement = false;
 	
+	/** The isincludeproperty. */
 	public static String ISINCLUDEPROPERTY = "isIncludeProperty";;
+	
+	/** The isincludeoperation. */
 	public static String ISINCLUDEOPERATION = "isIncludeOperation";
+	
+	/** The isincludeenumelement. */
 	public static String ISINCLUDEENUMELEMENT = "isIncludeEnumElement";
 	
+	/**
+	 * Instantiates a new model filter dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 */
 	public ModelFilterDialog(Shell parentShell) {
 		super(parentShell);
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText("模型搜索项配置");
@@ -38,6 +68,15 @@ public class ModelFilterDialog extends TrayDialog {
 				ImageKeys.IMG_MODEL_FILTER));
 	}
 	
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createDialogArea(Composite parent) {
 		Composite com = new Composite(parent, SWT.NONE);
 		// 初始化窗口
@@ -104,6 +143,9 @@ public class ModelFilterDialog extends TrayDialog {
 		return parent;
 	}
 	
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		

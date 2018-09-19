@@ -9,58 +9,48 @@ import org.dom4j.Element;
 
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 校验器
- * 
+ * 校验器.
+ *
  * @author mqfdy
- * 
  */
 public class Validator extends AbstractModelElement implements Cloneable {
 
-	/**
-	 * 所属的属性
-	 */
+	/** 所属的属性. */
 	private Property belongProperty;
 
-	/**
-	 * 校验器类型
-	 */
+	/** 校验器类型. */
 	private String validatorType;
 
-	/**
-	 * 校验错误提示信息
-	 */
+	/** 校验错误提示信息. */
 	private String validatorMessage;
 
-	/**
-	 * 校验表达式
-	 */
+	/** 校验表达式. */
 	private String expression;
 
-	/**
-	 * 自定义校验器类
-	 */
+	/** 自定义校验器类. */
 	private String validatorClass;
 
-	/**
-	 * 接口方法名
-	 */
+	/** 接口方法名. */
 	private String interfaceName;
 
-	/**
-	 * 校验器参数列表
-	 */
+	/** 校验器参数列表. */
 	private Map<String, String> validatorParams;
 
+	/**
+	 * Instantiates a new validator.
+	 */
 	public Validator() {
 		super();
 		validatorParams = new HashMap<String, String>();
 	}
 
 	/**
-	 * 通过 XML 构造 Validator
-	 * 
+	 * 通过 XML 构造 Validator.
+	 *
 	 * @param validatorElement
+	 *            the validator element
 	 */
 	@SuppressWarnings("unchecked")
 	public Validator(Element validatorElement) {
@@ -98,6 +88,10 @@ public class Validator extends AbstractModelElement implements Cloneable {
 		}
 	}
 
+	/**
+	 * @param validatorsElement
+	 * @return
+	 */
 	public Element generateXmlElement(Element validatorsElement) {
 		Element validatorElement = validatorsElement.addElement("Validator");// Validator节点
 		this.generateBasicAttributes(validatorElement);// 创建Validator节点的一般属性
@@ -124,72 +118,198 @@ public class Validator extends AbstractModelElement implements Cloneable {
 		return validatorElement;
 	}
 
+	/**
+	 * Gets the validator type.
+	 *
+	 * @author mqfdy
+	 * @return the validator type
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getValidatorType() {
 		return validatorType;
 	}
 
+	/**
+	 * Sets the validator type.
+	 *
+	 * @author mqfdy
+	 * @param validatorType
+	 *            the new validator type
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setValidatorType(String validatorType) {
 		this.validatorType = validatorType;
 	}
 
+	/**
+	 * Gets the validator message.
+	 *
+	 * @author mqfdy
+	 * @return the validator message
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getValidatorMessage() {
 		return validatorMessage;
 	}
 
+	/**
+	 * Sets the validator message.
+	 *
+	 * @author mqfdy
+	 * @param validatorMessage
+	 *            the new validator message
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setValidatorMessage(String validatorMessage) {
 		this.validatorMessage = validatorMessage;
 	}
 
+	/**
+	 * Gets the validator params.
+	 *
+	 * @author mqfdy
+	 * @return the validator params
+	 * @Date 2018-09-03 09:00
+	 */
 	public Map<String, String> getValidatorParams() {
 		return validatorParams;
 	}
 
+	/**
+	 * Adds the validator param.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            the key
+	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addValidatorParam(String key, String value) {
 		validatorParams.put(key, value);
 	}
 
+	/**
+	 * Gets the belong property.
+	 *
+	 * @author mqfdy
+	 * @return the belong property
+	 * @Date 2018-09-03 09:00
+	 */
 	public Property getBelongProperty() {
 		return belongProperty;
 	}
 
+	/**
+	 * Sets the belong property.
+	 *
+	 * @author mqfdy
+	 * @param belongProperty
+	 *            the new belong property
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBelongProperty(Property belongProperty) {
 		this.belongProperty = belongProperty;
 	}
 
+	/**
+	 * Gets the expression.
+	 *
+	 * @author mqfdy
+	 * @return the expression
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getExpression() {
 		return expression;
 	}
 
+	/**
+	 * Sets the expression.
+	 *
+	 * @author mqfdy
+	 * @param expression
+	 *            the new expression
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setExpression(String expression) {
 		this.expression = expression;
 	}
 
+	/**
+	 * Gets the validator class.
+	 *
+	 * @author mqfdy
+	 * @return the validator class
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getValidatorClass() {
 		return validatorClass;
 	}
 
+	/**
+	 * Sets the validator class.
+	 *
+	 * @author mqfdy
+	 * @param validatorClass
+	 *            the new validator class
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setValidatorClass(String validatorClass) {
 		this.validatorClass = validatorClass;
 	}
 
+	/**
+	 * Gets the interface name.
+	 *
+	 * @author mqfdy
+	 * @return the interface name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getInterfaceName() {
 		return interfaceName;
 	}
 
+	/**
+	 * Sets the interface name.
+	 *
+	 * @author mqfdy
+	 * @param interfaceName
+	 *            the new interface name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setInterfaceName(String interfaceName) {
 		this.interfaceName = interfaceName;
 	}
 
+	/**
+	 * Sets the validator params.
+	 *
+	 * @author mqfdy
+	 * @param validatorParams
+	 *            the validator params
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setValidatorParams(Map<String, String> validatorParams) {
 		this.validatorParams = validatorParams;
 	}
 
+	/**
+	 * @return
+	 */
 	public Validator clone() {
 		Validator va = new Validator();
 		copy(va);
 		return va;
 	}
 
+	/**
+	 * Copy.
+	 *
+	 * @author mqfdy
+	 * @param va
+	 *            the va
+	 * @Date 2018-09-03 09:00
+	 */
 	public void copy(Validator va) {
 		super.copy(va);
 		va.expression = this.expression;
@@ -200,12 +320,23 @@ public class Validator extends AbstractModelElement implements Cloneable {
 		va.validatorType = this.validatorType;
 	}
 
+	/**
+	 * @return
+	 */
 	public Validator cloneChangeId() {
 		Validator va = new Validator();
 		copyChangeId(va);
 		return va;
 	}
 
+	/**
+	 * Copy change id.
+	 *
+	 * @author mqfdy
+	 * @param va
+	 *            the va
+	 * @Date 2018-09-03 09:00
+	 */
 	public void copyChangeId(Validator va) {
 		super.copyChangeId(va);
 		va.expression = this.expression;
@@ -216,10 +347,16 @@ public class Validator extends AbstractModelElement implements Cloneable {
 		va.validatorType = this.validatorType;
 	}
 
+	/**
+	 * @return
+	 */
 	public AbstractModelElement getParent() {
 		return this.belongProperty;
 	}
 
+	/**
+	 * @return
+	 */
 	public List<AbstractModelElement> getChildren() {
 		return EMPTY_CHILD;
 	}

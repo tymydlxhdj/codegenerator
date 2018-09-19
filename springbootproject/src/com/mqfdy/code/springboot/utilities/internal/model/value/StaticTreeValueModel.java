@@ -18,10 +18,15 @@ import com.mqfdy.code.springboot.utilities.internal.model.AbstractModel;
 import com.mqfdy.code.springboot.utilities.model.value.TreeValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * Implementation of TreeValueModel that can be used for
- * returning an iterator on a static tree, but still allows listeners to be added.
- * Listeners will NEVER be notified of any changes, because there should be none.
+ * Implementation of TreeValueModel that can be used for returning an iterator
+ * on a static tree, but still allows listeners to be added. Listeners will
+ * NEVER be notified of any changes, because there should be none.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class StaticTreeValueModel<E>
 	extends AbstractModel
@@ -35,6 +40,9 @@ public class StaticTreeValueModel<E>
 
 	/**
 	 * Construct a read-only TreeValueModel for the specified nodes.
+	 *
+	 * @param nodes
+	 *            the nodes
 	 */
 	public StaticTreeValueModel(Iterable<? extends E> nodes) {
 		super();

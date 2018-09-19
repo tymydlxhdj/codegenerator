@@ -22,11 +22,18 @@ import com.mqfdy.code.springboot.core.MicroProjectPlugin;
 import com.mqfdy.code.springboot.core.NewMicroProjectOperation;
 import com.mqfdy.code.springboot.core.datasource.DataSourceUtils;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DBWizardPage.
+ *
+ * @author mqfdy
+ */
 public class DBWizardPage extends WizardPage {
 
 	private static final ImageDescriptor WIZBAN_IMAGE = ImageDescriptor.createFromURL(
 			DBWizardPage.class.getClassLoader().getResource("icons/wizban/boot_wizard.png"));
 	
+	/** The operation. */
 	public final NewMicroProjectOperation operation;
 	
 	private static final int SIZING_TEXT_FIELD_WIDTH = 200;
@@ -36,6 +43,12 @@ public class DBWizardPage extends WizardPage {
 	private String connectName = null;
 
 	
+	/**
+	 * Instantiates a new DB wizard page.
+	 *
+	 * @param operation
+	 *            the operation
+	 */
 	protected DBWizardPage(NewMicroProjectOperation operation) {
 		super("DBWizardPage", "新建数据源", WIZBAN_IMAGE);
 		this.operation = operation;
@@ -136,10 +149,25 @@ public class DBWizardPage extends WizardPage {
 			
 	}
 
+	/**
+	 * Gets the connect name.
+	 *
+	 * @author mqfdy
+	 * @return the connect name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getConnectName() {
 		return connectName;
 	}
 
+	/**
+	 * Sets the connect name.
+	 *
+	 * @author mqfdy
+	 * @param connectName
+	 *            the new connect name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setConnectName(String connectName) {
 		this.connectName = connectName;
 		operation.setConnectName(connectName);

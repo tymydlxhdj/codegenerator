@@ -36,6 +36,7 @@ import com.mqfdy.code.designer.editor.utils.Logger;
 import com.mqfdy.code.designer.utils.BusinessModelUtil;
 import com.mqfdy.code.model.graph.Diagram;
 
+// TODO: Auto-generated Javadoc
 /**
  * A ControlContribution that uses a {@link org.eclipse.swt.widgets.Combo} as
  * its control 图放大缩小时的下拉框处理类
@@ -45,12 +46,25 @@ import com.mqfdy.code.model.graph.Diagram;
 public class ZoomComboContributionItem extends ContributionItem implements
 		ZoomListener {
 
+	/** The force set text. */
 	private boolean forceSetText;
+	
+	/** The combo. */
 	private Combo combo;
+	
+	/** The init strings. */
 	private String[] initStrings;
+	
+	/** The toolitem. */
 	private ToolItem toolitem;
+	
+	/** The zoom manager. */
 	private ZoomManager zoomManager;
+	
+	/** The service. */
 	private IPartService service;
+	
+	/** The part listener. */
 	private IPartListener partListener;
 
 	/**
@@ -108,6 +122,14 @@ public class ZoomComboContributionItem extends ContributionItem implements
 		});
 	}
 
+	/**
+	 * Refresh.
+	 *
+	 * @author mqfdy
+	 * @param repopulateCombo
+	 *            the repopulate combo
+	 * @Date 2018-09-03 09:00
+	 */
 	private void refresh(boolean repopulateCombo) {
 		if (combo == null || combo.isDisposed())
 			return;
@@ -143,11 +165,13 @@ public class ZoomComboContributionItem extends ContributionItem implements
 	}
 
 	/**
-	 * Computes the width required by control
-	 * 
+	 * Computes the width required by control.
+	 *
+	 * @author mqfdy
 	 * @param control
 	 *            The control to compute width
 	 * @return int The width required
+	 * @Date 2018-09-03 09:00
 	 */
 	protected int computeWidth(Control control) {
 		return control.computeSize(SWT.DEFAULT, SWT.DEFAULT, true).x;
@@ -156,10 +180,12 @@ public class ZoomComboContributionItem extends ContributionItem implements
 	/**
 	 * Creates and returns the control for this contribution item under the
 	 * given parent composite.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param parent
 	 *            the parent composite
 	 * @return the new control
+	 * @Date 2018-09-03 09:00
 	 */
 	protected Control createControl(Composite parent) {
 		combo = new Combo(parent, SWT.READ_ONLY | SWT.DROP_DOWN);
@@ -190,6 +216,8 @@ public class ZoomComboContributionItem extends ContributionItem implements
 	}
 
 	/**
+	 * Dispose.
+	 *
 	 * @see org.eclipse.jface.action.ContributionItem#dispose()
 	 */
 	public void dispose() {
@@ -209,9 +237,11 @@ public class ZoomComboContributionItem extends ContributionItem implements
 	 * method calls the <code>createControl</code> framework method. Subclasses
 	 * must implement <code>createControl</code> rather than overriding this
 	 * method.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param parent
 	 *            The parent of the control to fill
+	 * @Date 2018-09-03 09:00
 	 */
 	public final void fill(Composite parent) {
 		createControl(parent);
@@ -220,11 +250,13 @@ public class ZoomComboContributionItem extends ContributionItem implements
 	/**
 	 * The control item implementation of this <code>IContributionItem</code>
 	 * method throws an exception since controls cannot be added to menus.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param parent
 	 *            The menu
 	 * @param index
 	 *            Menu index
+	 * @Date 2018-09-03 09:00
 	 */
 	public final void fill(Menu parent, int index) {
 		Assert.isTrue(false, "Can't add a control to a menu");//$NON-NLS-1$
@@ -236,11 +268,13 @@ public class ZoomComboContributionItem extends ContributionItem implements
 	 * control under the given parent, and then creates a new tool item to hold
 	 * it. Subclasses must implement <code>createControl</code> rather than
 	 * overriding this method.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param parent
 	 *            The ToolBar to add the new control to
 	 * @param index
 	 *            Index
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fill(ToolBar parent, int index) {
 		toolitem = new ToolItem(parent, SWT.SEPARATOR, index);
@@ -250,18 +284,22 @@ public class ZoomComboContributionItem extends ContributionItem implements
 
 	/**
 	 * Returns the zoomManager.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return ZoomManager
+	 * @Date 2018-09-03 09:00
 	 */
 	public ZoomManager getZoomManager() {
 		return zoomManager;
 	}
 
 	/**
-	 * Sets the ZoomManager
-	 * 
+	 * Sets the ZoomManager.
+	 *
+	 * @author mqfdy
 	 * @param zm
 	 *            The ZoomManager
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setZoomManager(ZoomManager zm) {
 		if (zoomManager == zm)
@@ -277,6 +315,10 @@ public class ZoomComboContributionItem extends ContributionItem implements
 	}
 
 	/**
+	 * Handle widget default selected.
+	 *
+	 * @param event
+	 *            the event
 	 * @see org.eclipse.swt.events.SelectionListener#widgetDefaultSelected(SelectionEvent)
 	 */
 	private void handleWidgetDefaultSelected(SelectionEvent event) {
@@ -301,6 +343,10 @@ public class ZoomComboContributionItem extends ContributionItem implements
 	}
 
 	/**
+	 * Handle widget selected.
+	 *
+	 * @param event
+	 *            the event
 	 * @see org.eclipse.swt.events.SelectionListener#widgetSelected(SelectionEvent)
 	 */
 	private void handleWidgetSelected(SelectionEvent event) {
@@ -310,6 +356,10 @@ public class ZoomComboContributionItem extends ContributionItem implements
 	}
 
 	/**
+	 * Zoom changed.
+	 *
+	 * @param zoom
+	 *            the zoom
 	 * @see ZoomListener#zoomChanged(double)
 	 */
 	public void zoomChanged(double zoom) {

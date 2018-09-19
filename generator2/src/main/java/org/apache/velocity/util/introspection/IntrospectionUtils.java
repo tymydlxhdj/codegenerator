@@ -1,5 +1,6 @@
 package org.apache.velocity.util.introspection;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -20,6 +21,7 @@ package org.apache.velocity.util.introspection;
  */
 
 /**
+ * The Class IntrospectionUtils.
  *
  * @author <a href="mailto:jvanzyl@apache.org">Jason van Zyl</a>
  * @author <a href="mailto:bob@werken.com">Bob McWhirter</a>
@@ -34,25 +36,29 @@ public class IntrospectionUtils
 {
 
     /**
-     * Determines whether a type represented by a class object is
-     * convertible to another type represented by a class object using a
-     * method invocation conversion, treating object types of primitive
-     * types as if they were primitive types (that is, a Boolean actual
-     * parameter type matches boolean primitive formal type). This behavior
-     * is because this method is used to determine applicable methods for
-     * an actual parameter list, and primitive types are represented by
-     * their object duals in reflective method calls.
-     *
-     * @param formal the formal parameter type to which the actual
-     * parameter type should be convertible
-     * @param actual the actual parameter type.
-     * @param possibleVarArg whether or not we're dealing with the last parameter
-     * in the method declaration
-     * @return true if either formal type is assignable from actual type,
-     * or formal is a primitive type and actual is its corresponding object
-     * type or an object type of a primitive type that can be converted to
-     * the formal type.
-     */
+	 * Determines whether a type represented by a class object is convertible to
+	 * another type represented by a class object using a method invocation
+	 * conversion, treating object types of primitive types as if they were
+	 * primitive types (that is, a Boolean actual parameter type matches boolean
+	 * primitive formal type). This behavior is because this method is used to
+	 * determine applicable methods for an actual parameter list, and primitive
+	 * types are represented by their object duals in reflective method calls.
+	 *
+	 * @author mqfdy
+	 * @param formal
+	 *            the formal parameter type to which the actual parameter type
+	 *            should be convertible
+	 * @param actual
+	 *            the actual parameter type.
+	 * @param possibleVarArg
+	 *            whether or not we're dealing with the last parameter in the
+	 *            method declaration
+	 * @return true if either formal type is assignable from actual type, or
+	 *         formal is a primitive type and actual is its corresponding object
+	 *         type or an object type of a primitive type that can be converted
+	 *         to the formal type.
+	 * @Date 2018-9-3 11:38:39
+	 */
     public static boolean isMethodInvocationConvertible(Class formal,
                                                         Class actual,
                                                         boolean possibleVarArg)
@@ -116,21 +122,26 @@ public class IntrospectionUtils
     }
 
     /**
-     * Determines whether a type represented by a class object is
-     * convertible to another type represented by a class object using a
-     * method invocation conversion, without matching object and primitive
-     * types. This method is used to determine the more specific type when
-     * comparing signatures of methods.
-     *
-     * @param formal the formal parameter type to which the actual
-     * parameter type should be convertible
-     * @param actual the actual parameter type.
-     * @param possibleVarArg whether or not we're dealing with the last parameter
-     * in the method declaration
-     * @return true if either formal type is assignable from actual type,
-     * or formal and actual are both primitive types and actual can be
-     * subject to widening conversion to formal.
-     */
+	 * Determines whether a type represented by a class object is convertible to
+	 * another type represented by a class object using a method invocation
+	 * conversion, without matching object and primitive types. This method is
+	 * used to determine the more specific type when comparing signatures of
+	 * methods.
+	 *
+	 * @author mqfdy
+	 * @param formal
+	 *            the formal parameter type to which the actual parameter type
+	 *            should be convertible
+	 * @param actual
+	 *            the actual parameter type.
+	 * @param possibleVarArg
+	 *            whether or not we're dealing with the last parameter in the
+	 *            method declaration
+	 * @return true if either formal type is assignable from actual type, or
+	 *         formal and actual are both primitive types and actual can be
+	 *         subject to widening conversion to formal.
+	 * @Date 2018-9-3 11:38:39
+	 */
     public static boolean isStrictMethodInvocationConvertible(Class formal,
                                                               Class actual,
                                                               boolean possibleVarArg)

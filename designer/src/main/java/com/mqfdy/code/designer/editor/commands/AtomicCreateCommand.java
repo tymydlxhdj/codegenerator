@@ -7,6 +7,7 @@ import com.mqfdy.code.model.ComplexDataType;
 import com.mqfdy.code.model.DataTransferObject;
 import com.mqfdy.code.model.Enumeration;
 
+// TODO: Auto-generated Javadoc
 /**
  * 添加节点
  * 
@@ -19,8 +20,10 @@ import com.mqfdy.code.model.Enumeration;
  */
 public class AtomicCreateCommand extends org.eclipse.gef.commands.Command {
 
+	/** The child. */
 	private AbstractModelElement child;
 
+	/** The parent. */
 	private AbstractModelElement parent;
 
 	/**
@@ -28,6 +31,9 @@ public class AtomicCreateCommand extends org.eclipse.gef.commands.Command {
 	 * possible values.
 	 * <p>
 	 * Only interesing for {@link ColumnElement} and {@link MethodElement}.
+	 *
+	 * @param visibility
+	 *            the visibility
 	 */
 	// private String visibility;
 
@@ -40,6 +46,9 @@ public class AtomicCreateCommand extends org.eclipse.gef.commands.Command {
 		// this.visibility = visibility;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		if (child == null || parent == null) {
@@ -55,11 +64,17 @@ public class AtomicCreateCommand extends org.eclipse.gef.commands.Command {
 				|| child instanceof ComplexDataType;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 		redo();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void redo() {
 		// CommandUtil.computeNodeName(parent,child);
@@ -74,14 +89,33 @@ public class AtomicCreateCommand extends org.eclipse.gef.commands.Command {
 		// }
 	}
 
+	/**
+	 * Sets the child.
+	 *
+	 * @author mqfdy
+	 * @param subpart
+	 *            the new child
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setChild(AbstractModelElement subpart) {
 		child = subpart;
 	}
 
+	/**
+	 * Sets the parent.
+	 *
+	 * @author mqfdy
+	 * @param newParent
+	 *            the new parent
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setParent(AbstractModelElement newParent) {
 		parent = newParent;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void undo() {
 		// Element uml2Element = child.getUML2Element();

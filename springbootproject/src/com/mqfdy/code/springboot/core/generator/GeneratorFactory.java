@@ -14,12 +14,17 @@ import com.mqfdy.code.springboot.core.generator.model.PomGenerator;
  *
  */
 public class GeneratorFactory {
+	
 	/**
-	 * 生成
+	 * 生成.
+	 *
 	 * @param genProject
+	 *            the gen project
 	 * @param basePackage
-	 * @param projectType 
-	 * @return
+	 *            the base package
+	 * @param projectType
+	 *            the project type
+	 * @return the list< abstract generator>
 	 */
 	public static List<AbstractGenerator> createGenerators(IProject genProject,String basePackage, String projectType){
 		List<AbstractGenerator> gens = new ArrayList<AbstractGenerator>();

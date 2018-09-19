@@ -26,6 +26,7 @@ import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.runtime.parser.ParseException;
 import org.apache.velocity.util.introspection.Info;
 
+// TODO: Auto-generated Javadoc
 /**
  *  Application-level exception thrown when a resource of any type
  *  has a syntax or other error which prevents it from being parsed.
@@ -40,9 +41,8 @@ import org.apache.velocity.util.introspection.Info;
  */
 public class ParseErrorException extends VelocityException
 {
-    /**
-     * Version Id for serializable
-     */
+    
+    /** Version Id for serializable. */
     private static final long serialVersionUID = -6665197935086306472L;
 
     /**
@@ -61,13 +61,12 @@ public class ParseErrorException extends VelocityException
     private String templateName = "*unset*";
 
     /**
-     * If applicable, contains the invalid syntax or reference that triggered this exception
-     */
+	 * If applicable, contains the invalid syntax or reference that triggered
+	 * this exception.
+	 */
     private String invalidSyntax;
     
-    /**
-     * If we modify the message, then we set this
-     */
+    /** If we modify the message, then we set this. */
     private String msg = null;
 
     /**
@@ -80,14 +79,18 @@ public class ParseErrorException extends VelocityException
           super(exceptionMessage);
     }
 
+    /** The Constant lexError. */
     private static final Pattern lexError = Pattern.compile("Lexical error.*TokenMgrError.*line (\\d+),.*column (\\d+)\\.(.*)");
     
     /**
-     * Create a ParseErrorException with the given ParseException.
-     *
-     * @param pex the parsing exception
-     * @since 1.5
-     */
+	 * Create a ParseErrorException with the given ParseException.
+	 *
+	 * @param pex
+	 *            the parsing exception
+	 * @param templName
+	 *            the templ name
+	 * @since 1.5
+	 */
     public ParseErrorException(ParseException pex, String templName)
     {
         super(pex.getMessage());
@@ -130,11 +133,14 @@ public class ParseErrorException extends VelocityException
     }
 
     /**
-     * Create a ParseErrorException with the given ParseException.
-     *
-     * @param pex the parsing exception
-     * @since 1.5
-     */
+	 * Create a ParseErrorException with the given ParseException.
+	 *
+	 * @param pex
+	 *            the parsing exception
+	 * @param templName
+	 *            the templ name
+	 * @since 1.5
+	 */
     public ParseErrorException(VelocityException pex, String templName)
     {
         super(pex.getMessage());
@@ -165,12 +171,14 @@ public class ParseErrorException extends VelocityException
 
 
     /**
-     * Create a ParseErrorRuntimeException with the given message and info
-     * 
-     * @param exceptionMessage the error exception message
-     * @param info an Info object with the current template info
-     * @since 1.5
-     */
+	 * Create a ParseErrorRuntimeException with the given message and info.
+	 *
+	 * @param exceptionMessage
+	 *            the error exception message
+	 * @param info
+	 *            an Info object with the current template info
+	 * @since 1.5
+	 */
     public ParseErrorException(String exceptionMessage, Info info)
     {
         super(exceptionMessage);
@@ -180,13 +188,16 @@ public class ParseErrorException extends VelocityException
     }    
 
     /**
-     * Create a ParseErrorRuntimeException with the given message and info
-     * 
-     * @param exceptionMessage the error exception message
-     * @param info an Info object with the current template info
-     * @param invalidSyntax the invalid syntax or reference triggering this exception
-     * @since 1.5
-     */
+	 * Create a ParseErrorRuntimeException with the given message and info.
+	 *
+	 * @param exceptionMessage
+	 *            the error exception message
+	 * @param info
+	 *            an Info object with the current template info
+	 * @param invalidSyntax
+	 *            the invalid syntax or reference triggering this exception
+	 * @since 1.5
+	 */
     public ParseErrorException(String exceptionMessage, 
             Info info, String invalidSyntax)
     {
@@ -247,8 +258,13 @@ public class ParseErrorException extends VelocityException
     }
 
     /**
-     * Return our custum message if we have one, else return the default message
-     */
+	 * Return our custum message if we have one, else return the default
+	 * message.
+	 *
+	 * @author mqfdy
+	 * @return the message
+	 * @Date 2018-9-3 11:38:39
+	 */
     public String getMessage()
     {
       if (msg != null) return msg;

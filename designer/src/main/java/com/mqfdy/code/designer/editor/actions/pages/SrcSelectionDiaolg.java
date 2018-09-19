@@ -48,28 +48,50 @@ import com.mqfdy.code.model.BusinessClass;
 import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.model.BusinessOperation;
 
+// TODO: Auto-generated Javadoc
 /**
- * 选择source folder对话框
- * 
+ * 选择source folder对话框.
+ *
  * @author mqfdy
- * 
  */
 public class SrcSelectionDiaolg extends TrayDialog {
 
 	
+	/** The ok button. */
 	private Button okButton;
+	
+	/** The label desc. */
 	private Label labelDesc;
+	
+	/** The tree viewer. */
 	private TreeViewer treeViewer;
+	
+	/** The select path. */
 	private String selectPath;
+	
+	/** The src paths. */
 	private List<String> srcPaths;
 
+	/**
+	 * Instantiates a new src selection diaolg.
+	 *
+	 * @param shell
+	 *            the shell
+	 * @param srcPaths
+	 *            the src paths
+	 */
 	public SrcSelectionDiaolg(Shell shell,List<String> srcPaths) {
 		super(shell);
 		this.srcPaths = srcPaths;
 	}
 
 	/**
-	 * 操作按钮
+	 * 操作按钮.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void createButtonsForButtonBar(Composite parent) {
 		okButton = createButton(parent, IDialogConstants.OK_ID,
@@ -79,6 +101,14 @@ public class SrcSelectionDiaolg extends TrayDialog {
 				IDialogConstants.CANCEL_LABEL, false);
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void configureShell(Shell newShell) {
 		// TODO Auto-generated method stub
@@ -90,6 +120,15 @@ public class SrcSelectionDiaolg extends TrayDialog {
 		newShell.setImage(icon);
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createDialogArea(Composite parent) {
 		GridData gridData = new GridData();
 		gridData.horizontalAlignment = SWT.FILL;
@@ -146,35 +185,93 @@ public class SrcSelectionDiaolg extends TrayDialog {
 		return parent;
 	}
 	
+	/**
+	 * Gets the result.
+	 *
+	 * @author mqfdy
+	 * @return the result
+	 * @Date 2018-09-03 09:00
+	 */
 	protected String getResult(){
 		return selectPath;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		super.okPressed();
 	}
 
+	/**
+	 * Gets the ok button.
+	 *
+	 * @author mqfdy
+	 * @return the ok button
+	 * @Date 2018-09-03 09:00
+	 */
 	public Button getOkButton() {
 		return okButton;
 	}
 	
+	/**
+	 * The Class MyTreeContenetProvider.
+	 *
+	 * @author mqfdy
+	 */
 	class MyTreeContenetProvider implements ITreeContentProvider{
 
+        /**
+		 * Gets the children.
+		 *
+		 * @author mqfdy
+		 * @param parentElement
+		 *            the parent element
+		 * @return the children
+		 * @Date 2018-09-03 09:00
+		 */
         public Object[] getChildren(Object parentElement) {
             return null;
         }
         
         
 
+        /**
+		 * Gets the parent.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @return the parent
+		 * @Date 2018-09-03 09:00
+		 */
         public Object getParent(Object element) {
             return null;
         }
 
+        /**
+		 * Checks for children.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @return true, if successful
+		 * @Date 2018-09-03 09:00
+		 */
         public boolean hasChildren(Object element) {
             return false;
         }
 
+        /**
+		 * Gets the elements.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @return the elements
+		 * @Date 2018-09-03 09:00
+		 */
         public Object[] getElements(Object element) {
         	
         	if(element instanceof List){
@@ -184,10 +281,25 @@ public class SrcSelectionDiaolg extends TrayDialog {
             return null;
         }
 
+        /**
+         * 
+         */
         public void dispose() {
             
         }
 
+        /**
+		 * Input changed.
+		 *
+		 * @author mqfdy
+		 * @param viewer
+		 *            the viewer
+		 * @param oldInput
+		 *            the old input
+		 * @param newInput
+		 *            the new input
+		 * @Date 2018-09-03 09:00
+		 */
         public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
             
         }
@@ -195,34 +307,87 @@ public class SrcSelectionDiaolg extends TrayDialog {
     }
 
 	
+	/**
+	 * The Class MyTreeLableProvider.
+	 *
+	 * @author mqfdy
+	 */
 	class MyTreeLableProvider implements ILabelProvider{
 
+		/**
+		 * Adds the listener.
+		 *
+		 * @author mqfdy
+		 * @param arg0
+		 *            the arg 0
+		 * @Date 2018-09-03 09:00
+		 */
 		public void addListener(ILabelProviderListener arg0) {
 			// TODO Auto-generated method stub
 			
 		}
 
+		/**
+		 * 
+		 */
 		public void dispose() {
 			// TODO Auto-generated method stub
 			
 		}
 
+		/**
+		 * Checks if is label property.
+		 *
+		 * @author mqfdy
+		 * @param arg0
+		 *            the arg 0
+		 * @param arg1
+		 *            the arg 1
+		 * @return true, if is label property
+		 * @Date 2018-09-03 09:00
+		 */
 		public boolean isLabelProperty(Object arg0, String arg1) {
 			// TODO Auto-generated method stub
 			return false;
 		}
 
+		/**
+		 * Removes the listener.
+		 *
+		 * @author mqfdy
+		 * @param arg0
+		 *            the arg 0
+		 * @Date 2018-09-03 09:00
+		 */
 		public void removeListener(ILabelProviderListener arg0) {
 			// TODO Auto-generated method stub
 			
 		}
 
+		/**
+		 * Gets the image.
+		 *
+		 * @author mqfdy
+		 * @param arg0
+		 *            the arg 0
+		 * @return the image
+		 * @Date 2018-09-03 09:00
+		 */
 		public Image getImage(Object arg0) {
 			// TODO Auto-generated method stub
 			return ImageManager.getInstance().getImageDescriptor(
 					ImageKeys.IMG_TREE_FOLDER).createImage();
 		}
 
+		/**
+		 * Gets the text.
+		 *
+		 * @author mqfdy
+		 * @param obj
+		 *            the obj
+		 * @return the text
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getText(Object obj) {
 			if(obj instanceof String){
 				return (String)obj;

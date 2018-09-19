@@ -19,16 +19,17 @@ import com.mqfdy.code.designer.editor.commands.NodeSetConstraintCommand;
 import com.mqfdy.code.designer.editor.part.NodeEditPart;
 import com.mqfdy.code.model.AbstractModelElement;
 
+// TODO: Auto-generated Javadoc
 /**
  * 布局策略 Layout policy for the modelRoot edit part of the class diagram editor.
- * 
- * @see org.eclipse.gef.editpolicies.XYLayoutEditPolicy
- * 
+ *
  * @author mqfdy
- * 
+ * @see org.eclipse.gef.editpolicies.XYLayoutEditPolicy
  */
 public class OmXYLayoutEditPolicy extends
 		org.eclipse.gef.editpolicies.XYLayoutEditPolicy {
+	
+	/** The child. */
 	private NodeEditPart child;
 
 	/**
@@ -58,6 +59,16 @@ public class OmXYLayoutEditPolicy extends
 	 * Returns command after a child's constraint has been changed.
 	 * 
 	 * 图形对象被改变位置或者大小改变时的命令
+	 *
+	 * @author mqfdy
+	 * @param req
+	 *            the req
+	 * @param nodePart
+	 *            the node part
+	 * @param constraint
+	 *            the constraint
+	 * @return the command
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	protected Command createChangeConstraintCommand(ChangeBoundsRequest req,
@@ -74,6 +85,14 @@ public class OmXYLayoutEditPolicy extends
 
 	/**
 	 * Never used but must be implemented.
+	 *
+	 * @author mqfdy
+	 * @param child
+	 *            the child
+	 * @param constraint
+	 *            the constraint
+	 * @return the command
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	protected Command createChangeConstraintCommand(EditPart child,
@@ -86,6 +105,12 @@ public class OmXYLayoutEditPolicy extends
 
 	/**
 	 * Returns the command to be used after a new element has been created.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @return the creates the command
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	protected Command getCreateCommand(CreateRequest request) {
@@ -105,6 +130,12 @@ public class OmXYLayoutEditPolicy extends
 	/**
 	 * Calculates the proper constraint for a child being added.
 	 * createAddCommand is called afterwards.
+	 *
+	 * @author mqfdy
+	 * @param generic
+	 *            the generic
+	 * @return the adds the command
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	protected Command getAddCommand(Request generic) {
@@ -143,6 +174,14 @@ public class OmXYLayoutEditPolicy extends
 
 	/**
 	 * Command used when a child has been added. Creates a new NodeAddCommand.
+	 *
+	 * @author mqfdy
+	 * @param child
+	 *            the child
+	 * @param constraint
+	 *            the constraint
+	 * @return the command
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	protected Command createAddCommand(EditPart child, Object constraint) {

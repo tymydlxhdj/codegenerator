@@ -14,6 +14,7 @@ import java.lang.reflect.Field;
 import java.sql.Types;
 import java.text.Collator;
 
+// TODO: Auto-generated Javadoc
 /**
  * Associate the Java constant and the JDBC type name.
  * These are derived from java.sql.Types.
@@ -56,6 +57,10 @@ public final class JDBCType
 
 	/**
 	 * Return the name of the type, as defined in java.sql.Types.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public String name() {
 		return this.name;
@@ -64,6 +69,10 @@ public final class JDBCType
 
 	/**
 	 * Return the type code, as defined in java.sql.Types.
+	 *
+	 * @author mqfdy
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public int code() {
 		return this.code;
@@ -72,6 +81,14 @@ public final class JDBCType
 
 	// ********** printing and displaying **********
 
+	/**
+	 * Append to.
+	 *
+	 * @author mqfdy
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
+	 */
 	public void appendTo(StringBuilder sb) {
 		sb.append(this.name);
 	}
@@ -108,6 +125,13 @@ public final class JDBCType
 	private static JDBCType[] TYPES;		// pseudo 'final' - lazy-initialized
 
 
+	/**
+	 * Types.
+	 *
+	 * @author mqfdy
+	 * @return the JDBC type[]
+	 * @Date 2018-09-03 09:00
+	 */
 	public synchronized static JDBCType[] types() {
 		if (TYPES == null) {
 			TYPES = buildTypes();
@@ -117,6 +141,10 @@ public final class JDBCType
 
 	/**
 	 * Return the JDBC type for the specified type code (e.g. Types.VARCHAR).
+	 *
+	 * @param code
+	 *            the code
+	 * @return the JDBC type
 	 * @see java.sql.Types
 	 */
 	public static JDBCType type(int code) {
@@ -131,6 +159,10 @@ public final class JDBCType
 
 	/**
 	 * Return the JDBC type for the specified type name (e.g. "VARCHAR").
+	 *
+	 * @param name
+	 *            the name
+	 * @return the JDBC type
 	 * @see java.sql.Types
 	 */
 	public static JDBCType type(String name) {

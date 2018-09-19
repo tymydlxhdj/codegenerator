@@ -56,23 +56,60 @@ import com.mqfdy.code.model.PropertyGroup;
 import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.resource.validator.ValiResult;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ValiResultPage.
+ *
+ * @author mqfdy
+ */
 public class ValiResultPage extends Composite {
 
+	/** The table viewer. */
 	private TableViewer tableViewer;
+	
+	/** The table. */
 	private Table table;
+	
+	/** The vali result. */
 	private List<ValiResult> valiResult;
+	
+	/** The file path. */
 	private String filePath;
+	
+	/** The action group. */
 	private TableViewerAuthActionGroup actionGroup;
+	
+	/** The menu. */
 	private MenuManager menu;
+	
+	/** The delete action. */
 	private Action deleteAction;
+	
+	/** The delete all action. */
 	private Action deleteAllAction;
 	
+	/**
+	 * Instantiates a new vali result page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 */
 	public ValiResultPage(Composite parent, int style) {
 		super(parent, style);
 		// TODO Auto-generated constructor stub
 		createContents(this);
 	}
 
+	/**
+	 * Creates the contents.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContents(Composite composite) {
 		GridData gridData = new GridData();
 		gridData.horizontalAlignment = SWT.FILL;
@@ -357,6 +394,12 @@ public class ValiResultPage extends Composite {
 		});
 	}
 	
+	/**
+	 * Reset menu.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void resetMenu(){
 		menu.removeAll();
 		
@@ -373,16 +416,40 @@ public class ValiResultPage extends Composite {
 			actionGroup.fillContextMenu(menu, deleteAllAction);
 		}
 	}
+	
+	/**
+	 * Refresh.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void refresh() {
 		tableViewer.setInput(valiResult);
 		tableViewer.refresh();
 	}
+	
+	/**
+	 * Sets the data.
+	 *
+	 * @author mqfdy
+	 * @param valiResult
+	 *            the new data
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setData(List<ValiResult> valiResult) {
 		this.valiResult = valiResult;
 		tableViewer.setInput(valiResult);
 		tableViewer.refresh();
 	}
 
+	/**
+	 * Sets the file path.
+	 *
+	 * @author mqfdy
+	 * @param filePath
+	 *            the new file path
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}

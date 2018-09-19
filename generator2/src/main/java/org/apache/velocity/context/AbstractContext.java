@@ -1,5 +1,6 @@
 package org.apache.velocity.context;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -51,72 +52,81 @@ package org.apache.velocity.context;
 public abstract class AbstractContext extends InternalContextBase
     implements Context
 {
-    /**
-     *  the chained Context if any
-     */
+    
+    /** the chained Context if any. */
     private   Context  innerContext = null;
 
     /**
-     *  Implement to return a value from the context storage.
-     *  <br><br>
-     *  The implementation of this method is required for proper
-     *  operation of a Context implementation in general
-     *  Velocity use.
-     *
-     *  @param key key whose associated value is to be returned
-     *  @return object stored in the context
-     */
+	 * Implement to return a value from the context storage. <br>
+	 * <br>
+	 * The implementation of this method is required for proper operation of a
+	 * Context implementation in general Velocity use.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            key whose associated value is to be returned
+	 * @return object stored in the context
+	 * @Date 2018-9-3 11:38:27
+	 */
     public abstract Object internalGet( String key );
 
     /**
-     *  Implement to put a value into the context storage.
-     *  <br><br>
-     *  The implementation of this method is required for
-     *  proper operation of a Context implementation in
-     *  general Velocity use.
-     *
-     *  @param key key with which to associate the value
-     *  @param value value to be associated with the key
-     *  @return previously stored value if exists, or null
-     */
+	 * Implement to put a value into the context storage. <br>
+	 * <br>
+	 * The implementation of this method is required for proper operation of a
+	 * Context implementation in general Velocity use.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            key with which to associate the value
+	 * @param value
+	 *            value to be associated with the key
+	 * @return previously stored value if exists, or null
+	 * @Date 2018-9-3 11:38:27
+	 */
     public abstract Object internalPut( String key, Object value );
 
     /**
-     *  Implement to determine if a key is in the storage.
-     *  <br><br>
-     *  Currently, this method is not used internally by
-     *  the Velocity engine.
-     *
-     *   @param key key to test for existance
-     *   @return true if found, false if not
-     */
+	 * Implement to determine if a key is in the storage. <br>
+	 * <br>
+	 * Currently, this method is not used internally by the Velocity engine.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            key to test for existance
+	 * @return true if found, false if not
+	 * @Date 2018-9-3 11:38:27
+	 */
     public abstract boolean internalContainsKey(Object key);
 
     /**
-     *  Implement to return an object array of key
-     *  strings from your storage.
-     *  <br><br>
-     *  Currently, this method is not used internally by
-     *  the Velocity engine.
-     *
-     *  @return array of keys
-     */
+	 * Implement to return an object array of key strings from your storage.
+	 * <br>
+	 * <br>
+	 * Currently, this method is not used internally by the Velocity engine.
+	 *
+	 * @author mqfdy
+	 * @return array of keys
+	 * @Date 2018-9-3 11:38:27
+	 */
     public abstract Object[] internalGetKeys();
 
     /**
-     *  I mplement to remove an item from your storage.
-     *  <br><br>
-     *  Currently, this method is not used internally by
-     *  the Velocity engine.
-     *
-     *  @param key key to remove
-     *  @return object removed if exists, else null
-     */
+	 * I mplement to remove an item from your storage. <br>
+	 * <br>
+	 * Currently, this method is not used internally by the Velocity engine.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            key to remove
+	 * @return object removed if exists, else null
+	 * @Date 2018-9-3 11:38:27
+	 */
     public abstract Object internalRemove(Object key);
 
     /**
-     *  default CTOR
-     */
+	 * default CTOR.
+	 */
     public AbstractContext()
     {
     }
@@ -144,13 +154,17 @@ public abstract class AbstractContext extends InternalContextBase
     }
 
     /**
-     * Adds a name/value pair to the context.
-     *
-     * @param key   The name to key the provided value with.
-     * @param value The corresponding value.
-     * @return Object that was replaced in the the Context if
-     *         applicable or null if not.
-     */
+	 * Adds a name/value pair to the context.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            The name to key the provided value with.
+	 * @param value
+	 *            The corresponding value.
+	 * @return Object that was replaced in the the Context if applicable or null
+	 *         if not.
+	 * @Date 2018-9-3 11:38:27
+	 */
     public Object put(String key, Object value)
     {
         /*
@@ -165,15 +179,18 @@ public abstract class AbstractContext extends InternalContextBase
     }
 
     /**
-     *  Gets the value corresponding to the provided key from the context.
-     *
-     *  Supports the chaining context mechanism.  If the 'local' context
-     *  doesn't have the value, we try to get it from the chained context.
-     *
-     *  @param key The name of the desired value.
-     *  @return    The value corresponding to the provided key or null if
-     *             the key param is null.
-     */
+	 * Gets the value corresponding to the provided key from the context.
+	 * 
+	 * Supports the chaining context mechanism. If the 'local' context doesn't
+	 * have the value, we try to get it from the chained context.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            The name of the desired value.
+	 * @return The value corresponding to the provided key or null if the key
+	 *         param is null.
+	 * @Date 2018-9-3 11:38:27
+	 */
     public Object get(String key)
     {
         /*
@@ -201,12 +218,15 @@ public abstract class AbstractContext extends InternalContextBase
     }
 
     /**
-     *  Indicates whether the specified key is in the context.  Provided for
-     *  debugging purposes.
-     *
-     * @param key The key to look for.
-     * @return true if the key is in the context, false if not.
-     */
+	 * Indicates whether the specified key is in the context. Provided for
+	 * debugging purposes.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            The key to look for.
+	 * @return true if the key is in the context, false if not.
+	 * @Date 2018-9-3 11:38:27
+	 */
     public boolean containsKey(Object key)
     {
         if (key == null)
@@ -224,22 +244,28 @@ public abstract class AbstractContext extends InternalContextBase
     }
 
     /**
-     *  Get all the keys for the values in the context
-     *  @return Object[] of keys in the Context. Does not return
-     *          keys in chained context.
-     */
+	 * Get all the keys for the values in the context.
+	 *
+	 * @author mqfdy
+	 * @return Object[] of keys in the Context. Does not return keys in chained
+	 *         context.
+	 * @Date 2018-9-3 11:38:27
+	 */
     public Object[] getKeys()
     {
         return internalGetKeys();
     }
 
     /**
-     * Removes the value associated with the specified key from the context.
-     *
-     * @param key The name of the value to remove.
-     * @return    The value that the key was mapped to, or <code>null</code>
-     *            if unmapped.
-     */
+	 * Removes the value associated with the specified key from the context.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            The name of the value to remove.
+	 * @return The value that the key was mapped to, or <code>null</code> if
+	 *         unmapped.
+	 * @Date 2018-9-3 11:38:27
+	 */
     public Object remove(Object key)
     {
         if (key == null)
@@ -251,10 +277,12 @@ public abstract class AbstractContext extends InternalContextBase
     }
 
     /**
-     *  returns innerContext if one is chained
-     *
-     *  @return Context if chained, <code>null</code> if not
-     */
+	 * returns innerContext if one is chained.
+	 *
+	 * @author mqfdy
+	 * @return Context if chained, <code>null</code> if not
+	 * @Date 2018-9-3 11:38:27
+	 */
     public Context getChainedContext()
     {
         return innerContext;

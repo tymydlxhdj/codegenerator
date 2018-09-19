@@ -58,12 +58,15 @@ import com.mqfdy.code.designer.models.ImageKeys;
 import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.designer.utils.BusinessModelUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 过滤树
- * 复制FilteredTree，需改变protected方法doCreateRefreshJob
+ * 过滤树 复制FilteredTree，需改变protected方法doCreateRefreshJob.
+ *
+ * @author mqfdy
  */
 public class FilteredTree extends Composite {
 
+	/** The filter text. */
 	protected Text filterText;
 
 	/**
@@ -82,6 +85,7 @@ public class FilteredTree extends Composite {
 	 */
 	protected Control clearButtonControl;
 
+	/** The tree viewer. */
 	protected TreeViewer treeViewer;
 
 	/**
@@ -125,6 +129,8 @@ public class FilteredTree extends Composite {
 	protected boolean showFilterControls;
 
 	/**
+	 * The tree composite.
+	 *
 	 * @since 3.3
 	 */
 	protected Composite treeComposite;
@@ -147,19 +153,29 @@ public class FilteredTree extends Composite {
 //	private static final String DISABLED_CLEAR_ICON = "org.eclipse.ui.internal.dialogs.DCLEAR_ICON"; //$NON-NLS-1$
 
 	/**
-	 * Maximum time spent expanding the tree after the filter text has been
-	 * updated (this is only used if we were able to at least expand the visible
-	 * nodes)
-	 */
+ * Maximum time spent expanding the tree after the filter text has been updated
+ * (this is only used if we were able to at least expand the visible nodes).
+ */
 	private static final long SOFT_MAX_EXPAND_TIME = 200;
+	
+	/** The previous filter text. */
 	private String previousFilterText;
 
+	/** The narrowing down. */
 	private boolean narrowingDown;
 
+	/** The use native search field. */
 	private static Boolean useNativeSearchField;
 
 	/**
-	 * 构造方法
+	 * 构造方法.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param treeStyle
+	 *            the tree style
+	 * @param useNewLook
+	 *            the use new look
 	 */
 	public FilteredTree(Composite parent, int treeStyle, boolean useNewLook) {
 		super(parent, SWT.NONE);
@@ -169,7 +185,14 @@ public class FilteredTree extends Composite {
 	}
 
 	/**
-	 * 初始化
+	 * 初始化.
+	 *
+	 * @author mqfdy
+	 * @param treeStyle
+	 *            the tree style
+	 * @param filter
+	 *            the filter
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void init(int treeStyle, PatternFilter filter) {
 		patternFilter = filter;
@@ -184,9 +207,13 @@ public class FilteredTree extends Composite {
 
 	/**
 	 * Create the filtered tree's controls. Subclasses should override.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param parent
+	 *            the parent
 	 * @param treeStyle
+	 *            the tree style
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void createControl(Composite parent, int treeStyle) {
 		GridLayout layout = new GridLayout();
@@ -224,6 +251,15 @@ public class FilteredTree extends Composite {
 		createTreeControl(treeComposite, treeStyle);
 	}
 
+	/**
+	 * Use native search field.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private static boolean useNativeSearchField(Composite composite) {
 		if (useNativeSearchField == null) {
 			useNativeSearchField = Boolean.FALSE;
@@ -243,7 +279,13 @@ public class FilteredTree extends Composite {
 	}
 
 	/**
-	 * 创建过滤条件文本框
+	 * 创建过滤条件文本框.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	protected Composite createFilterControls(Composite parent) {
 		createFilterText(parent);
@@ -264,7 +306,15 @@ public class FilteredTree extends Composite {
 	}
 
 	/**
-	 * 创建树区域
+	 * 创建树区域.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @return the control
+	 * @Date 2018-09-03 09:00
 	 */
 	protected Control createTreeControl(Composite parent, int style) {
 		treeViewer = doCreateTreeViewer(parent, style);
@@ -283,14 +333,28 @@ public class FilteredTree extends Composite {
 	}
 
 	/**
-	 * 创建treeViewer
+	 * 创建treeViewer.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @return the tree viewer
+	 * @Date 2018-09-03 09:00
 	 */
 	protected TreeViewer doCreateTreeViewer(Composite parent, int style) {
 		return new NotifyingTreeViewer(parent, style);
 	}
 
 	/**
-	 * 获取第一个符合条件的节点
+	 * 获取第一个符合条件的节点.
+	 *
+	 * @author mqfdy
+	 * @param items
+	 *            the items
+	 * @return the first matching item
+	 * @Date 2018-09-03 09:00
 	 */
 	private TreeItem getFirstMatchingItem(TreeItem[] items) {
 		for (int i = 0; i < items.length; i++) {
@@ -308,7 +372,9 @@ public class FilteredTree extends Composite {
 
 	/**
 	 * Create the refresh job for the receiver.
-	 * 
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createRefreshJob() {
 		refreshJob = doCreateRefreshJob();
@@ -469,6 +535,14 @@ public class FilteredTree extends Composite {
 		};
 	}
 
+	/**
+	 * Update toolbar.
+	 *
+	 * @author mqfdy
+	 * @param visible
+	 *            the visible
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void updateToolbar(boolean visible) {
 		if (clearButtonControl != null) {
 			clearButtonControl.setVisible(visible);
@@ -483,9 +557,11 @@ public class FilteredTree extends Composite {
 	 * {@link #doCreateFilterText(Composite)} to create the text control.
 	 * Subclasses should override {@link #doCreateFilterText(Composite)} instead
 	 * of overriding this method.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param parent
 	 *            <code>Composite</code> of the filter text
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void createFilterText(Composite parent) {
 		filterText = doCreateFilterText(parent);
@@ -722,6 +798,9 @@ public class FilteredTree extends Composite {
 
 	/**
 	 * Update the receiver after the text has changed.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void textChanged() {
 		narrowingDown = previousFilterText == null
@@ -736,6 +815,11 @@ public class FilteredTree extends Composite {
 	
 	/**
 	 * Update the receiver after the text has changed.
+	 *
+	 * @author mqfdy
+	 * @param isinclude
+	 *            the isinclude
+	 * @Date 2018-09-03 09:00
 	 */
 	public void textChanged(boolean isinclude) {
 		textChanged();
@@ -754,9 +838,11 @@ public class FilteredTree extends Composite {
 
 	/**
 	 * Set the background for the widgets that support the filter text area.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param background
 	 *            background <code>Color</code> to set
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setBackground(Color background) {
 		super.setBackground(background);
@@ -771,9 +857,11 @@ public class FilteredTree extends Composite {
 
 	/**
 	 * Create the button that clears the text.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param parent
 	 *            parent <code>Composite</code> of toolbar button
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createClearTextOld(Composite parent) {
 		// only create the button if the text widget doesn't support one
@@ -806,9 +894,11 @@ public class FilteredTree extends Composite {
 
 	/**
 	 * Create the button that clears the text.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param parent
 	 *            parent <code>Composite</code> of toolbar button
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createClearTextNew(Composite parent) {
 		// only create the button if the text widget doesn't support one
@@ -907,6 +997,9 @@ public class FilteredTree extends Composite {
 
 	/**
 	 * Clears the text in the filter text widget.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void clearText() {
 		setFilterText(""); //$NON-NLS-1$
@@ -915,8 +1008,11 @@ public class FilteredTree extends Composite {
 
 	/**
 	 * Set the text in the filter control.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param string
+	 *            the new filter text
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void setFilterText(String string) {
 		if (filterText != null) {
@@ -927,8 +1023,10 @@ public class FilteredTree extends Composite {
 
 	/**
 	 * Returns the pattern filter used by this tree.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return The pattern filter; never <code>null</code>.
+	 * @Date 2018-09-03 09:00
 	 */
 	public final PatternFilter getPatternFilter() {
 		return patternFilter;
@@ -936,8 +1034,10 @@ public class FilteredTree extends Composite {
 
 	/**
 	 * Get the tree viewer of the receiver.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return the tree viewer
+	 * @Date 2018-09-03 09:00
 	 */
 	public TreeViewer getViewer() {
 		return treeViewer;
@@ -946,8 +1046,10 @@ public class FilteredTree extends Composite {
 	/**
 	 * Get the filter text for the receiver, if it was created. Otherwise return
 	 * <code>null</code>.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return the filter Text, or null if it was not created
+	 * @Date 2018-09-03 09:00
 	 */
 	public Text getFilterControl() {
 		return filterText;
@@ -956,8 +1058,10 @@ public class FilteredTree extends Composite {
 	/**
 	 * Convenience method to return the text of the filter control. If the text
 	 * widget is not created, then null is returned.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return String in the text, or null if the text does not exist
+	 * @Date 2018-09-03 09:00
 	 */
 	protected String getFilterString() {
 		return filterText != null ? filterText.getText() : null;
@@ -967,9 +1071,11 @@ public class FilteredTree extends Composite {
 	 * Set the text that will be shown until the first focus. A default value is
 	 * provided, so this method only need be called if overriding the default
 	 * initial text is desired.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param text
 	 *            initial text to appear in text field
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setInitialText(String text) {
 		initialText = text;
@@ -997,7 +1103,9 @@ public class FilteredTree extends Composite {
 
 	/**
 	 * Select all text in the filter text field.
-	 * 
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void selectAll() {
 		if (filterText != null) {
@@ -1007,8 +1115,10 @@ public class FilteredTree extends Composite {
 
 	/**
 	 * Get the initial text for the receiver.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return String
+	 * @Date 2018-09-03 09:00
 	 */
 	protected String getInitialText() {
 		return initialText;
@@ -1018,15 +1128,16 @@ public class FilteredTree extends Composite {
 	 * Return a bold font if the given element matches the given pattern.
 	 * Clients can opt to call this method from a Viewer's label provider to get
 	 * a bold font for which to highlight the given element in the tree.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param element
 	 *            element for which a match should be determined
 	 * @param tree
 	 *            FilteredTree in which the element resides
 	 * @param filter
 	 *            PatternFilter which determines a match
-	 * 
 	 * @return bold font
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Font getBoldFont(Object element, FilteredTree tree,
 			PatternFilter filter) {
@@ -1067,85 +1178,226 @@ public class FilteredTree extends Composite {
 	class NotifyingTreeViewer extends TreeViewer {
 
 		/**
+		 * Instantiates a new notifying tree viewer.
+		 *
 		 * @param parent
+		 *            the parent
 		 * @param style
+		 *            the style
 		 */
 		public NotifyingTreeViewer(Composite parent, int style) {
 			super(parent, style);
 		}
 
+		/**
+		 * Adds the.
+		 *
+		 * @author mqfdy
+		 * @param parentElementOrTreePath
+		 *            the parent element or tree path
+		 * @param childElement
+		 *            the child element
+		 * @Date 2018-09-03 09:00
+		 */
 		public void add(Object parentElementOrTreePath, Object childElement) {
 			getPatternFilter().clearCaches();
 			super.add(parentElementOrTreePath, childElement);
 		}
 
+		/**
+		 * Adds the.
+		 *
+		 * @author mqfdy
+		 * @param parentElementOrTreePath
+		 *            the parent element or tree path
+		 * @param childElements
+		 *            the child elements
+		 * @Date 2018-09-03 09:00
+		 */
 		public void add(Object parentElementOrTreePath, Object[] childElements) {
 			getPatternFilter().clearCaches();
 			super.add(parentElementOrTreePath, childElements);
 		}
 
+		/**
+		 * Input changed.
+		 *
+		 * @author mqfdy
+		 * @param input
+		 *            the input
+		 * @param oldInput
+		 *            the old input
+		 * @Date 2018-09-03 09:00
+		 */
 		protected void inputChanged(Object input, Object oldInput) {
 			getPatternFilter().clearCaches();
 			super.inputChanged(input, oldInput);
 		}
 
+		/**
+		 * Insert.
+		 *
+		 * @author mqfdy
+		 * @param parentElementOrTreePath
+		 *            the parent element or tree path
+		 * @param element
+		 *            the element
+		 * @param position
+		 *            the position
+		 * @Date 2018-09-03 09:00
+		 */
 		public void insert(Object parentElementOrTreePath, Object element,
 				int position) {
 			getPatternFilter().clearCaches();
 			super.insert(parentElementOrTreePath, element, position);
 		}
 
+		/**
+		 * 
+		 */
 		public void refresh() {
 			getPatternFilter().clearCaches();
 			super.refresh();
 		}
 
+		/**
+		 * Refresh.
+		 *
+		 * @author mqfdy
+		 * @param updateLabels
+		 *            the update labels
+		 * @Date 2018-09-03 09:00
+		 */
 		public void refresh(boolean updateLabels) {
 			getPatternFilter().clearCaches();
 			super.refresh(updateLabels);
 		}
 
+		/**
+		 * Refresh.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @Date 2018-09-03 09:00
+		 */
 		public void refresh(Object element) {
 			getPatternFilter().clearCaches();
 			super.refresh(element);
 		}
 
+		/**
+		 * Refresh.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param updateLabels
+		 *            the update labels
+		 * @Date 2018-09-03 09:00
+		 */
 		public void refresh(Object element, boolean updateLabels) {
 			getPatternFilter().clearCaches();
 			super.refresh(element, updateLabels);
 		}
 
+		/**
+		 * Removes the.
+		 *
+		 * @author mqfdy
+		 * @param elementsOrTreePaths
+		 *            the elements or tree paths
+		 * @Date 2018-09-03 09:00
+		 */
 		public void remove(Object elementsOrTreePaths) {
 			getPatternFilter().clearCaches();
 			super.remove(elementsOrTreePaths);
 		}
 
+		/**
+		 * Removes the.
+		 *
+		 * @author mqfdy
+		 * @param parent
+		 *            the parent
+		 * @param elements
+		 *            the elements
+		 * @Date 2018-09-03 09:00
+		 */
 		public void remove(Object parent, Object[] elements) {
 			getPatternFilter().clearCaches();
 			super.remove(parent, elements);
 		}
 
+		/**
+		 * Removes the.
+		 *
+		 * @author mqfdy
+		 * @param elementsOrTreePaths
+		 *            the elements or tree paths
+		 * @Date 2018-09-03 09:00
+		 */
 		public void remove(Object[] elementsOrTreePaths) {
 			getPatternFilter().clearCaches();
 			super.remove(elementsOrTreePaths);
 		}
 
+		/**
+		 * Replace.
+		 *
+		 * @author mqfdy
+		 * @param parentElementOrTreePath
+		 *            the parent element or tree path
+		 * @param index
+		 *            the index
+		 * @param element
+		 *            the element
+		 * @Date 2018-09-03 09:00
+		 */
 		public void replace(Object parentElementOrTreePath, int index,
 				Object element) {
 			getPatternFilter().clearCaches();
 			super.replace(parentElementOrTreePath, index, element);
 		}
 
+		/**
+		 * Sets the child count.
+		 *
+		 * @author mqfdy
+		 * @param elementOrTreePath
+		 *            the element or tree path
+		 * @param count
+		 *            the count
+		 * @Date 2018-09-03 09:00
+		 */
 		public void setChildCount(Object elementOrTreePath, int count) {
 			getPatternFilter().clearCaches();
 			super.setChildCount(elementOrTreePath, count);
 		}
 
+		/**
+		 * Sets the content provider.
+		 *
+		 * @author mqfdy
+		 * @param provider
+		 *            the new content provider
+		 * @Date 2018-09-03 09:00
+		 */
 		public void setContentProvider(IContentProvider provider) {
 			getPatternFilter().clearCaches();
 			super.setContentProvider(provider);
 		}
 
+		/**
+		 * Sets the has children.
+		 *
+		 * @author mqfdy
+		 * @param elementOrTreePath
+		 *            the element or tree path
+		 * @param hasChildren
+		 *            the has children
+		 * @Date 2018-09-03 09:00
+		 */
 		public void setHasChildren(Object elementOrTreePath, boolean hasChildren) {
 			getPatternFilter().clearCaches();
 			super.setHasChildren(elementOrTreePath, hasChildren);
@@ -1153,7 +1405,15 @@ public class FilteredTree extends Composite {
 	}
 
 	/**
-	 * 获取第一个符合条件的节点
+	 * 获取第一个符合条件的节点.
+	 *
+	 * @author mqfdy
+	 * @param items
+	 *            the items
+	 * @param ab
+	 *            the ab
+	 * @return the matching item
+	 * @Date 2018-09-03 09:00
 	 */
 	private TreeItem getMatchingItem(TreeItem[] items, Object ab) {
 		for (int i = 0; i < items.length; i++) {
@@ -1168,10 +1428,24 @@ public class FilteredTree extends Composite {
 		return null;
 	}
 
+	/**
+	 * Gets the disabled clear icon.
+	 *
+	 * @author mqfdy
+	 * @return the disabled clear icon
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getDisabledClearIcon() {
 		return ImageKeys.IMG_OUTLINE_DISABLED_CLEAR_ICON;
 	}
 
+	/**
+	 * Gets the clear icon.
+	 *
+	 * @author mqfdy
+	 * @return the clear icon
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getClearIcon() {
 		return ImageKeys.IMG_OUTLINE_CLEAR_ICON;
 	}

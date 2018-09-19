@@ -27,25 +27,44 @@ import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.ReferenceObject;
 import com.mqfdy.code.model.graph.Diagram;
 
+// TODO: Auto-generated Javadoc
 /**
- * 新增业务类属性动作
- * 
+ * 新增业务类属性动作.
+ *
  * @author mqfdy
- * 
  */
 public class DeleteModelElementAction extends TreeAction {
 
+	/**
+	 * Instantiates a new delete model element action.
+	 *
+	 * @param treeViewer
+	 *            the tree viewer
+	 */
 	public DeleteModelElementAction(TreeViewer treeViewer) {
 		super(ActionTexts.MODEL_ELEMENT_DELETE, treeViewer);
 		this.setImageDescriptor(ImageManager.getInstance().getImageDescriptor(
 				ImageKeys.IMG_OBJECT_OPER_DELETE));
 	}
 
+	/**
+	 * Instantiates a new delete model element action.
+	 *
+	 * @param text
+	 *            the text
+	 * @param imageDescriptor
+	 *            the image descriptor
+	 * @param treeViewer
+	 *            the tree viewer
+	 */
 	public DeleteModelElementAction(String text,
 			ImageDescriptor imageDescriptor, TreeViewer treeViewer) {
 		super(text, imageDescriptor, treeViewer);
 	}
 
+	/**
+	 * 
+	 */
 	public void run() {
 		// 先找到所要删除的节点
 		if (treeViewer != null && treeViewer.getSelection() != null) {
@@ -112,6 +131,17 @@ public class DeleteModelElementAction extends TreeAction {
 
 		}
 	}
+	
+	/**
+	 * Delete object.
+	 *
+	 * @author mqfdy
+	 * @param modelElement
+	 *            the model element
+	 * @param isMessage
+	 *            the is message
+	 * @Date 2018-09-03 09:00
+	 */
 	public void deleteObject(AbstractModelElement modelElement,boolean isMessage){
 		if (modelElement instanceof PKProperty) {
 			if(isMessage)

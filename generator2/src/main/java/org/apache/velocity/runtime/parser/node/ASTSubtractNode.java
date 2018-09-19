@@ -22,6 +22,7 @@ package org.apache.velocity.runtime.parser.node;
 import org.apache.velocity.context.InternalContextAdapter;
 import org.apache.velocity.runtime.parser.Parser;
 
+// TODO: Auto-generated Javadoc
 /**
  * Handles subtraction of nodes (in #set() )<br><br>
  *
@@ -36,23 +37,38 @@ import org.apache.velocity.runtime.parser.Parser;
  */
 public class ASTSubtractNode extends ASTMathNode
 {
+    
     /**
-     * @param id
-     */
+	 * Instantiates a new AST subtract node.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTSubtractNode(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST subtract node.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTSubtractNode(Parser p, int id)
     {
         super(p, id);
     }
 
+    /**
+     * @see org.apache.velocity.runtime.parser.node.ASTMathNode#perform(java.lang.Number, java.lang.Number, org.apache.velocity.context.InternalContextAdapter)
+     * @param left
+     * @param right
+     * @param context
+     * @return ASTSubtractNode
+     */
     public Number perform(Number left, Number right, InternalContextAdapter context)
     {
         return MathUtils.subtract(left, right);

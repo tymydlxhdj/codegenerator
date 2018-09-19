@@ -24,37 +24,96 @@ import com.mqfdy.code.resource.validator.ValidatorUtil;
 import com.mqfdy.code.reverse.views.beans.TreeNode;
 import com.mqfdy.code.reverse.views.models.TreeModel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class InsertPackageDialog.
+ *
+ * @author mqfdy
+ */
 public class InsertPackageDialog extends TitleAreaDialog {
 
+	/** The Constant DIALOG_WIDTH. */
 	public static final int DIALOG_WIDTH = 500;
+	
+	/** The Constant DIALOG_HEIGHT. */
 	public static final int DIALOG_HEIGHT = 400;
+	
+	/** The remark label. */
 	private Label remarkLabel;
+	
+	/** The remark text. */
 	private Text remarkText;
+	
+	/** The name label. */
 	private Label nameLabel;
+	
+	/** The name text. */
 	private Text nameText;
+	
+	/** The display name label. */
 	private Label displayNameLabel;
+	
+	/** The display name text. */
 	private Text displayNameText;
 	
+	/** The current node. */
 	private TreeNode currentNode;
+	
+	/** The tree viewer. */
 	private TreeViewer treeViewer;
 	
+	/** The name. */
 	private String name;
+	
+	/** The display name. */
 	private String displayName;
+	
+	/** The remarks. */
 	private String remarks;
 	
+	/**
+	 * Gets the current node.
+	 *
+	 * @author mqfdy
+	 * @return the current node
+	 * @Date 2018-09-03 09:00
+	 */
 	public TreeNode getCurrentNode() {
 		return currentNode;
 	}
 
+	/**
+	 * Sets the current node.
+	 *
+	 * @author mqfdy
+	 * @param currentNode
+	 *            the new current node
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setCurrentNode(TreeNode currentNode) {
 		this.currentNode = currentNode;
 	}
 
+	/**
+	 * Instantiates a new insert package dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 */
 	public InsertPackageDialog(Shell parentShell) {
 		super(parentShell);
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		setTitle("创建业务模型包");
@@ -116,22 +175,39 @@ public class InsertPackageDialog extends TitleAreaDialog {
 		return parent;
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText("创建业务模型包");
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected Point getInitialSize() {
 		return new Point(DIALOG_WIDTH, DIALOG_HEIGHT);
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected int getShellStyle() {
 		return super.getShellStyle() | SWT.RESIZE | SWT.MAX | SWT.MIN;
 	}
 	
+	/**
+	 * 
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void okPressed() {
@@ -205,34 +281,94 @@ public class InsertPackageDialog extends TitleAreaDialog {
 		super.okPressed();
 	}
 
+	/**
+	 * Gets the tree viewer.
+	 *
+	 * @author mqfdy
+	 * @return the tree viewer
+	 * @Date 2018-09-03 09:00
+	 */
 	public TreeViewer getTreeViewer() {
 		return treeViewer;
 	}
 
+	/**
+	 * Sets the tree viewer.
+	 *
+	 * @author mqfdy
+	 * @param treeViewer
+	 *            the new tree viewer
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setTreeViewer(TreeViewer treeViewer) {
 		this.treeViewer = treeViewer;
 	}
 
+	/**
+	 * Gets the name.
+	 *
+	 * @author mqfdy
+	 * @return the name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Sets the name.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the new name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * Gets the display name.
+	 *
+	 * @author mqfdy
+	 * @return the display name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getDisplayName() {
 		return displayName;
 	}
 
+	/**
+	 * Sets the display name.
+	 *
+	 * @author mqfdy
+	 * @param displayName
+	 *            the new display name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
 	}
 
+	/**
+	 * Gets the remarks.
+	 *
+	 * @author mqfdy
+	 * @return the remarks
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getRemarks() {
 		return remarks;
 	}
 
+	/**
+	 * Sets the remarks.
+	 *
+	 * @author mqfdy
+	 * @param remarks
+	 *            the new remarks
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}

@@ -23,17 +23,33 @@ import com.mqfdy.code.model.ReferenceObject;
 import com.mqfdy.code.model.graph.DiagramElement;
 import com.mqfdy.code.model.graph.ElementStyle;
 
+// TODO: Auto-generated Javadoc
 /**
- * 透视图中引用业务实体的控制器
- * 
+ * 透视图中引用业务实体的控制器.
+ *
  * @author mqfdy
- * 
  */
 public class ReferenceObjectEditPart extends NodeEditPart {
+	
+	/** The reference object. */
 	ReferenceObject referenceObject;
+	
+	/** The model element. */
 	DiagramElement modelElement;
+	
+	/** The business object model. */
 	BusinessObjectModel businessObjectModel;
 
+	/**
+	 * Instantiates a new reference object edit part.
+	 *
+	 * @param bu
+	 *            the bu
+	 * @param modelElement
+	 *            the model element
+	 * @param businessObjectModel
+	 *            the business object model
+	 */
 	public ReferenceObjectEditPart(ReferenceObject bu,
 			DiagramElement modelElement, BusinessObjectModel businessObjectModel) {
 		super(modelElement);
@@ -42,6 +58,9 @@ public class ReferenceObjectEditPart extends NodeEditPart {
 		this.businessObjectModel = businessObjectModel;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected IFigure createFigure() {
 		String name = referenceObject.getReferenceObject().getDisplayName();
@@ -53,6 +72,9 @@ public class ReferenceObjectEditPart extends NodeEditPart {
 		return figure;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void activate() {
 		if (!isActive()) {
@@ -61,6 +83,9 @@ public class ReferenceObjectEditPart extends NodeEditPart {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void deactivate() {
 		if (isActive()) {
@@ -70,7 +95,12 @@ public class ReferenceObjectEditPart extends NodeEditPart {
 	}
 
 	/**
-	 * 执行用户请求 点击透视图中的对象时，执行该方法 同时创建窗口
+	 * 执行用户请求 点击透视图中的对象时，执行该方法 同时创建窗口.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void performRequest(final Request request) {
@@ -78,13 +108,20 @@ public class ReferenceObjectEditPart extends NodeEditPart {
 	}
 
 	/**
-	 * 取得模型DiagramElement
+	 * 取得模型DiagramElement.
+	 *
+	 * @author mqfdy
+	 * @return the casted model
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	protected AbstractModelElement getCastedModel() {
 		return (AbstractModelElement) getModel();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void refreshVisuals() {
 		if (modelElement != null) {
@@ -103,7 +140,10 @@ public class ReferenceObjectEditPart extends NodeEditPart {
 	}
 
 	/**
-	 * 重新绘制界面对象
+	 * 重新绘制界面对象.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void repaintFigure() {
@@ -117,6 +157,14 @@ public class ReferenceObjectEditPart extends NodeEditPart {
 		c.paintFigure(name, referenceObject);
 	}
 
+	/**
+	 * Property change.
+	 *
+	 * @author mqfdy
+	 * @param evt
+	 *            the evt
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		String propertyId = evt.getPropertyName();
@@ -134,6 +182,9 @@ public class ReferenceObjectEditPart extends NodeEditPart {
 
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void createEditPolicies() {
 		super.createEditPolicies();
@@ -148,6 +199,13 @@ public class ReferenceObjectEditPart extends NodeEditPart {
 				new OmGraphicalNodeConnectionEditPolicy());
 	}
 
+	/**
+	 * Gets the reference object.
+	 *
+	 * @author mqfdy
+	 * @return the reference object
+	 * @Date 2018-09-03 09:00
+	 */
 	public ReferenceObject getReferenceObject() {
 		return referenceObject;
 	}

@@ -29,33 +29,75 @@ import com.mqfdy.code.reverse.views.providers.MultiTreeContentProvider;
 import com.mqfdy.code.reverse.views.providers.SingleTreeLabelProvider;
 import com.mqfdy.code.utils.ProjectUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class OmPathSelectDialog.
+ *
+ * @author mqfdy
+ */
 public class OmPathSelectDialog extends TitleAreaDialog {
 
+	/** The Constant DIALOG_WIDTH. */
 	public static final int DIALOG_WIDTH = 500;
+	
+	/** The Constant DIALOG_HEIGHT. */
 	public static final int DIALOG_HEIGHT = 550;
+	
+	/** The Constant TREE_WIDTH. */
 	public static final int TREE_WIDTH = 460;
+	
+	/** The Constant TREE_HEIGHT. */
 	public static final int TREE_HEIGHT = 500;
+	
+	/** The Constant DIR_NAME_MODEL. */
 	public static final String DIR_NAME_MODEL = "model";
+	
+	/** The Constant DIR_NAME_OM. */
 	public static final String DIR_NAME_OM = "bom";
 	
+	/** The tree viewer. */
 	private TreeViewer treeViewer;
+	
+	/** The tree. */
 	private Tree tree;
+	
+	/** The file path. */
 	private String filePath;
 	
+	/** The project. */
 	private IProject project;
 	
+	/**
+	 * Instantiates a new om path select dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param iProject
+	 *            the i project
+	 */
 	public OmPathSelectDialog(Shell parentShell, IProject iProject) {
 		super(parentShell);
 		this.project = project;
 	}
 	
+	/**
+	 * Instantiates a new om path select dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 */
 	public OmPathSelectDialog(Shell parentShell) {
 		super(parentShell);
 	}
 	
 	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
 	 * @param parent
-	 * @return
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
@@ -119,10 +161,24 @@ public class OmPathSelectDialog extends TitleAreaDialog {
 		return parent;
 	}
 
+	/**
+	 * Gets the model list.
+	 *
+	 * @author mqfdy
+	 * @return the model list
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<TreeModel> getModelList() {
 		return filterOMService();
 	}
 	
+	/**
+	 * Filter OM service.
+	 *
+	 * @author mqfdy
+	 * @return the list
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<TreeModel> filterOMService() {
 		//获取当前工作空间下的所有工程
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
@@ -154,28 +210,65 @@ public class OmPathSelectDialog extends TitleAreaDialog {
 		}
 		return modelList;
 	}
+	
+	/**
+	 * @return
+	 */
 	@Override
 	protected Point getInitialSize() {
 		return new Point(DIALOG_WIDTH, DIALOG_HEIGHT);
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected int getShellStyle() {
 		return super.getShellStyle() | SWT.RESIZE | SWT.MAX | SWT.MIN;
 	}
 
+	/**
+	 * Gets the file path.
+	 *
+	 * @author mqfdy
+	 * @return the file path
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getFilePath() {
 		return filePath;
 	}
 
+	/**
+	 * Sets the file path.
+	 *
+	 * @author mqfdy
+	 * @param filePath
+	 *            the new file path
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}
 
+	/**
+	 * Gets the project.
+	 *
+	 * @author mqfdy
+	 * @return the project
+	 * @Date 2018-09-03 09:00
+	 */
 	public IProject getProject() {
 		return project;
 	}
 
+	/**
+	 * Sets the project.
+	 *
+	 * @author mqfdy
+	 * @param project
+	 *            the new project
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setProject(IProject project) {
 		this.project = project;
 	}

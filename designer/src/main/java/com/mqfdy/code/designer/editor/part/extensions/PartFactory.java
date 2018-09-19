@@ -27,14 +27,23 @@ import com.mqfdy.code.model.ReferenceObject;
 import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * 根据模型类型创建控制器
- * 
+ * 根据模型类型创建控制器.
+ *
  * @author mqfdy
- * 
  */
 public class PartFactory implements EditPartFactory {
 
+	/**
+	 * Creates a new Part object.
+	 *
+	 * @param context
+	 *            the context
+	 * @param modelElement
+	 *            the model element
+	 * @return the edits the part
+	 */
 	public EditPart createEditPart(EditPart context, Object modelElement) {
 		EditPart part = null;
 		BusinessObjectModel businessObjectModel = null;

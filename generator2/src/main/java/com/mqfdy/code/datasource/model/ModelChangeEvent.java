@@ -2,15 +2,18 @@ package com.mqfdy.code.datasource.model;
 
 import java.util.EventObject;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @author mqfdy
+ * The Class ModelChangeEvent.
  *
+ * @author mqfdy
  */
 public class ModelChangeEvent extends EventObject {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 	
+	/** The event type. */
 	private int eventType;
 
 	// public enum Type {
@@ -21,12 +24,11 @@ public class ModelChangeEvent extends EventObject {
 
 	/**
 	 * Creates an new element change event.
-	 * 
+	 *
 	 * @param element
 	 *            the changed model element
-	 * @param type
-	 *            the type of modification (ADDED, REMOVED, CHANGED) this event
-	 *            contains
+	 * @param eventType
+	 *            the event type
 	 */
 	public ModelChangeEvent(IModelElement element, int eventType) {
 		super(element);
@@ -35,6 +37,10 @@ public class ModelChangeEvent extends EventObject {
 
 	/**
 	 * Returns the modified element.
+	 *
+	 * @author mqfdy
+	 * @return the element
+	 * @Date 2018-09-03 09:00
 	 */
 	public IModelElement getElement() {
 		return (IModelElement) getSource();
@@ -45,11 +51,22 @@ public class ModelChangeEvent extends EventObject {
 	// */
 	// public Type getType() {
 	// return type;
+	/**
+	 * Gets the type.
+	 *
+	 * @author mqfdy
+	 * @return the type
+	 * @Date 2018-09-03 09:00
+	 */
 	// }
 	public int getType() {
 		return eventType;
 	}
 
+	/**
+	 * @see java.util.EventObject#toString()
+	 * @return ModelChangeEvent
+	 */
 	@Override
 	public String toString() {
 		StringBuffer text = new StringBuffer("Model element '");

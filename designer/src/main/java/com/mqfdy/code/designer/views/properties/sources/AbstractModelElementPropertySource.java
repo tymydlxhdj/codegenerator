@@ -2,15 +2,23 @@ package com.mqfdy.code.designer.views.properties.sources;
 
 import com.mqfdy.code.model.AbstractModelElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * 抽象类PropertyPropertySource
- * 
+ * 抽象类PropertyPropertySource.
+ *
  * @author mqfdy
- * 
  */
 public class AbstractModelElementPropertySource extends ModelPropertySource {
+	
+	/** The element. */
 	public AbstractModelElement element;
 
+	/**
+	 * Instantiates a new abstract model element property source.
+	 *
+	 * @param property
+	 *            the property
+	 */
 	public AbstractModelElementPropertySource(AbstractModelElement property) {
 		super();
 		this.element = (AbstractModelElement) property;
@@ -20,6 +28,9 @@ public class AbstractModelElementPropertySource extends ModelPropertySource {
 		// }
 	}
 
+	/**
+	 * 
+	 */
 	protected void installModelProperty() {
 		addStringModelProperty(IBusinessModelPropertyNames.PROPERTY_COMMON_ID,
 				IBusinessModelPropertyNames.CATEGORY_BASE, "", true, "01");
@@ -38,6 +49,15 @@ public class AbstractModelElementPropertySource extends ModelPropertySource {
 		// addButtonModelProperty(IBusinessModelPropertyNames.PROPERTY_ENUMERARION_VALUES,IBusinessModelPropertyNames.CATEGORY_ENUMERARION,"","AbstractModelElement","06");
 	}
 
+	/**
+	 * Gets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return the property value
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -60,6 +80,16 @@ public class AbstractModelElementPropertySource extends ModelPropertySource {
 			return "";
 	}
 
+	/**
+	 * Sets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPropertyValue(Object propertyId, Object value) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException(propertyId.toString());
@@ -98,10 +128,27 @@ public class AbstractModelElementPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * Checks if is property set.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return true, if is property set
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isPropertySet(Object propertyId) {
 		return true;
 	}
 
+	/**
+	 * Reset property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @Date 2018-09-03 09:00
+	 */
 	public void resetPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -115,16 +162,31 @@ public class AbstractModelElementPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public Object getEditableValue() {
 		return this;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void initializeDescriptors() {
 		// TODO Auto-generated method stub
 
 	}
 	
+	/**
+	 * Gets the stereotype.
+	 *
+	 * @author mqfdy
+	 * @param type
+	 *            the type
+	 * @return the stereotype
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getStereotype(String type){
 		if(type == null || "".equals(type))
 			return "自定义";

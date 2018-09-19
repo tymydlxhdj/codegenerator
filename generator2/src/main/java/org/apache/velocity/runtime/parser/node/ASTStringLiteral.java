@@ -31,6 +31,7 @@ import org.apache.velocity.runtime.parser.ParseException;
 import org.apache.velocity.runtime.parser.Parser;
 import org.apache.velocity.runtime.parser.Token;
 
+// TODO: Auto-generated Javadoc
 /**
  * ASTStringLiteral support. Will interpolate!
  * 
@@ -40,44 +41,61 @@ import org.apache.velocity.runtime.parser.Token;
  */
 public class ASTStringLiteral extends SimpleNode
 {
+    
+    /** The interpolate. */
     /* cache the value of the interpolation switch */
     private boolean interpolate = true;
 
+    /** The node tree. */
     private SimpleNode nodeTree = null;
 
+    /** The image. */
     private String image = "";
 
+    /** The interpolateimage. */
     private String interpolateimage = "";
 
-    /** true if the string contains a line comment (##) */
+    /** true if the string contains a line comment (##). */
     private boolean containsLineComment;
 
     /**
-     * @param id
-     */
+	 * Instantiates a new AST string literal.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTStringLiteral(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST string literal.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTStringLiteral(Parser p, int id)
     {
         super(p, id);
     }
 
     /**
-     * init : we don't have to do much. Init the tree (there shouldn't be one)
-     * and then see if interpolation is turned on.
-     * 
-     * @param context
-     * @param data
-     * @return Init result.
-     * @throws TemplateInitException
-     */
+	 * init : we don't have to do much. Init the tree (there shouldn't be one)
+	 * and then see if interpolation is turned on.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param data
+	 *            the data
+	 * @return Init result.
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @Date 2018-9-3 11:38:34
+	 */
     public Object init(InternalContextAdapter context, Object data)
             throws TemplateInitException
     {
@@ -190,13 +208,18 @@ public class ASTStringLiteral extends SimpleNode
     }
     
     /**
-     * Adjust all the line and column numbers that comprise a node so that they
-     * are corrected for the string literals position within the template file.
-     * This is neccessary if an exception is thrown while processing the node so
-     * that the line and column position reported reflects the error position
-     * within the template and not just relative to the error position within
-     * the string literal.
-     */
+	 * Adjust all the line and column numbers that comprise a node so that they
+	 * are corrected for the string literals position within the template file.
+	 * This is neccessary if an exception is thrown while processing the node so
+	 * that the line and column position reported reflects the error position
+	 * within the template and not just relative to the error position within
+	 * the string literal.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @Date 2018-09-03 09:00
+	 */
     public void adjTokenLineNums(Node node)
     {
         Token tok = node.getFirstToken();
@@ -219,12 +242,17 @@ public class ASTStringLiteral extends SimpleNode
     }
 
     /**
-     * Replaces double double-quotes with a single double quote ("" to ").
-     * Replaces double single quotes with a single quote ('' to ').
+	 * Replaces double double-quotes with a single double quote ("" to ").
+	 * Replaces double single quotes with a single quote ('' to ').
 	 *
-	 * @param s StringLiteral without the surrounding quotes
-	 * @param literalQuoteChar char that starts the StringLiteral (" or ')
-     */     
+	 * @author mqfdy
+	 * @param s
+	 *            StringLiteral without the surrounding quotes
+	 * @param literalQuoteChar
+	 *            char that starts the StringLiteral (" or ')
+	 * @return the string
+	 * @Date 2018-9-3 11:38:34
+	 */     
     private String replaceQuotes(String s, char literalQuoteChar)
     {
         if( (literalQuoteChar == '"' && s.indexOf("\"") == -1) ||
@@ -257,8 +285,13 @@ public class ASTStringLiteral extends SimpleNode
     }
     
     /**
-     * @since 1.6
-     */
+	 * Unescape.
+	 *
+	 * @param string
+	 *            the string
+	 * @return the string
+	 * @since 1.6
+	 */
     public static String unescape(final String string)
     {
         int u = string.indexOf("\\u");
@@ -290,9 +323,16 @@ public class ASTStringLiteral extends SimpleNode
 
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
-     *      java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
@@ -309,13 +349,16 @@ public class ASTStringLiteral extends SimpleNode
     }
 
     /**
-     * renders the value of the string literal If the properties allow, and the
-     * string literal contains a $ or a # the literal is rendered against the
-     * context Otherwise, the stringlit is returned.
-     * 
-     * @param context
-     * @return result of the rendering.
-     */
+	 * renders the value of the string literal If the properties allow, and the
+	 * string literal contains a $ or a # the literal is rendered against the
+	 * context Otherwise, the stringlit is returned.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @return result of the rendering.
+	 * @Date 2018-9-3 11:38:34
+	 */
     public Object value(InternalContextAdapter context)
     {
         if (interpolate)

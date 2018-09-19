@@ -24,13 +24,15 @@ import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.Validator;
 import com.mqfdy.code.model.utils.ValidatorType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * @author mqf
+ * A factory for creating FileCodeGenerator objects.
  *
+ * @author mqf
  */
 public class FileCodeGeneratorFactory {
 	
+	/** The class list. */
 	@SuppressWarnings("rawtypes")
 	private static List<Class> classList;
 	static{
@@ -43,6 +45,17 @@ public class FileCodeGeneratorFactory {
 		classList.add(ValidatorClass.class);
 	}
 	
+	/**
+	 * Creates a new FileCodeGenerator object.
+	 *
+	 * @param bom
+	 *            the bom
+	 * @param bc
+	 *            the bc
+	 * @param project
+	 *            the project
+	 * @return the list< abstract generator>
+	 */
 	public static List<AbstractGenerator> createGenerator(BusinessObjectModel bom,BusinessClass bc,IProject project){
 		List<AbstractGenerator> gens = new ArrayList<AbstractGenerator>();
 		IPersistenceModel persistenceModel = ConvertUtil.convertToPersistenceModel(bc,bom);
@@ -52,10 +65,13 @@ public class FileCodeGeneratorFactory {
 		}
 		return gens;
 	}
+	
 	/**
-	 * 创建生成器
+	 * 创建生成器.
+	 *
 	 * @param param
-	 * @return
+	 *            the param
+	 * @return the list< abstract generator>
 	 */
 	public static List<AbstractGenerator> createGenerator(ClassParam param){
 		List<AbstractGenerator> gens = new ArrayList<AbstractGenerator>();
@@ -72,10 +88,13 @@ public class FileCodeGeneratorFactory {
 		}
 		return gens;
 	}
+	
 	/**
-	 * 创建校验生成器列表
+	 * 创建校验生成器列表.
+	 *
 	 * @param param
-	 * @return
+	 *            the param
+	 * @return the list< abstract generator>
 	 */
 	private static List<AbstractGenerator> createValidatorGenerators(ClassParam param) {
 		BusinessClass bc = param.getBc();
@@ -99,11 +118,15 @@ public class FileCodeGeneratorFactory {
 		}
 		return validatorGenList;
 	}
+	
 	/**
-	 * 创建代码文件生成器
+	 * 创建代码文件生成器.
+	 *
 	 * @param param
+	 *            the param
 	 * @param c
-	 * @return
+	 *            the c
+	 * @return the abstract generator
 	 */
 	private static AbstractGenerator createGenerator(ClassParam param, Class<?> c) {
 		AbstractGenerator generator = null;
@@ -127,6 +150,15 @@ public class FileCodeGeneratorFactory {
 		return generator;
 	}
 
+	/**
+	 * Creates a new FileCodeGenerator object.
+	 *
+	 * @param bom
+	 *            the bom
+	 * @param project
+	 *            the project
+	 * @return the list< abstract generator>
+	 */
 	public static List<AbstractGenerator> createGenerator(BusinessObjectModel bom,IProject project){
 		List<AbstractGenerator> generators = new ArrayList<AbstractGenerator>();
 		if(bom != null && bom.getBusinessClasses() != null){
@@ -138,6 +170,21 @@ public class FileCodeGeneratorFactory {
 		return null;
 	}
 	
+	/**
+	 * Creates a new FileCodeGenerator object.
+	 *
+	 * @param bc
+	 *            the bc
+	 * @param persistenceModel
+	 *            the persistence model
+	 * @param project
+	 *            the project
+	 * @param bom
+	 *            the bom
+	 * @param c
+	 *            the c
+	 * @return the abstract generator
+	 */
 	@SuppressWarnings("rawtypes")
 	public static AbstractGenerator createGenerator(BusinessClass bc,IPersistenceModel persistenceModel,IProject project, BusinessObjectModel bom,Class c){
 		AbstractGenerator generator = null;

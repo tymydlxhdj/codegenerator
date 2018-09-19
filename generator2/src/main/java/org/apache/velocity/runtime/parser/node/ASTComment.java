@@ -29,6 +29,7 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.runtime.parser.Parser;
 import org.apache.velocity.runtime.parser.Token;
 
+// TODO: Auto-generated Javadoc
 /**
  *  Represents all comments...
  *
@@ -37,41 +38,64 @@ import org.apache.velocity.runtime.parser.Token;
  */
 public class ASTComment extends SimpleNode
 {
+    
+    /** The Constant ZILCH. */
     private static final char[] ZILCH = "".toCharArray();
 
+    /** The carr. */
     private char[] carr;
 
     /**
-     * @param id
-     */
+	 * Instantiates a new AST comment.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTComment(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST comment.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTComment(Parser p, int id)
     {
         super(p, id);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     *  We need to make sure we catch any of the dreaded MORE tokens.
-     * @param context
-     * @param data
-     * @return The data object.
-     */
+	 * We need to make sure we catch any of the dreaded MORE tokens.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param data
+	 *            the data
+	 * @return The data object.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public Object init(InternalContextAdapter context, Object data)
     {
         Token t = getFirstToken();
@@ -92,8 +116,24 @@ public class ASTComment extends SimpleNode
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#render(org.apache.velocity.context.InternalContextAdapter, java.io.Writer)
-     */
+	 * Render.
+	 *
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @return true, if successful
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#render(org.apache.velocity.context.InternalContextAdapter,
+	 *      java.io.Writer)
+	 */
     public boolean render( InternalContextAdapter context, Writer writer)
         throws IOException, MethodInvocationException, ParseErrorException, ResourceNotFoundException
     {

@@ -3,18 +3,34 @@ package com.mqfdy.code.model.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
- * sql查询条件操作符
- * 
+ * sql查询条件操作符.
+ *
  * @author mqfdy
- * 
  */
 public enum SqlOperateType {
 
-	NONE("000", ""), Oracle_equals("100", "="), Oracle_smallThan("101", "<"), Oracle_bigThan(
-			"102", ">"), Oracle_smallThanOrEquals("103", "<="), Oracle_bigThanOrEquals(
-			"104", ">="), Oracle_like("105", "like"), Oracle_in("106", "in"), Oracle_notIn(
-			"107", "not in"), Oracle_notEquals("108", "<>");
+	/** The none. */
+	NONE("000", ""), /** The Oracle equals. */
+ Oracle_equals("100", "="), /** The Oracle small than. */
+ Oracle_smallThan("101", "<"), /** The Oracle big than. */
+ Oracle_bigThan(
+			"102", ">"), 
+ /** The Oracle small than or equals. */
+ Oracle_smallThanOrEquals("103", "<="), 
+ /** The Oracle big than or equals. */
+ Oracle_bigThanOrEquals(
+			"104", ">="), 
+ /** The Oracle like. */
+ Oracle_like("105", "like"), 
+ /** The Oracle in. */
+ Oracle_in("106", "in"), 
+ /** The Oracle not in. */
+ Oracle_notIn(
+			"107", "not in"), 
+ /** The Oracle not equals. */
+ Oracle_notEquals("108", "<>");
 
 	/*
 	 * DB2_equals("200","=",DBType.DB2), DB2_smallThan("201","=",DBType.DB2),
@@ -81,18 +97,31 @@ public enum SqlOperateType {
 	 * DM_notEquals("709","<>",DBType.DM);
 	 */
 
+	/** The id. */
 	private String id;
+	
+	/** The disp name. */
 	private String dispName;
 
+	/**
+	 * Instantiates a new sql operate type.
+	 *
+	 * @param id
+	 *            the id
+	 * @param dispName
+	 *            the disp name
+	 */
 	SqlOperateType(String id, String dispName) {
 		this.id = id;
 		this.dispName = dispName;
 	}
 
 	/**
-	 * 获取所有的Sql操作枚举列表
-	 * 
-	 * @return
+	 * 获取所有的Sql操作枚举列表.
+	 *
+	 * @author mqfdy
+	 * @return the sql operate types
+	 * @Date 2018-09-03 09:00
 	 */
 	public static List<SqlOperateType> getSqlOperateTypes() {
 		List<SqlOperateType> list = new ArrayList<SqlOperateType>();
@@ -102,6 +131,13 @@ public enum SqlOperateType {
 		return list;
 	}
 
+	/**
+	 * Gets the sql operate disp names.
+	 *
+	 * @author mqfdy
+	 * @return the sql operate disp names
+	 * @Date 2018-09-03 09:00
+	 */
 	public static List<String> getSqlOperateDispNames() {
 		List<String> list = new ArrayList<String>();
 		for (int i = 0; i < SqlOperateType.values().length; i++) {
@@ -111,10 +147,13 @@ public enum SqlOperateType {
 	}
 
 	/**
-	 * 通过id获取枚举对象
-	 * 
+	 * 通过id获取枚举对象.
+	 *
+	 * @author mqfdy
 	 * @param id
-	 * @return
+	 *            the id
+	 * @return the sql operate type by id
+	 * @Date 2018-09-03 09:00
 	 */
 	public static SqlOperateType getSqlOperateTypeById(String id) {
 		List<SqlOperateType> list = getSqlOperateTypes();
@@ -127,11 +166,13 @@ public enum SqlOperateType {
 	}
 
 	/**
-	 * 通过名称和数据库类型获取枚举对象
-	 * 
+	 * 通过名称和数据库类型获取枚举对象.
+	 *
+	 * @author mqfdy
 	 * @param disName
-	 * @param dbType
-	 * @return
+	 *            the dis name
+	 * @return the sql operate type by disp name
+	 * @Date 2018-09-03 09:00
 	 */
 	public static SqlOperateType getSqlOperateTypeByDispName(String disName) {
 		List<SqlOperateType> list = getSqlOperateTypes();
@@ -144,10 +185,24 @@ public enum SqlOperateType {
 		return null;
 	}
 
+	/**
+	 * Gets the id.
+	 *
+	 * @author mqfdy
+	 * @return the id
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getId() {
 		return id;
 	}
 
+	/**
+	 * Gets the disp name.
+	 *
+	 * @author mqfdy
+	 * @return the disp name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getDispName() {
 		return dispName;
 	}

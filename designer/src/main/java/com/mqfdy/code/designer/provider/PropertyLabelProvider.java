@@ -12,9 +12,26 @@ import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.utils.EditorType;
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PropertyLabelProvider.
+ *
+ * @author mqfdy
+ */
 public class PropertyLabelProvider extends LabelProvider implements
 		ITableLabelProvider {
 
+	/**
+	 * Gets the column image.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @param columnIndex
+	 *            the column index
+	 * @return the column image
+	 * @Date 2018-09-03 09:00
+	 */
 	public Image getColumnImage(Object element, int columnIndex) {
 		if (columnIndex == 0) {
 			if (element instanceof PKProperty
@@ -26,6 +43,17 @@ public class PropertyLabelProvider extends LabelProvider implements
 		return null;
 	}
 
+	/**
+	 * Gets the column text.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @param columnIndex
+	 *            the column index
+	 * @return the column text
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getColumnText(Object element, int columnIndex) {
 		if (element instanceof Property) {
 			Property property = (Property) element;

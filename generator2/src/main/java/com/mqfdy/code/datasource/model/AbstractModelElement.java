@@ -2,36 +2,85 @@ package com.mqfdy.code.datasource.model;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AbstractModelElement.
+ *
+ * @author mqfdy
+ */
 public abstract class AbstractModelElement implements IModelElement {
 
+	/** The parent. */
 	private IModelElement parent;
+	
+	/** The name. */
 	private String name;
 
+	/**
+	 * Instantiates a new abstract model element.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param name
+	 *            the name
+	 */
 	protected AbstractModelElement(final IModelElement parent, final String name) {
 		this.parent = parent;
 		this.name = name;
 	}
 
+	/**
+	 * @see com.mqfdy.code.datasource.model.IModelElement#getElementParent()
+	 * @return AbstractModelElement
+	 */
 	public IModelElement getElementParent() {
 		return parent;
 	}
 
+	/**
+	 * Sets the element parent.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the new element parent
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setElementParent(final IModelElement parent) {
 		this.parent = parent;
 	}
 
+	/**
+	 * @see com.mqfdy.code.datasource.model.IModelElement#getElementChildren()
+	 * @return AbstractModelElement
+	 */
 	public IModelElement[] getElementChildren() {
 		return NO_CHILDREN;
 	}
 
+	/**
+	 * @see com.mqfdy.code.datasource.model.IModelElement#getElementName()
+	 * @return AbstractModelElement
+	 */
 	public String getElementName() {
 		return name;
 	}
 
+	/**
+	 * Sets the element name.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the new element name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setElementName(final String name) {
 		this.name = name;
 	}
 
+	/**
+	 * @see com.mqfdy.code.datasource.model.IModelElement#getElementID()
+	 * @return AbstractModelElement
+	 */
 	public String getElementID() {
 		final StringBuffer id = new StringBuffer();
 		if (getElementParent() != null) {
@@ -48,10 +97,26 @@ public abstract class AbstractModelElement implements IModelElement {
 		return id.toString();
 	}
 
+	/**
+	 * Gets the unique element name.
+	 *
+	 * @author mqfdy
+	 * @return the unique element name
+	 * @Date 2018-09-03 09:00
+	 */
 	protected String getUniqueElementName() {
 		return getElementName();
 	}
 
+	/**
+	 * Gets the element.
+	 *
+	 * @author mqfdy
+	 * @param id
+	 *            the id
+	 * @return the element
+	 * @Date 2018-09-03 09:00
+	 */
 	public IModelElement getElement(String id) {
 		final int sepPos = id.indexOf(ID_SEPARATOR);
 		if (sepPos > 0) {
@@ -89,6 +154,11 @@ public abstract class AbstractModelElement implements IModelElement {
 		return null;
 	}
 
+	/**
+	 * @see com.mqfdy.code.datasource.model.IModelElement#accept(com.mqfdy.code.datasource.model.IModelElementVisitor, org.eclipse.core.runtime.IProgressMonitor)
+	 * @param visitor
+	 * @param monitor AbstractModelElement
+	 */
 	public void accept(final IModelElementVisitor visitor,
 			final IProgressMonitor monitor) {
 

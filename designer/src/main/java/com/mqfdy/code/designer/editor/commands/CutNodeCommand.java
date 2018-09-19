@@ -24,26 +24,44 @@ import com.mqfdy.code.model.ReferenceObject;
 import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * 剪切图形
- * 
+ * 剪切图形.
+ *
  * @author mqfdy
- * 
  */
 public class CutNodeCommand extends Command {
+	
+	/** The parts. */
 	// 选中的图形EditPart
 	private List<AbstractGraphicalEditPart> parts = new ArrayList<AbstractGraphicalEditPart>();
+	
+	/** The all parts. */
 	// 选中的图形及其所对应的关联关系的EditPart
 	private List<AbstractGraphicalEditPart> allParts = new ArrayList<AbstractGraphicalEditPart>();
+	
+	/** The ab list. */
 	// 选中的业务对象
 	private List<AbstractModelElement> abList = new ArrayList<AbstractModelElement>();
+	
+	/** The conn list. */
 	// 选中实体对应的关联关系
 	private List<AbstractModelElement> connList = new ArrayList<AbstractModelElement>();
+	
+	/** The conn id list. */
 	// 选中实体对应的关联关系ID
 	private List<String> connIdList = new ArrayList<String>();
+	
+	/** The con parts. */
 	// 选中的图形对应的关联关系的EditPart
 	private List<AbstractGraphicalEditPart> conParts = new ArrayList<AbstractGraphicalEditPart>();
 
+	/**
+	 * Instantiates a new cut node command.
+	 *
+	 * @param selectedObjects
+	 *            the selected objects
+	 */
 	public CutNodeCommand(List<AbstractGraphicalEditPart> selectedObjects) {
 		super();
 		for (AbstractGraphicalEditPart part : selectedObjects) {
@@ -63,6 +81,9 @@ public class CutNodeCommand extends Command {
 
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		if (abList == null || abList.isEmpty())
@@ -70,6 +91,9 @@ public class CutNodeCommand extends Command {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 		if (canExecute()) {
@@ -77,6 +101,9 @@ public class CutNodeCommand extends Command {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void redo() {
 		if (canExecute()) {
@@ -180,11 +207,17 @@ public class CutNodeCommand extends Command {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canUndo() {
 		return canExecute();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void undo() {
 		// 图元、对象

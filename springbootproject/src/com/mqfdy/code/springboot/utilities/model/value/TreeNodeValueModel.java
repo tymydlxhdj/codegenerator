@@ -12,21 +12,23 @@ package com.mqfdy.code.springboot.utilities.model.value;
 /**
  * Extend WritablePropertyValueModel to better support TreeModelAdapter.
  * 
- * Implementors of this interface should fire a "state change" event
- * whenever the node's internal state changes in a way that the
- * tree listeners should be notified.
+ * Implementors of this interface should fire a "state change" event whenever
+ * the node's internal state changes in a way that the tree listeners should be
+ * notified.
  * 
  * Implementors of this interface should also fire a "value property change"
- * event whenever the node's value changes. Typically, only nodes that
- * hold "primitive" data will fire this event.
- * 
+ * event whenever the node's value changes. Typically, only nodes that hold
+ * "primitive" data will fire this event.
+ *
+ * @param <T>
+ *            the generic type
  * @see com.sgcc.uap.ide.database.dtp.utility.internal.model.value.AbstractTreeNodeValueModel
  * 
- * Provisional API: This interface is part of an interim API that is still
- * under development and expected to change significantly before reaching
- * stability. It is available at this early stage to solicit feedback from
- * pioneering adopters on the understanding that any code that uses this API
- * will almost certainly be broken (repeatedly) as the API evolves.
+ *      Provisional API: This interface is part of an interim API that is still
+ *      under development and expected to change significantly before reaching
+ *      stability. It is available at this early stage to solicit feedback from
+ *      pioneering adopters on the understanding that any code that uses this
+ *      API will almost certainly be broken (repeatedly) as the API evolves.
  */
 public interface TreeNodeValueModel<T>
 	extends WritablePropertyValueModel<T>

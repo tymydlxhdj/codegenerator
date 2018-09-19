@@ -42,38 +42,64 @@ import com.mqfdy.code.shareModel.providers.ModelMessageTreeContentProvider;
 import com.mqfdy.code.shareModel.providers.ModelMessageTreeLabelProvider;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 模型文件包含的业务实体tab页
- * @author chenwanli
+ * 模型文件包含的业务实体tab页.
  *
+ * @author chenwanli
  */
 public class BusinessClassBaiscInfoPage extends Composite{
 	
 	
+	/** The basic info group. */
 	private Group basicInfoGroup;
+	
+	/** The property group. */
 	private Group propertyGroup;
 	
+	/** The name label. */
 	private Label nameLabel;
+	
+	/** The name text. */
 	private Text nameText;
 	
+	/** The display name label. */
 	private Label displayNameLabel;
+	
+	/** The display name text. */
 	private Text displayNameText;
 	
+	/** The DB name label. */
 	private Label DBNameLabel;
+	
+	/** The DB name text. */
 	private Text DBNameText;
 	
 	
+	/** The table viewer. */
 	private TableViewer tableViewer;
+	
+	/** The table. */
 	public Table table;
 	
+	/**
+	 * Instantiates a new business class baisc info page.
+	 *
+	 * @param folder
+	 *            the folder
+	 */
 	public BusinessClassBaiscInfoPage(Composite folder) {
 		super(folder, SWT.NONE);
 		createContents(this);
 	}	
 
 	/**
-	 * 创建界面
+	 * 创建界面.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createContents(Composite composite) {
 		composite.setLayout(new GridLayout(1,false));	
@@ -83,8 +109,12 @@ public class BusinessClassBaiscInfoPage extends Composite{
 	}	
 	
 	/**
-	 * 表格显示区域
+	 * 表格显示区域.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createPropertyGroup(Composite composite) {
 		propertyGroup=new Group(composite,SWT.None);
@@ -146,8 +176,12 @@ public class BusinessClassBaiscInfoPage extends Composite{
 
 	
 	/**
-	 * 查询条件显示区域
+	 * 查询条件显示区域.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createBasicInfoGroup(Composite composite) {
 		basicInfoGroup=new Group(composite,SWT.None);
@@ -191,6 +225,14 @@ public class BusinessClassBaiscInfoPage extends Composite{
 		
 	}
 
+	/**
+	 * Inits the basic info page.
+	 *
+	 * @author mqfdy
+	 * @param obj
+	 *            the obj
+	 * @Date 2018-09-03 09:00
+	 */
 	public void initBasicInfoPage(Object obj) {
 		BusinessClass bs=(BusinessClass)obj;
 		nameText.setText(bs.getName());

@@ -19,21 +19,43 @@ import com.mqfdy.code.model.utils.DataType;
 import com.mqfdy.code.model.utils.StringUtil;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * DTO属性节本信息页
- * 
+ * DTO属性节本信息页.
+ *
  * @author mqfdy
- * 
  */
 public class DTOPropertyBasicInfoPage extends Composite implements
 		IBusinessClassEditorPage {
+	
+	/** The text name. */
 	private Text textName;// 名称
+	
+	/** The text disp name. */
 	private Text textDispName;// 显示名
+	
+	/** The styled text desc. */
 	StyledText styledTextDesc; // 备注
+	
+	/** The combo data type. */
 	private Combo comboDataType;// 数据类型
+	
+	/** The text default value. */
 	private Text textDefaultValue;// 缺省值
+	
+	/** The parent dialog. */
 	DTOPropertyEditDialog parentDialog;
 
+	/**
+	 * Instantiates a new DTO property basic info page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param dtoDialog
+	 *            the dto dialog
+	 */
 	DTOPropertyBasicInfoPage(Composite parent, int style,
 			DTOPropertyEditDialog dtoDialog) {
 		super(parent, style);
@@ -42,6 +64,12 @@ public class DTOPropertyBasicInfoPage extends Composite implements
 		addListeners();
 	}
 
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent() {
 		// 关联关系信息区域
 		GridLayout layout = new GridLayout();
@@ -91,6 +119,12 @@ public class DTOPropertyBasicInfoPage extends Composite implements
 		styledTextDesc.setLayoutData(data);
 	}
 
+	/**
+	 * Adds the listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void addListeners() {
 		textName.addKeyListener(new KeyListener() {
 			public void keyPressed(KeyEvent arg0) {
@@ -111,6 +145,9 @@ public class DTOPropertyBasicInfoPage extends Composite implements
 		});
 	}
 
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		if (parentDialog.getProperty() != null) {
 			// 初始化下拉框的值
@@ -131,6 +168,9 @@ public class DTOPropertyBasicInfoPage extends Composite implements
 
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		if (textName.getText().trim().length() == 0) {
 			parentDialog.setErrorMessage(ERROR_MESSAGE_NAME_NULLABLE);
@@ -159,6 +199,9 @@ public class DTOPropertyBasicInfoPage extends Composite implements
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 		String name = StringUtil.convertNull2EmptyStr(textName.getText());
 		String dispName = StringUtil.convertNull2EmptyStr(textDispName

@@ -30,59 +30,75 @@ import com.mqfdy.code.designer.views.modelresource.actions.ModelFilterAction;
 import com.mqfdy.code.designer.views.modelresource.tree.ModelResourceView;
 import com.mqfdy.code.designer.views.modelresource.tree.RepositoryModelView;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ObjectModelOutlinePage.
+ *
  * @author mqfdy
- * 
  */
 public class ObjectModelOutlinePage extends Page implements
 		IContentOutlinePage, ISelectionChangedListener, IPropertyListener {
 
+	/** The selection changed listeners. */
 	private ListenerList selectionChangedListeners = new ListenerList();
 
+	/** The business model manager. */
 	private BusinessModelManager businessModelManager;
 
+	/** The business model diagram editor. */
 	private BusinessModelDiagramEditor businessModelDiagramEditor;
-	/**
-	 * 导航标签页
-	 */
+	
+	/** 导航标签页. */
 	private TabFolder tabFolder;
 
-	/**
-	 * 模型资源视图
-	 */
+	/** 模型资源视图. */
 	private ModelResourceView mrViewer;
 
-	/**
-	 * 引用模型视图
-	 */
+	/** 引用模型视图. */
 	private RepositoryModelView rmViewer;
 
-	/**
-	 * 树收缩动作
-	 */
+	/** 树收缩动作. */
 	private Action collapseTreeAction;
-	/**
-	 * 过滤条件动作
-	 */
+	
+	/** 过滤条件动作. */
 	private Action modelFilterAction;
 
-	/**
-	 * 树收缩动作
-	 */
+	/** 树收缩动作. */
 	private Action expandTreeAction;
 
+	/** The current viewer. */
 	protected Object currentViewer;
 
+	/**
+	 * Instantiates a new object model outline page.
+	 *
+	 * @param businessModelManager
+	 *            the business model manager
+	 */
 	public ObjectModelOutlinePage(BusinessModelManager businessModelManager) {
 		this.businessModelManager = businessModelManager;
 	}
 
+	/**
+	 * Instantiates a new object model outline page.
+	 *
+	 * @param businessModelDiagramEditor
+	 *            the business model diagram editor
+	 */
 	public ObjectModelOutlinePage(
 			BusinessModelDiagramEditor businessModelDiagramEditor) {
 		this.businessModelDiagramEditor = businessModelDiagramEditor;
 		this.businessModelManager = businessModelDiagramEditor.getBusinessModelManager();
 	}
 
+	/**
+	 * Creates the control.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createControl(Composite parent) {
 		createTabFolder(parent);
 		createModelResourceView();
@@ -91,13 +107,26 @@ public class ObjectModelOutlinePage extends Page implements
 		initActions();
 	}
 
+	/**
+	 * Inits the.
+	 *
+	 * @author mqfdy
+	 * @param pageSite
+	 *            the page site
+	 * @Date 2018-09-03 09:00
+	 */
 	public void init(IPageSite pageSite) {
 		super.init(pageSite);
 
 	}
 
 	/**
-	 * 初始化标签页
+	 * 初始化标签页.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createTabFolder(Composite parent) {
 		tabFolder = new TabFolder(parent, SWT.NONE | SWT.BOTTOM);
@@ -129,7 +158,10 @@ public class ObjectModelOutlinePage extends Page implements
 	}
 
 	/**
-	 * 创建模型资源视图
+	 * 创建模型资源视图.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createModelResourceView() {
 		mrViewer = new ModelResourceView(tabFolder, SWT.NONE,
@@ -140,6 +172,12 @@ public class ObjectModelOutlinePage extends Page implements
 
 	}
 
+	/**
+	 * Creates the repository model view.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createRepositoryModelView() {
 		rmViewer = new RepositoryModelView(tabFolder, SWT.NONE, this,
 				businessModelManager);
@@ -147,22 +185,48 @@ public class ObjectModelOutlinePage extends Page implements
 		tabFolder.getItem(1).setControl(rmViewer);
 	}
 
+	/**
+	 * Inits the actions.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void initActions() {
 		makeActions();
 		contributeToActionBars();
 	}
 
+	/**
+	 * Contribute to action bars.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void contributeToActionBars() {
 		IActionBars bars = this.getSite().getActionBars();
 		fillLocalToolBar(bars.getToolBarManager());
 	}
 
+	/**
+	 * Fill local tool bar.
+	 *
+	 * @author mqfdy
+	 * @param manager
+	 *            the manager
+	 * @Date 2018-09-03 09:00
+	 */
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(expandTreeAction);
 		manager.add(collapseTreeAction);
 		manager.add(modelFilterAction);
 	}
 
+	/**
+	 * Make actions.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void makeActions() {
 		collapseTreeAction = new Action() {
 			public void run() {
@@ -203,11 +267,24 @@ public class ObjectModelOutlinePage extends Page implements
 				.getImageDescriptor(ImageKeys.IMG_TREE_OPER_EXPAND));
 	}
 
+	/**
+	 * Property changed.
+	 *
+	 * @author mqfdy
+	 * @param arg0
+	 *            the arg 0
+	 * @param arg1
+	 *            the arg 1
+	 * @Date 2018-09-03 09:00
+	 */
 	public void propertyChanged(Object arg0, int arg1) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * 
+	 */
 	public void setFocus() {
 		int selectionIndex = tabFolder.getSelectionIndex();
 		if (selectionIndex == 0) {
@@ -217,6 +294,14 @@ public class ObjectModelOutlinePage extends Page implements
 		}
 	}
 
+	/**
+	 * Adds the selection changed listener.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * (non-Javadoc) Method declared on ISelectionProvider.
 	 */
@@ -230,6 +315,9 @@ public class ObjectModelOutlinePage extends Page implements
 		selectionChangedListeners.add(listener);
 	}
 
+	/**
+	 * @return
+	 */
 	public ISelection getSelection() {
 		if (tabFolder == null) {
 			return null;
@@ -250,6 +338,14 @@ public class ObjectModelOutlinePage extends Page implements
 		}
 	}
 
+	/**
+	 * Removes the selection changed listener.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * (non-Javadoc) Method declared on ISelectionProvider.
 	 */
@@ -264,6 +360,14 @@ public class ObjectModelOutlinePage extends Page implements
 		selectionChangedListeners.remove(listener);
 	}
 
+	/**
+	 * Sets the selection.
+	 *
+	 * @author mqfdy
+	 * @param selection
+	 *            the new selection
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setSelection(ISelection selection) {
 		if (tabFolder != null) {
 			if (mrViewer != null && mrViewer.getTreeViewer() != null) {
@@ -275,6 +379,14 @@ public class ObjectModelOutlinePage extends Page implements
 		}
 	}
 
+	/**
+	 * Selection changed.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	public void selectionChanged(SelectionChangedEvent event) {
 		fireSelectionChanged(event.getSelection());
 		if (mrViewer != null) {
@@ -287,9 +399,11 @@ public class ObjectModelOutlinePage extends Page implements
 
 	/**
 	 * Fires a selection changed event.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param selection
 	 *            the new selection
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void fireSelectionChanged(ISelection selection) {
 		// create an event
@@ -308,6 +422,9 @@ public class ObjectModelOutlinePage extends Page implements
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public Control getControl() {
 		if (tabFolder == null) {
@@ -316,28 +433,66 @@ public class ObjectModelOutlinePage extends Page implements
 		return tabFolder;
 	}
 
+	/**
+	 * Gets the business model manager.
+	 *
+	 * @author mqfdy
+	 * @return the business model manager
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessModelManager getBusinessModelManager() {
 		return businessModelManager;
 	}
 
+	/**
+	 * Gets the mr viewer.
+	 *
+	 * @author mqfdy
+	 * @return the mr viewer
+	 * @Date 2018-09-03 09:00
+	 */
 	public ModelResourceView getMrViewer() {
 		return mrViewer;
 	}
 
+	/**
+	 * Gets the rm viewer.
+	 *
+	 * @author mqfdy
+	 * @return the rm viewer
+	 * @Date 2018-09-03 09:00
+	 */
 	public RepositoryModelView getRmViewer() {
 		return rmViewer;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void dispose() {
 		// rmViewer.removeListener();
 		super.dispose();
 	}
 
+	/**
+	 * Gets the current viewer.
+	 *
+	 * @author mqfdy
+	 * @return the current viewer
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getCurrentViewer() {
 		return currentViewer;
 	}
 
+	/**
+	 * Gets the business model diagram editor.
+	 *
+	 * @author mqfdy
+	 * @return the business model diagram editor
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessModelDiagramEditor getBusinessModelDiagramEditor() {
 		return businessModelDiagramEditor;
 	}

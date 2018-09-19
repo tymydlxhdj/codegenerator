@@ -36,6 +36,7 @@ import org.apache.velocity.runtime.log.LogDisplayWrapper;
 import org.apache.velocity.runtime.parser.ParseException;
 import org.apache.velocity.runtime.parser.node.Node;
 
+// TODO: Auto-generated Javadoc
 /**
  *  VelocimacroFactory.java
  *
@@ -46,26 +47,23 @@ import org.apache.velocity.runtime.parser.node.Node;
  */
 public class VelocimacroFactory
 {
-    /**
-     *  runtime services for this instance
-     */
+    
+    /** runtime services for this instance. */
     private final RuntimeServices rsvc;
 
-    /**
-     *  the log for this instance
-     */
+    /** the log for this instance. */
     private final LogDisplayWrapper log;
 
     /**
-     *  VMManager : deal with namespace management
-     *  and actually keeps all the VM definitions
-     */
+	 * VMManager : deal with namespace management and actually keeps all the VM
+	 * definitions.
+	 */
     private VelocimacroManager vmManager = null;
 
     /**
-     *  determines if replacement of global VMs are allowed
-     *  controlled by  VM_PERM_ALLOW_INLINE_REPLACE_GLOBAL
-     */
+	 * determines if replacement of global VMs are allowed controlled by
+	 * VM_PERM_ALLOW_INLINE_REPLACE_GLOBAL.
+	 */
     private boolean replaceAllowed = false;
 
     /**
@@ -76,26 +74,16 @@ public class VelocimacroFactory
      */
     private boolean addNewAllowed = true;
 
-    /**
-     *  sets if template-local namespace in used
-     */
+    /** sets if template-local namespace in used. */
     private boolean templateLocal = false;
 
-    /**
-     *  determines if the libraries are auto-loaded
-     *  when they change
-     */
+    /** determines if the libraries are auto-loaded when they change. */
     private boolean autoReloadLibrary = false;
 
-    /**
-     *  vector of the library names
-     */
+    /** vector of the library names. */
     private List macroLibVec = null;
 
-    /**
-     *  map of the library Template objects
-     *  used for reload determination
-     */
+    /** map of the library Template objects used for reload determination. */
     private Map libModMap;
 
     /**
@@ -118,9 +106,11 @@ public class VelocimacroFactory
     }
 
     /**
-     *  initialize the factory - setup all permissions
-     *  load all global libraries.
-     */
+	 * initialize the factory - setup all permissions load all global libraries.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:27
+	 */
     public void initVelocimacro()
     {
         /*
@@ -318,18 +308,23 @@ public class VelocimacroFactory
     }
 
     /**
-     * Adds a macro to the factory.
-     * 
-     * addVelocimacro(String, Node, String[] argArray, String) should be used internally
-     * instead of this.
-     *
-     * @param name Name of the Macro to add.
-     * @param macroBody String representation of the macro.
-     * @param argArray Macro arguments. First element is the macro name.
-     * @param sourceTemplate Source template from which the macro gets registered.
-     * 
-     * @return true if Macro was registered successfully.
-     */
+	 * Adds a macro to the factory.
+	 * 
+	 * addVelocimacro(String, Node, String[] argArray, String) should be used
+	 * internally instead of this.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            Name of the Macro to add.
+	 * @param macroBody
+	 *            String representation of the macro.
+	 * @param argArray
+	 *            Macro arguments. First element is the macro name.
+	 * @param sourceTemplate
+	 *            Source template from which the macro gets registered.
+	 * @return true if Macro was registered successfully.
+	 * @Date 2018-9-3 11:38:27
+	 */
     public boolean addVelocimacro(String name, String macroBody,
             String argArray[], String sourceTemplate)
     {
@@ -471,13 +466,17 @@ public class VelocimacroFactory
     
     
     /**
-     *  determines if a given macro/namespace (name, source) combo is allowed
-     *  to be added
-     *
-     *  @param name Name of VM to add
-     *  @param sourceTemplate Source template that contains the defintion of the VM
-     *  @return true if it is allowed to be added, false otherwise
-     */
+	 * determines if a given macro/namespace (name, source) combo is allowed to
+	 * be added.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            Name of VM to add
+	 * @param sourceTemplate
+	 *            Source template that contains the defintion of the VM
+	 * @return true if it is allowed to be added, false otherwise
+	 * @Date 2018-9-3 11:38:27
+	 */
     private synchronized boolean canAddVelocimacro(String name, String sourceTemplate)
     {
         /*
@@ -533,11 +532,16 @@ public class VelocimacroFactory
     }
 
     /**
-     * Tells the world if a given directive string is a Velocimacro
-     * @param vm Name of the Macro.
-     * @param sourceTemplate Source template from which the macro should be loaded.
-     * @return True if the given name is a macro.
-     */
+	 * Tells the world if a given directive string is a Velocimacro.
+	 *
+	 * @author mqfdy
+	 * @param vm
+	 *            Name of the Macro.
+	 * @param sourceTemplate
+	 *            Source template from which the macro should be loaded.
+	 * @return True if the given name is a macro.
+	 * @Date 2018-9-3 11:38:27
+	 */
     public boolean isVelocimacro(String vm, String sourceTemplate)
     {
         // synchronization removed
@@ -545,21 +549,34 @@ public class VelocimacroFactory
     }
 
     /**
-     *  actual factory : creates a Directive that will
-     *  behave correctly wrt getting the framework to
-     *  dig out the correct # of args
-     * @param vmName Name of the Macro.
-     * @param sourceTemplate Source template from which the macro should be loaded.
-     * @return A directive representing the Macro.
-     */
+	 * actual factory : creates a Directive that will behave correctly wrt
+	 * getting the framework to dig out the correct # of args.
+	 *
+	 * @author mqfdy
+	 * @param vmName
+	 *            Name of the Macro.
+	 * @param sourceTemplate
+	 *            Source template from which the macro should be loaded.
+	 * @return A directive representing the Macro.
+	 * @Date 2018-9-3 11:38:27
+	 */
      public Directive getVelocimacro(String vmName, String sourceTemplate)
      {
         return(getVelocimacro(vmName, sourceTemplate, null));
      }
 
      /**
-      * @since 1.6
-      */
+		 * Gets the velocimacro.
+		 *
+		 * @param vmName
+		 *            the vm name
+		 * @param sourceTemplate
+		 *            the source template
+		 * @param renderingTemplate
+		 *            the rendering template
+		 * @return the velocimacro
+		 * @since 1.6
+		 */
      public Directive getVelocimacro(String vmName, String sourceTemplate, String renderingTemplate)
      {
         VelocimacroProxy vp = null;
@@ -651,34 +668,56 @@ public class VelocimacroFactory
     }
 
     /**
-     * tells the vmManager to dump the specified namespace
-     * 
-     * @param namespace Namespace to dump.
-     * @return True if namespace has been dumped successfully.
-     */
+	 * tells the vmManager to dump the specified namespace.
+	 *
+	 * @author mqfdy
+	 * @param namespace
+	 *            Namespace to dump.
+	 * @return True if namespace has been dumped successfully.
+	 * @Date 2018-9-3 11:38:27
+	 */
     public boolean dumpVMNamespace(String namespace)
     {
         return vmManager.dumpNamespace(namespace);
     }
 
     /**
-     * sets permission to have VMs local in scope to their declaring template note that this is
-     * really taken care of in the VMManager class, but we need it here for gating purposes in addVM
-     * eventually, I will slide this all into the manager, maybe.
-     */
+	 * sets permission to have VMs local in scope to their declaring template
+	 * note that this is really taken care of in the VMManager class, but we
+	 * need it here for gating purposes in addVM eventually, I will slide this
+	 * all into the manager, maybe.
+	 *
+	 * @author mqfdy
+	 * @param b
+	 *            the new template local inline
+	 * @Date 2018-9-3 11:38:27
+	 */
     private void setTemplateLocalInline(boolean b)
     {
         templateLocal = b;
     }
 
+    /**
+	 * Gets the template local inline.
+	 *
+	 * @author mqfdy
+	 * @return the template local inline
+	 * @Date 2018-9-3 11:38:27
+	 */
     private boolean getTemplateLocalInline()
     {
         return templateLocal;
     }
 
     /**
-     * sets the permission to add new macros
-     */
+	 * sets the permission to add new macros.
+	 *
+	 * @author mqfdy
+	 * @param addNewAllowed
+	 *            the add new allowed
+	 * @return true, if successful
+	 * @Date 2018-9-3 11:38:27
+	 */
     private boolean setAddMacroPermission(final boolean addNewAllowed)
     {
         boolean b = this.addNewAllowed;
@@ -687,8 +726,15 @@ public class VelocimacroFactory
     }
 
     /**
-     * sets the permission for allowing addMacro() calls to replace existing VM's
-     */
+	 * sets the permission for allowing addMacro() calls to replace existing
+	 * VM's.
+	 *
+	 * @author mqfdy
+	 * @param arg
+	 *            the arg
+	 * @return true, if successful
+	 * @Date 2018-9-3 11:38:27
+	 */
     private boolean setReplacementPermission(boolean arg)
     {
         boolean b = replaceAllowed;
@@ -698,31 +744,37 @@ public class VelocimacroFactory
     }
 
     /**
-     *  set the switch for automatic reloading of
-     *  global library-based VMs
-     */
+	 * set the switch for automatic reloading of global library-based VMs.
+	 *
+	 * @author mqfdy
+	 * @param b
+	 *            the new autoload
+	 * @Date 2018-9-3 11:38:27
+	 */
     private void setAutoload(boolean b)
     {
         autoReloadLibrary = b;
     }
 
     /**
-     *  get the switch for automatic reloading of
-     *  global library-based VMs
-     */
+	 * get the switch for automatic reloading of global library-based VMs.
+	 *
+	 * @author mqfdy
+	 * @return the autoload
+	 * @Date 2018-9-3 11:38:27
+	 */
     private boolean getAutoload()
     {
         return autoReloadLibrary;
     }
 
     /**
-     * small container class to hold the tuple
-     * of a template and modification time.
-     * We keep the modification time so we can
-     * 'override' it on a reload to prevent
-     * recursive reload due to inter-calling
-     * VMs in a library
-     */
+	 * small container class to hold the tuple of a template and modification
+	 * time. We keep the modification time so we can 'override' it on a reload
+	 * to prevent recursive reload due to inter-calling VMs in a library
+	 *
+	 * @author mqfdy
+	 */
     private static class Twonk
     {
         /** Template kept in this container. */

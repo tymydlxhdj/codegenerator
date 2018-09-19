@@ -22,6 +22,7 @@ package org.apache.velocity.util;
 import java.util.Iterator;
 import java.util.Enumeration;
 
+// TODO: Auto-generated Javadoc
 /**
  * An Iterator wrapper for an Enumeration.
  *
@@ -47,28 +48,35 @@ public class EnumerationIterator implements Iterator
     }
 
     /**
-     * Move to next element in the array.
-     *
-     * @return The next object in the array.
-     */
+	 * Move to next element in the array.
+	 *
+	 * @author mqfdy
+	 * @return The next object in the array.
+	 * @Date 2018-9-3 11:38:38
+	 */
     public Object next()
     {
         return enumeration.nextElement();
     }
 
     /**
-     * Check to see if there is another element in the array.
-     *
-     * @return Whether there is another element.
-     */
+	 * Check to see if there is another element in the array.
+	 *
+	 * @author mqfdy
+	 * @return Whether there is another element.
+	 * @Date 2018-9-3 11:38:38
+	 */
     public boolean hasNext()
     {
         return enumeration.hasMoreElements();
     }
 
     /**
-     *  Unimplemented.  No analogy in Enumeration
-     */
+	 * Unimplemented. No analogy in Enumeration
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:38
+	 */
     public void remove()
     {
         // not implemented

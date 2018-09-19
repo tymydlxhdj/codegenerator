@@ -11,15 +11,23 @@ import com.mqfdy.code.model.utils.DataType;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 持久化属性PropertySource
- * 
+ * 持久化属性PropertySource.
+ *
  * @author mqfdy
- * 
  */
 public class PersistencePropertySource extends ModelPropertySource {
+	
+	/** The persistence property. */
 	public PersistenceProperty persistenceProperty;
 
+	/**
+	 * Instantiates a new persistence property source.
+	 *
+	 * @param property
+	 *            the property
+	 */
 	public PersistencePropertySource(AbstractModelElement property) {
 		super();
 		this.persistenceProperty = (PersistenceProperty) property;
@@ -29,9 +37,15 @@ public class PersistencePropertySource extends ModelPropertySource {
 		// }
 	}
 
+	/**
+	 * 
+	 */
 	protected void initializeDescriptors() {
 	}
 
+	/**
+	 * 
+	 */
 	protected void installModelProperty() {
 		if (persistenceProperty.getStereotype() != null
 				&& (IModelElement.STEREOTYPE_BUILDIN.equals(persistenceProperty.getStereotype()) 
@@ -169,6 +183,13 @@ public class PersistencePropertySource extends ModelPropertySource {
 		// addButtonModelProperty(IBusinessModelPropertyNames.PROPERTY_ENUMERARION_VALUES,IBusinessModelPropertyNames.CATEGORY_ENUMERARION,"");
 	}
 
+	/**
+	 * Gets the strings.
+	 *
+	 * @author mqfdy
+	 * @return the strings
+	 * @Date 2018-09-03 09:00
+	 */
 	protected String[] getStrings() {
 		java.util.List<PropertyGroup> list = ((BusinessClass) persistenceProperty
 				.getParent()).getGroups();
@@ -182,6 +203,15 @@ public class PersistencePropertySource extends ModelPropertySource {
 		return new String[] {};
 	}
 
+	/**
+	 * Gets the group.
+	 *
+	 * @author mqfdy
+	 * @param groupDisplay
+	 *            the group display
+	 * @return the group
+	 * @Date 2018-09-03 09:00
+	 */
 	private PropertyGroup getGroup(String groupDisplay) {
 		if (groupDisplay.trim().equals(""))
 			return null;
@@ -197,6 +227,15 @@ public class PersistencePropertySource extends ModelPropertySource {
 		return newGroup;
 	}
 
+	/**
+	 * Gets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return the property value
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -276,6 +315,16 @@ public class PersistencePropertySource extends ModelPropertySource {
 			return "";
 	}
 
+	/**
+	 * Sets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -500,10 +549,27 @@ public class PersistencePropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * Checks if is property set.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return true, if is property set
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isPropertySet(Object propertyId) {
 		return true;
 	}
 
+	/**
+	 * Reset property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @Date 2018-09-03 09:00
+	 */
 	public void resetPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -517,6 +583,9 @@ public class PersistencePropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public Object getEditableValue() {
 		return this;
 	}

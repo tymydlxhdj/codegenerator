@@ -24,9 +24,12 @@ public class AsynchronousValidator
 	private SynchronizedBoolean validateFlag;
 
 	/**
-	 * Construct a validator delegate with the specified shared
-	 * "validate" flag. This flag should be shared with
-	 * another thread that will perform the actual validation.
+	 * Construct a validator delegate with the specified shared "validate" flag.
+	 * This flag should be shared with another thread that will perform the
+	 * actual validation.
+	 *
+	 * @param validateFlag
+	 *            the validate flag
 	 */
 	public AsynchronousValidator(SynchronizedBoolean validateFlag) {
 		super();

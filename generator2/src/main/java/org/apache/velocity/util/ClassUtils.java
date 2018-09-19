@@ -32,6 +32,7 @@ import org.apache.velocity.util.introspection.VelMethod;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Simple utility functions for manipulating classes and resources
  * from the classloader.
@@ -50,16 +51,20 @@ public class ClassUtils {
     }
 
     /**
-     * Return the specified class.  Checks the ThreadContext classloader first,
-     * then uses the System classloader.  Should replace all calls to
-     * <code>Class.forName( claz )</code> (which only calls the System class
-     * loader) when the class might be in a different classloader (e.g. in a
-     * webapp).
-     *
-     * @param clazz the name of the class to instantiate
-     * @return the requested Class object
-     * @throws ClassNotFoundException
-     */
+	 * Return the specified class. Checks the ThreadContext classloader first,
+	 * then uses the System classloader. Should replace all calls to
+	 * <code>Class.forName( claz )</code> (which only calls the System class
+	 * loader) when the class might be in a different classloader (e.g. in a
+	 * webapp).
+	 *
+	 * @author mqfdy
+	 * @param clazz
+	 *            the name of the class to instantiate
+	 * @return the requested Class object
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static Class getClass(String clazz) throws ClassNotFoundException
     {
         /**
@@ -87,18 +92,24 @@ public class ClassUtils {
     }
 
     /**
-     * Return a new instance of the given class.  Checks the ThreadContext
-     * classloader first, then uses the System classloader.  Should replace all
-     * calls to <code>Class.forName( claz ).newInstance()</code> (which only
-     * calls the System class loader) when the class might be in a different
-     * classloader (e.g. in a webapp).
-     *
-     * @param clazz the name of the class to instantiate
-     * @return an instance of the specified class
-     * @throws ClassNotFoundException
-     * @throws IllegalAccessException
-     * @throws InstantiationException
-     */
+	 * Return a new instance of the given class. Checks the ThreadContext
+	 * classloader first, then uses the System classloader. Should replace all
+	 * calls to <code>Class.forName( claz ).newInstance()</code> (which only
+	 * calls the System class loader) when the class might be in a different
+	 * classloader (e.g. in a webapp).
+	 *
+	 * @author mqfdy
+	 * @param clazz
+	 *            the name of the class to instantiate
+	 * @return an instance of the specified class
+	 * @throws ClassNotFoundException
+	 *             the class not found exception
+	 * @throws IllegalAccessException
+	 *             the illegal access exception
+	 * @throws InstantiationException
+	 *             the instantiation exception
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static Object getNewInstance(String clazz)
         throws ClassNotFoundException,IllegalAccessException,InstantiationException
     {
@@ -106,15 +117,21 @@ public class ClassUtils {
     }
 
     /**
-     * Finds a resource with the given name.  Checks the Thread Context
-     * classloader, then uses the System classloader.  Should replace all
-     * calls to <code>Class.getResourceAsString</code> when the resource
-     * might come from a different classloader.  (e.g. a webapp).
-     * @param claz Class to use when getting the System classloader (used if no Thread
-     * Context classloader available or fails to get resource).
-     * @param name name of the resource
-     * @return InputStream for the resource.
-     */
+	 * Finds a resource with the given name. Checks the Thread Context
+	 * classloader, then uses the System classloader. Should replace all calls
+	 * to <code>Class.getResourceAsString</code> when the resource might come
+	 * from a different classloader. (e.g. a webapp).
+	 *
+	 * @author mqfdy
+	 * @param claz
+	 *            Class to use when getting the System classloader (used if no
+	 *            Thread Context classloader available or fails to get
+	 *            resource).
+	 * @param name
+	 *            name of the resource
+	 * @return InputStream for the resource.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static InputStream getResourceAsStream(Class claz, String name)
     {
         InputStream result = null;
@@ -157,18 +174,31 @@ public class ClassUtils {
     }
 
   /**
-   * Lookup a VelMethod object given the method signature that is specified in
-   * the passed in parameters.  This method first searches the cache, if not found in
-   * the cache then uses reflections to inspect Object o, for the given method.
-   * @param methodName Name of method
-   * @param params Array of objects that are parameters to the method
-   * @param paramClasses Array of Classes coresponding to the types in params.
-   * @param o Object to introspect for the given method.
-   * @param context Context from which the method cache is aquirred
-   * @param node ASTNode, used for error reporting.
-   * @param strictRef If no method is found, throw an exception, never return null in this case
-   * @return VelMethod object if the object is found, null if not matching method is found
-   */    
+	 * Lookup a VelMethod object given the method signature that is specified in
+	 * the passed in parameters. This method first searches the cache, if not
+	 * found in the cache then uses reflections to inspect Object o, for the
+	 * given method.
+	 *
+	 * @author mqfdy
+	 * @param methodName
+	 *            Name of method
+	 * @param params
+	 *            Array of objects that are parameters to the method
+	 * @param paramClasses
+	 *            Array of Classes coresponding to the types in params.
+	 * @param o
+	 *            Object to introspect for the given method.
+	 * @param context
+	 *            Context from which the method cache is aquirred
+	 * @param node
+	 *            ASTNode, used for error reporting.
+	 * @param strictRef
+	 *            If no method is found, throw an exception, never return null
+	 *            in this case
+	 * @return VelMethod object if the object is found, null if not matching
+	 *         method is found
+	 * @Date 2018-9-3 11:38:32
+	 */    
   public static VelMethod getMethod(String methodName, Object[] params,
                                     Class[] paramClasses, Object o, InternalContextAdapter context,
                                     SimpleNode node, boolean strictRef)

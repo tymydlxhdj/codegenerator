@@ -27,6 +27,16 @@ public class NewProjectLocationValidator extends Validator implements ValueListe
 	private LiveExpression<String> pathExp;
 	private LiveExpression<String> projectNameExp;
 
+	/**
+	 * Instantiates a new new project location validator.
+	 *
+	 * @param elementName
+	 *            the element name
+	 * @param path
+	 *            the path
+	 * @param projectName
+	 *            the project name
+	 */
 	public NewProjectLocationValidator(String elementName, LiveExpression<String> path, LiveExpression<String> projectName) {
 		Assert.isNotNull(path);
 		Assert.isNotNull(projectName);

@@ -23,22 +23,46 @@ import com.mqfdy.code.model.BusinessOperation;
 import com.mqfdy.code.model.DTOProperty;
 import com.mqfdy.code.model.Property;
 
+// TODO: Auto-generated Javadoc
 /**
- * 按钮
- * 
+ * 按钮.
+ *
  * @author mqfdy
  */
 // @Deprecated
 public class ButtonPropertyDescriptor extends TextPropertyDescriptor implements
 		IEditorValueDescriptor<String> {
 
+	/** The default value. */
 	private String defaultValue;
+	
+	/** The dialog type. */
 	// 加一个属性 判断打开哪个窗口
 	private String dialogType;
+	
+	/** The element. */
 	private AbstractModelElement element;
+	
+	/** The manager. */
 	BusinessModelManager manager = BusinessModelUtil
 			.getEditorBusinessModelManager();
 
+	/**
+	 * Instantiates a new button property descriptor.
+	 *
+	 * @param id
+	 *            the id
+	 * @param displayName
+	 *            the display name
+	 * @param defaultValue
+	 *            the default value
+	 * @param dialogType
+	 *            the dialog type
+	 * @param description
+	 *            the description
+	 * @param node
+	 *            the node
+	 */
 	public ButtonPropertyDescriptor(Object id, String displayName,
 			String defaultValue, String dialogType, String description,
 			AbstractModelElement node) {
@@ -50,6 +74,15 @@ public class ButtonPropertyDescriptor extends TextPropertyDescriptor implements
 		setLabelProvider(new MyLabelDecorator());
 	}
 
+	/**
+	 * Creates the property editor.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the cell editor
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public CellEditor createPropertyEditor(final Composite parent) {
 
@@ -99,6 +132,15 @@ public class ButtonPropertyDescriptor extends TextPropertyDescriptor implements
 	
 	}
 
+	/**
+	 * Open dialog box.
+	 *
+	 * @author mqfdy
+	 * @param cellEditorWindow
+	 *            the cell editor window
+	 * @return the object
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object openDialogBox(Control cellEditorWindow) {
 
 		// Invoke the property dialog
@@ -221,7 +263,13 @@ public class ButtonPropertyDescriptor extends TextPropertyDescriptor implements
 	}
 
 	/**
-	 * implement {@link IEditorValueDescriptor}
+	 * implement {@link IEditorValueDescriptor}.
+	 *
+	 * @author mqfdy
+	 * @param value
+	 *            the value
+	 * @return the editor value
+	 * @Date 2018-09-03 09:00
 	 */
 
 	/**
@@ -235,7 +283,16 @@ public class ButtonPropertyDescriptor extends TextPropertyDescriptor implements
 		}
 	}
 
+	/**
+	 * The Class MyLabelDecorator.
+	 *
+	 * @author mqfdy
+	 */
 	class MyLabelDecorator extends PropertyLabelDecoratorUtil {
+		
+		/**
+		 * @return
+		 */
 		@Override
 		protected String getDefaultValue() {
 			if (defaultValue == null) {
@@ -247,6 +304,9 @@ public class ButtonPropertyDescriptor extends TextPropertyDescriptor implements
 
 	}
 
+	/**
+	 * @return
+	 */
 	public String getDefaultValue() {
 		if (defaultValue == null) {
 			return "";

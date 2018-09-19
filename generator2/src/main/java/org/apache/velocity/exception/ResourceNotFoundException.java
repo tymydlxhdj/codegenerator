@@ -1,5 +1,6 @@
 package org.apache.velocity.exception;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -33,32 +34,45 @@ package org.apache.velocity.exception;
  */
 public class ResourceNotFoundException extends VelocityException
 {
-    /**
-     * Version Id for serializable
-     */
+    
+    /** Version Id for serializable. */
     private static final long serialVersionUID = -4287732191458420347L;
 
     /**
-     * @see VelocityException#VelocityException(String)
-     */
+	 * Instantiates a new resource not found exception.
+	 *
+	 * @param exceptionMessage
+	 *            the exception message
+	 * @see VelocityException#VelocityException(String)
+	 */
     public ResourceNotFoundException(final String exceptionMessage)
     {
         super(exceptionMessage);
     }
 
     /**
-     * @see VelocityException#VelocityException(String, Throwable)
-     * @since 1.5
-     */
+	 * Instantiates a new resource not found exception.
+	 *
+	 * @param exceptionMessage
+	 *            the exception message
+	 * @param t
+	 *            the t
+	 * @see VelocityException#VelocityException(String, Throwable)
+	 * @since 1.5
+	 */
     public ResourceNotFoundException(final String exceptionMessage, final Throwable t)
     {
         super(exceptionMessage, t);
     }
 
     /**
-     * @see VelocityException#VelocityException(Throwable)
-     * @since 1.5
-     */
+	 * Instantiates a new resource not found exception.
+	 *
+	 * @param t
+	 *            the t
+	 * @see VelocityException#VelocityException(Throwable)
+	 * @since 1.5
+	 */
     public ResourceNotFoundException(final Throwable t)
     {
         super(t);

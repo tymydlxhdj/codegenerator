@@ -31,20 +31,32 @@ import com.mqfdy.code.model.LinkAnnotation;
 import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * 图控制器
- * 
+ * 图控制器.
+ *
  * @author mqfdy
- * 
  */
 public class DiagramEditPart extends NodeEditPart
 		implements PropertyChangeListener {
+	
+	/** The bm. */
 	private Diagram bm;
+	
+	/**
+	 * Instantiates a new diagram edit part.
+	 *
+	 * @param modelElement
+	 *            the model element
+	 */
 	public DiagramEditPart(Diagram modelElement) {
 		super(null);
 		this.bm = modelElement;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected IFigure createFigure() {
 		Figure f = new FreeformLayer();
@@ -59,6 +71,9 @@ public class DiagramEditPart extends NodeEditPart
 		return f;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void createEditPolicies() {
 		// add container behaviour
@@ -73,7 +88,9 @@ public class DiagramEditPart extends NodeEditPart
 	/**
 	 * Handle property change events in the class diagram. For instant, the only
 	 * implemented reactions are the adding or removing of children.
-	 * 
+	 *
+	 * @param evt
+	 *            the evt
 	 * @see java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent)
 	 */
 	public void propertyChange(PropertyChangeEvent evt) {
@@ -90,10 +107,17 @@ public class DiagramEditPart extends NodeEditPart
 			});
 		}
 	}
+	
+	/**
+	 * @return
+	 */
 	protected AbstractModelElement getCastedModel() {
 		return (AbstractModelElement) getModel();
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected List getModelChildren() {
 		List<AbstractModelElement> eleList = new ArrayList<AbstractModelElement>();
@@ -137,6 +161,9 @@ public class DiagramEditPart extends NodeEditPart
 		return eleList;// ((Diagram)getCastedModel()).getElements();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void activate() {
 		if (!isActive()) {
@@ -145,6 +172,9 @@ public class DiagramEditPart extends NodeEditPart
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void deactivate() {
 		if (isActive()) {
@@ -153,16 +183,19 @@ public class DiagramEditPart extends NodeEditPart
 		}
 	}
 
+	/** The listeners. */
 	private transient PropertyChangeSupport listeners = new PropertyChangeSupport(
 			this);
 
 	/**
 	 * Attach a non-null PropertyChangeListener to this object.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param propertyChangeListener
 	 *            a non-null PropertyChangeListener instance
 	 * @throws IllegalArgumentException
 	 *             if the parameter is null
+	 * @Date 2018-09-03 09:00
 	 */
 	public synchronized void addPropertyChangeListener(
 			PropertyChangeListener propertyChangeListener) {
@@ -172,6 +205,16 @@ public class DiagramEditPart extends NodeEditPart
 		listeners.addPropertyChangeListener(propertyChangeListener);
 	}
 
+	/**
+	 * Adds the property change listener.
+	 *
+	 * @author mqfdy
+	 * @param propertyName
+	 *            the property name
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addPropertyChangeListener(String propertyName,
 			PropertyChangeListener listener) {
 		if (listener == null) {
@@ -183,13 +226,15 @@ public class DiagramEditPart extends NodeEditPart
 	/**
 	 * Report a property change to registered listeners (for example edit
 	 * parts).
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param property
 	 *            the programmatic name of the property that changed
 	 * @param oldValue
 	 *            the old value of this property
 	 * @param newValue
 	 *            the new value of this property
+	 * @Date 2018-09-03 09:00
 	 */
 	public void firePropertyChange(String property, Object oldValue,
 			Object newValue) {
@@ -197,6 +242,15 @@ public class DiagramEditPart extends NodeEditPart
 			listeners.firePropertyChange(property, oldValue, newValue);
 		}
 	}
+	
+	/**
+	 * Removes the property change listener.
+	 *
+	 * @author mqfdy
+	 * @param propertyChangeListener
+	 *            the property change listener
+	 * @Date 2018-09-03 09:00
+	 */
 	public synchronized void removePropertyChangeListener(
 			PropertyChangeListener propertyChangeListener) {
 		if (propertyChangeListener != null) {
@@ -204,12 +258,31 @@ public class DiagramEditPart extends NodeEditPart
 		}
 	}
 
+	/**
+	 * Removes the property change listener.
+	 *
+	 * @author mqfdy
+	 * @param propertyName
+	 *            the property name
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removePropertyChangeListener(String propertyName,
 			PropertyChangeListener listener) {
 		if (listener != null)
 			listeners.removePropertyChangeListener(propertyName, listener);
 	}
 
+	/**
+	 * Gets the adapter.
+	 *
+	 * @author mqfdy
+	 * @param adapter
+	 *            the adapter
+	 * @return the adapter
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public Object getAdapter(Class adapter) {
 		// if (adapter == SnapToHelper.class) {
@@ -239,8 +312,13 @@ public class DiagramEditPart extends NodeEditPart
 
 		return super.getAdapter(adapter);
 	}
+	
+	/** The Constant PROP_LAYOUT. */
 	public static final String PROP_LAYOUT = "LAYOUT";
 
+	/**
+	 * 
+	 */
 	@Override
 	public void repaintFigure() {
 	}

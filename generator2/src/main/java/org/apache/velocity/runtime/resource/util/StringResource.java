@@ -1,5 +1,6 @@
 package org.apache.velocity.runtime.resource.util;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -30,19 +31,25 @@ package org.apache.velocity.runtime.resource.util;
  */
 public final class StringResource
 {
-    /** template body */
+    
+    /** template body. */
     private String body;
     
-    /** encoding */
+    /** encoding. */
     private String encoding;
 
-    /** last modified ts */
+    /** last modified ts. */
     private long lastModified;
 
     /**
-     * convenience constructor; sets body to 'body' and sets lastModified to now
-     * @param body
-     */
+	 * convenience constructor; sets body to 'body' and sets lastModified to
+	 * now.
+	 *
+	 * @param body
+	 *            the body
+	 * @param encoding
+	 *            the encoding
+	 */
     public StringResource(final String body, final String encoding)
     {
         setBody(body);
@@ -50,27 +57,37 @@ public final class StringResource
     }
 
     /**
-     * Sets the template body.
-     * @return String containing the template body.
-     */
+	 * Sets the template body.
+	 *
+	 * @author mqfdy
+	 * @return String containing the template body.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public String getBody()
     {
         return body;
     }
 
     /**
-     * Returns the modification date of the template.
-     * @return Modification date in milliseconds.
-     */
+	 * Returns the modification date of the template.
+	 *
+	 * @author mqfdy
+	 * @return Modification date in milliseconds.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public long getLastModified()
     {
         return lastModified;
     }
 
     /**
-     * Sets a new  value for the template body.
-     * @param body New body value
-     */
+	 * Sets a new value for the template body.
+	 *
+	 * @author mqfdy
+	 * @param body
+	 *            New body value
+	 * @Date 2018-9-3 11:38:31
+	 */
     public void setBody(final String body)
     {
         this.body = body;
@@ -78,28 +95,37 @@ public final class StringResource
     }
 
     /**
-     * Changes the last modified parameter.
-     * @param lastModified The modification time in millis.
-     */
+	 * Changes the last modified parameter.
+	 *
+	 * @author mqfdy
+	 * @param lastModified
+	 *            The modification time in millis.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public void setLastModified(final long lastModified)
     {
         this.lastModified = lastModified;
     }
 
     /**
-     * Returns the encoding of this String resource.
-     * 
-     * @return The encoding of this String resource.
-     */
+	 * Returns the encoding of this String resource.
+	 *
+	 * @author mqfdy
+	 * @return The encoding of this String resource.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public String getEncoding() {
         return this.encoding;
     }
 
     /**
-     * Sets the encoding of this string resource.
-     * 
-     * @param encoding The new encoding of this resource.
-     */
+	 * Sets the encoding of this string resource.
+	 *
+	 * @author mqfdy
+	 * @param encoding
+	 *            The new encoding of this resource.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public void setEncoding(final String encoding)
     {
         this.encoding = encoding;

@@ -24,9 +24,14 @@ import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
- * Implementation of ListValueModel and List that simply holds a
- * collection and notifies listeners of any changes.
+ * Implementation of ListValueModel and List that simply holds a collection and
+ * notifies listeners of any changes.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class SimpleListValueModel<E>
 	extends AbstractModel
@@ -40,6 +45,9 @@ public class SimpleListValueModel<E>
 
 	/**
 	 * Construct a ListValueModel for the specified list.
+	 *
+	 * @param list
+	 *            the list
 	 */
 	public SimpleListValueModel(List<E> list) {
 		super();
@@ -184,6 +192,11 @@ public class SimpleListValueModel<E>
 
 	/**
 	 * Allow the list to be replaced.
+	 *
+	 * @author mqfdy
+	 * @param list
+	 *            the new list
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setList(List<E> list) {
 		if (list == null) {
@@ -195,6 +208,13 @@ public class SimpleListValueModel<E>
 
 	/**
 	 * Move a single element.
+	 *
+	 * @author mqfdy
+	 * @param targetIndex
+	 *            the target index
+	 * @param sourceIndex
+	 *            the source index
+	 * @Date 2018-09-03 09:00
 	 */
 	public void move(int targetIndex, int sourceIndex) {
 		this.moveItemInList(targetIndex, sourceIndex, this.list, LIST_VALUES);
@@ -202,6 +222,15 @@ public class SimpleListValueModel<E>
 
 	/**
 	 * Move a sub-list of elements.
+	 *
+	 * @author mqfdy
+	 * @param targetIndex
+	 *            the target index
+	 * @param sourceIndex
+	 *            the source index
+	 * @param length
+	 *            the length
+	 * @Date 2018-09-03 09:00
 	 */
 	public void move(int targetIndex, int sourceIndex, int length) {
 		this.moveItemsInList(targetIndex, sourceIndex, length, this.list, LIST_VALUES);
@@ -209,6 +238,13 @@ public class SimpleListValueModel<E>
 
 	/**
 	 * Remove a range of elements.
+	 *
+	 * @author mqfdy
+	 * @param index
+	 *            the index
+	 * @param length
+	 *            the length
+	 * @Date 2018-09-03 09:00
 	 */
 	public void remove(int index, int length) {
 		this.removeItemsFromList(index, length, this.list, LIST_VALUES);
@@ -216,6 +252,13 @@ public class SimpleListValueModel<E>
 
 	/**
 	 * Set a range of elements.
+	 *
+	 * @author mqfdy
+	 * @param index
+	 *            the index
+	 * @param elements
+	 *            the elements
+	 * @Date 2018-09-03 09:00
 	 */
 	public void set(int index, List<E> elements) {
 		this.setItemsInList(index, elements, this.list, LIST_VALUES);

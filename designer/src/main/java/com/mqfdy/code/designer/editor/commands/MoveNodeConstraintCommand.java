@@ -9,6 +9,7 @@ import org.eclipse.swt.SWT;
 import com.mqfdy.code.designer.editor.part.NodeEditPart;
 import com.mqfdy.code.model.graph.DiagramElement;
 
+// TODO: Auto-generated Javadoc
 /**
  * 设置节点的位置 方向键 包括图形被移动时和形状大小改变时的位置
  * 
@@ -19,18 +20,31 @@ import com.mqfdy.code.model.graph.DiagramElement;
  */
 public class MoveNodeConstraintCommand extends Command {
 
+	/** The node. */
 	private DiagramElement node;
 
 	// private ChangeBoundsRequest req;
 
+	/** The old bounds. */
 	private Rectangle oldBounds;
 
+	/** The new bounds. */
 	private Rectangle newBounds;
 
+	/** The node edit part. */
 	private NodeEditPart nodeEditPart;
 
+	/** The type. */
 	private int type;
 
+	/**
+	 * Instantiates a new move node constraint command.
+	 *
+	 * @param nodeEditPart
+	 *            the node edit part
+	 * @param type
+	 *            the type
+	 */
 	public MoveNodeConstraintCommand(NodeEditPart nodeEditPart, int type) {
 
 		setLabel("change bounds");
@@ -43,6 +57,9 @@ public class MoveNodeConstraintCommand extends Command {
 		// this.req = req;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		// Object type = req.getType();
@@ -56,6 +73,9 @@ public class MoveNodeConstraintCommand extends Command {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 		oldBounds = new Rectangle(new Point(node.getStyle().getPositionX(),
@@ -81,6 +101,9 @@ public class MoveNodeConstraintCommand extends Command {
 		redo();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void redo() {
 		node.getStyle().setPositionX(newBounds.getLocation().x);
@@ -90,6 +113,9 @@ public class MoveNodeConstraintCommand extends Command {
 		((NodeEditPart) nodeEditPart).refresh();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void undo() {
 		node.getStyle().setPositionX(oldBounds.getLocation().x);
@@ -99,6 +125,9 @@ public class MoveNodeConstraintCommand extends Command {
 		((NodeEditPart) nodeEditPart).refresh();
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canUndo() {
 		// TODO Auto-generated method stub

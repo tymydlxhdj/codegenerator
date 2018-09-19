@@ -10,8 +10,11 @@
 package com.mqfdy.code.springboot.utilities.internal;
 
 /**
- * Used by various "pluggable" classes to transform objects
- * into strings.
+ * Used by various "pluggable" classes to transform objects into strings.
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
  */
 public interface StringConverter<T> {
 

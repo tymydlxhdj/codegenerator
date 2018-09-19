@@ -1,9 +1,10 @@
 package com.mqfdy.code.designer.editor.part.extensions;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
+ * The Class NodeModelElement.
+ *
  * @author mqfdy
- * 
  */
 
 public abstract class NodeModelElement {

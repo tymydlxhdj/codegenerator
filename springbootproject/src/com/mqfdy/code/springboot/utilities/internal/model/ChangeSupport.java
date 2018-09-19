@@ -35,6 +35,7 @@ import com.mqfdy.code.springboot.utilities.model.listener.StateChangeListener;
 import com.mqfdy.code.springboot.utilities.model.listener.TreeChangeListener;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Support object that can be used by implementors of the Model interface.
  * It provides for state, property, collection, list, and tree change notifications to
@@ -87,8 +88,11 @@ public class ChangeSupport
 	// ********** constructor **********
 
 	/**
-	 * Construct support for the specified source of change events.
-	 * The source cannot be null.
+	 * Construct support for the specified source of change events. The source
+	 * cannot be null.
+	 *
+	 * @param source
+	 *            the source
 	 */
 	public ChangeSupport(Model source) {
 		super();
@@ -103,8 +107,17 @@ public class ChangeSupport
 
 	/**
 	 * Add a "generic" listener that listens to all events appropriate to that
-	 * listener, regardless of the aspect name associated with that event.
-	 * The listener cannot be null.
+	 * listener, regardless of the aspect name associated with that event. The
+	 * listener cannot be null.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param listenerClass
+	 *            the listener class
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected <T extends ChangeListener> void addListener(Class<T> listenerClass, T listener) {
 		if (listener == null) {
@@ -123,6 +136,12 @@ public class ChangeSupport
 	/**
 	 * Return the "generic" listener list for the specified listener class.
 	 * Return null if the list is not present.
+	 *
+	 * @author mqfdy
+	 * @param listenerClass
+	 *            the listener class
+	 * @return the generic listener list
+	 * @Date 2018-09-03 09:00
 	 */
 	protected GenericListenerList genericListenerList(Class<? extends ChangeListener> listenerClass) {
 		for (GenericListenerList gll : this.genericListeners) {
@@ -134,8 +153,18 @@ public class ChangeSupport
 	}
 
 	/**
-	 * Add the "generic" listener list for the specified listener class.
-	 * Return the newly-built generic listener list.
+	 * Add the "generic" listener list for the specified listener class. Return
+	 * the newly-built generic listener list.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param listenerClass
+	 *            the listener class
+	 * @param listener
+	 *            the listener
+	 * @return the generic listener list
+	 * @Date 2018-09-03 09:00
 	 */
 	protected <T extends ChangeListener> GenericListenerList addGenericListenerList(Class<T> listenerClass, T listener) {
 		GenericListenerList gll = new GenericListenerList(listenerClass, listener);
@@ -145,8 +174,19 @@ public class ChangeSupport
 
 	/**
 	 * Adds a listener that listens to all events appropriate to that listener,
-	 * and only to those events carrying the aspect name specified.
-	 * The aspect name cannot be null and the listener cannot be null.
+	 * and only to those events carrying the aspect name specified. The aspect
+	 * name cannot be null and the listener cannot be null.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param aspectName
+	 *            the aspect name
+	 * @param listenerClass
+	 *            the listener class
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected <T extends ChangeListener> void addListener(String aspectName, Class<T> listenerClass, T listener) {
 		if ((aspectName == null) || (listener == null)) {
@@ -162,8 +202,14 @@ public class ChangeSupport
 	}
 
 	/**
-	 * Return the child change support for the specified aspect name.
-	 * Return null if the aspect name is null or the child is not present.
+	 * Return the child change support for the specified aspect name. Return
+	 * null if the aspect name is null or the child is not present.
+	 *
+	 * @author mqfdy
+	 * @param aspectName
+	 *            the aspect name
+	 * @return the change support
+	 * @Date 2018-09-03 09:00
 	 */
 	protected ChangeSupport child(String aspectName) {
 		// put in a null check to simplify calling code
@@ -179,8 +225,14 @@ public class ChangeSupport
 	}
 
 	/**
-	 * Add the child change support for the specified aspect name.
-	 * Return the newly-built child change support.
+	 * Add the child change support for the specified aspect name. Return the
+	 * newly-built child change support.
+	 *
+	 * @author mqfdy
+	 * @param aspectName
+	 *            the aspect name
+	 * @return the change support
+	 * @Date 2018-09-03 09:00
 	 */
 	protected ChangeSupport addChild(String aspectName) {
 		ChangeSupport child = this.buildChildChangeSupport();
@@ -189,7 +241,12 @@ public class ChangeSupport
 	}
 
 	/**
-	 * Build and return a child change support to hold aspect-specific listeners.
+	 * Build and return a child change support to hold aspect-specific
+	 * listeners.
+	 *
+	 * @author mqfdy
+	 * @return the change support
+	 * @Date 2018-09-03 09:00
 	 */
 	protected ChangeSupport buildChildChangeSupport() {
 		return new ChangeSupport(this.source);
@@ -198,6 +255,15 @@ public class ChangeSupport
 	/**
 	 * Removes a "generic" listener that has been registered for all events
 	 * appropriate to that listener.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param listenerClass
+	 *            the listener class
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected <T extends ChangeListener> void removeListener(Class<T> listenerClass, T listener) {
 		synchronized (this) {
@@ -212,8 +278,19 @@ public class ChangeSupport
 	}
 
 	/**
-	 * Removes a listener that has been registered for appropriate
-	 * events carrying the specified aspect name.
+	 * Removes a listener that has been registered for appropriate events
+	 * carrying the specified aspect name.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param aspectName
+	 *            the aspect name
+	 * @param listenerClass
+	 *            the listener class
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	protected <T extends ChangeListener> void removeListener(String aspectName, Class<T> listenerClass, T listener) {
 		synchronized (this) {
@@ -229,8 +306,14 @@ public class ChangeSupport
 	// ********** internal queries **********
 
 	/**
-	 * Return the "generic" listeners for the specified listener class.
-	 * Return null if there are no listeners.
+	 * Return the "generic" listeners for the specified listener class. Return
+	 * null if there are no listeners.
+	 *
+	 * @author mqfdy
+	 * @param listenerClass
+	 *            the listener class
+	 * @return the change listener[]
+	 * @Date 2018-09-03 09:00
 	 */
 	protected ChangeListener[] listeners(Class<? extends ChangeListener> listenerClass) {
 		GenericListenerList gll = this.genericListenerList(listenerClass);
@@ -240,6 +323,14 @@ public class ChangeSupport
 	/**
 	 * Return whether there are any "generic" listeners for the specified
 	 * listener class.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param listenerClass
+	 *            the listener class
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	protected synchronized <T extends ChangeListener> boolean hasAnyListeners(Class<T> listenerClass) {
 		GenericListenerList gll = this.genericListenerList(listenerClass);
@@ -249,14 +340,30 @@ public class ChangeSupport
 	/**
 	 * Return whether there are no "generic" listeners for the specified
 	 * listener class.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param listenerClass
+	 *            the listener class
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	protected <T extends ChangeListener> boolean hasNoListeners(Class<T> listenerClass) {
 		return ! this.hasAnyListeners(listenerClass);
 	}
 
 	/**
-	 * Return whether there are any listeners for the specified
-	 * listener class and aspect name.
+	 * Return whether there are any listeners for the specified listener class
+	 * and aspect name.
+	 *
+	 * @author mqfdy
+	 * @param listenerClass
+	 *            the listener class
+	 * @param aspectName
+	 *            the aspect name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	protected synchronized boolean hasAnyListeners(Class<? extends ChangeListener> listenerClass, String aspectName) {
 		if (this.hasAnyListeners(listenerClass)) {
@@ -270,6 +377,16 @@ public class ChangeSupport
 	/**
 	 * Return whether there are no "generic" listeners for the specified
 	 * listener class and aspect name.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @param listenerClass
+	 *            the listener class
+	 * @param aspectName
+	 *            the aspect name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	protected <T extends ChangeListener> boolean hasNoListeners(Class<T> listenerClass, String aspectName) {
 		return ! this.hasAnyListeners(listenerClass, aspectName);
@@ -279,10 +396,14 @@ public class ChangeSupport
 	// ********** behavior **********
 
 	/**
-	 * The specified aspect of the source has changed;
-	 * override this method to perform things like setting a
-	 * dirty flag or validating the source's state.
-	 * The aspect ID will be null if a "state change" occurred.
+	 * The specified aspect of the source has changed; override this method to
+	 * perform things like setting a dirty flag or validating the source's
+	 * state. The aspect ID will be null if a "state change" occurred.
+	 *
+	 * @author mqfdy
+	 * @param aspectName
+	 *            the aspect name
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void sourceChanged(String aspectName) {
 		// the default is to do nothing
@@ -291,10 +412,16 @@ public class ChangeSupport
 
 	// ********** state change support **********
 
+	/** The Constant STATE_CHANGE_LISTENER_CLASS. */
 	protected static final Class<StateChangeListener> STATE_CHANGE_LISTENER_CLASS = StateChangeListener.class;
 
 	/**
 	 * Add a state change listener.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void addStateChangeListener(StateChangeListener listener) {
 		this.addListener(STATE_CHANGE_LISTENER_CLASS, listener);
@@ -302,6 +429,11 @@ public class ChangeSupport
 
 	/**
 	 * Remove a state change listener.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void removeStateChangeListener(StateChangeListener listener) {
 		this.removeListener(STATE_CHANGE_LISTENER_CLASS, listener);
@@ -309,6 +441,10 @@ public class ChangeSupport
 
 	/**
 	 * Return whether there are any state change listeners.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean hasAnyStateChangeListeners() {
 		return this.hasAnyListeners(STATE_CHANGE_LISTENER_CLASS);
@@ -320,6 +456,11 @@ public class ChangeSupport
 
 	/**
 	 * Fire the specified state change event to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireStateChanged(StateChangeEvent event) {
 
@@ -386,11 +527,20 @@ public class ChangeSupport
 
 	// ********** property change support **********
 
+	/** The Constant PROPERTY_CHANGE_LISTENER_CLASS. */
 	protected static final Class<PropertyChangeListener> PROPERTY_CHANGE_LISTENER_CLASS = PropertyChangeListener.class;
 
 	/**
 	 * Return whether the values are equal, with the appropriate null checks.
 	 * Convenience method for checking whether an attribute value has changed.
+	 *
+	 * @author mqfdy
+	 * @param value1
+	 *            the value 1
+	 * @param value2
+	 *            the value 2
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean valuesAreEqual(Object value1, Object value2) {
 		if ((value1 == null) && (value2 == null)) {
@@ -403,8 +553,17 @@ public class ChangeSupport
 	}
 
 	/**
-	 * Return whether the values are different, with the appropriate null checks.
-	 * Convenience method for checking whether an attribute value has changed.
+	 * Return whether the values are different, with the appropriate null
+	 * checks. Convenience method for checking whether an attribute value has
+	 * changed.
+	 *
+	 * @author mqfdy
+	 * @param value1
+	 *            the value 1
+	 * @param value2
+	 *            the value 2
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean valuesAreDifferent(Object value1, Object value2) {
 		return ! this.valuesAreEqual(value1, value2);
@@ -412,6 +571,11 @@ public class ChangeSupport
 
 	/**
 	 * Add a property change listener that is registered for all properties.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		this.addListener(PROPERTY_CHANGE_LISTENER_CLASS, listener);
@@ -420,6 +584,13 @@ public class ChangeSupport
 	/**
 	 * Add a property change listener for the specified property. The listener
 	 * will be notified only for changes to the specified property.
+	 *
+	 * @author mqfdy
+	 * @param propertyName
+	 *            the property name
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
 		this.addListener(propertyName, PROPERTY_CHANGE_LISTENER_CLASS, listener);
@@ -427,29 +598,52 @@ public class ChangeSupport
 
 	/**
 	 * Remove a property change listener that was registered for all properties.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void removePropertyChangeListener(PropertyChangeListener listener) {
 		this.removeListener(PROPERTY_CHANGE_LISTENER_CLASS, listener);
 	}
 
 	/**
-	 * Remove a property change listener that was registered for a specific property.
+	 * Remove a property change listener that was registered for a specific
+	 * property.
+	 *
+	 * @author mqfdy
+	 * @param propertyName
+	 *            the property name
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
 		this.removeListener(propertyName, PROPERTY_CHANGE_LISTENER_CLASS, listener);
 	}
 
 	/**
-	 * Return whether there are any property change listeners that will
-	 * be notified when the specified property has changed.
+	 * Return whether there are any property change listeners that will be
+	 * notified when the specified property has changed.
+	 *
+	 * @author mqfdy
+	 * @param propertyName
+	 *            the property name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean hasAnyPropertyChangeListeners(String propertyName) {
 		return this.hasAnyListeners(PROPERTY_CHANGE_LISTENER_CLASS, propertyName);
 	}
 
 	/**
-	 * Return whether there are any property change listeners that will
-	 * be notified when any property has changed.
+	 * Return whether there are any property change listeners that will be
+	 * notified when any property has changed.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean hasAnyPropertyChangeListeners() {
 		return this.hasAnyListeners(PROPERTY_CHANGE_LISTENER_CLASS);
@@ -460,10 +654,15 @@ public class ChangeSupport
 	}
 
 	/**
-	 * Fire the specified property change event to any registered listeners.
-	 * No event is fired if the given event's old and new values are the same;
-	 * this includes when both values are null. Use a state change event
-	 * for general purpose notification of changes.
+	 * Fire the specified property change event to any registered listeners. No
+	 * event is fired if the given event's old and new values are the same; this
+	 * includes when both values are null. Use a state change event for general
+	 * purpose notification of changes.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void firePropertyChanged(PropertyChangeEvent event) {
 		if (this.valuesAreEqual(event.getOldValue(), event.getNewValue())) {
@@ -502,10 +701,19 @@ public class ChangeSupport
 	}
 
 	/**
-	 * Report a bound property update to any registered property change listeners.
-	 * No event is fired if the given old and new values are the same;
-	 * this includes when both values are null. Use a state change event
+	 * Report a bound property update to any registered property change
+	 * listeners. No event is fired if the given old and new values are the
+	 * same; this includes when both values are null. Use a state change event
 	 * for general purpose notification of changes.
+	 *
+	 * @author mqfdy
+	 * @param propertyName
+	 *            the property name
+	 * @param oldValue
+	 *            the old value
+	 * @param newValue
+	 *            the new value
+	 * @Date 2018-09-03 09:00
 	 */
 	public void firePropertyChanged(String propertyName, Object oldValue, Object newValue) {
 //		this.firePropertyChanged(new PropertyChangeEvent(this.source, propertyName, oldValue, newValue));
@@ -553,11 +761,20 @@ public class ChangeSupport
 	}
 
 	/**
-	 * Report an int bound property update to any registered listeners.
-	 * No event is fired if old and new are equal.
+	 * Report an int bound property update to any registered listeners. No event
+	 * is fired if old and new are equal.
 	 * <p>
 	 * This is merely a convenience wrapper around the more general
 	 * firePropertyChange method that takes Object values.
+	 *
+	 * @author mqfdy
+	 * @param propertyName
+	 *            the property name
+	 * @param oldValue
+	 *            the old value
+	 * @param newValue
+	 *            the new value
+	 * @Date 2018-09-03 09:00
 	 */
 	public void firePropertyChanged(String propertyName, int oldValue, int newValue) {
 //		this.firePropertyChanged(propertyName, new Integer(oldValue), new Integer(newValue));
@@ -605,11 +822,20 @@ public class ChangeSupport
 	}
 
 	/**
-	 * Report a boolean bound property update to any registered listeners.
-	 * No event is fired if old and new are equal.
+	 * Report a boolean bound property update to any registered listeners. No
+	 * event is fired if old and new are equal.
 	 * <p>
 	 * This is merely a convenience wrapper around the more general
 	 * firePropertyChange method that takes Object values.
+	 *
+	 * @author mqfdy
+	 * @param propertyName
+	 *            the property name
+	 * @param oldValue
+	 *            the old value
+	 * @param newValue
+	 *            the new value
+	 * @Date 2018-09-03 09:00
 	 */
 	public void firePropertyChanged(String propertyName, boolean oldValue, boolean newValue) {
 //		this.firePropertyChanged(propertyName, Boolean.valueOf(oldValue), Boolean.valueOf(newValue));
@@ -659,48 +885,85 @@ public class ChangeSupport
 
 	// ********** collection change support **********
 
+	/** The Constant COLLECTION_CHANGE_LISTENER_CLASS. */
 	protected static final Class<CollectionChangeListener> COLLECTION_CHANGE_LISTENER_CLASS = CollectionChangeListener.class;
 
 	/**
 	 * Add a collection change listener that is registered for all collections.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void addCollectionChangeListener(CollectionChangeListener listener) {
 		this.addListener(COLLECTION_CHANGE_LISTENER_CLASS, listener);
 	}
 
 	/**
-	 * Add a collection change listener for the specified collection. The listener
-	 * will be notified only for changes to the specified collection.
+	 * Add a collection change listener for the specified collection. The
+	 * listener will be notified only for changes to the specified collection.
+	 *
+	 * @author mqfdy
+	 * @param collectionName
+	 *            the collection name
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void addCollectionChangeListener(String collectionName, CollectionChangeListener listener) {
 		this.addListener(collectionName, COLLECTION_CHANGE_LISTENER_CLASS, listener);
 	}
 
 	/**
-	 * Remove a collection change listener that was registered for all collections.
+	 * Remove a collection change listener that was registered for all
+	 * collections.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void removeCollectionChangeListener(CollectionChangeListener listener) {
 		this.removeListener(COLLECTION_CHANGE_LISTENER_CLASS, listener);
 	}
 
 	/**
-	 * Remove a collection change listener that was registered for a specific collection.
+	 * Remove a collection change listener that was registered for a specific
+	 * collection.
+	 *
+	 * @author mqfdy
+	 * @param collectionName
+	 *            the collection name
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void removeCollectionChangeListener(String collectionName, CollectionChangeListener listener) {
 		this.removeListener(collectionName, COLLECTION_CHANGE_LISTENER_CLASS, listener);
 	}
 
 	/**
-	 * Return whether there are any collection change listeners that will
-	 * be notified when the specified collection has changed.
+	 * Return whether there are any collection change listeners that will be
+	 * notified when the specified collection has changed.
+	 *
+	 * @author mqfdy
+	 * @param collectionName
+	 *            the collection name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean hasAnyCollectionChangeListeners(String collectionName) {
 		return this.hasAnyListeners(COLLECTION_CHANGE_LISTENER_CLASS, collectionName);
 	}
 
 	/**
-	 * Return whether there are any collection change listeners that will
-	 * be notified when any collection has changed.
+	 * Return whether there are any collection change listeners that will be
+	 * notified when any collection has changed.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean hasAnyCollectionChangeListeners() {
 		return this.hasAnyListeners(COLLECTION_CHANGE_LISTENER_CLASS);
@@ -712,6 +975,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound collection update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemsAdded(CollectionChangeEvent event) {
 		if (event.itemsSize() == 0) {
@@ -751,6 +1019,13 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound collection update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param collectionName
+	 *            the collection name
+	 * @param addedItems
+	 *            the added items
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemsAdded(String collectionName, Collection<?> addedItems) {
 //		this.fireItemsAdded(new CollectionChangeEvent(this.source, collectionName, addedItems));
@@ -799,6 +1074,13 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound collection update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param collectionName
+	 *            the collection name
+	 * @param addedItem
+	 *            the added item
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemAdded(String collectionName, Object addedItem) {
 //		this.fireItemsAdded(collectionName, Collections.singleton(addedItem));
@@ -844,6 +1126,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound collection update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemsRemoved(CollectionChangeEvent event) {
 		if (event.itemsSize() == 0) {
@@ -883,6 +1170,13 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound collection update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param collectionName
+	 *            the collection name
+	 * @param removedItems
+	 *            the removed items
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemsRemoved(String collectionName, Collection<?> removedItems) {
 //		this.fireItemsRemoved(new CollectionChangeEvent(this.source, collectionName, removedItems));
@@ -931,6 +1225,13 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound collection update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param collectionName
+	 *            the collection name
+	 * @param removedItem
+	 *            the removed item
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemRemoved(String collectionName, Object removedItem) {
 //		this.fireItemsRemoved(collectionName, Collections.singleton(removedItem));
@@ -976,6 +1277,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound collection update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireCollectionCleared(CollectionChangeEvent event) {
 		String collectionName = event.getCollectionName();
@@ -1011,6 +1317,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound collection update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param collectionName
+	 *            the collection name
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireCollectionCleared(String collectionName) {
 //		this.fireCollectionCleared(new CollectionChangeEvent(this.source, collectionName));
@@ -1056,6 +1367,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound collection update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireCollectionChanged(CollectionChangeEvent event) {
 		String collectionName = event.getCollectionName();
@@ -1091,6 +1407,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound collection update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param collectionName
+	 *            the collection name
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireCollectionChanged(String collectionName) {
 //		this.fireCollectionChanged(new CollectionChangeEvent(this.source, collectionName));
@@ -1137,18 +1458,31 @@ public class ChangeSupport
 
 	// ********** list change support **********
 
+	/** The Constant LIST_CHANGE_LISTENER_CLASS. */
 	protected static final Class<ListChangeListener> LIST_CHANGE_LISTENER_CLASS = ListChangeListener.class;
 
 	/**
 	 * Add a list change listener that is registered for all lists.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void addListChangeListener(ListChangeListener listener) {
 		this.addListener(LIST_CHANGE_LISTENER_CLASS, listener);
 	}
 
 	/**
-	 * Add a list change listener for the specified list. The listener
-	 * will be notified only for changes to the specified list.
+	 * Add a list change listener for the specified list. The listener will be
+	 * notified only for changes to the specified list.
+	 *
+	 * @author mqfdy
+	 * @param listName
+	 *            the list name
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void addListChangeListener(String listName, ListChangeListener listener) {
 		this.addListener(listName, LIST_CHANGE_LISTENER_CLASS, listener);
@@ -1156,6 +1490,11 @@ public class ChangeSupport
 
 	/**
 	 * Remove a list change listener that was registered for all lists.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void removeListChangeListener(ListChangeListener listener) {
 		this.removeListener(LIST_CHANGE_LISTENER_CLASS, listener);
@@ -1163,22 +1502,39 @@ public class ChangeSupport
 
 	/**
 	 * Remove a list change listener that was registered for a specific list.
+	 *
+	 * @author mqfdy
+	 * @param listName
+	 *            the list name
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void removeListChangeListener(String listName, ListChangeListener listener) {
 		this.removeListener(listName, LIST_CHANGE_LISTENER_CLASS, listener);
 	}
 
 	/**
-	 * Return whether there are any list change listeners that will
-	 * be notified when the specified list has changed.
+	 * Return whether there are any list change listeners that will be notified
+	 * when the specified list has changed.
+	 *
+	 * @author mqfdy
+	 * @param listName
+	 *            the list name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean hasAnyListChangeListeners(String listName) {
 		return this.hasAnyListeners(LIST_CHANGE_LISTENER_CLASS, listName);
 	}
 
 	/**
-	 * Return whether there are any list change listeners that will
-	 * be notified when any list has changed.
+	 * Return whether there are any list change listeners that will be notified
+	 * when any list has changed.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean hasAnyListChangeListeners() {
 		return this.hasAnyListeners(LIST_CHANGE_LISTENER_CLASS);
@@ -1190,6 +1546,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound list update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemsAdded(ListChangeEvent event) {
 		if (event.itemsSize() == 0) {
@@ -1229,6 +1590,15 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound list update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param listName
+	 *            the list name
+	 * @param index
+	 *            the index
+	 * @param addedItems
+	 *            the added items
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemsAdded(String listName, int index, List<?> addedItems) {
 //		this.fireItemsAdded(new ListChangeEvent(this.source, listName, index, addedItems));
@@ -1277,6 +1647,15 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound list update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param listName
+	 *            the list name
+	 * @param index
+	 *            the index
+	 * @param addedItem
+	 *            the added item
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemAdded(String listName, int index, Object addedItem) {
 //		this.fireItemsAdded(listName, index, Collections.singletonList(addedItem));
@@ -1322,6 +1701,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound list update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemsRemoved(ListChangeEvent event) {
 		if (event.itemsSize() == 0) {
@@ -1361,6 +1745,15 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound list update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param listName
+	 *            the list name
+	 * @param index
+	 *            the index
+	 * @param removedItems
+	 *            the removed items
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemsRemoved(String listName, int index, List<?> removedItems) {
 //		this.fireItemsRemoved(new ListChangeEvent(this.source, listName, index, removedItems));
@@ -1409,6 +1802,15 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound list update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param listName
+	 *            the list name
+	 * @param index
+	 *            the index
+	 * @param removedItem
+	 *            the removed item
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemRemoved(String listName, int index, Object removedItem) {
 //		this.fireItemsRemoved(listName, index, Collections.singletonList(removedItem));
@@ -1454,6 +1856,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound list update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemsReplaced(ListChangeEvent event) {
 		if (event.itemsSize() == 0) {
@@ -1493,6 +1900,17 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound list update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param listName
+	 *            the list name
+	 * @param index
+	 *            the index
+	 * @param newItems
+	 *            the new items
+	 * @param replacedItems
+	 *            the replaced items
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemsReplaced(String listName, int index, List<?> newItems, List<?> replacedItems) {
 //		this.fireItemsReplaced(new ListChangeEvent(this.source, listName, index, newItems, replacedItems));
@@ -1541,6 +1959,17 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound list update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param listName
+	 *            the list name
+	 * @param index
+	 *            the index
+	 * @param newItem
+	 *            the new item
+	 * @param replacedItem
+	 *            the replaced item
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemReplaced(String listName, int index, Object newItem, Object replacedItem) {
 //		this.fireItemsReplaced(listName, index, Collections.singletonList(newItem), Collections.singletonList(replacedItem));
@@ -1586,6 +2015,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound list update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemsMoved(ListChangeEvent event) {
 		if (event.getTargetIndex() == event.getSourceIndex()) {
@@ -1625,6 +2059,17 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound list update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param listName
+	 *            the list name
+	 * @param targetIndex
+	 *            the target index
+	 * @param sourceIndex
+	 *            the source index
+	 * @param length
+	 *            the length
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemsMoved(String listName, int targetIndex, int sourceIndex, int length) {
 //		this.fireItemsMoved(new ListChangeEvent(this.source, listName, targetIndex, sourceIndex, length));
@@ -1673,6 +2118,15 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound list update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param listName
+	 *            the list name
+	 * @param targetIndex
+	 *            the target index
+	 * @param sourceIndex
+	 *            the source index
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireItemMoved(String listName, int targetIndex, int sourceIndex) {
 		this.fireItemsMoved(listName, targetIndex, sourceIndex, 1);
@@ -1680,6 +2134,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound list update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireListCleared(ListChangeEvent event) {
 		String listName = event.getListName();
@@ -1715,6 +2174,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound list update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param listName
+	 *            the list name
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireListCleared(String listName) {
 //		this.fireListCleared(new ListChangeEvent(this.source, listName));
@@ -1760,6 +2224,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound list update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireListChanged(ListChangeEvent event) {
 		String listName = event.getListName();
@@ -1795,6 +2264,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound list update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param listName
+	 *            the list name
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireListChanged(String listName) {
 //		this.fireListChanged(new ListChangeEvent(this.source, listName));
@@ -1841,19 +2315,32 @@ public class ChangeSupport
 
 	// ********** tree change support **********
 
+	/** The Constant TREE_CHANGE_LISTENER_CLASS. */
 	protected static final Class<TreeChangeListener> TREE_CHANGE_LISTENER_CLASS = TreeChangeListener.class;
 	private static final Object[] EMPTY_TREE_PATH = new Object[0];
 
 	/**
 	 * Add a tree change listener that is registered for all trees.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void addTreeChangeListener(TreeChangeListener listener) {
 		this.addListener(TREE_CHANGE_LISTENER_CLASS, listener);
 	}
 
 	/**
-	 * Add a tree change listener for the specified tree. The listener
-	 * will be notified only for changes to the specified tree.
+	 * Add a tree change listener for the specified tree. The listener will be
+	 * notified only for changes to the specified tree.
+	 *
+	 * @author mqfdy
+	 * @param treeName
+	 *            the tree name
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void addTreeChangeListener(String treeName, TreeChangeListener listener) {
 		this.addListener(treeName, TREE_CHANGE_LISTENER_CLASS, listener);
@@ -1861,6 +2348,11 @@ public class ChangeSupport
 
 	/**
 	 * Remove a tree change listener that was registered for all tree.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void removeTreeChangeListener(TreeChangeListener listener) {
 		this.removeListener(TREE_CHANGE_LISTENER_CLASS, listener);
@@ -1868,22 +2360,39 @@ public class ChangeSupport
 
 	/**
 	 * Remove a tree change listener that was registered for a specific tree.
+	 *
+	 * @author mqfdy
+	 * @param treeName
+	 *            the tree name
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
 	 */
 	public void removeTreeChangeListener(String treeName, TreeChangeListener listener) {
 		this.removeListener(treeName, TREE_CHANGE_LISTENER_CLASS, listener);
 	}
 
 	/**
-	 * Return whether there are any tree change listeners that will
-	 * be notified when the specified tree has changed.
+	 * Return whether there are any tree change listeners that will be notified
+	 * when the specified tree has changed.
+	 *
+	 * @author mqfdy
+	 * @param treeName
+	 *            the tree name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean hasAnyTreeChangeListeners(String treeName) {
 		return this.hasAnyListeners(TREE_CHANGE_LISTENER_CLASS, treeName);
 	}
 
 	/**
-	 * Return whether there are any tree change listeners that will
-	 * be notified when any tree has changed.
+	 * Return whether there are any tree change listeners that will be notified
+	 * when any tree has changed.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean hasAnyTreeChangeListeners() {
 		return this.hasAnyListeners(TREE_CHANGE_LISTENER_CLASS);
@@ -1895,6 +2404,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound tree update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireNodeAdded(TreeChangeEvent event) {
 		String treeName = event.getTreeName();
@@ -1930,6 +2444,13 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound tree update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param treeName
+	 *            the tree name
+	 * @param path
+	 *            the path
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireNodeAdded(String treeName, Object[] path) {
 //		this.fireNodeAdded(new TreeChangeEvent(this.source, treeName, path));
@@ -1975,6 +2496,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound tree update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireNodeRemoved(TreeChangeEvent event) {
 		String treeName = event.getTreeName();
@@ -2010,6 +2536,13 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound tree update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param treeName
+	 *            the tree name
+	 * @param path
+	 *            the path
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireNodeRemoved(String treeName, Object[] path) {
 //		this.fireNodeRemoved(new TreeChangeEvent(this.source, treeName, path));
@@ -2055,6 +2588,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound tree update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireTreeCleared(TreeChangeEvent event) {
 		String treeName = event.getTreeName();
@@ -2090,6 +2628,13 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound tree update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param treeName
+	 *            the tree name
+	 * @param path
+	 *            the path
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireTreeCleared(String treeName, Object[] path) {
 //		this.fireTreeCleared(new TreeChangeEvent(this.source, treeName, path));
@@ -2135,6 +2680,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound tree update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param treeName
+	 *            the tree name
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireTreeCleared(String treeName) {
 		this.fireTreeCleared(treeName, EMPTY_TREE_PATH);
@@ -2142,6 +2692,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound tree update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireTreeChanged(TreeChangeEvent event) {
 		String treeName = event.getTreeName();
@@ -2177,6 +2732,13 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound tree update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param treeName
+	 *            the tree name
+	 * @param path
+	 *            the path
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireTreeChanged(String treeName, Object[] path) {
 //		this.fireTreeChanged(new TreeChangeEvent(this.source, treeName, path));
@@ -2222,6 +2784,11 @@ public class ChangeSupport
 
 	/**
 	 * Report a bound tree update to any registered listeners.
+	 *
+	 * @author mqfdy
+	 * @param treeName
+	 *            the tree name
+	 * @Date 2018-09-03 09:00
 	 */
 	public void fireTreeChanged(String treeName) {
 		this.fireTreeChanged(treeName, EMPTY_TREE_PATH);

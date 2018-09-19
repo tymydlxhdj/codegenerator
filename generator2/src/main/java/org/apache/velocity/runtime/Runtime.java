@@ -38,41 +38,39 @@ import org.apache.velocity.exception.ParseErrorException;
 
 import org.apache.commons.collections.ExtendedProperties;
 
+// TODO: Auto-generated Javadoc
 /**
- * This is the Runtime system for Velocity. It is the
- * single access point for all functionality in Velocity.
- * It adheres to the mediator pattern and is the only
- * structure that developers need to be familiar with
- * in order to get Velocity to perform.
- *
- * The Runtime will also cooperate with external
- * systems like Turbine. Runtime properties can
- * set and then the Runtime is initialized.
- *
- * Turbine for example knows where the templates
- * are to be loaded from, and where the velocity
- * log file should be placed.
- *
- * So in the case of Velocity cooperating with Turbine
- * the code might look something like the following:
- *
+ * This is the Runtime system for Velocity. It is the single access point for
+ * all functionality in Velocity. It adheres to the mediator pattern and is the
+ * only structure that developers need to be familiar with in order to get
+ * Velocity to perform.
+ * 
+ * The Runtime will also cooperate with external systems like Turbine. Runtime
+ * properties can set and then the Runtime is initialized.
+ * 
+ * Turbine for example knows where the templates are to be loaded from, and
+ * where the velocity log file should be placed.
+ * 
+ * So in the case of Velocity cooperating with Turbine the code might look
+ * something like the following:
+ * 
  * <pre>
  * Runtime.setProperty(Runtime.FILE_RESOURCE_LOADER_PATH, templatePath);
  * Runtime.setProperty(Runtime.RUNTIME_LOG, pathToVelocityLog);
  * Runtime.init();
  * </pre>
- *
+ * 
  * <pre>
  * -----------------------------------------------------------------------
  * N O T E S  O N  R U N T I M E  I N I T I A L I Z A T I O N
  * -----------------------------------------------------------------------
  * Runtime.init()
- *
+ * 
  * If Runtime.init() is called by itself the Runtime will
  * initialize with a set of default values.
  * -----------------------------------------------------------------------
  * Runtime.init(String/Properties)
- *
+ * 
  * In this case the default velocity properties are layed down
  * first to provide a solid base, then any properties provided
  * in the given properties object will override the corresponding
@@ -83,32 +81,32 @@ import org.apache.commons.collections.ExtendedProperties;
  * @author <a href="mailto:jvanzyl@apache.org">Jason van Zyl</a>
  * @author <a href="mailto:jlb@houseofdistraction.com">Jeff Bowden</a>
  * @author <a href="mailto:geirm@optonline.net">Geir Magusson Jr.</a>
- *
+ * @version $Id: Runtime.java 685390 2008-08-13 00:07:23Z nbubna $
  * @see org.apache.velocity.runtime.RuntimeInstance
  * @see org.apache.velocity.runtime.RuntimeSingleton
  * @deprecated Use RuntimeInstance or RuntimeSingleton instead.
- *
- * @version $Id: Runtime.java 685390 2008-08-13 00:07:23Z nbubna $
  */
 public class Runtime implements RuntimeConstants
 {
 
     /**
-     * This is the primary initialization method in the Velocity
-     * Runtime. The systems that are setup/initialized here are
-     * as follows:
-     *
-     * <ul>
-     *   <li>Logging System</li>
-     *   <li>ResourceManager</li>
-     *   <li>Parser Pool</li>
-     *   <li>Global Cache</li>
-     *   <li>Static Content Include System</li>
-     *   <li>Velocimacro System</li>
-     * </ul>
-     *
-     * @throws Exception When init fails for any reason.
-     */
+	 * This is the primary initialization method in the Velocity Runtime. The
+	 * systems that are setup/initialized here are as follows:
+	 * 
+	 * <ul>
+	 * <li>Logging System</li>
+	 * <li>ResourceManager</li>
+	 * <li>Parser Pool</li>
+	 * <li>Global Cache</li>
+	 * <li>Static Content Include System</li>
+	 * <li>Velocimacro System</li>
+	 * </ul>
+	 *
+	 * @author mqfdy
+	 * @throws Exception
+	 *             When init fails for any reason.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public synchronized static void init()
         throws Exception
     {
@@ -116,99 +114,117 @@ public class Runtime implements RuntimeConstants
     }
 
     /**
-     * Allows an external system to set a property in
-     * the Velocity Runtime.
-     *
-     * @param key The property key.
-     * @param value The property value.
-     */
+	 * Allows an external system to set a property in the Velocity Runtime.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            The property key.
+	 * @param value
+	 *            The property value.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static void setProperty(String key, Object value)
     {
         RuntimeSingleton.setProperty( key, value );
     }
 
     /**
-     * Allow an external system to set an ExtendedProperties
-     * object to use. This is useful where the external
-     * system also uses the ExtendedProperties class and
-     * the velocity configuration is a subset of
-     * parent application's configuration. This is
-     * the case with Turbine.
-     *
-     * @param configuration A configuration object.
-     */
+	 * Allow an external system to set an ExtendedProperties object to use. This
+	 * is useful where the external system also uses the ExtendedProperties
+	 * class and the velocity configuration is a subset of parent application's
+	 * configuration. This is the case with Turbine.
+	 *
+	 * @author mqfdy
+	 * @param configuration
+	 *            A configuration object.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static void setConfiguration( ExtendedProperties configuration)
     {
         RuntimeSingleton.setConfiguration( configuration );
     }
 
     /**
-     * Add a property to the configuration. If it already
-     * exists then the value stated here will be added
-     * to the configuration entry. For example, if
-     *
-     * resource.loader = file
-     *
-     * is already present in the configuration and you
-     *
-     * addProperty("resource.loader", "classpath")
-     *
-     * Then you will end up with a Vector like the
-     * following:
-     *
-     * ["file", "classpath"]
-     *
-     * @param key A property key.
-     * @param value The property value.
-     */
+	 * Add a property to the configuration. If it already exists then the value
+	 * stated here will be added to the configuration entry. For example, if
+	 * 
+	 * resource.loader = file
+	 * 
+	 * is already present in the configuration and you
+	 * 
+	 * addProperty("resource.loader", "classpath")
+	 * 
+	 * Then you will end up with a Vector like the following:
+	 * 
+	 * ["file", "classpath"]
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            A property key.
+	 * @param value
+	 *            The property value.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static void addProperty(String key, Object value)
     {
         RuntimeSingleton.addProperty( key, value );
     }
 
     /**
-     * Clear the values pertaining to a particular
-     * property.
-     *
-     * @param key Name of the property to clear.
-     */
+	 * Clear the values pertaining to a particular property.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            Name of the property to clear.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static void clearProperty(String key)
     {
         RuntimeSingleton.clearProperty( key );
     }
 
     /**
-     *  Allows an external caller to get a property.  The calling
-     *  routine is required to know the type, as this routine
-     *  will return an Object, as that is what properties can be.
-     *
-     *  @param key property to return
-     * @return The property value or null.
-     */
+	 * Allows an external caller to get a property. The calling routine is
+	 * required to know the type, as this routine will return an Object, as that
+	 * is what properties can be.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            property to return
+	 * @return The property value or null.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static Object getProperty( String key )
     {
         return RuntimeSingleton.getProperty( key );
     }
 
     /**
-     * Initialize the Velocity Runtime with a Properties
-     * object.
-     *
-     * @param p The properties used for initializiation.
-     * @throws Exception When a problem occurs during init.
-     */
+	 * Initialize the Velocity Runtime with a Properties object.
+	 *
+	 * @author mqfdy
+	 * @param p
+	 *            The properties used for initializiation.
+	 * @throws Exception
+	 *             When a problem occurs during init.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static void init(Properties p) throws Exception
     {
         RuntimeSingleton.init(p);
     }
 
     /**
-     * Initialize the Velocity Runtime with the name of
-     * ExtendedProperties object.
-     *
-     * @param configurationFile The name of a properties file.
-     * @throws Exception When a problem occurs during init.
-     */
+	 * Initialize the Velocity Runtime with the name of ExtendedProperties
+	 * object.
+	 *
+	 * @author mqfdy
+	 * @param configurationFile
+	 *            The name of a properties file.
+	 * @throws Exception
+	 *             When a problem occurs during init.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static void init(String configurationFile)
         throws Exception
     {
@@ -217,22 +233,24 @@ public class Runtime implements RuntimeConstants
 
 
     /**
-     * Parse the input and return the root of
-     * AST node structure.
-     * <br><br>
-     *  In the event that it runs out of parsers in the
-     *  pool, it will create and let them be GC'd
-     *  dynamically, logging that it has to do that.  This
-     *  is considered an exceptional condition.  It is
-     *  expected that the user will set the
-     *  PARSER_POOL_SIZE property appropriately for their
-     *  application.  We will revisit this.
-     *
-     * @param reader A reader returning the template input stream.
-     * @param templateName name of the template being parsed
-     * @return The root node of an AST structure for the template input stream.
-     * @throws ParseException When the input stream is not parsable.
-     */
+	 * Parse the input and return the root of AST node structure. <br>
+	 * <br>
+	 * In the event that it runs out of parsers in the pool, it will create and
+	 * let them be GC'd dynamically, logging that it has to do that. This is
+	 * considered an exceptional condition. It is expected that the user will
+	 * set the PARSER_POOL_SIZE property appropriately for their application. We
+	 * will revisit this.
+	 *
+	 * @author mqfdy
+	 * @param reader
+	 *            A reader returning the template input stream.
+	 * @param templateName
+	 *            name of the template being parsed
+	 * @return The root node of an AST structure for the template input stream.
+	 * @throws ParseException
+	 *             When the input stream is not parsable.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static SimpleNode parse( Reader reader, String templateName )
         throws ParseException
     {
@@ -240,16 +258,19 @@ public class Runtime implements RuntimeConstants
     }
 
     /**
-     * Parse the input and return the root of the AST node structure.
-     *
-     * @see #parse(Reader, String)
-     *
-     * @param reader A reader returning the template input stream.
-     * @param templateName name of the template being parsed
-     * @param dumpNamespace flag to dump the Velocimacro namespace for this template.
-     * @return The root node of an AST structure for the template input stream.
-     * @throws ParseException When the input stream is not parsable.
-     */
+	 * Parse the input and return the root of the AST node structure.
+	 *
+	 * @param reader
+	 *            A reader returning the template input stream.
+	 * @param templateName
+	 *            name of the template being parsed
+	 * @param dumpNamespace
+	 *            flag to dump the Velocimacro namespace for this template.
+	 * @return The root node of an AST structure for the template input stream.
+	 * @throws ParseException
+	 *             When the input stream is not parsable.
+	 * @see #parse(Reader, String)
+	 */
     public static SimpleNode parse( Reader reader, String templateName, boolean dumpNamespace )
         throws ParseException
     {
@@ -258,19 +279,22 @@ public class Runtime implements RuntimeConstants
 
 
     /**
-     * Returns a <code>Template</code> from the resource manager.
-     * This method assumes that the character encoding of the
-     * template is set by the <code>input.encoding</code>
-     * property.  The default is "ISO-8859-1"
-     *
-     * @param name The file name of the desired template.
-     * @return     The template.
-     * @throws ResourceNotFoundException if template not found
-     *          from any available source.
-     * @throws ParseErrorException if template cannot be parsed due
-     *          to syntax (or other) error.
-     * @throws Exception if an error occurs in template initialization.
-     */
+	 * Returns a <code>Template</code> from the resource manager. This method
+	 * assumes that the character encoding of the template is set by the
+	 * <code>input.encoding</code> property. The default is "ISO-8859-1"
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            The file name of the desired template.
+	 * @return The template.
+	 * @throws ResourceNotFoundException
+	 *             if template not found from any available source.
+	 * @throws ParseErrorException
+	 *             if template cannot be parsed due to syntax (or other) error.
+	 * @throws Exception
+	 *             if an error occurs in template initialization.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static Template getTemplate(String name)
         throws ResourceNotFoundException, ParseErrorException, Exception
     {
@@ -278,17 +302,22 @@ public class Runtime implements RuntimeConstants
     }
 
     /**
-     * Returns a <code>Template</code> from the resource manager
-     *
-     * @param name The  name of the desired template.
-     * @param encoding Character encoding of the template
-     * @return     The template.
-     * @throws ResourceNotFoundException if template not found
-     *          from any available source.
-     * @throws ParseErrorException if template cannot be parsed due
-     *          to syntax (or other) error.
-     * @throws Exception if an error occurs in template initialization
-     */
+	 * Returns a <code>Template</code> from the resource manager.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            The name of the desired template.
+	 * @param encoding
+	 *            Character encoding of the template
+	 * @return The template.
+	 * @throws ResourceNotFoundException
+	 *             if template not found from any available source.
+	 * @throws ParseErrorException
+	 *             if template cannot be parsed due to syntax (or other) error.
+	 * @throws Exception
+	 *             if an error occurs in template initialization
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static Template getTemplate(String name, String  encoding)
         throws ResourceNotFoundException, ParseErrorException, Exception
     {
@@ -296,18 +325,21 @@ public class Runtime implements RuntimeConstants
     }
 
     /**
-     * Returns a static content resource from the
-     * resource manager.  Uses the current value
-     * if INPUT_ENCODING as the character encoding.
-     *
-     * @param name Name of content resource to get
-     * @return parsed ContentResource object ready for use
-     * @throws ResourceNotFoundException if template not found
-     *          from any available source.
-     * @throws ParseErrorException if template cannot be parsed due
-     *          to syntax (or other) error.
-     * @throws Exception if an error occurs in template initialization
-     */
+	 * Returns a static content resource from the resource manager. Uses the
+	 * current value if INPUT_ENCODING as the character encoding.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            Name of content resource to get
+	 * @return parsed ContentResource object ready for use
+	 * @throws ResourceNotFoundException
+	 *             if template not found from any available source.
+	 * @throws ParseErrorException
+	 *             if template cannot be parsed due to syntax (or other) error.
+	 * @throws Exception
+	 *             if an error occurs in template initialization
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static ContentResource getContent(String name)
         throws ResourceNotFoundException, ParseErrorException, Exception
     {
@@ -315,18 +347,22 @@ public class Runtime implements RuntimeConstants
     }
 
     /**
-     * Returns a static content resource from the
-     * resource manager.
-     *
-     * @param name Name of content resource to get
-     * @param encoding Character encoding to use
-     * @return parsed ContentResource object ready for use
-     * @throws ResourceNotFoundException if template not found
-     *          from any available source.
-     * @throws ParseErrorException if template cannot be parsed due
-     *          to syntax (or other) error.
-     * @throws Exception if an error occurs in template initialization
-     */
+	 * Returns a static content resource from the resource manager.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            Name of content resource to get
+	 * @param encoding
+	 *            Character encoding to use
+	 * @return parsed ContentResource object ready for use
+	 * @throws ResourceNotFoundException
+	 *             if template not found from any available source.
+	 * @throws ParseErrorException
+	 *             if template cannot be parsed due to syntax (or other) error.
+	 * @throws Exception
+	 *             if an error occurs in template initialization
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static ContentResource getContent( String name, String encoding )
         throws ResourceNotFoundException, ParseErrorException, Exception
     {
@@ -335,14 +371,17 @@ public class Runtime implements RuntimeConstants
 
 
     /**
-     *  Determines is a template exists, and returns name of the loader that
-     *  provides it.  This is a slightly less hokey way to support
-     *  the Velocity.templateExists() utility method, which was broken
-     *  when per-template encoding was introduced.  We can revisit this.
-     *
-     *  @param resourceName Name of template or content resource
-     *  @return class name of loader than can provide it
-     */
+	 * Determines is a template exists, and returns name of the loader that
+	 * provides it. This is a slightly less hokey way to support the
+	 * Velocity.templateExists() utility method, which was broken when
+	 * per-template encoding was introduced. We can revisit this.
+	 *
+	 * @author mqfdy
+	 * @param resourceName
+	 *            Name of template or content resource
+	 * @return class name of loader than can provide it
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static String getLoaderNameForResource( String resourceName )
     {
         return RuntimeSingleton.getLoaderNameForResource( resourceName );
@@ -350,67 +389,86 @@ public class Runtime implements RuntimeConstants
 
 
     /**
-     * Log a warning message.
-     *
-     * @param message message to log
-     */
+	 * Log a warning message.
+	 *
+	 * @author mqfdy
+	 * @param message
+	 *            message to log
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static void warn(Object message)
     {
         RuntimeSingleton.warn( message );
     }
 
     /**
-     * Log an info message.
-     *
-     * @param message message to log
-     */
+	 * Log an info message.
+	 *
+	 * @author mqfdy
+	 * @param message
+	 *            message to log
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static void info(Object message)
     {
         RuntimeSingleton.info( message );
     }
 
     /**
-     * Log an error message.
-     *
-     * @param message message to log
-     */
+	 * Log an error message.
+	 *
+	 * @author mqfdy
+	 * @param message
+	 *            message to log
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static void error(Object message)
     {
         RuntimeSingleton.error( message );
     }
 
     /**
-     * Log a debug message.
-     *
-     * @param message message to log
-     */
+	 * Log a debug message.
+	 *
+	 * @author mqfdy
+	 * @param message
+	 *            message to log
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static void debug(Object message)
     {
         RuntimeSingleton.debug( message );
     }
 
     /**
-     * String property accessor method with default to hide the
-     * configuration implementation.
-     *
-     * @param key A property key.
-     * @param defaultValue  default value to return if key not
-     *               found in resource manager.
-     * @return The property value of of key or default.
-     */
+	 * String property accessor method with default to hide the configuration
+	 * implementation.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            A property key.
+	 * @param defaultValue
+	 *            default value to return if key not found in resource manager.
+	 * @return The property value of of key or default.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static String getString( String key, String defaultValue)
     {
         return RuntimeSingleton.getString( key, defaultValue );
     }
 
     /**
-     * Returns the appropriate VelocimacroProxy object if strVMname
-     * is a valid current Velocimacro.
-     *
-     * @param vmName  Name of velocimacro requested
-     * @param templateName The template from which the macro is requested.
-     * @return A VelocimacroProxy object for the macro.
-     */
+	 * Returns the appropriate VelocimacroProxy object if strVMname is a valid
+	 * current Velocimacro.
+	 *
+	 * @author mqfdy
+	 * @param vmName
+	 *            Name of velocimacro requested
+	 * @param templateName
+	 *            The template from which the macro is requested.
+	 * @return A VelocimacroProxy object for the macro.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static Directive getVelocimacro( String vmName, String templateName  )
     {
         return RuntimeSingleton.getVelocimacro( vmName, templateName );
@@ -437,24 +495,31 @@ public class Runtime implements RuntimeConstants
     }
 
     /**
-     *  Checks to see if a VM exists
-     *
-     * @param vmName  The name of velocimacro.
-     * @param templateName The template from which the macro is requested.
-     * @return boolean  True if VM by that name exists, false if not
-     */
+	 * Checks to see if a VM exists.
+	 *
+	 * @author mqfdy
+	 * @param vmName
+	 *            The name of velocimacro.
+	 * @param templateName
+	 *            The template from which the macro is requested.
+	 * @return boolean True if VM by that name exists, false if not
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static boolean isVelocimacro( String vmName, String templateName )
     {
         return RuntimeSingleton.isVelocimacro( vmName, templateName );
     }
 
     /**
-     *  tells the vmFactory to dump the specified namespace.  This is to support
-     *  clearing the VM list when in inline-VM-local-scope mode
-     *
-     * @param namespace The namespace to dump.
-     * @return True if the namespace has been dumped.
-     */
+	 * tells the vmFactory to dump the specified namespace. This is to support
+	 * clearing the VM list when in inline-VM-local-scope mode
+	 *
+	 * @author mqfdy
+	 * @param namespace
+	 *            The namespace to dump.
+	 * @return True if the namespace has been dumped.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static boolean dumpVMNamespace( String namespace )
     {
         return RuntimeSingleton.dumpVMNamespace( namespace );
@@ -473,56 +538,74 @@ public class Runtime implements RuntimeConstants
      */
 
     /**
-     * String property accessor method to hide the configuration implementation
-     * @param key  property key
-     * @return   value of key or null
-     */
+	 * String property accessor method to hide the configuration implementation.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            property key
+	 * @return value of key or null
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static String getString(String key)
     {
         return RuntimeSingleton.getString( key );
     }
 
     /**
-     * Int property accessor method to hide the configuration implementation.
-     *
-     * @param key A property key.
-     * @return Integer value for this key.
-     */
+	 * Int property accessor method to hide the configuration implementation.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            A property key.
+	 * @return Integer value for this key.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static int getInt( String key )
     {
         return RuntimeSingleton.getInt( key );
     }
 
     /**
-     * Int property accessor method to hide the configuration implementation.
-     *
-     * @param key  property key
-     * @param defaultValue default value
-     * @return The integer value.
-     */
+	 * Int property accessor method to hide the configuration implementation.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            property key
+	 * @param defaultValue
+	 *            default value
+	 * @return The integer value.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static int getInt( String key, int defaultValue )
     {
         return RuntimeSingleton.getInt( key, defaultValue );
     }
 
     /**
-     * Boolean property accessor method to hide the configuration implementation.
-     *
-     * @param key  property key
-     * @param def default default value if property not found
-     * @return boolean  value of key or default value
-     */
+	 * Boolean property accessor method to hide the configuration
+	 * implementation.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            property key
+	 * @param def
+	 *            default default value if property not found
+	 * @return boolean value of key or default value
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static boolean getBoolean( String key, boolean def )
     {
         return RuntimeSingleton.getBoolean( key, def );
     }
 
     /**
-     * Return the velocity runtime configuration object.
-     *
-     * @return ExtendedProperties configuration object which houses
-     *                       the velocity runtime properties.
-     */
+	 * Return the velocity runtime configuration object.
+	 *
+	 * @author mqfdy
+	 * @return ExtendedProperties configuration object which houses the velocity
+	 *         runtime properties.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public static ExtendedProperties getConfiguration()
     {
         return RuntimeSingleton.getConfiguration();

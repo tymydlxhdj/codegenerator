@@ -54,112 +54,233 @@ import com.mqfdy.code.model.utils.DataType;
 import com.mqfdy.code.model.utils.TransactionType;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务操作编辑弹出框
- * 
+ * 业务操作编辑弹出框.
+ *
  * @author mqfdy
- * 
  */
 public class OperationEditorDialog extends ModelElementEditorDialog {
 
+	/** The Constant DIALOG_TITLE_ADD. */
 	public static final String DIALOG_TITLE_ADD = "创建业务操作";
+	
+	/** The Constant DIALOG_TITLE_EDIT. */
 	public static final String DIALOG_TITLE_EDIT = "修改业务操作";
+	
+	/** The Constant MESSAGE_TITLE. */
 	public static final String MESSAGE_TITLE = "业务操作";
+	
+	/** The Constant DIALOG_MESSAGE_ADD. */
 	public static final String DIALOG_MESSAGE_ADD = "创建业务操作";
+	
+	/** The Constant DIALOG_MESSAGE_EDIT. */
 	public static final String DIALOG_MESSAGE_EDIT = "修改 @ 信息";
 
+	/** The Constant OPERATION_NAME. */
 	public static final String OPERATION_NAME = "名称:";
+	
+	/** The Constant OPERATION_DISPLAYNAME. */
 	public static final String OPERATION_DISPLAYNAME = "显示名称:";
 
+	/** The Constant RETURNDATATYPE_LABEL_TEXT. */
 	public static final String RETURNDATATYPE_LABEL_TEXT = "返回数据类型：";
+	
+	/** The Constant TRANSACTIONTYPE_LABEL_TEXT. */
 	public static final String TRANSACTIONTYPE_LABEL_TEXT = "事务类型：";
+	
+	/** The Constant ERRORMESSAGE_LABEL_TEXT. */
 	public static final String ERRORMESSAGE_LABEL_TEXT = "异常提示：";
 
+	/** The Constant PARAMNAME_LABEL_TEXT. */
 	public static final String PARAMNAME_LABEL_TEXT = "参数名：";
+	
+	/** The Constant PARAMDISPLAYNAME_LABEL_TEXT. */
 	public static final String PARAMDISPLAYNAME_LABEL_TEXT = "参数显示名：";
+	
+	/** The Constant PARAMTYPE_LABEL_TEXT. */
 	public static final String PARAMTYPE_LABEL_TEXT = "参数类型：";
+	
+	/** The Constant PARAMDEFAULTVALUE_LABEL_TEXT. */
 	public static final String PARAMDEFAULTVALUE_LABEL_TEXT = "默认值：";
 
+	/** The Constant GROUP_PARAM_TEXT. */
 	public static final String GROUP_PARAM_TEXT = "参数信息";
+	
+	/** The Constant GROUP_BASIC_TEXT. */
 	public static final String GROUP_BASIC_TEXT = "基本信息";
+	
+	/** The Constant GROUP_OPERATEPARAM_TEXT. */
 	public static final String GROUP_OPERATEPARAM_TEXT = "操作参数";
+	
+	/** The Constant GROUP_PARAMEDIT_TEXT. */
 	public static final String GROUP_PARAMEDIT_TEXT = "参数编辑";
 
+	/** The Constant DELETE_MESSAGE. */
 	public static final String DELETE_MESSAGE = "请选择要删除的对象";
+	
+	/** The Constant DELETE_MESSAGE_TITLE. */
 	public static final String DELETE_MESSAGE_TITLE = "操作参数器";
 
+	/** The Constant COLUMN_ORDER. */
 	public static final String COLUMN_ORDER = "序号";
+	
+	/** The Constant COLUMN_NAME. */
 	public static final String COLUMN_NAME = "名称";
+	
+	/** The Constant COLUMN_DISPLAYNAME. */
 	public static final String COLUMN_DISPLAYNAME = "显示名";
+	
+	/** The Constant COLUMN_TYPE. */
 	public static final String COLUMN_TYPE = "参数类型";
 
+	/** The group basic. */
 	// 显示组件
 	private Group group_basic;
+	
+	/** The group param. */
 	private Group group_param;
 
+	/** The group param edit. */
 	// private Group group_operateParam;
 	private Group group_paramEdit;
 
+	/** The label name. */
 	private Label label_name;
+	
+	/** The text name. */
 	private NullToEmptyText text_name;
 
+	/** The label display name. */
 	private Label label_displayName;
+	
+	/** The text display name. */
 	private NullToEmptyText text_displayName;
 
+	/** The label remark. */
 	private Label label_remark;
+	
+	/** The text remark. */
 	private NullToEmptyText text_remark;
 
+	/** The label error message. */
 	private Label label_errorMessage;
+	
+	/** The text error message. */
 	private NullToEmptyText text_errorMessage;
 
+	/** The label return data type. */
 	private Label label_returnDataType;
+	
+	/** The combo return data type. */
 	private OperationDataTypeSelecter combo_returnDataType;
 
+	/** The label transaction type. */
 	private Label label_transactionType;
+	
+	/** The combo transaction type. */
 	private Combo combo_transactionType;
 
+	/** The table. */
 	private Table table;
+	
+	/** The table viewer. */
 	private TableViewer tableViewer;
 
+	/** The label param name. */
 	private Label label_paramName;
+	
+	/** The text param name. */
 	private NullToEmptyText text_paramName;
 
+	/** The label param display name. */
 	private Label label_paramDisplayName;
+	
+	/** The text param display name. */
 	private NullToEmptyText text_paramDisplayName;
 
+	/** The label param type. */
 	private Label label_paramType;
+	
+	/** The combo param type. */
 	private OperationDataTypeSelecter combo_paramType;
 
+	/** The label default value. */
 	private Label label_defaultValue;
+	
+	/** The text default value. */
 	private NullToEmptyText text_defaultValue;
 
+	/** The label param remark. */
 	private Label label_paramRemark;
+	
+	/** The text param remark. */
 	private NullToEmptyText text_paramRemark;
 
+	/** The tool bar. */
 	private ToolBar toolBar = null;
 
+	/** The add param action. */
 	private Action addParamAction;// 新增
+	
+	/** The delete param action. */
 	private Action deleteParamAction;// 删除
 
+	/** The statue. */
 	private String statue = "edit";
 
+	/** The editing operation param. */
 	private OperationParam editingOperationParam;
 
+	/** The operation copy. */
 	private BusinessOperation operationCopy;
 
 	// private java.util.List<OperationParam> tableItems = new
+	/** The temp list. */
 	// ArrayList<OperationParam>();
 	private java.util.List<OperationParam> tempList = new ArrayList<OperationParam>();
+	
+	/** The display name. */
 	private String displayName;
 
+	/**
+	 * The Class OperationParamConentProvider.
+	 *
+	 * @author mqfdy
+	 */
 	private class OperationParamConentProvider implements
 			IStructuredContentProvider {
+		
+		/**
+		 * 
+		 */
 		public void dispose() {
 		}
 
+		/**
+		 * Input changed.
+		 *
+		 * @author mqfdy
+		 * @param viewer
+		 *            the viewer
+		 * @param oldInput
+		 *            the old input
+		 * @param newInput
+		 *            the new input
+		 * @Date 2018-09-03 09:00
+		 */
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		}
 
+		/**
+		 * Gets the elements.
+		 *
+		 * @author mqfdy
+		 * @param inputElement
+		 *            the input element
+		 * @return the elements
+		 * @Date 2018-09-03 09:00
+		 */
 		@SuppressWarnings("rawtypes")
 		public Object[] getElements(Object inputElement) {
 			if (inputElement instanceof Collection) {
@@ -177,13 +298,40 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 
 	}
 
+	/**
+	 * The Class OperationParamLabelProvider.
+	 *
+	 * @author mqfdy
+	 */
 	private class OperationParamLabelProvider extends LabelProvider implements
 			ITableLabelProvider {
 
+		/**
+		 * Gets the column image.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param columnIndex
+		 *            the column index
+		 * @return the column image
+		 * @Date 2018-09-03 09:00
+		 */
 		public Image getColumnImage(Object element, int columnIndex) {
 			return null;
 		}
 
+		/**
+		 * Gets the column text.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param columnIndex
+		 *            the column index
+		 * @return the column text
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getColumnText(Object element, int columnIndex) {
 			OperationParam param = (OperationParam) element;
 			switch (columnIndex) {
@@ -204,15 +352,42 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 		}
 	}
 
+	/**
+	 * Instantiates a new operation editor dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param parent
+	 *            the parent
+	 */
 	public OperationEditorDialog(Shell parentShell, AbstractModelElement parent) {
 		super(parentShell, parent);
 	}
 
+	/**
+	 * Instantiates a new operation editor dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param editingElement
+	 *            the editing element
+	 * @param parent
+	 *            the parent
+	 */
 	public OperationEditorDialog(Shell parentShell,
 			AbstractModelElement editingElement, AbstractModelElement parent) {
 		super(parentShell, editingElement, parent);
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createDialogArea(Composite parent) {
 		// 初始化窗口
 		GridLayout gridLayout = new GridLayout(1, true);
@@ -310,6 +485,12 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 		return parent;
 	}
 
+	/**
+	 * Adds the listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void addListeners() {
 		text_name.addKeyListener(new KeyListener() {
 
@@ -332,6 +513,12 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 
 	}
 
+	/**
+	 * Creates the tool bar.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createToolBar() {
 		GridData gridData = new GridData();
 		gridData.horizontalAlignment = SWT.FILL;
@@ -341,6 +528,12 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 		toolBar.setLayoutData(gridData);
 	}
 
+	/**
+	 * Creates the table.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createTable() {
 		tableViewer = new TableViewer(group_param, SWT.SINGLE
 				| SWT.FULL_SELECTION | SWT.BORDER | SWT.SCROLL_LINE);
@@ -378,6 +571,12 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 		tableViewer.setCellModifier(cellModeifier);
 	}
 
+	/**
+	 * Make action.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void makeAction() {
 		addParamAction = new Action(ActionTexts.MODEL_ELEMENT_ADD, ImageManager
 				.getInstance().getImageDescriptor(
@@ -445,11 +644,31 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 		manager.update(true);
 	}
 
+	/**
+	 * Gets the new name.
+	 *
+	 * @author mqfdy
+	 * @param baseName
+	 *            the base name
+	 * @return the new name
+	 * @Date 2018-09-03 09:00
+	 */
 	private String getNewName(String baseName) {
 		String newName = getNewName(baseName, 0);
 		return newName;
 	}
 
+	/**
+	 * Gets the new name.
+	 *
+	 * @author mqfdy
+	 * @param baseName
+	 *            the base name
+	 * @param index
+	 *            the index
+	 * @return the new name
+	 * @Date 2018-09-03 09:00
+	 */
 	private String getNewName(String baseName, int index) {
 		String newName = baseName;
 		if (index != 0) {
@@ -463,10 +682,24 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 		return newName;
 	}
 
+	/**
+	 * Save editing param.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void saveEditingParam() {
 		tableViewer.refresh();
 	}
 
+	/**
+	 * Save new param.
+	 *
+	 * @author mqfdy
+	 * @param param
+	 *            the param
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void saveNewParam(OperationParam param) {
 		// tableItems.add(param);
 		tempList.add(param);
@@ -475,6 +708,14 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 		this.editingOperationParam = param;
 	}
 
+	/**
+	 * Creates the groups.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createGroups(Composite parent) {
 		group_basic = new Group(parent, SWT.NONE);
 		group_basic.setText(GROUP_BASIC_TEXT);
@@ -508,7 +749,12 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 操作按钮
+	 * 操作按钮.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void createButtonsForButtonBar(Composite parent) {
 		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL,
@@ -518,6 +764,14 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 //		createButton(parent, APPLY_ID, APPLY_LABEL, true);
 	}
 
+	/**
+	 * Button pressed.
+	 *
+	 * @author mqfdy
+	 * @param buttonId
+	 *            the button id
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void buttonPressed(int buttonId) {
 //		if (APPLY_ID == buttonId) {
 //			applylPressed();
@@ -526,6 +780,9 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 //		}
 	}
 
+	/**
+	 * 
+	 */
 	protected void okPressed() {
 		if (validateAllInput() == true) {
 			updateTheEditingElement();
@@ -535,6 +792,12 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 
 
 
+	/**
+	 * Applyl pressed.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void applylPressed() {
 		if (validateAllInput() == true) {
 			updateTheEditingElement();
@@ -543,6 +806,12 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 
 	}
 
+	/**
+	 * Inits the control value.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void initControlValue() {
 		combo_transactionType.setItems(TransactionType
 				.getTransactionTypesString());
@@ -589,6 +858,13 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 
 	}
 
+	/**
+	 * Validate all input.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean validateAllInput() {
 		if (text_name.getText().trim().length() == 0) {
 			setErrorMessage(IBusinessClassEditorPage.ERROR_MESSAGE_NAME_NULLABLE);
@@ -674,6 +950,12 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 		return true;
 	}
 
+	/**
+	 * Update the editing element.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void updateTheEditingElement() {
 		// if(removedItems.size() > 0){
 		// for(int i = 0; i< removedItems.size(); i++)
@@ -711,10 +993,11 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 判断该名称是否存在
-	 * 
-	 * @param name
-	 * @return
+	 * 判断该名称是否存在.
+	 *
+	 * @author mqfdy
+	 * @return the next order number
+	 * @Date 2018-09-03 09:00
 	 */
 	/*
 	 * public boolean isExist(String name){ if(parent!= null ){ BusinessClass
@@ -731,9 +1014,11 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 检查是否参数名重复
-	 * 
-	 * @return
+	 * 检查是否参数名重复.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean checkMult() {
 //		if (tableItems != null) {
@@ -762,7 +1047,10 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 设置标题和信息
+	 * 设置标题和信息.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setTitleAndMessage() {
 		setTitle(MESSAGE_TITLE);
@@ -777,6 +1065,14 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 		}
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		if (operationType.equals(OPERATION_TYPE_ADD)) {
@@ -789,43 +1085,109 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 				ImageKeys.IMG_MODEL_TYPE_OPERATION));
 	}
 
+	/**
+	 * Gets the operation copy.
+	 *
+	 * @author mqfdy
+	 * @return the operation copy
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessOperation getOperationCopy() {
 		return operationCopy;
 	}
 
+	/**
+	 * Gets the editing param.
+	 *
+	 * @author mqfdy
+	 * @return the editing param
+	 * @Date 2018-09-03 09:00
+	 */
 	public OperationParam getEditingParam() {
 		return editingOperationParam;
 	}
 
+	/**
+	 * Sets the editing operation param.
+	 *
+	 * @author mqfdy
+	 * @param editingOperationParam
+	 *            the new editing operation param
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setEditingOperationParam(OperationParam editingOperationParam) {
 		this.editingOperationParam = editingOperationParam;
 	}
 
+	/**
+	 * Gets the statue.
+	 *
+	 * @author mqfdy
+	 * @return the statue
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getStatue() {
 		return statue;
 	}
 
+	/**
+	 * Sets the statue.
+	 *
+	 * @author mqfdy
+	 * @param statue
+	 *            the new statue
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setStatue(String statue) {
 		this.statue = statue;
 	}
 
 	/**
-	 * 操作参数
-	 * 
+	 * 操作参数.
+	 *
 	 * @author xuran
-	 * 
 	 */
 	public class OperateParameterCellModifier implements ICellModifier {
+		
+		/** The table viewer. */
 		private TableViewer tableViewer;
 
+		/**
+		 * Instantiates a new operate parameter cell modifier.
+		 *
+		 * @param tableViewer
+		 *            the table viewer
+		 */
 		public OperateParameterCellModifier(TableViewer tableViewer) {
 			this.tableViewer = tableViewer;
 		}
 
+		/**
+		 * Can modify.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param property
+		 *            the property
+		 * @return true, if successful
+		 * @Date 2018-09-03 09:00
+		 */
 		public boolean canModify(Object element, String property) {
 			return true;
 		}
 
+		/**
+		 * Gets the value.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param property
+		 *            the property
+		 * @return the value
+		 * @Date 2018-09-03 09:00
+		 */
 		public Object getValue(Object element, String property) {
 			OperationParam param = (OperationParam) element;
 			if (property.equals(COLUMN_NAME)) {
@@ -843,6 +1205,18 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 			return "";
 		}
 
+		/**
+		 * Modify.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param property
+		 *            the property
+		 * @param value
+		 *            the value
+		 * @Date 2018-09-03 09:00
+		 */
 		public void modify(Object element, String property, Object value) {
 			TableItem item = (TableItem) element;
 			OperationParam param = (OperationParam) item.getData();
@@ -877,6 +1251,17 @@ public class OperationEditorDialog extends ModelElementEditorDialog {
 			tableViewer.refresh();
 		}
 
+		/**
+		 * Checks if is ok.
+		 *
+		 * @author mqfdy
+		 * @param value
+		 *            the value
+		 * @param property
+		 *            the property
+		 * @return true, if is ok
+		 * @Date 2018-09-03 09:00
+		 */
 		boolean isOk(String value, String property) {
 			if (property.equals(COLUMN_NAME)) {
 				setErrorMessage(null);

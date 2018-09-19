@@ -23,6 +23,12 @@ public class AWTCollectionChangeListenerWrapper
 {
 	private final CollectionChangeListener listener;
 
+	/**
+	 * Instantiates a new AWT collection change listener wrapper.
+	 *
+	 * @param listener
+	 *            the listener
+	 */
 	public AWTCollectionChangeListenerWrapper(CollectionChangeListener listener) {
 		super();
 		if (listener == null) {

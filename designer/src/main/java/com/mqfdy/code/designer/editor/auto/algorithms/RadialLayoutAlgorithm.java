@@ -19,37 +19,76 @@ import org.eclipse.zest.layouts.dataStructures.InternalNode;
 import org.eclipse.zest.layouts.dataStructures.InternalRelationship;
 import org.eclipse.zest.layouts.exampleStructures.SimpleRelationship;
 
+// TODO: Auto-generated Javadoc
 /**
  * This layout will take the given entities, apply a tree layout to them, and
  * then display the tree in a circular fashion with the roots in the center.
- * 
+ *
+ * @author mqfdy
  */
 public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
+	
+	/** The Constant MAX_DEGREES. */
 	private static final double MAX_DEGREES = Math.PI * 2;
+	
+	/** The start degree. */
 	private double startDegree;
+	
+	/** The end degree. */
 	private double endDegree;
+	
+	/** The tree layout. */
 	private TreeLayoutAlgorithm treeLayout;
+	
+	/** The roots. */
 	private List roots;
+	
+	/** The Constant DEFAULT_WEIGHT. */
 	private final static double DEFAULT_WEIGHT = 0;
+	
+	/** The Constant DEFAULT_MARKED. */
 	private final static boolean DEFAULT_MARKED = false;
 
+	/** The Constant AS_DESTINATION. */
 	private final static boolean AS_DESTINATION = false;
+	
+	/** The Constant AS_SOURCE. */
 	private final static boolean AS_SOURCE = true;
 
+	/** The Constant NUM_DESCENDENTS_INDEX. */
 	private final static int NUM_DESCENDENTS_INDEX = 0;
+	
+	/** The Constant NUM_LEVELS_INDEX. */
 	private final static int NUM_LEVELS_INDEX = 1;
 
+	/** The tree roots. */
 	private ArrayList treeRoots;
 
+	/** The bounds X. */
 	private double boundsX;
+	
+	/** The bounds Y. */
 	private double boundsY;
+	
+	/** The bounds width. */
 	private double boundsWidth;
+	
+	/** The bounds height. */
 	private double boundsHeight;
+	
+	/** The layout bounds. */
 	private DisplayIndependentRectangle layoutBounds = null;
 
+	/** The parent lists. */
 	private List[] parentLists;
+	
+	/** The children lists. */
 	private List[] childrenLists;
+	
+	/** The weights. */
 	private double[] weights;
+	
+	/** The marked arr. */
 	private boolean[] markedArr;
 
 	/**
@@ -60,6 +99,12 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	}
 
 	// TODO: This is a really strange pattern. It extends tree layout and it
+	/**
+	 * Instantiates a new radial layout algorithm.
+	 *
+	 * @param styles
+	 *            the styles
+	 */
 	// contains a tree layout ?
 	public RadialLayoutAlgorithm(int styles) {
 		super(styles);
@@ -68,10 +113,42 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 		endDegree = MAX_DEGREES;
 	}
 
+	/**
+	 * Sets the layout area.
+	 *
+	 * @author mqfdy
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param width
+	 *            the width
+	 * @param height
+	 *            the height
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setLayoutArea(double x, double y, double width, double height) {
 		throw new RuntimeException("Operation not implemented");
 	}
 
+	/**
+	 * Pre layout algorithm.
+	 *
+	 * @author mqfdy
+	 * @param entitiesToLayout
+	 *            the entities to layout
+	 * @param relationshipsToConsider
+	 *            the relationships to consider
+	 * @param x
+	 *            the x
+	 * @param y
+	 *            the y
+	 * @param width
+	 *            the width
+	 * @param height
+	 *            the height
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void preLayoutAlgorithm(InternalNode[] entitiesToLayout,
 			InternalRelationship[] relationshipsToConsider, double x, double y,
 			double width, double height) {
@@ -98,6 +175,16 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 				boundsWidth, boundsHeight);
 	}
 
+	/**
+	 * Post layout algorithm.
+	 *
+	 * @author mqfdy
+	 * @param entitiesToLayout
+	 *            the entities to layout
+	 * @param relationshipsToConsider
+	 *            the relationships to consider
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void postLayoutAlgorithm(InternalNode[] entitiesToLayout,
 			InternalRelationship[] relationshipsToConsider) {
 		roots = treeLayout.getRoots();
@@ -132,6 +219,13 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	/**
 	 * Set the range the radial layout will use when applyLayout is called. Both
 	 * values must be in radians.
+	 *
+	 * @author mqfdy
+	 * @param startDegree
+	 *            the start degree
+	 * @param endDegree
+	 *            the end degree
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setRangeToLayout(double startDegree, double endDegree) {
 		this.startDegree = startDegree;
@@ -142,8 +236,17 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	 * Take the tree and make it round. This is done by determining the location
 	 * of each entity in terms of its percentage in the tree layout. Then apply
 	 * that percentage to the radius and distance from the center.
-	 * @param roots 
-	 * @param relationshipsToConsider 
+	 *
+	 * @author mqfdy
+	 * @param roots
+	 *            the roots
+	 * @param entities
+	 *            the entities
+	 * @param bounds2
+	 *            the bounds 2
+	 * @param relationshipsToConsider
+	 *            the relationships to consider
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void computeRadialPositions(List roots, InternalNode[] entities,
 			DisplayIndependentRectangle bounds2, InternalRelationship[] relationshipsToConsider) { // TODO TODO TODO
@@ -169,6 +272,14 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	 * within the real bounds. The bounds can be determined either including the
 	 * size of the nodes or not. If the size is not included, the bounds will
 	 * only be guaranteed to include the center of each node.
+	 *
+	 * @author mqfdy
+	 * @param entitiesToLayout
+	 *            the entities to layout
+	 * @param includeNodeSize
+	 *            the include node size
+	 * @return the layout bounds
+	 * @Date 2018-09-03 09:00
 	 */
 	protected DisplayIndependentRectangle getLayoutBounds(
 			InternalNode[] entitiesToLayout, boolean includeNodeSize) {
@@ -192,7 +303,13 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	}
 
 	/**
-	 * Find the center point between the roots
+	 * Find the center point between the roots.
+	 *
+	 * @author mqfdy
+	 * @param roots
+	 *            the roots
+	 * @return the display independent point
+	 * @Date 2018-09-03 09:00
 	 */
 	private DisplayIndependentPoint determineCenterPoint(List roots) {
 		double totalX = 0, totalY = 0;
@@ -205,6 +322,24 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 				/ roots.size());
 	}
 
+	/**
+	 * Apply layout internal.
+	 *
+	 * @author mqfdy
+	 * @param entitiesToLayout
+	 *            the entities to layout
+	 * @param relationshipsToConsider
+	 *            the relationships to consider
+	 * @param boundsX
+	 *            the bounds X
+	 * @param boundsY
+	 *            the bounds Y
+	 * @param boundsWidth
+	 *            the bounds width
+	 * @param boundsHeight
+	 *            the bounds height
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void applyLayoutInternal(InternalNode[] entitiesToLayout,
 			InternalRelationship[] relationshipsToConsider, double boundsX,
 			double boundsY, double boundsWidth, double boundsHeight) {
@@ -224,7 +359,17 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	}
 
 	/**
-	 * Returns the last found roots
+	 * Returns the last found roots.
+	 *
+	 * @author mqfdy
+	 * @param entity
+	 *            the entity
+	 * @param objectAsSource
+	 *            the object as source
+	 * @param relationshipsToConsider
+	 *            the relationships to consider
+	 * @return the collection
+	 * @Date 2018-09-03 09:00
 	 */
 //	public List getRoots() {
 //		return treeRoots;
@@ -259,12 +404,14 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	 * Finds the relation that has the lowest index in the relation repository
 	 * in which the node <code>obj<code> plays the specified
 	 * <code>role</code>.
-	 * 
-	 * @param obj
-	 *            The node that concerns the relations to be found.
-	 * @param role
-	 *            The role played by the <code>obj</code>. Its type must be of
-	 *            <code>ACTOR_ROLE</code> or <code>ACTEE_ROLE</code>.
+	 *
+	 * @param entity
+	 *            the entity
+	 * @param objectAsSource
+	 *            the object as source
+	 * @param relationshipsToConsider
+	 *            the relationships to consider
+	 * @return the internal relationship
 	 * @see SimpleRelationship
 	 * @see SimpleRelationship#ACTOR_ROLE
 	 * @see SimpleRelationship#ACTEE_ROLE
@@ -292,6 +439,15 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	/**
 	 * Builds the tree forest that is used to calculate positions for each node
 	 * in this TreeLayoutAlgorithm.
+	 *
+	 * @author mqfdy
+	 * @param roots
+	 *            the roots
+	 * @param entities
+	 *            the entities
+	 * @param relationships
+	 *            the relationships
+	 * @Date 2018-09-03 09:00
 	 */
 	private void buildForest(List roots, InternalNode[] entities,
 			InternalRelationship[] relationships) {
@@ -302,6 +458,17 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	/**
 	 * Builds the forest recursively. All entities will be placed somewhere in
 	 * the forest.
+	 *
+	 * @author mqfdy
+	 * @param roots
+	 *            the roots
+	 * @param unplacedEntities
+	 *            the unplaced entities
+	 * @param entities
+	 *            the entities
+	 * @param relationships
+	 *            the relationships
+	 * @Date 2018-09-03 09:00
 	 */
 	private void buildForestRecursively(List roots, List unplacedEntities,
 			InternalNode[] entities, InternalRelationship[] relationships) {
@@ -334,6 +501,16 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	/**
 	 * Finds the root node that can be treated as the root of a tree. The found
 	 * root node should be one of the unmarked nodes.
+	 *
+	 * @author mqfdy
+	 * @param currentEntity
+	 *            the current entity
+	 * @param seenAlready
+	 *            the seen already
+	 * @param relationshipsToConsider
+	 *            the relationships to consider
+	 * @return the internal node
+	 * @Date 2018-09-03 09:00
 	 */
 	private InternalNode findRootObjectRecursive(InternalNode currentEntity,
 			Set seenAlready, InternalRelationship[] relationshipsToConsider) {
@@ -358,6 +535,19 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	/**
 	 * Builds a tree of the passed in entity. The entity will pass a weight
 	 * value to all of its children recursively.
+	 *
+	 * @author mqfdy
+	 * @param layoutEntity
+	 *            the layout entity
+	 * @param i
+	 *            the i
+	 * @param weight
+	 *            the weight
+	 * @param entities
+	 *            the entities
+	 * @param relationships
+	 *            the relationships
+	 * @Date 2018-09-03 09:00
 	 */
 	private void buildTreeRecursively(InternalNode layoutEntity, int i,
 			double weight, InternalNode[] entities,
@@ -448,17 +638,58 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 		}
 	}
 
+	/**
+	 * Gets the num children.
+	 *
+	 * @author mqfdy
+	 * @param layoutEntity
+	 *            the layout entity
+	 * @param relationships
+	 *            the relationships
+	 * @return the num children
+	 * @Date 2018-09-03 09:00
+	 */
 	private int getNumChildren(InternalNode layoutEntity,
 			InternalRelationship[] relationships) {
 		return findRelationships(layoutEntity, AS_SOURCE, relationships).size();
 	}
 
+	/**
+	 * Gets the num descendents and level.
+	 *
+	 * @author mqfdy
+	 * @param layoutEntity
+	 *            the layout entity
+	 * @param relationships
+	 *            the relationships
+	 * @param numDescendentsAndLevel
+	 *            the num descendents and level
+	 * @return the num descendents and level
+	 * @Date 2018-09-03 09:00
+	 */
 	private void getNumDescendentsAndLevel(InternalNode layoutEntity,
 			InternalRelationship[] relationships, int[] numDescendentsAndLevel) {
 		getNumDescendentsAndLevelRecursive(layoutEntity, relationships,
 				new HashSet(), numDescendentsAndLevel, 0);
 	}
 
+	/**
+	 * Gets the num descendents and level recursive.
+	 *
+	 * @author mqfdy
+	 * @param layoutEntity
+	 *            the layout entity
+	 * @param relationships
+	 *            the relationships
+	 * @param seenAlready
+	 *            the seen already
+	 * @param numDescendentsAndLevel
+	 *            the num descendents and level
+	 * @param currentLevel
+	 *            the current level
+	 * @return the num descendents and level recursive
+	 * @Date 2018-09-03 09:00
+	 */
 	private void getNumDescendentsAndLevelRecursive(InternalNode layoutEntity,
 			InternalRelationship[] relationships, Set seenAlready,
 			int[] numDescendentsAndLevel, int currentLevel) {
@@ -482,6 +713,21 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 
 	/**
 	 * Modifies the weight value of the marked node recursively.
+	 *
+	 * @author mqfdy
+	 * @param layoutEntity
+	 *            the layout entity
+	 * @param i
+	 *            the i
+	 * @param weight
+	 *            the weight
+	 * @param descendentsSeenSoFar
+	 *            the descendents seen so far
+	 * @param entities
+	 *            the entities
+	 * @param relationships
+	 *            the relationships
+	 * @Date 2018-09-03 09:00
 	 */
 	private void modifyWeightRecursively(InternalNode layoutEntity, int i,
 			double weight, Set descendentsSeenSoFar, InternalNode[] entities,
@@ -517,6 +763,18 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	/**
 	 * Gets the maxium weight of a tree in the forest of this
 	 * TreeLayoutAlgorithm.
+	 *
+	 * @author mqfdy
+	 * @param layoutEntity
+	 *            the layout entity
+	 * @param i
+	 *            the i
+	 * @param seenAlready
+	 *            the seen already
+	 * @param entities
+	 *            the entities
+	 * @return the maxium weight recursive
+	 * @Date 2018-09-03 09:00
 	 */
 	private double getMaxiumWeightRecursive(InternalNode layoutEntity, int i,
 			Set seenAlready, InternalNode[] entities) {
@@ -546,6 +804,13 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	/**
 	 * Computes positions for each node in this TreeLayoutAlgorithm by
 	 * referencing the forest that holds those nodes.
+	 *
+	 * @author mqfdy
+	 * @param roots
+	 *            the roots
+	 * @param entities
+	 *            the entities
+	 * @Date 2018-09-03 09:00
 	 */
 	private void computePositions(List roots, InternalNode[] entities) {
 		// No need to do further computation!
@@ -581,8 +846,26 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 					+ getNumberOfLeaves(rootEntity, rootEntityIndex, entities);
 		}
 	}
+	
 	/**
 	 * Computes positions recursively until the leaf nodes are reached.
+	 *
+	 * @author mqfdy
+	 * @param layoutEntity
+	 *            the layout entity
+	 * @param i
+	 *            the i
+	 * @param relativePosition
+	 *            the relative position
+	 * @param width
+	 *            the width
+	 * @param height
+	 *            the height
+	 * @param seenAlready
+	 *            the seen already
+	 * @param entities
+	 *            the entities
+	 * @Date 2018-09-03 09:00
 	 */
 	private void computePositionRecursively(InternalNode layoutEntity, int i,
 			int relativePosition, double width, double height, Set seenAlready,
@@ -615,12 +898,41 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 					+ getNumberOfLeaves(childEntity, childEntityIndex, entities);
 		}
 	}
+	
+	/**
+	 * Gets the number of leaves.
+	 *
+	 * @author mqfdy
+	 * @param layoutEntity
+	 *            the layout entity
+	 * @param i
+	 *            the i
+	 * @param entities
+	 *            the entities
+	 * @return the number of leaves
+	 * @Date 2018-09-03 09:00
+	 */
 	private int getNumberOfLeaves(InternalNode layoutEntity, int i,
 			InternalNode[] entities) {
 		return getNumberOfLeavesRecursive(layoutEntity, i, new HashSet(),
 				entities);
 	}
 
+	/**
+	 * Gets the number of leaves recursive.
+	 *
+	 * @author mqfdy
+	 * @param layoutEntity
+	 *            the layout entity
+	 * @param i
+	 *            the i
+	 * @param seen
+	 *            the seen
+	 * @param entities
+	 *            the entities
+	 * @return the number of leaves recursive
+	 * @Date 2018-09-03 09:00
+	 */
 	private int getNumberOfLeavesRecursive(InternalNode layoutEntity, int i,
 			Set seen, InternalNode[] entities) {
 		int numLeaves = 0;
@@ -645,11 +957,39 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 		return numLeaves;
 	}
 
+	/**
+	 * Gets the level.
+	 *
+	 * @author mqfdy
+	 * @param layoutEntity
+	 *            the layout entity
+	 * @param i
+	 *            the i
+	 * @param entities
+	 *            the entities
+	 * @return the level
+	 * @Date 2018-09-03 09:00
+	 */
 	private int getLevel(InternalNode layoutEntity, int i,
 			InternalNode[] entities) {
 		return getLevelRecursive(layoutEntity, i, new HashSet(), entities);
 	}
 
+	/**
+	 * Gets the level recursive.
+	 *
+	 * @author mqfdy
+	 * @param layoutEntity
+	 *            the layout entity
+	 * @param i
+	 *            the i
+	 * @param seen
+	 *            the seen
+	 * @param entities
+	 *            the entities
+	 * @return the level recursive
+	 * @Date 2018-09-03 09:00
+	 */
 	private int getLevelRecursive(InternalNode layoutEntity, int i, Set seen,
 			InternalNode[] entities) {
 		if (seen.contains(layoutEntity)) {
@@ -669,11 +1009,15 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 	}
 
 	/**
-	 * Note: Use this as little as possible! TODO limit the use of this method
-	 * 
+	 * Note: Use this as little as possible! TODO limit the use of this method.
+	 *
+	 * @author mqfdy
 	 * @param nodes
+	 *            the nodes
 	 * @param nodeToFind
-	 * @return
+	 *            the node to find
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	private int indexOfInternalNode(InternalNode[] nodes,
 			InternalNode nodeToFind) {
@@ -687,14 +1031,31 @@ public class RadialLayoutAlgorithm extends AbstractLayoutAlgorithm {
 				+ nodeToFind);
 	}
 
+	/**
+	 * @return
+	 */
 	protected int getCurrentLayoutStep() {
 		return 0;
 	}
 
+	/**
+	 * @return
+	 */
 	protected int getTotalNumberOfLayoutSteps() {
 		return 4;
 	}
 
+	/**
+	 * Checks if is valid configuration.
+	 *
+	 * @author mqfdy
+	 * @param asynchronous
+	 *            the asynchronous
+	 * @param continueous
+	 *            the continueous
+	 * @return true, if is valid configuration
+	 * @Date 2018-09-03 09:00
+	 */
 	protected boolean isValidConfiguration(boolean asynchronous,
 			boolean continueous) {
 		if (asynchronous && continueous) {

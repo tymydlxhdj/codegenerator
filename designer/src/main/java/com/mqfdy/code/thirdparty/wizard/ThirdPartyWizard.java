@@ -36,30 +36,73 @@ import com.mqfdy.code.reverse.views.pages.PackageDispachPage;
 import com.mqfdy.code.reverse.views.pages.SpecialTableWizardPage;
 import com.mqfdy.code.thirdparty.OmImport;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ThirdPartyWizard.
+ *
+ * @author mqfdy
+ */
 public class ThirdPartyWizard extends Wizard implements INewWizard {
+	
+	/** The cf page. */
 	private ChooseFileWizardPage cfPage;
+	
+	/** The ts page. */
 	private TableStructureWizardPage tsPage;
+	
+	/** The st page. */
 	private SpecialTableWizardPage stPage;
+	
+	/** The os page. */
 	private OmSelectWizardPage osPage;
+	
+	/** The dn page. */
 	private DuplicateNameWizardPage dnPage;
+	
+	/** The onrs page. */
 	private OmNameReverseStrategyPage onrsPage;
+	
+	/** The pd page. */
 	private PackageDispachPage pdPage;
 	
+	/** The om import. */
 	private OmImport omImport;
+	
+	/** The om reverse. */
 	private IOmReverse omReverse = new OmReverse();
 	
+	/** The Constant TOTAL_WORK. */
 	public static final int TOTAL_WORK = 5;
 	
+	/** The is finish. */
 	private boolean isFinish = false;
 	
+	/**
+	 * Checks if is finish.
+	 *
+	 * @author mqfdy
+	 * @return true, if is finish
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isFinish() {
 		return isFinish;
 	}
 
+	/**
+	 * Sets the finish.
+	 *
+	 * @author mqfdy
+	 * @param isFinish
+	 *            the new finish
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setFinish(boolean isFinish) {
 		this.isFinish = isFinish;
 	}
 	
+	/**
+	 * Instantiates a new third party wizard.
+	 */
 	public ThirdPartyWizard(){
 		super();
 		setWindowTitle("导入PDM文件");
@@ -67,10 +110,23 @@ public class ThirdPartyWizard extends Wizard implements INewWizard {
 		omImport = new OmImport();
 	}
 	
+	/**
+	 * Inits the.
+	 *
+	 * @author mqfdy
+	 * @param arg0
+	 *            the arg 0
+	 * @param arg1
+	 *            the arg 1
+	 * @Date 2018-09-03 09:00
+	 */
 	public void init(IWorkbench arg0, IStructuredSelection arg1) {
 		setWindowTitle("pdm反向生成om - 向导");
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean performFinish() {
 		final IWorkbenchPage[] pages = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPages();
@@ -104,6 +160,9 @@ public class ThirdPartyWizard extends Wizard implements INewWizard {
 		return true;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canFinish() {
 		if(isFinish) {
@@ -112,6 +171,16 @@ public class ThirdPartyWizard extends Wizard implements INewWizard {
 		return false;
 	}
 	
+	/**
+	 * Do finish.
+	 *
+	 * @author mqfdy
+	 * @param pages
+	 *            the pages
+	 * @param monitor
+	 *            the monitor
+	 * @Date 2018-09-03 09:00
+	 */
 	@SuppressWarnings("deprecation")
 	private void doFinish(IWorkbenchPage[] pages, IProgressMonitor monitor) {
 		omImport.createBom(ReverseContext.bom, monitor, pdPage);
@@ -128,6 +197,9 @@ public class ThirdPartyWizard extends Wizard implements INewWizard {
 //		EditorOperation.refreshEditorByFile(ReverseContext.OM_STORAGE_PATH, pages);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void addPages() {
 		cfPage = new ChooseFileWizardPage("cfPage");
@@ -153,6 +225,9 @@ public class ThirdPartyWizard extends Wizard implements INewWizard {
 		
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void dispose() {
 		omReverse.clearMemery();

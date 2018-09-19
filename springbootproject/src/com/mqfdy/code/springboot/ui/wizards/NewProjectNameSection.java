@@ -13,6 +13,7 @@ import com.mqfdy.code.springboot.core.util.expression.LiveExpression;
 import com.mqfdy.code.springboot.core.validators.ValidationResult;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Wizard page section that allows the user to enter the name of a new project. 
  * 
@@ -35,6 +36,12 @@ public class NewProjectNameSection extends WizardPageSection {
 	
 	private final LiveExpression<ValidationResult> validator;
 
+	/**
+	 * Instantiates a new new project name section.
+	 *
+	 * @param owner
+	 *            the owner
+	 */
 	public NewProjectNameSection(BaseInfoWizardPage owner) {
 		super(owner);
 		owner.operation.setProjectNameField(projectNameExp);
@@ -73,6 +80,13 @@ public class NewProjectNameSection extends WizardPageSection {
         projectNameExp.refresh();
 	}
 
+	/**
+	 * Gets the project name.
+	 *
+	 * @author mqfdy
+	 * @return the project name
+	 * @Date 2018-09-03 09:00
+	 */
 	public LiveExpression<String> getProjectName() {
 		return projectNameExp;
 	}

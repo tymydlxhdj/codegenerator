@@ -15,17 +15,46 @@ import com.mqfdy.code.model.BusinessClass;
 import com.mqfdy.code.model.QueryCondition;
 import com.mqfdy.code.model.utils.DataType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class QueryDesignDialog.
+ *
+ * @author mqfdy
+ */
 public class QueryDesignDialog extends ModelElementEditorDialog {
 
+	/** The title. */
 	private String TITLE = "查询条件设计器";
+	
+	/** The business class. */
 	private BusinessClass businessClass;
+	
+	/** The parent page. */
 	DataSourceBusinessPage parentPage;
+	
+	/** The query design page. */
 	private QueryDesignPage queryDesignPage;
 
+	/**
+	 * Instantiates a new query design dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 */
 	public QueryDesignDialog(Shell parentShell) {
 		super(parentShell);
 	}
 
+	/**
+	 * Instantiates a new query design dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param businessClass
+	 *            the business class
+	 * @param parentPage
+	 *            the parent page
+	 */
 	public QueryDesignDialog(Shell parentShell, BusinessClass businessClass,
 			DataSourceBusinessPage parentPage) {
 		super(parentShell);
@@ -33,11 +62,26 @@ public class QueryDesignDialog extends ModelElementEditorDialog {
 		this.parentPage = parentPage;
 	}
 
+	/**
+	 * Sets the title and message.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setTitleAndMessage() {
 		setTitle(TITLE);
 		setMessage("设计查询条件");
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Control createDialogArea(Composite composite) {
 		// 初始化窗口
@@ -59,7 +103,12 @@ public class QueryDesignDialog extends ModelElementEditorDialog {
 	}
 
 	/**
-	 * 操作按钮
+	 * 操作按钮.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void createButtonsForButtonBar(Composite composite) {
 		createButton(composite, IDialogConstants.OK_ID,
@@ -69,6 +118,14 @@ public class QueryDesignDialog extends ModelElementEditorDialog {
 //		createButton(composite, APPLY_ID, APPLY_LABEL, true);
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText(TITLE);
@@ -76,6 +133,9 @@ public class QueryDesignDialog extends ModelElementEditorDialog {
 				ImageKeys.IMG_MODEL_TYPE_LOCAL));
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		if (queryDesignPage.validateInput()) {
@@ -99,7 +159,11 @@ public class QueryDesignDialog extends ModelElementEditorDialog {
 	 * 
 	 * { junction:"or", columnJunction:"and", criterions:[
 	 * {fieldName:"id","operator":"=",value:"10251"},
-	 * {fieldName:"id","operator":"*",value:"10252"} ] } ]
+	 * {fieldName:"id","operator":"*",value:"10252"} ] } ].
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	private String generateJson() {
 		StringBuffer json = new StringBuffer();
@@ -153,6 +217,13 @@ public class QueryDesignDialog extends ModelElementEditorDialog {
 		return json.toString();
 	}
 
+	/**
+	 * Generate condition.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	private String generateCondition() {
 		StringBuffer conditionStr = new StringBuffer();
 		List<QueryCondition> allConditions = queryDesignPage.getListTemp();//getParentPage().getEditor().getConditions();
@@ -228,6 +299,14 @@ public class QueryDesignDialog extends ModelElementEditorDialog {
 		return conditionStr.toString();
 	}
 
+	/**
+	 * Button pressed.
+	 *
+	 * @author mqfdy
+	 * @param buttonId
+	 *            the button id
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void buttonPressed(int buttonId) {
 //		if (buttonId == APPLY_ID) {
@@ -238,14 +317,35 @@ public class QueryDesignDialog extends ModelElementEditorDialog {
 
 	}
 
+	/**
+	 * Gets the business class.
+	 *
+	 * @author mqfdy
+	 * @return the business class
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessClass getBusinessClass() {
 		return businessClass;
 	}
 
+	/**
+	 * Gets the query design page.
+	 *
+	 * @author mqfdy
+	 * @return the query design page
+	 * @Date 2018-09-03 09:00
+	 */
 	public QueryDesignPage getQueryDesignPage() {
 		return queryDesignPage;
 	}
 
+	/**
+	 * Gets the parent page.
+	 *
+	 * @author mqfdy
+	 * @return the parent page
+	 * @Date 2018-09-03 09:00
+	 */
 	public DataSourceBusinessPage getParentPage() {
 		return parentPage;
 	}

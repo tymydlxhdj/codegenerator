@@ -8,12 +8,27 @@ import com.mqfdy.code.designer.editor.part.DiagramEditPart;
 import com.mqfdy.code.designer.models.ImageKeys;
 import com.mqfdy.code.designer.models.ImageManager;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DiagramAutoLayoutAction.
+ *
+ * @author mqfdy
+ */
 @SuppressWarnings("restriction")
 public class DiagramAutoLayoutAction extends SelectionAction {
+	
+	/** The part. */
 	BusinessModelDiagramEditor part;
 
+	/** The menu creator. */
 	private LayoutAlgorithmSelectMenuCreator menuCreator;
 	
+	/**
+	 * Instantiates a new diagram auto layout action.
+	 *
+	 * @param part
+	 *            the part
+	 */
 	public DiagramAutoLayoutAction(IWorkbenchPart part) {
 		super(part);
 		this.part = (BusinessModelDiagramEditor) part;
@@ -22,6 +37,9 @@ public class DiagramAutoLayoutAction extends SelectionAction {
 		setMenuCreator(menuCreator);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void init() {
 		super.init();
@@ -35,6 +53,9 @@ public class DiagramAutoLayoutAction extends SelectionAction {
 		setEnabled(false);
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected boolean calculateEnabled() {
 		return true;

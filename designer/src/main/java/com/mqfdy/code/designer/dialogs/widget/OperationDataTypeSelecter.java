@@ -20,22 +20,43 @@ import com.mqfdy.code.model.IModelElement;
 import com.mqfdy.code.model.utils.DataType;
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class OperationDataTypeSelecter.
+ *
+ * @author mqfdy
+ */
 public class OperationDataTypeSelecter extends Composite {
 
+	/** The Constant BTN_SELECT_LABEL. */
 	private final static String BTN_SELECT_LABEL = "选择";
 
+	/** The com data type. */
 	private Combo com_dataType;
 
+	/** The btn select. */
 	private Button btn_select;
 
+	/** The data types. */
 	private String[] dataTypes;
 
+	/** The business object. */
 	private AbstractModelElement businessObject;
 
+	/** The data type name. */
 	private String dataTypeName;
 
+	/** The temp text. */
 	private String tempText;
 
+	/**
+	 * Instantiates a new operation data type selecter.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 */
 	public OperationDataTypeSelecter(Composite parent, int style) {
 		super(parent, style);
 		GridLayout layout = new GridLayout(2, false);
@@ -54,6 +75,12 @@ public class OperationDataTypeSelecter extends Composite {
 		makeAction();
 	}
 
+	/**
+	 * Inits the control value.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void initControlValue() {
 		dataTypes = DataType.getAllDataTypesString();
 		com_dataType.setItems(dataTypes);
@@ -62,6 +89,12 @@ public class OperationDataTypeSelecter extends Composite {
 		}
 	}
 
+	/**
+	 * Make action.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void makeAction() {
 		btn_select.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -109,6 +142,14 @@ public class OperationDataTypeSelecter extends Composite {
 
 	}
 
+	/**
+	 * Sets the data type.
+	 *
+	 * @author mqfdy
+	 * @param dataType
+	 *            the new data type
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setDataType(String dataType) {
 		int index = DataType.getIndex(dataType);
 		if (index > -1) {
@@ -120,6 +161,13 @@ public class OperationDataTypeSelecter extends Composite {
 		}
 	}
 
+	/**
+	 * Gets the data type name.
+	 *
+	 * @author mqfdy
+	 * @return the data type name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getDataTypeName() {
 		return dataTypeName;
 	}

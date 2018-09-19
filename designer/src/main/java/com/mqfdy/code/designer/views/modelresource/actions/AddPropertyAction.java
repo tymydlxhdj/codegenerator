@@ -15,22 +15,35 @@ import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.model.ModelPackage;
 import com.mqfdy.code.model.Property;
 
+// TODO: Auto-generated Javadoc
 /**
- * 新增业务类属性动作
- * 
+ * 新增业务类属性动作.
+ *
  * @author mqfdy
- * 
  */
 public class AddPropertyAction extends TreeAction {
 
+	/** The business class editor dialog. */
 	private BusinessClassEditorDialog businessClassEditorDialog;
 
+	/**
+	 * Instantiates a new adds the property action.
+	 *
+	 * @param treeViewer
+	 *            the tree viewer
+	 */
 	public AddPropertyAction(TreeViewer treeViewer) {
 		super(ActionTexts.PROPERTY_ADD, treeViewer);
 		this.setImageDescriptor(ImageManager.getInstance().getImageDescriptor(
 				ImageKeys.IMG_MODEL_OPER_NEWELEMENT));
 	}
 
+	/**
+	 * Instantiates a new adds the property action.
+	 *
+	 * @param businessClassEditorDialog
+	 *            the business class editor dialog
+	 */
 	public AddPropertyAction(BusinessClassEditorDialog businessClassEditorDialog) {
 		super(ActionTexts.PROPERTY_ADD);
 		this.setImageDescriptor(ImageManager.getInstance().getImageDescriptor(
@@ -38,17 +51,40 @@ public class AddPropertyAction extends TreeAction {
 		this.businessClassEditorDialog = businessClassEditorDialog;
 	}
 
+	/**
+	 * Instantiates a new adds the property action.
+	 *
+	 * @param text
+	 *            the text
+	 * @param imageDescriptor
+	 *            the image descriptor
+	 * @param treeViewer
+	 *            the tree viewer
+	 */
 	public AddPropertyAction(String text, ImageDescriptor imageDescriptor,
 			TreeViewer treeViewer) {
 		super(text, imageDescriptor, treeViewer);
 	}
 
+	/**
+	 * Instantiates a new adds the property action.
+	 *
+	 * @param text
+	 *            the text
+	 * @param imageDescriptor
+	 *            the image descriptor
+	 * @param businessClassEditorDialog
+	 *            the business class editor dialog
+	 */
 	public AddPropertyAction(String text, ImageDescriptor imageDescriptor,
 			BusinessClassEditorDialog businessClassEditorDialog) {
 		super(text, imageDescriptor);
 		this.businessClassEditorDialog = businessClassEditorDialog;
 	}
 
+	/**
+	 * 
+	 */
 	public void run() {
 		PropertyEditorDialog dialog = null;
 		if (businessClassEditorDialog != null) {

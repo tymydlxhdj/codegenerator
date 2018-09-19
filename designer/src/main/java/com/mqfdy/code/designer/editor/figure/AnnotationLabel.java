@@ -7,12 +7,30 @@ import org.eclipse.draw2d.text.TextFlow;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.swt.graphics.Font;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AnnotationLabel.
+ *
+ * @author mqfdy
+ */
 public class AnnotationLabel extends FlowPage {
+    
+    /** The contents. */
     private TextFlow contents;
+    
+    /**
+	 * Instantiates a new annotation label.
+	 */
     public AnnotationLabel() {
         this("");
     }
 
+    /**
+	 * Instantiates a new annotation label.
+	 *
+	 * @param text
+	 *            the text
+	 */
     public AnnotationLabel(String text) {
     	setHorizontalAligment(PositionConstants.CENTER);
     	contents = new TextFlow();
@@ -39,10 +57,25 @@ public class AnnotationLabel extends FlowPage {
 //		});
     }
 
+    /**
+	 * Sets the text.
+	 *
+	 * @author mqfdy
+	 * @param text
+	 *            the new text
+	 * @Date 2018-09-03 09:00
+	 */
     public void setText(String text) {
         contents.setText(text);
     }
 
+	/**
+	 * Gets the text.
+	 *
+	 * @author mqfdy
+	 * @return the text
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getText() {
         return contents.getText();
     }

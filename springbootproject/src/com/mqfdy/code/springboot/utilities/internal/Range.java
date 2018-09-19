@@ -11,6 +11,7 @@ package com.mqfdy.code.springboot.utilities.internal;
 
 import java.io.Serializable;
 
+// TODO: Auto-generated Javadoc
 /**
  * This simple container class simply puts a bit of semantics
  * around a pair of numbers.
@@ -34,8 +35,12 @@ public class Range
 
 
 	/**
-	 * Construct with the specified start and end,
-	 * both of which are immutable.
+	 * Construct with the specified start and end, both of which are immutable.
+	 *
+	 * @param start
+	 *            the start
+	 * @param end
+	 *            the end
 	 */
 	public Range(int start, int end) {
 		super();
@@ -45,8 +50,13 @@ public class Range
 	}
 
 	/**
-	 * Return whether the range includes the specified
-	 * index.
+	 * Return whether the range includes the specified index.
+	 *
+	 * @author mqfdy
+	 * @param index
+	 *            the index
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public boolean includes(int index) {
 		return (this.start <= index) && (index <= this.end);

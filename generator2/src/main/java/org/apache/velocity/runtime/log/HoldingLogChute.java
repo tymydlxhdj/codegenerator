@@ -23,6 +23,7 @@ import java.util.Vector;
 import java.util.Iterator;
 import org.apache.velocity.runtime.RuntimeServices;
 
+// TODO: Auto-generated Javadoc
 /**
  *  Pre-init logger.  I believe that this was suggested by
  *  Carsten Ziegeler <cziegeler@sundn.de> and
@@ -36,22 +37,36 @@ import org.apache.velocity.runtime.RuntimeServices;
  */
 class HoldingLogChute implements LogChute
 {
+    
+    /** The pending messages. */
     private Vector pendingMessages = new Vector();
+    
+    /** The transferring. */
     private volatile boolean transferring = false;
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
-     */
+	 * Inits the.
+	 *
+	 * @param rs
+	 *            the rs
+	 * @throws Exception
+	 *             the exception
+	 * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
+	 */
     public void init(RuntimeServices rs) throws Exception
     {
     }
 
     /**
-     * Logs messages. All we do is store them until 'later'.
-     *
-     * @param level severity level
-     * @param message complete error message
-     */
+	 * Logs messages. All we do is store them until 'later'.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            severity level
+	 * @param message
+	 *            complete error message
+	 * @Date 2018-9-3 11:38:35
+	 */
     public synchronized void log(int level, String message)
     {
         if (!transferring)
@@ -64,12 +79,17 @@ class HoldingLogChute implements LogChute
     }
 
     /**
-     * Logs messages and errors. All we do is store them until 'later'.
-     *
-     * @param level severity level
-     * @param message complete error message
-     * @param t the accompanying java.lang.Throwable
-     */
+	 * Logs messages and errors. All we do is store them until 'later'.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            severity level
+	 * @param message
+	 *            complete error message
+	 * @param t
+	 *            the accompanying java.lang.Throwable
+	 * @Date 2018-9-3 11:38:35
+	 */
     public synchronized void log(int level, String message, Throwable t)
     {
         if (!transferring)
@@ -83,17 +103,26 @@ class HoldingLogChute implements LogChute
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#isLevelEnabled(int)
-     */
+	 * Checks if is level enabled.
+	 *
+	 * @param level
+	 *            the level
+	 * @return true, if is level enabled
+	 * @see org.apache.velocity.runtime.log.LogChute#isLevelEnabled(int)
+	 */
     public boolean isLevelEnabled(int level)
     {
         return true;
     }
 
     /**
-     * Dumps the log messages this chute is holding into a new chute
-     * @param newChute
-     */
+	 * Dumps the log messages this chute is holding into a new chute.
+	 *
+	 * @author mqfdy
+	 * @param newChute
+	 *            the new chute
+	 * @Date 2018-09-03 09:00
+	 */
     public synchronized void transferTo(LogChute newChute)
     {
         if (!transferring && !pendingMessages.isEmpty())

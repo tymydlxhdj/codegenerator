@@ -11,19 +11,25 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.actions.RetargetAction;
 
+// TODO: Auto-generated Javadoc
 /**
- * 创建编辑器所需的菜单和操作，BusinessModelDiagramEditorActionBarContributor
- * 
+ * 创建编辑器所需的菜单和操作，BusinessModelDiagramEditorActionBarContributor.
+ *
  * @author mqfdy
- * 
  */
 
 public class BMEditorActionBarContributor extends ActionBarContributor {
 
+	/**
+	 * Instantiates a new BM editor action bar contributor.
+	 */
 	public BMEditorActionBarContributor() {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void buildActions() {
 		addRetargetAction(new UndoRetargetAction());
@@ -52,12 +58,23 @@ public class BMEditorActionBarContributor extends ActionBarContributor {
 		addRetargetAction((RetargetAction) ActionFactory.SELECT_ALL.create(iww));
 	}
 
+	/**
+	 * Inits the.
+	 *
+	 * @author mqfdy
+	 * @param bars
+	 *            the bars
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public void init(IActionBars bars) {
 		// TODO Auto-generated method stub
 		super.init(bars);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void declareGlobalActionKeys() {
 		addGlobalActionKey(ActionFactory.SELECT_ALL.getId());

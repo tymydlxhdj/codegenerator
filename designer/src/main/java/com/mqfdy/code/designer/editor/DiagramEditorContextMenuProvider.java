@@ -12,6 +12,7 @@ import com.mqfdy.code.designer.editor.actions.FindModelAction;
 import com.mqfdy.code.designer.editor.actions.ImportEnumerationConfAction;
 import com.mqfdy.code.designer.editor.actions.ShareModelAction;
 
+// TODO: Auto-generated Javadoc
 /**
  * 定义在编辑器中点击右键时弹出的上下文菜单 需要在编辑器里调用GraphicalViewer.SetContextMenu()
  * 
@@ -19,8 +20,10 @@ import com.mqfdy.code.designer.editor.actions.ShareModelAction;
  */
 public class DiagramEditorContextMenuProvider extends ContextMenuProvider {
 
+	/** The action registry. */
 	private ActionRegistry actionRegistry;
 
+	/** The action. */
 	IAction action;
 
 	/**
@@ -47,7 +50,9 @@ public class DiagramEditorContextMenuProvider extends ContextMenuProvider {
 	/**
 	 * Called when the context menu is about to show. Actions, whose state is
 	 * enabled, will appear in the context menu.
-	 * 
+	 *
+	 * @param menu
+	 *            the menu
 	 * @see org.eclipse.gef.ContextMenuProvider#buildContextMenu(org.eclipse.jface.action.IMenuManager)
 	 */
 	@Override
@@ -91,6 +96,15 @@ public class DiagramEditorContextMenuProvider extends ContextMenuProvider {
 
 	}
 
+	/**
+	 * Gets the action.
+	 *
+	 * @author mqfdy
+	 * @param actionId
+	 *            the action id
+	 * @return the action
+	 * @Date 2018-09-03 09:00
+	 */
 	private IAction getAction(String actionId) {
 		return actionRegistry.getAction(actionId);
 	}

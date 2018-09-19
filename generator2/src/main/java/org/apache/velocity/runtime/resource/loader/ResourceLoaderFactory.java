@@ -23,6 +23,7 @@ import org.apache.velocity.exception.VelocityException;
 import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.util.ClassUtils;
 
+// TODO: Auto-generated Javadoc
 /**
  * Factory to grab a template loader.
  *
@@ -31,12 +32,18 @@ import org.apache.velocity.util.ClassUtils;
  */
 public class ResourceLoaderFactory
 {
+    
     /**
-     * Gets the loader specified in the configuration file.
-     * @param rs
-     * @param loaderClassName
-     * @return TemplateLoader
-     */
+	 * Gets the loader specified in the configuration file.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @param loaderClassName
+	 *            the loader class name
+	 * @return TemplateLoader
+	 * @Date 2018-9-3 11:38:31
+	 */
     public static ResourceLoader getLoader(RuntimeServices rs, String loaderClassName)
     {
         ResourceLoader loader = null;

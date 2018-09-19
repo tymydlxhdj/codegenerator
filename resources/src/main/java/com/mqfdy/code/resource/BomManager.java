@@ -32,25 +32,31 @@ import com.mqfdy.code.model.IModelElement;
 import com.mqfdy.code.model.LinkAnnotation;
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * BOM文件的管理类
- * 
+ * BOM文件的管理类.
+ *
  * @author mqfdy
- * 
  */
 public class BomManager {
 
+	/** The Constant STR_MODEL. */
 	private static final String STR_MODEL = "model";
+	
+	/** The Constant STR_OM. */
 	private static final String STR_OM = "bom";
 
+	/** The build in model. */
 	private static BusinessObjectModel buildInModel;
 
 	/**
-	 * 模型转换为XML文档
-	 * 
+	 * 模型转换为XML文档.
+	 *
+	 * @author mqfdy
 	 * @param bom
 	 *            om模型
-	 * @return
+	 * @return the document
+	 * @Date 2018-09-03 09:00
 	 */
 	private static Document model2XmlDoc(BusinessObjectModel bom) {
 		Document document = DocumentHelper.createDocument();
@@ -60,12 +66,14 @@ public class BomManager {
 	}
 
 	/**
-	 * 输出xml文件
-	 * 
-	 * @param doc
+	 * 输出xml文件.
+	 *
+	 * @author mqfdy
+	 * @param bom
+	 *            the bom
 	 * @param path
-	 * @throws FileNotFoundException
-	 * @throws UnsupportedEncodingException
+	 *            the path
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void outputXmlFile(BusinessObjectModel bom, String path) {
 		Document doc = model2XmlDoc(bom);
@@ -117,12 +125,15 @@ public class BomManager {
 	}
 
 	/**
-	 * XML文档转换为模型
-	 * 
+	 * XML文档转换为模型.
+	 *
+	 * @author mqfdy
 	 * @param path
 	 *            xml文档路径
-	 * @return
+	 * @return the business object model
 	 * @throws DocumentException
+	 *             the document exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static BusinessObjectModel xml2Model(String path)
 			throws DocumentException {
@@ -139,13 +150,17 @@ public class BomManager {
 	}
 
 	/**
-	 * XML文档转换为模型
-	 * 
+	 * XML文档转换为模型.
+	 *
+	 * @author mqfdy
 	 * @param is
 	 *            xml文件流
-	 * @return
+	 * @return the business object model
 	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 * @throws DocumentException
+	 *             the document exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static BusinessObjectModel xml2Model(InputStream is)
 			throws IOException, DocumentException {
@@ -159,13 +174,18 @@ public class BomManager {
 		assembleLinks(bom);
 		return bom;
 	}
+		
 		/**
-	 * 获取内置的模型
-	 * 
-	 * @return
-	 * @throws IOException
-	 * @throws DocumentException
-	 */
+		 * 获取内置的模型.
+		 *
+		 * @author mqfdy
+		 * @return the builds the in om
+		 * @throws IOException
+		 *             Signals that an I/O exception has occurred.
+		 * @throws DocumentException
+		 *             the document exception
+		 * @Date 2018-09-03 09:00
+		 */
 	public static BusinessObjectModel getBuildInOm() throws IOException,
 			DocumentException {
 		if (buildInModel == null) {
@@ -181,12 +201,17 @@ public class BomManager {
 		}
 		return buildInModel;
 	}
+	
 	/**
-	 * 获取内置的模型
-	 * 
-	 * @return
-	 * @throws IOException
-	 * @throws DocumentException
+	 * 获取内置的模型.
+	 *
+	 * @author mqfdy
+	 * @param projectPath
+	 *            the project path
+	 * @param modelId
+	 *            the model id
+	 * @return the business object model
+	 * @Date 2018-09-03 09:00
 	 *//*
 	public static BusinessObjectModel getBuildInOm() throws 
 			DocumentException {
@@ -257,12 +282,17 @@ public class BomManager {
 	}
 
 	/**
-	 * 获取模型文件的ID
-	 * 
+	 * 获取模型文件的ID.
+	 *
+	 * @author mqfdy
 	 * @param xmlPath
-	 * @return
+	 *            the xml path
+	 * @return the model id
 	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 * @throws DocumentException
+	 *             the document exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String getModelId(String xmlPath) throws IOException,
 			DocumentException {
@@ -273,12 +303,17 @@ public class BomManager {
 	}
 
 	/**
-	 * 获取模型文件的ID
-	 * 
-	 * @param xmlPath
-	 * @return
+	 * 获取模型文件的ID.
+	 *
+	 * @author mqfdy
+	 * @param is
+	 *            the is
+	 * @return the model id
 	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 * @throws DocumentException
+	 *             the document exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String getModelId(InputStream is) throws IOException,
 			DocumentException {
@@ -287,13 +322,19 @@ public class BomManager {
 		Element modelElement = doc.getRootElement();
 		return modelElement.attributeValue("id");
 	}
+	
 	/**
-	 * 根据文件路径获取模型，不包含子节点
-	 * 
+	 * 根据文件路径获取模型，不包含子节点.
+	 *
+	 * @author mqfdy
 	 * @param xmlPath
-	 * @return
+	 *            the xml path
+	 * @return the only model
 	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 * @throws DocumentException
+	 *             the document exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static BusinessObjectModel getOnlyModel(String xmlPath) throws IOException,
 		DocumentException {
@@ -320,10 +361,15 @@ public class BomManager {
 		bom.setExtendAttributies(extendAttributies);
 		return bom;
 	}
+	
 	/**
-	 * 返回项目中存在的om文件集合
-	 * 
-	 * @return
+	 * 返回项目中存在的om文件集合.
+	 *
+	 * @author mqfdy
+	 * @param projectPath
+	 *            the project path
+	 * @return the OM list
+	 * @Date 2018-09-03 09:00
 	 */
 	public static List<String> getOMList(String projectPath) {
 		List<String> omList = new ArrayList<String>();
@@ -334,10 +380,15 @@ public class BomManager {
 	}
 
 	/**
-	 * 递归获取OM文件路径
-	 * 
+	 * 递归获取OM文件路径.
+	 *
+	 * @author mqfdy
 	 * @param f
+	 *            the f
 	 * @param omList
+	 *            the om list
+	 * @return the all om
+	 * @Date 2018-09-03 09:00
 	 */
 	private static void getAllOm(File f, List<String> omList) {
 		if (f.isDirectory() && f.exists()) {
@@ -352,6 +403,14 @@ public class BomManager {
 		}
 	}
 
+	/**
+	 * Assemble association.
+	 *
+	 * @author mqfdy
+	 * @param bom
+	 *            the bom
+	 * @Date 2018-09-03 09:00
+	 */
 	private static void assembleAssociation(BusinessObjectModel bom) {
 		List<Association> associations = bom.getAssociations();
 		List<BusinessClass> entities = bom.getBusinessClasses();
@@ -402,6 +461,15 @@ public class BomManager {
 			}
 		}
 	}
+	
+	/**
+	 * Assemble links.
+	 *
+	 * @author mqfdy
+	 * @param bom
+	 *            the bom
+	 * @Date 2018-09-03 09:00
+	 */
 	private static void assembleLinks(BusinessObjectModel bom) {
 		List<LinkAnnotation> links = bom.getLinkAnnotations();
 		List<AbstractModelElement> ens = new ArrayList<AbstractModelElement>();

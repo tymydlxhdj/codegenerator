@@ -26,6 +26,7 @@ import com.mqfdy.code.springboot.core.validators.SampleProjectValidator;
 import com.mqfdy.code.springboot.core.validators.ValidationResult;
 import com.mqfdy.code.springboot.core.validators.Validator;
 
+// TODO: Auto-generated Javadoc
 /**
  * 新建Springboot项目向导操作类
  * 
@@ -33,8 +34,10 @@ import com.mqfdy.code.springboot.core.validators.Validator;
  */
 public class NewMicroProjectOperation {
 
+	/** The progress. */
 	public static int progress = 1;
 
+	/** The total work. */
 	public static int totalWork = 15;
 
 	private LiveExpression<String> projectName = null;
@@ -56,22 +59,52 @@ public class NewMicroProjectOperation {
 	private String projectType;
 
 
+	/**
+	 * Sets the project name field.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the new project name field
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setProjectNameField(LiveExpression<String> name) {
 		Assert.isLegal(projectName == null && name != null);
 		this.projectName = name;
 		this.projectNameValidator = new ProjectNameValidator(projectName);
 	}
 
+	/**
+	 * Sets the location field.
+	 *
+	 * @author mqfdy
+	 * @param location
+	 *            the new location field
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setLocationField(LiveExpression<String> location) {
 		Assert.isLegal(this.location == null && location != null);
 		this.location = location;
 		this.locationValidator = new NewProjectLocationValidator("Location", location, projectName);
 	}
 
+	/**
+	 * Gets the project name field.
+	 *
+	 * @author mqfdy
+	 * @return the project name field
+	 * @Date 2018-09-03 09:00
+	 */
 	public LiveExpression<String> getProjectNameField() {
 		return projectName;
 	}
 
+	/**
+	 * Gets the project location.
+	 *
+	 * @author mqfdy
+	 * @return the project location
+	 * @Date 2018-09-03 09:00
+	 */
 	public LiveExpression<String> getProjectLocation() {
 		return location;
 	}
@@ -88,6 +121,17 @@ public class NewMicroProjectOperation {
 		// Assert.isLegal(sampleProject!=null, "You must choose a project");
 	}
 
+	/**
+	 * Perform.
+	 *
+	 * @author mqfdy
+	 * @param mon
+	 *            the mon
+	 * @return true, if successful
+	 * @throws CoreException
+	 *             the core exception
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean perform(IProgressMonitor mon) throws CoreException {
 		assertComplete();
 		MicroProject microProject = createProjectContents(mon);
@@ -183,56 +227,152 @@ public class NewMicroProjectOperation {
 		return location.getValue();
 	}
 
+	/**
+	 * Gets the project name validator.
+	 *
+	 * @author mqfdy
+	 * @return the project name validator
+	 * @Date 2018-09-03 09:00
+	 */
 	public LiveExpression<ValidationResult> getProjectNameValidator() {
 		return projectNameValidator;
 	}
 
+	/**
+	 * Gets the location validator.
+	 *
+	 * @author mqfdy
+	 * @return the location validator
+	 * @Date 2018-09-03 09:00
+	 */
 	public Validator getLocationValidator() {
 		return locationValidator;
 	}
 
+	/**
+	 * Gets the sample project validator.
+	 *
+	 * @author mqfdy
+	 * @return the sample project validator
+	 * @Date 2018-09-03 09:00
+	 */
 	public Validator getSampleProjectValidator() {
 		return sampleProjectValidator;
 	}
 
+	/**
+	 * Gets the parent project LE.
+	 *
+	 * @author mqfdy
+	 * @return the parent project LE
+	 * @Date 2018-09-03 09:00
+	 */
 	public LiveExpression<String> getParentProjectLE() {
 		return parentProjectLE;
 	}
 
+	/**
+	 * Gets the parent project validator.
+	 *
+	 * @author mqfdy
+	 * @return the parent project validator
+	 * @Date 2018-09-03 09:00
+	 */
 	public MainProjectValidator getParentProjectValidator() {
 		return parentProjectValidator;
 	}
 
+	/**
+	 * Sets the parent project validator.
+	 *
+	 * @author mqfdy
+	 * @param parentProjectValidator
+	 *            the new parent project validator
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setParentProjectValidator(MainProjectValidator parentProjectValidator) {
 		this.parentProjectValidator = parentProjectValidator;
 	}
 
+	/**
+	 * Sets the sample project field.
+	 *
+	 * @author mqfdy
+	 * @param sampleProject
+	 *            the new sample project field
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setSampleProjectField(LiveExpression<SampleProject> sampleProject) {
 		Assert.isLegal(this.sampleProject == null && sampleProject != null);
 		this.sampleProject = sampleProject;
 		this.sampleProjectValidator = new SampleProjectValidator("Project type", sampleProject);
 	}
 
+	/**
+	 * Gets the connect name.
+	 *
+	 * @author mqfdy
+	 * @return the connect name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getConnectName() {
 		return connectName;
 	}
 
+	/**
+	 * Sets the connect name.
+	 *
+	 * @author mqfdy
+	 * @param connectName
+	 *            the new connect name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setConnectName(String connectName) {
 		this.connectName = connectName;
 	}
 
+	/**
+	 * Gets the base pacakage name.
+	 *
+	 * @author mqfdy
+	 * @return the base pacakage name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getBasePacakageName() {
 		return basePacakageName;
 	}
 
+	/**
+	 * Sets the base pacakage name.
+	 *
+	 * @author mqfdy
+	 * @param basePacakageName
+	 *            the new base pacakage name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBasePacakageName(String basePacakageName) {
 		this.basePacakageName = basePacakageName;
 	}
 
+	/**
+	 * Gets the project type.
+	 *
+	 * @author mqfdy
+	 * @return the project type
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getProjectType() {
 		return projectType;
 	}
 
+	/**
+	 * Sets the project type.
+	 *
+	 * @author mqfdy
+	 * @param projectType
+	 *            the new project type
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setProjectType(String projectType) {
 		this.projectType = projectType;
 	}

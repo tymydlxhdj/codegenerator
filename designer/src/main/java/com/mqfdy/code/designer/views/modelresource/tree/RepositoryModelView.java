@@ -48,29 +48,36 @@ import com.mqfdy.code.model.utils.ModelUtil;
 import com.mqfdy.code.resource.BomManager;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 引用对象浏览视图
- * 
+ * 引用对象浏览视图.
+ *
  * @author mqfdy
- * 
  */
 public class RepositoryModelView extends Composite {
 
+	/** The business model manager. */
 	private BusinessModelManager businessModelManager;
 
+	/** The viewer. */
 	private TreeViewer viewer;
 
+	/** The om page. */
 	private ObjectModelOutlinePage omPage;
 
+	/** The filter tree. */
 	private FilteredTree filterTree;
-	/**
-	 * 导入引用模型动作
-	 */
+	
+	/** 导入引用模型动作. */
 	private Action importRepositoryAction;
 
+	/** The menu manager. */
 	private MenuManager menuManager;
 	
+	/** The double click tree action. */
 	private DoubleClickTreeAction doubleClickTreeAction;
+	
+	/** The bm listener. */
 	private final BusinessModelListenerAdapter bmListener = new BusinessModelListenerAdapter() {
 
 		public void repositoryModelAdd(AbstractModelElement element) {
@@ -79,10 +86,24 @@ public class RepositoryModelView extends Composite {
 		}
 	};
 
+	/** The tree. */
 	private Tree tree;
 
+	/** The tree menu. */
 	private Menu treeMenu;
 
+	/**
+	 * Instantiates a new repository model view.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param omPage
+	 *            the om page
+	 * @param businessModelManager
+	 *            the business model manager
+	 */
 	public RepositoryModelView(Composite parent, int style,
 			ObjectModelOutlinePage omPage,
 			BusinessModelManager businessModelManager) {
@@ -93,6 +114,12 @@ public class RepositoryModelView extends Composite {
 		init();
 	}
 
+	/**
+	 * Inits the.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void init() {
 		filterTree = new FilteredTree(this, SWT.MULTI
 				| SWT.V_SCROLL | SWT.H_SCROLL /* | SWT.SINGLE */, true);
@@ -108,7 +135,10 @@ public class RepositoryModelView extends Composite {
 	}
 
 	/**
-	 * 初始化数据
+	 * 初始化数据.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void initTreeViewerData() {
 		List<BusinessObjectModel> repositorys = businessModelManager
@@ -183,7 +213,12 @@ public class RepositoryModelView extends Composite {
 	}
 
 	/**
-	 * 初始化数据
+	 * 初始化数据.
+	 *
+	 * @author mqfdy
+	 * @param path
+	 *            the path
+	 * @Date 2018-09-03 09:00
 	 */
 	public void initTreeViewerData(String path) {
 		String fullPath = EditorOperation.getProjectPath(path);
@@ -240,7 +275,18 @@ public class RepositoryModelView extends Composite {
 //		}
 //	}
 
-	private boolean isExists(List<BusinessObjectModel> repositorys,
+	/**
+ * Checks if is exists.
+ *
+ * @author mqfdy
+ * @param repositorys
+ *            the repositorys
+ * @param inBom
+ *            the in bom
+ * @return true, if is exists
+ * @Date 2018-09-03 09:00
+ */
+private boolean isExists(List<BusinessObjectModel> repositorys,
 			BusinessObjectModel inBom) {
 		if (repositorys == null || repositorys.size() < 1) {
 			return false;
@@ -259,7 +305,10 @@ public class RepositoryModelView extends Composite {
 	}
 
 	/**
-	 * 初始化动作事件
+	 * 初始化动作事件.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initActions() {
 		// drillDownAdapter = new DrillDownAdapter(rmViewer.getTreeViewer());
@@ -278,21 +327,45 @@ public class RepositoryModelView extends Composite {
 		contributeToActionBars();
 	}
 
+	/**
+	 * Gets the filter tree.
+	 *
+	 * @author mqfdy
+	 * @return the filter tree
+	 * @Date 2018-09-03 09:00
+	 */
 	public FilteredTree getFilterTree() {
 		return filterTree;
 	}
 
+	/**
+	 * Contribute to action bars.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void contributeToActionBars() {
 		IActionBars bars = omPage.getSite().getActionBars();
 		fillLocalToolBar(bars.getToolBarManager());
 	}
 
+	/**
+	 * Fill local tool bar.
+	 *
+	 * @author mqfdy
+	 * @param manager
+	 *            the manager
+	 * @Date 2018-09-03 09:00
+	 */
 	private void fillLocalToolBar(IToolBarManager manager) {
 		manager.add(importRepositoryAction);
 	}
 	
 	/**
-	 * 初始化菜单
+	 * 初始化菜单.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void resetMenu() {
 		if (menuManager == null) {
@@ -325,10 +398,23 @@ public class RepositoryModelView extends Composite {
 		tree.setMenu(treeMenu);
 	}
 	
+	/**
+	 * Gets the tree viewer.
+	 *
+	 * @author mqfdy
+	 * @return the tree viewer
+	 * @Date 2018-09-03 09:00
+	 */
 	public TreeViewer getTreeViewer() {
 		return viewer;
 	}
 
+	/**
+	 * Inits the drag and drop.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void initDragAndDrop() {
 		Transfer[] transfer = new Transfer[] {
 				LocalSelectionTransfer.getInstance(),

@@ -22,24 +22,36 @@ package org.apache.velocity.util.introspection;
 import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.runtime.parser.node.Node;
 
+// TODO: Auto-generated Javadoc
 /**
- *  Little class to carry in info such as template name, line and column
- *  for information error reporting from the uberspector implementations
+ * Little class to carry in info such as template name, line and column for
+ * information error reporting from the uberspector implementations.
  *
  * @author <a href="mailto:geirm@optonline.net">Geir Magnusson Jr.</a>
  * @version $Id: Info.java 733416 2009-01-11 05:26:52Z byron $
  */
 public class Info
 {
+    
+    /** The line. */
     private int line;
+    
+    /** The column. */
     private int column;
+    
+    /** The template name. */
     private String templateName;
 
     /**
-     * @param source Usually a template name.
-     * @param line The line number from <code>source</code>.
-     * @param column The column number from <code>source</code>.
-     */
+	 * Instantiates a new info.
+	 *
+	 * @param source
+	 *            Usually a template name.
+	 * @param line
+	 *            The line number from <code>source</code>.
+	 * @param column
+	 *            The column number from <code>source</code>.
+	 */
     public Info(String source, int line, int column)
     {
         this.templateName = source;
@@ -47,6 +59,12 @@ public class Info
         this.column = column;
     }
 
+    /**
+	 * Instantiates a new info.
+	 *
+	 * @param node
+	 *            the node
+	 */
     public Info(Node node)
     {
       this(node.getTemplateName(), node.getLine(), node.getColumn());
@@ -60,24 +78,36 @@ public class Info
     }
     
     /**
-     * @return The template name.
-     */
+	 * Gets the template name.
+	 *
+	 * @author mqfdy
+	 * @return The template name.
+	 * @Date 2018-9-3 11:38:35
+	 */
     public String getTemplateName()
     {
         return templateName;
     }
 
     /**
-     * @return The line number.
-     */
+	 * Gets the line.
+	 *
+	 * @author mqfdy
+	 * @return The line number.
+	 * @Date 2018-9-3 11:38:35
+	 */
     public int getLine()
     {
         return line;
     }
 
     /**
-     * @return The column number.
-     */
+	 * Gets the column.
+	 *
+	 * @author mqfdy
+	 * @return The column number.
+	 * @Date 2018-9-3 11:38:35
+	 */
     public int getColumn()
     {
         return column;

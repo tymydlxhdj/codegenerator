@@ -23,6 +23,7 @@ import com.werken.xpath.XPath;
 import java.util.Map;
 import java.util.WeakHashMap;
 
+// TODO: Auto-generated Javadoc
 /**
  * Provides a cache for XPath expressions. Used by {@link NodeList} and
  * {@link AnakiaElement} to minimize XPath parsing in their
@@ -34,19 +35,28 @@ import java.util.WeakHashMap;
 class XPathCache
 {
     // Cache of already parsed XPath expressions, keyed by String representations
+    /** The Constant XPATH_CACHE. */
     // of the expression as passed to getXPath().
     private static final Map XPATH_CACHE = new WeakHashMap();
 
+    /**
+	 * Instantiates a new x path cache.
+	 */
     private XPathCache()
     {
     }
 
     /**
-     * Returns an XPath object representing the requested XPath expression.
-     * A cached object is returned if it already exists for the requested expression.
-     * @param xpathString the XPath expression to parse
-     * @return the XPath object that represents the parsed XPath expression.
-     */
+	 * Returns an XPath object representing the requested XPath expression. A
+	 * cached object is returned if it already exists for the requested
+	 * expression.
+	 *
+	 * @author mqfdy
+	 * @param xpathString
+	 *            the XPath expression to parse
+	 * @return the XPath object that represents the parsed XPath expression.
+	 * @Date 2018-9-3 11:38:32
+	 */
     static XPath getXPath(String xpathString)
     {
         XPath xpath = null;

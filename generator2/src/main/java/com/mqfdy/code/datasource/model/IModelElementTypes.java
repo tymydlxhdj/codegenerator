@@ -1,5 +1,11 @@
 package com.mqfdy.code.datasource.model;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Interface IModelElementTypes.
+ *
+ * @author mqfdy
+ */
 public interface IModelElementTypes {
 
 	/**

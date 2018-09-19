@@ -29,18 +29,41 @@ import com.mqfdy.code.model.BusinessClass;
 import com.mqfdy.code.model.Enumeration;
 import com.mqfdy.code.shareModel.providers.DataGridLabelProvider;
 import com.mqfdy.code.shareModel.providers.DataGridTableContentProvider;
+// TODO: Auto-generated Javadoc
+
 /**
- * 业务实体选择tab页
- * @author mqfdy
+ * 业务实体选择tab页.
  *
+ * @author mqfdy
  */
 public class SerchTablePage extends Composite{
+	
+	/** The key word text. */
 	private Text keyWordText;
+	
+	/** The serach button. */
 	private Button serachButton;
+	
+	/** The table viewer. */
 	private TableViewer tableViewer;
+	
+	/** The table. */
 	public Table table;
+	
+	/** The table group. */
 	private Group tableGroup;
+	
+	/** The find model dialog. */
 	private FindModelDialog findModelDialog;
+	
+	/**
+	 * Instantiates a new serch table page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param findModelDialog
+	 *            the find model dialog
+	 */
 	public SerchTablePage(Composite parent,FindModelDialog findModelDialog) {
 		super(parent, SWT.NONE);
 		this.findModelDialog=findModelDialog;
@@ -49,8 +72,12 @@ public class SerchTablePage extends Composite{
 	
 
 	/**
-	 * 创建界面
+	 * 创建界面.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createContents(Composite composite) {
 			composite.setLayout(new GridLayout(2,false));			
@@ -60,8 +87,12 @@ public class SerchTablePage extends Composite{
 
 
 	/**
-	 * 创建表格区域
+	 * 创建表格区域.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createTableGroup(Composite composite) {
 		tableGroup=new Group(composite,SWT.None);
@@ -161,6 +192,14 @@ public class SerchTablePage extends Composite{
 	}
 
 
+	/**
+	 * Creates the serch box group.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createSerchBoxGroup(Composite composite) {
 		GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
 		gridData.widthHint=200;
@@ -184,6 +223,12 @@ public class SerchTablePage extends Composite{
 		});
 	}
 
+	/**
+	 * Creates the table by id.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void createTableById() {
 			if(keyWordText.getText()==null||"".equals(keyWordText.getText())){
 				return;

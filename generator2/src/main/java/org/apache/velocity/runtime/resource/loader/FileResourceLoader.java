@@ -38,6 +38,7 @@ import org.apache.velocity.io.UnicodeInputStream;
 import org.apache.velocity.runtime.resource.Resource;
 import org.apache.velocity.util.StringUtils;
 
+// TODO: Auto-generated Javadoc
 /**
  * A loader for templates stored on the file system.  Treats the template
  * as relative to the configured root path.  If the root path is empty
@@ -67,8 +68,12 @@ public class FileResourceLoader extends ResourceLoader
     private boolean unicode = false;
 
     /**
-     * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#init(org.apache.commons.collections.ExtendedProperties)
-     */
+	 * Inits the.
+	 *
+	 * @param configuration
+	 *            the configuration
+	 * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#init(org.apache.commons.collections.ExtendedProperties)
+	 */
     public void init( ExtendedProperties configuration)
     {
         if (log.isTraceEnabled())
@@ -104,14 +109,16 @@ public class FileResourceLoader extends ResourceLoader
     }
 
     /**
-     * Get an InputStream so that the Runtime can build a
-     * template with it.
-     *
-     * @param templateName name of template to get
-     * @return InputStream containing the template
-     * @throws ResourceNotFoundException if template not found
-     *         in the file template path.
-     */
+	 * Get an InputStream so that the Runtime can build a template with it.
+	 *
+	 * @author mqfdy
+	 * @param templateName
+	 *            name of template to get
+	 * @return InputStream containing the template
+	 * @throws ResourceNotFoundException
+	 *             if template not found in the file template path.
+	 * @Date 2018-9-3 11:38:37
+	 */
     public InputStream getResourceStream(String templateName)
         throws ResourceNotFoundException
     {
@@ -179,9 +186,13 @@ public class FileResourceLoader extends ResourceLoader
     }
 
     /**
-     * Overrides superclass for better performance.
-     * @since 1.6
-     */
+	 * Overrides superclass for better performance.
+	 *
+	 * @param name
+	 *            the name
+	 * @return true, if successful
+	 * @since 1.6
+	 */
     public boolean resourceExists(String name)
     {
         if (name == null)
@@ -216,13 +227,18 @@ public class FileResourceLoader extends ResourceLoader
     }
 
     /**
-     * Try to find a template given a normalized path.
-     *
-     * @param path a normalized path
-     * @param template name of template to find
-     * @return InputStream input stream that will be parsed
-     *
-     */
+	 * Try to find a template given a normalized path.
+	 *
+	 * @author mqfdy
+	 * @param path
+	 *            a normalized path
+	 * @param template
+	 *            name of template to find
+	 * @return InputStream input stream that will be parsed
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-9-3 11:38:37
+	 */
     private InputStream findTemplate(final String path, final String template)
         throws IOException
     {
@@ -283,6 +299,14 @@ public class FileResourceLoader extends ResourceLoader
         }
     }
 
+    /**
+	 * Close quiet.
+	 *
+	 * @author mqfdy
+	 * @param is
+	 *            the is
+	 * @Date 2018-9-3 11:38:37
+	 */
     private void closeQuiet(final InputStream is)
     {
         if (is != null)
@@ -299,15 +323,17 @@ public class FileResourceLoader extends ResourceLoader
     }
 
     /**
-     * How to keep track of all the modified times
-     * across the paths.  Note that a file might have
-     * appeared in a directory which is earlier in the
-     * path; so we should search the path and see if
-     * the file we find that way is the same as the one
-     * that we have cached.
-     * @param resource
-     * @return True if the source has been modified.
-     */
+	 * How to keep track of all the modified times across the paths. Note that a
+	 * file might have appeared in a directory which is earlier in the path; so
+	 * we should search the path and see if the file we find that way is the
+	 * same as the one that we have cached.
+	 *
+	 * @author mqfdy
+	 * @param resource
+	 *            the resource
+	 * @return True if the source has been modified.
+	 * @Date 2018-9-3 11:38:37
+	 */
     public boolean isSourceModified(Resource resource)
     {
         /*
@@ -360,8 +386,13 @@ public class FileResourceLoader extends ResourceLoader
     }
 
     /**
-     * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#getLastModified(org.apache.velocity.runtime.resource.Resource)
-     */
+	 * Gets the last modified.
+	 *
+	 * @param resource
+	 *            the resource
+	 * @return the last modified
+	 * @see org.apache.velocity.runtime.resource.loader.ResourceLoader#getLastModified(org.apache.velocity.runtime.resource.Resource)
+	 */
     public long getLastModified(Resource resource)
     {
         String path = (String) templatePaths.get(resource.getName());
@@ -379,8 +410,17 @@ public class FileResourceLoader extends ResourceLoader
 
 
     /**
-     * Create a File based on either a relative path if given, or absolute path otherwise
-     */
+	 * Create a File based on either a relative path if given, or absolute path
+	 * otherwise.
+	 *
+	 * @author mqfdy
+	 * @param path
+	 *            the path
+	 * @param template
+	 *            the template
+	 * @return the file
+	 * @Date 2018-9-3 11:38:37
+	 */
     private File getFile(String path, String template)
     {
 

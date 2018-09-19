@@ -24,9 +24,10 @@ import com.mqfdy.code.model.AbstractModelElement;
 import com.mqfdy.code.model.Association;
 import com.mqfdy.code.model.graph.DiagramElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * 移动连线
- * 
+ * 移动连线.
+ *
  * @author mqfdy
  */
 public class MoveConnectionCommand extends Command {
@@ -36,24 +37,56 @@ public class MoveConnectionCommand extends Command {
 
 	private Request request;
 
+	/** The conele. */
 	private DiagramElement conele = null;
 
+	/** The old px. */
 	private float oldPx = 0;
+	
+	/** The old py. */
 	private float oldPy = 0;
+	
+	/** The new px. */
 	private float newPx = 0;
+	
+	/** The new py. */
 	private float newPy = 0;
+	
+	/** The conn. */
 	private OmConnectionEditPart conn;
+	
+	/** The new end px. */
 	private float newEndPx = 0;
+	
+	/** The new end py. */
 	private float newEndPy = 0;
+	
+	/** The old end px. */
 	private float oldEndPx = 0;
+	
+	/** The old end py. */
 	private float oldEndPy = 0;
+	
+	/** The old pointlist. */
 	private String oldPointlist;
+	
+	/** The new pointlist. */
 	private String newPointlist;
 
+	/** The move Y. */
 	private int moveY = 0;
 
+	/** The move X. */
 	private int moveX = 0;
 
+	/**
+	 * Instantiates a new move connection command.
+	 *
+	 * @param conn
+	 *            the conn
+	 * @param request
+	 *            the request
+	 */
 	public MoveConnectionCommand(OmConnectionEditPart conn, Request request) {
 
 		setLabel("move connection");
@@ -65,6 +98,9 @@ public class MoveConnectionCommand extends Command {
 //		this.connection = (Association) conn.getModel();
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		if (conn.getModel() instanceof Association) {
@@ -76,6 +112,9 @@ public class MoveConnectionCommand extends Command {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 		if (!(request instanceof ChangeBoundsRequest))
@@ -109,6 +148,9 @@ public class MoveConnectionCommand extends Command {
 		redo();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void redo() {
 		conele.getStyle().setPositionX(newPx);
@@ -160,6 +202,9 @@ public class MoveConnectionCommand extends Command {
 
 	/**
 	 * Reconnect the connection to its original source and target endpoints.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void undo() {
@@ -188,6 +233,15 @@ public class MoveConnectionCommand extends Command {
 		conn.getSource().refresh();
 		EditorOperation.refreshNodeEditParts();
 	}
+	
+	/**
+	 * Refresh points.
+	 *
+	 * @author mqfdy
+	 * @param pointsList
+	 *            the points list
+	 * @Date 2018-09-03 09:00
+	 */
 	public void refreshPoints(String pointsList){
 		conn.getBendpoints().clear();
 		((ConnectionFigure)conn.getFigure()).getPoints().removeAllPoints();

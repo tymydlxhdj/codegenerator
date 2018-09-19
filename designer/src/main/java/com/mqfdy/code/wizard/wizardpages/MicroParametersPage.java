@@ -44,21 +44,51 @@ import com.mqfdy.code.reverse.ReverseException;
 import com.mqfdy.code.reverse.utils.ReverseUtil;
 import com.mqfdy.code.utils.DBType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 代码生成向导参数设置页面
- * 
+ * 代码生成向导参数设置页面.
+ *
  * @author mqfdy
- * 
  */
 @SuppressWarnings("restriction")
 public class MicroParametersPage extends ParametersPage {
 	
+	/** The wizard page. */
 	private MicroGeneratorWizardPage wizardPage;
 
+	/**
+	 * Instantiates a new micro parameters page.
+	 *
+	 * @param project
+	 *            the project
+	 * @param tabFolder
+	 *            the tab folder
+	 * @param style
+	 *            the style
+	 * @param generatorDiaolg
+	 *            the generator diaolg
+	 * @param fileName
+	 *            the file name
+	 */
 	public MicroParametersPage(IProject project, TabFolder tabFolder, int style,
 			GeneratorDiaolg generatorDiaolg, String fileName) {
 		super(project, tabFolder, style, generatorDiaolg, fileName);
 	}
+	
+	/**
+	 * Instantiates a new micro parameters page.
+	 *
+	 * @param project
+	 *            the project
+	 * @param tabFolder
+	 *            the tab folder
+	 * @param style
+	 *            the style
+	 * @param wizardPage
+	 *            the wizard page
+	 * @param fileName
+	 *            the file name
+	 */
 	public MicroParametersPage(IProject project, TabFolder tabFolder, int style,
 			MicroGeneratorWizardPage wizardPage, String fileName) {
 		super(project, tabFolder, style, fileName);
@@ -72,9 +102,14 @@ public class MicroParametersPage extends ParametersPage {
 		}
 		createContents(this);
 	}
+	
 	/**
-	 * 重写创建内容
+	 * 重写创建内容.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void createContents(Composite composite) {
@@ -412,10 +447,15 @@ public class MicroParametersPage extends ParametersPage {
 		}
 		dbListCombo.setEnabled(false);
 	}
+	
 	/**
-	 * 获取基础包名
+	 * 获取基础包名.
+	 *
+	 * @author mqfdy
 	 * @param curProject
-	 * @return
+	 *            the cur project
+	 * @return the base package
+	 * @Date 2018-09-03 09:00
 	 */
 	private String getBasePackage(IProject curProject) {
 		IPackageFragment[] fragments = PDEJavaHelper.getPackageFragments(JavaCore.create(curProject), new Vector<>(), true);

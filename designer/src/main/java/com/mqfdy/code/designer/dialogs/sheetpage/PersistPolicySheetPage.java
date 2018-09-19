@@ -11,10 +11,28 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import com.mqfdy.code.designer.dialogs.BusinessClassEditorDialog;
 import com.mqfdy.code.designer.dialogs.IBusinessClassEditorPage;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PersistPolicySheetPage.
+ *
+ * @author mqfdy
+ */
 public class PersistPolicySheetPage extends Composite implements
 		IBusinessClassEditorPage {
+	
+	/** The business class editor dialog. */
 	private BusinessClassEditorDialog businessClassEditorDialog;
 
+	/**
+	 * Instantiates a new persist policy sheet page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param businessClassEditorDialog
+	 *            the business class editor dialog
+	 */
 	public PersistPolicySheetPage(Composite parent, int style,
 			BusinessClassEditorDialog businessClassEditorDialog) {
 		super(parent, style);
@@ -22,22 +40,19 @@ public class PersistPolicySheetPage extends Composite implements
 		createContent();
 	}
 
+	/** The Constant SHEET_BASIC. */
 	public static final String SHEET_BASIC = "基本";
+	
+	/** The Constant SHEET_SENIOR. */
 	public static final String SHEET_SENIOR = "自定义";
 
-	/**
-	 * 标签页对象
-	 */
+	/** 标签页对象. */
 	private TabFolder tabFolder;
 
-	/**
-	 * 基本信息页
-	 */
+	/** 基本信息页. */
 	private PersistPolicyBasicInfoPage basicInfoPage;
 
-	/**
-	 * 属性列表页
-	 */
+	/** 属性列表页. */
 	// private PersistPolicySeniorPage seniorPage;
 
 	// private ExpandableComposite ecBasic;
@@ -46,6 +61,12 @@ public class PersistPolicySheetPage extends Composite implements
 
 	private ScrolledForm form;
 
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent() {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
@@ -85,6 +106,12 @@ public class PersistPolicySheetPage extends Composite implements
 		addListeners();
 	}
 
+	/**
+	 * Adds the listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void addListeners() {
 		// 为折叠面板添加展开 折叠的监听器
 		/*
@@ -115,13 +142,24 @@ public class PersistPolicySheetPage extends Composite implements
 		 */
 	}
 
+	/**
+	 * Refresh.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void refresh() {
 		// 刷新本页
 		basicInfoPage.initControlValue();
 	}
 
 	/**
-	 * 初始化创建 标签页
+	 * 初始化创建 标签页.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createtabFolder(Composite composite) {
 		tabFolder = new TabFolder(composite, SWT.BOTTOM);
@@ -132,6 +170,15 @@ public class PersistPolicySheetPage extends Composite implements
 		}
 	}
 
+	/**
+	 * Gets the tab title.
+	 *
+	 * @author mqfdy
+	 * @param index
+	 *            the index
+	 * @return the tab title
+	 * @Date 2018-09-03 09:00
+	 */
 	private String getTabTitle(int index) {
 		switch (index) {
 		case 0:
@@ -143,16 +190,29 @@ public class PersistPolicySheetPage extends Composite implements
 		}
 	}
 
+	/**
+	 * Gets the business class editor dialog.
+	 *
+	 * @author mqfdy
+	 * @return the business class editor dialog
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessClassEditorDialog getBusinessClassEditorDialog() {
 		return businessClassEditorDialog;
 	}
 
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		// TODO Auto-generated method stub
 		basicInfoPage.initControlValue();
 		// seniorPage.initControlValue();
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		boolean b1 = basicInfoPage.validateInput();
 		// boolean b2 = seniorPage.validateInput();
@@ -164,6 +224,9 @@ public class PersistPolicySheetPage extends Composite implements
 		}
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 		// TODO Auto-generated method stub
 		basicInfoPage.updateTheEditingElement();

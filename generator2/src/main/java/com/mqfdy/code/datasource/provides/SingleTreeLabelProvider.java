@@ -10,8 +10,19 @@ import com.mqfdy.code.datasource.mapping.TreeNode;
 import com.mqfdy.code.datasource.model.ImageKeys;
 import com.mqfdy.code.datasource.model.ImageManager;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SingleTreeLabelProvider.
+ *
+ * @author mqfdy
+ */
 public class SingleTreeLabelProvider extends LabelProvider implements ILabelProvider {
 
+	/**
+	 * @see org.eclipse.jface.viewers.LabelProvider#getImage(java.lang.Object)
+	 * @param element
+	 * @return SingleTreeLabelProvider
+	 */
 	@Override
 	public Image getImage(Object element) {
 		if (element instanceof TreeNode) {
@@ -101,6 +112,11 @@ public class SingleTreeLabelProvider extends LabelProvider implements ILabelProv
 		return null;
 	}
 	
+	/**
+	 * @see org.eclipse.jface.viewers.LabelProvider#getText(java.lang.Object)
+	 * @param element
+	 * @return SingleTreeLabelProvider
+	 */
 	@Override
 	public String getText(Object element) {
 		if (element instanceof TreeNode) {
@@ -110,16 +126,33 @@ public class SingleTreeLabelProvider extends LabelProvider implements ILabelProv
 		return null;
 	}
 
+	/**
+	 * @see org.eclipse.jface.viewers.BaseLabelProvider#dispose() SingleTreeLabelProvider
+	 */
 	public void dispose() {
 	}
 
+	/**
+	 * @see org.eclipse.jface.viewers.BaseLabelProvider#isLabelProperty(java.lang.Object, java.lang.String)
+	 * @param element
+	 * @param property
+	 * @return SingleTreeLabelProvider
+	 */
 	public boolean isLabelProperty(Object element, String property) {
 		return false;
 	}
 
+	/**
+	 * @see org.eclipse.jface.viewers.BaseLabelProvider#addListener(org.eclipse.jface.viewers.ILabelProviderListener)
+	 * @param listener SingleTreeLabelProvider
+	 */
 	public void addListener(ILabelProviderListener listener) {
 	}
 
+	/**
+	 * @see org.eclipse.jface.viewers.BaseLabelProvider#removeListener(org.eclipse.jface.viewers.ILabelProviderListener)
+	 * @param listener SingleTreeLabelProvider
+	 */
 	public void removeListener(ILabelProviderListener listener) {
 	}
 }

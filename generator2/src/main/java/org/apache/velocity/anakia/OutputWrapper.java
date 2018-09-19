@@ -26,6 +26,7 @@ import org.jdom.Element;
 import org.jdom.output.XMLOutputter;
 import org.jdom.output.Format;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class extends XMLOutputter in order to provide
  * a way to walk an Element tree into a String.
@@ -36,36 +37,44 @@ import org.jdom.output.Format;
  */
 public class OutputWrapper extends XMLOutputter
 {
+    
     /**
-     * Empty constructor
-     */
+	 * Empty constructor.
+	 */
     public OutputWrapper()
     {
     }
 
     /**
-     * @param f
-     */
+	 * Instantiates a new output wrapper.
+	 *
+	 * @param f
+	 *            the f
+	 */
     public OutputWrapper(Format f)
     {
         super(f);
     }
 
     /**
-     * This method walks an Element tree into a String. The cool
-     * thing about it is that it will strip off the first Element.
-     * For example, if you have:
-     * <p>
-     * &lt;td&gt; foo &lt;strong&gt;bar&lt;/strong&gt; ack &lt;/td&gt;
-     * </p>
-     * It will output
-     * <p>
-     *  foo &lt;strong&gt;bar&lt;/strong&gt; ack &lt;/td&gt;
-     * </p>
-     * @param element
-     * @param strip
-     * @return The output string.
-     */
+	 * This method walks an Element tree into a String. The cool thing about it
+	 * is that it will strip off the first Element. For example, if you have:
+	 * <p>
+	 * &lt;td&gt; foo &lt;strong&gt;bar&lt;/strong&gt; ack &lt;/td&gt;
+	 * </p>
+	 * It will output
+	 * <p>
+	 * foo &lt;strong&gt;bar&lt;/strong&gt; ack &lt;/td&gt;
+	 * </p>
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @param strip
+	 *            the strip
+	 * @return The output string.
+	 * @Date 2018-09-03 09:00
+	 */
     public String outputString(Element element, boolean strip)
     {
         StringWriter buff = new StringWriter();

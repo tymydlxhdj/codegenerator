@@ -28,31 +28,47 @@ import com.mqfdy.code.designer.editor.policies.MoveConnectionEndpointEditPolicy;
 import com.mqfdy.code.model.AbstractModelElement;
 import com.mqfdy.code.model.graph.DiagramElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * 连线控制器
- * 
+ * 连线控制器.
+ *
  * @author mqfdy
  */
 
 public abstract class OmConnectionEditPart extends
 		BusinessAbstractConnectionEditPart implements PropertyChangeListener {
+	
+	/** The bendpoints. */
 	protected List bendpoints = new ArrayList();
 
+	/** The Constant PROP_BENDPOINT. */
 	final public static String PROP_BENDPOINT = "BENDPOINT";
 
+	/** The listeners. */
 	PropertyChangeSupport listeners = new PropertyChangeSupport(this);
+	
+	/** The source anchor. */
 	private BorderAnchor sourceAnchor;
+	
+	/** The target anchor. */
 	private BorderAnchor targetAnchor;
 
 	
 	/**
-	 * constructor of a new ConnectionEditPart; does nothing
-	 * 
+	 * constructor of a new ConnectionEditPart; does nothing.
 	 */
 	public OmConnectionEditPart() {
 
 	}
 
+	/**
+	 * Sets the bendpoints.
+	 *
+	 * @author mqfdy
+	 * @param pointList
+	 *            the new bendpoints
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBendpoints(String pointList) {
 		bendpoints.clear();
 		if (pointList.equals("")) {
@@ -68,6 +84,9 @@ public abstract class OmConnectionEditPart extends
 		}
 	}
 
+	/**
+	 * 
+	 */
 	/*
 	 * Installs all necessary EditPolicies; they determine the
 	 * ConnectionEditParts reaction on events.
@@ -105,10 +124,20 @@ public abstract class OmConnectionEditPart extends
 	 * Casts primary model to AbstractModelElement
 	 */
 
+	/**
+	 * Gets the casted model.
+	 *
+	 * @author mqfdy
+	 * @return the casted model
+	 * @Date 2018-09-03 09:00
+	 */
 	protected AbstractModelElement getCastedModel() {
 		return (AbstractModelElement) getModel();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void refresh() {
 		super.refresh();
@@ -116,35 +145,90 @@ public abstract class OmConnectionEditPart extends
 
 	/**
 	 * Repaints the connection figure.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public abstract void repaintFigure();
 
+	/**
+	 * 
+	 */
 	public void activate() {
 		super.activate();
 		addPropertyChangeListener(this);
 	}
 
+	/**
+	 * 
+	 */
 	public void deactivate() {
 		super.deactivate();
 		removePropertyChangeListener(this);
 	}
 
+	/**
+	 * Adds the property change listener.
+	 *
+	 * @author mqfdy
+	 * @param l
+	 *            the l
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addPropertyChangeListener(PropertyChangeListener l) {
 		listeners.addPropertyChangeListener(l);
 	}
 
+	/**
+	 * Fire property change.
+	 *
+	 * @author mqfdy
+	 * @param prop
+	 *            the prop
+	 * @param old
+	 *            the old
+	 * @param newValue
+	 *            the new value
+	 * @Date 2018-09-03 09:00
+	 */
 	public void firePropertyChange(String prop, Object old, Object newValue) {
 		listeners.firePropertyChange(prop, old, newValue);
 	}
 
+	/**
+	 * Removes the property change listener.
+	 *
+	 * @author mqfdy
+	 * @param l
+	 *            the l
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removePropertyChangeListener(PropertyChangeListener l) {
 		listeners.removePropertyChangeListener(l);
 	}
 
+	/**
+	 * Fire structure change.
+	 *
+	 * @author mqfdy
+	 * @param prop
+	 *            the prop
+	 * @param child
+	 *            the child
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void fireStructureChange(String prop, Object child) {
 		listeners.firePropertyChange(prop, null, child);
 	}
 
+	/**
+	 * Property change.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	public void propertyChange(PropertyChangeEvent event) {
 		String property = event.getPropertyName();
 		if (PROP_BENDPOINT.equals(property)) {
@@ -152,6 +236,12 @@ public abstract class OmConnectionEditPart extends
 		}
 	}
 
+	/**
+	 * Refresh bendpoints.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void refreshBendpoints() {
 		List modelConstraint = getBendpoints();
 		// if(modelConstraint == null || modelConstraint.size() == 0)
@@ -169,6 +259,15 @@ public abstract class OmConnectionEditPart extends
 		getConnectionFigure().setRoutingConstraint(figureConstraint);
 	}
 
+	/**
+	 * Gets the bendpoints.
+	 *
+	 * @author mqfdy
+	 * @param p
+	 *            the p
+	 * @return the bendpoints
+	 * @Date 2018-09-03 09:00
+	 */
 	public void getBendpoints(Point p) {
 		Point ref1 = ((Connection) figure).getSourceAnchor()
 				.getReferencePoint();
@@ -185,6 +284,13 @@ public abstract class OmConnectionEditPart extends
 		firePropertyChange(PROP_BENDPOINT, null, null);
 	}
 
+	/**
+	 * Gets the bendpoints.
+	 *
+	 * @author mqfdy
+	 * @return the bendpoints
+	 * @Date 2018-09-03 09:00
+	 */
 	public List getBendpoints() {
 		if (bendpoints == null || bendpoints.size() == 0) {
 			DiagramElement conele = ((DiagramElement) (getTarget() == null ? getSource()
@@ -199,10 +305,30 @@ public abstract class OmConnectionEditPart extends
 		return bendpoints;
 	}
 
+	/**
+	 * Sets the bendpoints.
+	 *
+	 * @author mqfdy
+	 * @param bendpoints
+	 *            the new bendpoints
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBendpoints(List bendpoints) {
 		this.bendpoints = bendpoints;
 	}
 
+	/**
+	 * Adds the bendpoint.
+	 *
+	 * @author mqfdy
+	 * @param index
+	 *            the index
+	 * @param point
+	 *            the point
+	 * @param point2
+	 *            the point 2
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addBendpoint(int index, ConnectionBendpoint point, Point point2) {
 		getBendpoints().add(index, point);
 		DiagramElement conele = ((DiagramElement) getSource().getModel())
@@ -237,9 +363,18 @@ public abstract class OmConnectionEditPart extends
 
 	/**
 	 * 为了在更新两个dimension后能发送事件，在MoveBendpointCommand要在用这个方法设置新坐标，
-	 * 而不是直接用BendPoint里的方法。
-	 * 
+	 * 而不是直接用BendPoint里的方法。.
+	 *
+	 * @author mqfdy
+	 * @param index
+	 *            the index
+	 * @param d1
+	 *            the d 1
+	 * @param d2
+	 *            the d 2
 	 * @param point
+	 *            the point
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setBendpointRelativeDimensions(int index, Dimension d1,
 			Dimension d2, Point point) {
@@ -268,6 +403,14 @@ public abstract class OmConnectionEditPart extends
 		firePropertyChange(PROP_BENDPOINT, null, null);
 	}
 
+	/**
+	 * Removes the bendpoint.
+	 *
+	 * @author mqfdy
+	 * @param index
+	 *            the index
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removeBendpoint(int index) {
 		getBendpoints().remove(index);
 		DiagramElement conele = ((DiagramElement) getSource().getModel())
@@ -290,8 +433,15 @@ public abstract class OmConnectionEditPart extends
 		}
 		firePropertyChange(PROP_BENDPOINT, null, null);
 	}
+	
 	/**
-	 * 设置连线可以拖动
+	 * 设置连线可以拖动.
+	 *
+	 * @author mqfdy
+	 * @param req
+	 *            the req
+	 * @return the drag tracker
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public DragTracker getDragTracker(Request req) {
@@ -308,30 +458,79 @@ public abstract class OmConnectionEditPart extends
 		};
 	}
 
+	/**
+	 * Gets the target edit part.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @return the target edit part
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public EditPart getTargetEditPart(Request request) {
 		// TODO Auto-generated method stub
 		return this;// super.getTargetEditPart(request);
 	}
 
+	/**
+	 * Gets the command.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @return the command
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public Command getCommand(Request request) {
 		// TODO Auto-generated method stub
 		// new MoveConnectionCommand(this,request);
 		return super.getCommand(request);
 	}
+	
+	/**
+	 * Gets the source anchor.
+	 *
+	 * @author mqfdy
+	 * @return the source anchor
+	 * @Date 2018-09-03 09:00
+	 */
 	public BorderAnchor getSourceAnchor() {
 		return sourceAnchor;
 	}
 
+	/**
+	 * Sets the source anchor.
+	 *
+	 * @author mqfdy
+	 * @param sourceAnchor
+	 *            the new source anchor
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setSourceAnchor(BorderAnchor sourceAnchor) {
 		this.sourceAnchor = sourceAnchor;
 	}
 
+	/**
+	 * Gets the target anchor.
+	 *
+	 * @author mqfdy
+	 * @return the target anchor
+	 * @Date 2018-09-03 09:00
+	 */
 	public BorderAnchor getTargetAnchor() {
 		return targetAnchor;
 	}
 
+	/**
+	 * Sets the target anchor.
+	 *
+	 * @author mqfdy
+	 * @param targetAnchor
+	 *            the new target anchor
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setTargetAnchor(BorderAnchor targetAnchor) {
 		this.targetAnchor = targetAnchor;
 	}

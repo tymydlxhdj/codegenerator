@@ -25,6 +25,7 @@ import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.runtime.log.RuntimeLoggerLog;
 import org.apache.velocity.util.introspection.Introspector;
 
+// TODO: Auto-generated Javadoc
 /**
  *  Handles discovery and valuation of a
  *  boolean object property, of the
@@ -40,13 +41,20 @@ import org.apache.velocity.util.introspection.Introspector;
  */
 public class BooleanPropertyExecutor extends PropertyExecutor
 {
+    
     /**
-     * @param log
-     * @param introspector
-     * @param clazz
-     * @param property
-     * @since 1.5
-     */
+	 * Instantiates a new boolean property executor.
+	 *
+	 * @param log
+	 *            the log
+	 * @param introspector
+	 *            the introspector
+	 * @param clazz
+	 *            the clazz
+	 * @param property
+	 *            the property
+	 * @since 1.5
+	 */
     public BooleanPropertyExecutor(final Log log, final Introspector introspector,
             final Class clazz, final String property)
     {
@@ -54,18 +62,29 @@ public class BooleanPropertyExecutor extends PropertyExecutor
     }
 
     /**
-     * @param rlog
-     * @param introspector
-     * @param clazz
-     * @param property
-     * @deprecated RuntimeLogger is deprecated. Use the other constructor.
-     */
+	 * Instantiates a new boolean property executor.
+	 *
+	 * @param rlog
+	 *            the rlog
+	 * @param introspector
+	 *            the introspector
+	 * @param clazz
+	 *            the clazz
+	 * @param property
+	 *            the property
+	 * @deprecated RuntimeLogger is deprecated. Use the other constructor.
+	 */
     public BooleanPropertyExecutor(final RuntimeLogger rlog, final Introspector introspector,
             final Class clazz, final String property)
     {
         super(new RuntimeLoggerLog(rlog), introspector, clazz, property);
     }
 
+    /**
+     * @see org.apache.velocity.runtime.parser.node.PropertyExecutor#discover(java.lang.Class, java.lang.String)
+     * @param clazz
+     * @param property BooleanPropertyExecutor
+     */
     protected void discover(final Class clazz, final String property)
     {
         try

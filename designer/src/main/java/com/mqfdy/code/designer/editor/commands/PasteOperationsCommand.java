@@ -15,20 +15,29 @@ import com.mqfdy.code.model.AbstractModelElement;
 import com.mqfdy.code.model.BusinessClass;
 import com.mqfdy.code.model.BusinessOperation;
 
+// TODO: Auto-generated Javadoc
 /**
- * 粘贴图形
- * 
+ * 粘贴图形.
+ *
  * @author mqfdy
- * 
  */
 
 public class PasteOperationsCommand extends Command {
+	
+	/** The ops list. */
 	// 内存中复制的业务实体操作
 	List<BusinessOperation> opsList = new ArrayList<BusinessOperation>();
+	
+	/** The new op list. */
 	// 复制出的对象
 	List<AbstractModelElement> newOpList = new ArrayList<AbstractModelElement>();
+	
+	/** The old bu. */
 	private BusinessClass oldBu;
 
+	/**
+	 * Instantiates a new paste operations command.
+	 */
 	public PasteOperationsCommand() {
 		super();
 		opsList.clear();
@@ -37,6 +46,9 @@ public class PasteOperationsCommand extends Command {
 					.getContents());
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canExecute() {
 		if (opsList.isEmpty())
@@ -53,6 +65,9 @@ public class PasteOperationsCommand extends Command {
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void execute() {
 		if (!canExecute())
@@ -60,6 +75,9 @@ public class PasteOperationsCommand extends Command {
 		redo();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void redo() {
 		List<AbstractGraphicalEditPart> list = BusinessModelUtil
@@ -94,11 +112,17 @@ public class PasteOperationsCommand extends Command {
 				.businessObjectModelChanged(bcAddevent);
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canUndo() {
 		return canExecute();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void undo() {
 		oldBu.getOperations().removeAll(newOpList);

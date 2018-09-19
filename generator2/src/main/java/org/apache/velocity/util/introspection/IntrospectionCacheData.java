@@ -1,5 +1,6 @@
 package org.apache.velocity.util.introspection;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -36,8 +37,8 @@ public class IntrospectionCacheData
     public Object thingy;
 
     /**
-     *  Class of context data object associated with the introspection
-     *  information
-     */
+	 * Class of context data object associated with the introspection
+	 * information.
+	 */
     public Class  contextData;
 }

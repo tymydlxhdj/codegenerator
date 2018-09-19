@@ -1,5 +1,6 @@
 package org.apache.velocity.util;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -30,9 +31,12 @@ public interface TemplateNumber
 {
 
    /**
-    * Returns a Number that can be used in a template.
-    * @return A Number that can be used in a template.
-    */
+	 * Returns a Number that can be used in a template.
+	 *
+	 * @author mqfdy
+	 * @return A Number that can be used in a template.
+	 * @Date 2018-9-3 11:38:33
+	 */
    public Number getAsNumber();
 
 }

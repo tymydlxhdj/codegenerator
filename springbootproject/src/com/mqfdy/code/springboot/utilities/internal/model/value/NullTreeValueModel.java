@@ -18,10 +18,13 @@ import com.mqfdy.code.springboot.utilities.model.value.TreeValueModel;
 
 
 /**
- * A tree value model for when you
- * don't need to support any nodes.
+ * A tree value model for when you don't need to support any nodes.
  * 
  * We don't use a singleton because we hold on to listeners.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class NullTreeValueModel<E>
 	extends AbstractModel

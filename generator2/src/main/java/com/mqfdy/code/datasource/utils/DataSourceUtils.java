@@ -18,19 +18,27 @@ import org.eclipse.swt.widgets.Shell;
 
 import com.mqfdy.code.datasource.constant.IDataSource;
 
+// TODO: Auto-generated Javadoc
 /**
- * 创建数据源工具类
- * @author mqfdy
+ * 创建数据源工具类.
  *
+ * @author mqfdy
  */
 public class DataSourceUtils implements IDataSource {
 
+	/** The Constant DATABASE_CATEGORY_ID. */
 	private static final String DATABASE_CATEGORY_ID = "org.eclipse.datatools.connectivity.db.category"; //$NON-NLS-1$
 
 	/**
-	 * Launch the DTP New Connection Profile wizard to create a new database connection profile.
+	 * Launch the DTP New Connection Profile wizard to create a new database
+	 * connection profile.
 	 * 
-	 * Returns the name of the added profile, or null if the wizard is cancelled.
+	 * Returns the name of the added profile, or null if the wizard is
+	 * cancelled.
+	 *
+	 * @author mqfdy
+	 * @return the i connection profile
+	 * @Date 2018-09-03 09:00
 	 */
 	public static IConnectionProfile newDataSourceWizard() {
 		NewCPWizard wizard;
@@ -75,18 +83,43 @@ public class DataSourceUtils implements IDataSource {
 		return addedProfile;
 	}
 
+	/**
+	 * The listener interface for receiving localProfile events. The class that
+	 * is interested in processing a localProfile event implements this
+	 * interface, and the object created with that class is registered with a
+	 * component using the component's <code>addLocalProfileListener<code>
+	 * method. When the localProfile event occurs, that object's appropriate
+	 * method is invoked.
+	 *
+	 * @author mqfdy
+	 * @see LocalProfileEvent
+	 */
 	static class LocalProfileListener implements IProfileListener {
+		
+		/** The added profile. */
 		IConnectionProfile addedProfile;
 		
+		/**
+		 * @see org.eclipse.datatools.connectivity.IProfileListener#profileAdded(org.eclipse.datatools.connectivity.IConnectionProfile)
+		 * @param profile LocalProfileListener
+		 */
 		public void profileAdded( IConnectionProfile profile) {
 			addedProfile = profile;
 			//IJDBCDriverDefinitionConstants.URL_PROP_ID
 		}
 	
+		/**
+		 * @see org.eclipse.datatools.connectivity.IProfileListener#profileChanged(org.eclipse.datatools.connectivity.IConnectionProfile)
+		 * @param profile LocalProfileListener
+		 */
 		public void profileChanged( IConnectionProfile profile) {
 			// do nothing
 		}
 	
+		/**
+		 * @see org.eclipse.datatools.connectivity.IProfileListener#profileDeleted(org.eclipse.datatools.connectivity.IConnectionProfile)
+		 * @param profile LocalProfileListener
+		 */
 		public void profileDeleted( IConnectionProfile profile) {
 			// do nothing
 		}
@@ -94,8 +127,13 @@ public class DataSourceUtils implements IDataSource {
 	
 
 	/**
+	 * Not empty.
+	 *
+	 * @author mqfdy
 	 * @param str
+	 *            the str
 	 * @return return true is parameter is null and ""
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean notEmpty(String str){
 		return str!=null && !"".equals(str);

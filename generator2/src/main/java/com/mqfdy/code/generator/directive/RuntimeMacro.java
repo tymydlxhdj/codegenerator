@@ -40,6 +40,7 @@ import org.apache.velocity.runtime.parser.Token;
 import org.apache.velocity.runtime.parser.node.Node;
 import org.apache.velocity.util.introspection.Info;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class acts as a proxy for potential macros.  When the AST is built
  * this class is inserted as a placeholder for the macro (whether or not
@@ -50,19 +51,14 @@ import org.apache.velocity.util.introspection.Info;
  */
 public class RuntimeMacro extends Directive
 {
-    /**
-     * Name of the macro
-     */
+    
+    /** Name of the macro. */
     private String macroName;
 
-    /**
-     * Literal text of the macro
-     */
+    /** Literal text of the macro. */
     private String literal = null;
 
-    /**
-     * Node of the macro call
-     */
+    /** Node of the macro call. */
     private Node node = null;
 
     /**
@@ -95,32 +91,39 @@ public class RuntimeMacro extends Directive
     }
 
     /**
-     * Return name of this Velocimacro.
-     *
-     * @return The name of this Velocimacro.
-     */
+	 * Return name of this Velocimacro.
+	 *
+	 * @author mqfdy
+	 * @return The name of this Velocimacro.
+	 * @Date 2018-9-3 11:38:27
+	 */
     public String getName()
     {
         return macroName;
     }
 
     /**
-     * Override to always return "macro".  We don't want to use
-     * the macro name here, since when writing VTL that uses the
-     * scope, we are within a #macro call.  The macro name will instead
-     * be used as the scope name when defining the body of a BlockMacro.
-     */
+	 * Override to always return "macro". We don't want to use the macro name
+	 * here, since when writing VTL that uses the scope, we are within a #macro
+	 * call. The macro name will instead be used as the scope name when defining
+	 * the body of a BlockMacro.
+	 *
+	 * @author mqfdy
+	 * @return the scope name
+	 * @Date 2018-9-3 11:38:27
+	 */
     public String getScopeName()
     {
         return "macro";
     }
 
     /**
-     * Velocimacros are always LINE
-     * type directives.
-     *
-     * @return The type of this directive.
-     */
+	 * Velocimacros are always LINE type directives.
+	 *
+	 * @author mqfdy
+	 * @return The type of this directive.
+	 * @Date 2018-9-3 11:38:27
+	 */
     public int getType()
     {
         return LINE;
@@ -128,13 +131,18 @@ public class RuntimeMacro extends Directive
 
 
     /**
-     * Intialize the Runtime macro. At the init time no implementation so we
-     * just save the values to use at the render time.
-     *
-     * @param rs runtime services
-     * @param context InternalContextAdapter
-     * @param node node containing the macro call
-     */
+	 * Intialize the Runtime macro. At the init time no implementation so we
+	 * just save the values to use at the render time.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            runtime services
+	 * @param context
+	 *            InternalContextAdapter
+	 * @param node
+	 *            node containing the macro call
+	 * @Date 2018-9-3 11:38:27
+	 */
     public void init(RuntimeServices rs, InternalContextAdapter context,
                      Node node)
     {
@@ -177,10 +185,14 @@ public class RuntimeMacro extends Directive
     }
 
     /**
-     * It is probably quite rare that we need to render the macro literal
-     * so do it only on-demand and then cache the value. This tactic helps to
-     * reduce memory usage a bit.
-     */
+	 * It is probably quite rare that we need to render the macro literal so do
+	 * it only on-demand and then cache the value. This tactic helps to reduce
+	 * memory usage a bit.
+	 *
+	 * @author mqfdy
+	 * @return the literal
+	 * @Date 2018-9-3 11:38:27
+	 */
     private String getLiteral()
     {
         if (literal == null)
@@ -206,23 +218,32 @@ public class RuntimeMacro extends Directive
     
 
     /**
-     * Velocimacro implementation is not known at the init time. So look for
-     * a implementation in the macro libaries and if finds one renders it. The
-     * actual rendering is delegated to the VelocimacroProxy object. When
-     * looking for a macro we first loot at the template with has the
-     * macro call then we look at the macro lbraries in the order they appear
-     * in the list. If a macro has many definitions above look up will
-     * determine the precedence.
-     *
-     * @param context
-     * @param writer
-     * @param node
-     * @return true if the rendering is successful
-     * @throws IOException
-     * @throws ResourceNotFoundException
-     * @throws ParseErrorException
-     * @throws MethodInvocationException
-     */
+	 * Velocimacro implementation is not known at the init time. So look for a
+	 * implementation in the macro libaries and if finds one renders it. The
+	 * actual rendering is delegated to the VelocimacroProxy object. When
+	 * looking for a macro we first loot at the template with has the macro call
+	 * then we look at the macro lbraries in the order they appear in the list.
+	 * If a macro has many definitions above look up will determine the
+	 * precedence.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @param node
+	 *            the node
+	 * @return true if the rendering is successful
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-9-3 11:38:27
+	 */
     public boolean render(InternalContextAdapter context, Writer writer,
                           Node node)
             throws IOException, ResourceNotFoundException,
@@ -232,18 +253,29 @@ public class RuntimeMacro extends Directive
     }
     
     /**
-     * This method is used with BlockMacro when we want to render a macro with a body AST.
-     *
-     * @param context
-     * @param writer
-     * @param node
-     * @param body AST block that was enclosed in the macro body.
-     * @return true if the rendering is successful
-     * @throws IOException
-     * @throws ResourceNotFoundException
-     * @throws ParseErrorException
-     * @throws MethodInvocationException
-     */
+	 * This method is used with BlockMacro when we want to render a macro with a
+	 * body AST.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @param node
+	 *            the node
+	 * @param body
+	 *            AST block that was enclosed in the macro body.
+	 * @return true if the rendering is successful
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-09-03 09:00
+	 */
     public boolean render(InternalContextAdapter context, Writer writer,
                           Node node, Renderable body)
             throws IOException, ResourceNotFoundException,

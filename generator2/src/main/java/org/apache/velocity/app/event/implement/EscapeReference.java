@@ -26,6 +26,7 @@ import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.util.RuntimeServicesAware;
 import org.apache.velocity.util.StringUtils;
 
+// TODO: Auto-generated Javadoc
 /**
  * Base class for escaping references.  To use it, override the following methods:
  * <DL>
@@ -58,38 +59,55 @@ import org.apache.velocity.util.StringUtils;
 public abstract class EscapeReference implements ReferenceInsertionEventHandler,RuntimeServicesAware {
 
 
+    /** The perl. */
     private Perl5Util perl = new Perl5Util();
 
+    /** The rs. */
     private RuntimeServices rs;
 
+    /** The match reg exp. */
     private String matchRegExp = null;
 
     /**
-     * Escape the given text.  Override this in a subclass to do the actual
-     * escaping.
-     *
-     * @param text the text to escape
-     * @return the escaped text
-     */
+	 * Escape the given text. Override this in a subclass to do the actual
+	 * escaping.
+	 *
+	 * @author mqfdy
+	 * @param text
+	 *            the text to escape
+	 * @return the escaped text
+	 * @Date 2018-9-3 11:38:28
+	 */
     protected abstract String escape(Object text);
 
     /**
-     * Specify the configuration attribute that specifies the
-     * regular expression.  Ideally should be in a form
-     * <pre><code>eventhandler.escape.XYZ.match</code></pre>
-     *
-     * <p>where <code>XYZ</code> is the type of escaping being done.
-     * @return configuration attribute
-     */
+	 * Specify the configuration attribute that specifies the regular
+	 * expression. Ideally should be in a form
+	 * 
+	 * <pre>
+	 * <code>eventhandler.escape.XYZ.match</code>
+	 * </pre>
+	 * 
+	 * <p>
+	 * where <code>XYZ</code> is the type of escaping being done.
+	 *
+	 * @author mqfdy
+	 * @return configuration attribute
+	 * @Date 2018-9-3 11:38:28
+	 */
     protected abstract String getMatchAttribute();
 
     /**
-     * Escape the provided text if it matches the configured regular expression.
-     * 
-     * @param reference
-     * @param value
-     * @return Escaped text.
-     */
+	 * Escape the provided text if it matches the configured regular expression.
+	 *
+	 * @author mqfdy
+	 * @param reference
+	 *            the reference
+	 * @param value
+	 *            the value
+	 * @return Escaped text.
+	 * @Date 2018-9-3 11:38:28
+	 */
     public Object referenceInsert(String reference, Object value)
     {
         if(value == null)
@@ -114,10 +132,13 @@ public abstract class EscapeReference implements ReferenceInsertionEventHandler,
     }
 
     /**
-     * Called automatically when event cartridge is initialized.
-     * 
-     * @param rs instance of RuntimeServices
-     */
+	 * Called automatically when event cartridge is initialized.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            instance of RuntimeServices
+	 * @Date 2018-9-3 11:38:28
+	 */
     public void setRuntimeServices(RuntimeServices rs)
     {
         this.rs = rs;
@@ -151,11 +172,13 @@ public abstract class EscapeReference implements ReferenceInsertionEventHandler,
     }
 
     /**
-     * Retrieve a reference to RuntimeServices.  Use this for checking additional
-     * configuration properties.
-     * 
-     * @return The current runtime services object.
-     */
+	 * Retrieve a reference to RuntimeServices. Use this for checking additional
+	 * configuration properties.
+	 *
+	 * @author mqfdy
+	 * @return The current runtime services object.
+	 * @Date 2018-9-3 11:38:28
+	 */
     protected RuntimeServices getRuntimeServices()
     {
         return rs;

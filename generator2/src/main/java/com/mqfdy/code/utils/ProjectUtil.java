@@ -3,20 +3,30 @@ package com.mqfdy.code.utils;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+// TODO: Auto-generated Javadoc
+
 /**
- * 
- * @author mqfdy
+ * The Class ProjectUtil.
  *
+ * @author mqfdy
  */
 public class ProjectUtil {
 	
 	
+	/** The Constant BOM_PROJECT. */
 	private static final String BOM_PROJECT = "com.mqfdy.bom.project.nature";
+	
+	/** The Constant SPRING_PROJECT. */
 	private static final String SPRING_PROJECT = "com.mqfdy.code.springboot.nature";
+	
 	/**
-	 * 判断当前项目是否微BOM项目
+	 * 判断当前项目是否微BOM项目.
+	 *
+	 * @author mqfdy
 	 * @param project
-	 * @return
+	 *            the project
+	 * @return true, if is BOM project
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isBOMProject(IProject project){
 		
@@ -29,10 +39,15 @@ public class ProjectUtil {
 		}
 		return false;
 	}
+	
 	/**
-	 * 判断当前项目是否BOM项目
+	 * 判断当前项目是否BOM项目.
+	 *
+	 * @author mqfdy
 	 * @param projectName
-	 * @return
+	 *            the project name
+	 * @return true, if is BOM project
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isBOMProject(String projectName){
 		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
@@ -41,10 +56,15 @@ public class ProjectUtil {
 		}
 		return false;
 	}
+	
 	/**
-	 * 判断当前项目是否为springboot项目
+	 * 判断当前项目是否为springboot项目.
+	 *
+	 * @author mqfdy
 	 * @param project
-	 * @return
+	 *            the project
+	 * @return true, if is springboot project
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isSpringbootProject(IProject project){
 		
@@ -57,10 +77,15 @@ public class ProjectUtil {
 		}
 		return false;
 	}
+	
 	/**
-	 * 判断当前项目是否springboot项目
+	 * 判断当前项目是否springboot项目.
+	 *
+	 * @author mqfdy
 	 * @param projectName
-	 * @return
+	 *            the project name
+	 * @return true, if is springboot project
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isSpringbootProject(String projectName){
 		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);

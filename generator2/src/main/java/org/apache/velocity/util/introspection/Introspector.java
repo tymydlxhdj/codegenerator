@@ -25,6 +25,7 @@ import org.apache.velocity.runtime.RuntimeLogger;
 import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.runtime.log.RuntimeLoggerLog;
 
+// TODO: Auto-generated Javadoc
 /**
  * This basic function of this class is to return a Method
  * object for a particular class given the name of a method
@@ -56,36 +57,49 @@ import org.apache.velocity.runtime.log.RuntimeLoggerLog;
  */
 public class Introspector extends IntrospectorBase
 {
+    
     /**
-     * @param log A Log object to use for the introspector.
-     * @since 1.5
-     */
+	 * Instantiates a new introspector.
+	 *
+	 * @param log
+	 *            A Log object to use for the introspector.
+	 * @since 1.5
+	 */
     public Introspector(final Log log)
     {
         super(log);
     }
 
     /**
-     * @param logger A runtime logger object.
-     * @deprecated RuntimeLogger is deprecated. Use Introspector(Log log).
-     */
+	 * Instantiates a new introspector.
+	 *
+	 * @param logger
+	 *            A runtime logger object.
+	 * @deprecated RuntimeLogger is deprecated. Use Introspector(Log log).
+	 */
     public Introspector(final RuntimeLogger logger)
     {
         this(new RuntimeLoggerLog(logger));
     }
 
     /**
-     * Gets the method defined by <code>name</code> and
-     * <code>params</code> for the Class <code>c</code>.
-     *
-     * @param c Class in which the method search is taking place
-     * @param name Name of the method being searched for
-     * @param params An array of Objects (not Classes) that describe the
-     *               the parameters
-     *
-     * @return The desired Method object.
-     * @throws IllegalArgumentException When the parameters passed in can not be used for introspection.
-     */
+	 * Gets the method defined by <code>name</code> and <code>params</code> for
+	 * the Class <code>c</code>.
+	 *
+	 * @author mqfdy
+	 * @param c
+	 *            Class in which the method search is taking place
+	 * @param name
+	 *            Name of the method being searched for
+	 * @param params
+	 *            An array of Objects (not Classes) that describe the the
+	 *            parameters
+	 * @return The desired Method object.
+	 * @throws IllegalArgumentException
+	 *             When the parameters passed in can not be used for
+	 *             introspection.
+	 * @Date 2018-9-3 11:38:29
+	 */
     public Method getMethod(final Class c, final String name, final Object[] params)
         throws IllegalArgumentException
     {

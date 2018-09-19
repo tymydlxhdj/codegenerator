@@ -32,6 +32,7 @@ import com.mqfdy.code.springboot.utilities.internal.iterators.FilteringIterator;
 import com.mqfdy.code.springboot.utilities.internal.iterators.TransformationIterator;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Assorted file tools:
  * - delete entire trees of directories and files
@@ -41,9 +42,16 @@ import com.mqfdy.code.springboot.utilities.internal.iterators.TransformationIter
  */
 public final class FileTools {
 
+	/** The Constant USER_HOME_DIRECTORY_NAME. */
 	public static final String USER_HOME_DIRECTORY_NAME = System.getProperty("user.home");
+	
+	/** The Constant USER_TEMPORARY_DIRECTORY_NAME. */
 	public static final String USER_TEMPORARY_DIRECTORY_NAME = System.getProperty("java.io.tmpdir");
+	
+	/** The default temporary directory name. */
 	public static String DEFAULT_TEMPORARY_DIRECTORY_NAME = "tmpdir";
+	
+	/** The Constant CURRENT_WORKING_DIRECTORY_NAME. */
 	public static final String CURRENT_WORKING_DIRECTORY_NAME = System.getProperty("user.dir");
 
     /** A list of some invalid file name characters.
@@ -86,18 +94,26 @@ public final class FileTools {
 	// ********** deleting directories **********
 
 	/**
-	 * Delete the specified directory and all of its contents.
-	 * <em>USE WITH CARE.</em>
-	 * File#deleteAll()?
+	 * Delete the specified directory and all of its contents. <em>USE WITH
+	 * CARE.</em> File#deleteAll()?
+	 *
+	 * @author mqfdy
+	 * @param directoryName
+	 *            the directory name
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void deleteDirectory(String directoryName) {
 		deleteDirectory(new File(directoryName));
 	}
 	
 	/**
-	 * Delete the specified directory and all of its contents.
-	 * <em>USE WITH CARE.</em>
-	 * File#deleteAll()?
+	 * Delete the specified directory and all of its contents. <em>USE WITH
+	 * CARE.</em> File#deleteAll()?
+	 *
+	 * @author mqfdy
+	 * @param directory
+	 *            the directory
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void deleteDirectory(File directory) {
 		deleteDirectoryContents(directory);
@@ -107,20 +123,26 @@ public final class FileTools {
 	}
 	
 	/**
-	 * Delete the contents of the specified directory
-	 * (but not the directory itself).
-	 * <em>USE WITH CARE.</em>
-	 * File#deleteFiles()
+	 * Delete the contents of the specified directory (but not the directory
+	 * itself). <em>USE WITH CARE.</em> File#deleteFiles()
+	 *
+	 * @author mqfdy
+	 * @param directoryName
+	 *            the directory name
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void deleteDirectoryContents(String directoryName) {
 		deleteDirectoryContents(new File(directoryName));
 	}
 	
 	/**
-	 * Delete the contents of the specified directory
-	 * (but not the directory itself).
-	 * <em>USE WITH CARE.</em>
-	 * File#deleteFiles()
+	 * Delete the contents of the specified directory (but not the directory
+	 * itself). <em>USE WITH CARE.</em> File#deleteFiles()
+	 *
+	 * @author mqfdy
+	 * @param directory
+	 *            the directory
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void deleteDirectoryContents(File directory) {
 		for (File file : directory.listFiles()) {
@@ -140,6 +162,15 @@ public final class FileTools {
 	/**
 	 * Copies the content of the source file to the destination file.
 	 * File#copy(File destinationFile)
+	 *
+	 * @author mqfdy
+	 * @param sourceFile
+	 *            the source file
+	 * @param destinationFile
+	 *            the destination file
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void copyToFile(File sourceFile, File destinationFile)
 		throws IOException
@@ -183,9 +214,17 @@ public final class FileTools {
 	}
 	
 	/**
-	 * Copies the content of the source file to a file by
-	 * the same name in the destination directory.
-	 * File#copyToDirectory(File destinationDirectory)
+	 * Copies the content of the source file to a file by the same name in the
+	 * destination directory. File#copyToDirectory(File destinationDirectory)
+	 *
+	 * @author mqfdy
+	 * @param sourceFile
+	 *            the source file
+	 * @param destinationDirectory
+	 *            the destination directory
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void copyToDirectory(File sourceFile, File destinationDirectory)
 		throws IOException
@@ -199,18 +238,28 @@ public final class FileTools {
 	// ********** iteratoring over files and directories **********
 
 	/**
-	 * Return an iterator on all the files in the specified directory.
-	 * The iterator will skip over subdirectories.
-	 * File#files()
+	 * Return an iterator on all the files in the specified directory. The
+	 * iterator will skip over subdirectories. File#files()
+	 *
+	 * @author mqfdy
+	 * @param directoryName
+	 *            the directory name
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<File> filesIn(String directoryName) {
 		return filesIn(new File(directoryName));
 	}
 	
 	/**
-	 * Return an iterator on all the files in the specified directory.
-	 * The iterator will skip over subdirectories.
-	 * File#files()
+	 * Return an iterator on all the files in the specified directory. The
+	 * iterator will skip over subdirectories. File#files()
+	 *
+	 * @author mqfdy
+	 * @param directory
+	 *            the directory
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<File> filesIn(File directory) {
 		return filesIn(directory.listFiles());
@@ -226,18 +275,28 @@ public final class FileTools {
 	}
 	
 	/**
-	 * Return an iterator on all the subdirectories
-	 * in the specified directory.
+	 * Return an iterator on all the subdirectories in the specified directory.
 	 * File#subDirectories()
+	 *
+	 * @author mqfdy
+	 * @param directoryName
+	 *            the directory name
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<File> directoriesIn(String directoryName) {
 		return directoriesIn(new File(directoryName));
 	}
 	
 	/**
-	 * Return an iterator on all the subdirectories
-	 * in the specified directory.
+	 * Return an iterator on all the subdirectories in the specified directory.
 	 * File#subDirectories()
+	 *
+	 * @author mqfdy
+	 * @param directory
+	 *            the directory
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<File> directoriesIn(File directory) {
 		return directoriesIn(directory.listFiles());
@@ -253,20 +312,30 @@ public final class FileTools {
 	}
 	
 	/**
-	 * Return an iterator on all the files under the specified
-	 * directory, recursing into subdirectories.
-	 * The iterator will skip over the subdirectories themselves.
-	 * File#filesRecurse()
+	 * Return an iterator on all the files under the specified directory,
+	 * recursing into subdirectories. The iterator will skip over the
+	 * subdirectories themselves. File#filesRecurse()
+	 *
+	 * @author mqfdy
+	 * @param directoryName
+	 *            the directory name
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<File> filesInTree(String directoryName) {
 		return filesInTree(new File(directoryName));
 	}
 	
 	/**
-	 * Return an iterator on all the files under the specified
-	 * directory, recursing into subdirectories.
-	 * The iterator will skip over the subdirectories themselves.
-	 * File#filesRecurse()
+	 * Return an iterator on all the files under the specified directory,
+	 * recursing into subdirectories. The iterator will skip over the
+	 * subdirectories themselves. File#filesRecurse()
+	 *
+	 * @author mqfdy
+	 * @param directory
+	 *            the directory
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<File> filesInTree(File directory) {
 		return filesInTreeAsSet(directory).iterator();
@@ -289,18 +358,28 @@ public final class FileTools {
 	}
 
 	/**
-	 * Return an iterator on all the directories under the specified
-	 * directory, recursing into subdirectories.
-	 * File#subDirectoriesRecurse()
+	 * Return an iterator on all the directories under the specified directory,
+	 * recursing into subdirectories. File#subDirectoriesRecurse()
+	 *
+	 * @author mqfdy
+	 * @param directoryName
+	 *            the directory name
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<File> directoriesInTree(String directoryName) {
 		return directoriesInTree(new File(directoryName));
 	}
 	
 	/**
-	 * Return an iterator on all the directories under the specified
-	 * directory, recursing into subdirectories.
-	 * File#subDirectoriesRecurse()
+	 * Return an iterator on all the directories under the specified directory,
+	 * recursing into subdirectories. File#subDirectoriesRecurse()
+	 *
+	 * @author mqfdy
+	 * @param directory
+	 *            the directory
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	public static Iterator<File> directoriesInTree(File directory) {
@@ -323,10 +402,15 @@ public final class FileTools {
 	// ********** short file name manipulation **********
 
 	/**
-	 * Strip the extension from the specified file name
-	 * and return the result. If the file name has no
-	 * extension, it is returned unchanged
+	 * Strip the extension from the specified file name and return the result.
+	 * If the file name has no extension, it is returned unchanged
 	 * File#basePath()
+	 *
+	 * @author mqfdy
+	 * @param fileName
+	 *            the file name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String stripExtension(String fileName) {
 		int index = fileName.lastIndexOf('.');
@@ -337,19 +421,29 @@ public final class FileTools {
 	}
 	
 	/**
-	 * Strip the extension from the specified file's name
-	 * and return the result. If the file's name has no
-	 * extension, it is returned unchanged
+	 * Strip the extension from the specified file's name and return the result.
+	 * If the file's name has no extension, it is returned unchanged
 	 * File#basePath()
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String stripExtension(File file) {
 		return stripExtension(file.getPath());
 	}
 
 	/**
-	 * Return the extension, including the dot, of the specified file name.
-	 * If the file name has no extension, return an empty string.
-	 * File#extension()
+	 * Return the extension, including the dot, of the specified file name. If
+	 * the file name has no extension, return an empty string. File#extension()
+	 *
+	 * @author mqfdy
+	 * @param fileName
+	 *            the file name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String extension(String fileName) {
 		int index = fileName.lastIndexOf('.');
@@ -360,9 +454,15 @@ public final class FileTools {
 	}
 	
 	/**
-	 * Return the extension, including the dot, of the specified file's name.
-	 * If the file's name has no extension, return an empty string.
+	 * Return the extension, including the dot, of the specified file's name. If
+	 * the file's name has no extension, return an empty string.
 	 * File#extension()
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String extension(File file) {
 		return extension(file.getPath());
@@ -372,10 +472,16 @@ public final class FileTools {
 	// ********** temporary directories **********
 
 	/**
-	 * Build and return an empty temporary directory with the specified
-	 * name. If the directory already exists, it will be cleared out.
-	 * This directory will be a subdirectory of the Java temporary directory,
-	 * as indicated by the System property "java.io.tmpdir".
+	 * Build and return an empty temporary directory with the specified name. If
+	 * the directory already exists, it will be cleared out. This directory will
+	 * be a subdirectory of the Java temporary directory, as indicated by the
+	 * System property "java.io.tmpdir".
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File emptyTemporaryDirectory(String name) {
 		File dir = new File(userTemporaryDirectory(), name);
@@ -388,21 +494,31 @@ public final class FileTools {
 	}
 	
 	/**
-	 * Build and return an empty temporary directory with a
-	 * name of "tmpdir". If the directory already exists, it will be cleared out.
-	 * This directory will be a subdirectory of the Java temporary directory,
-	 * as indicated by the System property "java.io.tmpdir".
+	 * Build and return an empty temporary directory with a name of "tmpdir". If
+	 * the directory already exists, it will be cleared out. This directory will
+	 * be a subdirectory of the Java temporary directory, as indicated by the
+	 * System property "java.io.tmpdir".
+	 *
+	 * @author mqfdy
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File emptyTemporaryDirectory() {
 		return emptyTemporaryDirectory(DEFAULT_TEMPORARY_DIRECTORY_NAME);
 	}
 	
 	/**
-	 * Build and return a temporary directory with the specified
-	 * name. If the directory already exists, it will be left unchanged;
-	 * if it does not already exist, it will be created.
-	 * This directory will be a subdirectory of the Java temporary directory,
-	 * as indicated by the System property "java.io.tmpdir".
+	 * Build and return a temporary directory with the specified name. If the
+	 * directory already exists, it will be left unchanged; if it does not
+	 * already exist, it will be created. This directory will be a subdirectory
+	 * of the Java temporary directory, as indicated by the System property
+	 * "java.io.tmpdir".
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File temporaryDirectory(String name) {
 		File dir = new File(userTemporaryDirectory(), name);
@@ -413,23 +529,32 @@ public final class FileTools {
 	}
 	
 	/**
-	 * Build and return a temporary directory with a name of
-	 * "tmpdir". If the directory already exists, it will be left unchanged;
-	 * if it does not already exist, it will be created.
-	 * This directory will be a subdirectory of the Java temporary directory,
-	 * as indicated by the System property "java.io.tmpdir".
+	 * Build and return a temporary directory with a name of "tmpdir". If the
+	 * directory already exists, it will be left unchanged; if it does not
+	 * already exist, it will be created. This directory will be a subdirectory
+	 * of the Java temporary directory, as indicated by the System property
+	 * "java.io.tmpdir".
+	 *
+	 * @author mqfdy
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File temporaryDirectory() {
 		return temporaryDirectory(DEFAULT_TEMPORARY_DIRECTORY_NAME);
 	}
 	
 	/**
-	 * Build and return a *new* temporary directory with the specified
-	 * prefix. The prefix will be appended with a number that
-	 * is incremented, starting with 1, until a non-pre-existing directory
-	 * is found and successfully created. This directory will be a
-	 * subdirectory of the Java temporary directory, as indicated by
-	 * the System property "java.io.tmpdir".
+	 * Build and return a *new* temporary directory with the specified prefix.
+	 * The prefix will be appended with a number that is incremented, starting
+	 * with 1, until a non-pre-existing directory is found and successfully
+	 * created. This directory will be a subdirectory of the Java temporary
+	 * directory, as indicated by the System property "java.io.tmpdir".
+	 *
+	 * @author mqfdy
+	 * @param prefix
+	 *            the prefix
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File newTemporaryDirectory(String prefix) {
 		if ( ! prefix.endsWith(".")) {
@@ -445,12 +570,15 @@ public final class FileTools {
 	}
 	
 	/**
-	 * Build and return a *new* temporary directory with a
-	 * prefix of "tmpdir". This prefix will be appended with a number that
-	 * is incremented, starting with 1, until a non-pre-existing directory
-	 * is found and successfully created. This directory will be a
-	 * subdirectory of the Java temporary directory, as indicated by
-	 * the System property "java.io.tmpdir".
+	 * Build and return a *new* temporary directory with a prefix of "tmpdir".
+	 * This prefix will be appended with a number that is incremented, starting
+	 * with 1, until a non-pre-existing directory is found and successfully
+	 * created. This directory will be a subdirectory of the Java temporary
+	 * directory, as indicated by the System property "java.io.tmpdir".
+	 *
+	 * @author mqfdy
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File newTemporaryDirectory() {
 		return newTemporaryDirectory(DEFAULT_TEMPORARY_DIRECTORY_NAME);
@@ -460,12 +588,19 @@ public final class FileTools {
 	// ********** resource files **********
 
 	/**
-	 * Build and return a file for the specified resource.
-	 * The resource name must be fully-qualified, i.e. it cannot be relative
-	 * to the package name/directory.
-	 * NB: There is a bug in jdk1.4.x the prevents us from getting
-	 * a resource that has spaces (or other special characters) in
-	 * its name.... (see Sun's Java bug 4466485)
+	 * Build and return a file for the specified resource. The resource name
+	 * must be fully-qualified, i.e. it cannot be relative to the package
+	 * name/directory. NB: There is a bug in jdk1.4.x the prevents us from
+	 * getting a resource that has spaces (or other special characters) in its
+	 * name.... (see Sun's Java bug 4466485)
+	 *
+	 * @author mqfdy
+	 * @param resourceName
+	 *            the resource name
+	 * @return the file
+	 * @throws URISyntaxException
+	 *             the URI syntax exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File resourceFile(String resourceName) throws URISyntaxException {
 		if ( ! resourceName.startsWith("/")) {
@@ -475,10 +610,19 @@ public final class FileTools {
 	}
 	
 	/**
-	 * Build and return a file for the specified resource.
-	 * NB: There is a bug in jdk1.4.x the prevents us from getting
-	 * a resource that has spaces (or other special characters) in
-	 * its name.... (see Sun's Java bug 4466485)
+	 * Build and return a file for the specified resource. NB: There is a bug in
+	 * jdk1.4.x the prevents us from getting a resource that has spaces (or
+	 * other special characters) in its name.... (see Sun's Java bug 4466485)
+	 *
+	 * @author mqfdy
+	 * @param resourceName
+	 *            the resource name
+	 * @param javaClass
+	 *            the java class
+	 * @return the file
+	 * @throws URISyntaxException
+	 *             the URI syntax exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File resourceFile(String resourceName, Class<?> javaClass) throws URISyntaxException {
 		URL url = javaClass.getResource(resourceName);
@@ -486,20 +630,34 @@ public final class FileTools {
 	}
 	
 	/**
-	 * Build and return a file for the specified URL.
-	 * NB: There is a bug in jdk1.4.x the prevents us from getting
-	 * a resource that has spaces (or other special characters) in
-	 * its name.... (see Sun's Java bug 4466485)
+	 * Build and return a file for the specified URL. NB: There is a bug in
+	 * jdk1.4.x the prevents us from getting a resource that has spaces (or
+	 * other special characters) in its name.... (see Sun's Java bug 4466485)
+	 *
+	 * @author mqfdy
+	 * @param url
+	 *            the url
+	 * @return the file
+	 * @throws URISyntaxException
+	 *             the URI syntax exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File buildFile(URL url) throws URISyntaxException {
 		return buildFile(url.getFile());
 	}
 	
 	/**
-	 * Build and return a file for the specified file name.
-	 * NB: There is a bug in jdk1.4.x the prevents us from getting
-	 * a resource that has spaces (or other special characters) in
-	 * its name.... (see Sun's Java bug 4466485)
+	 * Build and return a file for the specified file name. NB: There is a bug
+	 * in jdk1.4.x the prevents us from getting a resource that has spaces (or
+	 * other special characters) in its name.... (see Sun's Java bug 4466485)
+	 *
+	 * @author mqfdy
+	 * @param fileName
+	 *            the file name
+	 * @return the file
+	 * @throws URISyntaxException
+	 *             the URI syntax exception
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File buildFile(String fileName) throws URISyntaxException {
 		URI uri = new URI(fileName);
@@ -512,6 +670,12 @@ public final class FileTools {
 
 	/**
 	 * Convert the specified file into a "canonical" file.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File canonicalFile(File file) {
 		try {
@@ -523,8 +687,14 @@ public final class FileTools {
 	}
 	
 	/**
-	 * Build an iterator that will convert the specified files
-	 * into "canonical" files.
+	 * Build an iterator that will convert the specified files into "canonical"
+	 * files.
+	 *
+	 * @author mqfdy
+	 * @param files
+	 *            the files
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<File> canonicalFiles(Iterator<File> files) {
 		return new TransformationIterator<File, File>(files) {
@@ -536,8 +706,14 @@ public final class FileTools {
 	}
 	
 	/**
-	 * Build an iterator that will convert the specified files
-	 * into "canonical" files.
+	 * Build an iterator that will convert the specified files into "canonical"
+	 * files.
+	 *
+	 * @author mqfdy
+	 * @param files
+	 *            the files
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<File> canonicalFiles(Collection<File> files) {
 		return canonicalFiles(files.iterator());
@@ -545,14 +721,26 @@ public final class FileTools {
 	
 	/**
 	 * Convert the specified file name into a "canonical" file name.
+	 *
+	 * @author mqfdy
+	 * @param fileName
+	 *            the file name
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String canonicalFileName(String fileName) {
 		return canonicalFile(new File(fileName)).getAbsolutePath();
 	}
 	
 	/**
-	 * Build an iterator that will convert the specified file names
-	 * into "canonical" file names.
+	 * Build an iterator that will convert the specified file names into
+	 * "canonical" file names.
+	 *
+	 * @author mqfdy
+	 * @param fileNames
+	 *            the file names
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<String> canonicalFileNames(Iterator<String> fileNames) {
 		return new TransformationIterator<String, String>(fileNames) {
@@ -564,8 +752,14 @@ public final class FileTools {
 	}
 	
 	/**
-	 * Build an iterator that will convert the specified file names
-	 * into "canonical" file names.
+	 * Build an iterator that will convert the specified file names into
+	 * "canonical" file names.
+	 *
+	 * @author mqfdy
+	 * @param fileNames
+	 *            the file names
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<String> canonicalFileNames(Collection<String> fileNames) {
 		return canonicalFileNames(fileNames.iterator());
@@ -576,6 +770,12 @@ public final class FileTools {
 
 	/**
 	 * Return whether the specified file name is invalid.
+	 *
+	 * @author mqfdy
+	 * @param filename
+	 *            the filename
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean fileNameIsInvalid(String filename) {
 		return ! fileNameIsValid(filename);
@@ -583,6 +783,12 @@ public final class FileTools {
 
 	/**
 	 * Return whether the specified file name is valid.
+	 *
+	 * @author mqfdy
+	 * @param filename
+	 *            the filename
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean fileNameIsValid(String filename) {
 		int len = filename.length();
@@ -596,8 +802,16 @@ public final class FileTools {
 	}
 
 	/**
-	 * Convert the illegal characters in the specified file name to
-	 * the specified character and return the result.
+	 * Convert the illegal characters in the specified file name to the
+	 * specified character and return the result.
+	 *
+	 * @author mqfdy
+	 * @param filename
+	 *            the filename
+	 * @param replacementChar
+	 *            the replacement char
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToValidFileName(String filename, char replacementChar) {
 		int len = filename.length();
@@ -614,17 +828,29 @@ public final class FileTools {
 	}
 
 	/**
-	 * Convert the illegal characters in the specified file name to
-	 * periods ('.') and return the result.
+	 * Convert the illegal characters in the specified file name to periods
+	 * ('.') and return the result.
+	 *
+	 * @author mqfdy
+	 * @param filename
+	 *            the filename
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertToValidFileName(String filename) {
 		return convertToValidFileName(filename, '.');
 	}
 
 	/**
-	 * Return whether the specified file name is "reserved"
-	 * (i.e. it cannot be used for "user" files). Windows reserves
-	 * a number of file names (e.g. CON, AUX, PRN).
+	 * Return whether the specified file name is "reserved" (i.e. it cannot be
+	 * used for "user" files). Windows reserves a number of file names (e.g.
+	 * CON, AUX, PRN).
+	 *
+	 * @author mqfdy
+	 * @param fileName
+	 *            the file name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean fileNameIsReserved(String fileName) {
 		if (executingOnWindows()) {
@@ -634,11 +860,15 @@ public final class FileTools {
 	}
 
 	/**
-	 * Return whether the specified file contains any "reserved"
-	 * components.
-	 * Windows reserves a number of file names (e.g. CON, AUX, PRN);
-	 * and these file names cannot be used for either the names of
-	 * files or directories.
+	 * Return whether the specified file contains any "reserved" components.
+	 * Windows reserves a number of file names (e.g. CON, AUX, PRN); and these
+	 * file names cannot be used for either the names of files or directories.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean fileHasAnyReservedComponents(File file) {
 		File temp = file;
@@ -655,22 +885,36 @@ public final class FileTools {
 	// ********** shortened file names **********
 
 	/**
-	 * Return a shorter version of the absolute file name for the specified file.
-	 * The shorter version will not be longer than the maximum length.
-	 * The first directory (usually the drive letter) and the file name or the
-	 * last directory will always be added to the generated string regardless of
-	 * the maximum length allowed.
+	 * Return a shorter version of the absolute file name for the specified
+	 * file. The shorter version will not be longer than the maximum length. The
+	 * first directory (usually the drive letter) and the file name or the last
+	 * directory will always be added to the generated string regardless of the
+	 * maximum length allowed.
+	 *
+	 * @author mqfdy
+	 * @param url
+	 *            the url
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String shortenFileName(URL url) {
 		return shortenFileName(url, MAXIMUM_SHORTENED_FILE_NAME_LENGTH);
 	}
 
 	/**
-	 * Return a shorter version of the absolute file name for the specified file.
-	 * The shorter version will not be longer than the maximum length.
-	 * The first directory (usually the drive letter) and the file name or the
-	 * last directory will always be added to the generated string regardless of
-	 * the maximum length allowed.
+	 * Return a shorter version of the absolute file name for the specified
+	 * file. The shorter version will not be longer than the maximum length. The
+	 * first directory (usually the drive letter) and the file name or the last
+	 * directory will always be added to the generated string regardless of the
+	 * maximum length allowed.
+	 *
+	 * @author mqfdy
+	 * @param url
+	 *            the url
+	 * @param maxLength
+	 *            the max length
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String shortenFileName(URL url, int maxLength) {
 		File file;
@@ -683,22 +927,36 @@ public final class FileTools {
 	}
 
 	/**
-	 * Return a shorter version of the absolute file name for the specified file.
-	 * The shorter version will not be longer than the maximum length.
-	 * The first directory (usually the drive letter) and the file name or the
-	 * last directory will always be added to the generated string regardless of
-	 * the maximum length allowed.
+	 * Return a shorter version of the absolute file name for the specified
+	 * file. The shorter version will not be longer than the maximum length. The
+	 * first directory (usually the drive letter) and the file name or the last
+	 * directory will always be added to the generated string regardless of the
+	 * maximum length allowed.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String shortenFileName(File file) {
 		return shortenFileName(file, MAXIMUM_SHORTENED_FILE_NAME_LENGTH);
 	}
 
 	/**
-	 * Return a shorter version of the absolute file name for the specified file.
-	 * The shorter version will not be longer than the maximum length.
-	 * The first directory (usually the drive letter) and the file name or the
-	 * last directory will always be added to the generated string regardless of
-	 * the maximum length allowed.
+	 * Return a shorter version of the absolute file name for the specified
+	 * file. The shorter version will not be longer than the maximum length. The
+	 * first directory (usually the drive letter) and the file name or the last
+	 * directory will always be added to the generated string regardless of the
+	 * maximum length allowed.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @param maxLength
+	 *            the max length
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String shortenFileName(File file, int maxLength) {
 		String absoluteFileName = canonicalFile(file).getAbsolutePath();
@@ -807,6 +1065,10 @@ public final class FileTools {
 
 	/**
 	 * Return a file representing the user's home directory.
+	 *
+	 * @author mqfdy
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File userHomeDirectory() {
 		return new File(USER_HOME_DIRECTORY_NAME);
@@ -814,6 +1076,10 @@ public final class FileTools {
 	
 	/**
 	 * Return a file representing the user's temporary directory.
+	 *
+	 * @author mqfdy
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File userTemporaryDirectory() {
 		return new File(USER_TEMPORARY_DIRECTORY_NAME);
@@ -821,6 +1087,10 @@ public final class FileTools {
 	
 	/**
 	 * Return a file representing the current working directory.
+	 *
+	 * @author mqfdy
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File currentWorkingDirectory() {
 		return new File(CURRENT_WORKING_DIRECTORY_NAME);
@@ -842,8 +1112,16 @@ public final class FileTools {
 	}
 
 	/**
-	 * Return only the files that fit the filter.
-	 * File#files(FileFilter fileFilter)
+	 * Return only the files that fit the filter. File#files(FileFilter
+	 * fileFilter)
+	 *
+	 * @author mqfdy
+	 * @param files
+	 *            the files
+	 * @param fileFilter
+	 *            the file filter
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<File> filter(Iterator<File> files, final FileFilter fileFilter) {
 		return new FilteringIterator<File, File>(files) {
@@ -855,22 +1133,24 @@ public final class FileTools {
 	}
 
 	/**
-	 * Return a file that is a re-specification of the specified
-	 * file, relative to the specified directory.
-	 *     Linux/Unix/Mac:
-	 *         convertToRelativeFile(/foo/bar/baz.java, /foo)
-	 *             => bar/baz.java
-	 *     Windows:
-	 *         convertToRelativeFile(C:\foo\bar\baz.java, C:\foo)
-	 *             => bar/baz.java
-	 * The file can be either a file or a directory; the directory
-	 * *should* be a directory.
-	 * If the file is already relative or it cannot be made relative
+	 * Return a file that is a re-specification of the specified file, relative
+	 * to the specified directory. Linux/Unix/Mac:
+	 * convertToRelativeFile(/foo/bar/baz.java, /foo) => bar/baz.java Windows:
+	 * convertToRelativeFile(C:\foo\bar\baz.java, C:\foo) => bar/baz.java The
+	 * file can be either a file or a directory; the directory *should* be a
+	 * directory. If the file is already relative or it cannot be made relative
 	 * to the directory, it will be returned unchanged.
 	 * 
-	 * NB: This method has been tested on Windows and Linux,
-	 * but not Mac (but the Mac is Unix-based these days, so
-	 * it shouldn't be a problem...).
+	 * NB: This method has been tested on Windows and Linux, but not Mac (but
+	 * the Mac is Unix-based these days, so it shouldn't be a problem...).
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @param dir
+	 *            the dir
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File convertToRelativeFile(final File file, final File dir) {
 		// check whether the file is already relative
@@ -927,21 +1207,22 @@ public final class FileTools {
 	}
 
 	/**
-	 * Return a file that is a re-specification of the specified
-	 * file, relative to the current working directory.
-	 *     Linux/Unix/Mac (CWD = /foo):
-	 *         convertToRelativeFile(/foo/bar/baz.java)
-	 *             => bar/baz.java
-	 *     Windows (CWD = C:\foo):
-	 *         convertToRelativeFile(C:\foo\bar\baz.java)
-	 *             => bar/baz.java
-	 * The file can be either a file or a directory.
-	 * If the file is already relative or it cannot be made relative
-	 * to the directory, it will be returned unchanged.
+	 * Return a file that is a re-specification of the specified file, relative
+	 * to the current working directory. Linux/Unix/Mac (CWD = /foo):
+	 * convertToRelativeFile(/foo/bar/baz.java) => bar/baz.java Windows (CWD =
+	 * C:\foo): convertToRelativeFile(C:\foo\bar\baz.java) => bar/baz.java The
+	 * file can be either a file or a directory. If the file is already relative
+	 * or it cannot be made relative to the directory, it will be returned
+	 * unchanged.
 	 * 
-	 * NB: This method has been tested on Windows and Linux,
-	 * but not Mac (but the Mac is Unix-based these days, so
-	 * it shouldn't be a problem...).
+	 * NB: This method has been tested on Windows and Linux, but not Mac (but
+	 * the Mac is Unix-based these days, so it shouldn't be a problem...).
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File convertToRelativeFile(final File file) {
 		return convertToRelativeFile(file, currentWorkingDirectory());
@@ -978,21 +1259,24 @@ public final class FileTools {
 	}
 
 	/**
-	 * Return a file that is a re-specification of the specified
-	 * file, absolute to the specified directory.
-	 *     Linux/Unix/Mac:
-	 *         convertToAbsoluteFile(bar/baz.java, /foo)
-	 *             => /foo/bar/baz.java
-	 *     Windows:
-	 *         convertToAbsoluteFile(bar/baz.java, C:\foo)
-	 *             => C:\foo\bar\baz.java
-	 * The file can be either a file or a directory; the directory
-	 * *should* be a directory.
-	 * If the file is already absolute, it will be returned unchanged.
+	 * Return a file that is a re-specification of the specified file, absolute
+	 * to the specified directory. Linux/Unix/Mac:
+	 * convertToAbsoluteFile(bar/baz.java, /foo) => /foo/bar/baz.java Windows:
+	 * convertToAbsoluteFile(bar/baz.java, C:\foo) => C:\foo\bar\baz.java The
+	 * file can be either a file or a directory; the directory *should* be a
+	 * directory. If the file is already absolute, it will be returned
+	 * unchanged.
 	 * 
-	 * NB: This method has been tested on Windows and Linux,
-	 * but not Mac (but the Mac is Unix-based these days, so
-	 * it shouldn't be a problem...).
+	 * NB: This method has been tested on Windows and Linux, but not Mac (but
+	 * the Mac is Unix-based these days, so it shouldn't be a problem...).
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @param dir
+	 *            the dir
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File convertToAbsoluteFile(final File file, final File dir) {
 		// check whether the file is already absolute
@@ -1003,20 +1287,21 @@ public final class FileTools {
 	}
 
 	/**
-	 * Return a file that is a re-specification of the specified
-	 * file, absolute to the current working directory.
-	 *     Linux/Unix/Mac (CWD = /foo):
-	 *         convertToAbsoluteFile(bar/baz.java)
-	 *             => /foo/bar/baz.java
-	 *     Windows (CWD = C:\foo):
-	 *         convertToAbsoluteFile(bar/baz.java)
-	 *             => C:\foo\bar\baz.java
-	 * The file can be either a file or a directory.
-	 * If the file is already absolute, it will be returned unchanged.
+	 * Return a file that is a re-specification of the specified file, absolute
+	 * to the current working directory. Linux/Unix/Mac (CWD = /foo):
+	 * convertToAbsoluteFile(bar/baz.java) => /foo/bar/baz.java Windows (CWD =
+	 * C:\foo): convertToAbsoluteFile(bar/baz.java) => C:\foo\bar\baz.java The
+	 * file can be either a file or a directory. If the file is already
+	 * absolute, it will be returned unchanged.
 	 * 
-	 * NB: This method has been tested on Windows and Linux,
-	 * but not Mac (but the Mac is Unix-based these days, so
-	 * it shouldn't be a problem...).
+	 * NB: This method has been tested on Windows and Linux, but not Mac (but
+	 * the Mac is Unix-based these days, so it shouldn't be a problem...).
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @return the file
+	 * @Date 2018-09-03 09:00
 	 */
 	public static File convertToAbsoluteFile(final File file) {
 		return convertToAbsoluteFile(file, currentWorkingDirectory());

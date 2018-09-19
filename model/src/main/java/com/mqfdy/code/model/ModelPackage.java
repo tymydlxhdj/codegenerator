@@ -8,35 +8,31 @@ import org.dom4j.Element;
 
 import com.mqfdy.code.model.graph.Diagram;
 
+// TODO: Auto-generated Javadoc
 /**
- * 包对象
- * 
+ * 包对象.
+ *
  * @author mqfdy
- * 
  */
 public class ModelPackage extends AbstractPackage {
 
+	/** The parent. */
 	private AbstractModelElement parent;
-	/**
-	 * 实体固化包
-	 */
+	
+	/** 实体固化包. */
 	private SolidifyPackage entityPackage;
-	/**
-	 * 注释 固化包
-	 */
+	
+	/** 注释 固化包. */
 	private SolidifyPackage annotationPackage;
-	/**
-	 * 连线固化包
-	 */
+	
+	/** 连线固化包. */
 	private SolidifyPackage linkPackage;
 
-	/**
-	 * 关联关系固化包
-	 */
+	/** 关联关系固化包. */
 	private SolidifyPackage associationPackage;
 
 	/**
-	 * 继承关系固化包
+	 * 继承关系固化包.
 	 */
 	// private SolidifyPackage inheritancePackage;
 
@@ -44,11 +40,29 @@ public class ModelPackage extends AbstractPackage {
 		initInternalObjects();
 	}
 
+	/**
+	 * Instantiates a new model package.
+	 *
+	 * @param name
+	 *            the name
+	 * @param displayName
+	 *            the display name
+	 */
 	public ModelPackage(String name, String displayName) {
 		super(name, displayName);
 		initInternalObjects();
 	}
 
+	/**
+	 * Instantiates a new model package.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param name
+	 *            the name
+	 * @param displayName
+	 *            the display name
+	 */
 	public ModelPackage(AbstractModelElement parent, String name,
 			String displayName) {
 		super(name, displayName);
@@ -57,9 +71,12 @@ public class ModelPackage extends AbstractPackage {
 	}
 
 	/**
-	 * 通过 XML 元素构造 ModelPackage对象
-	 * 
-	 * @param packageeEement
+	 * 通过 XML 元素构造 ModelPackage对象.
+	 *
+	 * @param bom
+	 *            the bom
+	 * @param packageElement
+	 *            the package element
 	 */
 	@SuppressWarnings("unchecked")
 	public ModelPackage(BusinessObjectModel bom, Element packageElement) {
@@ -247,6 +264,10 @@ public class ModelPackage extends AbstractPackage {
 		}
 	}
 
+	/**
+	 * @param modelElement
+	 * @return
+	 */
 	//
 	public Element generateXmlElement(Element modelElement) {
 		Element packageElement = modelElement.addElement("Package");// 生成Package节点
@@ -385,7 +406,10 @@ public class ModelPackage extends AbstractPackage {
 	}
 
 	/**
-	 * 初始化内部列表对象
+	 * 初始化内部列表对象.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initInternalObjects() {
 		// entityPackage = new SolidifyPackage(this,
@@ -404,6 +428,13 @@ public class ModelPackage extends AbstractPackage {
 		// inheritancePackage.setStereotype(getStereotype());
 	}
 
+	/**
+	 * Gets the entity package.
+	 *
+	 * @author mqfdy
+	 * @return the entity package
+	 * @Date 2018-09-03 09:00
+	 */
 	public SolidifyPackage getEntityPackage() {
 		if (entityPackage == null) {
 			entityPackage = new SolidifyPackage(this,
@@ -414,6 +445,13 @@ public class ModelPackage extends AbstractPackage {
 		return entityPackage;
 	}
 
+	/**
+	 * Gets the annotation package.
+	 *
+	 * @author mqfdy
+	 * @return the annotation package
+	 * @Date 2018-09-03 09:00
+	 */
 	public SolidifyPackage getAnnotationPackage() {
 		if (annotationPackage == null) {
 			annotationPackage = new SolidifyPackage(this,
@@ -424,6 +462,13 @@ public class ModelPackage extends AbstractPackage {
 		return annotationPackage;
 	}
 
+	/**
+	 * Gets the link package.
+	 *
+	 * @author mqfdy
+	 * @return the link package
+	 * @Date 2018-09-03 09:00
+	 */
 	public SolidifyPackage getLinkPackage() {
 		if (linkPackage == null) {
 			linkPackage = new SolidifyPackage(this,
@@ -434,6 +479,13 @@ public class ModelPackage extends AbstractPackage {
 		return linkPackage;
 	}
 
+	/**
+	 * Gets the association package.
+	 *
+	 * @author mqfdy
+	 * @return the association package
+	 * @Date 2018-09-03 09:00
+	 */
 	public SolidifyPackage getAssociationPackage() {
 		if (associationPackage == null) {
 			associationPackage = new SolidifyPackage(this,
@@ -454,18 +506,35 @@ public class ModelPackage extends AbstractPackage {
 	// return inheritancePackage;
 	// }
 
+	/**
+	 * @return
+	 */
 	public int getPriority() {
 		return IModelElement.PRIORITY_MODELPACKAGE;
 	}
 
+	/**
+	 * @return
+	 */
 	public AbstractModelElement getParent() {
 		return parent;
 	}
 
+	/**
+	 * Sets the parent.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the new parent
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setParent(AbstractModelElement parent) {
 		this.parent = parent;
 	}
 
+	/**
+	 * @return
+	 */
 	public List<AbstractModelElement> getChildren() {
 		List<AbstractModelElement> children = new ArrayList<AbstractModelElement>();
 		AbstractModelElement bom;
@@ -498,6 +567,9 @@ public class ModelPackage extends AbstractPackage {
 		return children;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getFullName() {
 		if (this.getParent() != null) {
 			if (this.getParent() instanceof BusinessObjectModel) {

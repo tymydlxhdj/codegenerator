@@ -18,23 +18,44 @@ import com.mqfdy.code.model.DataTransferObject;
 import com.mqfdy.code.model.utils.StringUtil;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * DTO基本信息页签
- * 
+ * DTO基本信息页签.
+ *
  * @author mqfdy
- * 
  */
 public class DTOBasicInfoPage extends Composite implements
 		IBusinessClassEditorPage {
+	
+	/** The text dto name. */
 	private Text textDtoName;// 名称
+	
+	/** The text dto disp name. */
 	private Text textDtoDispName;// 显示名
+	
+	/** The styled text desc. */
 	private StyledText styledTextDesc;
+	
+	/** The dto dialog. */
 	private DTOEditDialog dtoDialog;
 
+	/** The manager. */
 	private BusinessModelManager manager = BusinessModelUtil
 			.getEditorBusinessModelManager();
+	
+	/** The dto disp name. */
 	protected Object dtoDispName;
 
+	/**
+	 * Instantiates a new DTO basic info page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param dtoDialog
+	 *            the dto dialog
+	 */
 	DTOBasicInfoPage(Composite parent, int style, DTOEditDialog dtoDialog) {
 		super(parent, style);
 		this.dtoDialog = dtoDialog;
@@ -42,6 +63,12 @@ public class DTOBasicInfoPage extends Composite implements
 		addListeners();
 	}
 
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent() {
 		// 关联关系信息区域
 		GridLayout layout = new GridLayout();
@@ -94,6 +121,12 @@ public class DTOBasicInfoPage extends Composite implements
 		styledTextDesc.setLayoutData(data);
 	}
 
+	/**
+	 * Adds the listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void addListeners() {
 		textDtoName.addKeyListener(new KeyListener() {
 
@@ -115,6 +148,9 @@ public class DTOBasicInfoPage extends Composite implements
 		});
 	}
 
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		if (dtoDialog.dto != null) {
 			DataTransferObject dto = dtoDialog.dto;
@@ -135,6 +171,9 @@ public class DTOBasicInfoPage extends Composite implements
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		if (textDtoName.getText().trim().length() == 0) {
 			dtoDialog.setErrorMessage(ERROR_MESSAGE_NAME_NULLABLE);
@@ -173,6 +212,9 @@ public class DTOBasicInfoPage extends Composite implements
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 		DataTransferObject dto = dtoDialog.dto;
 		if (textDtoName.getText() != null) {

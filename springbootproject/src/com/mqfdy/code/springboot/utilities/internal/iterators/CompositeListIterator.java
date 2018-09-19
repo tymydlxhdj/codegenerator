@@ -16,10 +16,15 @@ import java.util.NoSuchElementException;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * A <code>CompositeListIterator</code> wraps a list
- * of <code>ListIterator</code>s and makes them appear to be a single
+ * A <code>CompositeListIterator</code> wraps a list of
+ * <code>ListIterator</code>s and makes them appear to be a single
  * <code>ListIterator</code>.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class CompositeListIterator<E>
 	implements ListIterator<E>
@@ -37,6 +42,9 @@ public class CompositeListIterator<E>
 
 	/**
 	 * Construct a list iterator with the specified list of list iterators.
+	 *
+	 * @param iterators
+	 *            the iterators
 	 */
 	public CompositeListIterator(List<? extends ListIterator<E>> iterators) {
 		this(iterators.listIterator());
@@ -44,6 +52,9 @@ public class CompositeListIterator<E>
 
 	/**
 	 * Construct a list iterator with the specified list of list iterators.
+	 *
+	 * @param iterators
+	 *            the iterators
 	 */
 	public CompositeListIterator(ListIterator<? extends ListIterator<E>> iterators) {
 		super();
@@ -53,8 +64,13 @@ public class CompositeListIterator<E>
 	}
 
 	/**
-	 * Construct a list iterator with the specified object prepended
-	 * to the specified iterator.
+	 * Construct a list iterator with the specified object prepended to the
+	 * specified iterator.
+	 *
+	 * @param object
+	 *            the object
+	 * @param iterator
+	 *            the iterator
 	 */
 	@SuppressWarnings("unchecked")
 	public CompositeListIterator(E object, ListIterator<E> iterator) {
@@ -62,8 +78,13 @@ public class CompositeListIterator<E>
 	}
 
 	/**
-	 * Construct a list iterator with the specified object appended
-	 * to the specified iterator.
+	 * Construct a list iterator with the specified object appended to the
+	 * specified iterator.
+	 *
+	 * @param iterator
+	 *            the iterator
+	 * @param object
+	 *            the object
 	 */
 	@SuppressWarnings("unchecked")
 	public CompositeListIterator(ListIterator<E> iterator, E object) {
@@ -72,6 +93,9 @@ public class CompositeListIterator<E>
 
 	/**
 	 * Construct a list iterator with the specified list iterators.
+	 *
+	 * @param iterators
+	 *            the iterators
 	 */
 	public CompositeListIterator(ListIterator<E>... iterators) {
 		this(new ArrayListIterator<ListIterator<E>>(iterators));

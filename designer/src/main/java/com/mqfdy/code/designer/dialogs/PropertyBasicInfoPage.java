@@ -39,89 +39,184 @@ import com.mqfdy.code.model.utils.ValidatorType;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务实体属性基本信息编辑页
- * 
+ * 业务实体属性基本信息编辑页.
+ *
  * @author mqfdy
- * 
  */
 public class PropertyBasicInfoPage extends Composite implements
 		IBusinessClassEditorPage {
 
+	/** The Constant GROUP_PERSITENCE_TEXT. */
 	public static final String GROUP_PERSITENCE_TEXT = "持久化策略";
+	
+	/** The Constant GROUP_PRIMARYKET_TEXT. */
 	public static final String GROUP_PRIMARYKET_TEXT = "主键";
 
+	/** The Constant DATATYPE_LABEL_TEXT. */
 	public static final String DATATYPE_LABEL_TEXT = "属性类型：";
+	
+	/** The Constant GROUPINFO_LABEL_TEXT. */
 	public static final String GROUPINFO_LABEL_TEXT = "分组信息：";
+	
+	/** The Constant PRIMARYKEYPLOY_LABEL_TEXT. */
 	public static final String PRIMARYKEYPLOY_LABEL_TEXT = "主键策略";
+	
+	/** The Constant PRIMARYKEYPLOY_PARAM_LABEL_TEXT. */
 	public static final String PRIMARYKEYPLOY_PARAM_LABEL_TEXT = "策略参数_sequence名：";
+	
+	/** The Constant DEFAULTVALUE_LABEL_TEXT. */
 	public static final String DEFAULTVALUE_LABEL_TEXT = "缺省值：";
+	
+	/** The Constant DBCOLUMNNAME_LABEL_TEXT. */
 	public static final String DBCOLUMNNAME_LABEL_TEXT = "数据库字段名：";
+	
+	/** The Constant DBDATALENGTH_LABEL_TEXT. */
 	public static final String DBDATALENGTH_LABEL_TEXT = "字段长度：";
+	
+	/** The Constant DBDATAPRECISION_LABEL_TEXT. */
 	public static final String DBDATAPRECISION_LABEL_TEXT = "字段精度：";
 
+	/** The Constant BUTTON_ISPERSISTENCE_TEXT. */
 	public static final String BUTTON_ISPERSISTENCE_TEXT = "持久化";
+	
+	/** The Constant BUTTON_ISPRIMARYKEY_TEXT. */
 	public static final String BUTTON_ISPRIMARYKEY_TEXT = "主键";
+	
+	/** The Constant BUTTON_NULLABLE_TEXT. */
 	public static final String BUTTON_NULLABLE_TEXT = "可空";
+	
+	/** The Constant BUTTON_READONLY_TEXT. */
 	// public static final String BUTTON_ISINDEXCOLUMN_TEXT = "索引列";
 	public static final String BUTTON_READONLY_TEXT = "只读";
+	
+	/** The Constant BUTTON_ISUNIQUE_TEXT. */
 	public static final String BUTTON_ISUNIQUE_TEXT = "唯一";
 
+	/** The label name. */
 	// 显示组件
 	private Label label_name;
+	
+	/** The text name. */
 	private NullToEmptyText text_name;
 
+	/** The label display name. */
 	private Label label_displayName;
+	
+	/** The text display name. */
 	private NullToEmptyText text_displayName;
 
+	/** The label remark. */
 	private Label label_remark;
+	
+	/** The text remark. */
 	private NullToEmptyText text_remark;
 
+	/** The label d B data type. */
 	private Label label_dBDataType;
+	
+	/** The combo d B data type. */
 	private Combo combo_dBDataType;
 
+	/** The label group. */
 	private Label label_group;
+	
+	/** The combo group. */
 	private Combo combo_group;
 
+	/** The btn is persistence. */
 	private Button btn_isPersistence;
+	
+	/** The btn is primary key. */
 	private Button btn_isPrimaryKey;
+	
+	/** The btn nullable. */
 	private Button btn_nullable;
+	
+	/** The btn read only. */
 	// private Button btn_indexColumn;
 	private Button btn_readOnly;
+	
+	/** The btn is unique. */
 	private Button btn_isUnique;
 
+	/** The label priamry key ploy. */
 	private Label label_priamryKeyPloy;
+	
+	/** The combo priamry key ploy. */
 	private Combo combo_priamryKeyPloy;
 
+	/** The label primary key ploy param. */
 	private Label label_primaryKeyPloyParam;
+	
+	/** The text primary key ploy param. */
 	private NullToEmptyText text_primaryKeyPloyParam;
 
+	/** The label d B column name. */
 	private Label label_dBColumnName;
+	
+	/** The text d B column name. */
 	private NullToEmptyText text_dBColumnName;
 
+	/** The label default value. */
 	private Label label_defaultValue;
+	
+	/** The text default value. */
 	private NullToEmptyText text_defaultValue;
 
+	/** The label d B data length. */
 	private Label label_dBDataLength;
+	
+	/** The text d B data length. */
 	private NullToEmptyText text_dBDataLength;
 
+	/** The label d B data precision. */
 	private Label label_dBDataPrecision;
+	
+	/** The text d B data precision. */
 	private NullToEmptyText text_dBDataPrecision;
 
+	/** The group primarykey. */
 	private Group group_primarykey;
 
+	/** The group persitence. */
 	private Group group_persitence;
 
+	/** The parent dialog. */
 	private PropertyEditorDialog parentDialog;
+	
+	/** The d B column name. */
 	protected Object dBColumnName;
+	
+	/** The display name. */
 	protected Object displayName;
 
+	/** The is choose data type. */
 	private boolean isChooseDataType;
 
+	/**
+	 * Instantiates a new property basic info page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 */
 	public PropertyBasicInfoPage(Composite parent, int style) {
 		super(parent, style);
 	}
 
+	/**
+	 * Instantiates a new property basic info page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param parentDialog
+	 *            the parent dialog
+	 */
 	public PropertyBasicInfoPage(Composite parent, int style,
 			PropertyEditorDialog parentDialog) {
 		super(parent, style);
@@ -130,6 +225,14 @@ public class PropertyBasicInfoPage extends Composite implements
 		addListeners();
 	}
 
+	/**
+	 * Creates the contents.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContents(Composite composite) {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 4;
@@ -253,6 +356,12 @@ public class PropertyBasicInfoPage extends Composite implements
 
 	}
 
+	/**
+	 * Adds the listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void addListeners() {
 		combo_dBDataType.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -408,7 +517,10 @@ public class PropertyBasicInfoPage extends Composite implements
 	}
 
 	/**
-	 * 主键生成策略改变
+	 * 主键生成策略改变.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void priamryKeyPloyChanged() {
 //		int index = combo_priamryKeyPloy.getSelectionIndex();
@@ -459,8 +571,12 @@ public class PropertyBasicInfoPage extends Composite implements
 		}
 		setReverse();
 	}
+	
 	/**
-	 * 主键复选框改变
+	 * 主键复选框改变.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void isPrimaryKeyChanged() {
 		boolean isPrimaryKey = btn_isPrimaryKey.getSelection();
@@ -532,8 +648,12 @@ public class PropertyBasicInfoPage extends Composite implements
 			}
 		}
 	}
+	
 	/**
-	 * 持久化复选框改变
+	 * 持久化复选框改变.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void isPersistenceChanged() {
 		boolean isPersitence = btn_isPersistence.getSelection();
@@ -564,8 +684,12 @@ public class PropertyBasicInfoPage extends Composite implements
 		}
 
 	}
+	
 	/**
-	 * 根据数据类型判断字段长度和字段精度
+	 * 根据数据类型判断字段长度和字段精度.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initDataType() {
 		int index = combo_dBDataType.getSelectionIndex();
@@ -602,6 +726,9 @@ public class PropertyBasicInfoPage extends Composite implements
 
 	}
 
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		// 初始化下拉框的值
 		combo_dBDataType.setItems(DataType.getDataTypesString());
@@ -824,13 +951,24 @@ public class PropertyBasicInfoPage extends Composite implements
 	}
 
 	
+	/**
+	 * Reset data length.
+	 *
+	 * @author mqfdy
+	 * @param length
+	 *            the length
+	 * @Date 2018-09-03 09:00
+	 */
 	public void resetDataLength(int length) {
 		this.text_dBDataLength.setText(length + "");
 	}
 
 	
 	/**
-	 * 反向业务实体的只读控制
+	 * 反向业务实体的只读控制.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void setReverse() {
 		if (parentDialog.getOperationType().equals(
@@ -852,8 +990,12 @@ public class PropertyBasicInfoPage extends Composite implements
 	}
 	
 	/**
-	 * 检查并删除校验器
+	 * 检查并删除校验器.
+	 *
+	 * @author mqfdy
 	 * @param validatorType
+	 *            the validator type
+	 * @Date 2018-09-03 09:00
 	 */
 	private void checkForDelete(ValidatorType validatorType) {
 		List<Validator> validators = parentDialog.getPropertyValidatorPage()
@@ -871,9 +1013,14 @@ public class PropertyBasicInfoPage extends Composite implements
 			parentDialog.refresh();
 		}
 	}
+	
 	/**
-	 * 检查并添加校验器
+	 * 检查并添加校验器.
+	 *
+	 * @author mqfdy
 	 * @param validatorType
+	 *            the validator type
+	 * @Date 2018-09-03 09:00
 	 */
 	private void checkForAdd(ValidatorType validatorType) {
 		List<Validator> validators = parentDialog.getPropertyValidatorPage()
@@ -893,9 +1040,13 @@ public class PropertyBasicInfoPage extends Composite implements
 	}
 
 	/**
-	 * 根据校验器类型生成校验器
+	 * 根据校验器类型生成校验器.
+	 *
+	 * @author mqfdy
 	 * @param validatorType
-	 * @return
+	 *            the validator type
+	 * @return the validator
+	 * @Date 2018-09-03 09:00
 	 */
 	private Validator generateValidator(ValidatorType validatorType) {
 		Validator newValidator = new Validator();
@@ -906,6 +1057,9 @@ public class PropertyBasicInfoPage extends Composite implements
 		return newValidator;
 	}
 	
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		if (text_name.getText().trim().length() == 0) {
 			parentDialog.setErrorMessage(ERROR_MESSAGE_NAME_NULLABLE);
@@ -1241,6 +1395,15 @@ public class PropertyBasicInfoPage extends Composite implements
 		return true;
 	}
 
+	/**
+	 * Validate default.
+	 *
+	 * @author mqfdy
+	 * @param curEditorType
+	 *            the cur editor type
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean validateDefault(EditorType curEditorType){
 		if (btn_isPersistence.getSelection() == true
 				&& !"".equals(text_defaultValue.getText())) {
@@ -1397,6 +1560,9 @@ public class PropertyBasicInfoPage extends Composite implements
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 		Property property = null;
 		if (btn_isPersistence.getSelection() && btn_isPrimaryKey.getSelection()) {
@@ -1483,11 +1649,25 @@ public class PropertyBasicInfoPage extends Composite implements
 
 	}
 	
+	/**
+	 * Gets the groups.
+	 *
+	 * @author mqfdy
+	 * @return the groups
+	 * @Date 2018-09-03 09:00
+	 */
 	private java.util.List<PropertyGroup> getGroups() {
 		BusinessClass businessClass = (BusinessClass) (parentDialog.parent);
 		return businessClass.getGroups();
 	}
 
+	/**
+	 * Gets the group displays.
+	 *
+	 * @author mqfdy
+	 * @return the group displays
+	 * @Date 2018-09-03 09:00
+	 */
 	private String[] getGroupDisplays() {
 		java.util.List<PropertyGroup> list = getGroups();
 		if (list != null && list.size() > 0) {
@@ -1500,6 +1680,15 @@ public class PropertyBasicInfoPage extends Composite implements
 		return new String[] {};
 	}
 
+	/**
+	 * Gets the group.
+	 *
+	 * @author mqfdy
+	 * @param groupDisplay
+	 *            the group display
+	 * @return the group
+	 * @Date 2018-09-03 09:00
+	 */
 	private PropertyGroup getGroup(String groupDisplay) {
 		java.util.List<PropertyGroup> groups = getGroups();
 		for (int i = 0; i < groups.size(); i++) {
@@ -1511,10 +1700,15 @@ public class PropertyBasicInfoPage extends Composite implements
 		groups.add(newGroup);
 		return newGroup;
 	}
+	
 	/**
-	 * 获取属性分组索引
+	 * 获取属性分组索引.
+	 *
+	 * @author mqfdy
 	 * @param groupId
-	 * @return
+	 *            the group id
+	 * @return the group index
+	 * @Date 2018-09-03 09:00
 	 */
 	private int getGroupIndex(String groupId) {
 		java.util.List<PropertyGroup> groups = getGroups();
@@ -1526,18 +1720,38 @@ public class PropertyBasicInfoPage extends Composite implements
 		return -1;
 	}
 
+	/**
+	 * Gets the cur data type.
+	 *
+	 * @author mqfdy
+	 * @return the cur data type
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getCurDataType() {
 		return combo_dBDataType.getText();
 	}
 
+	/**
+	 * Checks if is choose data type.
+	 *
+	 * @author mqfdy
+	 * @return true, if is choose data type
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isChooseDataType() {
 		return isChooseDataType;
 	}
+	
 	/**
-	 * 获取下拉框的值在下拉框数据源中的排序
+	 * 获取下拉框的值在下拉框数据源中的排序.
+	 *
+	 * @author mqfdy
 	 * @param items
+	 *            the items
 	 * @param dataType
-	 * @return
+	 *            the data type
+	 * @return the index
+	 * @Date 2018-09-03 09:00
 	 */
 	private int getIndex(String[] items, String dataType) {
 		for(int i = 0;i < items.length;i++){
@@ -1572,7 +1786,14 @@ public class PropertyBasicInfoPage extends Composite implements
 //		return result;
 //	}
 	
-	private boolean isDBColumnNameExist() {
+	/**
+ * Checks if is DB column name exist.
+ *
+ * @author mqfdy
+ * @return true, if is DB column name exist
+ * @Date 2018-09-03 09:00
+ */
+private boolean isDBColumnNameExist() {
 		boolean result = false;
 		BusinessClass bc = (BusinessClass) parentDialog.getPropertyCopy()
 				.getParent();
@@ -1592,6 +1813,13 @@ public class PropertyBasicInfoPage extends Composite implements
 		return result;
 	}
 	
+	/**
+	 * Gets the default value.
+	 *
+	 * @author mqfdy
+	 * @return the default value
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getDefaultValue(){
 		return text_defaultValue.getText();
 	}

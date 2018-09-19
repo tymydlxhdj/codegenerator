@@ -27,6 +27,7 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.util.ClassUtils;
 
+// TODO: Auto-generated Javadoc
 /**
  *  This is a special, internal-use-only context implementation to be
  *  used for the #evaluate directive.
@@ -46,14 +47,18 @@ import org.apache.velocity.util.ClassUtils;
  */
 public class EvaluateContext extends ChainedInternalContextAdapter
 {
-    /** container for any local items */
+    
+    /** container for any local items. */
     Context localContext;
     
      /**
-     *  CTOR, wraps an ICA
-     * @param inner context for parent template
-     * @param rsvc 
-     */
+		 * CTOR, wraps an ICA.
+		 *
+		 * @param inner
+		 *            context for parent template
+		 * @param rsvc
+		 *            the rsvc
+		 */
     public EvaluateContext( InternalContextAdapter  inner, RuntimeServices rsvc )
     {
         super(inner);
@@ -61,9 +66,13 @@ public class EvaluateContext extends ChainedInternalContextAdapter
     }
 
     /**
-     * Initialize the context based on user-configured class 
-     * @param rsvc
-     */
+	 * Initialize the context based on user-configured class .
+	 *
+	 * @author mqfdy
+	 * @param rsvc
+	 *            the rsvc
+	 * @Date 2018-9-3 11:38:29
+	 */
     private void initContext( RuntimeServices rsvc )
     {
         String contextClass = rsvc.getString(RuntimeConstants.EVALUATE_CONTEXT_CLASS);
@@ -124,12 +133,16 @@ public class EvaluateContext extends ChainedInternalContextAdapter
     }
 
     /**
-     *  Put method also stores values in local scope 
-     *
-     *  @param key name of item to set
-     *  @param value object to set to key
-     *  @return old stored object
-     */
+	 * Put method also stores values in local scope .
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            name of item to set
+	 * @param value
+	 *            object to set to key
+	 * @return old stored object
+	 * @Date 2018-9-3 11:38:29
+	 */
     public Object put(String key, Object value)
     {
         if (localContext != null)
@@ -140,11 +153,14 @@ public class EvaluateContext extends ChainedInternalContextAdapter
     }
 
     /**
-     *  Retrieves from local or global context.
-     *
-     *  @param key name of item to get
-     *  @return  stored object or null
-     */
+	 * Retrieves from local or global context.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            name of item to get
+	 * @return stored object or null
+	 * @Date 2018-9-3 11:38:29
+	 */
     public Object get( String key )
     {
         /*
@@ -163,8 +179,13 @@ public class EvaluateContext extends ChainedInternalContextAdapter
     }
 
     /**
-     * @see org.apache.velocity.context.Context#containsKey(java.lang.Object)
-     */
+	 * Contains key.
+	 *
+	 * @param key
+	 *            the key
+	 * @return true, if successful
+	 * @see org.apache.velocity.context.Context#containsKey(java.lang.Object)
+	 */
     public boolean containsKey(Object key)
     {
         return (localContext != null && localContext.containsKey(key)) ||
@@ -172,8 +193,11 @@ public class EvaluateContext extends ChainedInternalContextAdapter
     }
 
     /**
-     * @see org.apache.velocity.context.Context#getKeys()
-     */
+	 * Gets the keys.
+	 *
+	 * @return the keys
+	 * @see org.apache.velocity.context.Context#getKeys()
+	 */
     public Object[] getKeys()
     {
         if (localContext != null)
@@ -196,8 +220,13 @@ public class EvaluateContext extends ChainedInternalContextAdapter
     }
 
     /**
-     * @see org.apache.velocity.context.Context#remove(java.lang.Object)
-     */
+	 * Removes the.
+	 *
+	 * @param key
+	 *            the key
+	 * @return the object
+	 * @see org.apache.velocity.context.Context#remove(java.lang.Object)
+	 */
     public Object remove(Object key)
     {
         if (localContext != null)
@@ -208,14 +237,18 @@ public class EvaluateContext extends ChainedInternalContextAdapter
     }
 
     /**
-     * Allows callers to explicitly put objects in the local context.
-     * Objects added to the context through this method always end up
-     * in the top-level context of possible wrapped contexts.
-     *
-     *  @param key name of item to set.
-     *  @param value object to set to key.
-     *  @return old stored object
-     */
+	 * Allows callers to explicitly put objects in the local context. Objects
+	 * added to the context through this method always end up in the top-level
+	 * context of possible wrapped contexts.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            name of item to set.
+	 * @param value
+	 *            object to set to key.
+	 * @return old stored object
+	 * @Date 2018-9-3 11:38:29
+	 */
     public Object localPut(final String key, final Object value)
     {
         if (localContext != null)

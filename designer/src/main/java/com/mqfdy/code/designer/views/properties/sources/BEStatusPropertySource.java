@@ -3,15 +3,23 @@ package com.mqfdy.code.designer.views.properties.sources;
 import com.mqfdy.code.model.AbstractModelElement;
 import com.mqfdy.code.model.BEStatus;
 
+// TODO: Auto-generated Javadoc
 /**
- * 状态PropertyPropertySource
- * 
+ * 状态PropertyPropertySource.
+ *
  * @author mqfdy
- * 
  */
 public class BEStatusPropertySource extends ModelPropertySource {
+	
+	/** The status. */
 	public BEStatus status;
 
+	/**
+	 * Instantiates a new BE status property source.
+	 *
+	 * @param property
+	 *            the property
+	 */
 	public BEStatusPropertySource(AbstractModelElement property) {
 		super();
 		this.status = (BEStatus) property;
@@ -21,6 +29,9 @@ public class BEStatusPropertySource extends ModelPropertySource {
 		// }
 	}
 
+	/**
+	 * 
+	 */
 	protected void installModelProperty() {
 		if (this.status.isNoneStatus()) {
 			addStringModelProperty(
@@ -57,6 +68,15 @@ public class BEStatusPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * Gets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return the property value
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -97,6 +117,16 @@ public class BEStatusPropertySource extends ModelPropertySource {
 			return "";
 	}
 
+	/**
+	 * Sets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPropertyValue(Object propertyId, Object value) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException(propertyId.toString());
@@ -135,10 +165,27 @@ public class BEStatusPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * Checks if is property set.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return true, if is property set
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isPropertySet(Object propertyId) {
 		return true;
 	}
 
+	/**
+	 * Reset property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @Date 2018-09-03 09:00
+	 */
 	public void resetPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -152,10 +199,16 @@ public class BEStatusPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public Object getEditableValue() {
 		return this;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void initializeDescriptors() {
 		// TODO Auto-generated method stub

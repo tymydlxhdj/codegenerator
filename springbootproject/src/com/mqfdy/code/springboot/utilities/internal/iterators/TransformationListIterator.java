@@ -15,14 +15,22 @@ import com.mqfdy.code.springboot.utilities.internal.StringTools;
 import com.mqfdy.code.springboot.utilities.internal.Transformer;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * A <code>TransformationListIterator</code> wraps another <code>ListIterator</code>
- * and transforms its results for client consumption. To use, supply a 
- * <code>Transformer</code> or subclass <code>TransformationIterator</code>
- * and override the <code>transform(Object)</code> method.
+ * A <code>TransformationListIterator</code> wraps another
+ * <code>ListIterator</code> and transforms its results for client consumption.
+ * To use, supply a <code>Transformer</code> or subclass
+ * <code>TransformationIterator</code> and override the
+ * <code>transform(Object)</code> method.
  * 
- * The methods <code>set(Object)</code> and <code>add(Object)</code>
- * are left unsupported in this class.
+ * The methods <code>set(Object)</code> and <code>add(Object)</code> are left
+ * unsupported in this class.
+ *
+ * @author mqfdy
+ * @param <E1>
+ *            the generic type
+ * @param <E2>
+ *            the generic type
  */
 public class TransformationListIterator<E1, E2>
 	implements ListIterator<E2>
@@ -32,19 +40,25 @@ public class TransformationListIterator<E1, E2>
 
 
 	/**
-	 * Construct an iterator with the specified nested iterator
-	 * and a disabled transformer.
-	 * Use this constructor if you want to override the
-	 * <code>transform(Object)</code> method instead of building
-	 * a <code>Transformer</code>.
+	 * Construct an iterator with the specified nested iterator and a disabled
+	 * transformer. Use this constructor if you want to override the
+	 * <code>transform(Object)</code> method instead of building a
+	 * <code>Transformer</code>.
+	 *
+	 * @param nestedIterator
+	 *            the nested iterator
 	 */
 	public TransformationListIterator(ListIterator<? extends E1> nestedIterator) {
 		this(nestedIterator, Transformer.Disabled.<E1, E2>instance());
 	}
 
 	/**
-	 * Construct an iterator with the specified nested iterator
-	 * and transformer.
+	 * Construct an iterator with the specified nested iterator and transformer.
+	 *
+	 * @param nestedIterator
+	 *            the nested iterator
+	 * @param transformer
+	 *            the transformer
 	 */
 	public TransformationListIterator(ListIterator<? extends E1> nestedIterator, Transformer<E1, ? extends E2> transformer) {
 		super();
@@ -97,6 +111,12 @@ public class TransformationListIterator<E1, E2>
 
 	/**
 	 * Transform the specified object and return the result.
+	 *
+	 * @author mqfdy
+	 * @param next
+	 *            the next
+	 * @return the e2
+	 * @Date 2018-09-03 09:00
 	 */
 	protected E2 transform(E1 next) {
 		return this.transformer.transform(next);

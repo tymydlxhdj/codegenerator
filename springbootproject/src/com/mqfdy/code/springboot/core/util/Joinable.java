@@ -1,10 +1,12 @@
 package com.mqfdy.code.springboot.core.util;
 
 /**
- * A 'joinable' is some representative of an asynch computation that can be waited for by
- * calling the 'join' method.
- * 
+ * A 'joinable' is some representative of an asynch computation that can be
+ * waited for by calling the 'join' method.
+ *
  * @author lenovo
+ * @param <T>
+ *            the generic type
  */
 public interface Joinable<T> {
 

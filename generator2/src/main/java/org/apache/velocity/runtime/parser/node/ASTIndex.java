@@ -10,6 +10,7 @@ import org.apache.velocity.runtime.parser.Parser;
 import org.apache.velocity.util.ClassUtils;
 import org.apache.velocity.util.introspection.VelMethod;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -30,12 +31,16 @@ import org.apache.velocity.util.introspection.VelMethod;
  */
 
 /**
- *  This node is responsible for the bracket notation at the end of
- *  a reference, e.g., $foo[1]
+ * This node is responsible for the bracket notation at the end of a reference,
+ * e.g., $foo[1]
+ *
+ * @author mqfdy
  */
 
 public class ASTIndex extends SimpleNode
 {
+    
+    /** The method name. */
     private final String methodName = "get";
 
     /**
@@ -43,16 +48,37 @@ public class ASTIndex extends SimpleNode
      */
     protected boolean strictRef = false;
 
+    /**
+	 * Instantiates a new AST index.
+	 *
+	 * @param i
+	 *            the i
+	 */
     public ASTIndex(int i)
     {
         super(i);
     }
 
+    /**
+	 * Instantiates a new AST index.
+	 *
+	 * @param p
+	 *            the p
+	 * @param i
+	 *            the i
+	 */
     public ASTIndex(Parser p, int i)
     {
         super(p, i);
     }
   
+    /**
+     * @see org.apache.velocity.runtime.parser.node.SimpleNode#init(org.apache.velocity.context.InternalContextAdapter, java.lang.Object)
+     * @param context
+     * @param data
+     * @return
+     * @throws TemplateInitException ASTIndex
+     */
     public Object init(InternalContextAdapter context, Object data)
         throws TemplateInitException
     {
@@ -63,16 +89,30 @@ public class ASTIndex extends SimpleNode
 
 
     
+    /** The Constant noParams. */
     private final static Object[] noParams = {};
+    
+    /** The Constant noTypes. */
     private final static Class[] noTypes = {};      
+    
     /**
-     * If argument is an Integer and negative, then return (o.size() - argument). 
-     * Otherwise return the original argument.  We use this to calculate the true
-     * index of a negative index e.g., $foo[-1]. If no size() method is found on the
-     * 'o' object, then we throw an VelocityException.
-     * @param context Used to access the method cache.
-     * @param node  ASTNode used for error reporting.
-     */
+	 * If argument is an Integer and negative, then return (o.size() -
+	 * argument). Otherwise return the original argument. We use this to
+	 * calculate the true index of a negative index e.g., $foo[-1]. If no size()
+	 * method is found on the 'o' object, then we throw an VelocityException.
+	 *
+	 * @author mqfdy
+	 * @param argument
+	 *            the argument
+	 * @param o
+	 *            the o
+	 * @param context
+	 *            Used to access the method cache.
+	 * @param node
+	 *            ASTNode used for error reporting.
+	 * @return the object
+	 * @Date 2018-09-03 09:00
+	 */
     public static Object adjMinusIndexArg(Object argument, Object o, 
                                InternalContextAdapter context, SimpleNode node)
     {
@@ -122,6 +162,13 @@ public class ASTIndex extends SimpleNode
       return argument;
     }
     
+    /**
+     * @see org.apache.velocity.runtime.parser.node.SimpleNode#execute(java.lang.Object, org.apache.velocity.context.InternalContextAdapter)
+     * @param o
+     * @param context
+     * @return
+     * @throws MethodInvocationException ASTIndex
+     */
     public Object execute(Object o, InternalContextAdapter context)
         throws MethodInvocationException
     {

@@ -6,14 +6,30 @@ import java.util.Set;
 
 import com.mqfdy.code.model.utils.DataType;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MiddleDataType.
+ *
+ * @author mqfdy
+ */
 public class MiddleDataType {
 
+	/** The string set. */
 	public static Set<String> stringSet = new HashSet<String>();
+	
+	/** The number set. */
 	public static Set<String> numberSet = new HashSet<String>();
+	
+	/** The text set. */
 	public static Set<String> textSet = new HashSet<String>();
+	
+	/** The date set. */
 	public static Set<String> dateSet = new HashSet<String>();
+	
+	/** The logic set. */
 	public static Set<String> logicSet = new HashSet<String>();
 	
+	/** The def local. */
 	private static Locale defLocal = Locale.getDefault();
 	
 	static{
@@ -75,6 +91,19 @@ public class MiddleDataType {
 		logicSet.add("BOOL");
 	}
 	
+	/**
+	 * Gets the middle type.
+	 *
+	 * @author mqfdy
+	 * @param sqlType
+	 *            the sql type
+	 * @param length
+	 *            the length
+	 * @param scale
+	 *            the scale
+	 * @return the middle type
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getMiddleType(String sqlType,Integer length,Integer scale){
 		if(stringSet.contains(sqlType.toUpperCase(defLocal))){
 			if("char".equals(sqlType.toLowerCase(defLocal)) && length/2 == 1){

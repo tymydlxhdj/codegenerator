@@ -21,6 +21,7 @@ package org.apache.velocity.runtime.log;
 
 import org.apache.velocity.runtime.RuntimeServices;
 
+// TODO: Auto-generated Javadoc
 /**
  * Base interface that logging systems need to implement. This
  * is the blessed descendant of the old LogSystem interface.
@@ -64,32 +65,52 @@ public interface LogChute
     int ERROR_ID = 3;
 
     /**
-     * Initializes this LogChute.
-     * @param rs
-     * @throws Exception
-     */
+	 * Initializes this LogChute.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:36
+	 */
     void init(RuntimeServices rs) throws Exception;
 
     /**
-     * Send a log message from Velocity.
-     * @param level
-     * @param message
-     */
+	 * Send a log message from Velocity.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @Date 2018-9-3 11:38:36
+	 */
     void log(int level, String message);
 
     /**
-     * Send a log message from Velocity along with an exception or error
-     * @param level
-     * @param message
-     * @param t
-     */
+	 * Send a log message from Velocity along with an exception or error.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            the t
+	 * @Date 2018-9-3 11:38:36
+	 */
     void log(int level, String message, Throwable t);
 
     /**
-     * Tell whether or not a log level is enabled.
-     * @param level
-     * @return True if a level is enabled.
-     */
+	 * Tell whether or not a log level is enabled.
+	 *
+	 * @author mqfdy
+	 * @param level
+	 *            the level
+	 * @return True if a level is enabled.
+	 * @Date 2018-9-3 11:38:36
+	 */
     boolean isLevelEnabled(int level);
 
 }

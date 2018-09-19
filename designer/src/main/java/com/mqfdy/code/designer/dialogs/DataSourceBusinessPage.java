@@ -29,45 +29,88 @@ import com.mqfdy.code.model.PKProperty;
 import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.PropertyEditor;
 import com.mqfdy.code.model.ReferenceObject;
+// TODO: Auto-generated Javadoc
+
 /**
- * 下拉框枚举来源于业务实体页面
- * @author mqfdy
+ * 下拉框枚举来源于业务实体页面.
  *
+ * @author mqfdy
  */
 public class DataSourceBusinessPage extends Composite {
 
+	/** The Constant ERROR_MESSAGE_BUSINESSCLASS_NULLABLE. */
 	private static final String ERROR_MESSAGE_BUSINESSCLASS_NULLABLE = "请选择业务实体";
+	
+	/** The Constant ERROR_MESSAGE_KEY_NULLABLE. */
 	private static final String ERROR_MESSAGE_KEY_NULLABLE = "请选择KEY在实体中的属性";
+	
+	/** The Constant ERROR_MESSAGE_VALUE_NULLABLE. */
 	private static final String ERROR_MESSAGE_VALUE_NULLABLE = "请选择VALUE在实体中的属性";
 
+	/** The Constant LABEL_BUSINESSCLASSSELECT_TEXT. */
 	private static final String LABEL_BUSINESSCLASSSELECT_TEXT = "业务实体：";
+	
+	/** The Constant BUTTON_ENUMSELECT_TEXT. */
 	private static final String BUTTON_ENUMSELECT_TEXT = "查找";
 
+	/** The Constant LABEL_BUSINESSCLASS_KEY_TEXT. */
 	private static final String LABEL_BUSINESSCLASS_KEY_TEXT = "KEY属性：";
+	
+	/** The Constant LABEL_BUSINESSCLASS_VALUE_TEXT. */
 	private static final String LABEL_BUSINESSCLASS_VALUE_TEXT = "VALUE属性：";
+	
+	/** The Constant LABEL_SQL_TEXT. */
 	private static final String LABEL_SQL_TEXT = "查询条件：";
+	
+	/** The Constant BUTTON_SQL_DESIGN. */
 	private static final String BUTTON_SQL_DESIGN = "设计查询条件";
 
+	/** The label bc select. */
 	private Label label_bcSelect;
+	
+	/** The text bc display name. */
 	private NullToEmptyText text_bcDisplayName;
+	
+	/** The btn select. */
 	private Button btn_select;
 
+	/** The label key. */
 	private Label label_key;
+	
+	/** The combo key. */
 	private Combo combo_key;
+	
+	/** The label value. */
 	private Label label_value;
+	
+	/** The combo value. */
 	private Combo combo_value;
+	
+	/** The text sql. */
 	private String text_sql;
 
+	/** The btn design. */
 	private Button btn_design;
 
+	/** The business class. */
 	private BusinessClass businessClass;
 
-	/**
-	 * 属性页编辑页面
-	 */
+	/** 属性页编辑页面. */
 	private IBusinessClassEditorPage parentPage;
+	
+	/** The editor. */
 	private PropertyEditor editor = null;
 
+	/**
+	 * Instantiates a new data source business page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param parentPage
+	 *            the parent page
+	 */
 	public DataSourceBusinessPage(Composite parent, int style,
 			IBusinessClassEditorPage parentPage) {
 		super(parent, style);
@@ -75,6 +118,14 @@ public class DataSourceBusinessPage extends Composite {
 		createContents(this);
 	}
 
+	/**
+	 * Creates the contents.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContents(Composite composite) {
 
 		composite.setLayout(new GridLayout(3, false));
@@ -124,6 +175,12 @@ public class DataSourceBusinessPage extends Composite {
 		makeAction();
 	}
 
+	/**
+	 * Make action.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void makeAction() {
 		btn_select.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
@@ -185,6 +242,12 @@ public class DataSourceBusinessPage extends Composite {
 		});
 	}
 
+	/**
+	 * Inits the control value.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void initControlValue() {
 //		PropertyEditor editor = parentPage.getEditingProperty().getEditor();
 		if(parentPage instanceof PropertyEditorPage){
@@ -225,6 +288,13 @@ public class DataSourceBusinessPage extends Composite {
 
 	}
 
+	/**
+	 * Validate input.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public String validateInput() {
 		String errorMessage = null;
 		if (businessClass != null) {
@@ -241,12 +311,27 @@ public class DataSourceBusinessPage extends Composite {
 		return errorMessage;
 	}
 
+	/**
+	 * Sets the content back grand.
+	 *
+	 * @author mqfdy
+	 * @param color
+	 *            the new content back grand
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setContentBackGrand(Color color) {
 		label_bcSelect.setBackground(color);
 		label_key.setBackground(color);
 		label_value.setBackground(color);
 	}
 
+	/**
+	 * Gets the param map.
+	 *
+	 * @author mqfdy
+	 * @return the param map
+	 * @Date 2018-09-03 09:00
+	 */
 	public Map<String, String> getParamMap() {
 		Map<String, String> map = new HashMap<String, String>();
 		int indexKey = combo_key.getSelectionIndex();
@@ -261,18 +346,47 @@ public class DataSourceBusinessPage extends Composite {
 		return map;
 	}
 
+	/**
+	 * Sets the text sql.
+	 *
+	 * @author mqfdy
+	 * @param str
+	 *            the new text sql
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setTextSql(String str) {
 		this.text_sql = str;
 	}
 
+	/**
+	 * Gets the business class.
+	 *
+	 * @author mqfdy
+	 * @return the business class
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessClass getBusinessClass() {
 		return businessClass;
 	}
 
+	/**
+	 * Gets the parent page.
+	 *
+	 * @author mqfdy
+	 * @return the parent page
+	 * @Date 2018-09-03 09:00
+	 */
 	public IBusinessClassEditorPage getParentPage() {
 		return parentPage;
 	}
 
+	/**
+	 * Gets the editor.
+	 *
+	 * @author mqfdy
+	 * @return the editor
+	 * @Date 2018-09-03 09:00
+	 */
 	public PropertyEditor getEditor() {
 		return editor;
 	}

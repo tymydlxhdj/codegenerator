@@ -14,19 +14,35 @@ import org.eclipse.swt.widgets.Shell;
 import com.mqfdy.code.designer.models.ImageKeys;
 import com.mqfdy.code.designer.models.ImageManager;
 
+// TODO: Auto-generated Javadoc
 /**
- * 自动布局对话框
- * 
+ * 自动布局对话框.
+ *
  * @author mqfdy
- * 
  */
 public class AutoLayoutDiaolg extends TrayDialog {
 
+	/** The style. */
 	private int style = 0;
+	
+	/**
+	 * Instantiates a new auto layout diaolg.
+	 *
+	 * @param shell
+	 *            the shell
+	 */
 	public AutoLayoutDiaolg(Shell shell) {
 		super(shell);
 	}
 	
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
@@ -37,6 +53,15 @@ public class AutoLayoutDiaolg extends TrayDialog {
 		newShell.setImage(icon);
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	protected Control createDialogArea(Composite parent) {
 		// 初始化窗口
 		GridLayout gridLayout = new GridLayout(1, true);
@@ -115,6 +140,13 @@ public class AutoLayoutDiaolg extends TrayDialog {
 	}
 	
 
+	/**
+	 * Gets the style.
+	 *
+	 * @author mqfdy
+	 * @return the style
+	 * @Date 2018-09-03 09:00
+	 */
 	public int getStyle() {
 		return style;
 	}

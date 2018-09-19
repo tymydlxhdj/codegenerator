@@ -16,20 +16,26 @@ import java.util.NoSuchElementException;
 
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
+// TODO: Auto-generated Javadoc
 /**
- * A <code>ResultSetIterator</code> wraps a <code>ResultSet</code>
- * and transforms its rows for client consumption. Subclasses can override
- * <code>#buildNext(ResultSet)</code> to build the expected object from
- * the current row of the result set.
+ * A <code>ResultSetIterator</code> wraps a <code>ResultSet</code> and
+ * transforms its rows for client consumption. Subclasses can override
+ * <code>#buildNext(ResultSet)</code> to build the expected object from the
+ * current row of the result set.
  * <p>
- * To use, supply:<ul>
- * <li> a <code>ResultSet</code>
- * <li> an <code>Adapter</code> that converts a row in the <code>ResultSet</code>
- * into the desired object
- * (alternatively, subclass <code>ResultSetIterator</code>
- * and override the <code>buildNext(ResultSet)</code> method)
+ * To use, supply:
+ * <ul>
+ * <li>a <code>ResultSet</code>
+ * <li>an <code>Adapter</code> that converts a row in the <code>ResultSet</code>
+ * into the desired object (alternatively, subclass
+ * <code>ResultSetIterator</code> and override the
+ * <code>buildNext(ResultSet)</code> method)
  * </ul>
  * <p>
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class ResultSetIterator<E>
 	implements Iterator<E>
@@ -41,8 +47,13 @@ public class ResultSetIterator<E>
 
 
 	/**
-	 * Construct an iterator on the specified result set that returns
-	 * the objects produced by the specified adapter.
+	 * Construct an iterator on the specified result set that returns the
+	 * objects produced by the specified adapter.
+	 *
+	 * @param resultSet
+	 *            the result set
+	 * @param adapter
+	 *            the adapter
 	 */
 	public ResultSetIterator(ResultSet resultSet, Adapter<E> adapter) {
 		super();
@@ -53,8 +64,11 @@ public class ResultSetIterator<E>
 	}
 
 	/**
-	 * Construct an iterator on the specified result set that returns
-	 * the first object in each row of the result set.
+	 * Construct an iterator on the specified result set that returns the first
+	 * object in each row of the result set.
+	 *
+	 * @param resultSet
+	 *            the result set
 	 */
 	public ResultSetIterator(ResultSet resultSet) {
 		this(resultSet, Adapter.Default.<E>instance());
@@ -78,9 +92,17 @@ public class ResultSetIterator<E>
 	}
 
 	/**
-	 * By default, return the first object in the current row
-	 * of the result set. Any <code>SQLException</code>s will
-	 * be caught and wrapped in a <code>RuntimeException</code>.
+	 * By default, return the first object in the current row of the result set.
+	 * Any <code>SQLException</code>s will be caught and wrapped in a
+	 * <code>RuntimeException</code>.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @return the e
+	 * @throws SQLException
+	 *             the SQL exception
+	 * @Date 2018-09-03 09:00
 	 */
 	protected E buildNext(ResultSet rs) throws SQLException {
 		return this.adapter.buildNext(rs);
@@ -113,8 +135,12 @@ public class ResultSetIterator<E>
 
 	/**
 	 * Used by <code>ResultSetIterator</code> to convert a
-	 * <code>ResultSet</code>'s current row into the next object
-	 * to be returned by the <code>Iterator</code>.
+	 * <code>ResultSet</code>'s current row into the next object to be returned
+	 * by the <code>Iterator</code>.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
 	 */
 	public interface Adapter<T> {
 

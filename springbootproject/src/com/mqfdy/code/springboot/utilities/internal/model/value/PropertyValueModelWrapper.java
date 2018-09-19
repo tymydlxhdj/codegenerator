@@ -16,10 +16,15 @@ import com.mqfdy.code.springboot.utilities.model.event.PropertyChangeEvent;
 import com.mqfdy.code.springboot.utilities.model.listener.PropertyChangeListener;
 import com.mqfdy.code.springboot.utilities.model.value.PropertyValueModel;
 
+// TODO: Auto-generated Javadoc
 /**
- * This abstract class provides the infrastructure needed to wrap
- * another property value model, "lazily" listen to it, and propagate
- * its change notifications.
+ * This abstract class provides the infrastructure needed to wrap another
+ * property value model, "lazily" listen to it, and propagate its change
+ * notifications.
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
  */
 public abstract class PropertyValueModelWrapper<T>
 	extends AbstractModel
@@ -35,8 +40,11 @@ public abstract class PropertyValueModelWrapper<T>
 	// ********** constructors/initialization **********
 
 	/**
-	 * Construct a property value model with the specified wrapped
-	 * property value model. The value holder is required.
+	 * Construct a property value model with the specified wrapped property
+	 * value model. The value holder is required.
+	 *
+	 * @param valueHolder
+	 *            the value holder
 	 */
 	protected PropertyValueModelWrapper(PropertyValueModel<? extends T> valueHolder) {
 		super();
@@ -52,6 +60,13 @@ public abstract class PropertyValueModelWrapper<T>
 		return new SingleAspectChangeSupport(this, PropertyChangeListener.class, PropertyValueModel.VALUE);
 	}
 
+	/**
+	 * Builds the value change listener.
+	 *
+	 * @author mqfdy
+	 * @return the property change listener
+	 * @Date 2018-09-03 09:00
+	 */
 	protected PropertyChangeListener buildValueChangeListener() {
 		return new PropertyChangeListener() {
 			public void propertyChanged(PropertyChangeEvent event) {
@@ -137,8 +152,13 @@ public abstract class PropertyValueModelWrapper<T>
 	// ********** property change support **********
 
 	/**
-	 * The value of the wrapped value holder has changed;
-	 * propagate the change notification appropriately.
+	 * The value of the wrapped value holder has changed; propagate the change
+	 * notification appropriately.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
 	 */
 	protected abstract void valueChanged(PropertyChangeEvent event);
 

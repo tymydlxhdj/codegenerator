@@ -6,11 +6,26 @@ import com.mqfdy.code.designer.editor.BusinessModelDiagramEditor;
 import com.mqfdy.code.designer.models.ImageKeys;
 import com.mqfdy.code.designer.models.ImageManager;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DiagramSelectAction.
+ *
+ * @author mqfdy
+ */
 public class DiagramSelectAction extends Action {
+	
+	/** The business model diagram editor. */
 	BusinessModelDiagramEditor businessModelDiagramEditor;
 
+	/** The menu creator. */
 	private DiagramSelectMenuCreator menuCreator;
 	
+	/**
+	 * Instantiates a new diagram select action.
+	 *
+	 * @param businessModelDiagramEditor
+	 *            the business model diagram editor
+	 */
 	public DiagramSelectAction(
 			BusinessModelDiagramEditor businessModelDiagramEditor) {
 		super("com.sgcc.uap.mdd.designer.editor.actions.DiagramSelectAction", 

@@ -27,6 +27,7 @@ import org.apache.velocity.util.ExceptionUtils;
 import org.apache.velocity.util.introspection.Info;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Calls on request all registered event handlers for a particular event. Each
  * method accepts two event cartridges (typically one from the application and
@@ -42,17 +43,23 @@ public class EventHandlerUtil {
     
     
     /**
-     * Called before a reference is inserted. All event handlers are called in
-     * sequence. The default implementation inserts the reference as is.
-     * 
-     * This is a major hotspot method called by ASTReference render.
-     *
-     * @param reference reference from template about to be inserted
-     * @param value value about to be inserted (after toString() )
-     * @param rsvc current instance of RuntimeServices
-     * @param context The internal context adapter.
-     * @return Object on which toString() should be called for output.
-     */
+	 * Called before a reference is inserted. All event handlers are called in
+	 * sequence. The default implementation inserts the reference as is.
+	 * 
+	 * This is a major hotspot method called by ASTReference render.
+	 *
+	 * @author mqfdy
+	 * @param rsvc
+	 *            current instance of RuntimeServices
+	 * @param context
+	 *            The internal context adapter.
+	 * @param reference
+	 *            reference from template about to be inserted
+	 * @param value
+	 *            value about to be inserted (after toString() )
+	 * @return Object on which toString() should be called for output.
+	 * @Date 2018-9-3 11:38:36
+	 */
     public static Object referenceInsert(RuntimeServices rsvc,
             InternalContextAdapter context, String reference, Object value)
     {
@@ -111,16 +118,22 @@ public class EventHandlerUtil {
     }
 
     /**
-     * Called when a null is evaluated during a #set. All event handlers are
-     * called in sequence until a false is returned. The default implementation
-     * always returns true.
-     *
-     * @param lhs Left hand side of the expression.
-     * @param rhs Right hand side of the expression.
-     * @param rsvc current instance of RuntimeServices
-     * @param context The internal context adapter.
-     * @return true if to be logged, false otherwise
-     */
+	 * Called when a null is evaluated during a #set. All event handlers are
+	 * called in sequence until a false is returned. The default implementation
+	 * always returns true.
+	 *
+	 * @author mqfdy
+	 * @param rsvc
+	 *            current instance of RuntimeServices
+	 * @param context
+	 *            The internal context adapter.
+	 * @param lhs
+	 *            Left hand side of the expression.
+	 * @param rhs
+	 *            Right hand side of the expression.
+	 * @return true if to be logged, false otherwise
+	 * @Date 2018-9-3 11:38:36
+	 */
     public static boolean shouldLogOnNullSet(RuntimeServices rsvc,
             InternalContextAdapter context, String lhs, String rhs)
     {
@@ -156,22 +169,26 @@ public class EventHandlerUtil {
     }
     
     /**
-     * Called when a method exception is generated during Velocity merge. Only
-     * the first valid event handler in the sequence is called. The default
-     * implementation simply rethrows the exception.
-     *
-     * @param claz
-     *            Class that is causing the exception
-     * @param method
-     *            method called that causes the exception
-     * @param e
-     *            Exception thrown by the method
-     * @param rsvc current instance of RuntimeServices
-     * @param context The internal context adapter.
-     * @return Object to return as method result
-     * @throws Exception
-     *             to be wrapped and propogated to app
-     */
+	 * Called when a method exception is generated during Velocity merge. Only
+	 * the first valid event handler in the sequence is called. The default
+	 * implementation simply rethrows the exception.
+	 *
+	 * @author mqfdy
+	 * @param rsvc
+	 *            current instance of RuntimeServices
+	 * @param context
+	 *            The internal context adapter.
+	 * @param claz
+	 *            Class that is causing the exception
+	 * @param method
+	 *            method called that causes the exception
+	 * @param e
+	 *            Exception thrown by the method
+	 * @return Object to return as method result
+	 * @throws Exception
+	 *             to be wrapped and propogated to app
+	 * @Date 2018-9-3 11:38:36
+	 */
     public static Object methodException(RuntimeServices rsvc,
             InternalContextAdapter context, Class claz, String method,
             Exception e) throws Exception 
@@ -203,25 +220,28 @@ public class EventHandlerUtil {
     }
     
     /**
-     * Called when an include-type directive is encountered (#include or
-     * #parse). All the registered event handlers are called unless null is
-     * returned. The default implementation always processes the included
-     * resource.
-     *
-     * @param includeResourcePath
-     *            the path as given in the include directive.
-     * @param currentResourcePath
-     *            the path of the currently rendering template that includes the
-     *            include directive.
-     * @param directiveName
-     *            name of the directive used to include the resource. (With the
-     *            standard directives this is either "parse" or "include").
-     * @param rsvc current instance of RuntimeServices
-     * @param context The internal context adapter.
-     *
-     * @return a new resource path for the directive, or null to block the
-     *         include from occurring.
-     */
+	 * Called when an include-type directive is encountered (#include or
+	 * #parse). All the registered event handlers are called unless null is
+	 * returned. The default implementation always processes the included
+	 * resource.
+	 *
+	 * @author mqfdy
+	 * @param rsvc
+	 *            current instance of RuntimeServices
+	 * @param context
+	 *            The internal context adapter.
+	 * @param includeResourcePath
+	 *            the path as given in the include directive.
+	 * @param currentResourcePath
+	 *            the path of the currently rendering template that includes the
+	 *            include directive.
+	 * @param directiveName
+	 *            name of the directive used to include the resource. (With the
+	 *            standard directives this is either "parse" or "include").
+	 * @return a new resource path for the directive, or null to block the
+	 *         include from occurring.
+	 * @Date 2018-9-3 11:38:36
+	 */
     public static String includeEvent(RuntimeServices rsvc,
             InternalContextAdapter context, String includeResourcePath,
             String currentResourcePath, String directiveName)
@@ -261,16 +281,25 @@ public class EventHandlerUtil {
    
 
     /**
-     * Called when an invalid get method is encountered.
-     * 
-     * @param rsvc current instance of RuntimeServices
-     * @param context the context when the reference was found invalid
-     * @param reference complete invalid reference
-     * @param object object from reference, or null if not available
-     * @param property name of property, or null if not relevant
-     * @param info contains info on template, line, col
-     * @return substitute return value for missing reference, or null if no substitute
-     */
+	 * Called when an invalid get method is encountered.
+	 *
+	 * @author mqfdy
+	 * @param rsvc
+	 *            current instance of RuntimeServices
+	 * @param context
+	 *            the context when the reference was found invalid
+	 * @param reference
+	 *            complete invalid reference
+	 * @param object
+	 *            object from reference, or null if not available
+	 * @param property
+	 *            name of property, or null if not relevant
+	 * @param info
+	 *            contains info on template, line, col
+	 * @return substitute return value for missing reference, or null if no
+	 *         substitute
+	 * @Date 2018-9-3 11:38:36
+	 */
     public static Object invalidGetMethod(RuntimeServices rsvc,
             InternalContextAdapter context, String reference, 
             Object object, String property, Info info)
@@ -285,14 +314,21 @@ public class EventHandlerUtil {
         
         
    /**
-     * Called when an invalid set method is encountered.
-     * 
-     * @param rsvc current instance of RuntimeServices
-     * @param context the context when the reference was found invalid
-     * @param leftreference left reference being assigned to
-     * @param rightreference invalid reference on the right
-     * @param info contains info on template, line, col
-     */
+	 * Called when an invalid set method is encountered.
+	 *
+	 * @author mqfdy
+	 * @param rsvc
+	 *            current instance of RuntimeServices
+	 * @param context
+	 *            the context when the reference was found invalid
+	 * @param leftreference
+	 *            left reference being assigned to
+	 * @param rightreference
+	 *            invalid reference on the right
+	 * @param info
+	 *            contains info on template, line, col
+	 * @Date 2018-9-3 11:38:36
+	 */
     public static void invalidSetMethod(RuntimeServices rsvc,
             InternalContextAdapter context, String leftreference, 
             String rightreference, Info info)
@@ -308,16 +344,25 @@ public class EventHandlerUtil {
     }
     
     /**
-     * Called when an invalid method is encountered.
-     * 
-     * @param rsvc current instance of RuntimeServices
-     * @param context the context when the reference was found invalid
-     * @param reference complete invalid reference
-     * @param object object from reference, or null if not available
-     * @param method name of method, or null if not relevant
-     * @param info contains info on template, line, col
-     * @return substitute return value for missing reference, or null if no substitute
-     */
+	 * Called when an invalid method is encountered.
+	 *
+	 * @author mqfdy
+	 * @param rsvc
+	 *            current instance of RuntimeServices
+	 * @param context
+	 *            the context when the reference was found invalid
+	 * @param reference
+	 *            complete invalid reference
+	 * @param object
+	 *            object from reference, or null if not available
+	 * @param method
+	 *            name of method, or null if not relevant
+	 * @param info
+	 *            contains info on template, line, col
+	 * @return substitute return value for missing reference, or null if no
+	 *         substitute
+	 * @Date 2018-9-3 11:38:36
+	 */
     public static Object invalidMethod(RuntimeServices rsvc,
             InternalContextAdapter context,  String reference,
             Object object, String method, Info info)
@@ -332,13 +377,19 @@ public class EventHandlerUtil {
     
     
     /**
-     * Calls event handler method with appropriate chaining across event handlers.
-     * 
-     * @param methodExecutor
-     * @param rsvc current instance of RuntimeServices
-     * @param context The current context
-     * @return return value from method, or null if no return value
-     */
+	 * Calls event handler method with appropriate chaining across event
+	 * handlers.
+	 *
+	 * @author mqfdy
+	 * @param methodExecutor
+	 *            the method executor
+	 * @param rsvc
+	 *            current instance of RuntimeServices
+	 * @param context
+	 *            The current context
+	 * @return return value from method, or null if no return value
+	 * @Date 2018-09-03 09:00
+	 */
     public static Object invalidReferenceHandlerCall(
             EventHandlerMethodExecutor methodExecutor, 
             RuntimeServices rsvc,
@@ -374,11 +425,15 @@ public class EventHandlerUtil {
     }
 
     /**
-     * Initialize the event cartridge if appropriate.
-     * 
-     * @param rsvc current instance of RuntimeServices
-     * @param eventCartridge the event cartridge to be initialized
-     */
+	 * Initialize the event cartridge if appropriate.
+	 *
+	 * @author mqfdy
+	 * @param rsvc
+	 *            current instance of RuntimeServices
+	 * @param eventCartridge
+	 *            the event cartridge to be initialized
+	 * @Date 2018-9-3 11:38:36
+	 */
     private static void initializeEventCartridge(RuntimeServices rsvc, EventCartridge eventCartridge)
     {
         if (eventCartridge != null)
@@ -396,13 +451,22 @@ public class EventHandlerUtil {
     
     
     /**
-     * Loop through both the application level and context-attached event handlers.
-     * 
-     * @param applicationEventHandlerIterator Iterator that loops through all global event handlers declared at application level
-     * @param contextEventHandlerIterator Iterator that loops through all global event handlers attached to context
-     * @param eventExecutor Strategy object that executes event handler method
-     * @exception Exception generic exception potentially thrown by event handlers
-     */
+	 * Loop through both the application level and context-attached event
+	 * handlers.
+	 *
+	 * @author mqfdy
+	 * @param applicationEventHandlerIterator
+	 *            Iterator that loops through all global event handlers declared
+	 *            at application level
+	 * @param contextEventHandlerIterator
+	 *            Iterator that loops through all global event handlers attached
+	 *            to context
+	 * @param eventExecutor
+	 *            Strategy object that executes event handler method
+	 * @exception Exception
+	 *                generic exception potentially thrown by event handlers
+	 * @Date 2018-9-3 11:38:36
+	 */
     private static void callEventHandlers(
             Iterator applicationEventHandlerIterator, 
             Iterator contextEventHandlerIterator,
@@ -422,12 +486,17 @@ public class EventHandlerUtil {
     }
     
     /**
-     * Loop through a given iterator of event handlers.
-     * 
-     * @param handlerIterator Iterator that loops through event handlers
-     * @param eventExecutor Strategy object that executes event handler method
-     * @exception Exception generic exception potentially thrown by event handlers
-     */
+	 * Loop through a given iterator of event handlers.
+	 *
+	 * @author mqfdy
+	 * @param handlerIterator
+	 *            Iterator that loops through event handlers
+	 * @param eventExecutor
+	 *            Strategy object that executes event handler method
+	 * @exception Exception
+	 *                generic exception potentially thrown by event handlers
+	 * @Date 2018-9-3 11:38:36
+	 */
     private static void iterateOverEventHandlers(
             Iterator handlerIterator,
             EventHandlerMethodExecutor eventExecutor)

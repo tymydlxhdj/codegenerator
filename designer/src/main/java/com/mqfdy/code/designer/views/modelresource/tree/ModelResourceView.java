@@ -59,49 +59,78 @@ import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.SolidifyPackage;
 import com.mqfdy.code.model.graph.DiagramElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * BusinessObjectModel 对象浏览操作视图
- * 
+ * BusinessObjectModel 对象浏览操作视图.
+ *
  * @author mqfdy
- * 
  */
 public class ModelResourceView extends Composite {
 
+	/** The business model manager. */
 	private BusinessModelManager businessModelManager;
 
+	/** The tree viewer. */
 	private TreeViewer treeViewer;
 
+	/** The tree. */
 	private Tree tree;
+	
+	/** The filter tree. */
 	private FilteredTree filterTree;
 	
+	/** The tree menu. */
 	private Menu treeMenu;
+	
+	/** The menu manager. */
 	private MenuManager menuManager;
-	/**
-	 * 菜单动作
-	 */
+	
+	/** 菜单动作. */
 //	private CopyModelFromTreeAction copyProAction;
 //	private PasteModelFromTreeAction pasteModelFromTreeAction;
 	private GenerateAction generateAction;
+	
+	/** The validate action. */
 	private ModelValidateAction validateAction;
+	
+	/** The add package action. */
 	private AddPackageAction addPackageAction;
+	
+	/** The add diagram action. */
 	private AddDiagramAction addDiagramAction;
+	
+	/** The add business class action. */
 	private AddBusinessClassAction addBusinessClassAction;
+	
+	/** The add enumeration action. */
 	private AddEnumerationAction addEnumerationAction;
+	
+	/** The refresh action. */
 	private RefreshAction refreshAction;
 	// private AddDTOAction addDTOAction;
 	// private AddComplexDataTypeAction addComplexDataTypeAction;
 
+	/** The add one 2 one action. */
 	private AddAssocitionAction addOne2OneAction;
+	
+	/** The add one 2 mult action. */
 	private AddAssocitionAction addOne2MultAction;
+	
+	/** The add mult 2 one action. */
 	private AddAssocitionAction addMult2OneAction;
+	
+	/** The add mult 2 mult action. */
 	private AddAssocitionAction addMult2MultAction;
 
 	// private AddInheritanceAction addInheritanceAction;
 
+	/** The deleted model element action. */
 	private DeleteModelElementAction deletedModelElementAction;;
 
+	/** The double click tree action. */
 	private DoubleClickTreeAction doubleClickTreeAction;
 
+	/** The bm listener. */
 	private final BusinessModelListenerAdapter bmListener = new BusinessModelListenerAdapter() {
 
 		public void modelElementAdd(AbstractModelElement element) {
@@ -136,6 +165,14 @@ public class ModelResourceView extends Composite {
 
 	// private Text filterText;
 
+	/**
+	 * Instantiates a new model resource view.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 */
 	public ModelResourceView(Composite parent, int style) {
 		super(parent, style);
 		setLayout(new FillLayout());
@@ -143,6 +180,16 @@ public class ModelResourceView extends Composite {
 		createActions();
 	}
 
+	/**
+	 * Instantiates a new model resource view.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param businessModelManager
+	 *            the business model manager
+	 */
 	public ModelResourceView(Composite parent, int style,
 			BusinessModelManager businessModelManager) {
 		super(parent, style);
@@ -163,6 +210,12 @@ public class ModelResourceView extends Composite {
 	// textgridData.grabExcessHorizontalSpace = true;
 	// textgridData.verticalAlignment = GridData.CENTER;
 	// filterText.setLayoutData(textgridData);
+	/**
+	 * Inits the tree viewer.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	// }
 	private void initTreeViewer() {
 		// createFilterText();
@@ -261,6 +314,12 @@ public class ModelResourceView extends Composite {
 
 	}
 
+	/**
+	 * Inits the tree viewer data.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void initTreeViewerData() {
 		businessModelManager.updateReferenceObjects();
 		List<BusinessObjectModel> boms = new ArrayList<BusinessObjectModel>();
@@ -272,7 +331,10 @@ public class ModelResourceView extends Composite {
 	}
 
 	/**
-	 * 初始化菜单
+	 * 初始化菜单.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void resetMenu() {
 		if (menuManager == null) {
@@ -397,6 +459,12 @@ public class ModelResourceView extends Composite {
 		tree.setMenu(treeMenu);
 	}
 
+	/**
+	 * Creates the actions.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createActions() {
 		generateAction = new GenerateAction(businessModelManager);
 //		copyProAction = new CopyModelFromTreeAction(treeViewer);
@@ -429,11 +497,22 @@ public class ModelResourceView extends Composite {
 		doubleClickTreeAction = new DoubleClickTreeAction(treeViewer);
 	}
 
+	/**
+	 * Gets the tree viewer.
+	 *
+	 * @author mqfdy
+	 * @return the tree viewer
+	 * @Date 2018-09-03 09:00
+	 */
 	public TreeViewer getTreeViewer() {
 		return this.treeViewer;
 	}
+	
 	/**
-	 * 添加拖动事件
+	 * 添加拖动事件.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void initDragAndDrop() {
 		Transfer[] transfer = new Transfer[] {
@@ -446,10 +525,24 @@ public class ModelResourceView extends Composite {
 				adapter);
 	}
 
+	/**
+	 * Gets the business model manager.
+	 *
+	 * @author mqfdy
+	 * @return the business model manager
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessModelManager getBusinessModelManager() {
 		return businessModelManager;
 	}
 	
+	/**
+	 * Gets the filter tree.
+	 *
+	 * @author mqfdy
+	 * @return the filter tree
+	 * @Date 2018-09-03 09:00
+	 */
 	public FilteredTree getFilterTree() {
 		return filterTree;
 	}

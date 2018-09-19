@@ -14,8 +14,13 @@ import java.util.Iterator;
 import com.mqfdy.code.springboot.utilities.internal.iterators.EmptyIterator;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * An <code>EmptyIterable</code> is just that.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public final class EmptyIterable<E>
 	implements Iterable<E>
@@ -27,6 +32,12 @@ public final class EmptyIterable<E>
 
 	/**
 	 * Return the singleton.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @return the iterable
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> Iterable<T> instance() {

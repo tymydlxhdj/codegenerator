@@ -23,6 +23,12 @@ public class AWTListChangeListenerWrapper
 {
 	private final ListChangeListener listener;
 
+	/**
+	 * Instantiates a new AWT list change listener wrapper.
+	 *
+	 * @param listener
+	 *            the listener
+	 */
 	public AWTListChangeListenerWrapper(ListChangeListener listener) {
 		super();
 		if (listener == null) {

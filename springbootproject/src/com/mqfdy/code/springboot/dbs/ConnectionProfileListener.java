@@ -9,6 +9,7 @@
  ******************************************************************************/
 package com.mqfdy.code.springboot.dbs;
 
+// TODO: Auto-generated Javadoc
 /**
  * A ProfileListener is notified of any changes to the connection profiles.
  * 
@@ -23,16 +24,27 @@ package com.mqfdy.code.springboot.dbs;
 public interface ConnectionProfileListener {
 
 	/**
-	 * The specified old profile has been replaced with the specified
-	 * new profile. The old profile is a "null" profile when a profile is
-	 * added. The new profile is a "null" profile when a profile is
-	 * removed.
+	 * The specified old profile has been replaced with the specified new
+	 * profile. The old profile is a "null" profile when a profile is added. The
+	 * new profile is a "null" profile when a profile is removed.
+	 *
+	 * @author mqfdy
+	 * @param oldProfile
+	 *            the old profile
+	 * @param newProfile
+	 *            the new profile
+	 * @Date 2018-09-03 09:00
 	 */
 	public void connectionProfileReplaced(ConnectionProfile oldProfile, ConnectionProfile newProfile);
 
 	/**
-	 * The specified profile has been modified. Modification includes
-	 * changes to any properties, the name, auto-connect flag, etc.
+	 * The specified profile has been modified. Modification includes changes to
+	 * any properties, the name, auto-connect flag, etc.
+	 *
+	 * @author mqfdy
+	 * @param profile
+	 *            the profile
+	 * @Date 2018-09-03 09:00
 	 */
 	public void connectionProfileChanged(ConnectionProfile profile);
 

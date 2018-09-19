@@ -22,6 +22,7 @@ package org.apache.velocity.util;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
+// TODO: Auto-generated Javadoc
 /**
  * Use this to create a new Exception.  This will run under JDK 1.3 or greater.
  * However, it running under JDK 1.4 it will set the cause.
@@ -31,14 +32,21 @@ import java.lang.reflect.Method;
  */
 public class ExceptionUtils
 {
+    
+    /** The causes allowed. */
     private static boolean causesAllowed = true;
 
     /**
-     * Create a new RuntimeException, setting the cause if possible.
-     * @param message
-     * @param cause
-     * @return A runtime exception object.
-     */
+	 * Create a new RuntimeException, setting the cause if possible.
+	 *
+	 * @author mqfdy
+	 * @param message
+	 *            the message
+	 * @param cause
+	 *            the cause
+	 * @return A runtime exception object.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public static RuntimeException createRuntimeException(
             String message, Throwable cause)
     {
@@ -47,12 +55,18 @@ public class ExceptionUtils
     }
 
     /**
-     * Create a new Exception, setting the cause if possible.
-     * @param clazz
-     * @param message
-     * @param cause
-     * @return A Throwable.
-     */
+	 * Create a new Exception, setting the cause if possible.
+	 *
+	 * @author mqfdy
+	 * @param clazz
+	 *            the clazz
+	 * @param message
+	 *            the message
+	 * @param cause
+	 *            the cause
+	 * @return A Throwable.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public static Throwable createWithCause(Class clazz,
             String message, Throwable cause)
     {
@@ -99,10 +113,15 @@ public class ExceptionUtils
     }
 
     /**
-     * Set the cause of the Exception.  Will detect if this is not allowed.
-     * @param onObject
-     * @param cause
-     */
+	 * Set the cause of the Exception. Will detect if this is not allowed.
+	 *
+	 * @author mqfdy
+	 * @param onObject
+	 *            the on object
+	 * @param cause
+	 *            the cause
+	 * @Date 2018-9-3 11:38:31
+	 */
     public static void setCause(Throwable onObject, Throwable cause)
     {
         if (causesAllowed)

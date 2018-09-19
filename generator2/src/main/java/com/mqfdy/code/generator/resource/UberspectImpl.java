@@ -51,9 +51,10 @@ import org.apache.velocity.util.introspection.VelMethod;
 import org.apache.velocity.util.introspection.VelPropertyGet;
 import org.apache.velocity.util.introspection.VelPropertySet;
 
+// TODO: Auto-generated Javadoc
 /**
- *  Implementation of Uberspect to provide the default introspective
- *  functionality of Velocity
+ * Implementation of Uberspect to provide the default introspective
+ * functionality of Velocity.
  *
  * @author <a href="mailto:geirm@optonline.net">Geir Magnusson Jr.</a>
  * @author <a href="mailto:henning@apache.org">Henning P. Schmiedehausen</a>
@@ -66,16 +67,17 @@ public class UberspectImpl implements Uberspect, UberspectLoggable
      */
     protected Log log;
 
-    /**
-     *  the default Velocity introspector
-     */
+    /** the default Velocity introspector. */
     protected Introspector introspector;
 
     /**
-     *  init - generates the Introspector. As the setup code
-     *  makes sure that the log gets set before this is called,
-     *  we can initialize the Introspector using the log object.
-     */
+	 * init - generates the Introspector. As the setup code makes sure that the
+	 * log gets set before this is called, we can initialize the Introspector
+	 * using the log object.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:29
+	 */
     public void init()
     {
         introspector = new Introspector(log);
@@ -94,9 +96,12 @@ public class UberspectImpl implements Uberspect, UberspectLoggable
     }
 
     /**
-     * @param runtimeLogger
-     * @deprecated Use setLog(Log log) instead.
-     */
+	 * Sets the runtime logger.
+	 *
+	 * @param runtimeLogger
+	 *            the new runtime logger
+	 * @deprecated Use setLog(Log log) instead.
+	 */
     public void setRuntimeLogger(RuntimeLogger runtimeLogger)
     {
         // in the off chance anyone still uses this method
@@ -105,13 +110,18 @@ public class UberspectImpl implements Uberspect, UberspectLoggable
     }
 
     /**
-     *  To support iterative objects used in a <code>#foreach()</code>
-     *  loop.
-     *
-     * @param obj The iterative object.
-     * @param i Info about the object's location.
-     * @return An {@link Iterator} object.
-     */
+	 * To support iterative objects used in a <code>#foreach()</code> loop.
+	 *
+	 * @author mqfdy
+	 * @param obj
+	 *            The iterative object.
+	 * @param i
+	 *            Info about the object's location.
+	 * @return An {@link Iterator} object.
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:29
+	 */
     public Iterator getIterator(Object obj, Info i)
         throws Exception
     {
@@ -190,13 +200,22 @@ public class UberspectImpl implements Uberspect, UberspectLoggable
     }
 
     /**
-     *  Method
-     * @param obj
-     * @param methodName
-     * @param args
-     * @param i
-     * @return A Velocity Method.
-     */
+	 * Method.
+	 *
+	 * @author mqfdy
+	 * @param obj
+	 *            the obj
+	 * @param methodName
+	 *            the method name
+	 * @param args
+	 *            the args
+	 * @param i
+	 *            the i
+	 * @return A Velocity Method.
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:29
+	 */
     public VelMethod getMethod(Object obj, String methodName, Object[] args, Info i)
         throws Exception
     {
@@ -237,13 +256,20 @@ public class UberspectImpl implements Uberspect, UberspectLoggable
     }
 
     /**
-     * Property  getter
-     * @param obj
-     * @param identifier
-     * @param i
-     * @return A Velocity Getter Method.
-     * @throws Exception
-     */
+	 * Property getter.
+	 *
+	 * @author mqfdy
+	 * @param obj
+	 *            the obj
+	 * @param identifier
+	 *            the identifier
+	 * @param i
+	 *            the i
+	 * @return A Velocity Getter Method.
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:29
+	 */
     public VelPropertyGet getPropertyGet(Object obj, String identifier, Info i)
         throws Exception
     {
@@ -291,14 +317,22 @@ public class UberspectImpl implements Uberspect, UberspectLoggable
     }
 
     /**
-     * Property setter
-     * @param obj
-     * @param identifier
-     * @param arg
-     * @param i
-     * @return A Velocity Setter method.
-     * @throws Exception
-     */
+	 * Property setter.
+	 *
+	 * @author mqfdy
+	 * @param obj
+	 *            the obj
+	 * @param identifier
+	 *            the identifier
+	 * @param arg
+	 *            the arg
+	 * @param i
+	 *            the i
+	 * @return A Velocity Setter method.
+	 * @throws Exception
+	 *             the exception
+	 * @Date 2018-9-3 11:38:29
+	 */
     public VelPropertySet getPropertySet(Object obj, String identifier,
                                          Object arg, Info i) throws Exception
     {
@@ -335,39 +369,68 @@ public class UberspectImpl implements Uberspect, UberspectLoggable
     }
 
     /**
-     *  Implementation of VelMethod
-     */
+	 * Implementation of VelMethod.
+	 *
+	 * @author mqfdy
+	 */
     public static class VelMethodImpl implements VelMethod
     {
+        
+        /** The method. */
         final Method method;
+        
+        /** The is var arg. */
         Boolean isVarArg;
+        
+        /** The wrap array. */
         boolean wrapArray;
 
         /**
-         * @param m
-         */
+		 * Instantiates a new vel method impl.
+		 *
+		 * @param m
+		 *            the m
+		 */
         public VelMethodImpl(Method m)
         {
             this(m, false);
         }
 
         /**
-         * @since 1.6
-         */
+		 * Instantiates a new vel method impl.
+		 *
+		 * @param method
+		 *            the method
+		 * @param wrapArray
+		 *            the wrap array
+		 * @since 1.6
+		 */
         public VelMethodImpl(Method method, boolean wrapArray)
         {
             this.method = method;
             this.wrapArray = wrapArray;
         }
 
+        /**
+		 * Instantiates a new vel method impl.
+		 */
         private VelMethodImpl()
         {
             method = null;
         }
 
         /**
-         * @see VelMethod#invoke(java.lang.Object, java.lang.Object[])
-         */
+		 * Invoke.
+		 *
+		 * @param o
+		 *            the o
+		 * @param actual
+		 *            the actual
+		 * @return the object
+		 * @throws Exception
+		 *             the exception
+		 * @see VelMethod#invoke(java.lang.Object, java.lang.Object[])
+		 */
         public Object invoke(Object o, Object[] actual)
             throws Exception
         {
@@ -393,20 +456,30 @@ public class UberspectImpl implements Uberspect, UberspectLoggable
         }
 
         /**
-         * Offers an extension point for subclasses (in alternate Uberspects)
-         * to alter the invocation after any array wrapping or varargs handling
-         * has already been completed.
-         * @since 1.6
-         */
+		 * Offers an extension point for subclasses (in alternate Uberspects) to
+		 * alter the invocation after any array wrapping or varargs handling has
+		 * already been completed.
+		 *
+		 * @param o
+		 *            the o
+		 * @param actual
+		 *            the actual
+		 * @return the object
+		 * @throws Exception
+		 *             the exception
+		 * @since 1.6
+		 */
         protected Object doInvoke(Object o, Object[] actual) throws Exception
         {
             return method.invoke(o, actual);
         }
 
         /**
-         * @return true if this method can accept a variable number of arguments
-         * @since 1.6
-         */
+		 * Checks if is var arg.
+		 *
+		 * @return true if this method can accept a variable number of arguments
+		 * @since 1.6
+		 */
         public boolean isVarArg()
         {
             if (isVarArg == null)
@@ -428,15 +501,21 @@ public class UberspectImpl implements Uberspect, UberspectLoggable
         }
 
         /**
-         * @param type The vararg class type (aka component type
-         *             of the expected array arg)
-         * @param index The index of the vararg in the method declaration
-         *              (This will always be one less than the number of
-         *               expected arguments.)
-         * @param actual The actual parameters being passed to this method
-         * @returns The actual parameters adjusted for the varargs in order
-         *          to fit the method declaration.
-         */
+		 * Handle var arg.
+		 *
+		 * @param type
+		 *            The vararg class type (aka component type of the expected
+		 *            array arg)
+		 * @param index
+		 *            The index of the vararg in the method declaration (This
+		 *            will always be one less than the number of expected
+		 *            arguments.)
+		 * @param actual
+		 *            The actual parameters being passed to this method
+		 * @return the object[]
+		 * @returns The actual parameters adjusted for the varargs in order to
+		 *          fit the method declaration.
+		 */
         private Object[] handleVarArg(final Class type,
                                       final int index,
                                       Object[] actual)
@@ -493,24 +572,33 @@ public class UberspectImpl implements Uberspect, UberspectLoggable
         }
 
         /**
-         * @see org.apache.velocity.util.introspection.VelMethod#isCacheable()
-         */
+		 * Checks if is cacheable.
+		 *
+		 * @return true, if is cacheable
+		 * @see org.apache.velocity.util.introspection.VelMethod#isCacheable()
+		 */
         public boolean isCacheable()
         {
             return true;
         }
 
         /**
-         * @see org.apache.velocity.util.introspection.VelMethod#getMethodName()
-         */
+		 * Gets the method name.
+		 *
+		 * @return the method name
+		 * @see org.apache.velocity.util.introspection.VelMethod#getMethodName()
+		 */
         public String getMethodName()
         {
             return method.getName();
         }
 
         /**
-         * @see org.apache.velocity.util.introspection.VelMethod#getReturnType()
-         */
+		 * Gets the return type.
+		 *
+		 * @return the return type
+		 * @see org.apache.velocity.util.introspection.VelMethod#getReturnType()
+		 */
         public Class getReturnType()
         {
             return method.getReturnType();
@@ -518,29 +606,45 @@ public class UberspectImpl implements Uberspect, UberspectLoggable
     }
 
     /**
-     *
-     *
-     */
+	 * The Class VelGetterImpl.
+	 *
+	 * @author mqfdy
+	 */
     public static class VelGetterImpl implements VelPropertyGet
     {
+        
+        /** The get executor. */
         final AbstractExecutor getExecutor;
 
         /**
-         * @param exec
-         */
+		 * Instantiates a new vel getter impl.
+		 *
+		 * @param exec
+		 *            the exec
+		 */
         public VelGetterImpl(AbstractExecutor exec)
         {
             getExecutor = exec;
         }
 
+        /**
+		 * Instantiates a new vel getter impl.
+		 */
         private VelGetterImpl()
         {
             getExecutor = null;
         }
 
         /**
-         * @see org.apache.velocity.util.introspection.VelPropertyGet#invoke(java.lang.Object)
-         */
+		 * Invoke.
+		 *
+		 * @param o
+		 *            the o
+		 * @return the object
+		 * @throws Exception
+		 *             the exception
+		 * @see org.apache.velocity.util.introspection.VelPropertyGet#invoke(java.lang.Object)
+		 */
         public Object invoke(Object o)
             throws Exception
         {
@@ -548,16 +652,22 @@ public class UberspectImpl implements Uberspect, UberspectLoggable
         }
 
         /**
-         * @see org.apache.velocity.util.introspection.VelPropertyGet#isCacheable()
-         */
+		 * Checks if is cacheable.
+		 *
+		 * @return true, if is cacheable
+		 * @see org.apache.velocity.util.introspection.VelPropertyGet#isCacheable()
+		 */
         public boolean isCacheable()
         {
             return true;
         }
 
         /**
-         * @see org.apache.velocity.util.introspection.VelPropertyGet#getMethodName()
-         */
+		 * Gets the method name.
+		 *
+		 * @return the method name
+		 * @see org.apache.velocity.util.introspection.VelPropertyGet#getMethodName()
+		 */
         public String getMethodName()
         {
             return getExecutor.isAlive() ? getExecutor.getMethod().getName() : null;
@@ -565,33 +675,48 @@ public class UberspectImpl implements Uberspect, UberspectLoggable
     }
 
     /**
-     *
-     */
+	 * The Class VelSetterImpl.
+	 *
+	 * @author mqfdy
+	 */
     public static class VelSetterImpl implements VelPropertySet
     {
+        
+        /** The set executor. */
         private final SetExecutor setExecutor;
 
         /**
-         * @param setExecutor
-         */
+		 * Instantiates a new vel setter impl.
+		 *
+		 * @param setExecutor
+		 *            the set executor
+		 */
         public VelSetterImpl(final SetExecutor setExecutor)
         {
             this.setExecutor = setExecutor;
         }
 
+        /**
+		 * Instantiates a new vel setter impl.
+		 */
         private VelSetterImpl()
         {
             setExecutor = null;
         }
 
         /**
-         * Invoke the found Set Executor.
-         *
-         * @param o is the Object to invoke it on.
-         * @param value in the Value to set.
-         * @return The resulting Object.
-         * @throws Exception
-         */
+		 * Invoke the found Set Executor.
+		 *
+		 * @author mqfdy
+		 * @param o
+		 *            is the Object to invoke it on.
+		 * @param value
+		 *            in the Value to set.
+		 * @return The resulting Object.
+		 * @throws Exception
+		 *             the exception
+		 * @Date 2018-9-3 11:38:29
+		 */
         public Object invoke(final Object o, final Object value)
             throws Exception
         {
@@ -599,16 +724,22 @@ public class UberspectImpl implements Uberspect, UberspectLoggable
         }
 
         /**
-         * @see org.apache.velocity.util.introspection.VelPropertySet#isCacheable()
-         */
+		 * Checks if is cacheable.
+		 *
+		 * @return true, if is cacheable
+		 * @see org.apache.velocity.util.introspection.VelPropertySet#isCacheable()
+		 */
         public boolean isCacheable()
         {
             return true;
         }
 
         /**
-         * @see org.apache.velocity.util.introspection.VelPropertySet#getMethodName()
-         */
+		 * Gets the method name.
+		 *
+		 * @return the method name
+		 * @see org.apache.velocity.util.introspection.VelPropertySet#getMethodName()
+		 */
         public String getMethodName()
         {
             return setExecutor.isAlive() ? setExecutor.getMethod().getName() : null;

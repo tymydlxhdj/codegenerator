@@ -7,13 +7,22 @@ import org.eclipse.swt.SWT;
 
 import com.mqfdy.code.model.AbstractModelElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * TableViewer标签定义类 负责定义TableViewer中的列名称
- * 
+ * TableViewer标签定义类 负责定义TableViewer中的列名称.
+ *
  * @author mqfdy
- * 
  */
 public class TableViewerProvider {
+	
+	/**
+	 * Creates the viewer column.
+	 *
+	 * @author mqfdy
+	 * @param tableViewer
+	 *            the table viewer
+	 * @Date 2018-09-03 09:00
+	 */
 	// private static String oldPageName;
 	public static void createViewerColumn(final TableViewer tableViewer) {
 		TableViewerColumn columnName = new TableViewerColumn(tableViewer,

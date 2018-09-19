@@ -20,15 +20,25 @@ import org.eclipse.jdt.core.JavaCore;
 import com.mqfdy.code.utils.Logger;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class StringUtils.
+ *
+ * @author mqfdy
+ */
 public class StringUtils {
 	
+	/** The Constant EOL. */
 	private static final String EOL = System.getProperty("line.separator");
 
 	/**
-	 * 判断字符串是否为 null 或为空字符串。
-	 * 
+	 * 判断字符串是否为 null 或为空字符串。.
+	 *
+	 * @author mqfdy
 	 * @param str
-	 * @return
+	 *            the str
+	 * @return true, if is empty
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean isEmpty(String str) {
 		if (str == null) {
@@ -40,9 +50,13 @@ public class StringUtils {
 	}
 	
 	/**
-	 * 校验表字段是否合规
+	 * 校验表字段是否合规.
+	 *
+	 * @author mqfdy
 	 * @param fieldName
-	 * @return
+	 *            the field name
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean validateFieldName(String fieldName) {
 		
@@ -56,6 +70,15 @@ public class StringUtils {
 		}
 	}
 	
+	/**
+	 * Capitalize.
+	 *
+	 * @author mqfdy
+	 * @param str
+	 *            the str
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String capitalize(String str) {
 		if (str == null || str.length() == 0) {
 			return str;
@@ -66,6 +89,15 @@ public class StringUtils {
 		return sb.toString();
 	}
 	
+	/**
+	 * Concat.
+	 *
+	 * @author mqfdy
+	 * @param list
+	 *            the list
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public String concat(List<String> list) {
 		StringBuffer sb = new StringBuffer();
 		int size = list.size();
@@ -76,16 +108,43 @@ public class StringUtils {
 		return sb.toString();
 	}
 
+	/**
+	 * Gets the package as path.
+	 *
+	 * @author mqfdy
+	 * @param pckge
+	 *            the pckge
+	 * @return the package as path
+	 * @Date 2018-09-03 09:00
+	 */
 	static public String getPackageAsPath(String pckge) {
 		return pckge.replace('.', File.separator.charAt(0)) + File.separator;
 	}
 
+	/**
+	 * Lowercase first letter.
+	 *
+	 * @author mqfdy
+	 * @param str
+	 *            the str
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	static public String lowercaseFirstLetter(String str) {
 		String firstLetter = str.substring(0, 1);
 		String subLetter = str.substring(1);
 		return firstLetter.toLowerCase(Locale.getDefault()).concat(subLetter);
 	}
 
+	/**
+	 * Removes the under scores.
+	 *
+	 * @author mqfdy
+	 * @param data
+	 *            the data
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	@Deprecated
 	static public String removeUnderScores(String data) {
 		String temp = null;
@@ -102,10 +161,30 @@ public class StringUtils {
 		return out.toString();
 	}
 
+	/**
+	 * Removes the and hump.
+	 *
+	 * @author mqfdy
+	 * @param data
+	 *            the data
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	static public String removeAndHump(String data) {
 		return removeAndHump(data, "_");
 	}
 
+	/**
+	 * Removes the and hump.
+	 *
+	 * @author mqfdy
+	 * @param data
+	 *            the data
+	 * @param replaceThis
+	 *            the replace this
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	static public String removeAndHump(String data, String replaceThis) {
 		String temp = null;
 		StringBuffer out = new StringBuffer();
@@ -121,18 +200,47 @@ public class StringUtils {
 		return out.toString();
 	}
 
+	/**
+	 * First letter caps.
+	 *
+	 * @author mqfdy
+	 * @param data
+	 *            the data
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	static public String firstLetterCaps(String data) {
 		String firstLetter = data.substring(0, 1).toUpperCase(Locale.getDefault());
 		String restLetters = data.substring(1).toLowerCase(Locale.getDefault());
 		return firstLetter + restLetters;
 	}
 
+	/**
+	 * Capitalize first letter.
+	 *
+	 * @author mqfdy
+	 * @param data
+	 *            the data
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	static public String capitalizeFirstLetter(String data) {
 		String firstLetter = data.substring(0, 1).toUpperCase(Locale.getDefault());
 		String restLetters = data.substring(1);
 		return firstLetter + restLetters;
 	}
 
+	/**
+	 * Split.
+	 *
+	 * @author mqfdy
+	 * @param line
+	 *            the line
+	 * @param delim
+	 *            the delim
+	 * @return the string[]
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String[] split(String line, String delim) {
 		List<String> list = new ArrayList<String>();
 		StringTokenizer t = new StringTokenizer(line, delim);
@@ -142,10 +250,34 @@ public class StringUtils {
 		return (String[]) list.toArray(new String[list.size()]);
 	}
 
+	/**
+	 * Chop.
+	 *
+	 * @author mqfdy
+	 * @param s
+	 *            the s
+	 * @param i
+	 *            the i
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String chop(String s, int i) {
 		return chop(s, i, EOL);
 	}
 
+	/**
+	 * Chop.
+	 *
+	 * @author mqfdy
+	 * @param s
+	 *            the s
+	 * @param i
+	 *            the i
+	 * @param eol
+	 *            the eol
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String chop(String s, int i, String eol) {
 		if (i == 0 || s == null || eol == null) {
 			return s;
@@ -169,10 +301,32 @@ public class StringUtils {
 		return s.substring(0, length);
 	}
 
+	/**
+	 * String substitution.
+	 *
+	 * @author mqfdy
+	 * @param argStr
+	 *            the arg str
+	 * @param vars
+	 *            the vars
+	 * @return the string buffer
+	 * @Date 2018-09-03 09:00
+	 */
 	public static StringBuffer stringSubstitution(String argStr, Hashtable<String, String> vars) {
 		return stringSubstitution(argStr, (Map<String, String>) vars);
 	}
 
+	/**
+	 * String substitution.
+	 *
+	 * @author mqfdy
+	 * @param argStr
+	 *            the arg str
+	 * @param vars
+	 *            the vars
+	 * @return the string buffer
+	 * @Date 2018-09-03 09:00
+	 */
 	public static StringBuffer stringSubstitution(String argStr, Map<String, String> vars) {
 		StringBuffer argBuf = new StringBuffer();
 
@@ -209,6 +363,15 @@ public class StringUtils {
 		return argBuf;
 	}
 
+	/**
+	 * File contents to string.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String fileContentsToString(String file) {
 		String contents = "";
 
@@ -237,6 +400,15 @@ public class StringUtils {
 		return contents;
 	}
 
+	/**
+	 * Collapse newlines.
+	 *
+	 * @author mqfdy
+	 * @param argStr
+	 *            the arg str
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String collapseNewlines(String argStr) {
 		char last = argStr.charAt(0);
 		StringBuffer argBuf = new StringBuffer();
@@ -252,6 +424,15 @@ public class StringUtils {
 		return argBuf.toString();
 	}
 
+	/**
+	 * Collapse spaces.
+	 *
+	 * @author mqfdy
+	 * @param argStr
+	 *            the arg str
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String collapseSpaces(String argStr) {
 		char last = argStr.charAt(0);
 		StringBuffer argBuf = new StringBuffer();
@@ -267,6 +448,19 @@ public class StringUtils {
 		return argBuf.toString();
 	}
 
+	/**
+	 * Sub.
+	 *
+	 * @author mqfdy
+	 * @param line
+	 *            the line
+	 * @param oldString
+	 *            the old string
+	 * @param newString
+	 *            the new string
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static final String sub(String line, String oldString,
 			String newString) {
 		int i = 0;
@@ -289,6 +483,15 @@ public class StringUtils {
 		return line;
 	}
 
+	/**
+	 * Stack trace.
+	 *
+	 * @author mqfdy
+	 * @param e
+	 *            the e
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static final String stackTrace(Throwable e) {
 		String foo = null;
 		try {
@@ -301,6 +504,15 @@ public class StringUtils {
 		return foo;
 	}
 
+	/**
+	 * Normalize path.
+	 *
+	 * @author mqfdy
+	 * @param path
+	 *            the path
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static final String normalizePath(String path) {
 		String normalized = path;
 		if (normalized.indexOf('\\') >= 0) {
@@ -349,6 +561,19 @@ public class StringUtils {
 		return (normalized);
 	}
 
+	/**
+	 * Select.
+	 *
+	 * @author mqfdy
+	 * @param state
+	 *            the state
+	 * @param trueString
+	 *            the true string
+	 * @param falseString
+	 *            the false string
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public String select(boolean state, String trueString, String falseString) {
 		if (state) {
 			return trueString;
@@ -357,6 +582,15 @@ public class StringUtils {
 		}
 	}
 
+	/**
+	 * All empty.
+	 *
+	 * @author mqfdy
+	 * @param list
+	 *            the list
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean allEmpty(List<String> list) {
 		int size = list.size();
 
@@ -368,6 +602,15 @@ public class StringUtils {
 		return true;
 	}
 
+	/**
+	 * Trim strings.
+	 *
+	 * @author mqfdy
+	 * @param list
+	 *            the list
+	 * @return the list
+	 * @Date 2018-09-03 09:00
+	 */
 	public static List<String> trimStrings(List<String> list) {
 		if (list == null)
 			return null;
@@ -378,6 +621,15 @@ public class StringUtils {
 		return list;
 	}
 
+	/**
+	 * Null trim.
+	 *
+	 * @author mqfdy
+	 * @param s
+	 *            the s
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String nullTrim(String s) {
 		if (s == null) {
 			return null;

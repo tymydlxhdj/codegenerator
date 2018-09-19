@@ -10,14 +10,20 @@ import com.mqfdy.code.designer.models.ImageKeys;
 import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.model.AbstractModelElement;
 
+// TODO: Auto-generated Javadoc
 /**
- * 新增枚举动作
- * 
+ * 新增枚举动作.
+ *
  * @author mqfdy
- * 
  */
 public class AddEnumerationAction extends TreeAction {
 
+	/**
+	 * Instantiates a new adds the enumeration action.
+	 *
+	 * @param treeViewer
+	 *            the tree viewer
+	 */
 	public AddEnumerationAction(TreeViewer treeViewer) {
 		super(ActionTexts.ENUMERATION_ADD);
 		this.setImageDescriptor(ImageManager.getInstance().getImageDescriptor(
@@ -26,12 +32,25 @@ public class AddEnumerationAction extends TreeAction {
 
 	}
 
+	/**
+	 * Instantiates a new adds the enumeration action.
+	 *
+	 * @param text
+	 *            the text
+	 * @param imageDescriptor
+	 *            the image descriptor
+	 * @param treeViewer
+	 *            the tree viewer
+	 */
 	public AddEnumerationAction(String text, ImageDescriptor imageDescriptor,
 			TreeViewer treeViewer) {
 		super(text, imageDescriptor);
 		this.treeViewer = treeViewer;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void run() {
 

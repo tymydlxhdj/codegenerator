@@ -13,19 +13,36 @@ import org.eclipse.ui.console.MessageConsoleStream;
 import com.mqfdy.code.designer.editor.BusinessModelEditorPlugin;
 import com.mqfdy.code.designer.preferences.ModelPreferencePage;
 
+// TODO: Auto-generated Javadoc
+/**
+ * A factory for creating Console objects.
+ *
+ * @author mqfdy
+ */
 public class ConsoleFactory implements IConsoleFactory {
 
+	/** The console. */
 	private static MessageConsole console = new MessageConsole("模型驱动", null);
+	
+	/** The exists. */
 	static boolean exists = false;
 
 	/**
-	 * 描述:打开控制台
-	 * */
+	 * 描述:打开控制台.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void openConsole() {
 		showConsole();
 	}
 
-	/** */
+	/**
+	 * Show console.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	/**
 	 * 描述:显示控制台
 	 * */
@@ -55,7 +72,10 @@ public class ConsoleFactory implements IConsoleFactory {
 	}
 
 	/**
-	 * 描述:关闭控制台
+	 * 描述:关闭控制台.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void closeConsole() {
 		IConsoleManager manager = ConsolePlugin.getDefault()
@@ -67,9 +87,11 @@ public class ConsoleFactory implements IConsoleFactory {
 	}
 
 	/**
-	 * 获取控制台
-	 * 
-	 * @return
+	 * 获取控制台.
+	 *
+	 * @author mqfdy
+	 * @return the console
+	 * @Date 2018-09-03 09:00
 	 */
 	public static MessageConsole getConsole() {
 
@@ -78,13 +100,16 @@ public class ConsoleFactory implements IConsoleFactory {
 	}
 
 	/**
-	 * 校验模型时，根据首选项配置决定向控制台打印一条信息，并激活控制台。
-	 * 
+	 * 校验模型时，根据首选项配置决定向控制台打印一条信息，并激活控制台。.
+	 *
+	 * @author mqfdy
 	 * @param message
+	 *            the message
 	 * @param activate
 	 *            是否激活控制台
 	 * @param error
 	 *            是否错误信息
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void printToConsole(String message, boolean activate,
 			boolean error) {
@@ -103,14 +128,18 @@ public class ConsoleFactory implements IConsoleFactory {
 		} else
 			return;
 	}
+	
 	/**
-	 * 生成代码时向控制台打印一条信息，并激活控制台。
-	 * 
+	 * 生成代码时向控制台打印一条信息，并激活控制台。.
+	 *
+	 * @author mqfdy
 	 * @param message
+	 *            the message
 	 * @param activate
 	 *            是否激活控制台
 	 * @param error
 	 *            是否错误信息
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void printToConsoleGenerate(String message, boolean activate,
 			boolean error) {

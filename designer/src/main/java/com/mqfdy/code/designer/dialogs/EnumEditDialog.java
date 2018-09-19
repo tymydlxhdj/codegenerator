@@ -22,49 +22,70 @@ import com.mqfdy.code.model.ModelPackage;
 import com.mqfdy.code.model.SolidifyPackage;
 import com.mqfdy.code.model.graph.Diagram;
 
+// TODO: Auto-generated Javadoc
 /**
- * 枚举类型编辑对话框
- * 
+ * 枚举类型编辑对话框.
+ *
  * @author mqfdy
- * 
  */
 public class EnumEditDialog extends ModelElementEditorDialog implements
 		IBusinessClassEditorPage {
 
+	/** The dialog title. */
 	public String DIALOG_TITLE = "";
+	
+	/** The dialog title operation. */
 	public final String DIALOG_TITLE_OPERATION = "";
+	
+	/** The dialog message add. */
 	public final String DIALOG_MESSAGE_ADD = "创建枚举类型";
+	
+	/** The dialog message edit. */
 	public final String DIALOG_MESSAGE_EDIT = "修改 枚举类型     ";
 
+	/** The parent. */
 	private AbstractModelElement parent;
 
+	/** The enumeration. */
 	private Enumeration enumeration;
-	/**
-	 * 基本信息标签页
-	 */
+	
+	/** 基本信息标签页. */
 	private TabFolder tabBasic;
 
+	/** The enum basic info page. */
 	private EnumBasicInfoPage enumBasicInfoPage;
-	/**
-	 * 枚举值信息标签页
-	 */
+	
+	/** 枚举值信息标签页. */
 	private TabFolder tabEnumeration;
 
+	/** The enum elements page. */
 	private EnumElementsPage enumElementsPage;
-	/**
-	 * 版本信息
-	 */
+	
+	/** 版本信息. */
 	private VersionInfoPanel versionPanel;
 
+	/** The has save. */
 	private boolean hasSave = false;// 是否已经保存
 
+	/** The manager. */
 	private BusinessModelManager manager = BusinessModelUtil
 			.getEditorBusinessModelManager();
-	/**
-	 * 从组件面板创建
-	 */
+	
+	/** 从组件面板创建. */
 	private boolean createFromPlatter = false;
 	
+	/**
+	 * Instantiates a new enum edit dialog.
+	 *
+	 * @param createFromPlatter
+	 *            the create from platter
+	 * @param parentShell
+	 *            the parent shell
+	 * @param parent
+	 *            the parent
+	 * @param enumeration
+	 *            the enumeration
+	 */
 	public EnumEditDialog(boolean createFromPlatter,Shell parentShell, AbstractModelElement parent,
 			Enumeration enumeration) {
 		this(parentShell, parent, enumeration);
@@ -72,6 +93,17 @@ public class EnumEditDialog extends ModelElementEditorDialog implements
 		if(createFromPlatter)
 			this.DIALOG_TITLE = DIALOG_MESSAGE_ADD;
 	}
+	
+	/**
+	 * Instantiates a new enum edit dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param parent
+	 *            the parent
+	 * @param enumeration
+	 *            the enumeration
+	 */
 	public EnumEditDialog(Shell parentShell, AbstractModelElement parent,
 			Enumeration enumeration) {
 		super(parentShell);
@@ -97,10 +129,22 @@ public class EnumEditDialog extends ModelElementEditorDialog implements
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	protected int getShellStyle() {
 		return super.getShellStyle() | SWT.RESIZE | SWT.MAX;
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Control createDialogArea(Composite composite) {
 		// 初始化窗口
@@ -114,6 +158,14 @@ public class EnumEditDialog extends ModelElementEditorDialog implements
 		return composite;
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		if (operationType.equals(OPERATION_TYPE_ADD)) {
@@ -126,7 +178,10 @@ public class EnumEditDialog extends ModelElementEditorDialog implements
 	}
 
 	/**
-	 * 设置标题和信息
+	 * 设置标题和信息.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setTitleAndMessage() {
 		setTitle("枚举类型");
@@ -141,7 +196,12 @@ public class EnumEditDialog extends ModelElementEditorDialog implements
 	}
 
 	/**
-	 * 初始化创建 标签页
+	 * 初始化创建 标签页.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createtabFolder(Composite composite) {
 		tabBasic = new TabFolder(composite, SWT.NONE);
@@ -164,6 +224,14 @@ public class EnumEditDialog extends ModelElementEditorDialog implements
 		versionPanel.setVisible(false);
 	}
 
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent(Composite parent) {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
@@ -182,6 +250,14 @@ public class EnumEditDialog extends ModelElementEditorDialog implements
 		tabEnumeration.getItem(0).setControl(enumElementsPage);
 	}
 
+	/**
+	 * Creates the buttons for button bar.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void createButtonsForButtonBar(Composite composite) {
 		// if(operationType.equals(OPERATION_TYPE_EDIT))
 		// createButton(composite, 12000, "重构", true);
@@ -193,6 +269,9 @@ public class EnumEditDialog extends ModelElementEditorDialog implements
 //		createButton(composite, APPLY_ID, APPLY_LABEL, true);
 	}
 	
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		if (this.enumeration != null) {
 			enumBasicInfoPage.initControlValue();
@@ -201,6 +280,9 @@ public class EnumEditDialog extends ModelElementEditorDialog implements
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		boolean isOk = enumBasicInfoPage.validateInput();
 		if (isOk == false) {
@@ -215,6 +297,9 @@ public class EnumEditDialog extends ModelElementEditorDialog implements
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 
 		enumBasicInfoPage.updateTheEditingElement();
@@ -233,6 +318,9 @@ public class EnumEditDialog extends ModelElementEditorDialog implements
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		if (validateAllInput() == true /* && !hasSave */) {
@@ -243,6 +331,12 @@ public class EnumEditDialog extends ModelElementEditorDialog implements
 		}
 	}
 
+	/**
+	 * Applyl pressed.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void applylPressed() {
 		if (validateAllInput() == true && !hasSave) {
 			updateTheEditingElement();
@@ -253,6 +347,14 @@ public class EnumEditDialog extends ModelElementEditorDialog implements
 
 	}
 
+	/**
+	 * Button pressed.
+	 *
+	 * @author mqfdy
+	 * @param buttonId
+	 *            the button id
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void buttonPressed(int buttonId) {
 //		if (APPLY_ID == buttonId) {
@@ -262,11 +364,25 @@ public class EnumEditDialog extends ModelElementEditorDialog implements
 //		}
 	}
 
+	/**
+	 * Validate all input.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean validateAllInput() {
 		boolean isOk = this.validateInput();
 		return isOk;
 	}
 
+	/**
+	 * Gets the enumeration.
+	 *
+	 * @author mqfdy
+	 * @return the enumeration
+	 * @Date 2018-09-03 09:00
+	 */
 	public Enumeration getEnumeration() {
 		return enumeration;
 	}

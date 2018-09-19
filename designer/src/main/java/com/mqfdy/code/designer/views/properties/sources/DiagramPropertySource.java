@@ -6,16 +6,24 @@ import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 图PropertyPropertySource
- * 
+ * 图PropertyPropertySource.
+ *
  * @author mqfdy
- * 
  */
 public class DiagramPropertySource extends ModelPropertySource {
+	
+	/** The diagram. */
 	public Diagram diagram;
 
 	// private BusinessModelManager manager =
+	/**
+	 * Instantiates a new diagram property source.
+	 *
+	 * @param property
+	 *            the property
+	 */
 	// BusinessModelUtil.getEditorBusinessModelManager();
 	public DiagramPropertySource(AbstractModelElement property) {
 		super();
@@ -26,9 +34,15 @@ public class DiagramPropertySource extends ModelPropertySource {
 		// }
 	}
 
+	/**
+	 * 
+	 */
 	protected void initializeDescriptors() {
 	}
 
+	/**
+	 * 
+	 */
 	protected void installModelProperty() {
 		addStringModelProperty(IBusinessModelPropertyNames.PROPERTY_COMMON_ID,
 				IBusinessModelPropertyNames.CATEGORY_BASE, "", true, "01");
@@ -47,6 +61,15 @@ public class DiagramPropertySource extends ModelPropertySource {
 		// addButtonModelProperty(IBusinessModelPropertyNames.PROPERTY_ENUMERARION_VALUES,IBusinessModelPropertyNames.CATEGORY_ENUMERARION,"","Diagram","06");
 	}
 
+	/**
+	 * Gets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return the property value
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -74,6 +97,16 @@ public class DiagramPropertySource extends ModelPropertySource {
 			return "";
 	}
 
+	/**
+	 * Sets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPropertyValue(Object propertyId, Object value) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException(propertyId.toString());
@@ -139,10 +172,27 @@ public class DiagramPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * Checks if is property set.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return true, if is property set
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isPropertySet(Object propertyId) {
 		return true;
 	}
 
+	/**
+	 * Reset property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @Date 2018-09-03 09:00
+	 */
 	public void resetPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -156,6 +206,9 @@ public class DiagramPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public Object getEditableValue() {
 		return this;
 	}

@@ -15,30 +15,33 @@ import java.util.regex.Pattern;
 import com.mqfdy.code.springboot.utilities.Filter;
 
 
+// TODO: Auto-generated Javadoc
 // TODO the regex code is not very fast - we could probably do better,
 // hand-coding the matching algorithm (eclipse StringMatcher?)
 /**
  * This class implements a simple string-matching algorithm that is a little
- * more user-friendly than standard regular expressions. Instantiate a
- * string matcher with a filter pattern and then you can use the matcher
- * to determine whether another string (or object) matches the pattern.
- * You can also specify whether the matching should be case-sensitive.
+ * more user-friendly than standard regular expressions. Instantiate a string
+ * matcher with a filter pattern and then you can use the matcher to determine
+ * whether another string (or object) matches the pattern. You can also specify
+ * whether the matching should be case-sensitive.
  * 
- * The pattern can contain two "meta-characters":
- * 	'*' will match any set of zero or more characters
- * 	'?' will match any single character
+ * The pattern can contain two "meta-characters": '*' will match any set of zero
+ * or more characters '?' will match any single character
  * 
- * Subclasses can override #prefix() and/or #suffix() to change what
- * strings are prepended or appended to the original pattern string.
- * This can offer a slight performance improvement over concatenating
- * strings before calling #setPatternString(String).
- * By default, a '*' is appended to every string.
+ * Subclasses can override #prefix() and/or #suffix() to change what strings are
+ * prepended or appended to the original pattern string. This can offer a slight
+ * performance improvement over concatenating strings before calling
+ * #setPatternString(String). By default, a '*' is appended to every string.
  * 
- * This class also uses the string-matching algorithm to "filter" objects
- * (and, as a result, also implements the Filter interface).
- * A string converter is used to determine what string aspect of the
- * object is compared to the pattern. By default the string returned
- * by the object's #toString() method is passed to the pattern matcher.
+ * This class also uses the string-matching algorithm to "filter" objects (and,
+ * as a result, also implements the Filter interface). A string converter is
+ * used to determine what string aspect of the object is compared to the
+ * pattern. By default the string returned by the object's #toString() method is
+ * passed to the pattern matcher.
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
  */
 public class SimpleStringMatcher<T>
 	implements StringMatcher, Filter<T>, Serializable
@@ -73,16 +76,24 @@ public class SimpleStringMatcher<T>
 	}
 
 	/**
-	 * Construct a string matcher with the specified pattern
-	 * that will ignore case.
+	 * Construct a string matcher with the specified pattern that will ignore
+	 * case.
+	 *
+	 * @param patternString
+	 *            the pattern string
 	 */
 	public SimpleStringMatcher(String patternString) {
 		this(patternString, true);
 	}
 
 	/**
-	 * Construct a string matcher with the specified pattern that will
-	 * ignore case as specified.
+	 * Construct a string matcher with the specified pattern that will ignore
+	 * case as specified.
+	 *
+	 * @param patternString
+	 *            the pattern string
+	 * @param ignoresCase
+	 *            the ignores case
 	 */
 	public SimpleStringMatcher(String patternString, boolean ignoresCase) {
 		super();
@@ -94,6 +105,12 @@ public class SimpleStringMatcher<T>
 
 	// ********** initialization **********
 
+	/**
+	 * Initialize.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void initialize() {
 		this.stringConverter = StringConverter.Default.instance();
 		this.rebuildPattern();
@@ -108,9 +125,12 @@ public class SimpleStringMatcher<T>
 	}
 
 	/**
-	 * Given the current pattern string and case-sensitivity setting,
-	 * build and return a regular expression pattern that can be used
-	 * to match strings.
+	 * Given the current pattern string and case-sensitivity setting, build and
+	 * return a regular expression pattern that can be used to match strings.
+	 *
+	 * @author mqfdy
+	 * @return the pattern
+	 * @Date 2018-09-03 09:00
 	 */
 	protected Pattern buildPattern() {
 		int patternFlags = 0x0;
@@ -146,16 +166,25 @@ public class SimpleStringMatcher<T>
 	// ********** accessors **********
 
 	/**
-	 * Return the string converter used to convert the objects
-	 * passed to the matcher into strings.
+	 * Return the string converter used to convert the objects passed to the
+	 * matcher into strings.
+	 *
+	 * @author mqfdy
+	 * @return the string converter
+	 * @Date 2018-09-03 09:00
 	 */
 	public synchronized StringConverter<T> stringConverter() {
 		return this.stringConverter;
 	}
 
 	/**
-	 * Set the string converter used to convert the objects
-	 * passed to the matcher into strings.
+	 * Set the string converter used to convert the objects passed to the
+	 * matcher into strings.
+	 *
+	 * @author mqfdy
+	 * @param stringConverter
+	 *            the new string converter
+	 * @Date 2018-09-03 09:00
 	 */
 	public synchronized void setStringConverter(StringConverter<T> stringConverter) {
 		this.stringConverter = stringConverter;
@@ -163,6 +192,10 @@ public class SimpleStringMatcher<T>
 
 	/**
 	 * Return the original pattern string.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public synchronized String patternString() {
 		return this.patternString;
@@ -170,6 +203,10 @@ public class SimpleStringMatcher<T>
 
 	/**
 	 * Return whether the matcher ignores case.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public synchronized boolean ignoresCase() {
 		return this.ignoresCase;
@@ -177,6 +214,11 @@ public class SimpleStringMatcher<T>
 
 	/**
 	 * Set whether the matcher ignores case.
+	 *
+	 * @author mqfdy
+	 * @param ignoresCase
+	 *            the new ignores case
+	 * @Date 2018-09-03 09:00
 	 */
 	public synchronized void setIgnoresCase(boolean ignoresCase) {
 		this.ignoresCase = ignoresCase;
@@ -185,6 +227,10 @@ public class SimpleStringMatcher<T>
 
 	/**
 	 * Return the regular expression pattern.
+	 *
+	 * @author mqfdy
+	 * @return the pattern
+	 * @Date 2018-09-03 09:00
 	 */
 	public synchronized Pattern pattern() {
 		return this.pattern;
@@ -194,8 +240,12 @@ public class SimpleStringMatcher<T>
 	// ********** other public API **********
 
 	/**
-	 * Return the regular expression corresponding to
-	 * the original pattern string.
+	 * Return the regular expression corresponding to the original pattern
+	 * string.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public synchronized String regularExpression() {
 		return this.convertToRegEx(this.patternString);
@@ -206,6 +256,12 @@ public class SimpleStringMatcher<T>
 
 	/**
 	 * Convert the specified string to a regular expression.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	protected String convertToRegEx(String string) {
 		StringBuffer sb = new StringBuffer(string.length() + 10);
@@ -216,18 +272,26 @@ public class SimpleStringMatcher<T>
 	}
 
 	/**
-	 * Return any prefix that should be prepended to the original
-	 * string. By default, there is no prefix.
+	 * Return any prefix that should be prepended to the original string. By
+	 * default, there is no prefix.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	protected String prefix() {
 		return "";
 	}
 
 	/**
-	 * Return any suffix that should be appended to the original
-	 * string. Since this class is typically used in UI situation where
-	 * the user is typing in a pattern used to filter a list, the default
-	 * suffix is a wildcard character.
+	 * Return any suffix that should be appended to the original string. Since
+	 * this class is typically used in UI situation where the user is typing in
+	 * a pattern used to filter a list, the default suffix is a wildcard
+	 * character.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	protected String suffix() {
 		return "*";
@@ -235,6 +299,13 @@ public class SimpleStringMatcher<T>
 
 	/**
 	 * Convert the specified string to a regular expression.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void convertToRegExOn(String string, StringBuffer sb) {
 		char[] charArray = string.toCharArray();

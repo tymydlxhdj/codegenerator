@@ -25,6 +25,7 @@ import org.apache.velocity.runtime.resource.Resource;
 
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /**
  *  interface to encapsulate the 'stuff' for internal operation of velocity.
  *  We use the context as a thread-safe storage : we take advantage of the
@@ -40,109 +41,150 @@ import java.util.List;
  */
 interface InternalHousekeepingContext
 {
+    
     /**
-     *  set the current template name on top of stack
-     *
-     *  @param s current template name
-     */
+	 * set the current template name on top of stack.
+	 *
+	 * @author mqfdy
+	 * @param s
+	 *            current template name
+	 * @Date 2018-9-3 11:38:27
+	 */
     void pushCurrentTemplateName( String s );
 
     /**
-     *  remove the current template name from stack
-     */
+	 * remove the current template name from stack.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:27
+	 */
     void popCurrentTemplateName();
 
     /**
-     *  get the current template name
-     *
-     *  @return String current template name
-     */
+	 * get the current template name.
+	 *
+	 * @author mqfdy
+	 * @return String current template name
+	 * @Date 2018-9-3 11:38:27
+	 */
     String getCurrentTemplateName();
 
     /**
-     *  Returns the template name stack in form of an array.
-     *
-     *  @return Object[] with the template name stack contents.
-     */
+	 * Returns the template name stack in form of an array.
+	 *
+	 * @author mqfdy
+	 * @return Object[] with the template name stack contents.
+	 * @Date 2018-9-3 11:38:27
+	 */
     Object[] getTemplateNameStack();
 
     /**
-     *  set the current macro name on top of stack
-     *
-     *  @param s current macro name
-     */
+	 * set the current macro name on top of stack.
+	 *
+	 * @author mqfdy
+	 * @param s
+	 *            current macro name
+	 * @Date 2018-9-3 11:38:27
+	 */
     void pushCurrentMacroName( String s );
 
     /**
-     *  remove the current macro name from stack
-     */
+	 * remove the current macro name from stack.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:27
+	 */
     void popCurrentMacroName();
 
     /**
-     *  get the current macro name
-     *
-     *  @return String current macro name
-     */
+	 * get the current macro name.
+	 *
+	 * @author mqfdy
+	 * @return String current macro name
+	 * @Date 2018-9-3 11:38:27
+	 */
     String getCurrentMacroName();
 
     /**
-     *  get the current macro call depth
-     *
-     *  @return int current macro call depth
-     */
+	 * get the current macro call depth.
+	 *
+	 * @author mqfdy
+	 * @return int current macro call depth
+	 * @Date 2018-9-3 11:38:27
+	 */
     int getCurrentMacroCallDepth();
 
     /**
-     *  Returns the macro name stack in form of an array.
-     *
-     *  @return Object[] with the macro name stack contents.
-     */
+	 * Returns the macro name stack in form of an array.
+	 *
+	 * @author mqfdy
+	 * @return Object[] with the macro name stack contents.
+	 * @Date 2018-9-3 11:38:27
+	 */
     Object[] getMacroNameStack();
 
     /**
-     *  returns an IntrospectionCache Data (@see IntrospectionCacheData)
-     *  object if exists for the key
-     *
-     *  @param key  key to find in cache
-     *  @return cache object
-     */
+	 * returns an IntrospectionCache Data (@see IntrospectionCacheData) object
+	 * if exists for the key.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            key to find in cache
+	 * @return cache object
+	 * @Date 2018-9-3 11:38:27
+	 */
     IntrospectionCacheData icacheGet( Object key );
 
     /**
-     *  places an IntrospectionCache Data (@see IntrospectionCacheData)
-     *  element in the cache for specified key
-     *
-     *  @param key  key
-     *  @param o  IntrospectionCacheData object to place in cache
-     */
+	 * places an IntrospectionCache Data (@see IntrospectionCacheData) element
+	 * in the cache for specified key.
+	 *
+	 * @author mqfdy
+	 * @param key
+	 *            key
+	 * @param o
+	 *            IntrospectionCacheData object to place in cache
+	 * @Date 2018-9-3 11:38:27
+	 */
     void icachePut( Object key, IntrospectionCacheData o );
 
     /**
-     *  temporary fix to enable #include() to figure out
-     *  current encoding.
-     *
-     * @return The current resource.
-     */
+	 * temporary fix to enable #include() to figure out current encoding.
+	 *
+	 * @author mqfdy
+	 * @return The current resource.
+	 * @Date 2018-9-3 11:38:27
+	 */
     Resource getCurrentResource();
 
 
     /**
-     * @param r
-     */
+	 * Sets the current resource.
+	 *
+	 * @author mqfdy
+	 * @param r
+	 *            the new current resource
+	 * @Date 2018-9-3 11:38:27
+	 */
     void setCurrentResource( Resource r );
 
     /**
-     * Set the macro library list for the current template.
-     *
-     * @param macroLibraries list of macro libraries to set
-     */
+	 * Set the macro library list for the current template.
+	 *
+	 * @author mqfdy
+	 * @param macroLibraries
+	 *            list of macro libraries to set
+	 * @Date 2018-9-3 11:38:27
+	 */
      void setMacroLibraries(List macroLibraries);
 
     /**
-     * Get the macro library list for the current template.
-     *
-     * @return List of macro library names
-     */
+	 * Get the macro library list for the current template.
+	 *
+	 * @author mqfdy
+	 * @return List of macro library names
+	 * @Date 2018-9-3 11:38:27
+	 */
      List getMacroLibraries();
 
 }

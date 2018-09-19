@@ -14,9 +14,24 @@ import com.mqfdy.code.model.ReferenceObject;
 import com.mqfdy.code.model.utils.AssociationType;
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ModelResourceLabelProvider.
+ *
+ * @author mqfdy
+ */
 public class ModelResourceLabelProvider extends LabelProvider implements
 		ILabelProvider {
 
+	/**
+	 * Gets the image.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @return the image
+	 * @Date 2018-09-03 09:00
+	 */
 	public Image getImage(Object element) {
 		Image img;
 		AbstractModelElement modelElement = (AbstractModelElement) element;
@@ -120,6 +135,15 @@ public class ModelResourceLabelProvider extends LabelProvider implements
 		return img;
 	}
 
+	/**
+	 * Gets the text.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @return the text
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getText(Object element) {
 		AbstractModelElement modelElement = (AbstractModelElement) element;
 		if (!StringUtil.isEmpty(modelElement.getDisplayName())) {
@@ -141,6 +165,12 @@ public class ModelResourceLabelProvider extends LabelProvider implements
 		return "Unknown";
 	}
 
+	/**
+	 * Update label.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void updateLabel() {
 	}
 

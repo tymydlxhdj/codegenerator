@@ -11,6 +11,7 @@ package com.mqfdy.code.springboot.utilities.internal;
 
 import java.io.Serializable;
 
+// TODO: Auto-generated Javadoc
 /**
  * This class can be used wherever a mutable integer object is needed.
  * It is a cross between an int and an Integer. It can be stored in a standard
@@ -26,6 +27,9 @@ public final class Counter
 
 	/**
 	 * Construct a counter with the specified initial value.
+	 *
+	 * @param count
+	 *            the count
 	 */
 	public Counter(int count) {
 		super();
@@ -41,6 +45,10 @@ public final class Counter
 
 	/**
 	 * Return the current count of the counter.
+	 *
+	 * @author mqfdy
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public synchronized int count() {
 		return this.count;
@@ -48,6 +56,10 @@ public final class Counter
 
 	/**
 	 * Increment and return the current count of the counter.
+	 *
+	 * @author mqfdy
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public synchronized int increment() {
 		return ++this.count;
@@ -55,6 +67,12 @@ public final class Counter
 
 	/**
 	 * Increment and return the current count of the counter.
+	 *
+	 * @author mqfdy
+	 * @param increment
+	 *            the increment
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public synchronized int increment(int increment) {
 		return this.count += increment;
@@ -62,6 +80,10 @@ public final class Counter
 
 	/**
 	 * Derement and return the current count of the counter.
+	 *
+	 * @author mqfdy
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public synchronized int decrement() {
 		return --this.count;
@@ -69,6 +91,12 @@ public final class Counter
 
 	/**
 	 * Derement and return the current count of the counter.
+	 *
+	 * @author mqfdy
+	 * @param decrement
+	 *            the decrement
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public synchronized int decrement(int decrement) {
 		return this.count -= decrement;

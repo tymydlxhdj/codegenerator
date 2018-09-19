@@ -25,6 +25,7 @@ import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.util.introspection.Introspector;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Executor that simply tries to execute a put(key, value)
  * operation. This will try to find a put(key) method
@@ -39,16 +40,27 @@ import org.apache.velocity.util.introspection.Introspector;
  */
 public class PutExecutor extends SetExecutor
 {
+    
+    /** The introspector. */
     private final Introspector introspector;
+    
+    /** The property. */
     private final String property;
 
     /**
-     * @param log
-     * @param introspector
-     * @param clazz
-     * @param arg
-     * @param property
-     */
+	 * Instantiates a new put executor.
+	 *
+	 * @param log
+	 *            the log
+	 * @param introspector
+	 *            the introspector
+	 * @param clazz
+	 *            the clazz
+	 * @param arg
+	 *            the arg
+	 * @param property
+	 *            the property
+	 */
     public PutExecutor(final Log log, final Introspector introspector,
             final Class clazz, final Object arg, final String property)
     {
@@ -60,9 +72,15 @@ public class PutExecutor extends SetExecutor
     }
 
     /**
-     * @param clazz
-     * @param arg
-     */
+	 * Discover.
+	 *
+	 * @author mqfdy
+	 * @param clazz
+	 *            the clazz
+	 * @param arg
+	 *            the arg
+	 * @Date 2018-09-03 09:00
+	 */
     protected void discover(final Class clazz, final Object arg)
     {
         Object [] params;
@@ -104,8 +122,20 @@ public class PutExecutor extends SetExecutor
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SetExecutor#execute(java.lang.Object, java.lang.Object)
-     */
+	 * Execute.
+	 *
+	 * @param o
+	 *            the o
+	 * @param value
+	 *            the value
+	 * @return the object
+	 * @throws IllegalAccessException
+	 *             the illegal access exception
+	 * @throws InvocationTargetException
+	 *             the invocation target exception
+	 * @see org.apache.velocity.runtime.parser.node.SetExecutor#execute(java.lang.Object,
+	 *      java.lang.Object)
+	 */
     public Object execute(final Object o, final Object value)
         throws IllegalAccessException,  InvocationTargetException
     {

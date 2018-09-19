@@ -47,6 +47,7 @@ import org.jdom.input.SAXBuilder;
 import org.jdom.output.Format;
 import org.xml.sax.SAXParseException;
 
+// TODO: Auto-generated Javadoc
 /**
  * The purpose of this Ant Task is to allow you to use
  * Velocity as an XML transformation tool like XSLT is.
@@ -64,28 +65,29 @@ import org.xml.sax.SAXParseException;
  */
 public class AnakiaTask extends MatchingTask
 {
-    /** <code>{@link SAXBuilder}</code> instance to use */
+    
+    /** <code>{@link SAXBuilder}</code> instance to use. */
     SAXBuilder builder;
 
-    /** the destination directory */
+    /** the destination directory. */
     private File destDir = null;
 
-    /** the base directory */
+    /** the base directory. */
     File baseDir = null;
 
-    /** the style= attribute */
+    /** the style= attribute. */
     private String style = null;
 
-    /** last modified of the style sheet */
+    /** last modified of the style sheet. */
     private long styleSheetLastModified = 0;
 
-    /** the projectFile= attribute */
+    /** the projectFile= attribute. */
     private String projectAttribute = null;
 
     /** the File for the project.xml file */
     private File projectFile = null;
 
-    /** last modified of the project file if it exists */
+    /** last modified of the project file if it exists. */
     private long projectFileLastModified = 0;
 
     /** check the last modified date on files. defaults to true */
@@ -94,16 +96,16 @@ public class AnakiaTask extends MatchingTask
     /** the default output extension is .html */
     private String extension = ".html";
 
-    /** the template path */
+    /** the template path. */
     private String templatePath = null;
 
-    /** the file to get the velocity properties file */
+    /** the file to get the velocity properties file. */
     private File velocityPropertiesFile = null;
 
-    /** the VelocityEngine instance to use */
+    /** the VelocityEngine instance to use. */
     private VelocityEngine ve = new VelocityEngine();
 
-    /** the Velocity subcontexts */
+    /** the Velocity subcontexts. */
     private List contexts = new LinkedList();
 
     /**
@@ -116,61 +118,83 @@ public class AnakiaTask extends MatchingTask
     }
 
     /**
-     * Set the base directory.
-     * @param dir
-     */
+	 * Set the base directory.
+	 *
+	 * @author mqfdy
+	 * @param dir
+	 *            the new basedir
+	 * @Date 2018-09-03 09:00
+	 */
     public void setBasedir(File dir)
     {
         baseDir = dir;
     }
 
     /**
-     * Set the destination directory into which the VSL result
-     * files should be copied to
-     * @param dir the name of the destination directory
-     */
+	 * Set the destination directory into which the VSL result files should be
+	 * copied to.
+	 *
+	 * @author mqfdy
+	 * @param dir
+	 *            the name of the destination directory
+	 * @Date 2018-9-3 11:38:31
+	 */
     public void setDestdir(File dir)
     {
         destDir = dir;
     }
 
     /**
-     * Allow people to set the default output file extension
-     * @param extension
-     */
+	 * Allow people to set the default output file extension.
+	 *
+	 * @author mqfdy
+	 * @param extension
+	 *            the new extension
+	 * @Date 2018-09-03 09:00
+	 */
     public void setExtension(String extension)
     {
         this.extension = extension;
     }
 
     /**
-     * Allow people to set the path to the .vsl file
-     * @param style
-     */
+	 * Allow people to set the path to the .vsl file
+	 *
+	 * @author mqfdy
+	 * @param style
+	 *            the new style
+	 * @Date 2018-09-03 09:00
+	 */
     public void setStyle(String style)
     {
         this.style = style;
     }
 
     /**
-     * Allow people to set the path to the project.xml file
-     * @param projectAttribute
-     */
+	 * Allow people to set the path to the project.xml file
+	 *
+	 * @author mqfdy
+	 * @param projectAttribute
+	 *            the new project file
+	 * @Date 2018-09-03 09:00
+	 */
     public void setProjectFile(String projectAttribute)
     {
         this.projectAttribute = projectAttribute;
     }
 
     /**
-     * Set the path to the templates.
-     * The way it works is this:
-     * If you have a Velocity.properties file defined, this method
-     * will <strong>override</strong> whatever is set in the
-     * Velocity.properties file. This allows one to not have to define
-     * a Velocity.properties file, therefore using Velocity's defaults
-     * only.
-     * @param templatePath
-     */
+	 * Set the path to the templates. The way it works is this: If you have a
+	 * Velocity.properties file defined, this method will
+	 * <strong>override</strong> whatever is set in the Velocity.properties
+	 * file. This allows one to not have to define a Velocity.properties file,
+	 * therefore using Velocity's defaults only.
+	 *
+	 * @author mqfdy
+	 * @param templatePath
+	 *            the new template path
+	 * @Date 2018-09-03 09:00
+	 */
 
     public void setTemplatePath(File templatePath)
      {
@@ -185,22 +209,30 @@ public class AnakiaTask extends MatchingTask
      }
 
     /**
-     * Allow people to set the path to the velocity.properties file
-     * This file is found relative to the path where the JVM was run.
-     * For example, if build.sh was executed in the ./build directory,
-     * then the path would be relative to this directory.
-     * This is optional based on the setting of setTemplatePath().
-     * @param velocityPropertiesFile
-     */
+	 * Allow people to set the path to the velocity.properties file This file is
+	 * found relative to the path where the JVM was run. For example, if
+	 * build.sh was executed in the ./build directory, then the path would be
+	 * relative to this directory. This is optional based on the setting of
+	 * setTemplatePath().
+	 *
+	 * @author mqfdy
+	 * @param velocityPropertiesFile
+	 *            the new velocity properties file
+	 * @Date 2018-09-03 09:00
+	 */
     public void setVelocityPropertiesFile(File velocityPropertiesFile)
     {
         this.velocityPropertiesFile = velocityPropertiesFile;
     }
 
     /**
-     * Turn on/off last modified checking. by default, it is on.
-     * @param lastmod
-     */
+	 * Turn on/off last modified checking. by default, it is on.
+	 *
+	 * @author mqfdy
+	 * @param lastmod
+	 *            the new last modified check
+	 * @Date 2018-09-03 09:00
+	 */
     public void setLastModifiedCheck(String lastmod)
     {
         if (lastmod.equalsIgnoreCase("false") || lastmod.equalsIgnoreCase("no")
@@ -211,9 +243,13 @@ public class AnakiaTask extends MatchingTask
     }
 
     /**
-     * Main body of the application
-     * @throws BuildException
-     */
+	 * Main body of the application.
+	 *
+	 * @author mqfdy
+	 * @throws BuildException
+	 *             the build exception
+	 * @Date 2018-9-3 11:38:31
+	 */
     public void execute () throws BuildException
     {
         DirectoryScanner scanner;
@@ -314,8 +350,17 @@ public class AnakiaTask extends MatchingTask
     }
 
     /**
-     * Process an XML file using Velocity
-     */
+	 * Process an XML file using Velocity.
+	 *
+	 * @author mqfdy
+	 * @param xmlFile
+	 *            the xml file
+	 * @param projectDocument
+	 *            the project document
+	 * @throws BuildException
+	 *             the build exception
+	 * @Date 2018-9-3 11:38:31
+	 */
     private void process(String xmlFile, Document projectDocument)
         throws BuildException
     {
@@ -480,10 +525,15 @@ public class AnakiaTask extends MatchingTask
     }
 
     /**
-     * Hacky method to figure out the relative path
-     * that we are currently in. This is good for getting
-     * the relative path for images and anchor's.
-     */
+	 * Hacky method to figure out the relative path that we are currently in.
+	 * This is good for getting the relative path for images and anchor's.
+	 *
+	 * @author mqfdy
+	 * @param file
+	 *            the file
+	 * @return the relative path
+	 * @Date 2018-9-3 11:38:31
+	 */
     private String getRelativePath(String file)
     {
         if (file == null || file.length()==0)
@@ -506,8 +556,15 @@ public class AnakiaTask extends MatchingTask
     }
 
     /**
-     * create directories as needed
-     */
+	 * create directories as needed.
+	 *
+	 * @author mqfdy
+	 * @param targetFile
+	 *            the target file
+	 * @throws BuildException
+	 *             the build exception
+	 * @Date 2018-9-3 11:38:31
+	 */
     private void ensureDirectoryFor( File targetFile ) throws BuildException
     {
         File directory = new File( targetFile.getParent() );
@@ -523,8 +580,14 @@ public class AnakiaTask extends MatchingTask
 
 
     /**
-     * Check to see if user context is modified.
-     */
+	 * Check to see if user context is modified.
+	 *
+	 * @author mqfdy
+	 * @param lastModified
+	 *            the last modified
+	 * @return true, if successful
+	 * @Date 2018-9-3 11:38:31
+	 */
     private boolean userContextsModifed(long lastModified)
     {
         for (Iterator iter = contexts.iterator(); iter.hasNext();)
@@ -539,9 +602,12 @@ public class AnakiaTask extends MatchingTask
     }
 
     /**
-     * Create a new context.
-     * @return A new context.
-     */
+	 * Create a new context.
+	 *
+	 * @author mqfdy
+	 * @return A new context.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public Context createContext()
     {
         Context context = new Context();
@@ -551,13 +617,20 @@ public class AnakiaTask extends MatchingTask
 
 
     /**
-     * A context implementation that loads all values from an XML file.
-     */
+	 * A context implementation that loads all values from an XML file.
+	 *
+	 * @author mqfdy
+	 */
     public class Context
     {
 
+        /** The name. */
         private String name;
+        
+        /** The context doc. */
         private Document contextDoc = null;
+        
+        /** The file. */
         private String file;
 
         /**
@@ -568,22 +641,29 @@ public class AnakiaTask extends MatchingTask
         }
 
         /**
-         * Get the name of the context.
-         * @return The name of the context.
-         */
+		 * Get the name of the context.
+		 *
+		 * @author mqfdy
+		 * @return The name of the context.
+		 * @Date 2018-9-3 11:38:31
+		 */
         public String getName()
         {
             return name;
         }
 
         /**
-         * Set the name of the context.
-         * @param name
-         *
-         * @throws IllegalArgumentException if a reserved word is used as a
-         * name, specifically any of "relativePath", "treeWalk", "xpath",
-         * "escape", "date", or "project"
-         */
+		 * Set the name of the context.
+		 *
+		 * @author mqfdy
+		 * @param name
+		 *            the new name
+		 * @throws IllegalArgumentException
+		 *             if a reserved word is used as a name, specifically any of
+		 *             "relativePath", "treeWalk", "xpath", "escape", "date", or
+		 *             "project"
+		 * @Date 2018-09-03 09:00
+		 */
         public void setName(String name)
         {
             if (name.equals("relativePath") ||
@@ -602,27 +682,37 @@ public class AnakiaTask extends MatchingTask
         }
 
         /**
-         * Build the context based on a file path.
-         * @param file
-         */
+		 * Build the context based on a file path.
+		 *
+		 * @author mqfdy
+		 * @param file
+		 *            the new file
+		 * @Date 2018-09-03 09:00
+		 */
         public void setFile(String file)
         {
             this.file = file;
         }
 
         /**
-         * Retrieve the time the source file was last modified.
-         * @return The time the source file was last modified.
-         */
+		 * Retrieve the time the source file was last modified.
+		 *
+		 * @author mqfdy
+		 * @return The time the source file was last modified.
+		 * @Date 2018-9-3 11:38:31
+		 */
         public long getLastModified()
         {
             return new File(baseDir, file).lastModified();
         }
 
         /**
-         * Retrieve the context document object.
-         * @return The context document object.
-         */
+		 * Retrieve the context document object.
+		 *
+		 * @author mqfdy
+		 * @return The context document object.
+		 * @Date 2018-9-3 11:38:31
+		 */
         public Document getContextDocument()
         {
             if (contextDoc == null)

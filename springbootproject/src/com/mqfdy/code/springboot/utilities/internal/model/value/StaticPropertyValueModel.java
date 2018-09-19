@@ -13,10 +13,15 @@ import com.mqfdy.code.springboot.utilities.internal.StringTools;
 import com.mqfdy.code.springboot.utilities.internal.model.AbstractModel;
 import com.mqfdy.code.springboot.utilities.model.value.PropertyValueModel;
 
+// TODO: Auto-generated Javadoc
 /**
- * Implementation of PropertyValueModel that can be used for
- * returning a static value, but still allows listeners to be added.
- * Listeners will NEVER be notified of any changes, because there should be none.
+ * Implementation of PropertyValueModel that can be used for returning a static
+ * value, but still allows listeners to be added. Listeners will NEVER be
+ * notified of any changes, because there should be none.
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
  */
 public class StaticPropertyValueModel<T>
 	extends AbstractModel
@@ -30,6 +35,9 @@ public class StaticPropertyValueModel<T>
 
 	/**
 	 * Construct a static PropertyValueModel for the specified value.
+	 *
+	 * @param value
+	 *            the value
 	 */
 	public StaticPropertyValueModel(T value) {
 		super();

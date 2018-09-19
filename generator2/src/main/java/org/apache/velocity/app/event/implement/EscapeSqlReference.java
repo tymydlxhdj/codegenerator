@@ -21,30 +21,40 @@ package org.apache.velocity.app.event.implement;
 
 import org.apache.commons.lang.StringEscapeUtils;
 
+// TODO: Auto-generated Javadoc
 /**
  * Escapes the characters in a String to be suitable to pass to an SQL query.
- * @see <a href="http://jakarta.apache.org/commons/lang/api/org/apache/commons/lang/StringEscapeUtils.html#escapeSql(java.lang.String)">StringEscapeUtils</a>
+ *
  * @author wglass
+ * @see <a href=
+ *      "http://jakarta.apache.org/commons/lang/api/org/apache/commons/lang/StringEscapeUtils.html#escapeSql(java.lang.String)">StringEscapeUtils</a>
  * @since 1.5
  */
 public class EscapeSqlReference extends EscapeReference
 {
 
     /**
-     * Escapes the characters in a String to be suitable to pass to an SQL query.
-     * 
-     * @param text
-     * @return An escaped string.
-     * @see <a href="http://jakarta.apache.org/commons/lang/api/org/apache/commons/lang/StringEscapeUtils.html#escapeSql(java.lang.String)">StringEscapeUtils</a>
-     */
+	 * Escapes the characters in a String to be suitable to pass to an SQL
+	 * query.
+	 *
+	 * @param text
+	 *            the text
+	 * @return An escaped string.
+	 * @see <a href=
+	 *      "http://jakarta.apache.org/commons/lang/api/org/apache/commons/lang/StringEscapeUtils.html#escapeSql(java.lang.String)">StringEscapeUtils</a>
+	 */
     protected String escape(Object text)
     {
         return StringEscapeUtils.escapeSql(text.toString());
     }
 
     /**
-     * @return attribute "eventhandler.escape.sql.match"
-     */
+	 * Gets the match attribute.
+	 *
+	 * @author mqfdy
+	 * @return attribute "eventhandler.escape.sql.match"
+	 * @Date 2018-9-3 11:38:27
+	 */
     protected String getMatchAttribute()
     {
         return "eventhandler.escape.sql.match";

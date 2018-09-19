@@ -44,44 +44,105 @@ import com.mqfdy.code.wizard.wizard.IMicroGeneratorConfigWizard;
 import com.mqfdy.code.wizard.wizard.MicroGeneratorConfigWizard;
 import com.mqfdy.code.wizard.wizard.MicroGeneratorWizardNode;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MicroSelectProjectWizardPage.
+ *
+ * @author mqfdy
+ */
 public class MicroSelectProjectWizardPage extends WizardSelectionPage {
 	
+	/** The Constant LABELDATA_WIDTH. */
 	public static final int LABELDATA_WIDTH = 100;
+	
+	/** The Constant MODEL_DEFAULT_NAME. */
 	public static final String MODEL_DEFAULT_NAME = "com.orgname.projectname";
+	
+	/** The Constant DIR_NAME_MODEL. */
 	public static final String DIR_NAME_MODEL = "model";
+	
+	/** The Constant DIR_NAME_OM. */
 	public static final String DIR_NAME_OM = "bom";
 	
+	/** The Constant STR_MOM. */
 	private static final String STR_MOM = "bom";
 	
+	/** The project. */
 	private IProject project;
+	
+	/** The om project. */
 	private IProject omProject;
+	
+	/** The lbl om. */
 	private Label lblOm;
+	
+	/** The lbl micro project. */
 	private Label lblMicroProject;
+	
+	/** The txt micro project. */
 	private Text txtMicroProject;
+	
+	/** The btn micro project. */
 	private Button btnMicroProject;
 	
+	/** The tree viewer. */
 	private TreeViewer treeViewer;
+	
+	/** The tree. */
 	private Tree tree;
 	
+	/** The om reverse. */
 	private IOmReverse omReverse;
+	
+	/** The exsit om path. */
 	private String exsitOmPath;				//已有om的文件路径
+	
+	/** The om path. */
 	private String omPath;				//最终om的文件上一层目录
+	
+	/** The om name. */
 	private String omName;				//最终om的文件名称
 	
+	/** The is old validate. */
 	private boolean isOldValidate = false;	//已选om验证结果
+	
+	/** The selection. */
 	private IStructuredSelection selection;
 	
+	/** The micro generator config wizard. */
 	private MicroGeneratorConfigWizard microGeneratorConfigWizard;
 	
+	/**
+	 * Instantiates a new micro select project wizard page.
+	 *
+	 * @param pageName
+	 *            the page name
+	 */
 	protected MicroSelectProjectWizardPage(String pageName) {
 		super(pageName);
 	}
 
+	/**
+	 * Instantiates a new micro select project wizard page.
+	 *
+	 * @param pageName
+	 *            the page name
+	 * @param project
+	 *            the project
+	 */
 	public MicroSelectProjectWizardPage(String pageName, IProject project) {
 		super(pageName);
 		this.project = project;
 	}
 
+	/**
+	 * Creates the control.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		// 初始化窗口
@@ -229,7 +290,10 @@ public class MicroSelectProjectWizardPage extends WizardSelectionPage {
 	}
 
 	/**
-	 * update Wizard
+	 * update Wizard.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void updateWizard() {
 		IWizardNode wizardNode = new MicroGeneratorWizardNode(this,selection) {
@@ -245,6 +309,12 @@ public class MicroSelectProjectWizardPage extends WizardSelectionPage {
 		this.setSelectedNode(wizardNode);
 	}
 	
+	/**
+	 * Construct OM tree.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void constructOMTree() {
 		//获取当前工作空间下的所有工程
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
@@ -341,6 +411,15 @@ public class MicroSelectProjectWizardPage extends WizardSelectionPage {
 		}
 	
 	}
+	
+	/**
+	 * Expand tree.
+	 *
+	 * @author mqfdy
+	 * @param currentNode
+	 *            the current node
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void expandTree(TreeNode currentNode) {
 		//判断如果当前节点有子节点，则说明之前加载过，所以直接展开。
 		List<TreeNode> childList = currentNode.getChilds();
@@ -388,8 +467,12 @@ public class MicroSelectProjectWizardPage extends WizardSelectionPage {
 			expandTree(rsNode);
 		}
 	}
+	
 	/**
-	 * 选择项目
+	 * 选择项目.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void handleSelectMicro(){
 		// 取得当前的shell
@@ -430,6 +513,12 @@ public class MicroSelectProjectWizardPage extends WizardSelectionPage {
 		validate();
 	}
 	
+	/**
+	 * Validate.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void validate(){
 		if("".equals(txtMicroProject.getText().trim())){
 			setMessage("请选择项目", 1);
@@ -445,79 +534,217 @@ public class MicroSelectProjectWizardPage extends WizardSelectionPage {
 		setPageComplete(true);
 	}
 	
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canFlipToNextPage() {
 		return isPageComplete();
 	}
 
+	/**
+	 * Gets the project.
+	 *
+	 * @author mqfdy
+	 * @return the project
+	 * @Date 2018-09-03 09:00
+	 */
 	public IProject getProject() {
 		return project;
 	}
 
+	/**
+	 * Sets the project.
+	 *
+	 * @author mqfdy
+	 * @param project
+	 *            the new project
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setProject(IProject project) {
 		this.project = project;
 	}
 
+	/**
+	 * Gets the om project.
+	 *
+	 * @author mqfdy
+	 * @return the om project
+	 * @Date 2018-09-03 09:00
+	 */
 	public IProject getOmProject() {
 		return omProject;
 	}
 
+	/**
+	 * Sets the om project.
+	 *
+	 * @author mqfdy
+	 * @param omProject
+	 *            the new om project
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setOmProject(IProject omProject) {
 		this.omProject = omProject;
 	}
 
+	/**
+	 * Gets the om reverse.
+	 *
+	 * @author mqfdy
+	 * @return the om reverse
+	 * @Date 2018-09-03 09:00
+	 */
 	public IOmReverse getOmReverse() {
 		return omReverse;
 	}
 
+	/**
+	 * Sets the om reverse.
+	 *
+	 * @author mqfdy
+	 * @param omReverse
+	 *            the new om reverse
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setOmReverse(IOmReverse omReverse) {
 		this.omReverse = omReverse;
 	}
 
+	/**
+	 * Gets the exsit om path.
+	 *
+	 * @author mqfdy
+	 * @return the exsit om path
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getExsitOmPath() {
 		return exsitOmPath;
 	}
 
+	/**
+	 * Sets the exsit om path.
+	 *
+	 * @author mqfdy
+	 * @param exsitOmPath
+	 *            the new exsit om path
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setExsitOmPath(String exsitOmPath) {
 		this.exsitOmPath = exsitOmPath;
 	}
 
+	/**
+	 * Gets the om path.
+	 *
+	 * @author mqfdy
+	 * @return the om path
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getOmPath() {
 		return omPath;
 	}
 
+	/**
+	 * Sets the om path.
+	 *
+	 * @author mqfdy
+	 * @param omPath
+	 *            the new om path
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setOmPath(String omPath) {
 		this.omPath = omPath;
 	}
 
+	/**
+	 * Gets the om name.
+	 *
+	 * @author mqfdy
+	 * @return the om name
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getOmName() {
 		return omName;
 	}
 
+	/**
+	 * Sets the om name.
+	 *
+	 * @author mqfdy
+	 * @param omName
+	 *            the new om name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setOmName(String omName) {
 		this.omName = omName;
 	}
 
+	/**
+	 * Checks if is old validate.
+	 *
+	 * @author mqfdy
+	 * @return true, if is old validate
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isOldValidate() {
 		return isOldValidate;
 	}
 
+	/**
+	 * Sets the old validate.
+	 *
+	 * @author mqfdy
+	 * @param isOldValidate
+	 *            the new old validate
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setOldValidate(boolean isOldValidate) {
 		this.isOldValidate = isOldValidate;
 	}
 
+	/**
+	 * Gets the selection.
+	 *
+	 * @author mqfdy
+	 * @return the selection
+	 * @Date 2018-09-03 09:00
+	 */
 	public IStructuredSelection getSelection() {
 		return selection;
 	}
 
+	/**
+	 * Sets the selection.
+	 *
+	 * @author mqfdy
+	 * @param selection
+	 *            the new selection
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setSelection(IStructuredSelection selection) {
 		this.selection = selection;
 	}
 
+	/**
+	 * Gets the micro generator config wizard.
+	 *
+	 * @author mqfdy
+	 * @return the micro generator config wizard
+	 * @Date 2018-09-03 09:00
+	 */
 	public MicroGeneratorConfigWizard getMicroGeneratorConfigWizard() {
 		return microGeneratorConfigWizard;
 	}
 
+	/**
+	 * Sets the micro generator config wizard.
+	 *
+	 * @author mqfdy
+	 * @param microGeneratorConfigWizard
+	 *            the new micro generator config wizard
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setMicroGeneratorConfigWizard(MicroGeneratorConfigWizard microGeneratorConfigWizard) {
 		this.microGeneratorConfigWizard = microGeneratorConfigWizard;
 	}

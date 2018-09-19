@@ -15,7 +15,10 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class MicroProject.
+ *
  * @author zjing
  */
 public class MicroProject {
@@ -30,6 +33,12 @@ public class MicroProject {
 
 	private IProject cachedProject;
 
+	/**
+	 * Instantiates a new micro project.
+	 *
+	 * @param canonicalFile
+	 *            the canonical file
+	 */
 	public MicroProject(File canonicalFile) {
 		Assert.isLegal(canonicalFile!=null, "Project location must not be null");
 		Assert.isLegal(canonicalFile.exists(), "Project location doesn't exist: "+canonicalFile);
@@ -54,8 +63,12 @@ public class MicroProject {
 	}
 
 	/**
-	 * @return the IJavaProject instance associated with this project, or null if this project is not
-	 * imported in the workspace.
+	 * Gets the java project.
+	 *
+	 * @author mqfdy
+	 * @return the IJavaProject instance associated with this project, or null
+	 *         if this project is not imported in the workspace.
+	 * @Date 2018-09-03 09:00
 	 */
 	public IJavaProject getJavaProject() {
 		//TODO: cache this?
@@ -67,8 +80,13 @@ public class MicroProject {
 	}
 
 	/**
-	 * Get the IProject in the workspace corresponding to this GradleProject. If a corresponding project
-	 * doesn't exist in the workspace this methhod returns null.
+	 * Get the IProject in the workspace corresponding to this GradleProject. If
+	 * a corresponding project doesn't exist in the workspace this methhod
+	 * returns null.
+	 *
+	 * @author mqfdy
+	 * @return the project
+	 * @Date 2018-09-03 09:00
 	 */
 	public IProject getProject() {
 		if (cachedProject!=null && cachedProject.exists()) {
@@ -95,15 +113,20 @@ public class MicroProject {
 
 	
 	/**
-	 * This returns the folder where the Gradle build output for this project are
-	 * being stored.
+	 * This returns the folder where the Gradle build output for this project
+	 * are being stored.
 	 * 
-	 * This may return null if the GradleProject is not imported in the workspace.
+	 * This may return null if the GradleProject is not imported in the
+	 * workspace.
 	 * 
-	 * This may return a IFolder instance (handle) that doesn't physically 
-	 * exist (yet). E.g. this may happen if a project is imported to the workspace 
-	 * but has not yet been built by gradle prior to importing it. In this case 
-	 * the build folder may not have been created yet.
+	 * This may return a IFolder instance (handle) that doesn't physically exist
+	 * (yet). E.g. this may happen if a project is imported to the workspace but
+	 * has not yet been built by gradle prior to importing it. In this case the
+	 * build folder may not have been created yet.
+	 *
+	 * @author mqfdy
+	 * @return the builds the folder
+	 * @Date 2018-09-03 09:00
 	 */
 	public IFolder getBuildFolder() {
 		IProject p = getProject();
@@ -113,6 +136,13 @@ public class MicroProject {
 		return null;
 	}
 
+	/**
+	 * Exists.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	//see if we can find the project
 	public boolean exists() {
 		IProject project = getProject();
@@ -121,6 +151,17 @@ public class MicroProject {
 		return project.exists();
 	}
 
+	/**
+	 * New instance.
+	 *
+	 * @author mqfdy
+	 * @param location
+	 *            the location
+	 * @param monitor
+	 *            the monitor
+	 * @return the micro project
+	 * @Date 2018-09-03 09:00
+	 */
 	//create  project
 	public MicroProject newInstance(File location,IProgressMonitor monitor) {
 		monitor.beginTask("Create Springboot Project: " + location.getName(), 

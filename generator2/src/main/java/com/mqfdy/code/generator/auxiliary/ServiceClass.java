@@ -17,46 +17,73 @@ import com.mqfdy.code.model.OperationParam;
 import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.PropertyEditor;
 import com.mqfdy.code.model.utils.StringUtil;
+// TODO: Auto-generated Javadoc
+
 /**
- * 
- * @author mqf
+ * The Class ServiceClass.
  *
+ * @author mqf
  */
 public class ServiceClass extends AbstractBusinessClass {
-	/**
-	 * 数据字典Buffer
-	 */
+	
+	/** 数据字典Buffer. */
 	private StringBuffer dictSb;
-	/**
-	 * 添加数据字典方法
-	 */
+	
+	/** 添加数据字典方法. */
 	private String addDicts;
-	/**
-	 * 生成的getLt方法中 具体逻辑代码
-	 */
+	
+	/** 生成的getLt方法中 具体逻辑代码. */
 	private StringBuffer returnSetSb;
 	
+	/** The node text. */
 	private String nodeText;
 	
 	
+	/**
+	 * Instantiates a new service class.
+	 *
+	 * @param bc
+	 *            the bc
+	 * @param persistenceModel
+	 *            the persistence model
+	 * @param project
+	 *            the project
+	 * @param bom
+	 *            the bom
+	 */
 	public ServiceClass(BusinessClass bc, IPersistenceModel persistenceModel, IProject project, BusinessObjectModel bom) {
 		super(bc, persistenceModel, project,bom);
 	}
 
+	/**
+	 * Instantiates a new service class.
+	 *
+	 * @param param
+	 *            the param
+	 */
 	public ServiceClass(ClassParam param) {
 		super(param);
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initPackage() ServiceClass
+	 */
 	@Override
 	public void initPackage() {
 		packageStr = packagePrefix + ".services;";
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields() ServiceClass
+	 */
 	@Override
 	public void initFields() {
 	
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initImports() ServiceClass
+	 */
 	@Override
 	public void initImports() {
 		addDicts = ""; 
@@ -96,7 +123,10 @@ public class ServiceClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * 设置树的id和text
+	 * 设置树的id和text.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:33
 	 */
 	private void setTreeIdAndText() {
 		String tempPkPName = null;
@@ -116,6 +146,9 @@ public class ServiceClass extends AbstractBusinessClass {
 		}
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods() ServiceClass
+	 */
 	@Override
 	public void initMethods() {
 		//方法
@@ -160,6 +193,12 @@ public class ServiceClass extends AbstractBusinessClass {
 		initComboData();
 	}
 
+	/**
+	 * Inits the associations.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:33
+	 */
 	private void initAssociations() {
 		List<Association> assList = bom.getAssociations();
 		if(assList != null && !assList.isEmpty()){
@@ -176,6 +215,11 @@ public class ServiceClass extends AbstractBusinessClass {
 		
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#getCustomMethod(com.mqfdy.code.model.BusinessOperation)
+	 * @param bop
+	 * @return ServiceClass
+	 */
 	public String getCustomMethod(BusinessOperation bop) {
 		importSet.add("import org.springframework.transaction.annotation.Transactional;\n");
 		importSet.add("import org.springframework.transaction.annotation.Propagation;\n");
@@ -230,6 +274,9 @@ public class ServiceClass extends AbstractBusinessClass {
 		return sb.toString();
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#putToVelocityMap() ServiceClass
+	 */
 	@Override
 	public void putToVelocityMap() {
 		putToVelocityMapDef();
@@ -250,8 +297,12 @@ public class ServiceClass extends AbstractBusinessClass {
 		map.put("isSlave", isSlave);
 		map.put("nodeText", nodeText);
 	}
+	
 	/**
-	 * 初始化下拉框数据
+	 * 初始化下拉框数据.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:33
 	 */
 	private void initComboData() {
 		for(Property p : bc.getProperties()){
@@ -305,6 +356,12 @@ public class ServiceClass extends AbstractBusinessClass {
 		setAddDicts();
 	}
 	
+	/**
+	 * Sets the add dicts.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:33
+	 */
 	private void setAddDicts() {
 		if((hasDb || hasEnums)){
 			addDicts = ".addDicItems(wrapDictList())";

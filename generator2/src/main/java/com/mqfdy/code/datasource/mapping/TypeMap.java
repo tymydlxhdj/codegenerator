@@ -5,21 +5,41 @@ import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TypeMap.
+ *
+ * @author mqfdy
+ */
 public class TypeMap {
 
+	/** The jdbc to java native map. */
 	private static Hashtable<String, String> jdbcToJavaNativeMap = null;
 	
+	/** The property to java map. */
 	private static Hashtable<String, String> propertyToJavaMap = null;
 	
+	/** The om type to VO map. */
 	private static Hashtable<String, String> omTypeToVOMap = null;
 	
+	/** The editor type to VO map. */
 	private static Hashtable<String, String> editorTypeToVOMap = null;
 
+	/** The is initialized. */
 	private static boolean isInitialized = false;
 
+	/**
+	 * Instantiates a new type map.
+	 */
 	public TypeMap() {
 	}
 
+	/**
+	 * Initialize.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public static synchronized void initialize() {
 		if (!isInitialized) {
 			jdbcToJavaNativeMap = new Hashtable<String, String>();
@@ -120,16 +140,40 @@ public class TypeMap {
 			isInitialized = true;
 		}
 	}
+	
+	/**
+	 * Checks if is initialized.
+	 *
+	 * @author mqfdy
+	 * @return true, if is initialized
+	 * @Date 2018-09-03 09:00
+	 */
 	public static boolean isInitialized() {
 		return isInitialized;
 	}
 	
+	/**
+	 * Gets the editor type VO.
+	 *
+	 * @author mqfdy
+	 * @param propertyType
+	 *            the property type
+	 * @return the editor type VO
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getEditorTypeVO(String propertyType) {
 		if (!isInitialized)
 			initialize();
 		return (String) editorTypeToVOMap.get(propertyType);
 	}
 
+	/**
+	 * Gets the editor type to VO list.
+	 *
+	 * @author mqfdy
+	 * @return the editor type to VO list
+	 * @Date 2018-09-03 09:00
+	 */
 	public static Set<String> getEditorTypeToVOList() {
 		Set<String> javaNatives = new HashSet<String>();
 		Enumeration<String> keys = editorTypeToVOMap.keys();
@@ -139,12 +183,28 @@ public class TypeMap {
 		return javaNatives;
 	}
 	
+	/**
+	 * Gets the om VO.
+	 *
+	 * @author mqfdy
+	 * @param propertyType
+	 *            the property type
+	 * @return the om VO
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getOmVO(String propertyType) {
 		if (!isInitialized)
 			initialize();
 		return (String) omTypeToVOMap.get(propertyType);
 	}
 
+	/**
+	 * Gets the om type to VO list.
+	 *
+	 * @author mqfdy
+	 * @return the om type to VO list
+	 * @Date 2018-09-03 09:00
+	 */
 	public static Set<String> getOmTypeToVOList() {
 		Set<String> javaNatives = new HashSet<String>();
 		Enumeration<String> keys = omTypeToVOMap.keys();
@@ -154,12 +214,28 @@ public class TypeMap {
 		return javaNatives;
 	}
 	
+	/**
+	 * Gets the property java.
+	 *
+	 * @author mqfdy
+	 * @param propertyType
+	 *            the property type
+	 * @return the property java
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getPropertyJava(String propertyType) {
 		if (!isInitialized)
 			initialize();
 		return (String) propertyToJavaMap.get(propertyType);
 	}
 
+	/**
+	 * Gets the property java list.
+	 *
+	 * @author mqfdy
+	 * @return the property java list
+	 * @Date 2018-09-03 09:00
+	 */
 	public static Set<String> getPropertyJavaList() {
 		Set<String> javaNatives = new HashSet<String>();
 		Enumeration<String> keys = propertyToJavaMap.keys();
@@ -169,12 +245,28 @@ public class TypeMap {
 		return javaNatives;
 	}
 
+	/**
+	 * Gets the java native.
+	 *
+	 * @author mqfdy
+	 * @param jdbcType
+	 *            the jdbc type
+	 * @return the java native
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String getJavaNative(String jdbcType) {
 		if (!isInitialized)
 			initialize();
 		return (String) jdbcToJavaNativeMap.get(jdbcType);
 	}
 
+	/**
+	 * Gets the java native list.
+	 *
+	 * @author mqfdy
+	 * @return the java native list
+	 * @Date 2018-09-03 09:00
+	 */
 	public static Set<String> getJavaNativeList() {
 		Set<String> javaNatives = new HashSet<String>();
 		Enumeration<String> keys = jdbcToJavaNativeMap.keys();
@@ -184,14 +276,35 @@ public class TypeMap {
 		return javaNatives;
 	}
 
+	/**
+	 * Gets the jdbc to java native map.
+	 *
+	 * @author mqfdy
+	 * @return the jdbc to java native map
+	 * @Date 2018-09-03 09:00
+	 */
 	public static Hashtable<String, String> getJdbcToJavaNativeMap() {
 		return jdbcToJavaNativeMap;
 	}
 
+	/**
+	 * Gets the property to java map.
+	 *
+	 * @author mqfdy
+	 * @return the property to java map
+	 * @Date 2018-09-03 09:00
+	 */
 	public static Hashtable<String, String> getPropertyToJavaMap() {
 		return propertyToJavaMap;
 	}
 
+	/**
+	 * Gets the om type to VO map.
+	 *
+	 * @author mqfdy
+	 * @return the om type to VO map
+	 * @Date 2018-09-03 09:00
+	 */
 	public static Hashtable<String, String> getOmTypeToVOMap() {
 		return omTypeToVOMap;
 	}

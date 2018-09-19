@@ -12,21 +12,32 @@ import com.mqfdy.code.designer.editor.part.DiagramEditPart;
 import com.mqfdy.code.designer.models.ImageKeys;
 import com.mqfdy.code.designer.models.ImageManager;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
- * 
+ * The Class AutoLayoutAction.
+ *
  * @author mqfdy
- * 
  */
 public class AutoLayoutAction extends SelectionAction {
+	
+	/** The part. */
 	private BusinessModelDiagramEditor part;
 
+	/**
+	 * Instantiates a new auto layout action.
+	 *
+	 * @param part
+	 *            the part
+	 */
 	public AutoLayoutAction(IWorkbenchPart part) {
 		super(part);
 		this.part = (BusinessModelDiagramEditor) part;
 		setLazyEnablementCalculation(true);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void init() {
 		super.init();
@@ -40,6 +51,15 @@ public class AutoLayoutAction extends SelectionAction {
 		setEnabled(false);
 	}
 
+	/**
+	 * Creates the auto layout command.
+	 *
+	 * @author mqfdy
+	 * @param diae
+	 *            the diae
+	 * @return the command
+	 * @Date 2018-09-03 09:00
+	 */
 	private Command createAutoLayoutCommand(
 			DiagramEditPart diae) {
 		if (diae == null) {
@@ -49,6 +69,9 @@ public class AutoLayoutAction extends SelectionAction {
 		return cmd;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected boolean calculateEnabled() {
 //		Command cmd = createCopyCommand(part.getViewer().getContents().getChildren());
@@ -59,6 +82,9 @@ public class AutoLayoutAction extends SelectionAction {
 				&& part.getViewer().getContents().getChildren().size()>0;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void run() {
 		Command cmd = createAutoLayoutCommand((DiagramEditPart) part.getViewer().getContents());

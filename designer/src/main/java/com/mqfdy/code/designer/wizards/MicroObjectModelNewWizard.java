@@ -37,28 +37,55 @@ import org.jdom2.output.XMLOutputter;
 import com.mqfdy.code.designer.editor.utils.Logger;
 import com.mqfdy.code.model.utils.DateTimeUtil;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MicroObjectModelNewWizard.
+ *
+ * @author mqfdy
+ */
 public class MicroObjectModelNewWizard extends Wizard implements INewWizard {
 
+	/** The selection. */
 	private ISelection selection;
 
+	/** The om new wizard page. */
 	private MicroObjectModelNewWizardPage omNewWizardPage;
 
+	/**
+	 * Instantiates a new micro object model new wizard.
+	 */
 	public MicroObjectModelNewWizard() {
 		super();
 		setWindowTitle("创建业务对象模型");
 		setNeedsProgressMonitor(true);
 	}
 
+	/**
+	 * Inits the.
+	 *
+	 * @author mqfdy
+	 * @param workbench
+	 *            the workbench
+	 * @param selection
+	 *            the selection
+	 * @Date 2018-09-03 09:00
+	 */
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.selection = selection;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void addPages() {
 		omNewWizardPage = new MicroObjectModelNewWizardPage(selection);
 		addPage(omNewWizardPage);
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean performFinish() {
 		omNewWizardPage.autoSetOmModelPath();
@@ -117,6 +144,34 @@ public class MicroObjectModelNewWizard extends Wizard implements INewWizard {
 		return true;
 	}
 
+	/**
+	 * Do finish.
+	 *
+	 * @author mqfdy
+	 * @param filePath
+	 *            the file path
+	 * @param fullFilePath
+	 *            the full file path
+	 * @param fileName
+	 *            the file name
+	 * @param modelName
+	 *            the model name
+	 * @param modelDisplayName
+	 *            the model display name
+	 * @param packageName
+	 *            the package name
+	 * @param packageDisplayName
+	 *            the package display name
+	 * @param monitor
+	 *            the monitor
+	 * @param project
+	 *            the project
+	 * @param namespace
+	 *            the namespace
+	 * @throws CoreException
+	 *             the core exception
+	 * @Date 2018-09-03 09:00
+	 */
 	private void doFinish(String filePath, String fullFilePath,
 			String fileName, String modelName, String modelDisplayName,
 			String packageName, String packageDisplayName,
@@ -175,11 +230,21 @@ public class MicroObjectModelNewWizard extends Wizard implements INewWizard {
 	}
 
 	/**
-	 * 生成文件初始化内容
-	 * 
+	 * 生成文件初始化内容.
+	 *
+	 * @author mqfdy
+	 * @param modelName
+	 *            the model name
+	 * @param modelDisplayName
+	 *            the model display name
+	 * @param packageName
+	 *            the package name
+	 * @param packageDisplayName
+	 *            the package display name
 	 * @param namespace
-	 * 
-	 * @return
+	 *            the namespace
+	 * @return the input stream
+	 * @Date 2018-09-03 09:00
 	 */
 	private InputStream generateFileContent(String modelName,
 			String modelDisplayName, String packageName,
@@ -248,6 +313,13 @@ public class MicroObjectModelNewWizard extends Wizard implements INewWizard {
 				.getBytes());
 	}
 
+	/**
+	 * Generate UUID.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public static String generateUUID() {
 		return UUID.randomUUID().toString().replace("-", "");
 	}

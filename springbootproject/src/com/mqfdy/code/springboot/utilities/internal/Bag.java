@@ -19,10 +19,12 @@ import com.mqfdy.code.springboot.utilities.internal.iterators.EmptyIterator;
 /**
  * A collection that allows duplicate elements.
  * <p>
- * The <code>Bag</code> interface places additional stipulations,
- * beyond those inherited from the <code>java.util.Collection</code> interface,
- * on the contracts of the <code>equals</code> and <code>hashCode</code> methods.
- * 
+ * The <code>Bag</code> interface places additional stipulations, beyond those
+ * inherited from the <code>java.util.Collection</code> interface, on the
+ * contracts of the <code>equals</code> and <code>hashCode</code> methods.
+ *
+ * @param <E>
+ *            the element type
  * @see HashBag
  */
 

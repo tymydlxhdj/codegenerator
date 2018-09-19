@@ -17,18 +17,35 @@ import org.eclipse.datatools.connectivity.drivers.models.CategoryDescriptor;
 import org.eclipse.datatools.connectivity.drivers.models.OverrideTemplateDescriptor;
 import org.eclipse.datatools.connectivity.drivers.models.TemplateDescriptor;
 
+// TODO: Auto-generated Javadoc
 /**
- * 
+ * The Class DatabaseInfoConfigUtil.
+ *
  * @author papa
  * @mail rain2sunny@gmail.com 2007-12-30
  */
 public class DatabaseInfoConfigUtil {
 	private static DatabaseInfoConfigUtil instance;
+	
+	/** The database category ID. */
 	public static String databaseCategoryID = "org.eclipse.datatools.connectivity.db.driverCategory";
+	
+	/** The generic category ID. */
 	public static String genericCategoryID = "org.eclipse.datatools.connectivity.db.genericDriverCategory";
+	
+	/** The generic template ID. */
 	public static String genericTemplateID = "org.eclipse.datatools.connectivity.db.generic.genericDriverTemplate";
+	
+	/** The Constant ORACLE_DRIVER_INSTANCE_ID. */
 	public static final String ORACLE_DRIVER_INSTANCE_ID = "DriverDefn.oracle.dbtools.dtp.connectivity.db.genericDriverTemplate";
 
+	/**
+	 * Gets the single instance of DatabaseInfoConfigUtil.
+	 *
+	 * @author mqfdy
+	 * @return single instance of DatabaseInfoConfigUtil
+	 * @Date 2018-09-03 09:00
+	 */
 	public static DatabaseInfoConfigUtil getInstance() {
 		if (instance == null)
 			instance = new DatabaseInfoConfigUtil();
@@ -39,7 +56,11 @@ public class DatabaseInfoConfigUtil {
 	}
 
 	/**
-	 * 得到Studio中配置好的DriverInstance的名称列表 注：在这里DriverInstance的名称和id是相同的
+	 * 得到Studio中配置好的DriverInstance的名称列表 注：在这里DriverInstance的名称和id是相同的.
+	 *
+	 * @author mqfdy
+	 * @return the driver instance names
+	 * @Date 2018-09-03 09:00
 	 */
 	public String[] getDriverInstanceNames() {
 		DriverInstance[] driverInstances = DriverManager.getInstance()
@@ -53,7 +74,13 @@ public class DatabaseInfoConfigUtil {
 	}
 
 	/**
-	 * 根据driver id来获取DriverInstance实例
+	 * 根据driver id来获取DriverInstance实例.
+	 *
+	 * @author mqfdy
+	 * @param driverInstanceId
+	 *            the driver instance id
+	 * @return the driver instance by ID
+	 * @Date 2018-09-03 09:00
 	 */
 	public DriverInstance getDriverInstanceByID(String driverInstanceId) {
 		return DriverManager.getInstance().getDriverInstanceByID(
@@ -73,7 +100,13 @@ public class DatabaseInfoConfigUtil {
 	}
 
 	/**
-	 * 得到databaseCategoryID代表的节点的所有孩子节点
+	 * 得到databaseCategoryID代表的节点的所有孩子节点.
+	 *
+	 * @author mqfdy
+	 * @param databaseCategoryID
+	 *            the database category ID
+	 * @return the database descriptor list
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	public List<CategoryDescriptor> getDatabaseDescriptorList(
@@ -84,7 +117,15 @@ public class DatabaseInfoConfigUtil {
 	}
 
 	/**
-	 * 得到databaseCategoryID代表的节点下所有的孩子节点，但是过滤掉filterList中包含的id的节点
+	 * 得到databaseCategoryID代表的节点下所有的孩子节点，但是过滤掉filterList中包含的id的节点.
+	 *
+	 * @author mqfdy
+	 * @param databaseCategoryID
+	 *            the database category ID
+	 * @param filterList
+	 *            the filter list
+	 * @return the database descriptor list
+	 * @Date 2018-09-03 09:00
 	 */
 	public List<CategoryDescriptor> getDatabaseDescriptorList(
 			String databaseCategoryID, List<String> filterList) {
@@ -103,7 +144,11 @@ public class DatabaseInfoConfigUtil {
 	}
 
 	/**
-	 * 得到当前studio中支持的数据库名称--id对应的map,不包括通用的数据库类型，即Generic JDBC Driver
+	 * 得到当前studio中支持的数据库名称--id对应的map,不包括通用的数据库类型，即Generic JDBC Driver.
+	 *
+	 * @author mqfdy
+	 * @return the database type name ID map
+	 * @Date 2018-09-03 09:00
 	 */
 	public Map<String, String> getDatabaseTypeNameIDMap() {
 		List<String> filterList = new ArrayList<String>();
@@ -118,7 +163,11 @@ public class DatabaseInfoConfigUtil {
 	}
 
 	/**
-	 * 得到当前studio中支持的数据库类型名称数组
+	 * 得到当前studio中支持的数据库类型名称数组.
+	 *
+	 * @author mqfdy
+	 * @return the database type name array
+	 * @Date 2018-09-03 09:00
 	 */
 	public String[] getDatabaseTypeNameArray() {
 		return (String[]) getDatabaseTypeNameIDMap().keySet().toArray(
@@ -126,10 +175,13 @@ public class DatabaseInfoConfigUtil {
 	}
 
 	/**
-	 * 根据数据库类型id得到该数据库的版本名称字符串数组
-	 * 
+	 * 根据数据库类型id得到该数据库的版本名称字符串数组.
+	 *
+	 * @author mqfdy
 	 * @param databaseTypeID
 	 *            数据库类型id 可以通过#getDatabaseTypeNameIDMap方法由数据库名称得到
+	 * @return the database version array by type ID
+	 * @Date 2018-09-03 09:00
 	 */
 	public String[] getDatabaseVersionArrayByTypeID(String databaseTypeID) {
 		return ((String[]) (getDatabaseVersionNameIDMap(databaseTypeID)
@@ -137,7 +189,13 @@ public class DatabaseInfoConfigUtil {
 	}
 
 	/**
-	 * 根据数据库类型ID获得该类型下包含的数据库版本名称--ID对应的map
+	 * 根据数据库类型ID获得该类型下包含的数据库版本名称--ID对应的map.
+	 *
+	 * @author mqfdy
+	 * @param databaseTypeID
+	 *            the database type ID
+	 * @return the database version name ID map
+	 * @Date 2018-09-03 09:00
 	 */
 	public Map<String, String> getDatabaseVersionNameIDMap(String databaseTypeID) {
 		Map<String, String> map = new HashMap<String, String>();

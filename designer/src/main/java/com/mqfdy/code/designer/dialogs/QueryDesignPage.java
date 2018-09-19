@@ -44,43 +44,91 @@ import com.mqfdy.code.model.utils.SqlLogicOperateType;
 import com.mqfdy.code.model.utils.SqlOperateType;
 import com.mqfdy.code.model.utils.StringUtil;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
+// TODO: Auto-generated Javadoc
+
 /**
- * 
- * @author mqfdy
+ * The Class QueryDesignPage.
  *
+ * @author mqfdy
  */
 public class QueryDesignPage extends Composite implements
 		IBusinessClassEditorPage {
 
+	/** The parent dialog. */
 	private QueryDesignDialog parentDialog;
 
+	/** The table viewer. */
 	private TableViewer tableViewer;
+	
+	/** The table. */
 	private Table table = null;
+	
+	/** The tool bar. */
 	private ToolBar toolBar = null;
 
+	/** The add action. */
 	private Action addAction;
+	
+	/** The delete action. */
 	private Action deleteAction;
+	
+	/** The bottom action. */
 	private Action bottomAction;
+	
+	/** The down action. */
 	private Action downAction;
+	
+	/** The top action. */
 	private Action topAction;
+	
+	/** The up action. */
 	private Action upAction;
 
+	/** The group design. */
 	private Group groupDesign;
 
+	/** The sql str. */
 	protected String sqlStr;
 
+	/** The list temp. */
 	private List<QueryCondition> listTemp = new ArrayList<QueryCondition>();
 
+	/** The column 1 name. */
 	private String column1Name = "前括号";
+	
+	/** The column 2 name. */
 	private String column2Name = "属性名称";
+	
+	/** The column 3 name. */
 	private String column3Name = "属性类型";
+	
+	/** The column 4 name. */
 	private String column4Name = "操作符";
+	
+	/** The column 5 name. */
 	private String column5Name = "值";
+	
+	/** The column 6 name. */
 	private String column6Name = "后括号";
+	
+	/** The column 7 name. */
 	private String column7Name = "逻辑运算";
 
+	/** The is contain brackets. */
 	private boolean isContainBrackets = false;
 
+	/**
+	 * Instantiates a new query design page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param parentDialog
+	 *            the parent dialog
+	 * @param list
+	 *            the list
+	 */
 	public QueryDesignPage(Composite parent, int style,
 			QueryDesignDialog parentDialog, List<QueryCondition> list) {
 		super(parent, style);
@@ -92,6 +140,14 @@ public class QueryDesignPage extends Composite implements
 		addListeners();
 	}
 
+	/**
+	 * Convert data.
+	 *
+	 * @author mqfdy
+	 * @param list
+	 *            the list
+	 * @Date 2018-09-03 09:00
+	 */
 	private void convertData(List<QueryCondition> list) {
 		if (list != null) {
 			setListTemp(new ArrayList<QueryCondition>());
@@ -101,10 +157,24 @@ public class QueryDesignPage extends Composite implements
 		}
 	}
 
+	/**
+	 * Inits the data.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void initData() {
 		tableViewer.setInput(getListTemp());
 	}
 
+	/**
+	 * Creates the contents.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createContents(Composite composite) {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 1;
@@ -122,10 +192,24 @@ public class QueryDesignPage extends Composite implements
 		createTable(groupDesign);
 	}
 
+	/**
+	 * Adds the listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void addListeners() {
 		
 	}
 
+	/**
+	 * Creates the tool bar.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createToolBar(Composite composite) {
 		GridData gridData = new GridData();
 		gridData.horizontalAlignment = SWT.FILL;
@@ -134,6 +218,14 @@ public class QueryDesignPage extends Composite implements
 		toolBar.setLayoutData(gridData);
 	}
 
+	/**
+	 * Creates the table.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createTable(Composite composite) {
 		tableViewer = new TableViewer(composite, SWT.SINGLE
 				| SWT.FULL_SELECTION | SWT.BORDER | SWT.SCROLL_LINE);
@@ -215,6 +307,15 @@ public class QueryDesignPage extends Composite implements
 	 * PROPERTY_USER_ID = "用户ID";
 	 */
 
+	/**
+	 * Filter properties.
+	 *
+	 * @author mqfdy
+	 * @param businessClass
+	 *            the business class
+	 * @return the list
+	 * @Date 2018-09-03 09:00
+	 */
 	private List<Property> filterProperties(BusinessClass businessClass) {
 		List<Property> properties = null;
 		if (businessClass != null) {
@@ -248,6 +349,13 @@ public class QueryDesignPage extends Composite implements
 		return properties;
 	}
 
+	/**
+	 * Gets the properties.
+	 *
+	 * @author mqfdy
+	 * @return the properties
+	 * @Date 2018-09-03 09:00
+	 */
 	private String[] getProperties() {
 		List<Property> properties = null;
 		if (BusinessClass.STEREOTYPE_BUILDIN
@@ -267,10 +375,22 @@ public class QueryDesignPage extends Composite implements
 		return items;
 	}
 
+	/**
+	 * Refresh table.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void refreshTable() {
 		tableViewer.refresh();
 	}
 
+	/**
+	 * Make actions.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void makeActions() {
 		// 新增操作
 		addAction = new Action(ActionTexts.MODEL_ELEMENT_ADD, ImageManager
@@ -350,6 +470,14 @@ public class QueryDesignPage extends Composite implements
 
 	}
 
+	/**
+	 * Move.
+	 *
+	 * @author mqfdy
+	 * @param action
+	 *            the action
+	 * @Date 2018-09-03 09:00
+	 */
 	private void move(String action) {
 		if (tableViewer.getSelection().isEmpty()) {
 
@@ -362,6 +490,16 @@ public class QueryDesignPage extends Composite implements
 		}
 	}
 
+	/**
+	 * Reset order num.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @param type
+	 *            the type
+	 * @Date 2018-09-03 09:00
+	 */
 	private void resetOrderNum(QueryCondition element, String type) {
 		if ("up".equals(type)) {
 			for (int i = 0; i < getListTemp().size(); i++) {
@@ -405,19 +543,40 @@ public class QueryDesignPage extends Composite implements
 	}
 
 	/**
-	 * LabelProvider
-	 * 
+	 * LabelProvider.
+	 *
 	 * @author xuran
-	 * 
 	 */
 	static class TableLabelProvider extends LabelProvider implements
 			ITableLabelProvider {
 
+		/**
+		 * Gets the column image.
+		 *
+		 * @author mqfdy
+		 * @param arg0
+		 *            the arg 0
+		 * @param arg1
+		 *            the arg 1
+		 * @return the column image
+		 * @Date 2018-09-03 09:00
+		 */
 		public Image getColumnImage(Object arg0, int arg1) {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
+		/**
+		 * Gets the column text.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param columnIndex
+		 *            the column index
+		 * @return the column text
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getColumnText(Object element, int columnIndex) {
 			if (element instanceof QueryCondition) {
 				QueryCondition condition = (QueryCondition) element;
@@ -450,12 +609,21 @@ public class QueryDesignPage extends Composite implements
 	}
 
 	/**
-	 * contentProvider
-	 * 
+	 * contentProvider.
+	 *
 	 * @author xuran
-	 * 
 	 */
 	static class ContentProvider implements IStructuredContentProvider {
+		
+		/**
+		 * Gets the elements.
+		 *
+		 * @author mqfdy
+		 * @param inputElement
+		 *            the input element
+		 * @return the elements
+		 * @Date 2018-09-03 09:00
+		 */
 		public Object[] getElements(Object inputElement) {
 			if (inputElement instanceof List) {
 				Object[] objects = ((List) inputElement).toArray();
@@ -470,27 +638,60 @@ public class QueryDesignPage extends Composite implements
 			return new Object[0];
 		}
 
+		/**
+		 * 
+		 */
 		public void dispose() {
 		}
 
+		/**
+		 * Input changed.
+		 *
+		 * @author mqfdy
+		 * @param viewer
+		 *            the viewer
+		 * @param oldInput
+		 *            the old input
+		 * @param newInput
+		 *            the new input
+		 * @Date 2018-09-03 09:00
+		 */
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		}
 	}
 
 	/**
-	 * 单元格修改器
-	 * 
+	 * 单元格修改器.
+	 *
 	 * @author LQR
-	 * 
 	 */
 	public class ValueCellModifier implements ICellModifier {
+		
+		/** The table viewer. */
 		private TableViewer tableViewer;
 
+		/**
+		 * Instantiates a new value cell modifier.
+		 *
+		 * @param tableViewer
+		 *            the table viewer
+		 */
 		public ValueCellModifier(TableViewer tableViewer) {
 			this.tableViewer = tableViewer;
 
 		}
 
+		/**
+		 * Can modify.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param property
+		 *            the property
+		 * @return true, if successful
+		 * @Date 2018-09-03 09:00
+		 */
 		public boolean canModify(Object element, String property) {
 			if (property != null && property.equals(column3Name)) {
 				return false;
@@ -498,6 +699,17 @@ public class QueryDesignPage extends Composite implements
 			return true;
 		}
 
+		/**
+		 * Gets the value.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param property
+		 *            the property
+		 * @return the value
+		 * @Date 2018-09-03 09:00
+		 */
 		public Object getValue(Object element, String property) {
 			QueryCondition condition = (QueryCondition) element;
 			if (property != null && property.equals(column1Name)) {
@@ -532,6 +744,18 @@ public class QueryDesignPage extends Composite implements
 			return "";
 		}
 
+		/**
+		 * Modify.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param property
+		 *            the property
+		 * @param value
+		 *            the value
+		 * @Date 2018-09-03 09:00
+		 */
 		public void modify(Object element, String property, Object value) {
 			if (value == null) {
 				return;
@@ -564,11 +788,17 @@ public class QueryDesignPage extends Composite implements
 
 	}
 
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		isContainBrackets = false;
 		StringBuffer bracketsStr = new StringBuffer();
@@ -641,6 +871,19 @@ public class QueryDesignPage extends Composite implements
 		return true;
 	}
 
+	/**
+	 * Validate value.
+	 *
+	 * @author mqfdy
+	 * @param dataType
+	 *            the data type
+	 * @param value
+	 *            the value
+	 * @param i
+	 *            the i
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean validateValue(DataType dataType, String value, int i) {
 		switch (dataType) {
 		case Integer:
@@ -711,6 +954,15 @@ public class QueryDesignPage extends Composite implements
 		return true;
 	}
 
+	/**
+	 * Gets the data type.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @return the data type
+	 * @Date 2018-09-03 09:00
+	 */
 	public DataType getDataType(String name) {
 		String dataType = "";
 		List<Property> properties = parentDialog.getBusinessClass()
@@ -727,6 +979,15 @@ public class QueryDesignPage extends Composite implements
 		return DataType.String;
 	}
 
+	/**
+	 * Valiedate braces.
+	 *
+	 * @author mqfdy
+	 * @param strBraces
+	 *            the str braces
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean valiedateBraces(String strBraces) {
 		Stack stack = new Stack();
 		if (strBraces == null) {
@@ -760,6 +1021,9 @@ public class QueryDesignPage extends Composite implements
 		}
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 		if(parentDialog.getParentPage().getParentPage() instanceof PropertyEditorPage){
 			((PropertyEditorPage) parentDialog.getParentPage().getParentPage()).getParentDialog()
@@ -772,10 +1036,25 @@ public class QueryDesignPage extends Composite implements
 		
 	}
 
+	/**
+	 * Gets the list temp.
+	 *
+	 * @author mqfdy
+	 * @return the list temp
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<QueryCondition> getListTemp() {
 		return listTemp;
 	}
 
+	/**
+	 * Sets the list temp.
+	 *
+	 * @author mqfdy
+	 * @param listTemp
+	 *            the new list temp
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setListTemp(List<QueryCondition> listTemp) {
 		this.listTemp = listTemp;
 	}

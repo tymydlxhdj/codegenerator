@@ -32,6 +32,7 @@ import org.eclipse.gef.ui.actions.SelectionAction;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPart;
 
+// TODO: Auto-generated Javadoc
 /**
  * An action to align the selected parts.
  * 
@@ -68,16 +69,21 @@ public final class AlignmentAction extends SelectionAction {
 	 * Indicates that the top edges should be aligned.
 	 */
 	public static final String ID_ALIGN_TOP = GEFActionConstants.ALIGN_TOP;
+	
+	/** The alignment. */
 	private int alignment;
 
+	/** The operation set. */
 	private List operationSet;
 
 	/**
-	 * @deprecated use AlignmentAction(IWorkbenchPart, int align)
+	 * Instantiates a new alignment action.
+	 *
 	 * @param editor
 	 *            the editor
 	 * @param align
 	 *            the alignment ID
+	 * @deprecated use AlignmentAction(IWorkbenchPart, int align)
 	 */
 	public AlignmentAction(IEditorPart editor, int align) {
 		this((IWorkbenchPart) editor, align);
@@ -109,10 +115,12 @@ public final class AlignmentAction extends SelectionAction {
 	/**
 	 * Returns the alignment rectangle to which all selected parts should be
 	 * aligned.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param request
 	 *            the alignment Request
 	 * @return the alignment rectangle
+	 * @Date 2018-09-03 09:00
 	 */
 	protected Rectangle calculateAlignmentRectangle(Request request) {
 		List editparts = getOperationSet(request);
@@ -126,6 +134,9 @@ public final class AlignmentAction extends SelectionAction {
 	}
 
 	/**
+	 * Calculate enabled.
+	 *
+	 * @return true, if successful
 	 * @see org.eclipse.gef.ui.actions.WorkbenchPartAction#calculateEnabled()
 	 */
 	protected boolean calculateEnabled() {
@@ -136,6 +147,13 @@ public final class AlignmentAction extends SelectionAction {
 		return cmd.canExecute();
 	}
 
+	/**
+	 * Creates the alignment command.
+	 *
+	 * @author mqfdy
+	 * @return the command
+	 * @Date 2018-09-03 09:00
+	 */
 	private Command createAlignmentCommand() {
 		AlignmentRequest request = new AlignmentRequest(
 				RequestConstants.REQ_ALIGN);
@@ -155,6 +173,8 @@ public final class AlignmentAction extends SelectionAction {
 	}
 
 	/**
+	 * Dispose.
+	 *
 	 * @see org.eclipse.gef.Disposable#dispose()
 	 */
 	public void dispose() {
@@ -164,10 +184,12 @@ public final class AlignmentAction extends SelectionAction {
 
 	/**
 	 * Returns the list of editparts which will participate in alignment.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param request
 	 *            the alignment request
 	 * @return the list of parts which will be aligned
+	 * @Date 2018-09-03 09:00
 	 */
 	protected List getOperationSet(Request request) {
 		if (operationSet != null)
@@ -192,6 +214,9 @@ public final class AlignmentAction extends SelectionAction {
 
 	/**
 	 * Initializes the actions UI presentation.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void initUI() {
 		switch (alignment) {
@@ -246,6 +271,8 @@ public final class AlignmentAction extends SelectionAction {
 	}
 
 	/**
+	 * Run.
+	 *
 	 * @see org.eclipse.jface.action.IAction#run()
 	 */
 	public void run() {

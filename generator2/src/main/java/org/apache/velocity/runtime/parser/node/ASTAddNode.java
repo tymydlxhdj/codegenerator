@@ -22,6 +22,7 @@ package org.apache.velocity.runtime.parser.node;
 import org.apache.velocity.context.InternalContextAdapter;
 import org.apache.velocity.runtime.parser.Parser;
 
+// TODO: Auto-generated Javadoc
 /**
  * Handles number addition of nodes.<br><br>
  *
@@ -36,23 +37,38 @@ import org.apache.velocity.runtime.parser.Parser;
  */
 public class ASTAddNode extends ASTMathNode
 {
+    
     /**
-     * @param id
-     */
+	 * Instantiates a new AST add node.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTAddNode(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST add node.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTAddNode(Parser p, int id)
     {
         super(p, id);
     }
 
+    /**
+     * @see org.apache.velocity.runtime.parser.node.ASTMathNode#handleSpecial(java.lang.Object, java.lang.Object, org.apache.velocity.context.InternalContextAdapter)
+     * @param left
+     * @param right
+     * @param context
+     * @return ASTAddNode
+     */
     //@Override
     protected Object handleSpecial(Object left, Object right, InternalContextAdapter context)
     {
@@ -74,6 +90,13 @@ public class ASTAddNode extends ASTMathNode
         return null;
     }
 
+    /**
+     * @see org.apache.velocity.runtime.parser.node.ASTMathNode#perform(java.lang.Number, java.lang.Number, org.apache.velocity.context.InternalContextAdapter)
+     * @param left
+     * @param right
+     * @param context
+     * @return ASTAddNode
+     */
     public Number perform(Number left, Number right, InternalContextAdapter context)
     {
         return MathUtils.add(left, right);

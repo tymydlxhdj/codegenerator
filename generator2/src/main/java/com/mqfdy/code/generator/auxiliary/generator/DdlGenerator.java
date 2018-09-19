@@ -52,40 +52,77 @@ import com.mqfdy.code.model.utils.DBType;
 import com.mqfdy.code.model.utils.StringUtil;
 import com.mqfdy.code.model.utils.ValidatorType;
 
+// TODO: Auto-generated Javadoc
 /**
- * 生成ddl类
- * 
+ * 生成ddl类.
+ *
  * @author mqf
- * 
  */
 public class DdlGenerator {
+	
+	/** The configuration. */
 	private Configuration configuration = new Configuration();// pojo的configuration对象（排除了dto，非持久化属性）
+	
+	/** The mappings. */
 	private Mappings mappings;
 	
+	/** The hbm configuration. */
 	private Configuration hbmConfiguration = new Configuration();// hbm的configuration对象
+	
+	/** The hbm mappings. */
 	private Mappings hbmMappings;
 
+	/** The Constant DEFAULT_ID_DATATYPE. */
 	private static final String DEFAULT_ID_DATATYPE = Hibernate.STRING.getReturnedClass().getName();// java.lang.String
+	
+	/** The Constant DEFAULT_ID_NAME. */
 	private static final String DEFAULT_ID_NAME = "id";
+	
+	/** The Constant DEFAULT_ID_DBNAME. */
 	private static final String DEFAULT_ID_DBNAME = "ID";
+	
+	/** The Constant DEFAULT_ID_GENERATOR_STRATEGY. */
 	private static final String DEFAULT_ID_GENERATOR_STRATEGY = "uuid";
+	
+	/** The Constant DEFAULT_DISCRIMINATOR_TYPE_NAME. */
 	private static final String DEFAULT_DISCRIMINATOR_TYPE_NAME = "TYPE";
+	
+	/** The Constant DELETE_STRING. */
 	private static final String DELETE_STRING = "delete";
 
+	/** The dto list. */
 	private List<PersistentClass> dtoList = new ArrayList<PersistentClass>();// dto对象集合
+	
+	/** The reference set. */
 	private List<PersistentClass> referenceSet = new ArrayList<PersistentClass>();// 引用业务实体集合
+	
+	/** The reverse set. */
 	private List<PersistentClass> reverseSet = new ArrayList<PersistentClass>();//反向业务实体集合
 
+	/** The db type. */
 	private String dbType;
+	
+	/** The map. */
 	public Map<BusinessClass, PersistentClass> map;
+	
+	/** The not persistent property. */
 	private Map<Property, PersistentClass> notPersistentProperty = new HashMap<Property, PersistentClass>();
+	
+	/** The load package. */
 	private String loadPackage = null;
+	
+	/** The export hbm path. */
 	private String exportHbmPath = null;
 
+	/** The last pc. */
 	private PersistentClass lastPc;
 	
+	/** The uncreate properties map. */
 	private Map<String, PersistenceProperty> uncreatePropertiesMap = new HashMap<String, PersistenceProperty>();	//记录不生成的属性
 
+	/**
+	 * Instantiates a new ddl generator.
+	 */
 	public DdlGenerator() {
 		this.mappings = this.configuration.createMappings();
 		this.hbmMappings = this.hbmConfiguration.createMappings();
@@ -93,7 +130,18 @@ public class DdlGenerator {
 
 	/**
 	 * 1、将所有的业务实体都生成PersistentClass对象并放到map中便于BusinessClass与PersistentClass对象对应
-	 * 2、
+	 * 2、.
+	 *
+	 * @author mqfdy
+	 * @param bom
+	 *            the bom
+	 * @param exportHbmPath
+	 *            the export hbm path
+	 * @param dbType
+	 *            the db type
+	 * @param isHBM
+	 *            the is HBM
+	 * @Date 2018-09-03 09:00
 	 */
 	public void init(BusinessObjectModel bom, String exportHbmPath, String dbType,boolean isHBM) {
 		this.loadPackage = StringUtil.getLoadPackage(exportHbmPath);// com.sgcc
@@ -118,10 +166,14 @@ public class DdlGenerator {
 
 		this.createHbmConfiguration();
 	}
+	
 	/**
-	 * 创建dto对象的rootclass
-	 * 
+	 * 创建dto对象的rootclass.
+	 *
+	 * @author mqfdy
 	 * @param bom
+	 *            the bom
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private void buildRootclassOfDTO(BusinessObjectModel bom) {
 		List<DataTransferObject> dtos = bom.getDTOs();
@@ -148,11 +200,17 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 创建RootClass对象，默认构造单主键id
-	 * 
+	 * 创建RootClass对象，默认构造单主键id.
+	 *
+	 * @author mqfdy
 	 * @param className
 	 *            用于构造RootClass对象和Table对象，table名默认使用类名的全大写
-	 * @return
+	 * @param bc
+	 *            the bc
+	 * @param dbType
+	 *            the db type
+	 * @return the root class
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private RootClass buildRootClass(String className, BusinessClass bc,String dbType) {// 需要加入对类名的合法性校验
 		RootClass rc = new RootClass();
@@ -190,8 +248,13 @@ public class DdlGenerator {
 	}
 	
 	/**
-	 *获取实体类名
-	 * @return
+	 * 获取实体类名.
+	 *
+	 * @author mqfdy
+	 * @param bc
+	 *            the bc
+	 * @return the domain full name
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getDomainFullName( BusinessClass bc) {
 		if (bc.getParent() != null) {
@@ -203,9 +266,18 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 创建单主键，默认主键名为id
-	 * 
+	 * 创建单主键，默认主键名为id.
+	 *
+	 * @author mqfdy
 	 * @param rc
+	 *            the rc
+	 * @param bc
+	 *            the bc
+	 * @param table
+	 *            the table
+	 * @param dbType
+	 *            the db type
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private void createIdProperty(RootClass rc, BusinessClass bc, Table table,String dbType) {
 
@@ -286,9 +358,18 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 取出属性中的所有验证，转换为javax的注解。不能对应的用正则表达式
-	 * 
+	 * 取出属性中的所有验证，转换为javax的注解。不能对应的用正则表达式.
+	 *
+	 * @author mqfdy
 	 * @param prop
+	 *            the prop
+	 * @param pc
+	 *            the pc
+	 * @param property
+	 *            the property
+	 * @param bc
+	 *            the bc
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private void addValidators(com.mqfdy.code.model.Property prop,
 			PersistentClass pc, Property property, BusinessClass bc) {
@@ -473,10 +554,14 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 创建普通属性
-	 * 
+	 * 创建普通属性.
+	 *
+	 * @author mqfdy
 	 * @param pc
+	 *            the pc
 	 * @param bc
+	 *            the bc
+	 * @Date 2018-9-3 11:38:36
 	 */
 	@SuppressWarnings("static-access")
 	private void createNormalProperty(PersistentClass pc, BusinessClass bc) {
@@ -601,9 +686,12 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 将PersistentClass对象加入到Mappings对象中
-	 * 
+	 * 将PersistentClass对象加入到Mappings对象中.
+	 *
+	 * @author mqfdy
 	 * @param pc
+	 *            the pc
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private void addPcToMappings(PersistentClass pc) {
 		if (pc == null) {
@@ -613,16 +701,23 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 在一方创建set、key、one-to-many，需要判断是否一对一的情况（unique=true）
-	 * 
+	 * 在一方创建set、key、one-to-many，需要判断是否一对一的情况（unique=true）.
+	 *
+	 * @author mqfdy
 	 * @param opc
 	 *            一方
 	 * @param mpc
 	 *            多方
 	 * @param isOne2One
 	 *            是否一对一
-	 * @param is2Way
-	 *            是否单向的
+	 * @param cascadeDelete
+	 *            the cascade delete
+	 * @param oneRoleName
+	 *            the one role name
+	 * @param foreignKeyColumnName
+	 *            the foreign key column name
+	 * @return the collection
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private Collection createOne2Many(PersistentClass opc, PersistentClass mpc,
 			boolean isOne2One, String cascadeDelete, String oneRoleName,
@@ -685,12 +780,25 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 创建多对多的情况
-	 * 
-	 * @param m1pc
-	 *            多方其中的一个
-	 * @param m2pc
-	 *            多方其中的一个
+	 * 创建多对多的情况.
+	 *
+	 * @author mqfdy
+	 * @param mspc
+	 *            the mspc
+	 * @param mrpc
+	 *            the mrpc
+	 * @param cascadeDelete
+	 *            the cascade delete
+	 * @param setName
+	 *            the set name
+	 * @param ownFkColName
+	 *            the own fk col name
+	 * @param otherFkColName
+	 *            the other fk col name
+	 * @param relationTableName
+	 *            the relation table name
+	 * @return the collection
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private Collection createMany2Many(PersistentClass mspc, PersistentClass mrpc, String cascadeDelete, String setName, String ownFkColName, String otherFkColName, String relationTableName) {
 		// 创建中间表对象
@@ -804,13 +912,24 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 在多方创建many-to-one，包含一对一的情况
-	 * 
+	 * 在多方创建many-to-one，包含一对一的情况.
+	 *
+	 * @author mqfdy
 	 * @param mpc
 	 *            多方
 	 * @param opc
 	 *            一方
-	 * @param an 
+	 * @param isOneToOne
+	 *            the is one to one
+	 * @param cascadeDelete
+	 *            the cascade delete
+	 * @param setName
+	 *            the set name
+	 * @param foreignKeyColumnName
+	 *            the foreign key column name
+	 * @param an
+	 *            the an
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private void createMany2One(PersistentClass mpc, PersistentClass opc,
 			boolean isOneToOne, String cascadeDelete, String setName,
@@ -872,7 +991,24 @@ public class DdlGenerator {
 	}
 	
 	/**
-	 * 创建主键关联一对一
+	 * 创建主键关联一对一.
+	 *
+	 * @author mqfdy
+	 * @param opc
+	 *            the opc
+	 * @param mpc
+	 *            the mpc
+	 * @param oPropName
+	 *            the o prop name
+	 * @param nPropName
+	 *            the n prop name
+	 * @param cascadeDelete
+	 *            the cascade delete
+	 * @param port
+	 *            the port
+	 * @param an
+	 *            the an
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private void createPKOne2One(PersistentClass opc, PersistentClass mpc, String oPropName, String nPropName, String cascadeDelete,String port,Association an) {
 		OneToOne o_o_value = new OneToOne(opc.getTable(), opc);
@@ -899,7 +1035,20 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 创建一对一(在一方创建one-to-one)
+	 * 创建一对一(在一方创建one-to-one).
+	 *
+	 * @author mqfdy
+	 * @param opc
+	 *            the opc
+	 * @param mpc
+	 *            the mpc
+	 * @param oPropName
+	 *            the o prop name
+	 * @param nPropName
+	 *            the n prop name
+	 * @param cascadeDelete
+	 *            the cascade delete
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private void createOne2One(PersistentClass opc, PersistentClass mpc, String oPropName, String nPropName, String cascadeDelete) {
 		OneToOne o_o_value = new OneToOne(opc.getTable(), opc);
@@ -918,9 +1067,16 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 追加业务模型中关联关系
-	 * 
-	 * @param bcs
+	 * 追加业务模型中关联关系.
+	 *
+	 * @author mqfdy
+	 * @param map
+	 *            the map
+	 * @param bom
+	 *            the bom
+	 * @param isHBM
+	 *            the is HBM
+	 * @Date 2018-09-03 09:00
 	 */
 	public void buildAssociation(Map<BusinessClass, PersistentClass> map, BusinessObjectModel bom,boolean isHBM) {
 		List<Association> ans = bom.getAssociations();// bom中关联关系集合
@@ -1137,6 +1293,23 @@ public class DdlGenerator {
 		
 	}
 
+	/**
+	 * Checks if is pk O 2 o.
+	 *
+	 * @author mqfdy
+	 * @param classA
+	 *            the class A
+	 * @param pcA
+	 *            the pc A
+	 * @param classB
+	 *            the class B
+	 * @param pcB
+	 *            the pc B
+	 * @param an
+	 *            the an
+	 * @return true, if is pk O 2 o
+	 * @Date 2018-9-3 11:38:36
+	 */
 	//判断是否主键关联一对一
 	private boolean isPkO2o(BusinessClass classA,PersistentClass pcA,BusinessClass classB,PersistentClass pcB,Association an) {
 		
@@ -1152,6 +1325,16 @@ public class DdlGenerator {
 		return false;
 	}
 
+	/**
+	 * Adds the builtin user name meta.
+	 *
+	 * @author mqfdy
+	 * @param pcMajor
+	 *            the pc major
+	 * @param userName
+	 *            the user name
+	 * @Date 2018-9-3 11:38:36
+	 */
 	private void addBuiltinUserNameMeta(PersistentClass pcMajor, String userName) {
 		Map<String, MetaAttribute> metaAttributes = new HashMap<String, MetaAttribute>();
 		if (pcMajor.getMetaAttributes() != null) {
@@ -1165,7 +1348,14 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 增加自定义的内置组织机构属性名
+	 * 增加自定义的内置组织机构属性名.
+	 *
+	 * @author mqfdy
+	 * @param pcMajor
+	 *            the pc major
+	 * @param orgName
+	 *            the org name
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private void addBuiltinOrgNameMeta(PersistentClass pcMajor, String orgName) {
 		Map<String, MetaAttribute> metaAttributes = new HashMap<String, MetaAttribute>();
@@ -1178,7 +1368,16 @@ public class DdlGenerator {
 		metaAttributes.put("orgName", orgMeta);
 	}
 
-	/** 加入内置对象代码 */
+	/**
+	 * 加入内置对象代码.
+	 *
+	 * @author mqfdy
+	 * @param pcMajor
+	 *            the pc major
+	 * @param builtinName
+	 *            the builtin name
+	 * @Date 2018-9-3 11:38:36
+	 */
 	private void addBuiltinMeta(PersistentClass pcMajor, String builtinName) {
 
 		Map<String, MetaAttribute> metaAttributes = new HashMap<String, MetaAttribute>();
@@ -1211,9 +1410,15 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 由BusinessObjectModel中封装的继承关系创建RootClass和SingleSubClass
-	 * 
-	 * @param cr
+	 * 由BusinessObjectModel中封装的继承关系创建RootClass和SingleSubClass.
+	 *
+	 * @author mqfdy
+	 * @param bom
+	 *            the bom
+	 * @param dbType
+	 *            the db type
+	 * @return the map
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private Map<BusinessClass, PersistentClass> buildRootclassWithAllSubclassByBom(BusinessObjectModel bom ,String dbType) {
 		List<BusinessClass> rcs = this.getRoots(bom);// 得到继承链根集合
@@ -1277,10 +1482,13 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 一个BusinessObjectModel对象中会出现多条继承链，该方法找出各个继承链的根返回
-	 * 
+	 * 一个BusinessObjectModel对象中会出现多条继承链，该方法找出各个继承链的根返回.
+	 *
+	 * @author mqfdy
 	 * @param bom
-	 * @return
+	 *            the bom
+	 * @return the roots
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private List<BusinessClass> getRoots(BusinessObjectModel bom) {
 		List<BusinessClass> rcs = new ArrayList<BusinessClass>();
@@ -1334,11 +1542,18 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 递归加入所有子类
-	 * 
+	 * 递归加入所有子类.
+	 *
+	 * @author mqfdy
 	 * @param pc
+	 *            the pc
 	 * @param bc
-	 * @param inhs
+	 *            the bc
+	 * @param bom
+	 *            the bom
+	 * @param map
+	 *            the map
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private void buildSubclass(PersistentClass pc, BusinessClass bc,
 			BusinessObjectModel bom, Map<BusinessClass, PersistentClass> map) {
@@ -1371,12 +1586,17 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 创建SingleTableSubclass并设置到其上级中。策略一，与父表公用一张表
-	 * 
+	 * 创建SingleTableSubclass并设置到其上级中。策略一，与父表公用一张表.
+	 *
+	 * @author mqfdy
 	 * @param bc
+	 *            the bc
 	 * @param pc
 	 *            父类对象
+	 * @param bom
+	 *            the bom
 	 * @return 返回后用于递归
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private SingleTableSubclass addSingleTableSubclass(BusinessClass bc,
 			PersistentClass pc, BusinessObjectModel bom) {
@@ -1404,11 +1624,17 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 创建JoinedSubclass并设置到其上级中。策略二，与父表各用一表，但子表主键被主表主键约束
-	 * 
+	 * 创建JoinedSubclass并设置到其上级中。策略二，与父表各用一表，但子表主键被主表主键约束.
+	 *
+	 * @author mqfdy
 	 * @param bc
+	 *            the bc
 	 * @param pc
+	 *            the pc
+	 * @param bom
+	 *            the bom
 	 * @return 返回后用于递归
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private JoinedSubclass addJoinedSubclass(BusinessClass bc,
 			PersistentClass pc, BusinessObjectModel bom) {
@@ -1445,11 +1671,17 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 创建具体类，其父类可为抽象类。策略三，将父表中的字段都加到自己的表中
-	 * 
+	 * 创建具体类，其父类可为抽象类。策略三，将父表中的字段都加到自己的表中.
+	 *
+	 * @author mqfdy
 	 * @param bc
+	 *            the bc
 	 * @param pc
+	 *            the pc
+	 * @param bom
+	 *            the bom
 	 * @return 返回后用于递归
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private UnionSubclass addUnionSubclass(BusinessClass bc,
 			PersistentClass pc, BusinessObjectModel bom) {
@@ -1473,10 +1705,12 @@ public class DdlGenerator {
 
 		return sc;
 	}
+	
 	/**
-	 * hbm文件组装的configuration用于生成ddl，bizc
-	 * 
-	 * @return
+	 * hbm文件组装的configuration用于生成ddl，bizc.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private void createHbmConfiguration() {
 
@@ -1490,7 +1724,11 @@ public class DdlGenerator {
 	}
 
 	/**
-	 * 返回hbmConfiguration对象
+	 * 返回hbmConfiguration对象.
+	 *
+	 * @author mqfdy
+	 * @return the hbm configuration
+	 * @Date 2018-09-03 09:00
 	 */
 	public Configuration getHbmConfiguration() {
 		Iterator<Table> iterator = this.hbmConfiguration.getTableMappings();
@@ -1508,17 +1746,25 @@ public class DdlGenerator {
 
 
 	/**
-	 * 创建Property对象，用于主键和普通属性
-	 * 
-	 * @param table
+	 * 创建Property对象，用于主键和普通属性.
+	 *
+	 * @author mqfdy
 	 * @param propertyName
+	 *            the property name
 	 * @param value
+	 *            the value
 	 * @param insertable
+	 *            the insertable
 	 * @param updatable
+	 *            the updatable
 	 * @param lazy
+	 *            the lazy
 	 * @param cascade
+	 *            the cascade
 	 * @param propertyAccessorName
-	 * @return
+	 *            the property accessor name
+	 * @return the property
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private Property makeProperty(String propertyName, Value value,
 			boolean insertable, boolean updatable, boolean lazy,
@@ -1551,6 +1797,16 @@ public class DdlGenerator {
 		return prop;
 	}
 
+	/**
+	 * Adds the property type meta.
+	 *
+	 * @author mqfdy
+	 * @param property
+	 *            the property
+	 * @param mpc
+	 *            the mpc
+	 * @Date 2018-9-3 11:38:36
+	 */
 	// 给set加泛型
 	private void addPropertyTypeMeta(Property property, PersistentClass mpc) {
 		Map<String, MetaAttribute> metaAttributes = new HashMap<String, MetaAttribute>();
@@ -1584,6 +1840,18 @@ public class DdlGenerator {
 		importMeta.addValue("java.util.HashSet");
 	}
 
+	/**
+	 * Adds the set meta.
+	 *
+	 * @author mqfdy
+	 * @param pcMajor
+	 *            the pc major
+	 * @param ppc
+	 *            the ppc
+	 * @param setName
+	 *            the set name
+	 * @Date 2018-9-3 11:38:36
+	 */
 	private void addSetMeta(PersistentClass pcMajor, PersistentClass ppc,
 			String setName) {
 
@@ -1601,6 +1869,18 @@ public class DdlGenerator {
 		metaAttributes.put("setName", setNameMeta);
 	}
 	
+	/**
+	 * Adds the prop meta.
+	 *
+	 * @author mqfdy
+	 * @param pcMajor
+	 *            the pc major
+	 * @param ppc
+	 *            the ppc
+	 * @param propName
+	 *            the prop name
+	 * @Date 2018-9-3 11:38:36
+	 */
 	private void addPropMeta(PersistentClass pcMajor, PersistentClass ppc,String propName) {
 
 		Map<String, MetaAttribute> metaAttributes = new HashMap<String, MetaAttribute>();
@@ -1617,23 +1897,48 @@ public class DdlGenerator {
 		metaAttributes.put("propName", setNameMeta);
 	}
 
+	/**
+	 * Gets the reference set.
+	 *
+	 * @author mqfdy
+	 * @return the reference set
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<PersistentClass> getReferenceSet() {
 		return referenceSet;
 	}
 	
+	/**
+	 * Gets the reverse set.
+	 *
+	 * @author mqfdy
+	 * @return the reverse set
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<PersistentClass> getReverseSet() {
 		return reverseSet;
 	}
 
+	/**
+	 * Sets the reverse set.
+	 *
+	 * @author mqfdy
+	 * @param reverseSet
+	 *            the new reverse set
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setReverseSet(List<PersistentClass> reverseSet) {
 		this.reverseSet = reverseSet;
 	}
 	
 	/**
-	 * 在业务实体中搜索与给定列名相同的属性
+	 * 在业务实体中搜索与给定列名相同的属性.
+	 *
 	 * @author rongxin.bian
-	 * @param columnName 列名
-	 * @param businessClass 业务实体
+	 * @param columnName
+	 *            列名
+	 * @param businessClass
+	 *            业务实体
 	 * @return 与给定列名相同的属性
 	 */
 	protected PersistenceProperty getEqualColumnProperty(String columnName, BusinessClass businessClass) {

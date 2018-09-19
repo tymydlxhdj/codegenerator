@@ -7,17 +7,28 @@ import com.mqfdy.code.datasource.mapping.Column;
 import com.mqfdy.code.datasource.mapping.ForeignKey;
 import com.mqfdy.code.datasource.model.AbstractModel;
 
+// TODO: Auto-generated Javadoc
 /**
- * 外键模型
- * 
+ * 外键模型.
+ *
  * @author mqfdy
- * 
  */
 public class ForeignKeyModel extends AbstractModel implements IForeignKeyModel {
 
+	/** The foreign key. */
 	private final ForeignKey foreignKey;
+	
+	/** The persistence model. */
 	private IPersistenceModel persistenceModel;
 
+	/**
+	 * Instantiates a new foreign key model.
+	 *
+	 * @param tableModel
+	 *            the table model
+	 * @param foreignKey
+	 *            the foreign key
+	 */
 	public ForeignKeyModel(final IPersistenceModel tableModel,
 			final ForeignKey foreignKey) {
 		super(tableModel, foreignKey.getName());
@@ -25,6 +36,10 @@ public class ForeignKeyModel extends AbstractModel implements IForeignKeyModel {
 		this.persistenceModel = tableModel;
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.persistence.IForeignKeyModel#getForeignColumns()
+	 * @return ForeignKeyModel
+	 */
 	public List<String> getForeignColumns() {
 		List<Column> colList = foreignKey.getColumns();
 		List<String> foreignColumns = new ArrayList<String>();
@@ -36,18 +51,37 @@ public class ForeignKeyModel extends AbstractModel implements IForeignKeyModel {
 		return foreignColumns;
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.persistence.IForeignKeyModel#getForeignTableName()
+	 * @return ForeignKeyModel
+	 */
 	public String getForeignTableName() {
 		return getForeignKey().getReferencedTable().getName();
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.persistence.IForeignKeyModel#getForeignKey()
+	 * @return ForeignKeyModel
+	 */
 	public ForeignKey getForeignKey() {
 		return foreignKey;
 	}
 
+	/**
+	 * Gets the persistence model.
+	 *
+	 * @author mqfdy
+	 * @return the persistence model
+	 * @Date 2018-09-03 09:00
+	 */
 	public IPersistenceModel getPersistenceModel() {
 		return persistenceModel;
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.persistence.IForeignKeyModel#getFSubPropertyName()
+	 * @return ForeignKeyModel
+	 */
 	public String getFSubPropertyName() {
 		return null;
 	}

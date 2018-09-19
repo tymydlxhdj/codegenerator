@@ -31,8 +31,9 @@ import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.runtime.parser.Parser;
 import org.apache.velocity.util.introspection.Info;
 
+// TODO: Auto-generated Javadoc
 /**
- * Node for the #set directive
+ * Node for the #set directive.
  *
  * @author <a href="mailto:jvanzyl@apache.org">Jason van Zyl</a>
  * @author <a href="mailto:geirm@optonline.net">Geir Magnusson Jr.</a>
@@ -40,16 +41,26 @@ import org.apache.velocity.util.introspection.Info;
  */
 public class ASTSetDirective extends SimpleNode
 {
+    
+    /** The left reference. */
     private String leftReference = "";
+    
+    /** The right. */
     private Node right = null;
+    
+    /** The left. */
     private ASTReference left = null;
+    
+    /** The log on null. */
     boolean logOnNull = false;
+    
+    /** The allow null. */
     private boolean allowNull = false;
+    
+    /** The is initialized. */
     private boolean isInitialized;
 
-    /**
-     *  This is really immutable after the init, so keep one for this node
-     */
+    /** This is really immutable after the init, so keep one for this node. */
     protected Info uberInfo;
 
     /**
@@ -58,37 +69,59 @@ public class ASTSetDirective extends SimpleNode
     protected boolean strictRef = false;
 
     /**
-     * @param id
-     */
+	 * Instantiates a new AST set directive.
+	 *
+	 * @param id
+	 *            the id
+	 */
     public ASTSetDirective(int id)
     {
         super(id);
     }
 
     /**
-     * @param p
-     * @param id
-     */
+	 * Instantiates a new AST set directive.
+	 *
+	 * @param p
+	 *            the p
+	 * @param id
+	 *            the id
+	 */
     public ASTSetDirective(Parser p, int id)
     {
         super(p, id);
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor, java.lang.Object)
-     */
+	 * Jjt accept.
+	 *
+	 * @param visitor
+	 *            the visitor
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#jjtAccept(org.apache.velocity.runtime.parser.node.ParserVisitor,
+	 *      java.lang.Object)
+	 */
     public Object jjtAccept(ParserVisitor visitor, Object data)
     {
         return visitor.visit(this, data);
     }
 
     /**
-     *  simple init.  We can get the RHS and LHS as the the tree structure is static
-     * @param context
-     * @param data
-     * @return Init result.
-     * @throws TemplateInitException
-     */
+	 * simple init. We can get the RHS and LHS as the the tree structure is
+	 * static
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param data
+	 *            the data
+	 * @return Init result.
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @Date 2018-9-3 11:38:35
+	 */
     public synchronized Object init(InternalContextAdapter context, Object data)
     throws TemplateInitException
     {
@@ -125,13 +158,20 @@ public class ASTSetDirective extends SimpleNode
     }
 
     /**
-     *   puts the value of the RHS into the context under the key of the LHS
-     * @param context
-     * @param writer
-     * @return True if rendering was sucessful.
-     * @throws IOException
-     * @throws MethodInvocationException
-     */
+	 * puts the value of the RHS into the context under the key of the LHS.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @return True if rendering was sucessful.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-9-3 11:38:35
+	 */
     public boolean render( InternalContextAdapter context, Writer writer)
         throws IOException, MethodInvocationException
     {
@@ -222,20 +262,26 @@ public class ASTSetDirective extends SimpleNode
     }
 
     /**
-     *  returns the ASTReference that is the LHS of the set statememt
-     *  
-     *  @return left hand side of #set statement
-     */
+	 * returns the ASTReference that is the LHS of the set statememt
+	 * 
+	 *
+	 * @author mqfdy
+	 * @return left hand side of #set statement
+	 * @Date 2018-9-3 11:38:35
+	 */
     private ASTReference getLeftHandSide()
     {
         return (ASTReference) jjtGetChild(0);
     }
 
     /**
-     *  returns the RHS Node of the set statement
-     *  
-     *  @return right hand side of #set statement
-     */
+	 * returns the RHS Node of the set statement
+	 * 
+	 *
+	 * @author mqfdy
+	 * @return right hand side of #set statement
+	 * @Date 2018-9-3 11:38:35
+	 */
     private Node getRightHandSide()
     {
         return jjtGetChild(1);

@@ -43,44 +43,68 @@ import com.mqfdy.code.model.BusinessObjectModel;
 import com.mqfdy.code.model.DTOProperty;
 import com.mqfdy.code.model.Property;
 
+// TODO: Auto-generated Javadoc
 /**
- * 导入属性对话框
- * 
+ * 导入属性对话框.
+ *
  * @author mqfdy
- * 
  */
 public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 		IBusinessClassEditorPage {
 
+	/** The dialog title. */
 	public String DIALOG_TITLE = "导入数据传输对象属性";
 
+	/** The parent page. */
 	private DTOPropertiesPage parentPage;
 
+	/** The group choose. */
 	private Group groupChoose;
 
+	/** The group has choose. */
 	private Group groupHasChoose;
 
+	/** The button to left. */
 	private Button buttonToLeft;
 
+	/** The button to right. */
 	private Button buttonToRight;
 
+	/** The tree viewer. */
 	private TreeViewer treeViewer;
 
+	/** The table cur properties. */
 	private Table tableCurProperties;
 
+	/** The table viewer cur properties. */
 	private TableViewer tableViewerCurProperties;
 
+	/** The table has choose properties. */
 	private Table tableHasChooseProperties;
 
+	/** The table viewer has choose properties. */
 	private TableViewer tableViewerHasChooseProperties;
 
+	/** The model types. */
 	private String[] modelTypes;
 
+	/** The dto properties. */
 	private List<DTOProperty> dtoProperties = new ArrayList();
 
+	/** The manager. */
 	BusinessModelManager manager = BusinessModelUtil
 			.getEditorBusinessModelManager();
 
+	/**
+	 * Instantiates a new DTO property import dialog.
+	 *
+	 * @param parentShell
+	 *            the parent shell
+	 * @param page
+	 *            the page
+	 * @param modelTypes
+	 *            the model types
+	 */
 	public DTOPropertyImportDialog(Shell parentShell, DTOPropertiesPage page,
 			String[] modelTypes) {
 		super(parentShell);
@@ -88,6 +112,15 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 		this.modelTypes = modelTypes;
 	}
 
+	/**
+	 * Creates the dialog area.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Control createDialogArea(Composite composite) {
 		// 初始化窗口
@@ -103,6 +136,14 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 		return composite;
 	}
 
+	/**
+	 * Configure shell.
+	 *
+	 * @author mqfdy
+	 * @param newShell
+	 *            the new shell
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void configureShell(Shell newShell) {
 		super.configureShell(newShell);
 		newShell.setText(DIALOG_TITLE);
@@ -111,7 +152,10 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 	}
 
 	/**
-	 * 设置标题和信息
+	 * 设置标题和信息.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setTitleAndMessage() {
 		setTitle(DIALOG_TITLE);
@@ -120,6 +164,14 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 		setMessage(DIALOG_TITLE);
 	}
 
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent(Composite parent) {
 		GridLayout layout = new GridLayout();
 		layout.numColumns = 3;
@@ -136,6 +188,14 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 		createGroupHasChoose(parent);
 	}
 
+	/**
+	 * Creates the buttons.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createButtons(Composite parent) {
 		Composite composite = new Composite(parent, SWT.NONE);
 		composite.setLayout(new GridLayout(1, false));
@@ -155,7 +215,12 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 	}
 
 	/**
-	 * 创建选择区域
+	 * 创建选择区域.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createGroupChoose(Composite parent) {
 		groupChoose = new Group(parent, SWT.NONE);
@@ -194,7 +259,12 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 	}
 
 	/**
-	 * 创建已选择区域
+	 * 创建已选择区域.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createGroupHasChoose(Composite parent) {
 		groupHasChoose = new Group(parent, SWT.NONE);
@@ -228,6 +298,9 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 				new GridData(SWT.FILL, SWT.FILL, true, true, 1, 1));
 	}
 
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		List<BusinessObjectModel> boms = new ArrayList<BusinessObjectModel>();
 		BusinessObjectModel bom = manager.getBusinessObjectModel();
@@ -236,6 +309,9 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		if (dtoProperties == null || dtoProperties.size() == 0) {
 			this.setErrorMessage(ERROR_MESSAGE_PROPERTY_NULLABLE);
@@ -245,12 +321,23 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 		// 添加到父级页面的列表中
 		parentPage.getListProperties().addAll(dtoProperties);
 		parentPage.refreshTable();
 	}
 
+	/**
+	 * Creates the buttons for button bar.
+	 *
+	 * @author mqfdy
+	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void createButtonsForButtonBar(Composite composite) {
 		// if(operationType.equals(OPERATION_TYPE_EDIT))
 		// createButton(composite, 12000, "重构", true);
@@ -262,6 +349,9 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 //		createButton(composite, APPLY_ID, APPLY_LABEL, true);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void okPressed() {
 		if (validateAllInput() == true) {
@@ -270,6 +360,12 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 		}
 	}
 
+	/**
+	 * Applyl pressed.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void applylPressed() {
 		if (validateAllInput() == true) {
 			updateTheEditingElement();
@@ -277,6 +373,14 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 
 	}
 
+	/**
+	 * Button pressed.
+	 *
+	 * @author mqfdy
+	 * @param buttonId
+	 *            the button id
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void buttonPressed(int buttonId) {
 //		if (APPLY_ID == buttonId) {
@@ -286,13 +390,23 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 //		}
 	}
 
+	/**
+	 * Validate all input.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean validateAllInput() {
 		boolean isOk = this.validateInput();
 		return isOk;
 	}
 
 	/**
-	 * 监听
+	 * 监听.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void addListeners() {
 		treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -396,9 +510,13 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 	}
 
 	/**
-	 * 判断当前需要添加的属性是否在右侧存在
-	 * 
+	 * 判断当前需要添加的属性是否在右侧存在.
+	 *
+	 * @author mqfdy
 	 * @param dtoProperty
+	 *            the dto property
+	 * @return true, if is exists
+	 * @Date 2018-09-03 09:00
 	 */
 	private boolean isExists(DTOProperty dtoProperty) {
 		boolean b = false;
@@ -416,18 +534,35 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 		return b;
 	}
 
+	/**
+	 * Table viewer refresh.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void tableViewerRefresh() {
 		tableViewerHasChooseProperties.setInput(dtoProperties);
 		tableViewerHasChooseProperties.refresh();
 	}
 
 	/**
-	 * 为树添加过滤器
+	 * 为树添加过滤器.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void addFilter() {
 		treeViewer.addFilter(viewerFilter);
 	}
 
+	/**
+	 * Change cur properties display.
+	 *
+	 * @author mqfdy
+	 * @param businessClass
+	 *            the business class
+	 * @Date 2018-09-03 09:00
+	 */
 	private void changeCurPropertiesDisplay(BusinessClass businessClass) {
 		if (businessClass != null) {
 			tableViewerCurProperties.setInput(businessClass.getProperties());
@@ -435,6 +570,17 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 		tableViewerCurProperties.refresh();
 	}
 
+	/**
+	 * Checks if is contain.
+	 *
+	 * @author mqfdy
+	 * @param modelTypes
+	 *            the model types
+	 * @param type
+	 *            the type
+	 * @return true, if is contain
+	 * @Date 2018-09-03 09:00
+	 */
 	private boolean isContain(String[] modelTypes, String type) {
 		for (int i = 0; i < modelTypes.length; i++) {
 			if (modelTypes[i].equals(type)) {
@@ -445,19 +591,43 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 	}
 
 	/**
-	 * 当前选择实体属性提供者
-	 * 
+	 * 当前选择实体属性提供者.
+	 *
 	 * @author LQR
-	 * 
 	 */
 	private class CurPropertiesConentProvider implements
 			IStructuredContentProvider {
+		
+		/**
+		 * 
+		 */
 		public void dispose() {
 		}
 
+		/**
+		 * Input changed.
+		 *
+		 * @author mqfdy
+		 * @param viewer
+		 *            the viewer
+		 * @param oldInput
+		 *            the old input
+		 * @param newInput
+		 *            the new input
+		 * @Date 2018-09-03 09:00
+		 */
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		}
 
+		/**
+		 * Gets the elements.
+		 *
+		 * @author mqfdy
+		 * @param inputElement
+		 *            the input element
+		 * @return the elements
+		 * @Date 2018-09-03 09:00
+		 */
 		@SuppressWarnings("rawtypes")
 		public Object[] getElements(Object inputElement) {
 			if (inputElement instanceof Collection) {
@@ -471,18 +641,39 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 	}
 
 	/**
-	 * 已选择实体属性提供者
-	 * 
+	 * 已选择实体属性提供者.
+	 *
 	 * @author LQR
-	 * 
 	 */
 	private class HasChoosePropertiesLabelProvider extends LabelProvider
 			implements ITableLabelProvider {
 
+		/**
+		 * Gets the column image.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param columnIndex
+		 *            the column index
+		 * @return the column image
+		 * @Date 2018-09-03 09:00
+		 */
 		public Image getColumnImage(Object element, int columnIndex) {
 			return null;
 		}
 
+		/**
+		 * Gets the column text.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param columnIndex
+		 *            the column index
+		 * @return the column text
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getColumnText(Object element, int columnIndex) {
 			DTOProperty property = (DTOProperty) element;
 			switch (columnIndex) {
@@ -498,19 +689,43 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 	}
 
 	/**
-	 * 已选择实体属性提供者
-	 * 
+	 * 已选择实体属性提供者.
+	 *
 	 * @author LQR
-	 * 
 	 */
 	private class HasChoosePropertiesConentProvider implements
 			IStructuredContentProvider {
+		
+		/**
+		 * 
+		 */
 		public void dispose() {
 		}
 
+		/**
+		 * Input changed.
+		 *
+		 * @author mqfdy
+		 * @param viewer
+		 *            the viewer
+		 * @param oldInput
+		 *            the old input
+		 * @param newInput
+		 *            the new input
+		 * @Date 2018-09-03 09:00
+		 */
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		}
 
+		/**
+		 * Gets the elements.
+		 *
+		 * @author mqfdy
+		 * @param inputElement
+		 *            the input element
+		 * @return the elements
+		 * @Date 2018-09-03 09:00
+		 */
 		@SuppressWarnings("rawtypes")
 		public Object[] getElements(Object inputElement) {
 			if (inputElement instanceof Collection) {
@@ -524,18 +739,39 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 	}
 
 	/**
-	 * 当前选择实体属性提供者
-	 * 
+	 * 当前选择实体属性提供者.
+	 *
 	 * @author LQR
-	 * 
 	 */
 	private class CurPropertiesLabelProvider extends LabelProvider implements
 			ITableLabelProvider {
 
+		/**
+		 * Gets the column image.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param columnIndex
+		 *            the column index
+		 * @return the column image
+		 * @Date 2018-09-03 09:00
+		 */
 		public Image getColumnImage(Object element, int columnIndex) {
 			return null;
 		}
 
+		/**
+		 * Gets the column text.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param columnIndex
+		 *            the column index
+		 * @return the column text
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getColumnText(Object element, int columnIndex) {
 			Property property = (Property) element;
 			switch (columnIndex) {
@@ -548,6 +784,7 @@ public class DTOPropertyImportDialog extends ModelElementEditorDialog implements
 		}
 	}
 
+	/** The viewer filter. */
 	private ViewerFilter viewerFilter = new ViewerFilter() {
 		public boolean select(Viewer viewer, Object parentElement,
 				Object element) {

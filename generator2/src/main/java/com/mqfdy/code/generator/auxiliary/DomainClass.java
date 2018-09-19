@@ -14,21 +14,46 @@ import com.mqfdy.code.model.PKProperty;
 import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.Validator;
 import com.mqfdy.code.model.utils.ValidatorType;
+// TODO: Auto-generated Javadoc
+
 /**
- * 
- * @author mqf
+ * The Class DomainClass.
  *
+ * @author mqf
  */
 public class DomainClass extends AbstractBusinessClass {
 	
+	/**
+	 * Instantiates a new domain class.
+	 *
+	 * @param bc
+	 *            the bc
+	 * @param persistenceModel
+	 *            the persistence model
+	 * @param project
+	 *            the project
+	 * @param bom
+	 *            the bom
+	 */
 	public DomainClass(BusinessClass bc, IPersistenceModel persistenceModel,IProject project, BusinessObjectModel bom){
 		super(bc, persistenceModel, project,bom);
 	}
+	
+	/**
+	 * Instantiates a new domain class.
+	 *
+	 * @param param
+	 *            the param
+	 */
 	public DomainClass(ClassParam param) {
 		super(param);
 	}
+	
 	/**
-	 * 初始化Import
+	 * 初始化Import.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:36
 	 */
 	public void initImports(){
 		for(Property p : bc.getProperties()){
@@ -41,9 +66,14 @@ public class DomainClass extends AbstractBusinessClass {
 			initValidatorImports(p);
 		}
 	}
+	
 	/**
-	 * 初始化
+	 * 初始化.
+	 *
+	 * @author mqfdy
 	 * @param p
+	 *            the p
+	 * @Date 2018-9-3 11:38:36
 	 */
 	private void initValidatorImports(Property p) {
 		List<Validator> validators = p.getValidators();
@@ -59,12 +89,20 @@ public class DomainClass extends AbstractBusinessClass {
 		}
 		
 	}
+	
 	/**
-	 * 初始化包
+	 * 初始化包.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:36
 	 */
 	public void initPackage(){
 		packageStr = packagePrefix + ".domain;";
 	}
+	
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields() DomainClass
+	 */
 	@Override
 	public void initFields() {
 		importSet.add("import java.io.Serializable;\n");
@@ -77,14 +115,28 @@ public class DomainClass extends AbstractBusinessClass {
 		importSet.add("import javax.persistence.Transient;\n");
 
 	}
+	
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods() DomainClass
+	 */
 	@Override
 	public void initMethods() {
 	}
+	
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#getCustomMethod(com.mqfdy.code.model.BusinessOperation)
+	 * @param bop
+	 * @return DomainClass
+	 */
 	@Override
 	protected String getCustomMethod(BusinessOperation bop) {
 	
 		return null;
 	}
+	
+	/**
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#putToVelocityMap() DomainClass
+	 */
 	@Override
 	public void putToVelocityMap() {
 		putToVelocityMapDef();

@@ -27,6 +27,7 @@ import java.io.PushbackInputStream;
 import org.apache.velocity.util.ExceptionUtils;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * This is an input stream that is unicode BOM aware. This allows you to e.g. read
  * Windows Notepad Unicode files as Velocity templates.
@@ -69,10 +70,10 @@ public class UnicodeInputStream
      */
     public static final UnicodeBOM UTF32BE_BOM = new UnicodeBOM("UTF-32BE", new byte [] { (byte)0x00, (byte)0x00, (byte)0xfe, (byte)0xff });
 
-    /** The maximum amount of bytes to read for a BOM */
+    /** The maximum amount of bytes to read for a BOM. */
     private static final int MAX_BOM_SIZE = 4;
 
-    /** Buffer for BOM reading */
+    /** Buffer for BOM reading. */
     private byte [] buf = new byte[MAX_BOM_SIZE];
 
     /** Buffer pointer. */
@@ -84,13 +85,20 @@ public class UnicodeInputStream
     /** True if the BOM itself should be skipped and not read. */
     private final boolean skipBOM;
 
+    /** The input stream. */
     private final PushbackInputStream inputStream;
 
     /**
-     * Creates a new UnicodeInputStream object. Skips a BOM which defines the file encoding.
-     *
-     * @param  inputStream The input stream to use for reading.
-     */
+	 * Creates a new UnicodeInputStream object. Skips a BOM which defines the
+	 * file encoding.
+	 *
+	 * @param inputStream
+	 *            the input stream
+	 * @throws IllegalStateException
+	 *             the illegal state exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
     public UnicodeInputStream(final InputStream inputStream)
             throws IllegalStateException, IOException
     {
@@ -98,11 +106,18 @@ public class UnicodeInputStream
     }
 
     /**
-     * Creates a new UnicodeInputStream object.
-     *
-     * @param  inputStream The input stream to use for reading.
-     * @param skipBOM If this is set to true, a BOM read from the stream is discarded. This parameter should normally be true.
-     */
+	 * Creates a new UnicodeInputStream object.
+	 *
+	 * @param inputStream
+	 *            the input stream
+	 * @param skipBOM
+	 *            If this is set to true, a BOM read from the stream is
+	 *            discarded. This parameter should normally be true.
+	 * @throws IllegalStateException
+	 *             the illegal state exception
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 */
     public UnicodeInputStream(final InputStream inputStream, boolean skipBOM)
             throws IllegalStateException, IOException
     {
@@ -124,33 +139,40 @@ public class UnicodeInputStream
     }
 
     /**
-     * Returns true if the input stream discards the BOM.
-     *
-     * @return  True if the input stream discards the BOM.
-     */
+	 * Returns true if the input stream discards the BOM.
+	 *
+	 * @author mqfdy
+	 * @return True if the input stream discards the BOM.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public boolean isSkipBOM()
     {
         return skipBOM;
     }
 
     /**
-     * Read encoding based on BOM.
-     *
-     * @return  The encoding based on the BOM.
-     *
-     * @throws  IllegalStateException  When a problem reading the BOM occured.
-     */
+	 * Read encoding based on BOM.
+	 *
+	 * @author mqfdy
+	 * @return The encoding based on the BOM.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public String getEncodingFromStream()
     {
         return encoding;
     }
 
     /**
-     * This method gets the encoding from the stream contents if a BOM exists. If no BOM exists, the encoding
-     * is undefined.
-     *
-     * @return The encoding of this streams contents as decided by the BOM or null if no BOM was found.
-     */
+	 * This method gets the encoding from the stream contents if a BOM exists.
+	 * If no BOM exists, the encoding is undefined.
+	 *
+	 * @author mqfdy
+	 * @return The encoding of this streams contents as decided by the BOM or
+	 *         null if no BOM was found.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-09-03 09:00
+	 */
     protected String readEncoding()
         throws IOException
     {
@@ -200,6 +222,19 @@ public class UnicodeInputStream
         return (encoding != null) ? encoding.getEncoding() : null;
     }
 
+    /**
+	 * Match.
+	 *
+	 * @author mqfdy
+	 * @param matchEncoding
+	 *            the match encoding
+	 * @param noMatchEncoding
+	 *            the no match encoding
+	 * @return the unicode BOM
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-9-3 11:38:24
+	 */
     private final UnicodeBOM match(final UnicodeBOM matchEncoding, final UnicodeBOM noMatchEncoding)
         throws IOException
     {
@@ -224,6 +259,15 @@ public class UnicodeInputStream
         return matchEncoding;
     }
 
+    /**
+	 * Read byte.
+	 *
+	 * @author mqfdy
+	 * @return true, if successful
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-9-3 11:38:24
+	 */
     private final boolean readByte()
             throws IOException
     {
@@ -242,6 +286,16 @@ public class UnicodeInputStream
         return true;
     }
 
+    /**
+	 * Pushback.
+	 *
+	 * @author mqfdy
+	 * @param matchBOM
+	 *            the match BOM
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @Date 2018-9-3 11:38:24
+	 */
     private final void pushback(final UnicodeBOM matchBOM)
         throws IOException
     {
@@ -266,8 +320,12 @@ public class UnicodeInputStream
     }
 
     /**
-     * @see java.io.InputStream#close()
-     */
+	 * Close.
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @see java.io.InputStream#close()
+	 */
     public void close()
         throws IOException
     {
@@ -275,8 +333,13 @@ public class UnicodeInputStream
     }
 
     /**
-     * @see java.io.InputStream#available()
-     */
+	 * Available.
+	 *
+	 * @return the int
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @see java.io.InputStream#available()
+	 */
     public int available()
         throws IOException
     {
@@ -284,24 +347,36 @@ public class UnicodeInputStream
     }
 
     /**
-     * @see java.io.InputStream#mark(int)
-     */
+	 * Mark.
+	 *
+	 * @param readlimit
+	 *            the readlimit
+	 * @see java.io.InputStream#mark(int)
+	 */
     public void mark(final int readlimit)
     {
         inputStream.mark(readlimit);
     }
 
     /**
-     * @see java.io.InputStream#markSupported()
-     */
+	 * Mark supported.
+	 *
+	 * @return true, if successful
+	 * @see java.io.InputStream#markSupported()
+	 */
     public boolean markSupported()
     {
         return inputStream.markSupported();
     }
 
     /**
-     * @see java.io.InputStream#read()
-     */
+	 * Read.
+	 *
+	 * @return the int
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @see java.io.InputStream#read()
+	 */
     public int read()
         throws IOException
     {
@@ -309,8 +384,15 @@ public class UnicodeInputStream
     }
 
     /**
-     * @see java.io.InputStream#read(byte[])
-     */
+	 * Read.
+	 *
+	 * @param b
+	 *            the b
+	 * @return the int
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @see java.io.InputStream#read(byte[])
+	 */
     public int read(final byte [] b)
         throws IOException
     {
@@ -318,8 +400,19 @@ public class UnicodeInputStream
     }
 
     /**
-     * @see java.io.InputStream#read(byte[], int, int)
-     */
+	 * Read.
+	 *
+	 * @param b
+	 *            the b
+	 * @param off
+	 *            the off
+	 * @param len
+	 *            the len
+	 * @return the int
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @see java.io.InputStream#read(byte[], int, int)
+	 */
     public int read(final byte [] b, final int off, final int len)
         throws IOException
     {
@@ -327,8 +420,12 @@ public class UnicodeInputStream
     }
 
     /**
-     * @see java.io.InputStream#reset()
-     */
+	 * Reset.
+	 *
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @see java.io.InputStream#reset()
+	 */
     public void reset()
         throws IOException
     {
@@ -336,8 +433,15 @@ public class UnicodeInputStream
     }
 
     /**
-     * @see java.io.InputStream#skip(long)
-     */
+	 * Skip.
+	 *
+	 * @param n
+	 *            the n
+	 * @return the long
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @see java.io.InputStream#skip(long)
+	 */
     public long skip(final long n)
         throws IOException
     {
@@ -352,21 +456,46 @@ public class UnicodeInputStream
      */
     static final class UnicodeBOM
     {
+        
+        /** The encoding. */
         private final String encoding;
 
+        /** The bytes. */
         private final byte [] bytes;
 
+        /**
+		 * Instantiates a new unicode BOM.
+		 *
+		 * @param encoding
+		 *            the encoding
+		 * @param bytes
+		 *            the bytes
+		 */
         private UnicodeBOM(final String encoding, final byte [] bytes)
         {
             this.encoding = encoding;
             this.bytes = bytes;
         }
 
+        /**
+		 * Gets the encoding.
+		 *
+		 * @author mqfdy
+		 * @return the encoding
+		 * @Date 2018-9-3 11:38:24
+		 */
         String getEncoding()
         {
             return encoding;
         }
 
+        /**
+		 * Gets the bytes.
+		 *
+		 * @author mqfdy
+		 * @return the bytes
+		 * @Date 2018-9-3 11:38:24
+		 */
         byte [] getBytes()
         {
             return bytes;

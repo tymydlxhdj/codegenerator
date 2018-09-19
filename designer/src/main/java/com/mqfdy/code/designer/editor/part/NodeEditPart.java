@@ -31,20 +31,31 @@ import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramElement;
 import com.mqfdy.code.model.graph.ElementStyle;
 
+// TODO: Auto-generated Javadoc
 /**
- * node控制器
- * 
+ * node控制器.
+ *
  * @author mqfdy
- * 
  */
 public abstract class NodeEditPart extends BusinessAbstractGraphicalEditPart
 		implements PropertyChangeListener, org.eclipse.gef.NodeEditPart {
+	
+	/** The model element. */
 	private DiagramElement modelElement;
+	
+	/** The conele. */
 	DiagramElement conele = null;
 
+	/** The listeners. */
 	private transient PropertyChangeSupport listeners = new PropertyChangeSupport(
 			this);
 
+	/**
+	 * Instantiates a new node edit part.
+	 *
+	 * @param modelElement
+	 *            the model element
+	 */
 	public NodeEditPart(DiagramElement modelElement){
 		this.modelElement = modelElement;
 	}
@@ -75,7 +86,10 @@ public abstract class NodeEditPart extends BusinessAbstractGraphicalEditPart
 //		return new TargetAnchor(getFigure());
 //	}
 
-	@Override
+	/**
+ * 
+ */
+@Override
 	public void activate() {
 		if (!isActive()) {
 			super.activate();
@@ -83,6 +97,9 @@ public abstract class NodeEditPart extends BusinessAbstractGraphicalEditPart
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void deactivate() {
 		if (isActive()) {
@@ -91,12 +108,23 @@ public abstract class NodeEditPart extends BusinessAbstractGraphicalEditPart
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void createEditPolicies() {
 		installEditPolicy(EditPolicy.COMPONENT_ROLE,
 				new OmComponentEditPolicy());
 	}
 
+	/**
+	 * Property change.
+	 *
+	 * @author mqfdy
+	 * @param evt
+	 *            the evt
+	 * @Date 2018-09-03 09:00
+	 */
 	public void propertyChange(PropertyChangeEvent evt) {
 		String prop = evt.getPropertyName();
 
@@ -117,16 +145,26 @@ public abstract class NodeEditPart extends BusinessAbstractGraphicalEditPart
 		 * repaintFigure(); refreshVisuals(); refreshChildren(); } }); }
 		 */
 	}
+	
 	/**
-	 * @param subclass
-	 *            decides what to do if layout property event is fired
+	 * Handle layout change.
+	 *
+	 * @author mqfdy
+	 * @param evt
+	 *            the evt
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void handleLayoutChange(PropertyChangeEvent evt)
 	{
 	}
 
 	/**
-	 * handles change in bounds, to be overridden by subclass
+	 * handles change in bounds, to be overridden by subclass.
+	 *
+	 * @author mqfdy
+	 * @param evt
+	 *            the evt
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void handleBoundsChange(PropertyChangeEvent evt)
 	{
@@ -136,18 +174,37 @@ public abstract class NodeEditPart extends BusinessAbstractGraphicalEditPart
 	 */
 	// protected abstract NodeModelElement getCastedModel();
 
+	/**
+	 * Gets the casted model.
+	 *
+	 * @author mqfdy
+	 * @return the casted model
+	 * @Date 2018-09-03 09:00
+	 */
 	protected abstract AbstractModelElement getCastedModel();
 
 	/**
 	 * Refreshes the NodeEditPart's visuals : resets the parent's layout
-	 * constraint
+	 * constraint.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	protected void refreshVisuals() {
 	}
 
+	/**
+	 * Repaint figure.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public abstract void repaintFigure();
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected List getModelChildren() {
 		return getCastedModel().getChildren();
@@ -155,11 +212,13 @@ public abstract class NodeEditPart extends BusinessAbstractGraphicalEditPart
 
 	/**
 	 * Attach a non-null PropertyChangeListener to this object.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param propertyChangeListener
 	 *            a non-null PropertyChangeListener instance
 	 * @throws IllegalArgumentException
 	 *             if the parameter is null
+	 * @Date 2018-09-03 09:00
 	 */
 	public synchronized void addPropertyChangeListener(
 			PropertyChangeListener propertyChangeListener) {
@@ -169,6 +228,16 @@ public abstract class NodeEditPart extends BusinessAbstractGraphicalEditPart
 		listeners.addPropertyChangeListener(propertyChangeListener);
 	}
 
+	/**
+	 * Adds the property change listener.
+	 *
+	 * @author mqfdy
+	 * @param propertyName
+	 *            the property name
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addPropertyChangeListener(String propertyName,
 			PropertyChangeListener listener) {
 		if (listener == null) {
@@ -180,13 +249,15 @@ public abstract class NodeEditPart extends BusinessAbstractGraphicalEditPart
 	/**
 	 * Report a property change to registered listeners (for example edit
 	 * parts).
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param property
 	 *            the programmatic name of the property that changed
 	 * @param oldValue
 	 *            the old value of this property
 	 * @param newValue
 	 *            the new value of this property
+	 * @Date 2018-09-03 09:00
 	 */
 	public void firePropertyChange(String property, Object oldValue,
 			Object newValue) {
@@ -194,9 +265,29 @@ public abstract class NodeEditPart extends BusinessAbstractGraphicalEditPart
 			listeners.firePropertyChange(property, oldValue, newValue);
 		}
 	}
+	
+	/**
+	 * Fire structure change.
+	 *
+	 * @author mqfdy
+	 * @param prop
+	 *            the prop
+	 * @param child
+	 *            the child
+	 * @Date 2018-09-03 09:00
+	 */
 	protected void fireStructureChange(String prop, Object child) {
         listeners.firePropertyChange(prop, null, child);
     }
+	
+	/**
+	 * Removes the property change listener.
+	 *
+	 * @author mqfdy
+	 * @param propertyChangeListener
+	 *            the property change listener
+	 * @Date 2018-09-03 09:00
+	 */
 	public synchronized void removePropertyChangeListener(
 			PropertyChangeListener propertyChangeListener) {
 		if (propertyChangeListener != null) {
@@ -204,11 +295,25 @@ public abstract class NodeEditPart extends BusinessAbstractGraphicalEditPart
 		}
 	}
 
+	/**
+	 * Removes the property change listener.
+	 *
+	 * @author mqfdy
+	 * @param propertyName
+	 *            the property name
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removePropertyChangeListener(String propertyName,
 			PropertyChangeListener listener) {
 		if (listener != null)
 			listeners.removePropertyChangeListener(propertyName, listener);
 	}
+	
+	/**
+	 * @return
+	 */
 	@Override
 	protected List getModelSourceConnections() {
 		List<AbstractModelElement> eleList = new ArrayList<AbstractModelElement>();
@@ -333,6 +438,9 @@ public abstract class NodeEditPart extends BusinessAbstractGraphicalEditPart
 		return eleList;// ((Diagram)getCastedModel()).getElements();
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	protected List getModelTargetConnections() {
 		List<AbstractModelElement> eleList = new ArrayList<AbstractModelElement>();
@@ -463,6 +571,15 @@ public abstract class NodeEditPart extends BusinessAbstractGraphicalEditPart
 		return eleList;// ((Diagram)getCastedModel()).getElements();
 	}
 
+	/**
+	 * Gets the source connection anchor.
+	 *
+	 * @author mqfdy
+	 * @param connection
+	 *            the connection
+	 * @return the source connection anchor
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * 获取连线锚点Source
 	 */
@@ -498,6 +615,15 @@ public abstract class NodeEditPart extends BusinessAbstractGraphicalEditPart
 		return anchor;
 	}
 
+	/**
+	 * Gets the source connection anchor.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @return the source connection anchor
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * 获取连线锚点Source
 	 */
@@ -545,6 +671,15 @@ public abstract class NodeEditPart extends BusinessAbstractGraphicalEditPart
 		}
 	}
 
+	/**
+	 * Gets the target connection anchor.
+	 *
+	 * @author mqfdy
+	 * @param connection
+	 *            the connection
+	 * @return the target connection anchor
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * 获取连线锚点Target
 	 */
@@ -586,6 +721,15 @@ public abstract class NodeEditPart extends BusinessAbstractGraphicalEditPart
 		return anchor;
 	}
 	
+	/**
+	 * Gets the target connection anchor.
+	 *
+	 * @author mqfdy
+	 * @param request
+	 *            the request
+	 * @return the target connection anchor
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * 获取连线锚点Target
 	 */

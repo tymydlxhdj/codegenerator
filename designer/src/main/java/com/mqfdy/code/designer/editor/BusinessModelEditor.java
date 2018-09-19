@@ -42,42 +42,51 @@ import com.mqfdy.code.designer.views.properties.MultiPageEditorPropertySheetPage
 import com.mqfdy.code.resource.BomManager;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务模型编辑器，包括设计模式和源文件模式两个页面
- * 
+ * 业务模型编辑器，包括设计模式和源文件模式两个页面.
+ *
  * @author mqfdy
- * 
  */
 public class BusinessModelEditor extends MultiPageEditorPart implements
 		IResourceChangeListener {
 
-	/**
-	 * 源文件编辑器
-	 */
+	/** 源文件编辑器. */
 	private BusinessModelSourceEditor sourceEditor;
 
+	/** The business model editor. */
 	private BusinessModelEditor businessModelEditor = this;
-	/**
-	 * 业务模型图形化编辑器
-	 */
+	
+	/** 业务模型图形化编辑器. */
 	private BusinessModelDiagramEditor bmdEditor;
+	
+	/** The resource change listener. */
 	private IResourceChangeListener resourceChangeListener = new EditorResourceChangeListener(
 			this);
+	
+	/** The property sheet page. */
 	private MultiPageEditorPropertySheetPage propertySheetPage;
 
+	/** The flag. */
 	private boolean flag;
+	
+	/** The is has error ref obj. */
 	private boolean isHasErrorRefObj = false;
+	
+	/** The is opend re model id mes. */
 	private boolean isOpendReModelIdMes = false;
 //	private ValiException exception;
 
-	private String pathList = "";
+	/** The path list. */
+private String pathList = "";
 
+/** The Constant ID. */
 //	public static final String ID = "com.mqfdy.code.designer.editor.MultiPageEditor";
 	public static final String ID = "com.mqfdy.code.designer.editor.BusinessModelEditor";
 //	private ModelPackage modelPackage;
 	/**
-	 * 创建业务模型编辑器
-	 */
+ * 创建业务模型编辑器.
+ */
 	public BusinessModelEditor() {
 		super();
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
@@ -85,7 +94,10 @@ public class BusinessModelEditor extends MultiPageEditorPart implements
 	}
 
 	/**
-	 * 创建第一页设计模式
+	 * 创建第一页设计模式.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	void createDiagramPage() {
 		try {
@@ -100,7 +112,10 @@ public class BusinessModelEditor extends MultiPageEditorPart implements
 	}
 
 	/**
-	 * 创建第二页 源文件模式
+	 * 创建第二页 源文件模式.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	void createSourcePage() {
 		try {
@@ -174,8 +189,11 @@ public class BusinessModelEditor extends MultiPageEditorPart implements
 //        return part;
 //	}
 	/**
-	 * 创建编辑器页面
-	 */
+ * 创建编辑器页面.
+ *
+ * @author mqfdy
+ * @Date 2018-09-03 09:00
+ */
 	protected void createPages() {
 //		if(!flag){
 //			createErrorPage();
@@ -185,6 +203,9 @@ public class BusinessModelEditor extends MultiPageEditorPart implements
 		createSourcePage();
 	}
 
+	/**
+	 * 
+	 */
 	public void dispose() {
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(
@@ -194,12 +215,26 @@ public class BusinessModelEditor extends MultiPageEditorPart implements
 	}
 
 	/**
-	 * 保存
+	 * 保存.
+	 *
+	 * @author mqfdy
+	 * @param monitor
+	 *            the monitor
+	 * @Date 2018-09-03 09:00
 	 */
 	public void doSave(IProgressMonitor monitor) {
 		getEditor(0).doSave(monitor);
 	}
 
+	/**
+	 * Gets the adapter.
+	 *
+	 * @author mqfdy
+	 * @param clazz
+	 *            the clazz
+	 * @return the adapter
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public Object getAdapter(Class clazz) {
 		if (IPropertySheetPage.class.equals(clazz)) {
@@ -208,6 +243,9 @@ public class BusinessModelEditor extends MultiPageEditorPart implements
 		return this.getActiveEditor().getAdapter(clazz);
 	}
 
+	/**
+	 * 
+	 */
 	public void doSaveAs() {
 		IEditorPart editor = getEditor(0);
 		editor.doSaveAs();
@@ -215,6 +253,14 @@ public class BusinessModelEditor extends MultiPageEditorPart implements
 		setInput(editor.getEditorInput());
 	}
 
+	/**
+	 * Sets the input.
+	 *
+	 * @author mqfdy
+	 * @param input
+	 *            the new input
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected void setInput(IEditorInput input) {
 		super.setInput(input);
@@ -223,15 +269,43 @@ public class BusinessModelEditor extends MultiPageEditorPart implements
 				resourceChangeListener);
 	}
 
+	/**
+	 * Sets the input pub.
+	 *
+	 * @author mqfdy
+	 * @param input
+	 *            the new input pub
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setInputPub(IEditorInput input) {
 		setInput(input);
 	}
 
+	/**
+	 * Goto marker.
+	 *
+	 * @author mqfdy
+	 * @param marker
+	 *            the marker
+	 * @Date 2018-09-03 09:00
+	 */
 	public void gotoMarker(IMarker marker) {
 		setActivePage(0);
 		IDE.gotoMarker(getEditor(0), marker);
 	}
 
+	/**
+	 * Inits the.
+	 *
+	 * @author mqfdy
+	 * @param site
+	 *            the site
+	 * @param editorInput
+	 *            the editor input
+	 * @throws PartInitException
+	 *             the part init exception
+	 * @Date 2018-09-03 09:00
+	 */
 	public void init(IEditorSite site, IEditorInput editorInput)
 			throws PartInitException {
 		if (!(editorInput instanceof IFileEditorInput))
@@ -262,12 +336,20 @@ public class BusinessModelEditor extends MultiPageEditorPart implements
 		// site.setSelectionProvider(new MultiPageSelectionProvider(this));
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean isSaveAsAllowed() {
 		return true;
 	}
 
 	/**
-	 * 页面切换时的操作
+	 * 页面切换时的操作.
+	 *
+	 * @author mqfdy
+	 * @param newPageIndex
+	 *            the new page index
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void pageChange(int newPageIndex) {
 		super.pageChange(newPageIndex);
@@ -276,6 +358,14 @@ public class BusinessModelEditor extends MultiPageEditorPart implements
 
 	}
 
+	/**
+	 * Resource changed.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	public void resourceChanged(final IResourceChangeEvent event) {
 		if (event.getType() == IResourceChangeEvent.PRE_CLOSE) {
 			Display.getDefault().asyncExec(new Runnable() {
@@ -296,10 +386,20 @@ public class BusinessModelEditor extends MultiPageEditorPart implements
 		}
 	}
 
+	/**
+	 * Gets the bu editor.
+	 *
+	 * @author mqfdy
+	 * @return the bu editor
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessModelDiagramEditor getBuEditor() {
 		return bmdEditor;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void setFocus() {
 		// TODO Auto-generated method stub
@@ -357,28 +457,79 @@ public class BusinessModelEditor extends MultiPageEditorPart implements
 		super.setFocus();
 	}
 
+	/**
+	 * Checks if is checks for error ref obj.
+	 *
+	 * @author mqfdy
+	 * @return true, if is checks for error ref obj
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isHasErrorRefObj() {
 		return isHasErrorRefObj;
 	}
 
+	/**
+	 * Sets the checks for error ref obj.
+	 *
+	 * @author mqfdy
+	 * @param hasErrorRefObj
+	 *            the new checks for error ref obj
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setHasErrorRefObj(boolean hasErrorRefObj) {
 		this.isHasErrorRefObj = hasErrorRefObj;
 	}
 
+	/**
+	 * Gets the path list.
+	 *
+	 * @author mqfdy
+	 * @return the path list
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getPathList() {
 		return pathList;
 	}
 
+	/**
+	 * Sets the path list.
+	 *
+	 * @author mqfdy
+	 * @param pathList
+	 *            the new path list
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPathList(String pathList) {
 		this.pathList = pathList;
 	}
+	
+	/**
+	 * The Class SynErrorRefMesg.
+	 *
+	 * @author mqfdy
+	 */
 	//用于在模型内有错误的引用对象时提示一个对话框
 	class SynErrorRefMesg extends Thread{
+		
+		/** The mes. */
 		String mes;
+		
+		/** The s. */
 		int s = 1;
+		
+		/**
+		 * Instantiates a new syn error ref mesg.
+		 *
+		 * @param mes
+		 *            the mes
+		 */
 		public SynErrorRefMesg(String mes){
 			this.mes = mes;
 		}
+		
+		/**
+		 * 
+		 */
 		@Override
 		public void run() {
 			MessageDialog dia = new MessageDialog(
@@ -399,13 +550,33 @@ public class BusinessModelEditor extends MultiPageEditorPart implements
 		}
 	}
 	
+	/**
+	 * The Class SynReModelIdMesg.
+	 *
+	 * @author mqfdy
+	 */
 	//用于在模型id重复时提示一个对话框
 	class SynReModelIdMesg extends Thread{
+		
+		/** The om list. */
 		List<IResource> omList;
+		
+		/** The s. */
 		int s = 1;
+		
+		/**
+		 * Instantiates a new syn re model id mesg.
+		 *
+		 * @param omList
+		 *            the om list
+		 */
 		public SynReModelIdMesg(List<IResource> omList){
 			this.omList = omList;
 		}
+		
+		/**
+		 * 
+		 */
 		@Override
 		public void run() {
 			ReModelListDialog dia = new ReModelListDialog(

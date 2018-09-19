@@ -12,11 +12,14 @@ package com.mqfdy.code.springboot.utilities.internal;
 import com.mqfdy.code.springboot.utilities.Filter;
 
 /**
- * Used by various "pluggable" classes to filter objects
- * in both directions.
+ * Used by various "pluggable" classes to filter objects in both directions.
  * 
- * If anyone can come up with a better class name
- * and/or method name, I would love to hear it.  ~bjv
+ * If anyone can come up with a better class name and/or method name, I would
+ * love to hear it. ~bjv
+ *
+ * @author mqfdy
+ * @param <T>
+ *            the generic type
  */
 public interface BidiFilter<T> extends Filter<T> {
 

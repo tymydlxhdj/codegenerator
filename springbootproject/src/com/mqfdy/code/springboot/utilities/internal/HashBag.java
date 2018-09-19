@@ -16,12 +16,12 @@ import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+// TODO: Auto-generated Javadoc
 /**
- * This class implements the <code>Bag</code> interface, backed by a
- * hash table. It makes no guarantees as to the iteration order of
- * the bag's elements; in particular, it does not guarantee that the order
- * will remain constant over time. This class permits the <code>null</code>
- * element.
+ * This class implements the <code>Bag</code> interface, backed by a hash table.
+ * It makes no guarantees as to the iteration order of the bag's elements; in
+ * particular, it does not guarantee that the order will remain constant over
+ * time. This class permits the <code>null</code> element.
  * <p>
  * This class offers constant time performance for the basic operations
  * (<code>add</code>, <code>remove</code>, <code>contains</code> and
@@ -32,14 +32,14 @@ import java.util.NoSuchElementException;
  * important not to set the initial capacity too high (or the load factor too
  * low) if iteration performance is important.
  * <p>
- * <b>Note that this implementation is not synchronized.</b> If multiple
- * threads access a bag concurrently, and at least one of the threads modifies
- * the bag, it <i>must</i> be synchronized externally. This is typically
- * accomplished by synchronizing on some object that naturally encapsulates
- * the bag. If no such object exists, the bag should be "wrapped" using the
- * <code>Collections.synchronizedCollection</code> method. This is
- * best done at creation time, to prevent accidental unsynchronized access
- * to the bag:
+ * <b>Note that this implementation is not synchronized.</b> If multiple threads
+ * access a bag concurrently, and at least one of the threads modifies the bag,
+ * it <i>must</i> be synchronized externally. This is typically accomplished by
+ * synchronizing on some object that naturally encapsulates the bag. If no such
+ * object exists, the bag should be "wrapped" using the
+ * <code>Collections.synchronizedCollection</code> method. This is best done at
+ * creation time, to prevent accidental unsynchronized access to the bag:
+ * 
  * <pre>
  * Collection c = Collections.synchronizedCollection(new HashBag(...));
  * </pre>
@@ -48,11 +48,13 @@ import java.util.NoSuchElementException;
  * <i>fail-fast</i>: if the bag is modified at any time after the iterator is
  * created, in any way except through the iterator's own <code>remove</code>
  * method, the iterator throws a <code>ConcurrentModificationException</code>.
- * Thus, in the face of concurrent modification, the iterator fails quickly
- * and cleanly, rather than risking arbitrary, non-deterministic behavior at
- * an undetermined time in the future.
- * 
- * @see	Collections#synchronizedCollection(Collection)
+ * Thus, in the face of concurrent modification, the iterator fails quickly and
+ * cleanly, rather than risking arbitrary, non-deterministic behavior at an
+ * undetermined time in the future.
+ *
+ * @param <E>
+ *            the element type
+ * @see Collections#synchronizedCollection(Collection)
  */
 
 public class HashBag<E> extends AbstractCollection<E>

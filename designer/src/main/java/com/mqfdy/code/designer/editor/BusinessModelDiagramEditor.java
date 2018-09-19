@@ -121,44 +121,91 @@ import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.graph.DiagramElement;
 import com.mqfdy.code.resource.validator.ValiResult;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class BusinessModelDiagramEditor.
+ *
+ * @author mqfdy
  * @title:业务模型编辑器
  * @description:编辑器入口，当保存编辑器内容时把内容存入xx.bom文件中
- * @author mqfdy
  */
 public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 
+	/** The Constant ID. */
 	public static final String ID = "com.mqfdy.code.designer.editor.BusinessModelDiagramEditor";
 	
+	/** The dia. */
 	private Diagram dia;
+	
+	/** The business object model. */
 	private BusinessObjectModel businessObjectModel;
+	
+	/** The is dirty. */
 	// 编辑器是否被修改过
 	private boolean isDirty = false;
+	
+	/** The palette. */
 	private static PaletteRoot palette;
+	
+	/** The source file. */
 	private IFile sourceFile;
+	
+	/** The resource change listener. */
 	private IResourceChangeListener resourceChangeListener = new EditorResourceChangeListener(
 			this);
+	
+	/** The business model manager. */
 	private BusinessModelManager businessModelManager;
+	
+	/** The list. */
 	private List<TreeResourceChangeListener> list = new ArrayList<TreeResourceChangeListener>();
+	
+	/** The last time stamp. */
 	// 当编辑器打开的是bom文件时，记录文件的时间戳
 	private long lastTimeStamp;
+	
+	/** The toolkit. */
 	private FormToolkit toolkit;
+	
+	/** The form. */
 	private OmForm form;
+	
+	/** The page. */
 	private IWorkbenchPage page;
+
+/** The property sheet page. */
 //	private ModelResourceView modelResourceView;
 	private PropertySheetPage propertySheetPage;
+	
+	/** The out line page. */
 	private ObjectModelOutlinePage outLinePage;
+	
+	/** The viewer. */
 	private GraphicalViewer viewer;
+	
+	/** The bu editor. */
 	private BusinessModelDiagramEditor buEditor = this;
+	
+	/** The find result. */
 	// 模型查询结果
 	private List<AbstractModelElement> findResult;
+	
+	/** The vali result. */
 	// 模型校验结果
 	private List<ValiResult> valiResult;
+	
+	/** The business model editor. */
 	// 多页编辑器
 	private BusinessModelEditor businessModelEditor;
 //	private boolean fHasBeenActivated = false;
 
-	public BusinessModelDiagramEditor(BusinessModelEditor businessModelEditor) {
+	/**
+ * Instantiates a new business model diagram editor.
+ *
+ * @param businessModelEditor
+ *            the business model editor
+ */
+public BusinessModelDiagramEditor(BusinessModelEditor businessModelEditor) {
 		super();
 		this.businessModelEditor = businessModelEditor;
 		
@@ -231,9 +278,7 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 		businessModelManager.addBusinessModelListener(bmListener);
 	}
 
-	/**
-	 * 模型变化的监听
-	 */
+	/** 模型变化的监听. */
 	private final BusinessModelListenerAdapter bmListener = new BusinessModelListenerAdapter() {
 
 		public void modelElementAdd(AbstractModelElement element) {
@@ -428,6 +473,14 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 		}
 	};
 
+	/**
+	 * Command stack changed.
+	 *
+	 * @author mqfdy
+	 * @param event
+	 *            the event
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public void commandStackChanged(EventObject event) {
 		firePropertyChange(IEditorPart.PROP_DIRTY);
@@ -435,7 +488,11 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 	}
 
 	/**
-	 * 为编辑器定制调色板布局
+	 * 为编辑器定制调色板布局.
+	 *
+	 * @author mqfdy
+	 * @return the palette preferences
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	protected FlyoutPreferences getPalettePreferences() {
@@ -443,7 +500,11 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 	}
 
 	/**
-	 * 定制编辑器调色板的内容
+	 * 定制编辑器调色板的内容.
+	 *
+	 * @author mqfdy
+	 * @return the palette root
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	protected PaletteRoot getPaletteRoot() {
@@ -454,7 +515,12 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 	}
 
 	/**
-	 * 设置编辑器的SWT部分的Control
+	 * 设置编辑器的SWT部分的Control.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void createPartControl(Composite parent) {
@@ -475,7 +541,10 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 	}
 
 	/**
-	 * 重写createActions方法  使用自定义的DeleteAction
+	 * 重写createActions方法 使用自定义的DeleteAction.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void createActions() {
 //		super.createActions();
@@ -506,6 +575,15 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 		registry.registerAction(new PrintAction(this));
 	}
 
+	/**
+	 * Gets the adapter.
+	 *
+	 * @author mqfdy
+	 * @param type
+	 *            the type
+	 * @return the adapter
+	 * @Date 2018-09-03 09:00
+	 */
 	@SuppressWarnings("rawtypes")
 	public Object getAdapter(Class type) {
 		if (type == ZoomManager.class)
@@ -528,6 +606,9 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 		return super.getAdapter(type);
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	// 初始化EditPartViewer
 	protected void initializeGraphicalViewer() {
@@ -669,6 +750,9 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 	 * 定制EditPartViewer
 	 * 在根节点接受到内容之前配置EditPartViewer,在这个方法中需要配置RootEditPart.此处我们把删除的键盘操作和
 	 * 编辑器的右键菜单加入其中
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	protected void configureGraphicalViewer() {
@@ -711,7 +795,11 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 	}
 
 	/**
-	 * 为透视图编辑器创建调色板
+	 * 为透视图编辑器创建调色板.
+	 *
+	 * @author mqfdy
+	 * @return the palette viewer provider
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	protected PaletteViewerProvider createPaletteViewerProvider() {
@@ -726,8 +814,12 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 	}
 
 	/**
-	 * 透视图编辑器的输入
-	 * 
+	 * 透视图编辑器的输入.
+	 *
+	 * @author mqfdy
+	 * @param input
+	 *            the new input
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void setInput(IEditorInput input) {
@@ -784,11 +876,25 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 		// ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener);
 	}
 
+	/**
+	 * Adds the listener.
+	 *
+	 * @author mqfdy
+	 * @param listener
+	 *            the listener
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addListener(TreeResourceChangeListener listener) {
 		list.add(listener);
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(listener);
 	}
 
+	/**
+	 * Removes the listener.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removeListener() {
 		for (TreeResourceChangeListener listener : list) {
 			ResourcesPlugin.getWorkspace().removeResourceChangeListener(
@@ -796,6 +902,9 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void dispose() {
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(
@@ -812,6 +921,9 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 		super.dispose();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void doSaveAs() {
 		saveToFile();
@@ -820,6 +932,9 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 
 	/**
 	 * 当保存透视图内容时把内容存入xx.om文件中
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void saveToFile() {
 		if (sourceFile == null) {
@@ -850,28 +965,54 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 		getCommandStack().markSaveLocation();
 	}
 
+	/**
+	 * Do save.
+	 *
+	 * @author mqfdy
+	 * @param monitor
+	 *            the monitor
+	 * @Date 2018-09-03 09:00
+	 */
 	// 保存图形
 	@Override
 	public void doSave(IProgressMonitor monitor) {
 		saveToFile();
 	}
+	
+	/**
+	 * Do save.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	// 保存图形
 	public void doSave() {
 		saveToFile();
 	}
+	
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean isSaveAsAllowed() {
 		return false;
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean isDirty() {
 		return isDirty || getCommandStack().isDirty();
 	}
 
 	/**
-	 * 改变编辑器的修改状态
+	 * 改变编辑器的修改状态.
+	 *
+	 * @author mqfdy
 	 * @param dirty
+	 *            the new dirty
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setDirty(boolean dirty) {
 		if (isDirty != dirty) {
@@ -880,22 +1021,48 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 		}
 	}
 
+	/**
+	 * Gets the common key handler.
+	 *
+	 * @author mqfdy
+	 * @return the common key handler
+	 * @Date 2018-09-03 09:00
+	 */
 	protected KeyHandler getCommonKeyHandler() {
 		return null;
 	}
 
+	/**
+	 * Gets the last time stamp.
+	 *
+	 * @author mqfdy
+	 * @return the last time stamp
+	 * @Date 2018-09-03 09:00
+	 */
 	public long getLastTimeStamp() {
 		return lastTimeStamp;
 	}
 
+	/**
+	 * Sets the last time stamp.
+	 *
+	 * @author mqfdy
+	 * @param lastTimeStamp
+	 *            the new last time stamp
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setLastTimeStamp(long lastTimeStamp) {
 		this.lastTimeStamp = lastTimeStamp;
 	}
 
 	/**
-	 * 获取注册的action
+	 * 获取注册的action.
+	 *
+	 * @author mqfdy
 	 * @param actionID
-	 * @return
+	 *            the action ID
+	 * @return the action
+	 * @Date 2018-09-03 09:00
 	 */
 	public IAction getAction(String actionID) {
 		Assert.isNotNull(actionID);
@@ -903,6 +1070,16 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 		return action;
 	}
 
+	/**
+	 * Selection changed.
+	 *
+	 * @author mqfdy
+	 * @param part
+	 *            the part
+	 * @param selection
+	 *            the selection
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
 		// 解决多页编辑器中的一系列RetargetAction(cut,delete,paste等)都失效，
@@ -910,47 +1087,123 @@ public class BusinessModelDiagramEditor extends AbstractGenericGEFEditor {
 		updateActions(getSelectionActions());
 	}
 
+	/**
+	 * Gets the business model manager.
+	 *
+	 * @author mqfdy
+	 * @return the business model manager
+	 * @Date 2018-09-03 09:00
+	 */
 	public BusinessModelManager getBusinessModelManager() {
 		return businessModelManager;
 	}
 
+	/**
+	 * Gets the all edit parts.
+	 *
+	 * @author mqfdy
+	 * @return the all edit parts
+	 * @Date 2018-09-03 09:00
+	 */
 	public Iterator<?> getAllEditParts() {
 		
 		return getViewer().getEditPartRegistry().entrySet().iterator();
 	}
 	
+	/**
+	 * Gets the viewer.
+	 *
+	 * @author mqfdy
+	 * @return the viewer
+	 * @Date 2018-09-03 09:00
+	 */
 	public GraphicalViewer getViewer() {
 		return viewer;
 	}
 
+	/**
+	 * Gets the command stacks.
+	 *
+	 * @author mqfdy
+	 * @return the command stacks
+	 * @Date 2018-09-03 09:00
+	 */
 	public CommandStack getCommandStacks() {
 		return getCommandStack();
 	}
 
+	/**
+	 * Sets the dia.
+	 *
+	 * @author mqfdy
+	 * @param dia
+	 *            the new dia
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setDia(Diagram dia) {
 		this.dia = dia;
 	}
 
+	/**
+	 * Gets the dia.
+	 *
+	 * @author mqfdy
+	 * @return the dia
+	 * @Date 2018-09-03 09:00
+	 */
 	public Diagram getDia() {
 		return dia;
 	}
 
+	/**
+	 * Gets the find result.
+	 *
+	 * @author mqfdy
+	 * @return the find result
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<AbstractModelElement> getFindResult() {
 		return findResult;
 	}
 
+	/**
+	 * Sets the find result.
+	 *
+	 * @author mqfdy
+	 * @param findResult
+	 *            the new find result
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setFindResult(List<AbstractModelElement> findResult) {
 		this.findResult = findResult;
 	}
 
+	/**
+	 * Gets the vali result.
+	 *
+	 * @author mqfdy
+	 * @return the vali result
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<ValiResult> getValiResult() {
 		return valiResult;
 	}
 
+	/**
+	 * Sets the vali result.
+	 *
+	 * @author mqfdy
+	 * @param valiResult
+	 *            the new vali result
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setValiResult(List<ValiResult> valiResult) {
 		this.valiResult = valiResult;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void setFocus() {
 //		if(BusinessModelUtil.getView(ValiView.class) != null){

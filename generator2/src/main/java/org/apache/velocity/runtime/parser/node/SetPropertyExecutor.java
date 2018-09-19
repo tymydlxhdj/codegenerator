@@ -27,9 +27,10 @@ import org.apache.velocity.exception.VelocityException;
 import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.util.introspection.Introspector;
 
+// TODO: Auto-generated Javadoc
 /**
- * Executor for looking up property names in the passed in class
- * This will try to find a set&lt;foo&gt;(key, value) method
+ * Executor for looking up property names in the passed in class This will try
+ * to find a set&lt;foo&gt;(key, value) method.
  *
  * @author <a href="mailto:henning@apache.org">Henning P. Schmiedehausen</a>
  * @version $Id: SetPropertyExecutor.java 687177 2008-08-19 22:00:32Z nbubna $
@@ -38,15 +39,24 @@ import org.apache.velocity.util.introspection.Introspector;
 public class SetPropertyExecutor
         extends SetExecutor
 {
+    
+    /** The introspector. */
     private final Introspector introspector;
 
     /**
-     * @param log
-     * @param introspector
-     * @param clazz
-     * @param property
-     * @param arg
-     */
+	 * Instantiates a new sets the property executor.
+	 *
+	 * @param log
+	 *            the log
+	 * @param introspector
+	 *            the introspector
+	 * @param clazz
+	 *            the clazz
+	 * @param property
+	 *            the property
+	 * @param arg
+	 *            the arg
+	 */
     public SetPropertyExecutor(final Log log, final Introspector introspector,
             final Class clazz, final String property, final Object arg)
     {
@@ -63,18 +73,29 @@ public class SetPropertyExecutor
     }
 
     /**
-     * @return The current introspector.
-     */
+	 * Gets the introspector.
+	 *
+	 * @author mqfdy
+	 * @return The current introspector.
+	 * @Date 2018-09-03 09:00
+	 */
     protected Introspector getIntrospector()
     {
         return this.introspector;
     }
 
     /**
-     * @param clazz
-     * @param property
-     * @param arg
-     */
+	 * Discover.
+	 *
+	 * @author mqfdy
+	 * @param clazz
+	 *            the clazz
+	 * @param property
+	 *            the property
+	 * @param arg
+	 *            the arg
+	 * @Date 2018-09-03 09:00
+	 */
     protected void discover(final Class clazz, final String property, final Object arg)
     {
         Object [] params = new Object [] { arg };
@@ -122,13 +143,20 @@ public class SetPropertyExecutor
     }
 
     /**
-     * Execute method against context.
-     * @param o
-     * @param value
-     * @return The value of the invocation.
-     * @throws IllegalAccessException
-     * @throws InvocationTargetException
-     */
+	 * Execute method against context.
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @param value
+	 *            the value
+	 * @return The value of the invocation.
+	 * @throws IllegalAccessException
+	 *             the illegal access exception
+	 * @throws InvocationTargetException
+	 *             the invocation target exception
+	 * @Date 2018-9-3 11:38:32
+	 */
     public Object execute(final Object o, final Object value)
         throws IllegalAccessException,  InvocationTargetException
     {

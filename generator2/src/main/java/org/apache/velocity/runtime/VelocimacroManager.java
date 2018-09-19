@@ -30,6 +30,7 @@ import org.apache.velocity.runtime.parser.node.Node;
 import org.apache.velocity.runtime.parser.node.SimpleNode;
 import org.apache.velocity.util.MapFactory;
 
+// TODO: Auto-generated Javadoc
 /**
  * Manages VMs in namespaces.  Currently, two namespace modes are
  * supported:
@@ -48,32 +49,44 @@ import org.apache.velocity.util.MapFactory;
  */
 public class VelocimacroManager
 {
+    
+    /** The global namespace. */
     private static String GLOBAL_NAMESPACE = "";
 
+    /** The register from lib. */
     private boolean registerFromLib = false;
 
     /** Hash of namespace hashes. */
     private final Map namespaceHash = MapFactory.create(17, 0.5f, 20, false);
 
-    /** reference to global namespace hash */
+    /** reference to global namespace hash. */
     private final Map globalNamespace;
 
-    /** set of names of library tempates/namespaces */
+    /** set of names of library tempates/namespaces. */
     private final Set libraries = Collections.synchronizedSet(new HashSet());
     
+    /** The rsvc. */
     private RuntimeServices rsvc = null;
 
+    /** The namespaces on. */
     /*
      * big switch for namespaces.  If true, then properties control
      * usage. If false, no.
      */
     private boolean namespacesOn = true;
+    
+    /** The inline local mode. */
     private boolean inlineLocalMode = false;
+    
+    /** The inline replaces global. */
     private boolean inlineReplacesGlobal = false;
 
     /**
-     * Adds the global namespace to the hash.
-     */
+	 * Adds the global namespace to the hash.
+	 *
+	 * @param rsvc
+	 *            the rsvc
+	 */
     VelocimacroManager(RuntimeServices rsvc)
     {
         /*
@@ -85,16 +98,25 @@ public class VelocimacroManager
     }
 
     /**
-     * Adds a VM definition to the cache.
-     * 
-     * Called by VelocimacroFactory.addVelociMacro (after parsing and discovery in Macro directive)
-     * 
-     * @param vmName Name of the new VelociMacro.
-     * @param macroBody String representation of the macro body.
-     * @param argArray Array of macro parameters, first parameter is the macro name.
-     * @param namespace The namespace/template from which this macro has been loaded.
-     * @return Whether everything went okay.
-     */
+	 * Adds a VM definition to the cache.
+	 * 
+	 * Called by VelocimacroFactory.addVelociMacro (after parsing and discovery
+	 * in Macro directive)
+	 *
+	 * @author mqfdy
+	 * @param vmName
+	 *            Name of the new VelociMacro.
+	 * @param macroBody
+	 *            String representation of the macro body.
+	 * @param argArray
+	 *            Array of macro parameters, first parameter is the macro name.
+	 * @param namespace
+	 *            The namespace/template from which this macro has been loaded.
+	 * @param canReplaceGlobalMacro
+	 *            the can replace global macro
+	 * @return Whether everything went okay.
+	 * @Date 2018-09-03 09:00
+	 */
     public boolean addVM(final String vmName, final Node macroBody, final String argArray[],
                          final String namespace, boolean canReplaceGlobalMacro)
     {
@@ -173,12 +195,16 @@ public class VelocimacroManager
     }
     
     /**
-     * Gets a VelocimacroProxy object by the name / source template duple.
-     * 
-     * @param vmName Name of the VelocityMacro to look up.
-     * @param namespace Namespace in which to look up the macro.
-     * @return A proxy representing the Macro.
-     */
+	 * Gets a VelocimacroProxy object by the name / source template duple.
+	 *
+	 * @author mqfdy
+	 * @param vmName
+	 *            Name of the VelocityMacro to look up.
+	 * @param namespace
+	 *            Namespace in which to look up the macro.
+	 * @return A proxy representing the Macro.
+	 * @Date 2018-9-3 11:38:32
+	 */
      public VelocimacroProxy get(final String vmName, final String namespace)
      {
         return(get(vmName, namespace, null));
@@ -250,13 +276,15 @@ public class VelocimacroManager
     }
 
     /**
-     * Removes the VMs and the namespace from the manager.
-     * Used when a template is reloaded to avoid
-     * losing memory.
-     *
-     * @param namespace namespace to dump
-     * @return boolean representing success
-     */
+	 * Removes the VMs and the namespace from the manager. Used when a template
+	 * is reloaded to avoid losing memory.
+	 *
+	 * @author mqfdy
+	 * @param namespace
+	 *            namespace to dump
+	 * @return boolean representing success
+	 * @Date 2018-9-3 11:38:32
+	 */
     public boolean dumpNamespace(final String namespace)
     {
         if (usingNamespaces(namespace))
@@ -279,44 +307,58 @@ public class VelocimacroManager
     }
 
     /**
-     *  public switch to let external user of manager to control namespace
-     *  usage indep of properties.  That way, for example, at startup the
-     *  library files are loaded into global namespace
-     *
-     * @param namespaceOn True if namespaces should be used.
-     */
+	 * public switch to let external user of manager to control namespace usage
+	 * indep of properties. That way, for example, at startup the library files
+	 * are loaded into global namespace
+	 *
+	 * @author mqfdy
+	 * @param namespaceOn
+	 *            True if namespaces should be used.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public void setNamespaceUsage(final boolean namespaceOn)
     {
         this.namespacesOn = namespaceOn;
     }
 
     /**
-     * Should macros registered from Libraries be marked special?
-     * @param registerFromLib True if macros from Libs should be marked.
-     */
+	 * Should macros registered from Libraries be marked special?.
+	 *
+	 * @author mqfdy
+	 * @param registerFromLib
+	 *            True if macros from Libs should be marked.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public void setRegisterFromLib(final boolean registerFromLib)
     {
         this.registerFromLib = registerFromLib;
     }
 
     /**
-     * Should macros from the same template be inlined?
-     *
-     * @param inlineLocalMode True if macros should be inlined on the same template.
-     */
+	 * Should macros from the same template be inlined?.
+	 *
+	 * @author mqfdy
+	 * @param inlineLocalMode
+	 *            True if macros should be inlined on the same template.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public void setTemplateLocalInlineVM(final boolean inlineLocalMode)
     {
         this.inlineLocalMode = inlineLocalMode;
     }
 
     /**
-     *  returns the hash for the specified namespace, and if it doesn't exist
-     *  will create a new one and add it to the namespaces
-     *
-     *  @param namespace  name of the namespace :)
-     *  @param addIfNew  flag to add a new namespace if it doesn't exist
-     *  @return namespace Map of VMs or null if doesn't exist
-     */
+	 * returns the hash for the specified namespace, and if it doesn't exist
+	 * will create a new one and add it to the namespaces.
+	 *
+	 * @author mqfdy
+	 * @param namespace
+	 *            name of the namespace :)
+	 * @param addIfNew
+	 *            flag to add a new namespace if it doesn't exist
+	 * @return namespace Map of VMs or null if doesn't exist
+	 * @Date 2018-9-3 11:38:32
+	 */
     private Map getNamespace(final String namespace, final boolean addIfNew)
     {
         Map h = (Map) namespaceHash.get(namespace);
@@ -330,11 +372,14 @@ public class VelocimacroManager
     }
 
     /**
-     *   adds a namespace to the namespaces
-     *
-     *  @param namespace name of namespace to add
-     *  @return Hash added to namespaces, ready for use
-     */
+	 * adds a namespace to the namespaces.
+	 *
+	 * @author mqfdy
+	 * @param namespace
+	 *            name of namespace to add
+	 * @return Hash added to namespaces, ready for use
+	 * @Date 2018-9-3 11:38:32
+	 */
     private Map addNamespace(final String namespace)
     {
         Map h = MapFactory.create(17, 0.5f, 20, false);
@@ -361,11 +406,14 @@ public class VelocimacroManager
     }
 
     /**
-     *  determines if currently using namespaces.
-     *
-     *  @param namespace currently ignored
-     *  @return true if using namespaces, false if not
-     */
+	 * determines if currently using namespaces.
+	 *
+	 * @author mqfdy
+	 * @param namespace
+	 *            currently ignored
+	 * @return true if using namespaces, false if not
+	 * @Date 2018-9-3 11:38:32
+	 */
     private boolean usingNamespaces(final String namespace)
     {
         /*
@@ -390,11 +438,17 @@ public class VelocimacroManager
     }
 
     /**
-     * Return the library name for a given macro.
-     * @param vmName Name of the Macro to look up.
-     * @param namespace Namespace to look the macro up.
-     * @return The name of the library which registered this macro in a namespace.
-     */
+	 * Return the library name for a given macro.
+	 *
+	 * @author mqfdy
+	 * @param vmName
+	 *            Name of the Macro to look up.
+	 * @param namespace
+	 *            Namespace to look the macro up.
+	 * @return The name of the library which registered this macro in a
+	 *         namespace.
+	 * @Date 2018-9-3 11:38:32
+	 */
     public String getLibraryName(final String vmName, final String namespace)
     {
         if (usingNamespaces(namespace))
@@ -434,8 +488,12 @@ public class VelocimacroManager
     }
     
     /**
-     * @since 1.6
-     */
+	 * Sets the inline replaces global.
+	 *
+	 * @param is
+	 *            the new inline replaces global
+	 * @since 1.6
+	 */
     public void setInlineReplacesGlobal(boolean is)
     {
         inlineReplacesGlobal = is;
@@ -443,17 +501,45 @@ public class VelocimacroManager
 
 
     /**
-     *  wrapper class for holding VM information
-     */
+	 * wrapper class for holding VM information.
+	 *
+	 * @author mqfdy
+	 */
     private static class MacroEntry
     {
+        
+        /** The vm name. */
         private final String vmName;
+        
+        /** The arg array. */
         private final String[] argArray;
+        
+        /** The source template. */
         private final String sourceTemplate;
+        
+        /** The node tree. */
         private SimpleNode nodeTree = null;
+        
+        /** The from library. */
         private boolean fromLibrary = false;
+        
+        /** The vp. */
         private VelocimacroProxy vp;
 
+        /**
+		 * Instantiates a new macro entry.
+		 *
+		 * @param vmName
+		 *            the vm name
+		 * @param macro
+		 *            the macro
+		 * @param argArray
+		 *            the arg array
+		 * @param sourceTemplate
+		 *            the source template
+		 * @param rsvc
+		 *            the rsvc
+		 */
         private MacroEntry(final String vmName, final Node macro,
                    final String argArray[], final String sourceTemplate,
                    RuntimeServices rsvc)
@@ -472,41 +558,63 @@ public class VelocimacroManager
         }
         
         /**
-         * Has the macro been registered from a library.
-         * @param fromLibrary True if the macro was registered from a Library.
-         */
+		 * Has the macro been registered from a library.
+		 *
+		 * @author mqfdy
+		 * @param fromLibrary
+		 *            True if the macro was registered from a Library.
+		 * @Date 2018-9-3 11:38:32
+		 */
         public void setFromLibrary(final boolean fromLibrary)
         {
             this.fromLibrary = fromLibrary;
         }
 
         /**
-         * Returns true if the macro was registered from a library.
-         * @return True if the macro was registered from a library.
-         */
+		 * Returns true if the macro was registered from a library.
+		 *
+		 * @author mqfdy
+		 * @return True if the macro was registered from a library.
+		 * @Date 2018-9-3 11:38:32
+		 */
         public boolean getFromLibrary()
         {
             return fromLibrary;
         }
 
         /**
-         * Returns the node tree for this macro.
-         * @return The node tree for this macro.
-         */
+		 * Returns the node tree for this macro.
+		 *
+		 * @author mqfdy
+		 * @return The node tree for this macro.
+		 * @Date 2018-9-3 11:38:32
+		 */
         public SimpleNode getNodeTree()
         {
             return nodeTree;
         }
 
         /**
-         * Returns the source template name for this macro.
-         * @return The source template name for this macro.
-         */
+		 * Returns the source template name for this macro.
+		 *
+		 * @author mqfdy
+		 * @return The source template name for this macro.
+		 * @Date 2018-9-3 11:38:32
+		 */
         public String getSourceTemplate()
         {
             return sourceTemplate;
         }
 
+        /**
+		 * Gets the proxy.
+		 *
+		 * @author mqfdy
+		 * @param namespace
+		 *            the namespace
+		 * @return the proxy
+		 * @Date 2018-9-3 11:38:32
+		 */
         VelocimacroProxy getProxy(final String namespace)
         {
             /*

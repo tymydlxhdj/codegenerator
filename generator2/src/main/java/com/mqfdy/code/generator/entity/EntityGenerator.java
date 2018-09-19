@@ -13,20 +13,46 @@ import com.mqfdy.code.generator.GenProjectTypeUtilTools;
 import com.mqfdy.code.generator.model.AbstractGenerator;
 import com.mqfdy.code.generator.persistence.IPersistenceModel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EntityGenerator.
+ *
+ * @author mqfdy
+ */
 public abstract class EntityGenerator extends AbstractGenerator {
 	
+	/** The persistence model. */
 	protected IPersistenceModel persistenceModel;
 
+	/** The map. */
 	protected Map<String, Object> map = new HashMap<String, Object>();
 	
+	/** The gen project. */
 	protected IProject genProject;
 	
+	/** The folder. */
 	protected String folder = "";
 	
+	/**
+	 * Sets the folder.
+	 *
+	 * @author mqfdy
+	 * @param f
+	 *            the new folder
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setFolder(String f){
 		this.folder = f;
 	}
 	
+	/**
+	 * Instantiates a new entity generator.
+	 *
+	 * @param genProject
+	 *            the gen project
+	 * @param persistenceModel
+	 *            the persistence model
+	 */
 	public EntityGenerator(IProject genProject,
 			IPersistenceModel persistenceModel) {
 		super(genProject);
@@ -35,24 +61,53 @@ public abstract class EntityGenerator extends AbstractGenerator {
 		map.put(PERSISTENCE_MODEL_KEY, persistenceModel );
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getSourceMap()
+	 * @return EntityGenerator
+	 */
 	@Override
 	public Map<String, Object> getSourceMap() {
 		return map;
 	}
 
+	/**
+	 * Gets the persistence model.
+	 *
+	 * @author mqfdy
+	 * @return the persistence model
+	 * @Date 2018-09-03 09:00
+	 */
 	public IPersistenceModel getPersistenceModel() {
 		return persistenceModel;
 	}
 
+	/**
+	 * Sets the persistence model.
+	 *
+	 * @author mqfdy
+	 * @param persistenceModel
+	 *            the new persistence model
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setPersistenceModel(IPersistenceModel persistenceModel) {
 		this.persistenceModel = persistenceModel;
 	}
 
+	/**
+	 * Gets the table.
+	 *
+	 * @author mqfdy
+	 * @return the table
+	 * @Date 2018-09-03 09:00
+	 */
 	public Table getTable() {
 		return persistenceModel.getTable();
 	}
 
 	/**
+	 * Checks if is generate internal.
+	 *
+	 * @return true, if is generate internal
 	 * @see AbstractGenerator#isGenerateInternal()
 	 */
 	@Override
@@ -60,6 +115,10 @@ public abstract class EntityGenerator extends AbstractGenerator {
 		return getTable().isGeneratePO();
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.model.IGenerator#getOutputFilePath()
+	 * @return EntityGenerator
+	 */
 	public String getOutputFilePath() {
 		return getOutputFolderPath() + getFileNameWithoutExtension()
 				+ getFileExtension();
@@ -67,7 +126,11 @@ public abstract class EntityGenerator extends AbstractGenerator {
 	}
 
 	/**
-	 * 获取生成文件路径
+	 * 获取生成文件路径.
+	 *
+	 * @author mqfdy
+	 * @return the output folder path
+	 * @Date 2018-9-3 11:38:25
 	 */
 	@Override
 	protected String getOutputFolderPath() {
@@ -91,15 +154,31 @@ public abstract class EntityGenerator extends AbstractGenerator {
 		}
 	}
 
+	/**
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileNameWithoutExtension()
+	 * @return EntityGenerator
+	 */
 	@Override
 	protected String getFileNameWithoutExtension() {
 		return persistenceModel.getJavaName();
 	}
 	
+	/**
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getGenProject()
+	 * @return EntityGenerator
+	 */
 	public IProject getGenProject() {
 		return genProject;
 	}
 	
+	/**
+	 * Sets the gen project.
+	 *
+	 * @author mqfdy
+	 * @param genProject
+	 *            the new gen project
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setGenProject(IProject genProject) {
 		this.genProject = genProject;
 	}

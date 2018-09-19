@@ -22,9 +22,14 @@ import com.mqfdy.code.springboot.utilities.model.value.CollectionValueModel;
 
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Implementation of CollectionValueModel and Collection that simply holds a
  * collection and notifies listeners of any changes.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class SimpleCollectionValueModel<E>
 	extends AbstractModel
@@ -38,6 +43,9 @@ public class SimpleCollectionValueModel<E>
 
 	/**
 	 * Construct a CollectionValueModel for the specified collection.
+	 *
+	 * @param collection
+	 *            the collection
 	 */
 	public SimpleCollectionValueModel(Collection<E> collection) {
 		super();
@@ -141,6 +149,11 @@ public class SimpleCollectionValueModel<E>
 
 	/**
 	 * Allow the collection to be replaced.
+	 *
+	 * @author mqfdy
+	 * @param collection
+	 *            the new collection
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setCollection(Collection<E> collection) {
 		if (collection == null) {

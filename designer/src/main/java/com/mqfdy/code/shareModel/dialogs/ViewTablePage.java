@@ -51,45 +51,89 @@ import com.mqfdy.code.shareModel.providers.ModelMessageTreeContentProvider;
 import com.mqfdy.code.shareModel.providers.ModelMessageTreeLabelProvider;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务实体选择tab页
- * @author mqfdy
+ * 业务实体选择tab页.
  *
+ * @author mqfdy
  */
 public class ViewTablePage extends Composite{
 	
 	
+	/** The serch box group. */
 	private Group serchBoxGroup;
+	
+	/** The table group. */
 	private Group tableGroup;
+	
+	/** The tree view. */
 	private TreeViewer treeView;
+	
+	/** The tree. */
 	private Tree tree;
+	
+	/** The tree scroll. */
 	private ScrolledComposite treeScroll;
+	
+	/** The model type label. */
 	private Label modelTypeLabel;
+	
+	/** The model type combo. */
 	private Combo modelTypeCombo;
 	
+	/** The model name label. */
 	private Label modelNameLabel;
+	
+	/** The model name text. */
 	private Text modelNameText;
 	
+	/** The model desc label. */
 	private Label modelDescLabel;
+	
+	/** The model desc text. */
 	private Text modelDescText;
 	
+	/** The share person label. */
 	private Label sharePersonLabel;
+	
+	/** The share person text. */
 	private Text sharePersonText;
 	
+	/** The start time label. */
 	private Label startTimeLabel;
+	
+	/** The start text. */
 	private DateTime  startText;
 	
+	/** The end time label. */
 	private Label endTimeLabel;
+	
+	/** The end text. */
 	private DateTime  endText;
 	
+	/** The serach. */
 	private Button serach;
+	
+	/** The reset. */
 	private Button reset;
 	
+	/** The table viewer. */
 	private TableViewer tableViewer;
+	
+	/** The table. */
 	public Table table;
 	
+	/** The find model dialog. */
 	private FindModelDialog findModelDialog;
 
+	/**
+	 * Instantiates a new view table page.
+	 *
+	 * @param folder
+	 *            the folder
+	 * @param findModelDialog
+	 *            the find model dialog
+	 */
 	public ViewTablePage(Composite folder,FindModelDialog findModelDialog) {
 		super(folder, SWT.NONE);
 		this.findModelDialog=findModelDialog;
@@ -97,8 +141,12 @@ public class ViewTablePage extends Composite{
 	}	
 
 	/**
-	 * 创建界面
+	 * 创建界面.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createContents(Composite composite) {
 		composite.setLayout(new GridLayout(2,false));	
@@ -109,8 +157,12 @@ public class ViewTablePage extends Composite{
 	}	
 	
 	/**
-	 * 表格显示区域
+	 * 表格显示区域.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createTableGroup(Composite composite) {
 		tableGroup=new Group(composite,SWT.None);
@@ -212,8 +264,12 @@ public class ViewTablePage extends Composite{
 
 	
 	/**
-	 * 查询条件显示区域
+	 * 查询条件显示区域.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createSerchBoxGroup(Composite composite) {
 		serchBoxGroup=new Group(composite,SWT.None);
@@ -338,7 +394,10 @@ public class ViewTablePage extends Composite{
 
 	
 	/**
-	 * 初始化模型类型选择下拉框
+	 * 初始化模型类型选择下拉框.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void intiCombo() {
 		modelTypeCombo.add("--请选择--");
@@ -355,8 +414,12 @@ public class ViewTablePage extends Composite{
 	}
 
 	/**
-	 * 树显示区域
+	 * 树显示区域.
+	 *
+	 * @author mqfdy
 	 * @param composite
+	 *            the composite
+	 * @Date 2018-09-03 09:00
 	 */
 	private void createTree(Composite composite) {
 		GridData gridData = new GridData(GridData.FILL_BOTH);
@@ -396,7 +459,10 @@ public class ViewTablePage extends Composite{
 	}
 
 	/**
-	 * 根据输入框的条件和所选树节点ID获取共享模型信息
+	 * 根据输入框的条件和所选树节点ID获取共享模型信息.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	protected void createTableById() {
 		TreeItem[] item=tree.getSelection();
@@ -443,11 +509,17 @@ public class ViewTablePage extends Composite{
 	}
 
 	/**
-	 * 通过日期输入框获取日期格式字符串
+	 * 通过日期输入框获取日期格式字符串.
+	 *
+	 * @author mqfdy
 	 * @param year
-	 * @param month    // 8月通过getMonth取出来是7
-	 * @param day      
-	 * @return
+	 *            the year
+	 * @param month
+	 *            // 8月通过getMonth取出来是7
+	 * @param day
+	 *            the day
+	 * @return the date str
+	 * @Date 2018-09-03 09:00
 	 */
 	private String getDateStr(int year, int month, int day) {
 		String str=String.valueOf(year)+"-";
@@ -465,8 +537,11 @@ public class ViewTablePage extends Composite{
 	}
 
 	/**
-	 * 获取树节点信息
-	 * @return
+	 * 获取树节点信息.
+	 *
+	 * @author mqfdy
+	 * @return the list
+	 * @Date 2018-09-03 09:00
 	 */
 	public  List<JSONObject>  treeData(){
 		List<JSONObject> list=new ArrayList<JSONObject>();

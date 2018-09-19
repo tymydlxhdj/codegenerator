@@ -22,25 +22,31 @@
  */
 package com.mqfdy.code.designer.editor.utils;
 
+// TODO: Auto-generated Javadoc
 /**
- * 自定义异常类
- * 
+ * 自定义异常类.
+ *
  * @author mqfdy
- * 
  */
 public abstract class ModuleException extends RuntimeException {
 
+	/** The Constant serialVersionUID. */
 	protected static final long serialVersionUID = -3055245629659580974L;
 
+	/** The Constant SEVERITY_ERROR. */
 	// Constants
 	public static final int SEVERITY_ERROR = 101;
 
+	/** The Constant SEVERITY_INFO. */
 	public static final int SEVERITY_INFO = 102;
 
+	/** The Constant LOGGING_ON. */
 	public static final int LOGGING_ON = 201;
 
+	/** The Constant LOGGING_OFF. */
 	public static final int LOGGING_OFF = 202;
 
+	/** The Constant logstatus. */
 	public static final int logstatus = LOGGING_ON;
 
 }

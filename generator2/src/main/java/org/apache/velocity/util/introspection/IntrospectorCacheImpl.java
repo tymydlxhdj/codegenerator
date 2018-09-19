@@ -26,6 +26,7 @@ import java.util.Set;
 
 import org.apache.velocity.runtime.log.Log;
 
+// TODO: Auto-generated Javadoc
 /**
  * This is the internal introspector cache implementation.
  *
@@ -35,13 +36,12 @@ import org.apache.velocity.runtime.log.Log;
  */
 public final class IntrospectorCacheImpl implements IntrospectorCache
 {
-    /**
-     * define a public string so that it can be looked for if interested
-     */
+    
+    /** define a public string so that it can be looked for if interested. */
     public final static String CACHEDUMP_MSG =
         "IntrospectorCache detected classloader change. Dumping cache.";
 
-    /** Class logger */
+    /** Class logger. */
     private final Log log;
     
     /**
@@ -58,16 +58,22 @@ public final class IntrospectorCacheImpl implements IntrospectorCache
     private final Set classNameCache = new HashSet();
 
     /**
-     * C'tor
-     */
+	 * C'tor.
+	 *
+	 * @param log
+	 *            the log
+	 */
     public IntrospectorCacheImpl(final Log log)
     {
 	    this.log = log;
     }
 
     /**
-     * Clears the internal cache.
-     */
+	 * Clears the internal cache.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-9-3 11:38:24
+	 */
     public void clear()
     {
         synchronized (classMapCache)
@@ -79,13 +85,15 @@ public final class IntrospectorCacheImpl implements IntrospectorCache
     }
 
     /**
-     * Lookup a given Class object in the cache. If it does not exist, 
-     * check whether this is due to a class change and purge the caches
-     * eventually.
-     *
-     * @param c The class to look up.
-     * @return A ClassMap object or null if it does not exist in the cache.
-     */
+	 * Lookup a given Class object in the cache. If it does not exist, check
+	 * whether this is due to a class change and purge the caches eventually.
+	 *
+	 * @author mqfdy
+	 * @param c
+	 *            The class to look up.
+	 * @return A ClassMap object or null if it does not exist in the cache.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public ClassMap get(final Class c)
     {
         if (c == null)
@@ -114,13 +122,16 @@ public final class IntrospectorCacheImpl implements IntrospectorCache
     }
 
     /**
-     * Creates a class map for specific class and registers it in the
-     * cache.  Also adds the qualified name to the name-&gt;class map
-     * for later Classloader change detection.
-     *
-     * @param c The class for which the class map gets generated.
-     * @return A ClassMap object.
-     */
+	 * Creates a class map for specific class and registers it in the cache.
+	 * Also adds the qualified name to the name-&gt;class map for later
+	 * Classloader change detection.
+	 *
+	 * @author mqfdy
+	 * @param c
+	 *            The class for which the class map gets generated.
+	 * @return A ClassMap object.
+	 * @Date 2018-9-3 11:38:24
+	 */
     public ClassMap put(final Class c)
     {
         final ClassMap classMap = new ClassMap(c, log);

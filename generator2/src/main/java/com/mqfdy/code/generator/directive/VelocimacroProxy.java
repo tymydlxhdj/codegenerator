@@ -36,6 +36,7 @@ import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.runtime.parser.node.Node;
 import org.apache.velocity.runtime.parser.node.SimpleNode;
 
+// TODO: Auto-generated Javadoc
 /**
  *  VelocimacroProxy.java
  *
@@ -46,49 +47,79 @@ import org.apache.velocity.runtime.parser.node.SimpleNode;
  */
 public class VelocimacroProxy extends Directive
 {
+    
+    /** The macro name. */
     private String macroName;
+    
+    /** The arg array. */
     private String[] argArray = null;
+    
+    /** The literal arg array. */
     private String[] literalArgArray = null;
+    
+    /** The node tree. */
     private SimpleNode nodeTree = null;
+    
+    /** The num macro args. */
     private int numMacroArgs = 0;
+    
+    /** The strict arguments. */
     private boolean strictArguments;
+    
+    /** The local context scope. */
     private boolean localContextScope = false;
+    
+    /** The max call depth. */
     private int maxCallDepth;
+    
+    /** The body reference. */
     private String bodyReference;
 
     /**
-     * Return name of this Velocimacro.
-     * @return The name of this Velocimacro.
-     */
+	 * Return name of this Velocimacro.
+	 *
+	 * @author mqfdy
+	 * @return The name of this Velocimacro.
+	 * @Date 2018-9-3 11:38:35
+	 */
     public String getName()
     {
         return  macroName;
     }
 
     /**
-     * Velocimacros are always LINE type directives.
-     * @return The type of this directive.
-     */
+	 * Velocimacros are always LINE type directives.
+	 *
+	 * @author mqfdy
+	 * @return The type of this directive.
+	 * @Date 2018-9-3 11:38:35
+	 */
     public int getType()
     {
         return LINE;
     }
 
     /**
-     * sets the directive name of this VM
-     * 
-     * @param name
-     */
+	 * sets the directive name of this VM.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the new name
+	 * @Date 2018-09-03 09:00
+	 */
     public void setName(String name)
     {
         macroName = name;
     }
 
     /**
-     * sets the array of arguments specified in the macro definition
-     * 
-     * @param arr
-     */
+	 * sets the array of arguments specified in the macro definition.
+	 *
+	 * @author mqfdy
+	 * @param arr
+	 *            the new arg array
+	 * @Date 2018-09-03 09:00
+	 */
     public void setArgArray(String[] arr)
     {
         argArray = arr;
@@ -110,23 +141,40 @@ public class VelocimacroProxy extends Directive
     }
 
     /**
-     * @param tree
-     */
+	 * Sets the node tree.
+	 *
+	 * @author mqfdy
+	 * @param tree
+	 *            the new node tree
+	 * @Date 2018-09-03 09:00
+	 */
     public void setNodeTree(SimpleNode tree)
     {
         nodeTree = tree;
     }
 
     /**
-     * returns the number of ars needed for this VM
-     * 
-     * @return The number of ars needed for this VM
-     */
+	 * returns the number of ars needed for this VM.
+	 *
+	 * @author mqfdy
+	 * @return The number of ars needed for this VM
+	 * @Date 2018-9-3 11:38:35
+	 */
     public int getNumArgs()
     {
         return numMacroArgs;
     }
 
+    /**
+     * @see org.apache.velocity.runtime.directive.Directive#render(org.apache.velocity.context.InternalContextAdapter, java.io.Writer, org.apache.velocity.runtime.parser.node.Node)
+     * @param context
+     * @param writer
+     * @param node
+     * @return
+     * @throws IOException
+     * @throws MethodInvocationException
+     * @throws MacroOverflowException VelocimacroProxy
+     */
     public boolean render(InternalContextAdapter context, Writer writer, Node node)
             throws IOException, MethodInvocationException, MacroOverflowException
     {
@@ -134,16 +182,26 @@ public class VelocimacroProxy extends Directive
     }
     
     /**
-     * Renders the macro using the context.
-     * 
-     * @param context Current rendering context
-     * @param writer Writer for output
-     * @param node AST that calls the macro
-     * @return True if the directive rendered successfully.
-     * @throws IOException
-     * @throws MethodInvocationException
-     * @throws MacroOverflowException
-     */
+	 * Renders the macro using the context.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            Current rendering context
+	 * @param writer
+	 *            Writer for output
+	 * @param node
+	 *            AST that calls the macro
+	 * @param body
+	 *            the body
+	 * @return True if the directive rendered successfully.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @throws MacroOverflowException
+	 *             the macro overflow exception
+	 * @Date 2018-09-03 09:00
+	 */
     public boolean render(InternalContextAdapter context, Writer writer,
                           Node node, Renderable body)
             throws IOException, MethodInvocationException, MacroOverflowException
@@ -231,8 +289,13 @@ public class VelocimacroProxy extends Directive
     }
 
     /**
-     * Initialize members of VelocimacroProxy.  called from MacroEntry
-     */
+	 * Initialize members of VelocimacroProxy. called from MacroEntry
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @Date 2018-09-03 09:00
+	 */
     public void init(RuntimeServices rs)
     {
         rsvc = rs;
@@ -272,8 +335,16 @@ public class VelocimacroProxy extends Directive
     
 
     /**
-     * Build an error message for not providing the correct number of arguments
-     */
+	 * Build an error message for not providing the correct number of arguments.
+	 *
+	 * @author mqfdy
+	 * @param node
+	 *            the node
+	 * @param numArgsProvided
+	 *            the num args provided
+	 * @return the string
+	 * @Date 2018-9-3 11:38:35
+	 */
     private String buildErrorMsg(Node node, int numArgsProvided)
     {
         String msg = "VM #" + macroName + ": too "
@@ -283,10 +354,20 @@ public class VelocimacroProxy extends Directive
     }
     
     /**
-     * check if we are calling this macro with the right number of arguments.  If 
-     * we are not, and strictArguments is active, then throw TemplateInitException.
-     * This method is called during macro render, so it must be thread safe.
-     */
+	 * check if we are calling this macro with the right number of arguments. If
+	 * we are not, and strictArguments is active, then throw
+	 * TemplateInitException. This method is called during macro render, so it
+	 * must be thread safe.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param node
+	 *            the node
+	 * @param hasBody
+	 *            the has body
+	 * @Date 2018-09-03 09:00
+	 */
     public void checkArgs(InternalContextAdapter context, Node node, boolean hasBody)
     {
         // check how many arguments we have

@@ -23,6 +23,7 @@ import java.lang.reflect.Method;
 
 import org.apache.velocity.runtime.log.Log;
 
+// TODO: Auto-generated Javadoc
 /**
  * Lookup a a Method object for a particular class given the name of a method
  * and its parameters.
@@ -53,15 +54,19 @@ import org.apache.velocity.runtime.log.Log;
  */
 public abstract class IntrospectorBase
 {
-    /** Class logger */
+    
+    /** Class logger. */
     protected final Log log;
 
-    /** The Introspector Cache */
+    /** The Introspector Cache. */
     private final IntrospectorCache introspectorCache;
     
     /**
-     * C'tor.
-     */
+	 * C'tor.
+	 *
+	 * @param log
+	 *            the log
+	 */
     protected IntrospectorBase(final Log log)
     {
         this.log = log;
@@ -69,18 +74,28 @@ public abstract class IntrospectorBase
     }
     
     /**
-     * Gets the method defined by <code>name</code> and
-     * <code>params</code> for the Class <code>c</code>.
-     *
-     * @param c Class in which the method search is taking place
-     * @param name Name of the method being searched for
-     * @param params An array of Objects (not Classes) that describe the
-     *               the parameters
-     *
-     * @return The desired Method object.
-     * @throws IllegalArgumentException When the parameters passed in can not be used for introspection.
-     * @throws MethodMap.AmbiguousException When the method map contains more than one match for the requested signature.
-     */
+	 * Gets the method defined by <code>name</code> and <code>params</code> for
+	 * the Class <code>c</code>.
+	 *
+	 * @author mqfdy
+	 * @param c
+	 *            Class in which the method search is taking place
+	 * @param name
+	 *            Name of the method being searched for
+	 * @param params
+	 *            An array of Objects (not Classes) that describe the the
+	 *            parameters
+	 * @return The desired Method object.
+	 * @throws IllegalArgumentException
+	 *             When the parameters passed in can not be used for
+	 *             introspection.
+	 * @throws AmbiguousException
+	 *             the ambiguous exception
+	 * @throws MethodMap.AmbiguousException
+	 *             When the method map contains more than one match for the
+	 *             requested signature.
+	 * @Date 2018-9-3 11:38:31
+	 */
     public Method getMethod(final Class c, final String name, final Object[] params)
             throws IllegalArgumentException,MethodMap.AmbiguousException
     {

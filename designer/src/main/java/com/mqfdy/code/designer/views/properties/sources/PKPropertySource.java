@@ -13,15 +13,23 @@ import com.mqfdy.code.model.utils.PrimaryKeyPloyType;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务实体主键属性PropertyPropertySource
- * 
+ * 业务实体主键属性PropertyPropertySource.
+ *
  * @author mqfdy
- * 
  */
 public class PKPropertySource extends ModelPropertySource {
+	
+	/** The p K property. */
 	public PKProperty pKProperty;
 
+	/**
+	 * Instantiates a new PK property source.
+	 *
+	 * @param property
+	 *            the property
+	 */
 	public PKPropertySource(AbstractModelElement property) {
 		super();
 		this.pKProperty = (PKProperty) property;
@@ -31,9 +39,19 @@ public class PKPropertySource extends ModelPropertySource {
 		// }
 	}
 
+	/**
+	 * 
+	 */
 	protected void initializeDescriptors() {
 	}
 
+	/**
+	 * Gets the strings.
+	 *
+	 * @author mqfdy
+	 * @return the strings
+	 * @Date 2018-09-03 09:00
+	 */
 	protected String[] getStrings() {
 		java.util.List<PropertyGroup> list = ((BusinessClass) pKProperty
 				.getParent()).getGroups();
@@ -47,6 +65,15 @@ public class PKPropertySource extends ModelPropertySource {
 		return new String[] {};
 	}
 
+	/**
+	 * Gets the group.
+	 *
+	 * @author mqfdy
+	 * @param groupDisplay
+	 *            the group display
+	 * @return the group
+	 * @Date 2018-09-03 09:00
+	 */
 	private PropertyGroup getGroup(String groupDisplay) {
 		if (groupDisplay.trim().equals(""))
 			return null;
@@ -62,6 +89,9 @@ public class PKPropertySource extends ModelPropertySource {
 		return newGroup;
 	}
 
+	/**
+	 * 
+	 */
 	protected void installModelProperty() {
 		if (pKProperty.getStereotype() != null
 				&& (IModelElement.STEREOTYPE_BUILDIN.equals(
@@ -200,6 +230,15 @@ public class PKPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * Gets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return the property value
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -281,6 +320,16 @@ public class PKPropertySource extends ModelPropertySource {
 			return "";
 	}
 
+	/**
+	 * Sets the property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @param value
+	 *            the value
+	 * @Date 2018-09-03 09:00
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -484,10 +533,27 @@ public class PKPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * Checks if is property set.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @return true, if is property set
+	 * @Date 2018-09-03 09:00
+	 */
 	public boolean isPropertySet(Object propertyId) {
 		return true;
 	}
 
+	/**
+	 * Reset property value.
+	 *
+	 * @author mqfdy
+	 * @param propertyId
+	 *            the property id
+	 * @Date 2018-09-03 09:00
+	 */
 	public void resetPropertyValue(Object propertyId) {
 		if (!(propertyId instanceof String)) {
 			throw new IllegalArgumentException();
@@ -501,6 +567,9 @@ public class PKPropertySource extends ModelPropertySource {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public Object getEditableValue() {
 		return this;
 	}

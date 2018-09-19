@@ -18,9 +18,14 @@ import com.mqfdy.code.springboot.utilities.model.value.CollectionValueModel;
 import com.mqfdy.code.springboot.utilities.model.value.ListValueModel;
 
 
+// TODO: Auto-generated Javadoc
 /**
- * Extend ItemAspectListValueModelAdapter to listen to one or more
- * properties of each item in the wrapped list model.
+ * Extend ItemAspectListValueModelAdapter to listen to one or more properties of
+ * each item in the wrapped list model.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public class ItemPropertyListValueModelAdapter<E>
 	extends ItemAspectListValueModelAdapter<E>
@@ -37,6 +42,11 @@ public class ItemPropertyListValueModelAdapter<E>
 
 	/**
 	 * Construct an adapter for the specified item properties.
+	 *
+	 * @param listHolder
+	 *            the list holder
+	 * @param propertyNames
+	 *            the property names
 	 */
 	public ItemPropertyListValueModelAdapter(ListValueModel<E> listHolder, String... propertyNames) {
 		super(listHolder);
@@ -46,6 +56,11 @@ public class ItemPropertyListValueModelAdapter<E>
 
 	/**
 	 * Construct an adapter for the specified item properties.
+	 *
+	 * @param collectionHolder
+	 *            the collection holder
+	 * @param propertyNames
+	 *            the property names
 	 */
 	public ItemPropertyListValueModelAdapter(CollectionValueModel<E> collectionHolder, String... propertyNames) {
 		this(new CollectionListValueModelAdapter<E>(collectionHolder), propertyNames);
@@ -54,6 +69,13 @@ public class ItemPropertyListValueModelAdapter<E>
 
 	// ********** initialization **********
 
+	/**
+	 * Builds the item property listener.
+	 *
+	 * @author mqfdy
+	 * @return the property change listener
+	 * @Date 2018-09-03 09:00
+	 */
 	protected PropertyChangeListener buildItemPropertyListener() {
 		return new PropertyChangeListener() {
 			public void propertyChanged(PropertyChangeEvent event) {

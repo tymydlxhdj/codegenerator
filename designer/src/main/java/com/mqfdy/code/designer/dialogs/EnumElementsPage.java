@@ -36,33 +36,67 @@ import com.mqfdy.code.model.EnumElement;
 import com.mqfdy.code.model.utils.StringUtil;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 枚举属性列表页
- * 
+ * 枚举属性列表页.
+ *
  * @author mqfdy
- * 
  */
 public class EnumElementsPage extends Composite implements
 		IBusinessClassEditorPage {
 
+	/** The parent dialog. */
 	private EnumEditDialog parentDialog;
+	
+	/** The tool bar. */
 	private ToolBar toolBar = null;
+	
+	/** The elements table. */
 	private Table elementsTable = null;
+	
+	/** The elements table viewer. */
 	private TableViewer elementsTableViewer = null;// tableview
 
+	/** The add element action. */
 	private Action addElementAction;
+	
+	/** The delete action. */
 	private Action deleteAction;
+	
+	/** The bottom action. */
 	private Action bottomAction;
+	
+	/** The down action. */
 	private Action downAction;
+	
+	/** The top action. */
 	private Action topAction;
+	
+	/** The up action. */
 	private Action upAction;
 
+	/** The column name 1. */
 	private String columnName1 = "序号";
+	
+	/** The column name 2. */
 	private String columnName2 = "Key";
+	
+	/** The column name 3. */
 	private String columnName3 = "值";
 
+	/** The list elements. */
 	private List<EnumElement> listElements = new ArrayList<EnumElement>();;
 
+	/**
+	 * Instantiates a new enum elements page.
+	 *
+	 * @param parent
+	 *            the parent
+	 * @param style
+	 *            the style
+	 * @param parentDialog
+	 *            the parent dialog
+	 */
 	EnumElementsPage(Composite parent, int style, EnumEditDialog parentDialog) {
 		super(parent, style);
 		this.parentDialog = parentDialog;
@@ -72,6 +106,12 @@ public class EnumElementsPage extends Composite implements
 		addListeners();
 	}
 
+	/**
+	 * Creates the content.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createContent() {
 		// 属性信息区域
 		GridLayout layout = new GridLayout();
@@ -117,6 +157,12 @@ public class EnumElementsPage extends Composite implements
 		elementsTableViewer.setCellModifier(cellModeifier);
 	}
 
+	/**
+	 * Creates the tool bar.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void createToolBar() {
 		GridData gridData = new GridData();
 		gridData.horizontalAlignment = SWT.FILL;
@@ -125,6 +171,12 @@ public class EnumElementsPage extends Composite implements
 		toolBar.setLayoutData(gridData);
 	}
 
+	/**
+	 * Adds the listeners.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void addListeners() {
 		/*
 		 * elementsTable.addMouseListener(new MouseListener() {
@@ -153,6 +205,15 @@ public class EnumElementsPage extends Composite implements
 		 */
 	}
 
+	/**
+	 * Gets the new name.
+	 *
+	 * @author mqfdy
+	 * @param baseName
+	 *            the base name
+	 * @return the new name
+	 * @Date 2018-09-03 09:00
+	 */
 	private String getNewName(String baseName) {
 		if (listElements == null || listElements.size() < 1) {
 			return baseName;
@@ -161,6 +222,17 @@ public class EnumElementsPage extends Composite implements
 		}
 	}
 
+	/**
+	 * Gets the new name.
+	 *
+	 * @author mqfdy
+	 * @param baseName
+	 *            the base name
+	 * @param no
+	 *            the no
+	 * @return the new name
+	 * @Date 2018-09-03 09:00
+	 */
 	private String getNewName(String baseName, int no) {
 		String newName = baseName;
 		if (no == 0) {
@@ -176,6 +248,12 @@ public class EnumElementsPage extends Composite implements
 		return newName;
 	}
 
+	/**
+	 * Make actions.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	private void makeActions() {
 
 		// 新增操作
@@ -303,6 +381,16 @@ public class EnumElementsPage extends Composite implements
 
 	}
 
+	/**
+	 * Reset order num.
+	 *
+	 * @author mqfdy
+	 * @param element
+	 *            the element
+	 * @param type
+	 *            the type
+	 * @Date 2018-09-03 09:00
+	 */
 	private void resetOrderNum(EnumElement element, String type) {
 		if ("up".equals(type)) {
 			for (int i = 0; i < listElements.size(); i++) {
@@ -345,10 +433,19 @@ public class EnumElementsPage extends Composite implements
 		}
 	}
 
+	/**
+	 * Refresh table.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void refreshTable() {
 		this.elementsTableViewer.refresh();
 	}
 
+	/**
+	 * 
+	 */
 	public void initControlValue() {
 		List<EnumElement> list = parentDialog.getEnumeration().getElements();
 		for (EnumElement s : list) {
@@ -364,6 +461,9 @@ public class EnumElementsPage extends Composite implements
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public boolean validateInput() {
 		int i = 0;
 		if (parentDialog != null) {
@@ -401,6 +501,9 @@ public class EnumElementsPage extends Composite implements
 		return true;
 	}
 
+	/**
+	 * 
+	 */
 	public void updateTheEditingElement() {
 		parentDialog.getEnumeration().getElements().clear();
 		for (int i = 0; i < listElements.size(); i++) {
@@ -410,24 +513,52 @@ public class EnumElementsPage extends Composite implements
 		}
 	}
 
+	/**
+	 * Gets the list elements.
+	 *
+	 * @author mqfdy
+	 * @return the list elements
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<EnumElement> getListElements() {
 		return listElements;
 	}
 
 	/**
-	 * LabelProvider
-	 * 
+	 * LabelProvider.
+	 *
 	 * @author xuran
-	 * 
 	 */
 	static class TableLabelProvider extends LabelProvider implements
 			ITableLabelProvider {
 
+		/**
+		 * Gets the column image.
+		 *
+		 * @author mqfdy
+		 * @param arg0
+		 *            the arg 0
+		 * @param arg1
+		 *            the arg 1
+		 * @return the column image
+		 * @Date 2018-09-03 09:00
+		 */
 		public Image getColumnImage(Object arg0, int arg1) {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
+		/**
+		 * Gets the column text.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param columnIndex
+		 *            the column index
+		 * @return the column text
+		 * @Date 2018-09-03 09:00
+		 */
 		public String getColumnText(Object element, int columnIndex) {
 			if (element instanceof EnumElement) {
 				EnumElement temp = (EnumElement) element;
@@ -445,12 +576,21 @@ public class EnumElementsPage extends Composite implements
 	}
 
 	/**
-	 * contentProvider
-	 * 
+	 * contentProvider.
+	 *
 	 * @author xuran
-	 * 
 	 */
 	static class ContentProvider implements IStructuredContentProvider {
+		
+		/**
+		 * Gets the elements.
+		 *
+		 * @author mqfdy
+		 * @param inputElement
+		 *            the input element
+		 * @return the elements
+		 * @Date 2018-09-03 09:00
+		 */
 		public Object[] getElements(Object inputElement) {
 			if (inputElement instanceof List) {
 				Object[] objects = ((List) inputElement).toArray();
@@ -465,34 +605,85 @@ public class EnumElementsPage extends Composite implements
 			return new Object[0];
 		}
 
+		/**
+		 * 
+		 */
 		public void dispose() {
 		}
 
+		/**
+		 * Input changed.
+		 *
+		 * @author mqfdy
+		 * @param viewer
+		 *            the viewer
+		 * @param oldInput
+		 *            the old input
+		 * @param newInput
+		 *            the new input
+		 * @Date 2018-09-03 09:00
+		 */
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		}
 	}
 
+	/**
+	 * Gets the parent dialog.
+	 *
+	 * @author mqfdy
+	 * @return the parent dialog
+	 * @Date 2018-09-03 09:00
+	 */
 	public EnumEditDialog getParentDialog() {
 		return this.parentDialog;
 	}
 
 	/**
-	 * 枚举元素对应的单元格修改器
-	 * 
+	 * 枚举元素对应的单元格修改器.
+	 *
 	 * @author LQR
-	 * 
 	 */
 	public class EnumElementCellModifier implements ICellModifier {
+		
+		/** The table viewer. */
 		private TableViewer tableViewer;
 
+		/**
+		 * Instantiates a new enum element cell modifier.
+		 *
+		 * @param tableViewer
+		 *            the table viewer
+		 */
 		public EnumElementCellModifier(TableViewer tableViewer) {
 			this.tableViewer = tableViewer;
 		}
 
+		/**
+		 * Can modify.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param property
+		 *            the property
+		 * @return true, if successful
+		 * @Date 2018-09-03 09:00
+		 */
 		public boolean canModify(Object element, String property) {
 			return true;
 		}
 
+		/**
+		 * Gets the value.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param property
+		 *            the property
+		 * @return the value
+		 * @Date 2018-09-03 09:00
+		 */
 		public Object getValue(Object element, String property) {
 			EnumElement enumElement = (EnumElement) element;
 			if (property.equals(columnName2)) {
@@ -504,6 +695,18 @@ public class EnumElementsPage extends Composite implements
 			return "";
 		}
 
+		/**
+		 * Modify.
+		 *
+		 * @author mqfdy
+		 * @param element
+		 *            the element
+		 * @param property
+		 *            the property
+		 * @param value
+		 *            the value
+		 * @Date 2018-09-03 09:00
+		 */
 		public void modify(Object element, String property, Object value) {
 			if ("".equals(value) || !isOk((String) value, property)) {
 				return;
@@ -522,6 +725,17 @@ public class EnumElementsPage extends Composite implements
 			tableViewer.update(enumElement, null);
 		}
 
+		/**
+		 * Checks if is key exist.
+		 *
+		 * @author mqfdy
+		 * @param enumElement
+		 *            the enum element
+		 * @param key
+		 *            the key
+		 * @return true, if is key exist
+		 * @Date 2018-09-03 09:00
+		 */
 		boolean isKeyExist(EnumElement enumElement, String key) {
 			boolean b = false;
 			if (enumElement != null && listElements != null) {
@@ -537,6 +751,17 @@ public class EnumElementsPage extends Composite implements
 			return b;
 		}
 
+		/**
+		 * Checks if is ok.
+		 *
+		 * @author mqfdy
+		 * @param value
+		 *            the value
+		 * @param property
+		 *            the property
+		 * @return true, if is ok
+		 * @Date 2018-09-03 09:00
+		 */
 		boolean isOk(String value, String property) {
 			if (property.equals(columnName2) && parentDialog != null) {
 				parentDialog.setErrorMessage(null);

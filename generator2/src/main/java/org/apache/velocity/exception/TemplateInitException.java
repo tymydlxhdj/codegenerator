@@ -21,6 +21,7 @@ package org.apache.velocity.exception;
 
 import org.apache.velocity.runtime.parser.ParseException;
 
+// TODO: Auto-generated Javadoc
 /**
  * Exception generated to indicate parse errors caught during
  * directive initialization (e.g. wrong number of arguments)
@@ -32,15 +33,31 @@ import org.apache.velocity.runtime.parser.ParseException;
 public class TemplateInitException extends VelocityException 
         implements ExtendedParseException
 {
+    
+    /** The template name. */
     private final String templateName;
+    
+    /** The col. */
     private final int col;
+    
+    /** The line. */
     private final int line;
     
-    /**
-     * Version Id for serializable
-     */
+    /** Version Id for serializable. */
     private static final long serialVersionUID = -4985224672336070621L;
 
+    /**
+	 * Instantiates a new template init exception.
+	 *
+	 * @param msg
+	 *            the msg
+	 * @param templateName
+	 *            the template name
+	 * @param col
+	 *            the col
+	 * @param line
+	 *            the line
+	 */
     public TemplateInitException(final String msg, 
             final String templateName, final int col, final int line)
     {
@@ -50,6 +67,20 @@ public class TemplateInitException extends VelocityException
         this.line = line;
     }
 
+    /**
+	 * Instantiates a new template init exception.
+	 *
+	 * @param msg
+	 *            the msg
+	 * @param parseException
+	 *            the parse exception
+	 * @param templateName
+	 *            the template name
+	 * @param col
+	 *            the col
+	 * @param line
+	 *            the line
+	 */
     public TemplateInitException(final String msg, ParseException parseException,
             final String templateName, final int col, final int line)
     {
@@ -60,27 +91,36 @@ public class TemplateInitException extends VelocityException
     }
 
     /**
-     * Returns the Template name where this exception occured.
-     * @return the template name
-     */
+	 * Returns the Template name where this exception occured.
+	 *
+	 * @author mqfdy
+	 * @return the template name
+	 * @Date 2018-9-3 11:38:34
+	 */
     public String getTemplateName()
     {
         return templateName;
     }
 
     /**
-     * Returns the line number where this exception occured.
-     * @return the line number
-     */
+	 * Returns the line number where this exception occured.
+	 *
+	 * @author mqfdy
+	 * @return the line number
+	 * @Date 2018-9-3 11:38:34
+	 */
     public int getLineNumber()
     {
         return line;
     }
 
     /**
-     * Returns the column number where this exception occured.
-     * @return the line number
-     */
+	 * Returns the column number where this exception occured.
+	 *
+	 * @author mqfdy
+	 * @return the line number
+	 * @Date 2018-9-3 11:38:34
+	 */
     public int getColumnNumber()
     {
         return col;

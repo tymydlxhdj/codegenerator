@@ -21,6 +21,7 @@ package org.apache.velocity.context;
 
 import org.apache.velocity.app.event.EventCartridge;
 
+// TODO: Auto-generated Javadoc
 /**
  *  Interface for event support.  Note that this is a public internal
  *  interface, as it is something that will be accessed from outside
@@ -31,14 +32,24 @@ import org.apache.velocity.app.event.EventCartridge;
  */
 public interface InternalEventContext
 {
+    
     /**
-     * @param ec
-     * @return The old EventCartridge.
-     */
+	 * Attach event cartridge.
+	 *
+	 * @author mqfdy
+	 * @param ec
+	 *            the ec
+	 * @return The old EventCartridge.
+	 * @Date 2018-09-03 09:00
+	 */
     public EventCartridge attachEventCartridge( EventCartridge ec);
 
     /**
-     * @return The current EventCartridge.
-     */
+	 * Gets the event cartridge.
+	 *
+	 * @author mqfdy
+	 * @return The current EventCartridge.
+	 * @Date 2018-09-03 09:00
+	 */
     public EventCartridge getEventCartridge();
 }

@@ -12,19 +12,34 @@ import com.mqfdy.code.designer.models.ImageManager;
 import com.mqfdy.code.model.DataTransferObject;
 import com.mqfdy.code.model.Property;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class DTOFigure.
+ *
+ * @author mqfdy
  * @title:DTO对象的界面
  * @description:
- * @author mqfdy
  */
 
 public class DTOFigure extends NodeFigure {
+	
+	/** The name label. */
 	protected Label nameLabel;
 
+	/** The columns figure. */
 	protected Figure columnsFigure;
 
+	/** The dto. */
 	protected DataTransferObject dto;
 
+	/**
+	 * Instantiates a new DTO figure.
+	 *
+	 * @param name
+	 *            the name
+	 * @param dto
+	 *            the dto
+	 */
 	public DTOFigure(String name, DataTransferObject dto) {
 
 		super();
@@ -35,6 +50,14 @@ public class DTOFigure extends NodeFigure {
 		paintFigure(name);
 	}
 
+	/**
+	 * Paint figure.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @Date 2018-09-03 09:00
+	 */
 	public void paintFigure(String name) {
 		nameLabel = new Label(name);
 		// 把名称设置成黑体
@@ -76,9 +99,11 @@ public class DTOFigure extends NodeFigure {
 
 	/**
 	 * Set the name of the class or interface.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param newName
 	 *            The new name.
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setName(String newName) {
 		if (nameLabel == null) {
@@ -90,23 +115,27 @@ public class DTOFigure extends NodeFigure {
 	}
 
 	/**
-	 * Return the name of class or interface
-	 * 
+	 * Return the name of class or interface.
+	 *
+	 * @author mqfdy
 	 * @return the text of the nameLabel
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getName() {
 		return nameLabel.getText();
 	}
 
 	/**
-	 * Adds a new Figure with the given constraints to the TableFigure
-	 * 
+	 * Adds a new Figure with the given constraints to the TableFigure.
+	 *
+	 * @author mqfdy
 	 * @param figure
 	 *            the figure to be added
 	 * @param constraint
 	 *            the constraint used on the figure
 	 * @param index
 	 *            index of insertion
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void add(IFigure figure, Object constraint, int index) {
@@ -117,9 +146,11 @@ public class DTOFigure extends NodeFigure {
 	 * Remove a subfigure from its parent. If subfigure is ColumnFigure
 	 * remove-action is performed here. Otherwise the remove action is performed
 	 * in NodeFigure.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param figure
 	 *            the figure to be removed
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void remove(IFigure figure) {
@@ -133,13 +164,18 @@ public class DTOFigure extends NodeFigure {
 
 	/**
 	 * Return nameLabel of the TableFigure.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return Returns the nameLabel.
+	 * @Date 2018-09-03 09:00
 	 */
 	public Label getNameLabel() {
 		return nameLabel;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void emptyFigure() {
 

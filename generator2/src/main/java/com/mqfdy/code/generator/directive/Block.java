@@ -32,35 +32,58 @@ import org.apache.velocity.runtime.directive.Directive;
 import org.apache.velocity.runtime.log.Log;
 import org.apache.velocity.runtime.parser.node.Node;
 
+// TODO: Auto-generated Javadoc
 /**
- * Directive that puts an unrendered AST block in the context
- * under the specified key, postponing rendering until the
- * reference is used and rendered.
+ * Directive that puts an unrendered AST block in the context under the
+ * specified key, postponing rendering until the reference is used and rendered.
  *
  * @author Andrew Tetlaw
  * @author Nathan Bubna
  * @author <a href="mailto:wyla@removethis.sci.fi">Jarkko Viinamaki</a>
- * @since 1.7
  * @version $Id: Block.java 686842 2008-08-18 18:29:31Z nbubna $
+ * @since 1.7
  */
 public abstract class Block extends Directive
 {
+    
+    /** The block. */
     protected Node block;
+    
+    /** The log. */
     protected Log log;
+    
+    /** The max depth. */
     protected int maxDepth;
+    
+    /** The key. */
     protected String key;
 
     /**
-     * Return type of this directive.
-     */
+	 * Return type of this directive.
+	 *
+	 * @author mqfdy
+	 * @return the type
+	 * @Date 2018-9-3 11:38:34
+	 */
     public int getType()
     {
         return BLOCK;
     }
 
     /**
-     *  simple init - get the key
-     */
+	 * simple init - get the key.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @param context
+	 *            the context
+	 * @param node
+	 *            the node
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @Date 2018-9-3 11:38:34
+	 */
     public void init(RuntimeServices rs, InternalContextAdapter context, Node node)
         throws TemplateInitException
     {
@@ -75,6 +98,17 @@ public abstract class Block extends Directive
         block = node.jjtGetChild(node.jjtGetNumChildren() - 1);
     }
 
+    /**
+	 * Render.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
+	 */
     public boolean render(InternalContextAdapter context, Writer writer)
     {
         preRender(context);
@@ -105,10 +139,15 @@ public abstract class Block extends Directive
     }
 
     /**
-     * Creates a string identifying the source and location of the block
-     * definition, and the current template being rendered if that is
-     * different.
-     */
+	 * Creates a string identifying the source and location of the block
+	 * definition, and the current template being rendered if that is different.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
     protected String id(InternalContextAdapter context)
     {
         StrBuilder str = new StrBuilder(100)
@@ -121,16 +160,32 @@ public abstract class Block extends Directive
     }
     
     /**
-     * actual class placed in the context, holds the context
-     * being used for the render, as well as the parent (which already holds
-     * everything else we need).
-     */
+	 * actual class placed in the context, holds the context being used for the
+	 * render, as well as the parent (which already holds everything else we
+	 * need).
+	 *
+	 * @author mqfdy
+	 */
     public static class Reference implements Renderable
     {
+        
+        /** The context. */
         private InternalContextAdapter context;
+        
+        /** The parent. */
         private Block parent;
+        
+        /** The depth. */
         private int depth;
         
+        /**
+		 * Instantiates a new reference.
+		 *
+		 * @param context
+		 *            the context
+		 * @param parent
+		 *            the parent
+		 */
         public Reference(InternalContextAdapter context, Block parent)
         {
             this.context = context;
@@ -138,8 +193,16 @@ public abstract class Block extends Directive
         }
         
         /**
-         * Render the AST of this block into the writer using the context.
-         */
+		 * Render the AST of this block into the writer using the context.
+		 *
+		 * @author mqfdy
+		 * @param context
+		 *            the context
+		 * @param writer
+		 *            the writer
+		 * @return true, if successful
+		 * @Date 2018-9-3 11:38:34
+		 */
         public boolean render(InternalContextAdapter context, Writer writer)
         {
             depth++;
@@ -165,6 +228,10 @@ public abstract class Block extends Directive
             }
         }
 
+        /**
+         * @see java.lang.Object#toString()
+         * @return Reference
+         */
         public String toString()
         {
             Writer writer = new StringWriter();

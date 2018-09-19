@@ -20,54 +20,118 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 import com.mqfdy.code.designer.editor.BusinessModelEditorPlugin;
 import com.mqfdy.code.resource.validator.ValidatorUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 模型驱动PreferencePage
- * 
+ * 模型驱动PreferencePage.
+ *
  * @author mqfdy
- * 
  */
 public class ModelPreferencePage extends PreferencePage implements
 		IWorkbenchPreferencePage {
+	
+	/** The console print. */
 	public static String CONSOLE_PRINT = "console.print";
+	
+	/** The isadd customoperation. */
 	public static String ISADD_CUSTOMOPERATION = "customoperation.add";
+	
+	/** The isadd beforeonreverse. */
 	public static String ISADD_BEFOREONREVERSE = "isbeforeonreverse.add";
+	
+	/** The isadd afteronreverse. */
 	public static String ISADD_AFTERONREVERSE = "isafteronreverse.add";
 	
+	/** The tablenameprefix. */
 	public static String TABLENAMEPREFIX = "tablenameprefix";
+	
+	/** The ispronameuppercase. */
 	public static String ISPRONAMEUPPERCASE = "ispronameuppercase";
+	
+	/** The istablenameuppercase. */
 	public static String ISTABLENAMEUPPERCASE = "istablenameuppercase";
 	
+	/** The sharemodelip. */
 	public static String SHAREMODELIP = "sharemodelip";
+	
+	/** The sharemodelport. */
 	public static String SHAREMODELPORT = "sharemodelport";
 	
 	
+	/** The printall. */
 	public static String PRINTALL = "all";
+	
+	/** The printonlyerror. */
 	public static String PRINTONLYERROR = "onlyError";
+	
+	/** The add oper. */
 	Button addOper;// 业务实体新建时默认添加基本操作
+	
+	/** The table name prefix text. */
 	Text tableNamePrefixText;// 表名前缀
+	
+	/** The table name upper case. */
 	Button tableNameUpperCase;// 表名默认大写
+	
+	/** The pro name upper case. */
 	Button proNameUpperCase;// 属性名默认大写_
+	
+	/** The is print vali msg. */
 	Button isPrintValiMsg;// 是否输出模型校验信息
+	
+	/** The add before. */
 	Button add_before;// 是关键字时,在前边加_
+	
+	/** The add after. */
 	Button add_after;// 是关键字时,在后边加_
 	
+	/** The ip label. */
 	Label ipLabel;// ip
+	
+	/** The ip text. */
 	Text ipText;// ip输入框
 	
+	/** The port label. */
 	Label portLabel;// 端口
+	
+	/** The port text. */
 	Text portText;// 端口输入框
 
+	/**
+	 * Instantiates a new model preference page.
+	 */
 	public ModelPreferencePage() {
 	}
 
+	/**
+	 * Instantiates a new model preference page.
+	 *
+	 * @param title
+	 *            the title
+	 */
 	public ModelPreferencePage(String title) {
 		super(title);
 	}
 
+	/**
+	 * Instantiates a new model preference page.
+	 *
+	 * @param title
+	 *            the title
+	 * @param image
+	 *            the image
+	 */
 	public ModelPreferencePage(String title, ImageDescriptor image) {
 		super(title, image);
 	}
 
+	/**
+	 * Inits the.
+	 *
+	 * @author mqfdy
+	 * @param workbench
+	 *            the workbench
+	 * @Date 2018-09-03 09:00
+	 */
 	public void init(IWorkbench workbench) {
 		// IPreferenceStore
 		// store=BusinessModelEditorPlugin.getDefault().getPreferenceStore();
@@ -75,6 +139,12 @@ public class ModelPreferencePage extends PreferencePage implements
 		// store.getBoolean(pkgs);
 	}
 
+	/**
+	 * Inits the contents.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
+	 */
 	public void initContents() {
 		IPreferenceStore store = BusinessModelEditorPlugin.getDefault()
 				.getPreferenceStore();
@@ -106,6 +176,15 @@ public class ModelPreferencePage extends PreferencePage implements
 		portText.setText(store.getString(SHAREMODELPORT));
 	}
 
+	/**
+	 * Creates the contents.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @return the control
+	 * @Date 2018-09-03 09:00
+	 */
 	@Override
 	protected Control createContents(Composite parent) {
 		
@@ -227,6 +306,9 @@ public class ModelPreferencePage extends PreferencePage implements
 		return parent;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void performApply() {
 		IPreferenceStore store = BusinessModelEditorPlugin.getDefault()
@@ -266,6 +348,9 @@ public class ModelPreferencePage extends PreferencePage implements
 		BusinessModelEditorPlugin.getDefault().savePluginPreferences();
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	protected void performDefaults() {
 		addOper.setSelection(true);
@@ -283,6 +368,9 @@ public class ModelPreferencePage extends PreferencePage implements
 		super.performDefaults();
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean performOk() {
 		setErrorMessage(null);

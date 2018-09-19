@@ -57,34 +57,78 @@ import com.mqfdy.code.reverse.views.providers.SingleTreeLabelProvider;
 import com.mqfdy.code.reverse.views.providers.TreeContentProvider;
 import com.mqfdy.code.thirdparty.OmImport;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TableStructureWizardPage.
+ *
+ * @author mqfdy
+ */
 public class TableStructureWizardPage extends WizardPage {
 
+	/** The Constant WIDTH. */
 	public static final int WIDTH = 500;
+	
+	/** The check btn. */
 	private Button checkBtn;
+	
+	/** The tree viewer. */
 	private CheckboxTreeViewer treeViewer;
+	
+	/** The tree. */
 	private Tree tree;
+	
+	/** The root. */
 	private TreeNode root;
 	
+	/** The om import. */
 	private OmImport omImport;
+	
+	/** The om reverse. */
 	private OmReverse omReverse;
+	
+	/** The container. */
 	private Composite container;
+	
+	/** The search container. */
 	private Composite searchContainer;
+	
+	/** The table container. */
 	private Composite tableContainer;
 	
+	/** The checked node list. */
 	private List<TreeNode> checkedNodeList;//选过的表节点列表
 	
+	/** The is relative checked. */
 	private boolean isRelativeChecked;//选中状态
 	
+	/** The no PK list. */
 	List<Table> noPKList = null;
+	
+	/** The multi PK list. */
 	List<Table> multiPKList = null;
+	
+	/** The table names. */
 	List<String> tableNames;
+	
+	/** The search text. */
 	private Text searchText;
+	
+	/** The search btn. */
 	private Button searchBtn;
 	
+	/** The searched items. */
 	private List<TreeItem> searchedItems = new ArrayList<TreeItem>();
+	
+	/** The searched count. */
 	private int searchedCount = 0;
 	
 	
+	/**
+	 * Instantiates a new table structure wizard page.
+	 *
+	 * @param pageName
+	 *            the page name
+	 */
 	public TableStructureWizardPage(String pageName) {
 		super(pageName);
 		setTitle("选择要转换的表");
@@ -93,6 +137,14 @@ public class TableStructureWizardPage extends WizardPage {
 		checkedNodeList = new LinkedList<TreeNode>();
 	}
 
+	/**
+	 * Creates the control.
+	 *
+	 * @author mqfdy
+	 * @param parent
+	 *            the parent
+	 * @Date 2018-09-03 09:00
+	 */
 	public void createControl(Composite parent) {
 		
 		//为容器创建布局
@@ -276,7 +328,10 @@ public class TableStructureWizardPage extends WizardPage {
 	}
 
 	/**
-	 * 根据前一个页面选择的数据源重画当前页面
+	 * 根据前一个页面选择的数据源重画当前页面.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	public void repaint() {
 		List<Table> tableList = new ArrayList();
@@ -360,11 +415,17 @@ public class TableStructureWizardPage extends WizardPage {
 //		treeViewer.setGrayed(viewsNode, true);
 	}
 	
+	/**
+	 * @return
+	 */
 	@Override
 	public boolean canFlipToNextPage() {
 		return isPageComplete();
 	}
 
+	/**
+	 * @return
+	 */
 	public IWizardPage getNextPage() {
 		
 		//获取模型
@@ -439,10 +500,14 @@ public class TableStructureWizardPage extends WizardPage {
 	}
 
 	/**
-	 * 点击某一个节点时候，检查是否要选中父节点
-	 * 如果当前节点同级的所有节点都选中，则选中父节点， 否则去掉父节点的勾
+	 * 点击某一个节点时候，检查是否要选中父节点 如果当前节点同级的所有节点都选中，则选中父节点， 否则去掉父节点的勾.
+	 *
+	 * @author mqfdy
 	 * @param currentNode
+	 *            the current node
 	 * @param treeViewer
+	 *            the tree viewer
+	 * @Date 2018-09-03 09:00
 	 */
 	private void checkParentNode(TreeNode currentNode, CheckboxTreeViewer treeViewer) {
 		boolean isCheckParent = true;
@@ -469,6 +534,16 @@ public class TableStructureWizardPage extends WizardPage {
 		}
 	}
 	
+	/**
+	 * Sets the all checked.
+	 *
+	 * @author mqfdy
+	 * @param nodeList
+	 *            the node list
+	 * @param checkState
+	 *            the check state
+	 * @Date 2018-09-03 09:00
+	 */
 	private void setAllChecked(List<TreeNode> nodeList, boolean checkState) {
 		for(TreeNode treeNode : nodeList) {
 			if(!treeNode.isDisabled()) {
@@ -479,9 +554,14 @@ public class TableStructureWizardPage extends WizardPage {
 	}
 	
 	/**
-	 * 自动关联有关系的表
-	 * @param currentNode 当前节点
-	 * @param checkState 选中状态 true:选中, false:不选中
+	 * 自动关联有关系的表.
+	 *
+	 * @author mqfdy
+	 * @param currentNode
+	 *            当前节点
+	 * @param checkState
+	 *            选中状态 true:选中, false:不选中
+	 * @Date 2018-09-03 09:00
 	 */
 	private void selectRelativeTables(TreeNode currentNode, boolean checkState) {
 		Cursor cursor = new Cursor(container.getDisplay(), SWT.CURSOR_WAIT);

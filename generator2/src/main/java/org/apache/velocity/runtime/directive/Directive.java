@@ -34,6 +34,7 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.exception.TemplateInitException;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Base class for all directives used in Velocity.
  *
@@ -43,33 +44,50 @@ import org.apache.velocity.exception.TemplateInitException;
  */
 public abstract class Directive implements DirectiveConstants, Cloneable
 {
+    
+    /** The line. */
     private int line = 0;
+    
+    /** The column. */
     private int column = 0;
+    
+    /** The provide scope. */
     private boolean provideScope = false;
+    
+    /** The template name. */
     private String templateName;
 
-    /**
-     *
-     */
+    /** The rsvc. */
     protected RuntimeServices rsvc = null;
 
     /**
-     * Return the name of this directive.
-     * @return The name of this directive.
-     */
+	 * Return the name of this directive.
+	 *
+	 * @author mqfdy
+	 * @return The name of this directive.
+	 * @Date 2018-9-3 11:38:29
+	 */
     public abstract String getName();
 
     /**
-     * Get the directive type BLOCK/LINE.
-     * @return The directive type BLOCK/LINE.
-     */
+	 * Get the directive type BLOCK/LINE.
+	 *
+	 * @author mqfdy
+	 * @return The directive type BLOCK/LINE.
+	 * @Date 2018-9-3 11:38:29
+	 */
     public abstract int getType();
 
     /**
-     * Allows the template location to be set.
-     * @param line
-     * @param column
-     */
+	 * Allows the template location to be set.
+	 *
+	 * @author mqfdy
+	 * @param line
+	 *            the line
+	 * @param column
+	 *            the column
+	 * @Date 2018-09-03 09:00
+	 */
     public void setLocation( int line, int column )
     {
         this.line = line;
@@ -77,10 +95,17 @@ public abstract class Directive implements DirectiveConstants, Cloneable
     }
 
     /**
-     * Allows the template location to be set.
-     * @param line
-     * @param column
-     */
+	 * Allows the template location to be set.
+	 *
+	 * @author mqfdy
+	 * @param line
+	 *            the line
+	 * @param column
+	 *            the column
+	 * @param templateName
+	 *            the template name
+	 * @Date 2018-09-03 09:00
+	 */
     public void setLocation(int line, int column, String templateName)
     {
         setLocation(line, column);
@@ -88,57 +113,81 @@ public abstract class Directive implements DirectiveConstants, Cloneable
     }
 
     /**
-     * for log msg purposes
-     * @return The current line for log msg purposes.
-     */
+	 * for log msg purposes.
+	 *
+	 * @author mqfdy
+	 * @return The current line for log msg purposes.
+	 * @Date 2018-9-3 11:38:29
+	 */
     public int getLine()
     {
         return line;
     }
 
     /**
-     * for log msg purposes
-     * @return The current column for log msg purposes.
-     */
+	 * for log msg purposes.
+	 *
+	 * @author mqfdy
+	 * @return The current column for log msg purposes.
+	 * @Date 2018-9-3 11:38:29
+	 */
     public int getColumn()
     {
         return column;
     }
     
     /**
-     * @return The template file name this directive was defined in, or null if not 
-     * defined in a file.
-     */
+	 * Gets the template name.
+	 *
+	 * @author mqfdy
+	 * @return The template file name this directive was defined in, or null if
+	 *         not defined in a file.
+	 * @Date 2018-09-03 09:00
+	 */
     public String getTemplateName()
     {
       return templateName;
     }
 
     /**
-     * @returns the name to be used when a scope control is provided for this
-     * directive.
-     */
+	 * Gets the scope name.
+	 *
+	 * @return the scope name
+	 * @returns the name to be used when a scope control is provided for this
+	 *          directive.
+	 */
     public String getScopeName()
     {
         return getName();
     }
 
     /**
-     * @return true if there will be a scope control injected into the context
-     * when rendering this directive.
-     */
+	 * Checks if is scope provided.
+	 *
+	 * @author mqfdy
+	 * @return true if there will be a scope control injected into the context
+	 *         when rendering this directive.
+	 * @Date 2018-09-03 09:00
+	 */
     public boolean isScopeProvided()
     {
         return provideScope;
     }
 
     /**
-     * How this directive is to be initialized.
-     * @param rs
-     * @param context
-     * @param node
-     * @throws TemplateInitException
-     */
+	 * How this directive is to be initialized.
+	 *
+	 * @author mqfdy
+	 * @param rs
+	 *            the rs
+	 * @param context
+	 *            the context
+	 * @param node
+	 *            the node
+	 * @throws TemplateInitException
+	 *             the template init exception
+	 * @Date 2018-09-03 09:00
+	 */
     public void init( RuntimeServices rs, InternalContextAdapter context,
                       Node node)
         throws TemplateInitException
@@ -150,16 +199,26 @@ public abstract class Directive implements DirectiveConstants, Cloneable
     }
 
     /**
-     * How this directive is to be rendered
-     * @param context
-     * @param writer
-     * @param node
-     * @return True if the directive rendered successfully.
-     * @throws IOException
-     * @throws ResourceNotFoundException
-     * @throws ParseErrorException
-     * @throws MethodInvocationException
-     */
+	 * How this directive is to be rendered.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @param node
+	 *            the node
+	 * @return True if the directive rendered successfully.
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws ResourceNotFoundException
+	 *             the resource not found exception
+	 * @throws ParseErrorException
+	 *             the parse error exception
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @Date 2018-09-03 09:00
+	 */
     public abstract boolean render( InternalContextAdapter context,
                                     Writer writer, Node node )
            throws IOException, ResourceNotFoundException, ParseErrorException,
@@ -167,9 +226,14 @@ public abstract class Directive implements DirectiveConstants, Cloneable
 
 
     /**
-     * This creates and places the scope control for this directive
-     * into the context (if scope provision is turned on).
-     */
+	 * This creates and places the scope control for this directive into the
+	 * context (if scope provision is turned on).
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @Date 2018-09-03 09:00
+	 */
     protected void preRender(InternalContextAdapter context)
     {
         if (isScopeProvided())
@@ -180,15 +244,29 @@ public abstract class Directive implements DirectiveConstants, Cloneable
         }
     }
 
+    /**
+	 * Make scope.
+	 *
+	 * @author mqfdy
+	 * @param prev
+	 *            the prev
+	 * @return the scope
+	 * @Date 2018-09-03 09:00
+	 */
     protected Scope makeScope(Object prev)
     {
         return new Scope(this, prev);
     }
 
     /**
-     * This cleans up any scope control for this directive after rendering,
-     * assuming the scope control was turned on.
-     */
+	 * This cleans up any scope control for this directive after rendering,
+	 * assuming the scope control was turned on.
+	 *
+	 * @author mqfdy
+	 * @param context
+	 *            the context
+	 * @Date 2018-09-03 09:00
+	 */
     protected void postRender(InternalContextAdapter context)
     {
         if (isScopeProvided())

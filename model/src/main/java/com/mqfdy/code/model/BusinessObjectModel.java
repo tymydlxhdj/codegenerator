@@ -16,79 +16,61 @@ import org.dom4j.io.XMLWriter;
 import com.mqfdy.code.model.graph.Diagram;
 import com.mqfdy.code.model.utils.StringUtil;
 
+// TODO: Auto-generated Javadoc
 /**
- * 业务对象模型
- * 
+ * 业务对象模型.
+ *
  * @author mqfdy
- * 
  */
 public class BusinessObjectModel extends AbstractModelElement {
 
-	/**
-	 * 命名空间
-	 */
+	/** 命名空间. */
 	private String nameSpace;
 
-	/**
-	 * 建立对象名与对象实体的对象池
-	 */
+	/** 建立对象名与对象实体的对象池. */
 	private Hashtable<String, IModelElement> modelElementPool;
 
-	/**
-	 * 包列表
-	 */
+	/** 包列表. */
 	private List<ModelPackage> packages;
 
-	/**
-	 * 业务实体列表
-	 */
+	/** 业务实体列表. */
 	private List<BusinessClass> businessClasses;
 
-	/**
-	 * 注释列表
-	 */
+	/** 注释列表. */
 	private List<Annotation> annotations;
 
-	/**
-	 * 注释列表
-	 */
+	/** 注释列表. */
 	private List<LinkAnnotation> links;
 
-	/**
-	 * 关联关系列表
-	 */
+	/** 关联关系列表. */
 	private List<Association> associations;
 
-	/**
-	 * 继承关系列表
-	 */
+	/** 继承关系列表. */
 	private List<Inheritance> inheritances;
 
-	/**
-	 * 数据传输对象列表
-	 */
+	/** 数据传输对象列表. */
 	private List<DataTransferObject> DTOs;
 
-	/**
-	 * 枚举类型定义列表
-	 */
+	/** 枚举类型定义列表. */
 	private List<Enumeration> enumerations;
 
-	/**
-	 * 引用对象列表(引用其他模块项目的模型对象)
-	 */
+	/** 引用对象列表(引用其他模块项目的模型对象). */
 	private List<ReferenceObject> referenceObjects;
 
-	/**
-	 * 图表列表
-	 */
+	/** 图表列表. */
 	private List<Diagram> diagrams;
 
-	/**
-	 * 版本信息
-	 */
+	/** 版本信息. */
 	private VersionInfo versionInfo;
 
+	/**
+	 * Instantiates a new business object model.
+	 *
+	 * @param name
+	 *            the name
+	 * @param displayName
+	 *            the display name
+	 */
 	public BusinessObjectModel(String name, String displayName) {
 
 		super(name, displayName);
@@ -97,9 +79,10 @@ public class BusinessObjectModel extends AbstractModelElement {
 	}
 
 	/**
-	 * 通过 XML 元素构造 BusinessObjectModel对象
-	 * 
+	 * 通过 XML 元素构造 BusinessObjectModel对象.
+	 *
 	 * @param modelElement
+	 *            the model element
 	 */
 	public BusinessObjectModel(Element modelElement) {
 
@@ -130,6 +113,15 @@ public class BusinessObjectModel extends AbstractModelElement {
 		}
 	}
 
+	/**
+	 * Generate xml element.
+	 *
+	 * @author mqfdy
+	 * @param document
+	 *            the document
+	 * @return the element
+	 * @Date 2018-09-03 09:00
+	 */
 	public Element generateXmlElement(Document document) {
 		Element modelElement = document.addElement("Model"); // Model节点
 		generateBasicAttributes(modelElement);
@@ -148,6 +140,14 @@ public class BusinessObjectModel extends AbstractModelElement {
 		}
 		return modelElement;
 	}
+	
+	/**
+	 * Generate xml element.
+	 *
+	 * @author mqfdy
+	 * @return the document
+	 * @Date 2018-09-03 09:00
+	 */
 	//构造一个dom4结构的xml样式
 	public Document generateXmlElement() {
 		Document docutment =DocumentHelper.createDocument();
@@ -169,6 +169,13 @@ public class BusinessObjectModel extends AbstractModelElement {
 		return docutment;
 	}
 	
+	/**
+	 * To xml.
+	 *
+	 * @author mqfdy
+	 * @return the string
+	 * @Date 2018-09-03 09:00
+	 */
 	public String toXml(){
         String faceXml = "";
         
@@ -209,7 +216,10 @@ public class BusinessObjectModel extends AbstractModelElement {
 	
 
 	/**
-	 * 初始化内部列表对象
+	 * 初始化内部列表对象.
+	 *
+	 * @author mqfdy
+	 * @Date 2018-09-03 09:00
 	 */
 	private void initInternalObjects() {
 		modelElementPool = new Hashtable<String, IModelElement>(100);
@@ -226,13 +236,17 @@ public class BusinessObjectModel extends AbstractModelElement {
 	}
 
 	/**
-	 * 根据建模元素ID查找建模元素
-	 * 
+	 * 根据建模元素ID查找建模元素.
+	 *
+	 * @author mqfdy
 	 * @param <T>
 	 *            类型
 	 * @param t
+	 *            the t
 	 * @param elementId
-	 * @return
+	 *            the element id
+	 * @return the model element by id
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	public <T extends AbstractModelElement> T getModelElementById(T t,
@@ -241,6 +255,15 @@ public class BusinessObjectModel extends AbstractModelElement {
 
 	}
 
+	/**
+	 * Gets the model element by id.
+	 *
+	 * @author mqfdy
+	 * @param elementId
+	 *            the element id
+	 * @return the model element by id
+	 * @Date 2018-09-03 09:00
+	 */
 	public Object getModelElementById(String elementId) {
 		Object obj = modelElementPool.get(elementId);
 		if (obj == null) {
@@ -259,37 +282,98 @@ public class BusinessObjectModel extends AbstractModelElement {
 		return obj;
 	}
 
+	/**
+	 * Gets the name space.
+	 *
+	 * @author mqfdy
+	 * @return the name space
+	 * @Date 2018-09-03 09:00
+	 */
 	public String getNameSpace() {
 		return nameSpace;
 	}
 
+	/**
+	 * Sets the name space.
+	 *
+	 * @author mqfdy
+	 * @param nameSpace
+	 *            the new name space
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setNameSpace(String nameSpace) {
 		this.nameSpace = nameSpace;
 	}
 
+	/**
+	 * Gets the packages.
+	 *
+	 * @author mqfdy
+	 * @return the packages
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<ModelPackage> getPackages() {
 		return this.packages;
 	}
 
+	/**
+	 * Adds the diagram.
+	 *
+	 * @author mqfdy
+	 * @param diagram
+	 *            the diagram
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addDiagram(Diagram diagram) {
 		this.diagrams.add(diagram);
 		this.modelElementPool.put(diagram.getId(), diagram);
 	}
 
+	/**
+	 * Removes the diagram.
+	 *
+	 * @author mqfdy
+	 * @param diagram
+	 *            the diagram
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removeDiagram(AbstractModelElement diagram) {
 		this.diagrams.remove(diagram);
 		this.modelElementPool.remove(diagram.getId());
 	}
 
+	/**
+	 * Gets the diagrams.
+	 *
+	 * @author mqfdy
+	 * @return the diagrams
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Diagram> getDiagrams() {
 		return diagrams;
 	}
 
+	/**
+	 * Adds the package.
+	 *
+	 * @author mqfdy
+	 * @param thePackage
+	 *            the the package
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addPackage(ModelPackage thePackage) {
 		this.packages.add(thePackage);
 		this.modelElementPool.put(thePackage.getId(), thePackage);
 	}
 
+	/**
+	 * Removes the package.
+	 *
+	 * @author mqfdy
+	 * @param thePackage
+	 *            the the package
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removePackage(AbstractModelElement thePackage) {
 		List<AbstractModelElement> allChild = new ArrayList<AbstractModelElement>();
 		for (BusinessClass ele : businessClasses) {
@@ -335,6 +419,19 @@ public class BusinessObjectModel extends AbstractModelElement {
 
 	}
 
+	/**
+	 * Removes the child.
+	 *
+	 * @author mqfdy
+	 * @param ele
+	 *            the ele
+	 * @param eleList
+	 *            the ele list
+	 * @param thePackage
+	 *            the the package
+	 * @return the abstract model element
+	 * @Date 2018-09-03 09:00
+	 */
 	public AbstractModelElement removeChild(AbstractModelElement ele,
 			List<?> eleList, AbstractModelElement thePackage) {
 		AbstractModelElement parent = null;
@@ -350,132 +447,334 @@ public class BusinessObjectModel extends AbstractModelElement {
 		return null;
 	}
 
+	/**
+	 * Adds the business class.
+	 *
+	 * @author mqfdy
+	 * @param bc
+	 *            the bc
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addBusinessClass(BusinessClass bc) {
 		this.businessClasses.add(bc);
 		this.modelElementPool.put(bc.getId(), bc);
 	}
 
+	/**
+	 * Adds the annotation.
+	 *
+	 * @author mqfdy
+	 * @param bc
+	 *            the bc
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addAnnotation(Annotation bc) {
 		this.annotations.add(bc);
 		this.modelElementPool.put(bc.getId(), bc);
 	}
 	
+	/**
+	 * Adds the link annotation.
+	 *
+	 * @author mqfdy
+	 * @param bc
+	 *            the bc
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addLinkAnnotation(LinkAnnotation bc) {
 		this.links.add(bc);
 		this.modelElementPool.put(bc.getId(), bc);
 	}
 	
+	/**
+	 * Removes the business class.
+	 *
+	 * @author mqfdy
+	 * @param bc
+	 *            the bc
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removeBusinessClass(AbstractModelElement bc) {
 		this.businessClasses.remove(bc);
 		this.modelElementPool.remove(bc.getId());
 	}
 
+	/**
+	 * Removes the annotation.
+	 *
+	 * @author mqfdy
+	 * @param bc
+	 *            the bc
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removeAnnotation(AbstractModelElement bc) {
 		this.annotations.remove(bc);
 		this.modelElementPool.remove(bc.getId());
 	}
 
+	/**
+	 * Removes the link annotation.
+	 *
+	 * @author mqfdy
+	 * @param bc
+	 *            the bc
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removeLinkAnnotation(AbstractModelElement bc) {
 		this.links.remove(bc);
 		this.modelElementPool.remove(bc.getId());
 	}
 
+	/**
+	 * Adds the association.
+	 *
+	 * @author mqfdy
+	 * @param as
+	 *            the as
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addAssociation(Association as) {
 		this.associations.add(as);
 		this.modelElementPool.put(as.getId(), as);
 
 	}
 
+	/**
+	 * Removes the association.
+	 *
+	 * @author mqfdy
+	 * @param as
+	 *            the as
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removeAssociation(AbstractModelElement as) {
 		this.associations.remove(as);
 		this.modelElementPool.remove(as.getId());
 	}
 
+	/**
+	 * Adds the inheritance.
+	 *
+	 * @author mqfdy
+	 * @param in
+	 *            the in
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addInheritance(Inheritance in) {
 		this.inheritances.add(in);
 		this.modelElementPool.put(in.getId(), in);
 
 	}
 
+	/**
+	 * Removes the inheritance.
+	 *
+	 * @author mqfdy
+	 * @param in
+	 *            the in
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removeInheritance(AbstractModelElement in) {
 		this.inheritances.remove(in);
 		this.modelElementPool.remove(in.getId());
 	}
 
+	/**
+	 * Adds the DTO.
+	 *
+	 * @author mqfdy
+	 * @param dto
+	 *            the dto
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addDTO(DataTransferObject dto) {
 		this.DTOs.add(dto);
 		this.modelElementPool.put(dto.getId(), dto);
 	}
 
+	/**
+	 * Removes the DTO.
+	 *
+	 * @author mqfdy
+	 * @param dto
+	 *            the dto
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removeDTO(AbstractModelElement dto) {
 		this.DTOs.remove(dto);
 		this.modelElementPool.remove(dto.getId());
 	}
 
+	/**
+	 * Adds the enumeration.
+	 *
+	 * @author mqfdy
+	 * @param enumeration
+	 *            the enumeration
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addEnumeration(Enumeration enumeration) {
 		this.enumerations.add(enumeration);
 		this.modelElementPool.put(enumeration.getId(), enumeration);
 	}
 
+	/**
+	 * Removes the enumeration.
+	 *
+	 * @author mqfdy
+	 * @param enumeration
+	 *            the enumeration
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removeEnumeration(AbstractModelElement enumeration) {
 		this.enumerations.remove(enumeration);
 		this.modelElementPool.remove(enumeration.getId());
 	}
 
+	/**
+	 * Adds the reference object.
+	 *
+	 * @author mqfdy
+	 * @param ro
+	 *            the ro
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addReferenceObject(ReferenceObject ro) {
 		this.referenceObjects.add(ro);
 		this.modelElementPool.put(ro.getId(), ro);
 	}
 
+	/**
+	 * Removes the reference object.
+	 *
+	 * @author mqfdy
+	 * @param ro
+	 *            the ro
+	 * @Date 2018-09-03 09:00
+	 */
 	public void removeReferenceObject(AbstractModelElement ro) {
 		this.referenceObjects.remove(ro);
 		this.modelElementPool.remove(ro.getId());
 	}
 
+	/**
+	 * Gets the business classes.
+	 *
+	 * @author mqfdy
+	 * @return the business classes
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<BusinessClass> getBusinessClasses() {
 		return businessClasses;
 	}
 
+	/**
+	 * Gets the annotations.
+	 *
+	 * @author mqfdy
+	 * @return the annotations
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Annotation> getAnnotations() {
 		return annotations;
 	}
 
+	/**
+	 * Gets the link annotations.
+	 *
+	 * @author mqfdy
+	 * @return the link annotations
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<LinkAnnotation> getLinkAnnotations() {
 		return links;
 	}
 
+	/**
+	 * Gets the associations.
+	 *
+	 * @author mqfdy
+	 * @return the associations
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Association> getAssociations() {
 		return associations;
 	}
 
+	/**
+	 * Gets the inheritances.
+	 *
+	 * @author mqfdy
+	 * @return the inheritances
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Inheritance> getInheritances() {
 		return inheritances;
 	}
 
+	/**
+	 * Gets the DT os.
+	 *
+	 * @author mqfdy
+	 * @return the DT os
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<DataTransferObject> getDTOs() {
 		return DTOs;
 	}
 
+	/**
+	 * Gets the enumerations.
+	 *
+	 * @author mqfdy
+	 * @return the enumerations
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Enumeration> getEnumerations() {
 		return enumerations;
 	}
 
+	/**
+	 * Gets the reference objects.
+	 *
+	 * @author mqfdy
+	 * @return the reference objects
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<ReferenceObject> getReferenceObjects() {
 		return referenceObjects;
 	}
 
+	/**
+	 * Gets the version info.
+	 *
+	 * @author mqfdy
+	 * @return the version info
+	 * @Date 2018-09-03 09:00
+	 */
 	public VersionInfo getVersionInfo() {
 		return versionInfo;
 	}
 
+	/**
+	 * Sets the version info.
+	 *
+	 * @author mqfdy
+	 * @param versionInfo
+	 *            the new version info
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setVersionInfo(VersionInfo versionInfo) {
 		this.versionInfo = versionInfo;
 	}
 
 	/**
-	 * 根据元素类型删除对应的元素
-	 * 
+	 * 根据元素类型删除对应的元素.
+	 *
+	 * @author mqfdy
 	 * @param modelElement
+	 *            the model element
+	 * @Date 2018-09-03 09:00
 	 */
 	public void removeModelElement(AbstractModelElement modelElement) {
 		if (modelElement instanceof ModelPackage) {
@@ -514,9 +813,12 @@ public class BusinessObjectModel extends AbstractModelElement {
 	}
 
 	/**
-	 * 根据元素类型添加元素到对应列表中
-	 * 
+	 * 根据元素类型添加元素到对应列表中.
+	 *
+	 * @author mqfdy
 	 * @param modelElement
+	 *            the model element
+	 * @Date 2018-09-03 09:00
 	 */
 	public void addModelElement(AbstractModelElement modelElement) {
 		if (modelElement instanceof ModelPackage) {
@@ -542,10 +844,16 @@ public class BusinessObjectModel extends AbstractModelElement {
 		}
 	}
 
+	/**
+	 * @return
+	 */
 	public AbstractModelElement getParent() {
 		return null;
 	}
 
+	/**
+	 * @return
+	 */
 	public List<ModelPackage> getChildren() {
 		List<ModelPackage> children = new ArrayList<ModelPackage>();
 		for (int i = 0; i < this.packages.size(); i++) {
@@ -557,6 +865,9 @@ public class BusinessObjectModel extends AbstractModelElement {
 		return children;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getFullName() {
 		return this.nameSpace + "." + this.name;
 	}

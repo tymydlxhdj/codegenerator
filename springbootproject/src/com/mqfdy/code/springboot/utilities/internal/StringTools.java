@@ -17,6 +17,7 @@ import java.util.Iterator;
 import com.mqfdy.code.springboot.utilities.internal.iterators.TransformationIterator;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * Convenience methods related to the java.lang.String class.
  */
@@ -33,56 +34,100 @@ public final class StringTools {
 	// ********** padding/truncating **********
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with spaces at the end.
-	 * String#pad(int)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with spaces at the
+	 * end. String#pad(int)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String pad(String string, int length) {
 		return pad(string, length, ' ');
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with spaces at the end.
-	 * String#padOn(int, Writer)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with spaces at the
+	 * end. String#padOn(int, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOn(String string, int length, Writer writer) {
 		padOn(string, length, ' ', writer);
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with spaces at the end.
-	 * String#padOn(int, StringBuffer)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with spaces at the
+	 * end. String#padOn(int, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOn(String string, int length, StringBuffer sb) {
 		padOn(string, length, ' ', sb);
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with spaces at the end.
-	 * String#padOn(int, StringBuilder)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with spaces at the
+	 * end. String#padOn(int, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOn(String string, int length, StringBuilder sb) {
 		padOn(string, length, ' ', sb);
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the end.
-	 * String#pad(int, char)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with the specified
+	 * character at the end. String#pad(int, char)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String pad(String string, int length, char c) {
 		int stringLength = string.length();
@@ -96,12 +141,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the end.
-	 * String#padOn(int, char, Writer)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with the specified
+	 * character at the end. String#padOn(int, char, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOn(String string, int length, char c, Writer writer) {
 		int stringLength = string.length();
@@ -116,12 +171,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the end.
-	 * String#padOn(int, char, StringBuffer)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with the specified
+	 * character at the end. String#padOn(int, char, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOn(String string, int length, char c, StringBuffer sb) {
 		int stringLength = string.length();
@@ -136,12 +201,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the end.
-	 * String#padOn(int, char, StringBuilder)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with the specified
+	 * character at the end. String#padOn(int, char, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOn(String string, int length, char c, StringBuilder sb) {
 		int stringLength = string.length();
@@ -156,56 +231,100 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with spaces at the end.
-	 * String#pad(int)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with spaces at the
+	 * end. String#pad(int)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] pad(char[] string, int length) {
 		return pad(string, length, ' ');
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with spaces at the end.
-	 * String#padOn(int, writer)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with spaces at the
+	 * end. String#padOn(int, writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOn(char[] string, int length, Writer writer) {
 		padOn(string, length, ' ', writer);
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with spaces at the end.
-	 * String#padOn(int, StringBuffer)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with spaces at the
+	 * end. String#padOn(int, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOn(char[] string, int length, StringBuffer sb) {
 		padOn(string, length, ' ', sb);
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with spaces at the end.
-	 * String#padOn(int, StringBuilder)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with spaces at the
+	 * end. String#padOn(int, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOn(char[] string, int length, StringBuilder sb) {
 		padOn(string, length, ' ', sb);
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the end.
-	 * String#pad(int, char)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with the specified
+	 * character at the end. String#pad(int, char)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] pad(char[] string, int length, char c) {
 		int stringLength = string.length;
@@ -219,12 +338,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the end.
-	 * String#padOn(int, char, Writer)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with the specified
+	 * character at the end. String#padOn(int, char, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOn(char[] string, int length, char c, Writer writer) {
 		int stringLength = string.length;
@@ -239,12 +368,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the end.
-	 * String#padOn(int, char, StringBuffer)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with the specified
+	 * character at the end. String#padOn(int, char, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOn(char[] string, int length, char c, StringBuffer sb) {
 		int stringLength = string.length;
@@ -259,12 +398,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the end.
-	 * String#padOn(int, char, StringBuilder)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with the specified
+	 * character at the end. String#padOn(int, char, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOn(char[] string, int length, char c, StringBuilder sb) {
 		int stringLength = string.length;
@@ -279,56 +428,100 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, it is truncated.
-	 * If it is shorter than the specified length, it is padded with spaces at the end.
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, it is truncated. If it is shorter
+	 * than the specified length, it is padded with spaces at the end.
 	 * String#padOrTruncate(int)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String padOrTruncate(String string, int length) {
 		return padOrTruncate(string, length, ' ');
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, it is truncated.
-	 * If it is shorter than the specified length, it is padded with spaces at the end.
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, it is truncated. If it is shorter
+	 * than the specified length, it is padded with spaces at the end.
 	 * String#padOrTruncateOn(int, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOrTruncateOn(String string, int length, Writer writer) {
 		padOrTruncateOn(string, length, ' ', writer);
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, it is truncated.
-	 * If it is shorter than the specified length, it is padded with spaces at the end.
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, it is truncated. If it is shorter
+	 * than the specified length, it is padded with spaces at the end.
 	 * String#padOrTruncateOn(int, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOrTruncateOn(String string, int length, StringBuffer sb) {
 		padOrTruncateOn(string, length, ' ', sb);
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, it is truncated.
-	 * If it is shorter than the specified length, it is padded with spaces at the end.
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, it is truncated. If it is shorter
+	 * than the specified length, it is padded with spaces at the end.
 	 * String#padOrTruncateOn(int, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOrTruncateOn(String string, int length, StringBuilder sb) {
 		padOrTruncateOn(string, length, ' ', sb);
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, it is truncated.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the end.
-	 * String#padOrTruncate(int, char)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, it is truncated. If it is shorter
+	 * than the specified length, it is padded with the specified character at
+	 * the end. String#padOrTruncate(int, char)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String padOrTruncate(String string, int length, char c) {
 		int stringLength = string.length();
@@ -342,12 +535,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, it is truncated.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the end.
-	 * String#padOrTruncateOn(int, char, Writer)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, it is truncated. If it is shorter
+	 * than the specified length, it is padded with the specified character at
+	 * the end. String#padOrTruncateOn(int, char, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOrTruncateOn(String string, int length, char c, Writer writer) {
 		int stringLength = string.length();
@@ -361,12 +564,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, it is truncated.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the end.
-	 * String#padOrTruncateOn(int, char, StringBuffer)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, it is truncated. If it is shorter
+	 * than the specified length, it is padded with the specified character at
+	 * the end. String#padOrTruncateOn(int, char, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOrTruncateOn(String string, int length, char c, StringBuffer sb) {
 		int stringLength = string.length();
@@ -380,12 +593,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, it is truncated.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the end.
-	 * String#padOrTruncateOn(int, char, StringBuilder)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, it is truncated. If it is shorter
+	 * than the specified length, it is padded with the specified character at
+	 * the end. String#padOrTruncateOn(int, char, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOrTruncateOn(String string, int length, char c, StringBuilder sb) {
 		int stringLength = string.length();
@@ -399,56 +622,100 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, it is truncated.
-	 * If it is shorter than the specified length, it is padded with spaces at the end.
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, it is truncated. If it is shorter
+	 * than the specified length, it is padded with spaces at the end.
 	 * String#padOrTruncate(int)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] padOrTruncate(char[] string, int length) {
 		return padOrTruncate(string, length, ' ');
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, it is truncated.
-	 * If it is shorter than the specified length, it is padded with spaces at the end.
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, it is truncated. If it is shorter
+	 * than the specified length, it is padded with spaces at the end.
 	 * String#padOrTruncateOn(int, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOrTruncateOn(char[] string, int length, Writer writer) {
 		padOrTruncateOn(string, length, ' ', writer);
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, it is truncated.
-	 * If it is shorter than the specified length, it is padded with spaces at the end.
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, it is truncated. If it is shorter
+	 * than the specified length, it is padded with spaces at the end.
 	 * String#padOrTruncateOn(int, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOrTruncate(char[] string, int length, StringBuffer sb) {
 		padOrTruncateOn(string, length, ' ', sb);
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, it is truncated.
-	 * If it is shorter than the specified length, it is padded with spaces at the end.
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, it is truncated. If it is shorter
+	 * than the specified length, it is padded with spaces at the end.
 	 * String#padOrTruncateOn(int, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOrTruncate(char[] string, int length, StringBuilder sb) {
 		padOrTruncateOn(string, length, ' ', sb);
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, it is truncated.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the end.
-	 * String#padOrTruncate(int, char)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, it is truncated. If it is shorter
+	 * than the specified length, it is padded with the specified character at
+	 * the end. String#padOrTruncate(int, char)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] padOrTruncate(char[] string, int length, char c) {
 		int stringLength = string.length;
@@ -464,12 +731,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, it is truncated.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the end.
-	 * String#padOrTruncateOn(int, char, Writer)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, it is truncated. If it is shorter
+	 * than the specified length, it is padded with the specified character at
+	 * the end. String#padOrTruncateOn(int, char, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOrTruncateOn(char[] string, int length, char c, Writer writer) {
 		int stringLength = string.length;
@@ -483,12 +760,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, it is truncated.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the end.
-	 * String#padOrTruncateOn(int, char, StringBuffer)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, it is truncated. If it is shorter
+	 * than the specified length, it is padded with the specified character at
+	 * the end. String#padOrTruncateOn(int, char, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOrTruncateOn(char[] string, int length, char c, StringBuffer sb) {
 		int stringLength = string.length;
@@ -502,12 +789,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, it is truncated.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the end.
-	 * String#padOrTruncateOn(int, char, StringBuilder)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, it is truncated. If it is shorter
+	 * than the specified length, it is padded with the specified character at
+	 * the end. String#padOrTruncateOn(int, char, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void padOrTruncateOn(char[] string, int length, char c, StringBuilder sb) {
 		int stringLength = string.length;
@@ -659,56 +956,100 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with zeros at the front.
-	 * String#zeroPad(int)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with zeros at the
+	 * front. String#zeroPad(int)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String zeroPad(String string, int length) {
 		return frontPad(string, length, '0');
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with zeros at the front.
-	 * String#zeroPadOn(int, Writer)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with zeros at the
+	 * front. String#zeroPadOn(int, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void zeroPadOn(String string, int length, Writer writer) {
 		frontPadOn(string, length, '0', writer);
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with zeros at the front.
-	 * String#zeroPadOn(int, StringBuffer)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with zeros at the
+	 * front. String#zeroPadOn(int, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void zeroPadOn(String string, int length, StringBuffer sb) {
 		frontPadOn(string, length, '0', sb);
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with zeros at the front.
-	 * String#zeroPadOn(int, StringBuilder)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with zeros at the
+	 * front. String#zeroPadOn(int, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void zeroPadOn(String string, int length, StringBuilder sb) {
 		frontPadOn(string, length, '0', sb);
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the front.
-	 * String#frontPad(int, char)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with the specified
+	 * character at the front. String#frontPad(int, char)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String frontPad(String string, int length, char c) {
 		int stringLength = string.length();
@@ -722,12 +1063,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the front.
-	 * String#frontPadOn(int, char, Writer)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with the specified
+	 * character at the front. String#frontPadOn(int, char, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void frontPadOn(String string, int length, char c, Writer writer) {
 		int stringLength = string.length();
@@ -742,12 +1093,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the front.
-	 * String#frontPadOn(int, char, StringBuffer)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with the specified
+	 * character at the front. String#frontPadOn(int, char, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void frontPadOn(String string, int length, char c, StringBuffer sb) {
 		int stringLength = string.length();
@@ -762,12 +1123,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the front.
-	 * String#frontPadOn(int, char, StringBuilder)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with the specified
+	 * character at the front. String#frontPadOn(int, char, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void frontPadOn(String string, int length, char c, StringBuilder sb) {
 		int stringLength = string.length();
@@ -782,56 +1153,100 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with zeros at the front.
-	 * String#zeroPad(int)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with zeros at the
+	 * front. String#zeroPad(int)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] zeroPad(char[] string, int length) {
 		return frontPad(string, length, '0');
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with zeros at the front.
-	 * String#zeroPadOn(int, Writer)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with zeros at the
+	 * front. String#zeroPadOn(int, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void zeroPadOn(char[] string, int length, Writer writer) {
 		frontPadOn(string, length, '0', writer);
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with zeros at the front.
-	 * String#zeroPadOn(int, StringBuffer)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with zeros at the
+	 * front. String#zeroPadOn(int, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void zeroPadOn(char[] string, int length, StringBuffer sb) {
 		frontPadOn(string, length, '0', sb);
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with zeros at the front.
-	 * String#zeroPadOn(int, StringBuilder)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with zeros at the
+	 * front. String#zeroPadOn(int, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void zeroPadOn(char[] string, int length, StringBuilder sb) {
 		frontPadOn(string, length, '0', sb);
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the front.
-	 * String#frontPad(int, char)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with the specified
+	 * character at the front. String#frontPad(int, char)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] frontPad(char[] string, int length, char c) {
 		int stringLength = string.length;
@@ -845,12 +1260,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the front.
-	 * String#frontPadOn(int, char, Writer)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with the specified
+	 * character at the front. String#frontPadOn(int, char, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void frontPadOn(char[] string, int length, char c, Writer writer) {
 		int stringLength = string.length;
@@ -865,12 +1290,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the front.
-	 * String#frontPadOn(int, char, StringBuffer)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with the specified
+	 * character at the front. String#frontPadOn(int, char, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void frontPadOn(char[] string, int length, char c, StringBuffer sb) {
 		int stringLength = string.length;
@@ -885,12 +1320,22 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, an IllegalArgumentException is thrown.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the front.
-	 * String#frontPadOn(int, char, StringBuilder)
+	 * Pad the specified string to the specified length. If the string is
+	 * already the specified length, it is returned unchanged. If it is longer
+	 * than the specified length, an IllegalArgumentException is thrown. If it
+	 * is shorter than the specified length, it is padded with the specified
+	 * character at the front. String#frontPadOn(int, char, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void frontPadOn(char[] string, int length, char c, StringBuilder sb) {
 		int stringLength = string.length;
@@ -905,56 +1350,101 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, only the last part of the string is returned.
-	 * If it is shorter than the specified length, it is padded with zeros at the front.
-	 * String#zeroPadOrTruncate(int)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, only the last part of the string is
+	 * returned. If it is shorter than the specified length, it is padded with
+	 * zeros at the front. String#zeroPadOrTruncate(int)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String zeroPadOrTruncate(String string, int length) {
 		return frontPadOrTruncate(string, length, '0');
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, only the last part of the string is returned.
-	 * If it is shorter than the specified length, it is padded with zeros at the front.
-	 * String#zeroPadOrTruncateOn(int, Writer)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, only the last part of the string is
+	 * returned. If it is shorter than the specified length, it is padded with
+	 * zeros at the front. String#zeroPadOrTruncateOn(int, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void zeroPadOrTruncateOn(String string, int length, Writer writer) {
 		frontPadOrTruncateOn(string, length, '0', writer);
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, only the last part of the string is returned.
-	 * If it is shorter than the specified length, it is padded with zeros at the front.
-	 * String#zeroPadOrTruncateOn(int, StringBuffer)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, only the last part of the string is
+	 * returned. If it is shorter than the specified length, it is padded with
+	 * zeros at the front. String#zeroPadOrTruncateOn(int, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void zeroPadOrTruncateOn(String string, int length, StringBuffer sb) {
 		frontPadOrTruncateOn(string, length, '0', sb);
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, only the last part of the string is returned.
-	 * If it is shorter than the specified length, it is padded with zeros at the front.
-	 * String#zeroPadOrTruncateOn(int, StringBuilder)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, only the last part of the string is
+	 * returned. If it is shorter than the specified length, it is padded with
+	 * zeros at the front. String#zeroPadOrTruncateOn(int, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void zeroPadOrTruncateOn(String string, int length, StringBuilder sb) {
 		frontPadOrTruncateOn(string, length, '0', sb);
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, only the last part of the string is returned.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the front.
-	 * String#frontPadOrTruncate(int, char)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, only the last part of the string is
+	 * returned. If it is shorter than the specified length, it is padded with
+	 * the specified character at the front. String#frontPadOrTruncate(int,
+	 * char)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String frontPadOrTruncate(String string, int length, char c) {
 		int stringLength = string.length();
@@ -968,12 +1458,23 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, only the last part of the string is returned.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the front.
-	 * String#frontPadOrTruncateOn(int, char, Writer)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, only the last part of the string is
+	 * returned. If it is shorter than the specified length, it is padded with
+	 * the specified character at the front. String#frontPadOrTruncateOn(int,
+	 * char, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void frontPadOrTruncateOn(String string, int length, char c, Writer writer) {
 		int stringLength = string.length();
@@ -987,12 +1488,23 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, only the last part of the string is returned.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the front.
-	 * String#frontPadOrTruncateOn(int, char, StringBuffer)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, only the last part of the string is
+	 * returned. If it is shorter than the specified length, it is padded with
+	 * the specified character at the front. String#frontPadOrTruncateOn(int,
+	 * char, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void frontPadOrTruncateOn(String string, int length, char c, StringBuffer sb) {
 		int stringLength = string.length();
@@ -1006,12 +1518,23 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, only the last part of the string is returned.
-	 * If it is shorter than the specified length, it is padded with the
-	 * specified character at the front.
-	 * String#frontPadOrTruncateOn(int, char, StringBuilder)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, only the last part of the string is
+	 * returned. If it is shorter than the specified length, it is padded with
+	 * the specified character at the front. String#frontPadOrTruncateOn(int,
+	 * char, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void frontPadOrTruncateOn(String string, int length, char c, StringBuilder sb) {
 		int stringLength = string.length();
@@ -1025,56 +1548,101 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, only the last part of the string is returned.
-	 * If it is shorter than the specified length, it is padded with zeros at the front.
-	 * String#zeroPadOrTruncate(int)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, only the last part of the string is
+	 * returned. If it is shorter than the specified length, it is padded with
+	 * zeros at the front. String#zeroPadOrTruncate(int)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] zeroPadOrTruncate(char[] string, int length) {
 		return frontPadOrTruncate(string, length, '0');
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, only the last part of the string is returned.
-	 * If it is shorter than the specified length, it is padded with zeros at the front.
-	 * String#zeroPadOrTruncateOn(int, Writer)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, only the last part of the string is
+	 * returned. If it is shorter than the specified length, it is padded with
+	 * zeros at the front. String#zeroPadOrTruncateOn(int, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void zeroPadOrTruncateOn(char[] string, int length, Writer writer) {
 		frontPadOrTruncateOn(string, length, '0', writer);
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, only the last part of the string is returned.
-	 * If it is shorter than the specified length, it is padded with zeros at the front.
-	 * String#zeroPadOrTruncateOn(int, StringBuffer)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, only the last part of the string is
+	 * returned. If it is shorter than the specified length, it is padded with
+	 * zeros at the front. String#zeroPadOrTruncateOn(int, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void zeroPadOrTruncateOn(char[] string, int length, StringBuffer sb) {
 		frontPadOrTruncateOn(string, length, '0', sb);
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, only the last part of the string is returned.
-	 * If it is shorter than the specified length, it is padded with zeros at the front.
-	 * String#zeroPadOrTruncateOn(int, StringBuilder)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, only the last part of the string is
+	 * returned. If it is shorter than the specified length, it is padded with
+	 * zeros at the front. String#zeroPadOrTruncateOn(int, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void zeroPadOrTruncateOn(char[] string, int length, StringBuilder sb) {
 		frontPadOrTruncateOn(string, length, '0', sb);
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, only the last part of the string is returned.
-	 * If it is shorter than the specified length, it is padded with the 
-	 * specified character at the front.
-	 * String#frontPadOrTruncate(int, char)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, only the last part of the string is
+	 * returned. If it is shorter than the specified length, it is padded with
+	 * the specified character at the front. String#frontPadOrTruncate(int,
+	 * char)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] frontPadOrTruncate(char[] string, int length, char c) {
 		int stringLength = string.length;
@@ -1090,12 +1658,23 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, only the last part of the string is returned.
-	 * If it is shorter than the specified length, it is padded with the 
-	 * specified character at the front.
-	 * String#frontPadOrTruncateOn(int, char, Writer)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, only the last part of the string is
+	 * returned. If it is shorter than the specified length, it is padded with
+	 * the specified character at the front. String#frontPadOrTruncateOn(int,
+	 * char, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void frontPadOrTruncateOn(char[] string, int length, char c, Writer writer) {
 		int stringLength = string.length;
@@ -1109,12 +1688,23 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, only the last part of the string is returned.
-	 * If it is shorter than the specified length, it is padded with the 
-	 * specified character at the front.
-	 * String#frontPadOrTruncateOn(int, char, StringBuffer)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, only the last part of the string is
+	 * returned. If it is shorter than the specified length, it is padded with
+	 * the specified character at the front. String#frontPadOrTruncateOn(int,
+	 * char, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void frontPadOrTruncateOn(char[] string, int length, char c, StringBuffer sb) {
 		int stringLength = string.length;
@@ -1128,12 +1718,23 @@ public final class StringTools {
 	}
 
 	/**
-	 * Pad or truncate the specified string to the specified length.
-	 * If the string is already the specified length, it is returned unchanged.
-	 * If it is longer than the specified length, only the last part of the string is returned.
-	 * If it is shorter than the specified length, it is padded with the 
-	 * specified character at the front.
-	 * String#frontPadOrTruncateOn(int, char, StringBuilder)
+	 * Pad or truncate the specified string to the specified length. If the
+	 * string is already the specified length, it is returned unchanged. If it
+	 * is longer than the specified length, only the last part of the string is
+	 * returned. If it is shorter than the specified length, it is padded with
+	 * the specified character at the front. String#frontPadOrTruncateOn(int,
+	 * char, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param length
+	 *            the length
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void frontPadOrTruncateOn(char[] string, int length, char c, StringBuilder sb) {
 		int stringLength = string.length;
@@ -1218,6 +1819,12 @@ public final class StringTools {
 
 	/**
 	 * Wrap the specified string with double quotes.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String quote(String string) {
 		return wrap(string, QUOTE);
@@ -1225,6 +1832,13 @@ public final class StringTools {
 
 	/**
 	 * Wrap the specified string with double quotes.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void quoteOn(String string, Writer writer) {
 		wrapOn(string, QUOTE, writer);
@@ -1232,6 +1846,13 @@ public final class StringTools {
 
 	/**
 	 * Wrap the specified string with double quotes.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void quoteOn(String string, StringBuffer sb) {
 		wrapOn(string, QUOTE, sb);
@@ -1239,6 +1860,13 @@ public final class StringTools {
 
 	/**
 	 * Wrap the specified string with double quotes.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void quoteOn(String string, StringBuilder sb) {
 		wrapOn(string, QUOTE, sb);
@@ -1246,6 +1874,12 @@ public final class StringTools {
 
 	/**
 	 * Wrap each of the specified strings with double quotes.
+	 *
+	 * @author mqfdy
+	 * @param strings
+	 *            the strings
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<String> quote(Iterator<String> strings) {
 		return new TransformationIterator<String, String>(strings) {
@@ -1257,16 +1891,33 @@ public final class StringTools {
 	}
 
 	/**
-	 * Wrap the specified string with the specified wrap; i.e. put a copy of
-	 * the wrap at the front and back of the resulting string.
+	 * Wrap the specified string with the specified wrap; i.e. put a copy of the
+	 * wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param wrap
+	 *            the wrap
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String wrap(String string, char wrap) {
 		return new String(wrap(string.toCharArray(), wrap));
 	}
 
 	/**
-	 * Wrap the specified string with the specified wrap; i.e. put a copy of
-	 * the wrap at the front and back of the resulting string.
+	 * Wrap the specified string with the specified wrap; i.e. put a copy of the
+	 * wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param wrap
+	 *            the wrap
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void wrapOn(String string, char wrap, Writer writer) {
 		writeCharOn(wrap, writer);
@@ -1275,8 +1926,17 @@ public final class StringTools {
 	}
 
 	/**
-	 * Wrap the specified string with the specified wrap; i.e. put a copy of
-	 * the wrap at the front and back of the resulting string.
+	 * Wrap the specified string with the specified wrap; i.e. put a copy of the
+	 * wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param wrap
+	 *            the wrap
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void wrapOn(String string, char wrap, StringBuffer sb) {
 		sb.append(wrap);
@@ -1285,8 +1945,17 @@ public final class StringTools {
 	}
 
 	/**
-	 * Wrap the specified string with the specified wrap; i.e. put a copy of
-	 * the wrap at the front and back of the resulting string.
+	 * Wrap the specified string with the specified wrap; i.e. put a copy of the
+	 * wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param wrap
+	 *            the wrap
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void wrapOn(String string, char wrap, StringBuilder sb) {
 		sb.append(wrap);
@@ -1297,6 +1966,14 @@ public final class StringTools {
 	/**
 	 * Wrap each of the specified strings with the specified wrap; i.e. put a
 	 * copy of the wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param strings
+	 *            the strings
+	 * @param wrap
+	 *            the wrap
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<String> wrap(Iterator<String> strings, final char wrap) {
 		return new TransformationIterator<String, String>(strings) {
@@ -1308,16 +1985,33 @@ public final class StringTools {
 	}
 
 	/**
-	 * Wrap the specified string with the specified wrap; i.e. put a copy of
-	 * the wrap at the front and back of the resulting string.
+	 * Wrap the specified string with the specified wrap; i.e. put a copy of the
+	 * wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param wrap
+	 *            the wrap
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String wrap(String string, String wrap) {
 		return new String(wrap(string.toCharArray(), wrap.toCharArray()));
 	}
 
 	/**
-	 * Wrap the specified string with the specified wrap; i.e. put a copy of
-	 * the wrap at the front and back of the resulting string.
+	 * Wrap the specified string with the specified wrap; i.e. put a copy of the
+	 * wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param wrap
+	 *            the wrap
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void wrapOn(String string, String wrap, Writer writer) {
 		writeStringOn(wrap, writer);
@@ -1326,8 +2020,17 @@ public final class StringTools {
 	}
 
 	/**
-	 * Wrap the specified string with the specified wrap; i.e. put a copy of
-	 * the wrap at the front and back of the resulting string.
+	 * Wrap the specified string with the specified wrap; i.e. put a copy of the
+	 * wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param wrap
+	 *            the wrap
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void wrapOn(String string, String wrap, StringBuffer sb) {
 		sb.append(wrap);
@@ -1336,8 +2039,17 @@ public final class StringTools {
 	}
 
 	/**
-	 * Wrap the specified string with the specified wrap; i.e. put a copy of
-	 * the wrap at the front and back of the resulting string.
+	 * Wrap the specified string with the specified wrap; i.e. put a copy of the
+	 * wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param wrap
+	 *            the wrap
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void wrapOn(String string, String wrap, StringBuilder sb) {
 		sb.append(wrap);
@@ -1348,6 +2060,14 @@ public final class StringTools {
 	/**
 	 * Wrap each of the specified strings with the specified wrap; i.e. put a
 	 * copy of the wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param strings
+	 *            the strings
+	 * @param wrap
+	 *            the wrap
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<String> wrap(Iterator<String> strings, final String wrap) {
 		return new TransformationIterator<String, String>(strings) {
@@ -1360,6 +2080,12 @@ public final class StringTools {
 
 	/**
 	 * Wrap the specified string with double quotes.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] quote(char[] string) {
 		return wrap(string, QUOTE);
@@ -1367,6 +2093,13 @@ public final class StringTools {
 
 	/**
 	 * Wrap the specified string with double quotes.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void quoteOn(char[] string, Writer writer) {
 		wrapOn(string, QUOTE, writer);
@@ -1374,6 +2107,13 @@ public final class StringTools {
 
 	/**
 	 * Wrap the specified string with double quotes.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void quoteOn(char[] string, StringBuffer sb) {
 		wrapOn(string, QUOTE, sb);
@@ -1381,6 +2121,13 @@ public final class StringTools {
 
 	/**
 	 * Wrap the specified string with double quotes.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void quoteOn(char[] string, StringBuilder sb) {
 		wrapOn(string, QUOTE, sb);
@@ -1388,6 +2135,12 @@ public final class StringTools {
 
 	/**
 	 * Wrap each of the specified strings with double quotes.
+	 *
+	 * @author mqfdy
+	 * @param strings
+	 *            the strings
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<char[]> quoteCharArrays(Iterator<char[]> strings) {
 		return new TransformationIterator<char[], char[]>(strings) {
@@ -1399,8 +2152,16 @@ public final class StringTools {
 	}
 
 	/**
-	 * Wrap the specified string with the specified wrap; i.e. put a copy of
-	 * the wrap at the front and back of the resulting string.
+	 * Wrap the specified string with the specified wrap; i.e. put a copy of the
+	 * wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param wrap
+	 *            the wrap
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] wrap(char[] string, char wrap) {
 		int len = string.length;
@@ -1412,8 +2173,17 @@ public final class StringTools {
 	}
 
 	/**
-	 * Wrap the specified string with the specified wrap; i.e. put a copy of
-	 * the wrap at the front and back of the resulting string.
+	 * Wrap the specified string with the specified wrap; i.e. put a copy of the
+	 * wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param wrap
+	 *            the wrap
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void wrapOn(char[] string, char wrap, Writer writer) {
 		writeCharOn(wrap, writer);
@@ -1422,8 +2192,17 @@ public final class StringTools {
 	}
 
 	/**
-	 * Wrap the specified string with the specified wrap; i.e. put a copy of
-	 * the wrap at the front and back of the resulting string.
+	 * Wrap the specified string with the specified wrap; i.e. put a copy of the
+	 * wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param wrap
+	 *            the wrap
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void wrapOn(char[] string, char wrap, StringBuffer sb) {
 		sb.append(wrap);
@@ -1432,8 +2211,17 @@ public final class StringTools {
 	}
 
 	/**
-	 * Wrap the specified string with the specified wrap; i.e. put a copy of
-	 * the wrap at the front and back of the resulting string.
+	 * Wrap the specified string with the specified wrap; i.e. put a copy of the
+	 * wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param wrap
+	 *            the wrap
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void wrapOn(char[] string, char wrap, StringBuilder sb) {
 		sb.append(wrap);
@@ -1444,6 +2232,14 @@ public final class StringTools {
 	/**
 	 * Wrap each of the specified strings with the specified wrap; i.e. put a
 	 * copy of the wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param strings
+	 *            the strings
+	 * @param wrap
+	 *            the wrap
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<char[]> wrapCharArrays(Iterator<char[]> strings, final char wrap) {
 		return new TransformationIterator<char[], char[]>(strings) {
@@ -1455,8 +2251,16 @@ public final class StringTools {
 	}
 
 	/**
-	 * Wrap the specified string with the specified wrap; i.e. put a copy of
-	 * the wrap at the front and back of the resulting string.
+	 * Wrap the specified string with the specified wrap; i.e. put a copy of the
+	 * wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param wrap
+	 *            the wrap
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] wrap(char[] string, char[] wrap) {
 		int stringLength = string.length;
@@ -1469,8 +2273,17 @@ public final class StringTools {
 	}
 
 	/**
-	 * Wrap the specified string with the specified wrap; i.e. put a copy of
-	 * the wrap at the front and back of the resulting string.
+	 * Wrap the specified string with the specified wrap; i.e. put a copy of the
+	 * wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param wrap
+	 *            the wrap
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void wrapOn(char[] string, char[] wrap, Writer writer) {
 		writeStringOn(wrap, writer);
@@ -1479,8 +2292,17 @@ public final class StringTools {
 	}
 
 	/**
-	 * Wrap the specified string with the specified wrap; i.e. put a copy of
-	 * the wrap at the front and back of the resulting string.
+	 * Wrap the specified string with the specified wrap; i.e. put a copy of the
+	 * wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param wrap
+	 *            the wrap
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void wrapOn(char[] string, char[] wrap, StringBuffer sb) {
 		sb.append(wrap);
@@ -1489,8 +2311,17 @@ public final class StringTools {
 	}
 
 	/**
-	 * Wrap the specified string with the specified wrap; i.e. put a copy of
-	 * the wrap at the front and back of the resulting string.
+	 * Wrap the specified string with the specified wrap; i.e. put a copy of the
+	 * wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param wrap
+	 *            the wrap
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void wrapOn(char[] string, char[] wrap, StringBuilder sb) {
 		sb.append(wrap);
@@ -1501,6 +2332,14 @@ public final class StringTools {
 	/**
 	 * Wrap each of the specified strings with the specified wrap; i.e. put a
 	 * copy of the wrap at the front and back of the resulting string.
+	 *
+	 * @author mqfdy
+	 * @param strings
+	 *            the strings
+	 * @param wrap
+	 *            the wrap
+	 * @return the iterator
+	 * @Date 2018-09-03 09:00
 	 */
 	public static Iterator<char[]> wrapCharArrays(Iterator<char[]> strings, final char[] wrap) {
 		return new TransformationIterator<char[], char[]>(strings) {
@@ -1515,9 +2354,16 @@ public final class StringTools {
 	// ********** removing characters **********
 
 	/**
-	 * Remove the first occurrence of the specified character
-	 * from the specified string and return the result.
-	 * String#removeFirstOccurrence(char)
+	 * Remove the first occurrence of the specified character from the specified
+	 * string and return the result. String#removeFirstOccurrence(char)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String removeFirstOccurrence(String string, char c) {
 		int index = string.indexOf(c);
@@ -1539,9 +2385,18 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove the first occurrence of the specified character
-	 * from the specified string and print the result on the specified stream.
+	 * Remove the first occurrence of the specified character from the specified
+	 * string and print the result on the specified stream.
 	 * String#removeFirstOccurrenceOn(char, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeFirstOccurrenceOn(String string, char c, Writer writer) {
 		int index = string.indexOf(c);
@@ -1553,9 +2408,18 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove the first occurrence of the specified character
-	 * from the specified string and print the result on the specified stream.
+	 * Remove the first occurrence of the specified character from the specified
+	 * string and print the result on the specified stream.
 	 * String#removeFirstOccurrenceOn(char, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeFirstOccurrenceOn(String string, char c, StringBuffer sb) {
 		int index = string.indexOf(c);
@@ -1567,9 +2431,18 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove the first occurrence of the specified character
-	 * from the specified string and print the result on the specified stream.
+	 * Remove the first occurrence of the specified character from the specified
+	 * string and print the result on the specified stream.
 	 * String#removeFirstOccurrenceOn(char, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeFirstOccurrenceOn(String string, char c, StringBuilder sb) {
 		int index = string.indexOf(c);
@@ -1581,9 +2454,16 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove the first occurrence of the specified character
-	 * from the specified string and return the result.
-	 * String#removeFirstOccurrence(char)
+	 * Remove the first occurrence of the specified character from the specified
+	 * string and return the result. String#removeFirstOccurrence(char)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] removeFirstOccurrence(char[] string, char c) {
 		int index = CollectionTools.indexOf(string, c);
@@ -1608,9 +2488,18 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove the first occurrence of the specified character
-	 * from the specified string and print the result on the specified stream.
+	 * Remove the first occurrence of the specified character from the specified
+	 * string and print the result on the specified stream.
 	 * String#removeFirstOccurrenceOn(char, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeFirstOccurrenceOn(char[] string, char c, Writer writer) {
 		int index = CollectionTools.indexOf(string, c);
@@ -1637,9 +2526,18 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove the first occurrence of the specified character
-	 * from the specified string and print the result on the specified stream.
+	 * Remove the first occurrence of the specified character from the specified
+	 * string and print the result on the specified stream.
 	 * String#removeFirstOccurrenceOn(char, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeFirstOccurrenceOn(char[] string, char c, StringBuffer sb) {
 		int index = CollectionTools.indexOf(string, c);
@@ -1666,9 +2564,18 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove the first occurrence of the specified character
-	 * from the specified string and print the result on the specified stream.
+	 * Remove the first occurrence of the specified character from the specified
+	 * string and print the result on the specified stream.
 	 * String#removeFirstOccurrenceOn(char, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeFirstOccurrenceOn(char[] string, char c, StringBuilder sb) {
 		int index = CollectionTools.indexOf(string, c);
@@ -1695,9 +2602,16 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove all occurrences of the specified character
-	 * from the specified string and return the result.
-	 * String#removeAllOccurrences(char)
+	 * Remove all occurrences of the specified character from the specified
+	 * string and return the result. String#removeAllOccurrences(char)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String removeAllOccurrences(String string, char c) {
 		int first = string.indexOf(c);
@@ -1705,9 +2619,18 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove all occurrences of the specified character
-	 * from the specified string and write the result to the specified stream.
+	 * Remove all occurrences of the specified character from the specified
+	 * string and write the result to the specified stream.
 	 * String#removeAllOccurrencesOn(char, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllOccurrencesOn(String string, char c, Writer writer) {
 		int first = string.indexOf(c);
@@ -1719,9 +2642,18 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove all occurrences of the specified character
-	 * from the specified string and write the result to the specified stream.
+	 * Remove all occurrences of the specified character from the specified
+	 * string and write the result to the specified stream.
 	 * String#removeAllOccurrencesOn(char, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllOccurrencesOn(String string, char c, StringBuffer sb) {
 		int first = string.indexOf(c);
@@ -1733,9 +2665,18 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove all occurrences of the specified character
-	 * from the specified string and write the result to the specified stream.
+	 * Remove all occurrences of the specified character from the specified
+	 * string and write the result to the specified stream.
 	 * String#removeAllOccurrencesOn(char, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllOccurrencesOn(String string, char c, StringBuilder sb) {
 		int first = string.indexOf(c);
@@ -1747,9 +2688,16 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove all occurrences of the specified character
-	 * from the specified string and return the result.
-	 * String#removeAllOccurrences(char)
+	 * Remove all occurrences of the specified character from the specified
+	 * string and return the result. String#removeAllOccurrences(char)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] removeAllOccurrences(char[] string, char c) {
 		int first = CollectionTools.indexOf(string, c);
@@ -1766,10 +2714,18 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove all occurrences of the specified character
-	 * from the specified string and write the result to the
-	 * specified writer.
+	 * Remove all occurrences of the specified character from the specified
+	 * string and write the result to the specified writer.
 	 * String#removeAllOccurrencesOn(char, Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllOccurrencesOn(char[] string, char c, Writer writer) {
 		int first = CollectionTools.indexOf(string, c);
@@ -1795,10 +2751,18 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove all occurrences of the specified character
-	 * from the specified string and append the result to the
-	 * specified string buffer.
+	 * Remove all occurrences of the specified character from the specified
+	 * string and append the result to the specified string buffer.
 	 * String#removeAllOccurrencesOn(char, StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllOccurrencesOn(char[] string, char c, StringBuffer sb) {
 		int first = CollectionTools.indexOf(string, c);
@@ -1824,10 +2788,18 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove all occurrences of the specified character
-	 * from the specified string and append the result to the
-	 * specified string builder.
+	 * Remove all occurrences of the specified character from the specified
+	 * string and append the result to the specified string builder.
 	 * String#removeAllOccurrencesOn(char, StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param c
+	 *            the c
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllOccurrencesOn(char[] string, char c, StringBuilder sb) {
 		int first = CollectionTools.indexOf(string, c);
@@ -1855,35 +2827,57 @@ public final class StringTools {
 	/**
 	 * Remove all the spaces from the specified string and return the result.
 	 * String#removeAllSpaces()
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String removeAllSpaces(String string) {
 		return removeAllOccurrences(string, ' ');
 	}
 
 	/**
-	 * Remove all the spaces
-	 * from the specified string and write the result to the specified writer.
-	 * String#removeAllSpacesOn(Writer)
+	 * Remove all the spaces from the specified string and write the result to
+	 * the specified writer. String#removeAllSpacesOn(Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllSpacesOn(String string, Writer writer) {
 		removeAllOccurrencesOn(string, ' ', writer);
 	}
 
 	/**
-	 * Remove all the spaces
-	 * from the specified string and write the result to the specified
-	 * string buffer.
-	 * String#removeAllSpacesOn(StringBuffer)
+	 * Remove all the spaces from the specified string and write the result to
+	 * the specified string buffer. String#removeAllSpacesOn(StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllSpacesOn(String string, StringBuffer sb) {
 		removeAllOccurrencesOn(string, ' ', sb);
 	}
 
 	/**
-	 * Remove all the spaces
-	 * from the specified string and write the result to the specified
-	 * string builder.
-	 * String#removeAllSpacesOn(StringBuilder)
+	 * Remove all the spaces from the specified string and write the result to
+	 * the specified string builder. String#removeAllSpacesOn(StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllSpacesOn(String string, StringBuilder sb) {
 		removeAllOccurrencesOn(string, ' ', sb);
@@ -1892,44 +2886,71 @@ public final class StringTools {
 	/**
 	 * Remove all the spaces from the specified string and return the result.
 	 * String#removeAllSpaces()
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] removeAllSpaces(char[] string) {
 		return removeAllOccurrences(string, ' ');
 	}
 
 	/**
-	 * Remove all the spaces
-	 * from the specified string and write the result to the
-	 * specified writer.
-	 * String#removeAllSpacesOn(Writer)
+	 * Remove all the spaces from the specified string and write the result to
+	 * the specified writer. String#removeAllSpacesOn(Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllSpacesOn(char[] string, Writer writer) {
 		removeAllOccurrencesOn(string, ' ', writer);
 	}
 
 	/**
-	 * Remove all the spaces
-	 * from the specified string and append the result to the
-	 * specified string buffer.
-	 * String#removeAllSpacesOn(StringBuffer)
+	 * Remove all the spaces from the specified string and append the result to
+	 * the specified string buffer. String#removeAllSpacesOn(StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllSpacesOn(char[] string, StringBuffer sb) {
 		removeAllOccurrencesOn(string, ' ', sb);
 	}
 
 	/**
-	 * Remove all the spaces
-	 * from the specified string and append the result to the
-	 * specified string builder.
-	 * String#removeAllSpacesOn(StringBuilder)
+	 * Remove all the spaces from the specified string and append the result to
+	 * the specified string builder. String#removeAllSpacesOn(StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllSpacesOn(char[] string, StringBuilder sb) {
 		removeAllOccurrencesOn(string, ' ', sb);
 	}
 
 	/**
-	 * Remove all the whitespace from the specified string and return the result.
-	 * String#removeAllWhitespace()
+	 * Remove all the whitespace from the specified string and return the
+	 * result. String#removeAllWhitespace()
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String removeAllWhitespace(String string) {
 		char[] string2 = string.toCharArray();
@@ -1938,10 +2959,15 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove all the whitespace
-	 * from the specified string and append the result to the
-	 * specified writer.
-	 * String#removeAllWhitespaceOn(Writer)
+	 * Remove all the whitespace from the specified string and append the result
+	 * to the specified writer. String#removeAllWhitespaceOn(Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllWhitespaceOn(String string, Writer writer) {
 		char[] string2 = string.toCharArray();
@@ -1954,10 +2980,16 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove all the whitespace
-	 * from the specified string and append the result to the
-	 * specified string buffer.
+	 * Remove all the whitespace from the specified string and append the result
+	 * to the specified string buffer.
 	 * String#removeAllWhitespaceOn(StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllWhitespaceOn(String string, StringBuffer sb) {
 		char[] string2 = string.toCharArray();
@@ -1970,10 +3002,16 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove all the whitespace
-	 * from the specified string and append the result to the
-	 * specified string builder.
+	 * Remove all the whitespace from the specified string and append the result
+	 * to the specified string builder.
 	 * String#removeAllWhitespaceOn(StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllWhitespaceOn(String string, StringBuilder sb) {
 		char[] string2 = string.toCharArray();
@@ -1986,8 +3024,14 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove all the whitespace from the specified string and return the result.
-	 * String#removeAllWhitespace()
+	 * Remove all the whitespace from the specified string and return the
+	 * result. String#removeAllWhitespace()
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] removeAllWhitespace(char[] string) {
 		int first = indexOfWhitespace_(string);
@@ -2014,10 +3058,15 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove all the whitespace
-	 * from the specified string and append the result to the
-	 * specified writer.
-	 * String#removeAllWhitespaceOn(Writer)
+	 * Remove all the whitespace from the specified string and append the result
+	 * to the specified writer. String#removeAllWhitespaceOn(Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllWhitespaceOn(char[] string, Writer writer) {
 		int first = indexOfWhitespace_(string);
@@ -2043,10 +3092,16 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove all the whitespace
-	 * from the specified string and append the result to the
-	 * specified string buffer.
+	 * Remove all the whitespace from the specified string and append the result
+	 * to the specified string buffer.
 	 * String#removeAllWhitespaceOn(StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllWhitespaceOn(char[] string, StringBuffer sb) {
 		int first = indexOfWhitespace_(string);
@@ -2072,10 +3127,16 @@ public final class StringTools {
 	}
 
 	/**
-	 * Remove all the whitespace
-	 * from the specified string and append the result to the
-	 * specified string builder.
+	 * Remove all the whitespace from the specified string and append the result
+	 * to the specified string builder.
 	 * String#removeAllWhitespaceOn(StringBuilder)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void removeAllWhitespaceOn(char[] string, StringBuilder sb) {
 		int first = indexOfWhitespace_(string);
@@ -2106,6 +3167,14 @@ public final class StringTools {
 	/**
 	 * Return the length of the common prefix shared by the specified strings.
 	 * String#commonPrefixLength(String)
+	 *
+	 * @author mqfdy
+	 * @param s1
+	 *            the s 1
+	 * @param s2
+	 *            the s 2
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int commonPrefixLength(String s1, String s2) {
 		return commonPrefixLength(s1.toCharArray(), s2.toCharArray());
@@ -2113,6 +3182,14 @@ public final class StringTools {
 
 	/**
 	 * Return the length of the common prefix shared by the specified strings.
+	 *
+	 * @author mqfdy
+	 * @param s1
+	 *            the s 1
+	 * @param s2
+	 *            the s 2
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int commonPrefixLength(char[] s1, char[] s2) {
 		return commonPrefixLength_(s1, s2, Math.min(s1.length, s2.length));
@@ -2122,6 +3199,16 @@ public final class StringTools {
 	 * Return the length of the common prefix shared by the specified strings;
 	 * but limit the length to the specified maximum.
 	 * String#commonPrefixLength(String, int)
+	 *
+	 * @author mqfdy
+	 * @param s1
+	 *            the s 1
+	 * @param s2
+	 *            the s 2
+	 * @param max
+	 *            the max
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int commonPrefixLength(String s1, String s2, int max) {
 		return commonPrefixLength(s1.toCharArray(), s2.toCharArray(), max);
@@ -2130,6 +3217,16 @@ public final class StringTools {
 	/**
 	 * Return the length of the common prefix shared by the specified strings;
 	 * but limit the length to the specified maximum.
+	 *
+	 * @author mqfdy
+	 * @param s1
+	 *            the s 1
+	 * @param s2
+	 *            the s 2
+	 * @param max
+	 *            the max
+	 * @return the int
+	 * @Date 2018-09-03 09:00
 	 */
 	public static int commonPrefixLength(char[] s1, char[] s2, int max) {
 		return commonPrefixLength_(s1, s2, Math.min(max, Math.min(s1.length, s2.length)));
@@ -2161,8 +3258,13 @@ public final class StringTools {
 	}
 
 	/**
-	 * Modify and return the specified string with
-	 * its first letter capitalized.
+	 * Modify and return the specified string with its first letter capitalized.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] capitalize(char[] string) {
 		if ((string.length == 0) || Character.isUpperCase(string[0])) {
@@ -2174,6 +3276,12 @@ public final class StringTools {
 	/**
 	 * Return the specified string with its first letter capitalized.
 	 * String#capitalize()
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String capitalize(String string) {
 		if ((string.length() == 0) || Character.isUpperCase(string.charAt(0))) {
@@ -2191,8 +3299,15 @@ public final class StringTools {
 	}
 
 	/**
-	 * Append the specified string to the specified string buffer
-	 * with its first letter capitalized.
+	 * Append the specified string to the specified string buffer with its first
+	 * letter capitalized.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void capitalizeOn(char[] string, StringBuffer sb) {
 		if (string.length == 0) {
@@ -2206,9 +3321,15 @@ public final class StringTools {
 	}
 
 	/**
-	 * Append the specified string to the specified string buffer
-	 * with its first letter capitalized.
-	 * String#capitalizeOn(StringBuffer)
+	 * Append the specified string to the specified string buffer with its first
+	 * letter capitalized. String#capitalizeOn(StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void capitalizeOn(String string, StringBuffer sb) {
 		if (string.length() == 0) {
@@ -2230,8 +3351,15 @@ public final class StringTools {
 	}
 
 	/**
-	 * Append the specified string to the specified string builder
-	 * with its first letter capitalized.
+	 * Append the specified string to the specified string builder with its
+	 * first letter capitalized.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void capitalizeOn(char[] string, StringBuilder sb) {
 		if (string.length == 0) {
@@ -2245,9 +3373,15 @@ public final class StringTools {
 	}
 
 	/**
-	 * Append the specified string to the specified string builder
-	 * with its first letter capitalized.
-	 * String#capitalizeOn(StringBuffer)
+	 * Append the specified string to the specified string builder with its
+	 * first letter capitalized. String#capitalizeOn(StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void capitalizeOn(String string, StringBuilder sb) {
 		if (string.length() == 0) {
@@ -2269,8 +3403,15 @@ public final class StringTools {
 	}
 
 	/**
-	 * Append the specified string to the specified string buffer
-	 * with its first letter capitalized.
+	 * Append the specified string to the specified string buffer with its first
+	 * letter capitalized.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void capitalizeOn(char[] string, Writer writer) {
 		if (string.length == 0) {
@@ -2284,9 +3425,15 @@ public final class StringTools {
 	}
 
 	/**
-	 * Append the specified string to the specified string buffer
-	 * with its first letter capitalized.
-	 * String#capitalizeOn(Writer)
+	 * Append the specified string to the specified string buffer with its first
+	 * letter capitalized. String#capitalizeOn(Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void capitalizeOn(String string, Writer writer) {
 		if (string.length() == 0) {
@@ -2325,10 +3472,15 @@ public final class StringTools {
 	}
 
 	/**
-	 * Modify and return the specified string with its
-	 * first letter converted to lower case.
-	 * (Unless both the first and second letters are upper case,
-	 * in which case the string is returned unchanged.)
+	 * Modify and return the specified string with its first letter converted to
+	 * lower case. (Unless both the first and second letters are upper case, in
+	 * which case the string is returned unchanged.)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] uncapitalize(char[] string) {
 		if (stringNeedNotBeUncapitalized_(string)) {
@@ -2355,10 +3507,15 @@ public final class StringTools {
 	}
 
 	/**
-	 * Return the specified string with its first letter converted to lower case.
-	 * (Unless both the first and second letters are upper case,
-	 * in which case the string is returned unchanged.)
-	 * String#uncapitalize()
+	 * Return the specified string with its first letter converted to lower
+	 * case. (Unless both the first and second letters are upper case, in which
+	 * case the string is returned unchanged.) String#uncapitalize()
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String uncapitalize(String string) {
 		if (stringNeedNotBeUncapitalized_(string)) {
@@ -2376,10 +3533,16 @@ public final class StringTools {
 	}
 
 	/**
-	 * Append the specified string to the specified string buffer
-	 * with its first letter converted to lower case.
-	 * (Unless both the first and second letters are upper case,
-	 * in which case the string is returned unchanged.)
+	 * Append the specified string to the specified string buffer with its first
+	 * letter converted to lower case. (Unless both the first and second letters
+	 * are upper case, in which case the string is returned unchanged.)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void uncapitalizeOn(char[] string, StringBuffer sb) {
 		if (stringNeedNotBeUncapitalized_(string)) {
@@ -2390,11 +3553,17 @@ public final class StringTools {
 	}
 
 	/**
-	 * Append the specified string to the specified string buffer
-	 * with its first letter converted to lower case.
-	 * (Unless both the first and second letters are upper case,
-	 * in which case the string is returned unchanged.)
+	 * Append the specified string to the specified string buffer with its first
+	 * letter converted to lower case. (Unless both the first and second letters
+	 * are upper case, in which case the string is returned unchanged.)
 	 * String#uncapitalizeOn(StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void uncapitalizeOn(String string, StringBuffer sb) {
 		if (stringNeedNotBeUncapitalized_(string)) {
@@ -2413,10 +3582,16 @@ public final class StringTools {
 	}
 
 	/**
-	 * Append the specified string to the specified string builder
-	 * with its first letter converted to lower case.
-	 * (Unless both the first and second letters are upper case,
-	 * in which case the string is returned unchanged.)
+	 * Append the specified string to the specified string builder with its
+	 * first letter converted to lower case. (Unless both the first and second
+	 * letters are upper case, in which case the string is returned unchanged.)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void uncapitalizeOn(char[] string, StringBuilder sb) {
 		if (stringNeedNotBeUncapitalized_(string)) {
@@ -2427,11 +3602,17 @@ public final class StringTools {
 	}
 
 	/**
-	 * Append the specified string to the specified string builder
-	 * with its first letter converted to lower case.
-	 * (Unless both the first and second letters are upper case,
-	 * in which case the string is returned unchanged.)
+	 * Append the specified string to the specified string builder with its
+	 * first letter converted to lower case. (Unless both the first and second
+	 * letters are upper case, in which case the string is returned unchanged.)
 	 * String#uncapitalizeOn(StringBuffer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void uncapitalizeOn(String string, StringBuilder sb) {
 		if (stringNeedNotBeUncapitalized_(string)) {
@@ -2450,10 +3631,16 @@ public final class StringTools {
 	}
 
 	/**
-	 * Append the specified string to the specified string buffer
-	 * with its first letter converted to lower case.
-	 * (Unless both the first and second letters are upper case,
-	 * in which case the string is returned unchanged.)
+	 * Append the specified string to the specified string buffer with its first
+	 * letter converted to lower case. (Unless both the first and second letters
+	 * are upper case, in which case the string is returned unchanged.)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void uncapitalizeOn(char[] string, Writer writer) {
 		if (stringNeedNotBeUncapitalized_(string)) {
@@ -2464,11 +3651,17 @@ public final class StringTools {
 	}
 
 	/**
-	 * Append the specified string to the specified string buffer
-	 * with its first letter converted to lower case.
-	 * (Unless both the first and second letters are upper case,
-	 * in which case the string is returned unchanged.)
+	 * Append the specified string to the specified string buffer with its first
+	 * letter converted to lower case. (Unless both the first and second letters
+	 * are upper case, in which case the string is returned unchanged.)
 	 * String#uncapitalizeOn(Writer)
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void uncapitalizeOn(String string, Writer writer) {
 		if (stringNeedNotBeUncapitalized_(string)) {
@@ -2482,9 +3675,16 @@ public final class StringTools {
 	// ********** #toString() helper methods **********
 
 	/**
-	 * Build a "standard" #toString() result for the specified object
-	 * and additional information:
-	 * 	ClassName[00F3EE42] (add'l info)
+	 * Build a "standard" #toString() result for the specified object and
+	 * additional information: ClassName[00F3EE42] (add'l info).
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @param additionalInfo
+	 *            the additional info
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String buildToStringFor(Object o, Object additionalInfo) {
 		StringBuilder sb = new StringBuilder();
@@ -2497,7 +3697,13 @@ public final class StringTools {
 
 	/**
 	 * Build a "standard" simple #toString() result for the specified object:
-	 * 	ClassName[00F3EE42]
+	 * ClassName[00F3EE42].
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String buildToStringFor(Object o) {
 		StringBuilder sb = new StringBuilder();
@@ -2506,9 +3712,15 @@ public final class StringTools {
 	}
 
 	/**
-	 * Append a "standard" simple #toString() for the specified object to
-	 * the specified string buffer:
-	 * 	ClassName[00F3EE42]
+	 * Append a "standard" simple #toString() for the specified object to the
+	 * specified string buffer: ClassName[00F3EE42].
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void buildSimpleToStringOn(Object o, StringBuffer sb) {
 		sb.append(ClassTools.toStringClassNameForObject(o));
@@ -2519,9 +3731,15 @@ public final class StringTools {
 	}
 
 	/**
-	 * Append a "standard" simple #toString() for the specified object to
-	 * the specified string builder:
-	 * 	ClassName[00F3EE42]
+	 * Append a "standard" simple #toString() for the specified object to the
+	 * specified string builder: ClassName[00F3EE42].
+	 *
+	 * @author mqfdy
+	 * @param o
+	 *            the o
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void buildSimpleToStringOn(Object o, StringBuilder sb) {
 		sb.append(ClassTools.toStringClassNameForObject(o));
@@ -2535,8 +3753,14 @@ public final class StringTools {
 	// ********** queries **********
 
 	/**
-	 * Return whether the specified string is null, empty, or contains
-	 * only whitespace characters.
+	 * Return whether the specified string is null, empty, or contains only
+	 * whitespace characters.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean stringIsEmpty(String string) {
 		if ((string == null) || (string.length() == 0)) {
@@ -2546,8 +3770,14 @@ public final class StringTools {
 	}
 
 	/**
-	 * Return whether the specified string is null, empty, or contains
-	 * only whitespace characters.
+	 * Return whether the specified string is null, empty, or contains only
+	 * whitespace characters.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean stringIsEmpty(char[] string) {
 		if ((string == null) || (string.length == 0)) {
@@ -2566,8 +3796,16 @@ public final class StringTools {
 	}
 
 	/**
-	 * Return whether the specified strings are equal, ignoring case.
-	 * Check for nulls.
+	 * Return whether the specified strings are equal, ignoring case. Check for
+	 * nulls.
+	 *
+	 * @author mqfdy
+	 * @param s1
+	 *            the s 1
+	 * @param s2
+	 *            the s 2
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean stringsAreEqualIgnoreCase(String s1, String s2) {
 		if ((s1 == null) && (s2 == null)) {
@@ -2580,8 +3818,16 @@ public final class StringTools {
 	}
 	
 	/**
-	 * Return whether the specified strings are equal, ignoring case.
-	 * Check for nulls.
+	 * Return whether the specified strings are equal, ignoring case. Check for
+	 * nulls.
+	 *
+	 * @author mqfdy
+	 * @param s1
+	 *            the s 1
+	 * @param s2
+	 *            the s 2
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean stringsAreEqualIgnoreCase(char[] s1, char[] s2) {
 		if ((s1 == null) && (s2 == null)) {
@@ -2604,6 +3850,14 @@ public final class StringTools {
 	/**
 	 * Return whether the specified string starts with the specified prefix,
 	 * ignoring case.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param prefix
+	 *            the prefix
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean stringStartsWithIgnoreCase(char[] string, char[] prefix) {
 		if (string.length < prefix.length) {
@@ -2620,6 +3874,14 @@ public final class StringTools {
 	/**
 	 * Return whether the specified string starts with the specified prefix,
 	 * ignoring case.
+	 *
+	 * @author mqfdy
+	 * @param string
+	 *            the string
+	 * @param prefix
+	 *            the prefix
+	 * @return true, if successful
+	 * @Date 2018-09-03 09:00
 	 */
 	public static boolean stringStartsWithIgnoreCase(String string, String prefix) {
 		return string.regionMatches(true, 0, prefix, 0, prefix.length());
@@ -2627,6 +3889,12 @@ public final class StringTools {
 
 	/**
 	 * Return whether the specified characters are are equal, ignoring case.
+	 *
+	 * @param c1
+	 *            the c 1
+	 * @param c2
+	 *            the c 2
+	 * @return true, if successful
 	 * @see java.lang.String#regionMatches(boolean, int, String, int, int)
 	 */
 	public static boolean charactersAreEqualIgnoreCase(char c1, char c2) {
@@ -2640,7 +3908,13 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "camel case" string to an "all caps" string:
-	 * "largeProject" -> "LARGE_PROJECT"
+	 * "largeProject" -> "LARGE_PROJECT".
+	 *
+	 * @author mqfdy
+	 * @param camelCaseString
+	 *            the camel case string
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertCamelCaseToAllCaps(String camelCaseString) {
 		int len = camelCaseString.length();
@@ -2652,7 +3926,13 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "camel case" string to an "all caps" string:
-	 * "largeProject" -> "LARGE_PROJECT"
+	 * "largeProject" -> "LARGE_PROJECT".
+	 *
+	 * @author mqfdy
+	 * @param camelCaseString
+	 *            the camel case string
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] convertCamelCaseToAllCaps(char[] camelCaseString) {
 		int len = camelCaseString.length;
@@ -2670,7 +3950,14 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "camel case" string to an "all caps" string:
-	 * "largeProject" -> "LARGE_PROJECT"
+	 * "largeProject" -> "LARGE_PROJECT".
+	 *
+	 * @author mqfdy
+	 * @param camelCaseString
+	 *            the camel case string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertCamelCaseToAllCapsOn(String camelCaseString, StringBuffer sb) {
 		int len = camelCaseString.length();
@@ -2681,7 +3968,14 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "camel case" string to an "all caps" string:
-	 * "largeProject" -> "LARGE_PROJECT"
+	 * "largeProject" -> "LARGE_PROJECT".
+	 *
+	 * @author mqfdy
+	 * @param camelCaseString
+	 *            the camel case string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertCamelCaseToAllCapsOn(char[] camelCaseString, StringBuffer sb) {
 		int len = camelCaseString.length;
@@ -2707,7 +4001,14 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "camel case" string to an "all caps" string:
-	 * "largeProject" -> "LARGE_PROJECT"
+	 * "largeProject" -> "LARGE_PROJECT".
+	 *
+	 * @author mqfdy
+	 * @param camelCaseString
+	 *            the camel case string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertCamelCaseToAllCapsOn(String camelCaseString, StringBuilder sb) {
 		int len = camelCaseString.length();
@@ -2718,7 +4019,14 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "camel case" string to an "all caps" string:
-	 * "largeProject" -> "LARGE_PROJECT"
+	 * "largeProject" -> "LARGE_PROJECT".
+	 *
+	 * @author mqfdy
+	 * @param camelCaseString
+	 *            the camel case string
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertCamelCaseToAllCapsOn(char[] camelCaseString, StringBuilder sb) {
 		int len = camelCaseString.length;
@@ -2744,7 +4052,14 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "camel case" string to an "all caps" string:
-	 * "largeProject" -> "LARGE_PROJECT"
+	 * "largeProject" -> "LARGE_PROJECT".
+	 *
+	 * @author mqfdy
+	 * @param camelCaseString
+	 *            the camel case string
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertCamelCaseToAllCapsOn(String camelCaseString, Writer writer) {
 		int len = camelCaseString.length();
@@ -2755,7 +4070,14 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "camel case" string to an "all caps" string:
-	 * "largeProject" -> "LARGE_PROJECT"
+	 * "largeProject" -> "LARGE_PROJECT".
+	 *
+	 * @author mqfdy
+	 * @param camelCaseString
+	 *            the camel case string
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertCamelCaseToAllCapsOn(char[] camelCaseString, Writer writer) {
 		int len = camelCaseString.length;
@@ -2781,8 +4103,16 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "camel case" string to an "all caps" string:
-	 * "largeProject" -> "LARGE_PROJECT"
-	 * Limit the resulting string to the specified maximum length.
+	 * "largeProject" -> "LARGE_PROJECT" Limit the resulting string to the
+	 * specified maximum length.
+	 *
+	 * @author mqfdy
+	 * @param camelCaseString
+	 *            the camel case string
+	 * @param maxLength
+	 *            the max length
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertCamelCaseToAllCaps(String camelCaseString, int maxLength) {
 		int len = camelCaseString.length();
@@ -2794,8 +4124,16 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "camel case" string to an "all caps" string:
-	 * "largeProject" -> "LARGE_PROJECT"
-	 * Limit the resulting string to the specified maximum length.
+	 * "largeProject" -> "LARGE_PROJECT" Limit the resulting string to the
+	 * specified maximum length.
+	 *
+	 * @author mqfdy
+	 * @param camelCaseString
+	 *            the camel case string
+	 * @param maxLength
+	 *            the max length
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] convertCamelCaseToAllCaps(char[] camelCaseString, int maxLength) {
 		int len = camelCaseString.length;
@@ -2813,8 +4151,17 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "camel case" string to an "all caps" string:
-	 * "largeProject" -> "LARGE_PROJECT"
-	 * Limit the resulting string to the specified maximum length.
+	 * "largeProject" -> "LARGE_PROJECT" Limit the resulting string to the
+	 * specified maximum length.
+	 *
+	 * @author mqfdy
+	 * @param camelCaseString
+	 *            the camel case string
+	 * @param maxLength
+	 *            the max length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertCamelCaseToAllCapsOn(String camelCaseString, int maxLength, StringBuffer sb) {
 		int len = camelCaseString.length();
@@ -2825,8 +4172,17 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "camel case" string to an "all caps" string:
-	 * "largeProject" -> "LARGE_PROJECT"
-	 * Limit the resulting string to the specified maximum length.
+	 * "largeProject" -> "LARGE_PROJECT" Limit the resulting string to the
+	 * specified maximum length.
+	 *
+	 * @author mqfdy
+	 * @param camelCaseString
+	 *            the camel case string
+	 * @param maxLength
+	 *            the max length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertCamelCaseToAllCapsOn(char[] camelCaseString, int maxLength, StringBuffer sb) {
 		int len = camelCaseString.length;
@@ -2858,8 +4214,17 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "camel case" string to an "all caps" string:
-	 * "largeProject" -> "LARGE_PROJECT"
-	 * Limit the resulting string to the specified maximum length.
+	 * "largeProject" -> "LARGE_PROJECT" Limit the resulting string to the
+	 * specified maximum length.
+	 *
+	 * @author mqfdy
+	 * @param camelCaseString
+	 *            the camel case string
+	 * @param maxLength
+	 *            the max length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertCamelCaseToAllCapsOn(String camelCaseString, int maxLength, StringBuilder sb) {
 		int len = camelCaseString.length();
@@ -2870,8 +4235,17 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "camel case" string to an "all caps" string:
-	 * "largeProject" -> "LARGE_PROJECT"
-	 * Limit the resulting string to the specified maximum length.
+	 * "largeProject" -> "LARGE_PROJECT" Limit the resulting string to the
+	 * specified maximum length.
+	 *
+	 * @author mqfdy
+	 * @param camelCaseString
+	 *            the camel case string
+	 * @param maxLength
+	 *            the max length
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertCamelCaseToAllCapsOn(char[] camelCaseString, int maxLength, StringBuilder sb) {
 		int len = camelCaseString.length;
@@ -2903,8 +4277,17 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "camel case" string to an "all caps" string:
-	 * "largeProject" -> "LARGE_PROJECT"
-	 * Limit the resulting string to the specified maximum length.
+	 * "largeProject" -> "LARGE_PROJECT" Limit the resulting string to the
+	 * specified maximum length.
+	 *
+	 * @author mqfdy
+	 * @param camelCaseString
+	 *            the camel case string
+	 * @param maxLength
+	 *            the max length
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertCamelCaseToAllCapsOn(String camelCaseString, int maxLength, Writer writer) {
 		int len = camelCaseString.length();
@@ -2915,8 +4298,17 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "camel case" string to an "all caps" string:
-	 * "largeProject" -> "LARGE_PROJECT"
-	 * Limit the resulting string to the specified maximum length.
+	 * "largeProject" -> "LARGE_PROJECT" Limit the resulting string to the
+	 * specified maximum length.
+	 *
+	 * @author mqfdy
+	 * @param camelCaseString
+	 *            the camel case string
+	 * @param maxLength
+	 *            the max length
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertCamelCaseToAllCapsOn(char[] camelCaseString, int maxLength, Writer writer) {
 		int len = camelCaseString.length;
@@ -2980,8 +4372,13 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "underscore" string to a "camel case" string:
-	 * "LARGE_PROJECT" -> "LargeProject"
-	 * Capitalize the first letter.
+	 * "LARGE_PROJECT" -> "LargeProject" Capitalize the first letter.
+	 *
+	 * @author mqfdy
+	 * @param underscoreString
+	 *            the underscore string
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertUnderscoresToCamelCase(String underscoreString) {
 		return convertUnderscoresToCamelCase(underscoreString, true);
@@ -2989,8 +4386,13 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "underscore" string to a "camel case" string:
-	 * "LARGE_PROJECT" -> "LargeProject"
-	 * Capitalize the first letter.
+	 * "LARGE_PROJECT" -> "LargeProject" Capitalize the first letter.
+	 *
+	 * @author mqfdy
+	 * @param underscoreString
+	 *            the underscore string
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] convertUnderscoresToCamelCase(char[] underscoreString) {
 		return convertUnderscoresToCamelCase(underscoreString, true);
@@ -2998,8 +4400,15 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "underscore" string to a "camel case" string:
-	 * "LARGE_PROJECT" -> "largeProject"
-	 * Optionally capitalize the first letter.
+	 * "LARGE_PROJECT" -> "largeProject" Optionally capitalize the first letter.
+	 *
+	 * @author mqfdy
+	 * @param underscoreString
+	 *            the underscore string
+	 * @param capitalizeFirstLetter
+	 *            the capitalize first letter
+	 * @return the string
+	 * @Date 2018-09-03 09:00
 	 */
 	public static String convertUnderscoresToCamelCase(String underscoreString, boolean capitalizeFirstLetter) {
 		int len = underscoreString.length();
@@ -3011,8 +4420,15 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "underscore" string to a "camel case" string:
-	 * "LARGE_PROJECT" -> "largeProject"
-	 * Optionally capitalize the first letter.
+	 * "LARGE_PROJECT" -> "largeProject" Optionally capitalize the first letter.
+	 *
+	 * @author mqfdy
+	 * @param underscoreString
+	 *            the underscore string
+	 * @param capitalizeFirstLetter
+	 *            the capitalize first letter
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
 	 */
 	public static char[] convertUnderscoresToCamelCase(char[] underscoreString, boolean capitalizeFirstLetter) {
 		int len = underscoreString.length;
@@ -3030,8 +4446,16 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "underscore" string to a "camel case" string:
-	 * "LARGE_PROJECT" -> "largeProject"
-	 * Optionally capitalize the first letter.
+	 * "LARGE_PROJECT" -> "largeProject" Optionally capitalize the first letter.
+	 *
+	 * @author mqfdy
+	 * @param underscoreString
+	 *            the underscore string
+	 * @param capitalizeFirstLetter
+	 *            the capitalize first letter
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertUnderscoresToCamelCaseOn(String underscoreString, boolean capitalizeFirstLetter, StringBuffer sb) {
 		int len = underscoreString.length();
@@ -3042,8 +4466,16 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "underscore" string to a "camel case" string:
-	 * "LARGE_PROJECT" -> "largeProject"
-	 * Optionally capitalize the first letter.
+	 * "LARGE_PROJECT" -> "largeProject" Optionally capitalize the first letter.
+	 *
+	 * @author mqfdy
+	 * @param underscoreString
+	 *            the underscore string
+	 * @param capitalizeFirstLetter
+	 *            the capitalize first letter
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertUnderscoresToCamelCaseOn(char[] underscoreString, boolean capitalizeFirstLetter, StringBuffer sb) {
 		int len = underscoreString.length;
@@ -3081,8 +4513,16 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "underscore" string to a "camel case" string:
-	 * "LARGE_PROJECT" -> "largeProject"
-	 * Optionally capitalize the first letter.
+	 * "LARGE_PROJECT" -> "largeProject" Optionally capitalize the first letter.
+	 *
+	 * @author mqfdy
+	 * @param underscoreString
+	 *            the underscore string
+	 * @param capitalizeFirstLetter
+	 *            the capitalize first letter
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertUnderscoresToCamelCaseOn(String underscoreString, boolean capitalizeFirstLetter, StringBuilder sb) {
 		int len = underscoreString.length();
@@ -3093,8 +4533,16 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "underscore" string to a "camel case" string:
-	 * "LARGE_PROJECT" -> "largeProject"
-	 * Optionally capitalize the first letter.
+	 * "LARGE_PROJECT" -> "largeProject" Optionally capitalize the first letter.
+	 *
+	 * @author mqfdy
+	 * @param underscoreString
+	 *            the underscore string
+	 * @param capitalizeFirstLetter
+	 *            the capitalize first letter
+	 * @param sb
+	 *            the sb
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertUnderscoresToCamelCaseOn(char[] underscoreString, boolean capitalizeFirstLetter, StringBuilder sb) {
 		int len = underscoreString.length;
@@ -3132,8 +4580,16 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "underscore" string to a "camel case" string:
-	 * "LARGE_PROJECT" -> "largeProject"
-	 * Optionally capitalize the first letter.
+	 * "LARGE_PROJECT" -> "largeProject" Optionally capitalize the first letter.
+	 *
+	 * @author mqfdy
+	 * @param underscoreString
+	 *            the underscore string
+	 * @param capitalizeFirstLetter
+	 *            the capitalize first letter
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertUnderscoresToCamelCaseOn(String underscoreString, boolean capitalizeFirstLetter, Writer writer) {
 		int len = underscoreString.length();
@@ -3144,8 +4600,16 @@ public final class StringTools {
 
 	/**
 	 * Convert the specified "underscore" string to a "camel case" string:
-	 * "LARGE_PROJECT" -> "largeProject"
-	 * Optionally capitalize the first letter.
+	 * "LARGE_PROJECT" -> "largeProject" Optionally capitalize the first letter.
+	 *
+	 * @author mqfdy
+	 * @param underscoreString
+	 *            the underscore string
+	 * @param capitalizeFirstLetter
+	 *            the capitalize first letter
+	 * @param writer
+	 *            the writer
+	 * @Date 2018-09-03 09:00
 	 */
 	public static void convertUnderscoresToCamelCaseOn(char[] underscoreString, boolean capitalizeFirstLetter, Writer writer) {
 		int len = underscoreString.length;
@@ -3184,6 +4648,15 @@ public final class StringTools {
 
 	// ********** convenience **********
 
+	/**
+	 * Convert to char array.
+	 *
+	 * @author mqfdy
+	 * @param sb
+	 *            the sb
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
+	 */
 	public static char[] convertToCharArray(StringBuffer sb) {
 		int len = sb.length();
 		char[] result = new char[len];
@@ -3191,6 +4664,15 @@ public final class StringTools {
 		return result;
 	}
 
+	/**
+	 * Convert to char array.
+	 *
+	 * @author mqfdy
+	 * @param sb
+	 *            the sb
+	 * @return the char[]
+	 * @Date 2018-09-03 09:00
+	 */
 	public static char[] convertToCharArray(StringBuilder sb) {
 		int len = sb.length();
 		char[] result = new char[len];

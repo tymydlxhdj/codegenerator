@@ -15,8 +15,13 @@ import java.util.NoSuchElementException;
 import com.mqfdy.code.springboot.utilities.internal.StringTools;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * A <code>NullEnumeration</code> is just that.
+ *
+ * @author mqfdy
+ * @param <E>
+ *            the element type
  */
 public final class EmptyEnumeration<E>
 	implements Enumeration<E>
@@ -28,6 +33,12 @@ public final class EmptyEnumeration<E>
 
 	/**
 	 * Return the singleton.
+	 *
+	 * @author mqfdy
+	 * @param <T>
+	 *            the generic type
+	 * @return the enumeration
+	 * @Date 2018-09-03 09:00
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> Enumeration<T> instance() {

@@ -23,6 +23,7 @@ import java.util.Map;
 import org.apache.velocity.exception.VelocityException;
 import org.apache.velocity.runtime.log.Log;
 
+// TODO: Auto-generated Javadoc
 /**
  * SetExecutor that is smart about Maps. If it detects one, it does not
  * use Reflection but a cast to access the setter. 
@@ -34,8 +35,20 @@ import org.apache.velocity.runtime.log.Log;
 public class MapSetExecutor
         extends SetExecutor 
 {
+    
+    /** The property. */
     private final String property;
 
+    /**
+	 * Instantiates a new map set executor.
+	 *
+	 * @param log
+	 *            the log
+	 * @param clazz
+	 *            the clazz
+	 * @param property
+	 *            the property
+	 */
     public MapSetExecutor(final Log log, final Class clazz, final String property)
     {
         this.log = log;
@@ -43,6 +56,14 @@ public class MapSetExecutor
         discover(clazz);
     }
 
+    /**
+	 * Discover.
+	 *
+	 * @author mqfdy
+	 * @param clazz
+	 *            the clazz
+	 * @Date 2018-09-03 09:00
+	 */
     protected void discover (final Class clazz)
     {
         if (property != null && Map.class.isAssignableFrom(clazz))
@@ -67,6 +88,12 @@ public class MapSetExecutor
         }
     }
 
+    /**
+     * @see org.apache.velocity.runtime.parser.node.SetExecutor#execute(java.lang.Object, java.lang.Object)
+     * @param o
+     * @param arg
+     * @return MapSetExecutor
+     */
     public Object execute(final Object o, final Object arg)
     {
         return ((Map) o).put(property, arg);

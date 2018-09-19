@@ -1,5 +1,6 @@
 package org.apache.velocity.runtime.resource.util;
 
+// TODO: Auto-generated Javadoc
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -30,18 +31,28 @@ package org.apache.velocity.runtime.resource.util;
  */
 public interface StringResourceRepository
 {
+    
     /**
-     * get the string resource that is stored with given key
-     * @param name String name to retrieve from the repository.
-     * @return A StringResource containing the template.
-     */
+	 * get the string resource that is stored with given key.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            String name to retrieve from the repository.
+	 * @return A StringResource containing the template.
+	 * @Date 2018-9-3 11:38:31
+	 */
     StringResource getStringResource(String name);
 
     /**
-     * add a string resource with given key.
-     * @param name The String name to store the template under.
-     * @param body A String containing a template.
-     */
+	 * add a string resource with given key.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            The String name to store the template under.
+	 * @param body
+	 *            A String containing a template.
+	 * @Date 2018-9-3 11:38:31
+	 */
     void putStringResource(String name, String body);
 
     /**
@@ -54,23 +65,32 @@ public interface StringResourceRepository
     void putStringResource(String name, String body, String encoding);
 
     /**
-     * delete a string resource with given key.
-     * @param name The string name to remove from the repository.
-     */
+	 * delete a string resource with given key.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            The string name to remove from the repository.
+	 * @Date 2018-9-3 11:38:31
+	 */
     void removeStringResource(String name);
     
     /**
-     * Sets the default encoding of the repository. Encodings can also be stored per
-     * template string. The default implementation does this correctly.
-     * 
-     * @param encoding The encoding to use.
-     */
+	 * Sets the default encoding of the repository. Encodings can also be stored
+	 * per template string. The default implementation does this correctly.
+	 *
+	 * @author mqfdy
+	 * @param encoding
+	 *            The encoding to use.
+	 * @Date 2018-9-3 11:38:31
+	 */
     void setEncoding(String encoding);
     
     /**
-     * Returns the current encoding of this repository.
-     * 
-     * @return The current encoding of this repository.
-     */
+	 * Returns the current encoding of this repository.
+	 *
+	 * @author mqfdy
+	 * @return The current encoding of this repository.
+	 * @Date 2018-9-3 11:38:31
+	 */
     String getEncoding();
 }

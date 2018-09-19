@@ -6,28 +6,26 @@ import java.util.List;
 
 import org.dom4j.Element;
 
+// TODO: Auto-generated Javadoc
 /**
- * 数据传输对象
- * 
+ * 数据传输对象.
+ *
  * @author mqfdy
- * 
  */
 public class DataTransferObject extends AbstractModelElement {
-	/**
-	 * 所属包
-	 */
+	
+	/** 所属包. */
 	private ModelPackage belongPackage;
 
-	/**
-	 * 属性列表
-	 */
+	/** 属性列表. */
 	private List<Property> properties;
 
-	/**
-	 * 版本信息
-	 */
+	/** 版本信息. */
 	private VersionInfo versionInfo;
 
+	/**
+	 * Instantiates a new data transfer object.
+	 */
 	public DataTransferObject() {
 
 		properties = new ArrayList<Property>(50);
@@ -35,9 +33,12 @@ public class DataTransferObject extends AbstractModelElement {
 	}
 
 	/**
-	 * 通过 XML 构造 DataTransferObject
-	 * 
+	 * 通过 XML 构造 DataTransferObject.
+	 *
 	 * @param dtoElement
+	 *            the dto element
+	 * @param bom
+	 *            the bom
 	 */
 	@SuppressWarnings("unchecked")
 	public DataTransferObject(Element dtoElement, BusinessObjectModel bom) {
@@ -67,6 +68,10 @@ public class DataTransferObject extends AbstractModelElement {
 		}
 	}
 
+	/**
+	 * @param dtosElement
+	 * @return
+	 */
 	public Element generateXmlElement(Element dtosElement) {
 		Element dtoElement = dtosElement.addElement("DTO");
 		this.generateBasicAttributes(dtoElement);
@@ -91,42 +96,104 @@ public class DataTransferObject extends AbstractModelElement {
 		return dtoElement;
 	}
 
+	/**
+	 * @return
+	 */
 	public int getPriority() {
 		return IModelElement.PRIORITY_DTO;
 	}
 
+	/**
+	 * Gets the properties.
+	 *
+	 * @author mqfdy
+	 * @return the properties
+	 * @Date 2018-09-03 09:00
+	 */
 	public List<Property> getProperties() {
 		return properties;
 	}
 
+	/**
+	 * Sets the properties.
+	 *
+	 * @author mqfdy
+	 * @param properties
+	 *            the new properties
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setProperties(List<Property> properties) {
 		this.properties = properties;
 	}
 
+	/**
+	 * Adds the property.
+	 *
+	 * @author mqfdy
+	 * @param property
+	 *            the property
+	 * @Date 2018-09-03 09:00
+	 */
 	public void addProperty(DTOProperty property) {
 		properties.add(property);
 	}
 
+	/**
+	 * Gets the belong package.
+	 *
+	 * @author mqfdy
+	 * @return the belong package
+	 * @Date 2018-09-03 09:00
+	 */
 	public ModelPackage getBelongPackage() {
 		return belongPackage;
 	}
 
+	/**
+	 * Sets the belong package.
+	 *
+	 * @author mqfdy
+	 * @param belongPackage
+	 *            the new belong package
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setBelongPackage(ModelPackage belongPackage) {
 		this.belongPackage = belongPackage;
 	}
 
+	/**
+	 * @return
+	 */
 	public AbstractModelElement getParent() {
 		return this.belongPackage.getEntityPackage();
 	}
 
+	/**
+	 * @return
+	 */
 	public List<Property> getChildren() {
 		return this.properties;
 	}
 
+	/**
+	 * Gets the version info.
+	 *
+	 * @author mqfdy
+	 * @return the version info
+	 * @Date 2018-09-03 09:00
+	 */
 	public VersionInfo getVersionInfo() {
 		return versionInfo;
 	}
 
+	/**
+	 * Sets the version info.
+	 *
+	 * @author mqfdy
+	 * @param versionInfo
+	 *            the new version info
+	 * @Date 2018-09-03 09:00
+	 */
 	public void setVersionInfo(VersionInfo versionInfo) {
 		this.versionInfo = versionInfo;
 	}

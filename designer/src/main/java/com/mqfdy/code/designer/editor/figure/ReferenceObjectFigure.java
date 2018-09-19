@@ -19,18 +19,35 @@ import com.mqfdy.code.model.PKProperty;
 import com.mqfdy.code.model.Property;
 import com.mqfdy.code.model.ReferenceObject;
 
+// TODO: Auto-generated Javadoc
 /**
+ * The Class ReferenceObjectFigure.
+ *
+ * @author mqfdy
  * @title:businessClass对象的界面
  * @description:
- * @author mqfdy
  */
 
 public class ReferenceObjectFigure extends NodeFigure {
+	
+	/** The name label. */
 	protected Label nameLabel;
+	
+	/** The pros figure. */
 	// protected Color bgColor;
 	protected Figure prosFigure;
+	
+	/** The opers figure. */
 	protected Figure opersFigure;
 
+	/**
+	 * Instantiates a new reference object figure.
+	 *
+	 * @param name
+	 *            the name
+	 * @param businessClass
+	 *            the business class
+	 */
 	public ReferenceObjectFigure(String name, ReferenceObject businessClass) {
 
 		// super();
@@ -44,6 +61,14 @@ public class ReferenceObjectFigure extends NodeFigure {
 		paintFigure(name, businessClass);
 	}
 
+	/**
+	 * Paint figure.
+	 *
+	 * @author mqfdy
+	 * @param g
+	 *            the g
+	 * @Date 2018-09-03 09:00
+	 */
 	public void paintFigure(Graphics g) {
 		super.paintFigure(g);
 		Color oldForeground = g.getForegroundColor();
@@ -55,6 +80,16 @@ public class ReferenceObjectFigure extends NodeFigure {
 		g.setBackgroundColor(oldBackground);
 	}
 
+	/**
+	 * Paint figure.
+	 *
+	 * @author mqfdy
+	 * @param name
+	 *            the name
+	 * @param businessClass
+	 *            the business class
+	 * @Date 2018-09-03 09:00
+	 */
 	public void paintFigure(String name, ReferenceObject businessClass) {
 		Label bu = new Label("<<reference>>");
 		// bu.setFont(JFaceResources.getFontRegistry().getBold(
@@ -125,9 +160,11 @@ public class ReferenceObjectFigure extends NodeFigure {
 
 	/**
 	 * Set the name of the class or interface.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param newName
 	 *            The new name.
+	 * @Date 2018-09-03 09:00
 	 */
 	public void setName(String newName) {
 		if (nameLabel == null) {
@@ -139,23 +176,27 @@ public class ReferenceObjectFigure extends NodeFigure {
 	}
 
 	/**
-	 * Return the name of class or interface
-	 * 
+	 * Return the name of class or interface.
+	 *
+	 * @author mqfdy
 	 * @return the text of the nameLabel
+	 * @Date 2018-09-03 09:00
 	 */
 	public String getName() {
 		return nameLabel.getText();
 	}
 
 	/**
-	 * Adds a new Figure with the given constraints to the TableFigure
-	 * 
+	 * Adds a new Figure with the given constraints to the TableFigure.
+	 *
+	 * @author mqfdy
 	 * @param figure
 	 *            the figure to be added
 	 * @param constraint
 	 *            the constraint used on the figure
 	 * @param index
 	 *            index of insertion
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void add(IFigure figure, Object constraint, int index) {
@@ -172,9 +213,11 @@ public class ReferenceObjectFigure extends NodeFigure {
 	 * Remove a subfigure from its parent. If subfigure is ColumnFigure
 	 * remove-action is performed here. Otherwise the remove action is performed
 	 * in NodeFigure.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @param figure
 	 *            the figure to be removed
+	 * @Date 2018-09-03 09:00
 	 */
 	@Override
 	public void remove(IFigure figure) {
@@ -188,13 +231,18 @@ public class ReferenceObjectFigure extends NodeFigure {
 
 	/**
 	 * Return nameLabel of the TableFigure.
-	 * 
+	 *
+	 * @author mqfdy
 	 * @return Returns the nameLabel.
+	 * @Date 2018-09-03 09:00
 	 */
 	public Label getNameLabel() {
 		return nameLabel;
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	public void emptyFigure() {
 
