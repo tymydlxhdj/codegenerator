@@ -37,8 +37,10 @@ public class ValidatorGenerator extends BOMGenerator {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileName()
+	 * Gets the file name.
+	 *
 	 * @return ValidatorGenerator
+	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileName()
 	 */
 	@Override
 	public String getFileName() {
@@ -46,26 +48,32 @@ public class ValidatorGenerator extends BOMGenerator {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileNameWithoutExtension()
+	 * Gets the file name without extension.
+	 *
 	 * @return ValidatorGenerator
+	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileNameWithoutExtension()
 	 */
 	@Override
-	protected String getFileNameWithoutExtension() {
+	public String getFileNameWithoutExtension() {
 		return className;
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileExtension()
+	 * Gets the file extension.
+	 *
 	 * @return ValidatorGenerator
+	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileExtension()
 	 */
 	@Override
-	protected String getFileExtension() {
+	public String getFileExtension() {
 		return JAVA_FILE_EXTENSION;
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getTemplatePath()
+	 * Gets the template path.
+	 *
 	 * @return ValidatorGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getTemplatePath()
 	 */
 	@Override
 	protected String getTemplatePath() {
@@ -73,8 +81,10 @@ public class ValidatorGenerator extends BOMGenerator {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getPackageExtention()
+	 * Gets the package extention.
+	 *
 	 * @return ValidatorGenerator
+	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getPackageExtention()
 	 */
 	@Override
 	public String getPackageExtention() {
@@ -82,8 +92,10 @@ public class ValidatorGenerator extends BOMGenerator {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileNameSuffix()
+	 * Gets the file name suffix.
+	 *
 	 * @return ValidatorGenerator
+	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileNameSuffix()
 	 */
 	@Override
 	public String getFileNameSuffix() {
@@ -91,8 +103,10 @@ public class ValidatorGenerator extends BOMGenerator {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileNamePrefix()
+	 * Gets the file name prefix.
+	 *
 	 * @return ValidatorGenerator
+	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileNamePrefix()
 	 */
 	@Override
 	public String getFileNamePrefix() {

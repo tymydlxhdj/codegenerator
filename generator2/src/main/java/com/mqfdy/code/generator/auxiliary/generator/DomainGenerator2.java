@@ -33,17 +33,21 @@ public class DomainGenerator2 extends BOMGenerator {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileExtension()
+	 * Gets the file extension.
+	 *
 	 * @return DomainGenerator2
+	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileExtension()
 	 */
 	@Override
-	protected String getFileExtension() {
+	public String getFileExtension() {
 		return JAVA_FILE_EXTENSION;
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getTemplatePath()
+	 * Gets the template path.
+	 *
 	 * @return DomainGenerator2
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getTemplatePath()
 	 */
 	@Override
 	protected String getTemplatePath() {
@@ -51,8 +55,10 @@ public class DomainGenerator2 extends BOMGenerator {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getPackageExtention()
+	 * Gets the package extention.
+	 *
 	 * @return DomainGenerator2
+	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getPackageExtention()
 	 */
 	@Override
 	public String getPackageExtention() {
@@ -60,8 +66,10 @@ public class DomainGenerator2 extends BOMGenerator {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileNameSuffix()
+	 * Gets the file name suffix.
+	 *
 	 * @return DomainGenerator2
+	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileNameSuffix()
 	 */
 	@Override
 	public String getFileNameSuffix() {
@@ -69,8 +77,10 @@ public class DomainGenerator2 extends BOMGenerator {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileNamePrefix()
+	 * Gets the file name prefix.
+	 *
 	 * @return DomainGenerator2
+	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileNamePrefix()
 	 */
 	@Override
 	public String getFileNamePrefix() {

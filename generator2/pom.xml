@@ -5,13 +5,34 @@
     <artifactId>codegenerator</artifactId>
     <version>0.0.1</version>
   </parent>
-  <artifactId>generator2</artifactId>
+  <artifactId>com.mqfdy.code.generator</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>eclipse-plugin</packaging>
    <build>
-    <plugins>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-source-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </build>
+ 	<plugins>
+ 		 <!-- 将jar包copy到指定的目录下 -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-antrun-plugin</artifactId>
+           <executions>
+                <execution>
+                    <id>copy</id>
+                    <phase>package</phase>
+                   <configuration>
+                         <tasks>
+                            <copy todir="${pluginspath}">
+                                <fileset dir="target">
+                                        <include name="${project.artifactId}-${project.version}.jar" />
+                                    </fileset>
+                            </copy>
+                          </tasks>
+                     </configuration>
+                  <goals>
+                     <goal>run</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+ 	</plugins>
+ </build>
 </project>

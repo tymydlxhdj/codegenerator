@@ -89,10 +89,13 @@ public class MapGetExecutor
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.AbstractExecutor#execute(java.lang.Object)
-     * @param o
-     * @return MapGetExecutor
-     */
+	 * Execute.
+	 *
+	 * @param o
+	 *            the o
+	 * @return MapGetExecutor
+	 * @see org.apache.velocity.runtime.parser.node.AbstractExecutor#execute(java.lang.Object)
+	 */
     public Object execute(final Object o)
     {
         return ((Map) o).get(property);

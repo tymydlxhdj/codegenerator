@@ -1,0 +1,108 @@
+#set($table=$ptable.getTable())
+${packageStr}
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.sql.Timestamp;
+import java.sql.Time;
+
+import com.mqfdy.code.rest.annotation.attribute.AttributeType;
+import com.mqfdy.code.rest.annotation.attribute.EditorType;
+import com.mqfdy.code.rest.annotation.attribute.ViewAttribute;
+import com.mqfdy.code.rest.support.ParentVO;
+
+/**
+ * ${table.getJavaName()}的VO类
+ *
+ * @author ${author} 
+ */
+public class ${table.getJavaName()}VO extends ParentVO implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+#foreach($key in ${table.columns.keySet()})
+#set ($col = ${table.columns.get($key)})
+##定义字段的属性类型
+##***********************属性的声明   开始  
+#set ( $cfc=$col.javaName )
+#set ($invalue=${strings.lowercaseFirstLetter($cfc)})
+#set ($cfc_get=${strings.capitalizeFirstLetter($cfc)})
+#set ( $cjtype = $col.javaType )
+#set($caption = "")
+    /** 
+     * 属性#if(""==${col.comment})${col.javaName}#else${col.comment}#end$separator
+     */  
+    @ViewAttribute(name ="${col.javaName}",caption="#if(""==${col.comment})${col.javaName}#else${col.comment}#end", editor=EditorType.${col.editorType},nullable =${col.nullable},readOnly=${col.readOnly}, type=${col.voType})
+    private $cjtype $invalue;    
+##***********************属性的声明   结束
+#end
+    /**
+     * ${table.getJavaName()}VO构造函数
+     */
+    public ${table.getJavaName()}VO() {
+        super();
+    } 
+   
+#foreach($key in ${table.columns.keySet()})
+#set ($col = ${table.columns.get($key)})
+#set ( $cfc=$col.javaName )
+#set ($invalue=${strings.lowercaseFirstLetter($cfc)})
+#set ($cfc_get=${strings.capitalizeFirstLetter($cfc)})
+#set ( $cjtype = $col.javaType )
+#if(${col.primaryKey})
+	 /**
+     * ${table.getJavaName()}VO完整的构造函数
+     */  
+    public ${table.getJavaName()}VO($cjtype $invalue){
+        this.$invalue = $invalue;
+    }
+#end    
+##***********************属性的get方法  开始   
+    /**
+     * #if(""==${col.comment})${col.javaName}#else${col.comment}#end的get方法
+     * @return $invalue
+     */
+    public $cjtype get${cfc_get}(){
+        return $invalue;
+    }
+##***********************属性的get方法   结束
+##***********************属性的set方法 开始
+    /**
+     * #if(""==${col.comment})${col.javaName}#else${col.comment}#end的set方法
+     * @param $invalue$separator
+     */
+    public void set${cfc_get}($col.JavaType $invalue){
+#if($col.primaryKey && $col.JavaType == "String")
+        if($invalue != null && ${invalue}.trim().length() == 0){
+        	this.$invalue = null;
+        }else{
+        	this.$invalue = $invalue;
+        }
+#else
+		this.$invalue = $invalue;
+#end 	
+	} 
+##***********************属性的set方法 结束
+#end   
+
+    /**
+     * toString方法
+     * @return String
+     */
+	public String toString(){
+
+		  return new StringBuffer()
+	  	#foreach($key in ${table.columns.keySet()})
+		#set ($col = ${table.columns.get($key)})
+		#set ( $cfc=$col.javaName )
+		#set ($cfc_get=${strings.capitalizeFirstLetter($cfc)})
+		.append("${col.name}"+":"+get${cfc_get}())
+		#end
+        .toString(); 
+			
+    } 
+   
+
+
+}

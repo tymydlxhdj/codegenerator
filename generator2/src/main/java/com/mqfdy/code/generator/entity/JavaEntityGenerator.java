@@ -65,8 +65,10 @@ public class JavaEntityGenerator extends AbstractGenerator {
 	} 
 
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileNameWithoutExtension()
+	 * Gets the file name without extension.
+	 *
 	 * @return JavaEntityGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileNameWithoutExtension()
 	 */
 	@Override
 	final protected String getFileNameWithoutExtension() {
@@ -74,8 +76,10 @@ public class JavaEntityGenerator extends AbstractGenerator {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.IGenerator#getOutputFilePath()
+	 * Gets the output file path.
+	 *
 	 * @return JavaEntityGenerator
+	 * @see com.mqfdy.code.generator.model.IGenerator#getOutputFilePath()
 	 */
 	public String getOutputFilePath() {
 		return getOutputFolderPath() + fileName + getFileExtension();
@@ -123,8 +127,10 @@ public class JavaEntityGenerator extends AbstractGenerator {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getSourceMap()
+	 * Gets the source map.
+	 *
 	 * @return JavaEntityGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getSourceMap()
 	 */
 	@Override
 	public Map<String, Object> getSourceMap() {
@@ -134,8 +140,10 @@ public class JavaEntityGenerator extends AbstractGenerator {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileExtension()
+	 * Gets the file extension.
+	 *
 	 * @return JavaEntityGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileExtension()
 	 */
 	@Override
 	final protected String getFileExtension() {
@@ -143,8 +151,10 @@ public class JavaEntityGenerator extends AbstractGenerator {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getTemplatePath()
+	 * Gets the template path.
+	 *
 	 * @return JavaEntityGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getTemplatePath()
 	 */
 	@Override
 	public String getTemplatePath() {
@@ -172,8 +182,10 @@ public class JavaEntityGenerator extends AbstractGenerator {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.IGenerator#getFileName()
+	 * Gets the file name.
+	 *
 	 * @return JavaEntityGenerator
+	 * @see com.mqfdy.code.generator.model.IGenerator#getFileName()
 	 */
 	public String getFileName() {
 		return this.fileName;

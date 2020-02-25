@@ -605,9 +605,11 @@ public class SimpleNode implements Node
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.Node#getTemplateName()
-     * @return SimpleNode
-     */
+	 * Gets the template name.
+	 *
+	 * @return SimpleNode
+	 * @see org.apache.velocity.runtime.parser.node.Node#getTemplateName()
+	 */
     public String getTemplateName()
     {
       return templateName;

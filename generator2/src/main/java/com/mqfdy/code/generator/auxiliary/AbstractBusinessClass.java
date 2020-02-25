@@ -91,7 +91,10 @@ public abstract class AbstractBusinessClass extends AbstractJavaClass {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractJavaClass#init() AbstractBusinessClass
+	 * Inits the.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractJavaClass#init()
+	 *      AbstractBusinessClass
 	 */
 	public void init(){
 		methodSet = new HashSet<String>();
@@ -273,16 +276,21 @@ public abstract class AbstractBusinessClass extends AbstractJavaClass {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractJavaClass#getOutputFolderPath()
+	 * Gets the output folder path.
+	 *
 	 * @return AbstractBusinessClass
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractJavaClass#getOutputFolderPath()
 	 */
 	public String getOutputFolderPath() {
 		return outputFolderPath;
 	}
 	
 	/**
+	 * Sets the output folder path.
+	 *
+	 * @param outputFolderPath
+	 *            AbstractBusinessClass
 	 * @see com.mqfdy.code.generator.auxiliary.AbstractJavaClass#setOutputFolderPath(java.lang.String)
-	 * @param outputFolderPath AbstractBusinessClass
 	 */
 	public void setOutputFolderPath(String outputFolderPath) {
 		this.outputFolderPath = outputFolderPath;

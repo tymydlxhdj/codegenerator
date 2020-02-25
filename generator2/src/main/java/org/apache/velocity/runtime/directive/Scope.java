@@ -91,19 +91,24 @@ public class Scope extends AbstractMap
     }
 
     /**
-     * @see java.util.AbstractMap#entrySet()
-     * @return Scope
-     */
+	 * Entry set.
+	 *
+	 * @return Scope
+	 * @see java.util.AbstractMap#entrySet()
+	 */
     public Set entrySet()
     {
         return getStorage().entrySet();
     }
 
     /**
-     * @see java.util.AbstractMap#get(java.lang.Object)
-     * @param key
-     * @return Scope
-     */
+	 * Gets the.
+	 *
+	 * @param key
+	 *            the key
+	 * @return Scope
+	 * @see java.util.AbstractMap#get(java.lang.Object)
+	 */
     public Object get(Object key)
     {
         Object o = super.get(key);
@@ -115,11 +120,15 @@ public class Scope extends AbstractMap
     }
 
     /**
-     * @see java.util.AbstractMap#put(java.lang.Object, java.lang.Object)
-     * @param key
-     * @param value
-     * @return Scope
-     */
+	 * Put.
+	 *
+	 * @param key
+	 *            the key
+	 * @param value
+	 *            the value
+	 * @return Scope
+	 * @see java.util.AbstractMap#put(java.lang.Object, java.lang.Object)
+	 */
     public Object put(Object key, Object value)
     {
         return getStorage().put(key, value);
@@ -369,9 +378,11 @@ public class Scope extends AbstractMap
         }
 
         /**
-         * @see java.lang.Object#toString()
-         * @return Info
-         */
+		 * To string.
+		 *
+		 * @return Info
+		 * @see java.lang.Object#toString()
+		 */
         public String toString()
         {
             StringBuffer sb = new StringBuffer();

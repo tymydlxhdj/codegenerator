@@ -55,7 +55,7 @@ public abstract class  BOMGenerator extends EntityGenerator {
 	 * @Date 2018-9-3 11:38:30
 	 */
 	@Override
-	protected String getOutputFolderPath() {
+	public String getOutputFolderPath() {
 		
 		String sceneName = persistenceModel.getScenceName().toLowerCase(Locale.getDefault());
 			
@@ -74,28 +74,34 @@ public abstract class  BOMGenerator extends EntityGenerator {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.IGenerator#getFileName()
+	 * Gets the file name.
+	 *
 	 * @return BOMGenerator
+	 * @see com.mqfdy.code.generator.model.IGenerator#getFileName()
 	 */
 	public String getFileName() {
 		return getFileNamePrefix() + persistenceModel.getJavaName()+getFileNameSuffix();
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.entity.EntityGenerator#getFileNameWithoutExtension()
+	 * Gets the file name without extension.
+	 *
 	 * @return BOMGenerator
+	 * @see com.mqfdy.code.generator.entity.EntityGenerator#getFileNameWithoutExtension()
 	 */
 	@Override
-	protected String getFileNameWithoutExtension() {
+	public String getFileNameWithoutExtension() {
 		return getFileNamePrefix() + persistenceModel.getJavaName()+getFileNameSuffix();
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileExtension()
+	 * Gets the file extension.
+	 *
 	 * @return BOMGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileExtension()
 	 */
 	@Override
-	protected String getFileExtension() {
+	public String getFileExtension() {
 		return JAVA_FILE_EXTENSION;
 	}
 	

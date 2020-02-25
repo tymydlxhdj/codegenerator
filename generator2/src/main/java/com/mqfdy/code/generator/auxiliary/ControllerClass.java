@@ -70,7 +70,10 @@ public class ControllerClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initPackage() ControllerClass
+	 * Inits the package.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initPackage()
+	 *      ControllerClass
 	 */
 	@Override
 	public void initPackage() {
@@ -78,7 +81,10 @@ public class ControllerClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields() ControllerClass
+	 * Inits the fields.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields()
+	 *      ControllerClass
 	 */
 	@Override
 	public void initFields() {
@@ -86,7 +92,10 @@ public class ControllerClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initImports() ControllerClass
+	 * Inits the imports.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initImports()
+	 *      ControllerClass
 	 */
 	@Override
 	public void initImports() {
@@ -109,6 +118,7 @@ public class ControllerClass extends AbstractBusinessClass {
 		importSet.add("import org.springframework.web.bind.annotation.InitBinder;\n");
 		importSet.add("import com.mqfdy.code.exception.NullArgumentException;\n");
 		importSet.add("import org.springframework.beans.factory.annotation.Value;\n");
+		importSet.add("import org.springframework.web.servlet.ModelAndView;\n");
 		
 		if(isTree){
 			importSet.add("import com.mqfdy.code.rest.support.TreeNode;\n");
@@ -118,7 +128,10 @@ public class ControllerClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods() ControllerClass
+	 * Inits the methods.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods()
+	 *      ControllerClass
 	 */
 	@Override
 	public void initMethods() {

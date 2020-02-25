@@ -48,8 +48,10 @@ public class ColumnModel extends AbstractModel implements IColumnModel {
 	}
 
 	/**
-	 * @see com.mqfdy.code.datasource.model.AbstractModel#getElementType()
+	 * Gets the element type.
+	 *
 	 * @return ColumnModel
+	 * @see com.mqfdy.code.datasource.model.AbstractModel#getElementType()
 	 */
 	@Override
 	public int getElementType() {
@@ -57,40 +59,51 @@ public class ColumnModel extends AbstractModel implements IColumnModel {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IColumnModel#getPersistenceModel()
+	 * Gets the persistence model.
+	 *
 	 * @return ColumnModel
+	 * @see com.mqfdy.code.generator.persistence.IColumnModel#getPersistenceModel()
 	 */
 	public IPersistenceModel getPersistenceModel() {
 		return persistenceModel;
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IColumnModel#getDBName()
+	 * Gets the DB name.
+	 *
 	 * @return ColumnModel
+	 * @see com.mqfdy.code.generator.persistence.IColumnModel#getDBName()
 	 */
 	public String getDBName() {
 		return dbName;
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IColumnModel#getJavaName()
+	 * Gets the java name.
+	 *
 	 * @return ColumnModel
+	 * @see com.mqfdy.code.generator.persistence.IColumnModel#getJavaName()
 	 */
 	public String getJavaName() {
 		return javaName;
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IColumnModel#getChineseName()
+	 * Gets the chinese name.
+	 *
 	 * @return ColumnModel
+	 * @see com.mqfdy.code.generator.persistence.IColumnModel#getChineseName()
 	 */
 	public String getChineseName() {
 		return chineseName;
 	}
 
 	/**
+	 * Sets the java name.
+	 *
+	 * @param javaName
+	 *            ColumnModel
 	 * @see com.mqfdy.code.generator.persistence.IColumnModel#setJavaName(java.lang.String)
-	 * @param javaName ColumnModel
 	 */
 	public void setJavaName(String javaName) {
 		this.javaName = javaName;
@@ -98,32 +111,40 @@ public class ColumnModel extends AbstractModel implements IColumnModel {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IColumnModel#isNotNull()
+	 * Checks if is not null.
+	 *
 	 * @return ColumnModel
+	 * @see com.mqfdy.code.generator.persistence.IColumnModel#isNotNull()
 	 */
 	public boolean isNotNull() {
 		return isNotNull;
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IColumnModel#getJavaType()
+	 * Gets the java type.
+	 *
 	 * @return ColumnModel
+	 * @see com.mqfdy.code.generator.persistence.IColumnModel#getJavaType()
 	 */
 	public String getJavaType() {
 		return column.getJavaType();
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IColumnModel#isPrimaryKey()
+	 * Checks if is primary key.
+	 *
 	 * @return ColumnModel
+	 * @see com.mqfdy.code.generator.persistence.IColumnModel#isPrimaryKey()
 	 */
 	public boolean isPrimaryKey() {
 		return column.isPrimaryKey();
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IColumnModel#isForeignKey()
+	 * Checks if is foreign key.
+	 *
 	 * @return ColumnModel
+	 * @see com.mqfdy.code.generator.persistence.IColumnModel#isForeignKey()
 	 */
 	public boolean isForeignKey() {
 //		return column.isForeignKey();
@@ -131,25 +152,34 @@ public class ColumnModel extends AbstractModel implements IColumnModel {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IColumnModel#getSize()
+	 * Gets the size.
+	 *
 	 * @return ColumnModel
+	 * @see com.mqfdy.code.generator.persistence.IColumnModel#getSize()
 	 */
 	public String getSize() {
 		return column.getLength().toString();
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IColumnModel#getColumn()
+	 * Gets the column.
+	 *
 	 * @return ColumnModel
+	 * @see com.mqfdy.code.generator.persistence.IColumnModel#getColumn()
 	 */
 	public Column getColumn() {
 		return this.column;
 	}
 
 	/**
-	 * @see com.mqfdy.code.datasource.model.AbstractModel#getAdapter(java.lang.Class)
+	 * Gets the adapter.
+	 *
+	 * @param <T>
+	 *            the generic type
 	 * @param adapter
+	 *            the adapter
 	 * @return ColumnModel
+	 * @see com.mqfdy.code.datasource.model.AbstractModel#getAdapter(java.lang.Class)
 	 */
 	@Override
 	public <T> T getAdapter(Class<T> adapter) {

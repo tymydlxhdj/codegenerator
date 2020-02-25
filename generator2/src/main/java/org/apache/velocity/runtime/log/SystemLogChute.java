@@ -49,10 +49,14 @@ public class SystemLogChute implements LogChute
     private int errLevel = TRACE_ID;
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
-     * @param rs
-     * @throws Exception SystemLogChute
-     */
+	 * Inits the.
+	 *
+	 * @param rs
+	 *            the rs
+	 * @throws Exception
+	 *             SystemLogChute
+	 * @see org.apache.velocity.runtime.log.LogChute#init(org.apache.velocity.runtime.RuntimeServices)
+	 */
     public void init(RuntimeServices rs) throws Exception
     {
         // look for a level config property

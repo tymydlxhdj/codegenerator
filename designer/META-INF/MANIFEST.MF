@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: code Designer Plug-in
 Bundle-SymbolicName: com.mqfdy.code.designer;singleton:=true
-Bundle-Version: 1.0.0.vqualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.mqfdy.code.designer.editor.BusinessModelEditorPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -19,42 +19,18 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.pde.ui,
  org.eclipse.jface,
  org.eclipse.equinox.p2.repository,
- com.mqfdy.code.resource;bundle-version="1.0.0",
  javax.servlet;bundle-version="3.1.0",
  com.mqfdy.code.model;bundle-version="1.0.0",
- com.mqfdy.code.commonlib
+ com.mqfdy.code.resource;bundle-version="1.0.0",
+ com.mqfdy.code.commonlib;bundle-version="1.0.0",
+ org.eclipse.core.resources;bundle-version="3.11.0",
+ com.ibm.icu;bundle-version="56.1.0",
+ com.mqfdy.code.generator,
+ org.eclipse.ui.console,
+ org.apache.commons.httpclient;bundle-version="3.1.0",
+ org.eclipse.wst.sse.ui;bundle-version="1.3.500"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Import-Package: com.ibm.icu.text,
- com.mqfdy.code.generator,
- com.mqfdy.code.utils,
- org.apache.commons.httpclient,
- org.apache.commons.httpclient.methods,
- org.apache.commons.httpclient.params,
- org.apache.commons.lang,
- org.apache.xerces.parsers,
- org.dom4j,
- org.eclipse.core.internal.resources,
- org.eclipse.core.resources,
- org.eclipse.debug.core,
- org.eclipse.debug.ui,
- org.eclipse.help,
- org.eclipse.jdt.core,
- org.eclipse.jdt.core.search,
- org.eclipse.jdt.ui,
- org.eclipse.jface.viewers,
- org.eclipse.pde.internal.ui.wizards,
- org.eclipse.ui.console,
- org.eclipse.ui.forms.events,
- org.eclipse.ui.forms.widgets,
- org.eclipse.ui.texteditor.templates,
- org.eclipse.ui.views.contentoutline,
- org.eclipse.ui.views.properties,
- org.eclipse.wst.sse.ui,
- org.eclipse.wst.xml.ui,
- org.jdom2,
- org.jdom2.output,
- org.json
 Bundle-ClassPath: .
 Export-Package: com.mqfdy.code.designer.console,
  com.mqfdy.code.designer.editor.actions.pages,

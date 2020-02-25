@@ -66,7 +66,10 @@ public class ServiceClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initPackage() ServiceClass
+	 * Inits the package.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initPackage()
+	 *      ServiceClass
 	 */
 	@Override
 	public void initPackage() {
@@ -74,7 +77,10 @@ public class ServiceClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields() ServiceClass
+	 * Inits the fields.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields()
+	 *      ServiceClass
 	 */
 	@Override
 	public void initFields() {
@@ -82,7 +88,10 @@ public class ServiceClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initImports() ServiceClass
+	 * Inits the imports.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initImports()
+	 *      ServiceClass
 	 */
 	@Override
 	public void initImports() {
@@ -147,7 +156,10 @@ public class ServiceClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods() ServiceClass
+	 * Inits the methods.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods()
+	 *      ServiceClass
 	 */
 	@Override
 	public void initMethods() {
@@ -216,9 +228,12 @@ public class ServiceClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#getCustomMethod(com.mqfdy.code.model.BusinessOperation)
+	 * Gets the custom method.
+	 *
 	 * @param bop
+	 *            the bop
 	 * @return ServiceClass
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#getCustomMethod(com.mqfdy.code.model.BusinessOperation)
 	 */
 	public String getCustomMethod(BusinessOperation bop) {
 		importSet.add("import org.springframework.transaction.annotation.Transactional;\n");
@@ -275,7 +290,10 @@ public class ServiceClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#putToVelocityMap() ServiceClass
+	 * Put to velocity map.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#putToVelocityMap()
+	 *      ServiceClass
 	 */
 	@Override
 	public void putToVelocityMap() {

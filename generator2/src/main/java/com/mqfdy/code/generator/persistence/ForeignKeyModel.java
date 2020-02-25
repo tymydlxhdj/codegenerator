@@ -37,8 +37,10 @@ public class ForeignKeyModel extends AbstractModel implements IForeignKeyModel {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IForeignKeyModel#getForeignColumns()
+	 * Gets the foreign columns.
+	 *
 	 * @return ForeignKeyModel
+	 * @see com.mqfdy.code.generator.persistence.IForeignKeyModel#getForeignColumns()
 	 */
 	public List<String> getForeignColumns() {
 		List<Column> colList = foreignKey.getColumns();
@@ -52,16 +54,20 @@ public class ForeignKeyModel extends AbstractModel implements IForeignKeyModel {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IForeignKeyModel#getForeignTableName()
+	 * Gets the foreign table name.
+	 *
 	 * @return ForeignKeyModel
+	 * @see com.mqfdy.code.generator.persistence.IForeignKeyModel#getForeignTableName()
 	 */
 	public String getForeignTableName() {
 		return getForeignKey().getReferencedTable().getName();
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IForeignKeyModel#getForeignKey()
+	 * Gets the foreign key.
+	 *
 	 * @return ForeignKeyModel
+	 * @see com.mqfdy.code.generator.persistence.IForeignKeyModel#getForeignKey()
 	 */
 	public ForeignKey getForeignKey() {
 		return foreignKey;
@@ -79,8 +85,10 @@ public class ForeignKeyModel extends AbstractModel implements IForeignKeyModel {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IForeignKeyModel#getFSubPropertyName()
+	 * Gets the f sub property name.
+	 *
 	 * @return ForeignKeyModel
+	 * @see com.mqfdy.code.generator.persistence.IForeignKeyModel#getFSubPropertyName()
 	 */
 	public String getFSubPropertyName() {
 		return null;

@@ -229,9 +229,11 @@ public abstract class Block extends Directive
         }
 
         /**
-         * @see java.lang.Object#toString()
-         * @return Reference
-         */
+		 * To string.
+		 *
+		 * @return Reference
+		 * @see java.lang.Object#toString()
+		 */
         public String toString()
         {
             Writer writer = new StringWriter();

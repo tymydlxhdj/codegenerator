@@ -43,9 +43,13 @@ public class ModelPlugin extends Plugin {
 	}
 
 	/**
-	 * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
+	 * Start.
+	 *
 	 * @param context
-	 * @throws Exception ModelPlugin
+	 *            the context
+	 * @throws Exception
+	 *             ModelPlugin
+	 * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
 	 */
 	@Override
 	public void start(BundleContext context) throws Exception {
@@ -54,9 +58,13 @@ public class ModelPlugin extends Plugin {
 	}
 
 	/**
-	 * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
+	 * Stop.
+	 *
 	 * @param context
-	 * @throws Exception ModelPlugin
+	 *            the context
+	 * @throws Exception
+	 *             ModelPlugin
+	 * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
 	 */
 	@Override
 	public void stop(BundleContext context) throws Exception {

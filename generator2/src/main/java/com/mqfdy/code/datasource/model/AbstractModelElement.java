@@ -30,8 +30,10 @@ public abstract class AbstractModelElement implements IModelElement {
 	}
 
 	/**
-	 * @see com.mqfdy.code.datasource.model.IModelElement#getElementParent()
+	 * Gets the element parent.
+	 *
 	 * @return AbstractModelElement
+	 * @see com.mqfdy.code.datasource.model.IModelElement#getElementParent()
 	 */
 	public IModelElement getElementParent() {
 		return parent;
@@ -50,16 +52,20 @@ public abstract class AbstractModelElement implements IModelElement {
 	}
 
 	/**
-	 * @see com.mqfdy.code.datasource.model.IModelElement#getElementChildren()
+	 * Gets the element children.
+	 *
 	 * @return AbstractModelElement
+	 * @see com.mqfdy.code.datasource.model.IModelElement#getElementChildren()
 	 */
 	public IModelElement[] getElementChildren() {
 		return NO_CHILDREN;
 	}
 
 	/**
-	 * @see com.mqfdy.code.datasource.model.IModelElement#getElementName()
+	 * Gets the element name.
+	 *
 	 * @return AbstractModelElement
+	 * @see com.mqfdy.code.datasource.model.IModelElement#getElementName()
 	 */
 	public String getElementName() {
 		return name;
@@ -78,8 +84,10 @@ public abstract class AbstractModelElement implements IModelElement {
 	}
 
 	/**
-	 * @see com.mqfdy.code.datasource.model.IModelElement#getElementID()
+	 * Gets the element ID.
+	 *
 	 * @return AbstractModelElement
+	 * @see com.mqfdy.code.datasource.model.IModelElement#getElementID()
 	 */
 	public String getElementID() {
 		final StringBuffer id = new StringBuffer();
@@ -155,9 +163,14 @@ public abstract class AbstractModelElement implements IModelElement {
 	}
 
 	/**
-	 * @see com.mqfdy.code.datasource.model.IModelElement#accept(com.mqfdy.code.datasource.model.IModelElementVisitor, org.eclipse.core.runtime.IProgressMonitor)
+	 * Accept.
+	 *
 	 * @param visitor
-	 * @param monitor AbstractModelElement
+	 *            the visitor
+	 * @param monitor
+	 *            AbstractModelElement
+	 * @see com.mqfdy.code.datasource.model.IModelElement#accept(com.mqfdy.code.datasource.model.IModelElementVisitor,
+	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public void accept(final IModelElementVisitor visitor,
 			final IProgressMonitor monitor) {

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+         category="com.mqfdy.code.category"
+         class="com.mqfdy.code.template.designer.wizards.TemplateNewWizard"
+         icon="resource/icons/mdd.png"
+         id="com.mqfdy.code.template.designer.wizards.TemplateNewWizardPage"
+         name="创建模型(*.vm)">
+       </wizard>
+   </extension>
+
+</plugin>

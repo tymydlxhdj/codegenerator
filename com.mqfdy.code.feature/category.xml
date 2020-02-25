@@ -24,6 +24,9 @@
    <bundle id="com.mqfdy.code.springboot.project" version="1.0.0.vqualifier">
       <category name="code_generator"/>
    </bundle>
+   <bundle id="com.mqfdy.code.template.designer" version="1.0.0.qualifier">
+      <category name="code_generator"/>
+   </bundle>
    <category-def name="code_generator" label="code_generator">
       <description>
          代码生成插件

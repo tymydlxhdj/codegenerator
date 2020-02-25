@@ -66,7 +66,10 @@ public class VoClass extends AbstractBusinessClass {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields() VoClass
+	 * Inits the fields.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields()
+	 *      VoClass
 	 */
 	@Override
 	public void initFields() {
@@ -78,16 +81,22 @@ public class VoClass extends AbstractBusinessClass {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods() VoClass
+	 * Inits the methods.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods()
+	 *      VoClass
 	 */
 	@Override
 	public void initMethods() {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#getCustomMethod(com.mqfdy.code.model.BusinessOperation)
+	 * Gets the custom method.
+	 *
 	 * @param bop
+	 *            the bop
 	 * @return VoClass
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#getCustomMethod(com.mqfdy.code.model.BusinessOperation)
 	 */
 	@Override
 	protected String getCustomMethod(BusinessOperation bop) {
@@ -96,7 +105,10 @@ public class VoClass extends AbstractBusinessClass {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#putToVelocityMap() VoClass
+	 * Put to velocity map.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#putToVelocityMap()
+	 *      VoClass
 	 */
 	@Override
 	public void putToVelocityMap() {

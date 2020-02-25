@@ -59,7 +59,10 @@ public class RepositoryClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initPackage() RepositoryClass
+	 * Inits the package.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initPackage()
+	 *      RepositoryClass
 	 */
 	@Override
 	public void initPackage() {
@@ -67,7 +70,10 @@ public class RepositoryClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields() RepositoryClass
+	 * Inits the fields.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields()
+	 *      RepositoryClass
 	 */
 	@Override
 	public void initFields() {
@@ -75,7 +81,10 @@ public class RepositoryClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initImports() RepositoryClass
+	 * Inits the imports.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initImports()
+	 *      RepositoryClass
 	 */
 	@Override
 	public void initImports() {
@@ -88,7 +97,10 @@ public class RepositoryClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods() RepositoryClass
+	 * Inits the methods.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods()
+	 *      RepositoryClass
 	 */
 	@Override
 	public void initMethods() {
@@ -151,9 +163,12 @@ public class RepositoryClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#getCustomMethod(com.mqfdy.code.model.BusinessOperation)
+	 * Gets the custom method.
+	 *
 	 * @param bop
+	 *            the bop
 	 * @return RepositoryClass
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#getCustomMethod(com.mqfdy.code.model.BusinessOperation)
 	 */
 	@Override
 	protected String getCustomMethod(BusinessOperation bop) {
@@ -162,7 +177,10 @@ public class RepositoryClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#putToVelocityMap() RepositoryClass
+	 * Put to velocity map.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#putToVelocityMap()
+	 *      RepositoryClass
 	 */
 	@Override
 	public void putToVelocityMap() {

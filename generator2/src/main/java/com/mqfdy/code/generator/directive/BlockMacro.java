@@ -83,9 +83,11 @@ public class BlockMacro extends Block
     }
     
     /**
-     * @see org.apache.velocity.runtime.directive.Directive#getName()
-     * @return BlockMacro
-     */
+	 * Gets the name.
+	 *
+	 * @return BlockMacro
+	 * @see org.apache.velocity.runtime.directive.Directive#getName()
+	 */
     public String getName()
     {
         return key;

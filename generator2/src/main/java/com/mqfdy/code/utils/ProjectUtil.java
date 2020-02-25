@@ -19,6 +19,9 @@ public class ProjectUtil {
 	/** The Constant SPRING_PROJECT. */
 	private static final String SPRING_PROJECT = "com.mqfdy.code.springboot.nature";
 	
+	/** The Constant SPRING_PROJECT. */
+	private static final String SPRING_PROJECT2 = "org.springframework.ide.eclipse.core.springnature";
+	
 	/**
 	 * 判断当前项目是否微BOM项目.
 	 *
@@ -69,7 +72,7 @@ public class ProjectUtil {
 	public static boolean isSpringbootProject(IProject project){
 		
 		try {
-			return project != null && (project.hasNature(SPRING_PROJECT) || 
+			return project != null && (project.hasNature(SPRING_PROJECT) || project.hasNature(SPRING_PROJECT2)|| 
 					(project.getDescription() != null && 
 					project.getDescription().getComment().equals(SPRING_PROJECT)));
 		} catch (CoreException e) {

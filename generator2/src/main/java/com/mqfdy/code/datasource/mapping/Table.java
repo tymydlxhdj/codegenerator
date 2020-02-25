@@ -286,10 +286,14 @@ public class Table implements Comparator<Table>{
 	}
 
 	/**
-	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+	 * Compare.
+	 *
 	 * @param o1
+	 *            the o 1
 	 * @param o2
+	 *            the o 2
 	 * @return Table
+	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
 	 */
 	public int compare(Table o1, Table o2) {
 		

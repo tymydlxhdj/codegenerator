@@ -1,0 +1,56 @@
+#set($table=$ptable.getTable())
+#set($tjavaName=$table.getJavaName())
+#set($tjavaName_l=${strings.lowercaseFirstLetter($tjavaName)})
+${packageStr}
+
+import ${packageStrPre}.domain.${tjavaName};
+/**
+ * <b>概述</b>：${table.getJavaName()}Transfer类<br>
+ * TODO
+ * <p>
+ * <b>功能</b>：<br>
+ * TODO
+ *
+ * @author ${author}
+ */
+public class ${table.getJavaName()}Transfer {
+	
+	private ${table.getJavaName()}Transfer(){}
+
+	/**
+	 * @toPO:vo转为po
+	 * @param vo vo对象
+	 * @return ${table.getJavaName()} ${table.getJavaName()}对象
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	public static ${table.getJavaName()} toPO(${table.getJavaName()}VO vo) {
+		${table.getJavaName()} ${tjavaName_l} = new ${table.getJavaName()}();
+		if(vo != null){
+#foreach($key in ${table.columns.keySet()})
+	#set ($col = ${table.columns.get($key)})
+	#set ( $cfc=$col.javaName )
+	#set ($cfc_get=${strings.capitalizeFirstLetter($cfc)})
+			${tjavaName_l}.set${cfc_get}(vo.get${cfc_get}());
+#end
+        }
+		return ${tjavaName_l};
+	}
+	/**
+	 * @toVO:po转为vo
+	 * @param po po对象
+	 * @return ${tjavaName}VO ${tjavaName}VO对象
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	public static ${tjavaName}VO toVO(${tjavaName} po) {
+		${tjavaName}VO vo = new ${tjavaName}VO();
+#foreach($key in ${table.columns.keySet()})
+	#set ($col = ${table.columns.get($key)})
+	#set ( $cfc=$col.javaName )
+	#set ($cfc_get=${strings.capitalizeFirstLetter($cfc)})
+		vo.set${cfc_get}(po.get${cfc_get}());
+#end		
+		return vo;
+	}
+}

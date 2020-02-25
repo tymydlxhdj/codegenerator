@@ -62,8 +62,10 @@ public abstract class EntityGenerator extends AbstractGenerator {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getSourceMap()
+	 * Gets the source map.
+	 *
 	 * @return EntityGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getSourceMap()
 	 */
 	@Override
 	public Map<String, Object> getSourceMap() {
@@ -116,8 +118,10 @@ public abstract class EntityGenerator extends AbstractGenerator {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.IGenerator#getOutputFilePath()
+	 * Gets the output file path.
+	 *
 	 * @return EntityGenerator
+	 * @see com.mqfdy.code.generator.model.IGenerator#getOutputFilePath()
 	 */
 	public String getOutputFilePath() {
 		return getOutputFolderPath() + getFileNameWithoutExtension()
@@ -155,8 +159,10 @@ public abstract class EntityGenerator extends AbstractGenerator {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileNameWithoutExtension()
+	 * Gets the file name without extension.
+	 *
 	 * @return EntityGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileNameWithoutExtension()
 	 */
 	@Override
 	protected String getFileNameWithoutExtension() {
@@ -164,8 +170,10 @@ public abstract class EntityGenerator extends AbstractGenerator {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getGenProject()
+	 * Gets the gen project.
+	 *
 	 * @return EntityGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getGenProject()
 	 */
 	public IProject getGenProject() {
 		return genProject;

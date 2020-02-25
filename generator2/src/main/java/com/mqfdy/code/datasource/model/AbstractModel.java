@@ -28,24 +28,32 @@ public abstract class AbstractModel extends AbstractModelElement implements
 	}
 
 	/**
-	 * @see com.mqfdy.code.datasource.model.IModelElement#getElementType()
+	 * Gets the element type.
+	 *
 	 * @return AbstractModel
+	 * @see com.mqfdy.code.datasource.model.IModelElement#getElementType()
 	 */
 	public int getElementType() {
 		return IModelElementTypes.MODEL_TYPE;
 	}
 
 	/**
+	 * Adds the change listener.
+	 *
+	 * @param listener
+	 *            AbstractModel
 	 * @see com.mqfdy.code.datasource.model.IModel#addChangeListener(com.mqfdy.code.datasource.model.IModelChangeListener)
-	 * @param listener AbstractModel
 	 */
 	public final void addChangeListener(IModelChangeListener listener) {
 		listeners.add(listener);
 	}
 
 	/**
+	 * Removes the change listener.
+	 *
+	 * @param listener
+	 *            AbstractModel
 	 * @see com.mqfdy.code.datasource.model.IModel#removeChangeListener(com.mqfdy.code.datasource.model.IModelChangeListener)
-	 * @param listener AbstractModel
 	 */
 	public final void removeChangeListener(IModelChangeListener listener) {
 		listeners.remove(listener);
@@ -70,9 +78,14 @@ public abstract class AbstractModel extends AbstractModelElement implements
 	
 
 	/**
-	 * @see org.eclipse.core.runtime.IAdaptable#getAdapter(java.lang.Class)
+	 * Gets the adapter.
+	 *
+	 * @param <T>
+	 *            the generic type
 	 * @param adapter
+	 *            the adapter
 	 * @return AbstractModel
+	 * @see org.eclipse.core.runtime.IAdaptable#getAdapter(java.lang.Class)
 	 */
 	public <T> T getAdapter(Class<T> adapter) {
 		return null;

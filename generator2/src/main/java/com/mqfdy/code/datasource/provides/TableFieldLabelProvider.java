@@ -38,10 +38,15 @@ ITableLabelProvider{
 	}
 	
 	/**
-	 * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnImage(java.lang.Object, int)
+	 * Gets the column image.
+	 *
 	 * @param element
+	 *            the element
 	 * @param columnIndex
+	 *            the column index
 	 * @return TableFieldLabelProvider
+	 * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnImage(java.lang.Object,
+	 *      int)
 	 */
 	public Image getColumnImage(Object element, int columnIndex) {
 		return null;
@@ -49,10 +54,15 @@ ITableLabelProvider{
 
 
 	/**
-	 * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnText(java.lang.Object, int)
+	 * Gets the column text.
+	 *
 	 * @param element
+	 *            the element
 	 * @param columnIndex
+	 *            the column index
 	 * @return TableFieldLabelProvider
+	 * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnText(java.lang.Object,
+	 *      int)
 	 */
 	public String getColumnText(Object element, int columnIndex) {
 		

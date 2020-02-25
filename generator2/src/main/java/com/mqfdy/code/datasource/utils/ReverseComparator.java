@@ -14,10 +14,14 @@ import com.mqfdy.code.datasource.mapping.Table;
 public class ReverseComparator implements Comparator<Object> {
 
 	/**
-	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+	 * Compare.
+	 *
 	 * @param o1
+	 *            the o 1
 	 * @param o2
+	 *            the o 2
 	 * @return ReverseComparator
+	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
 	 */
 	public int compare(Object o1, Object o2) {
 		if(o1 instanceof Table && o2 instanceof Table){

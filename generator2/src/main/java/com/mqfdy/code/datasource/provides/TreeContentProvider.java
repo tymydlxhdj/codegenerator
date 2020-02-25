@@ -26,17 +26,26 @@ public class TreeContentProvider implements ITreeContentProvider, PropertyChange
 	private TreeModel model;
 	
 	/**
-	 * @see org.eclipse.jface.viewers.IContentProvider#dispose() TreeContentProvider
+	 * Dispose.
+	 *
+	 * @see org.eclipse.jface.viewers.IContentProvider#dispose()
+	 *      TreeContentProvider
 	 */
 	public void dispose() {
 
 	}
 
 	/**
-	 * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+	 * Input changed.
+	 *
 	 * @param viewer
+	 *            the viewer
 	 * @param oldInput
-	 * @param newInput TreeContentProvider
+	 *            the old input
+	 * @param newInput
+	 *            TreeContentProvider
+	 * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
+	 *      java.lang.Object, java.lang.Object)
 	 */
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 		this.viewer = (TreeViewer) viewer;
@@ -52,36 +61,48 @@ public class TreeContentProvider implements ITreeContentProvider, PropertyChange
 	}
 
 	/**
-	 * @see org.eclipse.jface.viewers.ITreeContentProvider#getElements(java.lang.Object)
+	 * Gets the elements.
+	 *
 	 * @param inputElement
+	 *            the input element
 	 * @return TreeContentProvider
+	 * @see org.eclipse.jface.viewers.ITreeContentProvider#getElements(java.lang.Object)
 	 */
 	public Object[] getElements(Object inputElement) {
 		return new Object[] {model.getRoot()};
 	}
 
 	/**
-	 * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
+	 * Gets the children.
+	 *
 	 * @param parentElement
+	 *            the parent element
 	 * @return TreeContentProvider
+	 * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
 	 */
 	public Object[] getChildren(Object parentElement) {
 		return ((TreeNode) parentElement).getChilds().toArray();
 	}
 
 	/**
-	 * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
+	 * Gets the parent.
+	 *
 	 * @param element
+	 *            the element
 	 * @return TreeContentProvider
+	 * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
 	 */
 	public Object getParent(Object element) {
 		return ((TreeNode) element).getParent();
 	}
 
 	/**
-	 * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
+	 * Checks for children.
+	 *
 	 * @param element
+	 *            the element
 	 * @return TreeContentProvider
+	 * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
 	 */
 	public boolean hasChildren(Object element) {
 		List<TreeNode> children = ((TreeNode) element).getChilds();
@@ -89,8 +110,11 @@ public class TreeContentProvider implements ITreeContentProvider, PropertyChange
 	}
 
 	/**
+	 * Property change.
+	 *
+	 * @param evt
+	 *            TreeContentProvider
 	 * @see java.beans.PropertyChangeListener#propertyChange(java.beans.PropertyChangeEvent)
-	 * @param evt TreeContentProvider
 	 */
 	public void propertyChange(PropertyChangeEvent evt) {
 		if (TreeModel.ADD.equals(evt.getPropertyName())) { 

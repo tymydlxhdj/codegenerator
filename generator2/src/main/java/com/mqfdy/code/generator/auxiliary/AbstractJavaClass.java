@@ -10,6 +10,7 @@ import org.eclipse.core.resources.IProject;
 
 import com.mqfdy.code.datasource.mapping.TypeMap;
 import com.mqfdy.code.generator.auxiliary.model.ClassParam;
+import com.mqfdy.code.generator.model.IVelocityMap;
 import com.mqfdy.code.generator.persistence.IPersistenceModel;
 import com.mqfdy.code.generator.utils.HibernateDataType;
 import com.mqfdy.code.generator.utils.StringUtils;
@@ -24,7 +25,7 @@ import com.mqfdy.code.scence.IScenceType;
  *
  * @author mqf
  */
-public abstract class AbstractJavaClass {
+public abstract class AbstractJavaClass implements IVelocityMap{
 	
 	/** import集合. */
 	protected Set<String> importSet;
@@ -120,7 +121,7 @@ public abstract class AbstractJavaClass {
 			}
 		}
 		this.parentId = param.getParentId();
-		this.outputFolderPath = param.getOutputPath();
+		//this.outputFolderPath = param.getOutputPath();
 		init();
 	}
 
@@ -334,6 +335,15 @@ public abstract class AbstractJavaClass {
 	 */
 	public void setOutputFolderPath(String outputFolderPath) {
 		this.outputFolderPath = outputFolderPath;
+	}
+	
+	/**
+	 * getVelocityMap
+	 * @date 2019年5月15日 下午2:36:52
+	 * @author mqfdy
+	 */
+	public Map<String,Object> getVelocityMap(){
+		return this.map;
 	}
 
 }

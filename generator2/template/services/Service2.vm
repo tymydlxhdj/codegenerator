@@ -120,7 +120,7 @@ public class ${tjavaName}Service implements I${tjavaName}Service{
 			if(${tjavaName_l}Page == null){
 				throw new NullArgumentException("执行查询错误");
 			}
-			if(doubleColorCompPage.isPresent()){
+			if(${tjavaName_l}Page.isPresent()){
 				throw new NullArgumentException("数据库中没有该记录");
 			}
 			CrudUtils.mapToObject(map, ${tjavaName_l},  "${primaryKey}");

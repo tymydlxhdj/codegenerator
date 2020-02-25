@@ -93,8 +93,7 @@ public interface  ReferenceInsertionEventHandler extends EventHandler
         }
 
         /**
-		 * Call the method referenceInsert()
-		 * 
+		 * Call the method referenceInsert().
 		 *
 		 * @author mqfdy
 		 * @param handler
@@ -115,9 +114,11 @@ public interface  ReferenceInsertionEventHandler extends EventHandler
         }
 
         /**
-         * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
-         * @return referenceInsertExecutor
-         */
+		 * Gets the return value.
+		 *
+		 * @return referenceInsertExecutor
+		 * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
+		 */
         public Object getReturnValue()
         {
             return value;

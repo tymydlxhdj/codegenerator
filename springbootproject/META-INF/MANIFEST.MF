@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Springboot Project Plug-in
 Bundle-SymbolicName: com.mqfdy.code.springboot.project;singleton:=true
-Bundle-Version: 1.0.0.vqualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.mqfdy.code.springboot.core.MicroProjectPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

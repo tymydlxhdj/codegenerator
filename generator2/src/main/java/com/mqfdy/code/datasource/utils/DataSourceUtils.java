@@ -100,8 +100,11 @@ public class DataSourceUtils implements IDataSource {
 		IConnectionProfile addedProfile;
 		
 		/**
+		 * Profile added.
+		 *
+		 * @param profile
+		 *            LocalProfileListener
 		 * @see org.eclipse.datatools.connectivity.IProfileListener#profileAdded(org.eclipse.datatools.connectivity.IConnectionProfile)
-		 * @param profile LocalProfileListener
 		 */
 		public void profileAdded( IConnectionProfile profile) {
 			addedProfile = profile;
@@ -109,16 +112,22 @@ public class DataSourceUtils implements IDataSource {
 		}
 	
 		/**
+		 * Profile changed.
+		 *
+		 * @param profile
+		 *            LocalProfileListener
 		 * @see org.eclipse.datatools.connectivity.IProfileListener#profileChanged(org.eclipse.datatools.connectivity.IConnectionProfile)
-		 * @param profile LocalProfileListener
 		 */
 		public void profileChanged( IConnectionProfile profile) {
 			// do nothing
 		}
 	
 		/**
+		 * Profile deleted.
+		 *
+		 * @param profile
+		 *            LocalProfileListener
 		 * @see org.eclipse.datatools.connectivity.IProfileListener#profileDeleted(org.eclipse.datatools.connectivity.IConnectionProfile)
-		 * @param profile LocalProfileListener
 		 */
 		public void profileDeleted( IConnectionProfile profile) {
 			// do nothing

@@ -163,8 +163,7 @@ public interface InvalidReferenceEventHandler extends EventHandler
         }
 
         /**
-		 * Call the method invalidGetMethod()
-		 * 
+		 * Call the method invalidGetMethod().
 		 *
 		 * @author mqfdy
 		 * @param handler
@@ -178,18 +177,22 @@ public interface InvalidReferenceEventHandler extends EventHandler
         }
 
         /**
-         * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
-         * @return InvalidGetMethodExecutor
-         */
+		 * Gets the return value.
+		 *
+		 * @return InvalidGetMethodExecutor
+		 * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
+		 */
         public Object getReturnValue()
         {
             return result;
         }
 
         /**
-         * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#isDone()
-         * @return InvalidGetMethodExecutor
-         */
+		 * Checks if is done.
+		 *
+		 * @return InvalidGetMethodExecutor
+		 * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#isDone()
+		 */
         public boolean isDone()
         {
             return (result != null);
@@ -244,8 +247,7 @@ public interface InvalidReferenceEventHandler extends EventHandler
         }
 
         /**
-		 * Call the method invalidSetMethod()
-		 * 
+		 * Call the method invalidSetMethod().
 		 *
 		 * @author mqfdy
 		 * @param handler
@@ -259,18 +261,22 @@ public interface InvalidReferenceEventHandler extends EventHandler
         }        
     
         /**
-         * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
-         * @return InvalidSetMethodExecutor
-         */
+		 * Gets the return value.
+		 *
+		 * @return InvalidSetMethodExecutor
+		 * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
+		 */
         public Object getReturnValue()
         {
             return null;
         }
 
         /**
-         * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#isDone()
-         * @return InvalidSetMethodExecutor
-         */
+		 * Checks if is done.
+		 *
+		 * @return InvalidSetMethodExecutor
+		 * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#isDone()
+		 */
         public boolean isDone()
         {
             return result;
@@ -336,8 +342,7 @@ public interface InvalidReferenceEventHandler extends EventHandler
         }
 
         /**
-		 * Call the method invalidMethod()
-		 * 
+		 * Call the method invalidMethod().
 		 *
 		 * @author mqfdy
 		 * @param handler
@@ -352,18 +357,22 @@ public interface InvalidReferenceEventHandler extends EventHandler
         }
         
         /**
-         * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
-         * @return InvalidMethodExecutor
-         */
+		 * Gets the return value.
+		 *
+		 * @return InvalidMethodExecutor
+		 * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
+		 */
         public Object getReturnValue()
         {
             return result;
         }
 
         /**
-         * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#isDone()
-         * @return InvalidMethodExecutor
-         */
+		 * Checks if is done.
+		 *
+		 * @return InvalidMethodExecutor
+		 * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#isDone()
+		 */
         public boolean isDone()
         {
             return executed && (result != null);

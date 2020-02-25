@@ -92,7 +92,9 @@ public class DomainGenerator extends EntityGenerator {
 	/**
 	 * getFileName.
 	 *
+	 * @author mqfdy
 	 * @return the object
+	 * @Date 2018-9-19 16:28:57
 	 */
 	public String getFileName() {
 		return persistenceModel.getJavaName();

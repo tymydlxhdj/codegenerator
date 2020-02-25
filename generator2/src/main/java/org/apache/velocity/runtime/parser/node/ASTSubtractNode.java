@@ -63,12 +63,19 @@ public class ASTSubtractNode extends ASTMathNode
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.ASTMathNode#perform(java.lang.Number, java.lang.Number, org.apache.velocity.context.InternalContextAdapter)
-     * @param left
-     * @param right
-     * @param context
-     * @return ASTSubtractNode
-     */
+	 * Perform.
+	 *
+	 * @param left
+	 *            the left
+	 * @param right
+	 *            the right
+	 * @param context
+	 *            the context
+	 * @return ASTSubtractNode
+	 * @see org.apache.velocity.runtime.parser.node.ASTMathNode#perform(java.lang.Number,
+	 *      java.lang.Number,
+	 *      org.apache.velocity.context.InternalContextAdapter)
+	 */
     public Number perform(Number left, Number right, InternalContextAdapter context)
     {
         return MathUtils.subtract(left, right);

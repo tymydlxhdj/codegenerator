@@ -19,9 +19,12 @@ import com.mqfdy.code.datasource.model.ImageManager;
 public class SingleTreeLabelProvider extends LabelProvider implements ILabelProvider {
 
 	/**
-	 * @see org.eclipse.jface.viewers.LabelProvider#getImage(java.lang.Object)
+	 * Gets the image.
+	 *
 	 * @param element
+	 *            the element
 	 * @return SingleTreeLabelProvider
+	 * @see org.eclipse.jface.viewers.LabelProvider#getImage(java.lang.Object)
 	 */
 	@Override
 	public Image getImage(Object element) {
@@ -113,9 +116,12 @@ public class SingleTreeLabelProvider extends LabelProvider implements ILabelProv
 	}
 	
 	/**
-	 * @see org.eclipse.jface.viewers.LabelProvider#getText(java.lang.Object)
+	 * Gets the text.
+	 *
 	 * @param element
+	 *            the element
 	 * @return SingleTreeLabelProvider
+	 * @see org.eclipse.jface.viewers.LabelProvider#getText(java.lang.Object)
 	 */
 	@Override
 	public String getText(Object element) {
@@ -127,31 +133,45 @@ public class SingleTreeLabelProvider extends LabelProvider implements ILabelProv
 	}
 
 	/**
-	 * @see org.eclipse.jface.viewers.BaseLabelProvider#dispose() SingleTreeLabelProvider
+	 * Dispose.
+	 *
+	 * @see org.eclipse.jface.viewers.BaseLabelProvider#dispose()
+	 *      SingleTreeLabelProvider
 	 */
 	public void dispose() {
 	}
 
 	/**
-	 * @see org.eclipse.jface.viewers.BaseLabelProvider#isLabelProperty(java.lang.Object, java.lang.String)
+	 * Checks if is label property.
+	 *
 	 * @param element
+	 *            the element
 	 * @param property
+	 *            the property
 	 * @return SingleTreeLabelProvider
+	 * @see org.eclipse.jface.viewers.BaseLabelProvider#isLabelProperty(java.lang.Object,
+	 *      java.lang.String)
 	 */
 	public boolean isLabelProperty(Object element, String property) {
 		return false;
 	}
 
 	/**
+	 * Adds the listener.
+	 *
+	 * @param listener
+	 *            SingleTreeLabelProvider
 	 * @see org.eclipse.jface.viewers.BaseLabelProvider#addListener(org.eclipse.jface.viewers.ILabelProviderListener)
-	 * @param listener SingleTreeLabelProvider
 	 */
 	public void addListener(ILabelProviderListener listener) {
 	}
 
 	/**
+	 * Removes the listener.
+	 *
+	 * @param listener
+	 *            SingleTreeLabelProvider
 	 * @see org.eclipse.jface.viewers.BaseLabelProvider#removeListener(org.eclipse.jface.viewers.ILabelProviderListener)
-	 * @param listener SingleTreeLabelProvider
 	 */
 	public void removeListener(ILabelProviderListener listener) {
 	}

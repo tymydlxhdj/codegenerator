@@ -45,7 +45,9 @@ public class Activator extends AbstractUIPlugin {
 	}
 
 	/**
-	 *
+	 * stop
+	 * @Date 2018年9月19日 下午4:28:58
+	 * @author mqfdy
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;

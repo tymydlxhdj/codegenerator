@@ -106,8 +106,7 @@ public interface  IncludeEventHandler extends EventHandler
         }
 
         /**
-		 * Call the method includeEvent()
-		 * 
+		 * Call the method includeEvent().
 		 *
 		 * @author mqfdy
 		 * @param handler
@@ -127,18 +126,22 @@ public interface  IncludeEventHandler extends EventHandler
         }
 
         /**
-         * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
-         * @return IncludeEventExecutor
-         */
+		 * Gets the return value.
+		 *
+		 * @return IncludeEventExecutor
+		 * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
+		 */
         public Object getReturnValue()
         {
             return includeResourcePath;
         }
 
         /**
-         * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#isDone()
-         * @return IncludeEventExecutor
-         */
+		 * Checks if is done.
+		 *
+		 * @return IncludeEventExecutor
+		 * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#isDone()
+		 */
         public boolean isDone()
         {
             return executed && (includeResourcePath == null);

@@ -388,9 +388,12 @@ public class Column implements Comparable<Column>{
 	}
 	
 	/**
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 * Compare to.
+	 *
 	 * @param o
+	 *            the o
 	 * @return Column
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
 	 */
 	public int compareTo(Column o) {
 		if(this.name.compareTo(o.getName())>0){

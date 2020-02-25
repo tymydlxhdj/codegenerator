@@ -29,8 +29,10 @@ public class PoGenerator extends EntityGenerator {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getTemplatePath()
+	 * Gets the template path.
+	 *
 	 * @return PoGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getTemplatePath()
 	 */
 	@Override
 	protected String getTemplatePath() {
@@ -38,8 +40,10 @@ public class PoGenerator extends EntityGenerator {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileExtension()
+	 * Gets the file extension.
+	 *
 	 * @return PoGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileExtension()
 	 */
 	@Override
 	protected String getFileExtension() {
@@ -47,8 +51,10 @@ public class PoGenerator extends EntityGenerator {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.IGenerator#getFileName()
+	 * Gets the file name.
+	 *
 	 * @return PoGenerator
+	 * @see com.mqfdy.code.generator.model.IGenerator#getFileName()
 	 */
 	public String getFileName() {
 		// TODO Auto-generated method stub

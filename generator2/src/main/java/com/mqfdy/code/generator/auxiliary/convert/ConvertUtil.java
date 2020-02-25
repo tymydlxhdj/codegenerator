@@ -47,24 +47,30 @@ public class ConvertUtil {
 	/** mx 编辑器：主键策略类型map. */
 	private static Map<String,String> pkTypeMap;
 	
+	/** The pk type jpa to mybatis map. */
+	public static Map<String,String> pkTypeJpaToMybatisMap; 
+	
 	static{
 		pkTypeMap = new HashMap<String, String>();
 		pkTypeMap.put("ASSIGNED", "identity");
 		pkTypeMap.put("IDENTITY", "identity");
 		pkTypeMap.put("UUID", "uuid");  
 		pkTypeMap.put("SEQUENCE", "sequence");
+		
+		pkTypeJpaToMybatisMap = new HashMap<String, String>();
+		pkTypeJpaToMybatisMap.put("identity", "AUTO");
+		pkTypeJpaToMybatisMap.put("uuid", "UUID");
+		pkTypeJpaToMybatisMap.put("sequence", "AUTO");  
 	}
 	
 	/**
 	 * 获取业务对象对应的表对象.
 	 *
 	 * @author mqfdy
-	 * @param bussinessClass
-	 *            the bussiness class
-	 * @param bom
-	 *            the bom
+	 * @param bussinessClass the bussiness class
+	 * @param bom the bom
 	 * @return the table
-	 * @Date 2018-09-03 09:00
+	 * @Date 2018-9-3 17:02:10
 	 */
 	public static Table convertToTable(BusinessClass bussinessClass, BusinessObjectModel bom) {
 		Table table = convertToTable(bussinessClass);
@@ -76,13 +82,10 @@ public class ConvertUtil {
 	 * 外键字段.
 	 *
 	 * @author mqfdy
-	 * @param table
-	 *            the table
-	 * @param bc
-	 *            the bc
-	 * @param bom
-	 *            the bom
-	 * @Date 2018-9-3 11:38:25
+	 * @param table the table
+	 * @param bc the bc
+	 * @param bom the bom
+	 * @Date 2018年8月31日 上午10:46:13
 	 */
 	private static void addPkColumnToTable(Table table, BusinessClass bc, BusinessObjectModel bom) {
 		for(Association association: bom.getAssociations()){
@@ -152,10 +155,9 @@ public class ConvertUtil {
 	 * 获取业务对象对应的表对象.
 	 *
 	 * @author mqfdy
-	 * @param bussinessClass
-	 *            the bussiness class
-	 * @return the table
-	 * @Date 2018-9-3 11:38:25
+	 * @param bussinessClass the bussiness class
+	 * @return Table实例
+	 * @Date 2018年8月31日 上午10:46:25
 	 */
 	private static Table convertToTable(BusinessClass bussinessClass) {
 		Table table = new Table();
@@ -226,10 +228,9 @@ public class ConvertUtil {
 	 * 创建持久化实体模型.
 	 *
 	 * @author mqfdy
-	 * @param table
-	 *            持久化实体对应数据库表
-	 * @return the i persistence model
-	 * @Date 2018-09-03 09:00
+	 * @param table 持久化实体对应数据库表
+	 * @return IPersistenceModel实例
+	 * @Date 2018年8月31日 上午10:46:33
 	 */
 	public static IPersistenceModel convertToPersistenceModel(Table table) {
 		
@@ -240,15 +241,13 @@ public class ConvertUtil {
 	}
 	
 	/**
-	 * Convert to persistence model.
+	 * 方法描述：convertToPersistenceModel.
 	 *
 	 * @author mqfdy
-	 * @param bussinessClass
-	 *            the bussiness class
-	 * @param bom
-	 *            the bom
-	 * @return the i persistence model
-	 * @Date 2018-09-03 09:00
+	 * @param bussinessClass bussinessClass
+	 * @param bom bom
+	 * @return IPersistenceModel实例
+	 * @Date 2018年8月31日 上午10:46:39
 	 */
 	public static IPersistenceModel convertToPersistenceModel(BusinessClass bussinessClass, BusinessObjectModel bom){
 		Table table = convertToTable(bussinessClass,bom);
@@ -259,5 +258,4 @@ public class ConvertUtil {
 		}
 		return persistenceModel;
 	}
-
 }

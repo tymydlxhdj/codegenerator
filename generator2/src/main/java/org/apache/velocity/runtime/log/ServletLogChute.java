@@ -209,11 +209,17 @@ public class ServletLogChute implements LogChute
     }
 
     /**
-     * @see org.apache.velocity.runtime.log.LogChute#log(int, java.lang.String, java.lang.Throwable)
-     * @param level
-     * @param message
-     * @param t ServletLogChute
-     */
+	 * Log.
+	 *
+	 * @param level
+	 *            the level
+	 * @param message
+	 *            the message
+	 * @param t
+	 *            ServletLogChute
+	 * @see org.apache.velocity.runtime.log.LogChute#log(int, java.lang.String,
+	 *      java.lang.Throwable)
+	 */
     public void log(int level, String message, Throwable t)
     {
         if (!isLevelEnabled(level))

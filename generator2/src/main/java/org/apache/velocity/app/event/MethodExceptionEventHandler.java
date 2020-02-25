@@ -108,8 +108,7 @@ public interface MethodExceptionEventHandler extends EventHandler
         }
 
         /**
-		 * Call the method methodException()
-		 * 
+		 * Call the method methodException().
 		 *
 		 * @author mqfdy
 		 * @param handler
@@ -131,9 +130,11 @@ public interface MethodExceptionEventHandler extends EventHandler
         }
 
         /**
-         * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
-         * @return MethodExceptionExecutor
-         */
+		 * Gets the return value.
+		 *
+		 * @return MethodExceptionExecutor
+		 * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
+		 */
         public Object getReturnValue()
         {
             return result;

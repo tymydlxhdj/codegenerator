@@ -77,7 +77,10 @@ public class TransferClass extends AbstractJavaClass {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractJavaClass#initFields() TransferClass
+	 * Inits the fields.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractJavaClass#initFields()
+	 *      TransferClass
 	 */
 	@Override
 	public void initFields() {
@@ -86,7 +89,10 @@ public class TransferClass extends AbstractJavaClass {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractJavaClass#initMethods() TransferClass
+	 * Inits the methods.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractJavaClass#initMethods()
+	 *      TransferClass
 	 */
 	@Override
 	public void initMethods() {

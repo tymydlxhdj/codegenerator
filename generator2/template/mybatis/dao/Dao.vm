@@ -1,0 +1,149 @@
+#set($table=$ptable.getTable())
+#set($tjavaName=$table.getJavaName())
+#set($tjavaName_l=${strings.lowercaseFirstLetter($tjavaName)})
+#set($primaryKeyCol=$table.getPrimaryKey().getColumns().get(0))
+#set($primaryKey=$table.getPrimaryKey().getColumns().get(0).getJavaName())
+#set($columns=$table.columns)
+#set($columnStr="")
+#set($resultStr="")
+#set($values="")
+#set($setValues="")
+#foreach($key in ${columns.keySet()})
+#set($col = ${columns.get($key)})
+#set($columnStr=${strings.concatStringWithComma(${columnStr},${col.name})})
+#set($values=${strings.concatStringWithCommaValues(${values},${col.javaName})})
+#set($setValues=${strings.concatStringWithComma(${setValues}, ${strings.concatKeyValueMybatis(${col.name},${col.javaName})})})
+#if(!${col.isPrimaryKey})
+#set($resultStr = ${strings.concatStringWithComma(${resultStr},${strings.concatStringMybatisResult(${col.javaName},${col.name},${col.javaType})})})
+#end
+#end
+
+${packageStr}
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.annotations.Update;
+
+#if($customMethods != "")
+import com.mqfdy.code.rest.support.DicItem;
+#end
+
+import ${packageStrPre}.domain.$tjavaName;
+
+
+/**
+ * <b>概述</b>：<br>
+ * TODO
+ * <p>
+ * <b>功能</b>：<br>
+ * TODO
+ *
+ * @author ${author}
+ */
+@Mapper
+public interface ${tjavaName}Dao {
+
+	/**
+	 * @findOne:根据$primaryKey查询
+	 * @param $primaryKey
+	 * @return ${tjavaName} 查询实体
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	@Select("SELECT ${columnStr} FROM ${table.getName()} WHERE ${primaryKeyCol.name}=#{${primaryKey}}")
+	@Results(id = "${tjavaName_l}Maps", value = {${resultStr}})
+	${tjavaName} findOne(${primaryKeyCol.javaType} $primaryKey);
+	
+	/**
+	 * @delete:根据$primaryKey删除
+	 * @param $primaryKey
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	@Delete("DELETE FROM ${table.getName()} WHERE ${primaryKeyCol.name}=#{${primaryKey}}")
+	void delete(${primaryKeyCol.javaType} $primaryKey);
+	
+	/**
+	 * @save:新增实体 
+	 * @param ${tjavaName_l}
+	 * @date ${now}
+	 * @author ${author}
+	 */
+#if(${strings.toLowerCase(${dbType})} == "mysql")
+#if(${primaryKeyCol.javaType} == "String")
+	 //	mysql
+	@SelectKey(keyProperty = "id", resultType = String.class, before = true, statement = "select replace(uuid(),'-','')")
+	@Options(keyProperty = "id", useGeneratedKeys = true)
+#end
+#end
+#if(${strings.toLowerCase(${dbType})} == "oracle")
+#if(${primaryKeyCol.javaType} == "String")
+	 // 将下面的sql语句在oracle数据库中执行一下
+	 // CREATE OR REPLACE FUNCTION get_uuid RETURN VARCHAR IS guid VARCHAR (50); BEGIN guid := lower(RAWTOHEX(sys_guid())); RETURN substr(guid,1,8)||'-'||substr(guid,9,4)||'-'||substr(guid,13,4)||'-'||substr(guid,17,4)||'-'||substr(guid,21,12); END get_uuid;	
+	@SelectKey(keyProperty = "id", resultType = String.class, before = true, statement = "select get_uuid from dual")
+	@Options(keyProperty = "id", useGeneratedKeys = true)
+#end
+#end
+	@Insert("INSERT INTO ${table.getName()}(${columnStr}) VALUES (${values})") 
+	void save(${tjavaName} ${tjavaName_l});
+	
+	/**
+	 * @update:更新实体
+	 * @param ${tjavaName_l}
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	@Update("UPDATE ${table.getName()} SET ${setValues} WHERE ${primaryKeyCol.name}=#{${primaryKey}}")
+	void update(${tjavaName} ${tjavaName_l});
+	
+	/**
+	 * @findAll: 查询所有的实体集合
+	 * @return List:${tjavaName_l} 实体集合
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	@Select("SELECT ${columnStr} FROM ${table.getName()}")
+	@ResultMap("${tjavaName_l}Maps")
+	List<${tjavaName}> findAll();
+	/**
+	 * @findByCondition: 根据条件查询所有的实体集合
+	 * @return List:${tjavaName_l} 符合特殊条件的实体集合
+	 * @date ${now}
+	 * @author ${author}
+	 */
+    @SelectProvider(type = ${tjavaName}DaoProvider.class, method = "findByCondition")  
+    @ResultMap("${tjavaName_l}Maps")
+    public List<${tjavaName}> findByCondition(${tjavaName} ${tjavaName_l});
+#if($isTree)
+    /**
+	 * @findByDepparentid: 查询所有符合条件depparentid的实体集合
+	 * @return List:${tjavaName_l} 实体集合
+	 * @date ${now}
+	 * @author ${author}
+	 */
+    @Select("SELECT ${columnStr} FROM ${table.getName()} WHERE ${parent_col_name}=#{$parent_property_name)}")
+	@ResultMap("${tjavaName_l}Maps")
+	List<${tjavaName}> findBy${strings.capitalizeFirstLetter($parent_property_name)}(${primaryKeyCol.javaType} $parent_property_name);
+
+    /**
+	 * @findByDepparentidIsNull: 查询所有depparentid为空的实体集合
+	 * @return ${tjavaName_l} 实体集合
+	 * @date ${now}
+	 * @author ${author}
+	 */
+    @Select("SELECT ${columnStr} FROM ${table.getName()} WHERE ${parent_col_name} is null")
+	@ResultMap("${tjavaName_l}Maps")
+	List<${tjavaName}> findBy${strings.capitalizeFirstLetter($parent_property_name)}IsNull();
+#end
+	${customMethods}
+}

@@ -1,5 +1,7 @@
 package com.mqfdy.code.generator.model;
 
+import java.util.List;
+
 // TODO: Auto-generated Javadoc
 /**
  * 生成代码接口.
@@ -17,6 +19,30 @@ public interface IGenerator {
 	 * @Date 2018-09-03 09:00
 	 */
 	public void generate() throws CodeGenerationException;
+	
+	/**
+	 * Generate.
+	 *
+	 * @author mqfdy
+	 * @param materals
+	 *            the materals
+	 * @throws CodeGenerationException
+	 *             the code generation exception
+	 * @Date 2018-9-19 15:09:29
+	 */
+	public void generate(List<ICodeFileMaterial> materals) throws CodeGenerationException;
+	
+	/**
+	 * Generate.
+	 *
+	 * @author mqfdy
+	 * @param material
+	 *            the material
+	 * @throws CodeGenerationException
+	 *             the code generation exception
+	 * @Date 2018-9-19 10:17:01
+	 */
+	public void generate(ICodeFileMaterial material) throws CodeGenerationException;
 
 	/**
 	 * 客户端调用此方法来询问generator它要生成的文件在文件系统中是否已经存在了.

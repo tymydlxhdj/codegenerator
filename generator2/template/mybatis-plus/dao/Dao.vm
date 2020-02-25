@@ -1,0 +1,54 @@
+#set($table=$ptable.getTable())
+#set($tjavaName=$table.getJavaName())
+#set($tjavaName_l=${strings.lowercaseFirstLetter($tjavaName)})
+#set($primaryKeyCol=$table.getPrimaryKey().getColumns().get(0))
+#set($primaryKey=$table.getPrimaryKey().getColumns().get(0).getJavaName())
+#set($columns=$table.columns)
+#set($columnStr="")
+#set($resultStr="")
+#set($values="")
+#set($setValues="")
+#foreach($key in ${columns.keySet()})
+#set($col = ${columns.get($key)})
+#set($columnStr=${strings.concatStringWithComma(${columnStr},${col.name})})
+#set($values=${strings.concatStringWithCommaValues(${values},${col.javaName})})
+#set($setValues=${strings.concatStringWithComma(${setValues}, ${strings.concatKeyValueMybatis(${col.name},${col.javaName})})})
+#if(!${col.isPrimaryKey})
+#set($resultStr = ${strings.concatStringWithComma(${resultStr},${strings.concatStringMybatisResult(${col.javaName},${col.name},${col.javaType})})})
+#end
+#end
+
+${packageStr}
+
+#if($hasDb)
+import java.util.List;
+#end
+
+import org.apache.ibatis.annotations.Mapper;
+#if($hasDb)
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
+#end
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+#if($hasDb)
+import com.mqfdy.code.rest.support.DicItem;
+#end
+
+import ${packageStrPre}.domain.$tjavaName;
+
+
+/**
+ * <b>概述</b>：<br>
+ * TODO
+ * <p>
+ * <b>功能</b>：<br>
+ * TODO
+ *
+ * @author ${author}
+ */
+@Mapper
+public interface ${tjavaName}Dao extends BaseMapper<${tjavaName}>{
+	${customMethods}
+}

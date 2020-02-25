@@ -73,8 +73,10 @@ public class WebXmlGenerator extends AbstractGenerator {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getSourceMap()
+	 * Gets the source map.
+	 *
 	 * @return WebXmlGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getSourceMap()
 	 */
 	@Override
 	public Map<String, Object> getSourceMap() {
@@ -82,8 +84,10 @@ public class WebXmlGenerator extends AbstractGenerator {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.IGenerator#getOutputFilePath()
+	 * Gets the output file path.
+	 *
 	 * @return WebXmlGenerator
+	 * @see com.mqfdy.code.generator.model.IGenerator#getOutputFilePath()
 	 */
 	public String getOutputFilePath() {
 		return genProject.getLocation().toOSString()+ File.separator + "WebContent"+ File.separator + "WEB-INF" + File.separator + getFileNameWithoutExtension()
@@ -105,7 +109,10 @@ public class WebXmlGenerator extends AbstractGenerator {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#generate() WebXmlGenerator
+	 * Generate.
+	 *
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#generate()
+	 *      WebXmlGenerator
 	 */
 	public void generate(){
 		try {
@@ -136,16 +143,20 @@ public class WebXmlGenerator extends AbstractGenerator {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileNameWithoutExtension()
+	 * Gets the file name without extension.
+	 *
 	 * @return WebXmlGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileNameWithoutExtension()
 	 */
 	protected String getFileNameWithoutExtension() {
 		return "web";
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getGenProject()
+	 * Gets the gen project.
+	 *
 	 * @return WebXmlGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getGenProject()
 	 */
 	public IProject getGenProject() {
 		return genProject;
@@ -164,24 +175,30 @@ public class WebXmlGenerator extends AbstractGenerator {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileExtension()
+	 * Gets the file extension.
+	 *
 	 * @return WebXmlGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getFileExtension()
 	 */
 	public String getFileExtension(){
 		return ".txt";
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.IGenerator#getFileName()
+	 * Gets the file name.
+	 *
 	 * @return WebXmlGenerator
+	 * @see com.mqfdy.code.generator.model.IGenerator#getFileName()
 	 */
 	public String getFileName() {
 		return "web";
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getTemplatePath()
+	 * Gets the template path.
+	 *
 	 * @return WebXmlGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getTemplatePath()
 	 */
 	@Override
 	protected String getTemplatePath() {

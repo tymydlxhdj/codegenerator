@@ -101,7 +101,10 @@ public class DomainClass extends AbstractBusinessClass {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields() DomainClass
+	 * Inits the fields.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields()
+	 *      DomainClass
 	 */
 	@Override
 	public void initFields() {
@@ -117,16 +120,22 @@ public class DomainClass extends AbstractBusinessClass {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods() DomainClass
+	 * Inits the methods.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods()
+	 *      DomainClass
 	 */
 	@Override
 	public void initMethods() {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#getCustomMethod(com.mqfdy.code.model.BusinessOperation)
+	 * Gets the custom method.
+	 *
 	 * @param bop
+	 *            the bop
 	 * @return DomainClass
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#getCustomMethod(com.mqfdy.code.model.BusinessOperation)
 	 */
 	@Override
 	protected String getCustomMethod(BusinessOperation bop) {
@@ -135,7 +144,10 @@ public class DomainClass extends AbstractBusinessClass {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#putToVelocityMap() DomainClass
+	 * Put to velocity map.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#putToVelocityMap()
+	 *      DomainClass
 	 */
 	@Override
 	public void putToVelocityMap() {

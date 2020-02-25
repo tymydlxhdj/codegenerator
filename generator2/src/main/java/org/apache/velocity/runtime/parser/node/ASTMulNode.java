@@ -63,12 +63,19 @@ public class ASTMulNode extends ASTMathNode
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.ASTMathNode#perform(java.lang.Number, java.lang.Number, org.apache.velocity.context.InternalContextAdapter)
-     * @param left
-     * @param right
-     * @param context
-     * @return ASTMulNode
-     */
+	 * Perform.
+	 *
+	 * @param left
+	 *            the left
+	 * @param right
+	 *            the right
+	 * @param context
+	 *            the context
+	 * @return ASTMulNode
+	 * @see org.apache.velocity.runtime.parser.node.ASTMathNode#perform(java.lang.Number,
+	 *      java.lang.Number,
+	 *      org.apache.velocity.context.InternalContextAdapter)
+	 */
     public Number perform(Number left, Number right, InternalContextAdapter context)
     {
         return MathUtils.multiply(left, right);

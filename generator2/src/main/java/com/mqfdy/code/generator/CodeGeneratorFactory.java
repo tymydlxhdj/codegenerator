@@ -26,7 +26,7 @@ public class CodeGeneratorFactory {
 	 *            the output path
 	 * @return the i code generator
 	 */
-	public static ICodeGenerator createCodeGenerator(IProject project,int option,String packageName,String outputPath){
+	public static MicroGenerator2 createCodeGenerator(IProject project,int option,String packageName,String outputPath){
 		return  new MicroGenerator2(project,option,packageName,outputPath);
 	}
 	

@@ -83,11 +83,18 @@ public class Stop extends Directive
     }
 
     /**
-     * @see org.apache.velocity.runtime.directive.Directive#init(org.apache.velocity.runtime.RuntimeServices, org.apache.velocity.context.InternalContextAdapter, org.apache.velocity.runtime.parser.node.Node)
-     * @param rs
-     * @param context
-     * @param node Stop
-     */
+	 * Inits the.
+	 *
+	 * @param rs
+	 *            the rs
+	 * @param context
+	 *            the context
+	 * @param node
+	 *            Stop
+	 * @see org.apache.velocity.runtime.directive.Directive#init(org.apache.velocity.runtime.RuntimeServices,
+	 *      org.apache.velocity.context.InternalContextAdapter,
+	 *      org.apache.velocity.runtime.parser.node.Node)
+	 */
     public void init(RuntimeServices rs, InternalContextAdapter context, Node node)
     {
         super.init(rs, context, node);
@@ -105,12 +112,18 @@ public class Stop extends Directive
     }
 
     /**
-     * @see org.apache.velocity.runtime.directive.Directive#render(org.apache.velocity.context.InternalContextAdapter, java.io.Writer, org.apache.velocity.runtime.parser.node.Node)
-     * @param context
-     * @param writer
-     * @param node
-     * @return Stop
-     */
+	 * Render.
+	 *
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @param node
+	 *            the node
+	 * @return Stop
+	 * @see org.apache.velocity.runtime.directive.Directive#render(org.apache.velocity.context.InternalContextAdapter,
+	 *      java.io.Writer, org.apache.velocity.runtime.parser.node.Node)
+	 */
     public boolean render(InternalContextAdapter context, Writer writer, Node node)
     {
         if (!hasMessage)

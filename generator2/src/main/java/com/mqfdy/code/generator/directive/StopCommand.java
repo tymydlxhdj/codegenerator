@@ -78,9 +78,11 @@ public class StopCommand extends Error
     }
 
     /**
-     * @see java.lang.Throwable#getMessage()
-     * @return StopCommand
-     */
+	 * Gets the message.
+	 *
+	 * @return StopCommand
+	 * @see java.lang.Throwable#getMessage()
+	 */
     public String getMessage()
     {
         if (stopMe != null)

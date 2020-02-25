@@ -64,8 +64,10 @@ public class ModelChangeEvent extends EventObject {
 	}
 
 	/**
-	 * @see java.util.EventObject#toString()
+	 * To string.
+	 *
 	 * @return ModelChangeEvent
+	 * @see java.util.EventObject#toString()
 	 */
 	@Override
 	public String toString() {

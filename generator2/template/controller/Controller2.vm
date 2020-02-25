@@ -230,7 +230,7 @@ public class ${tjavaName}Controller {
 			RequestCondition requestCondition = new RequestCondition(filter,rows,page);
 			QueryResultObject queryResult = ${tjavaName_l}Service.query(requestCondition);
 			logger.info("查询数据成功"); 
-			return WrappedResult.successWrapedResult(queryResult);
+			return WrappedResult.successWrapedResult(queryResult,queryResult.getItems(),queryResult.getItemCount());
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
 			String errorMessage = "查询异常";
@@ -242,21 +242,20 @@ public class ${tjavaName}Controller {
 	}
 #end
 	/**
-	 * @query:重定向到页面
-	 * @param redirectPage
+	 * @redirectPage:重定向到页面
+	 * @param redirectPage redirectPage
 	 * @return ModelAndView 模型视图
 	 * @date ${now}
 	 * @author ${author}
 	 */
 	@RequestMapping("/page/{page}")
 	public ModelAndView redirectPage(@PathVariable String page){
-		return new ModelAndView("/${tjavaName_l}/"+page);
+		return new ModelAndView("/"+page);
 	}
 ${customMethods}
 	/**
 	 * @initBinder:初始化binder
 	 * @param binder  绑定器引用，用于控制各个方法绑定的属性
-	 * @return void
 	 * @date ${now}
 	 * @author ${author}
 	 */

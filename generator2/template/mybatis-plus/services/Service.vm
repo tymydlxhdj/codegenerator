@@ -1,0 +1,324 @@
+#set($table=$ptable.getTable())
+#set($primaryKey=$table.getPrimaryKey().getColumns().get(0).getJavaName())
+#set($primaryJavaType=$table.getPrimaryKey().getColumns().get(0).getJavaType())
+#set($tjavaName=$table.getJavaName())
+#set($tjavaName_l=${strings.lowercaseFirstLetter($tjavaName)})
+#set($primaryKeyCol=$table.getPrimaryKey().getColumns().get(0))
+#set($columns=$table.columns)
+${packageStr}
+
+import java.util.ArrayList;
+import java.util.HashMap;
+#if($hasDb)
+import java.util.Iterator;
+import java.util.LinkedList;
+#end
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+#if($hasEnum)
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.context.annotation.PropertySource;
+#end
+import org.springframework.stereotype.Service;
+#if($customMethods != "")
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.annotation.Propagation;
+#end
+
+#if($hasDelete || $hasQuery)
+import com.mqfdy.code.exception.NullArgumentException;
+import com.mqfdy.code.exception.PlatformRuntimeException;
+#end
+import com.mqfdy.code.mdd.runtime.validate.ValidateService;
+import com.mqfdy.code.rest.support.DicItems;
+#if($hasDelete)
+import com.mqfdy.code.rest.support.IDRequestObject;
+#end
+import com.mqfdy.code.rest.support.QueryFilter;
+#if($hasGet || $hasQuery)
+import com.mqfdy.code.rest.support.QueryResultObject;
+#end
+#if($hasQuery)
+import com.mqfdy.code.rest.support.RequestCondition;
+#end
+#if($isTree)
+import com.mqfdy.code.rest.support.TreeNode;
+#end
+#if($hasSave)
+import com.mqfdy.code.rest.utils.CrudUtils;
+#end
+#if($hasDb)
+import com.mqfdy.code.rest.support.DicItem;
+#end
+#if($hasEnum || $hasDb)
+import com.mqfdy.code.rest.support.DicItems;
+import com.mqfdy.code.rest.utils.DictUtils;
+#end
+#if($hasGet || $hasSave)
+import com.mqfdy.code.rest.utils.RestUtils;
+#end
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import ${packageStrPre}.domain.${tjavaName};
+import ${packageStrPre}.dao.${tjavaName}Dao;
+
+/**
+ * <b>概述</b>：<br>
+ * TODO
+ * <p>
+ * <b>功能</b>：<br>
+ * TODO
+ *
+ * @author ${author}
+ */
+@Service
+#if($hasEnum)
+@RefreshScope
+@PropertySource(value = "classpath:/enum/enums.properties", ignoreResourceNotFound = true)
+#end
+public class ${tjavaName}Service implements I${tjavaName}Service{
+	/** 
+     * 注入${tjavaName_l}Dao
+     */
+	@Autowired
+	private ${tjavaName}Dao ${tjavaName_l}Dao;
+	@Autowired
+	private ValidateService validateService;
+	${fields}
+    private static Map<String,String> propertyColMap;
+    
+	static {
+		propertyColMap = new HashMap<>();
+#foreach($key in ${table.columns.keySet()})
+#set ($col = ${table.columns.get($key)})
+		propertyColMap.put("${col.javaName}", "${col.name}");
+#end
+	}
+#if($isTree)
+	@Override
+	public List<TreeNode> listNodes(String nodeId,boolean boo){
+#set($toString="")
+#set($id="nodeId")
+#if(${primaryKeyCol.javaType} != "String")
+#set($toString=".toString()")
+#if(${primaryKeyCol.javaType} != "Integer")
+#set($id=${primaryKeyCol.javaType}+".parse"+${primaryKeyCol.javaType}+"(nodeId)")
+#else
+#set($id=${primaryKeyCol.javaType}+".parseInt(nodeId)")
+#end
+#end
+		List<TreeNode> trees = new ArrayList<TreeNode>();
+		List<${tjavaName}> ${tjavaName_l}List = get${tjavaName}List($id,boo);
+		for(${tjavaName} ${tjavaName_l} : ${tjavaName_l}List){
+			TreeNode node = new TreeNode();
+			node.setId(${tjavaName_l}.get${strings.capitalizeFirstLetter($primaryKey)}()${toString});
+			node.setText(${tjavaName_l}.get${strings.capitalizeFirstLetter($nodeText)}());
+			QueryWrapper<${tjavaName}> queryWrapper = new QueryWrapper<${tjavaName}>();
+			List<${tjavaName}> ${tjavaName_l}ChildList = ${tjavaName_l}Dao.selectList(queryWrapper.eq("${parent_col_name}", ${tjavaName_l}.get${strings.capitalizeFirstLetter($primaryKey)}()));
+			if(${tjavaName_l}ChildList.size() > 0){
+				node.setHasChildren(true);
+			}else{
+				node.setHasChildren(false);
+			}
+			trees.add(node);
+		}
+		return trees;
+	}
+	/**
+	 * @get${tjavaName}List:根据节点id获取部门列表
+	 * @param nodeId 树节点
+	 * @param boo 是否有子节点
+	 * @return List<${tjavaName}>  部门对象列表
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	private List<${tjavaName}> get${tjavaName}List(${primaryKeyCol.javaType} nodeId,boolean boo){
+		List<${tjavaName}> ${tjavaName_l}List = new ArrayList<${tjavaName}>();
+		if(boo){
+			QueryWrapper<${tjavaName}> queryWrapper = new QueryWrapper<${tjavaName}>();
+			if (null == nodeId) {
+				${tjavaName_l}List = ${tjavaName_l}Dao.selectList(queryWrapper.isNull("${parent_col_name}"));
+			} else {
+				${tjavaName_l}List = ${tjavaName_l}Dao.selectList(queryWrapper.eq("${parent_col_name}", nodeId));
+			}
+		}else{
+			${tjavaName} temp =  ${tjavaName_l}Dao.selectById(nodeId);
+			${tjavaName_l}List.add(temp);
+		}
+		return ${tjavaName_l}List;
+	}
+#end
+#if($hasGet)
+	@Override
+	public QueryResultObject get${tjavaName}By${strings.capitalizeFirstLetter($primaryKey)}(String ${primaryKey}) {
+#if(${primaryKeyCol.javaType} != "String")
+		${primaryKeyCol.javaType} temp_${primaryKey} = null;
+		if(!StringUtil.isNullOrEmpty(${primaryKey}) && !"null".equals(${primaryKey})){
+#if(${primaryKeyCol.javaType} == "Integer")
+#set($methodType="Int")
+		temp_${primaryKey} = ${primaryKeyCol.javaType}.parse${methodType}(${primaryKey});
+#else
+		temp_${primaryKey} = ${primaryKeyCol.javaType}.parse${primaryKeyCol.javaType}(${primaryKey});
+#end	
+		}
+		${tjavaName} ${tjavaName_l} = ${tjavaName_l}Dao.selectById(temp_${primaryKey});	
+#else
+		${tjavaName} ${tjavaName_l} = ${tjavaName_l}Dao.selectById(${primaryKey});
+#end
+		return RestUtils.wrappQueryResult(${tjavaName_l})${addDicts};
+	}
+#end
+#if($hasDelete)
+	@Override
+	public void remove(IDRequestObject idObject) {
+		if(idObject == null){
+			throw new NullArgumentException("idObject");
+		}
+		String[] ids = idObject.getIds();
+		for (String id : ids){
+#if(${primaryKeyCol.javaType} == "String")
+			${tjavaName_l}Dao.deleteById(id);
+#else
+			${tjavaName_l}Dao.deleteById(${primaryKeyCol.javaType}.valueOf(id));
+#end				
+		}
+	}
+#end
+#if($hasSave)
+	@Override
+	public ${tjavaName} save${tjavaName}(Map<String,Object> map) throws Exception{
+		validateService.validateWithException(${tjavaName}.class,map);
+		${tjavaName} ${tjavaName_l} = new ${tjavaName}();
+		if (map.containsKey("${primaryKey}")) {
+#if($primaryJavaType == "String")
+			$primaryJavaType ${primaryKey} = ($primaryJavaType) map.get("${primaryKey}");
+#else
+#if(${primaryKeyCol.javaType} == "Integer")
+#set($methodType="Int")
+		$primaryJavaType ${primaryKey} = ${primaryJavaType}.parseInt(map.get("${primaryKey}").toString());
+#else
+		$primaryJavaType ${primaryKey} = ${primaryJavaType}.parse$primaryJavaType(map.get("${primaryKey}").toString());
+#end	
+			
+#end
+			${tjavaName_l} = ${tjavaName_l}Dao.selectById(${primaryKey});
+			CrudUtils.mapToObject(map, ${tjavaName_l},  "${primaryKey}");
+			${tjavaName_l}Dao.updateById(${tjavaName_l});
+		}else{
+			CrudUtils.transMap2Bean(map, ${tjavaName_l});
+			${tjavaName_l}Dao.insert(${tjavaName_l});
+		}
+		return ${tjavaName_l};
+	}
+#end
+#if($hasQuery)
+	/**
+	 * QueryWrapper<?> queryWrapper = new QueryWrapper<>();
+	 * List<?> result = selectList(queryWrapper);
+	 * 字符串类型模糊查询示例：
+	 * queryWrapper.like("name", "三");  查询名字中含有“三”的员工
+	 * 
+	 * 数字类型or时间类型示例:
+	 * queryWrapper.gt("age",26) 查询年龄为26的员工
+	 * queryWrapper.gt("age", 26);	 查询年龄大于26的员工  同理大于等于为gt
+     * queryWrapper.lt("age", 26);	 查询年龄小于26的员工  同理小于等于为lt
+     * queryWrapper.between("age", 26, 30);查询年龄在26与30之间的员工
+	 * 若查询条件为时间类型，需用DateTimeConverter类的toDate方法将条件转换为对应的日期类型，然后进行查询
+	 * 例如：Date date = (Date) DateTimeConverter.toDate(Date.class, queryFilter.getValue()); queryWrapper.eq(namePath, date);
+	 */
+	@Override
+	public QueryResultObject query(RequestCondition queryCondition) {
+		if (queryCondition == null) {
+			throw new NullArgumentException("queryCondition");
+		}
+		Object filter = queryCondition.getFilter();
+		QueryWrapper<${tjavaName}> queryWrapper = new QueryWrapper<>();
+		if (Objects.nonNull(filter)) {
+			List<QueryFilter> queryFilter = queryCondition.getQueryFilter();
+			queryFilter.forEach(o -> {
+				queryWrapper.eq(propertyColMap.get(o.getFieldName()), String.valueOf(o.getValue()));
+			});
+		}
+		Page<${tjavaName}> pageInfo = PageHelper.startPage(queryCondition.getPageIndex(), queryCondition.getPageSize());
+		${tjavaName_l}Dao.selectList(queryWrapper);
+		long total = pageInfo.getTotal();
+		List<${tjavaName}> result = pageInfo.getResult();
+		return RestUtils.wrappQueryResult(result, total)${addDicts};
+	}
+#end
+${customMethods}
+#if($hasDb || $hasEnum)
+	/**
+	 * @wrapDictList:将字典对象封装为list
+	 * @param fieldName 映射的字段名
+	 * @param dictValue 属性文件指定key对应的值
+	 * @return List<DicItems> 数据字典列表
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	private List<DicItems> wrapDictList() {
+		List<DicItems> dicts = new ArrayList<DicItems>();
+		${dicts}
+		return dicts;
+	}
+#end	
+#if($hasEnum)		
+	/**
+	 * @translateFromFile:从属性文件中查询字典
+	 * @param fieldName 实体属性名称
+	 * @param dictValue 数据字典名称
+	 * @return DicItems  数据字典对象
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	private DicItems translateFromFile(String fieldName, String dictValue) {
+		List<Map<String, String>> list = DictUtils.translateFromFile(
+				dictValue, "value", "text");
+		DicItems dict = new DicItems();
+		dict.setName(fieldName);
+		dict.setValues(list);
+		return dict;
+	}
+#end
+#if($hasDb)		
+	/**
+	 * @translateFromDB:从数据库中查询字典
+	 * @param fieldName 实体属性名称
+	 * @return DicItems  数据字典对象
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	private DicItems translateFromDB(String fieldName) {
+		List<Map<String, String>> list = new LinkedList<Map<String, String>>();
+		List<DicItem>  lt = getLt(fieldName);
+		if(lt != null && !lt.isEmpty()){
+			for(DicItem item : lt){
+				Map<String, String> map = DictUtils.keyvalueToMap("value", "text", item.getId(), item.getName());
+				list.add(map);
+			}
+		}
+		DicItems dict = new DicItems();
+		dict.setName(fieldName);
+		dict.setValues(list);
+		return dict;
+	}
+	/**
+	 * @getLt:获取数据字典查询结果
+	 * @param fieldName 实体属性名称
+	 * @return List<DictItem>  数据字典查询结果
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	private List<DicItem> getLt(String fieldName) {
+		${returnSets}
+		return null;
+	}
+#end
+}

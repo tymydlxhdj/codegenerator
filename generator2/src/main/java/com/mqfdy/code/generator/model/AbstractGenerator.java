@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
@@ -76,7 +77,7 @@ abstract public class AbstractGenerator implements IGenerator {
 	private static String DEFAULT_OUTPUT_FILE_ENCODING = "UTF-8";
 
 	/** The gen project. */
-	private IProject genProject;
+	protected IProject genProject;
 
 	/** The Constant TABLE_KEY. */
 	// 对应vm模板中的table变量
@@ -134,25 +135,13 @@ abstract public class AbstractGenerator implements IGenerator {
 	private static String root;
 	
 	/** The properties. */
-	private static Properties properties = new Properties();
+	protected static Properties properties = new Properties();
 	static {
-		
-		/*// 设置velocity资源加载方式为file
-		properties.setProperty(RuntimeConstants.RESOURCE_LOADER, "file");
-		
-		//设置velocity资源加载方式为file时的处理类
-		properties.setProperty("file.resource.loader.class",
-				"org.apache.velocity.runtime.resource.loader.FileResourceLoader");*/
-		
 		try {
 			root = PluginUtil
 					.getPluginOSPath(GeneratorPlugin.PLUGIN_ID);
 			properties.setProperty(RuntimeConstants.FILE_RESOURCE_LOADER_PATH,
 					root);
-			/*properties.setProperty(RuntimeConstants.RESOURCE_MANAGER_CLASS, "com.mqfdy.code.generator.resource.ResourceManagerImpl");
-			properties.setProperty(RuntimeConstants.RESOURCE_MANAGER_CACHE_CLASS, "com.mqfdy.code.generator.resource.ResourceCacheImpl");
-			properties.setProperty(RuntimeConstants.PARSER_POOL_CLASS, "com.mqfdy.code.generator.resource.ParserPoolImpl");
-			properties.setProperty(RuntimeConstants.UBERSPECT_CLASSNAME, "com.mqfdy.code.generator.resource.");*/
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -170,8 +159,11 @@ abstract public class AbstractGenerator implements IGenerator {
 	}
 
 	/**
+	 * Generate.
+	 *
+	 * @throws CodeGenerationException
+	 *             AbstractGenerator
 	 * @see com.mqfdy.code.generator.model.IGenerator#generate()
-	 * @throws CodeGenerationException AbstractGenerator
 	 */
 	public void generate() throws CodeGenerationException {
 		String filePath = getOutputFilePath();
@@ -233,16 +225,21 @@ abstract public class AbstractGenerator implements IGenerator {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.model.IGenerator#isGenerate()
+	 * Checks if is generate.
+	 *
 	 * @return AbstractGenerator
+	 * @see com.mqfdy.code.generator.model.IGenerator#isGenerate()
 	 */
 	public boolean isGenerate() {
 		return isGenerateInternal() && isGenerate;
 	}
 
 	/**
+	 * Sets the generate.
+	 *
+	 * @param isGenerate
+	 *            AbstractGenerator
 	 * @see com.mqfdy.code.generator.model.IGenerator#setGenerate(boolean)
-	 * @param isGenerate AbstractGenerator
 	 */
 	public void setGenerate(boolean isGenerate) {
 		this.isGenerate = isGenerate;
@@ -336,8 +333,10 @@ abstract public class AbstractGenerator implements IGenerator {
 	abstract protected String getTemplatePath();
 
 	/**
-	 * @see com.mqfdy.code.generator.model.IGenerator#isTargetFileExist()
+	 * Checks if is target file exist.
+	 *
 	 * @return AbstractGenerator
+	 * @see com.mqfdy.code.generator.model.IGenerator#isTargetFileExist()
 	 */
 	public boolean isTargetFileExist() {
 		return new File(getOutputFilePath()).exists();
@@ -384,5 +383,85 @@ abstract public class AbstractGenerator implements IGenerator {
 	 */
 	public void setParentId(String parentId) {
 		this.parentId = parentId;
+	}
+	
+	/**
+	 * Generate.
+	 *
+	 * @author mqfdy
+	 * @param materals
+	 *            the materals
+	 * @throws CodeGenerationException
+	 *             the code generation exception
+	 * @Date 2018-9-19 15:09:29
+	 */
+	public void generate(List<ICodeFileMaterial> materals) throws CodeGenerationException {
+		if(materals != null && !materals.isEmpty()){
+			for(ICodeFileMaterial cfm : materals){
+				this.generate(cfm);
+			}
+		}
+	}
+	
+	/**
+	 * Generate.
+	 *
+	 * @author mqfdy
+	 * @param material
+	 *            the material
+	 * @throws CodeGenerationException
+	 *             the code generation exception
+	 * @Date 2018-9-19 10:17:01
+	 */
+	public void generate(ICodeFileMaterial material) throws CodeGenerationException {
+		String outputPath = material.getOutputPath();
+		File dir = new File(outputPath);
+		if (!dir.exists() && outputPath.endsWith(File.separator)) {
+			dir.mkdirs() ;// 创建单个目录
+		}
+		String filePath = material.getOutputFilePath();
+		String encoding = DEFAULT_OUTPUT_FILE_ENCODING;
+		Writer writer=null;
+		OutputStream outputStream = null;
+		OutputStreamWriter outputStreamWriter = null;
+		try {
+			VelocityEngine ve = new VelocityEngine();
+			ve.init(properties);
+			Map<String, Object> map = material.getVelocityMap();
+			for (Entry<String, Object> entry : map.entrySet()) {
+				getContext().put(entry.getKey(), entry.getValue());
+			}
+			
+			outputStream = new FileOutputStream(filePath);
+			outputStreamWriter = new OutputStreamWriter(outputStream,encoding);
+			writer = new BufferedWriter(outputStreamWriter);
+			Template t = ve.getTemplate(material.getTemplatePath(), TEMPLATE_FILE_ENCODEING);
+			t.merge(context, writer);
+			writer.flush();
+		} catch (IOException e) {
+			throw new CodeGenerationException(material.getOutputFilePath(), e);
+		}finally{
+			if(null!=writer){
+				try {
+					writer.close();
+				} catch (IOException e) {
+					Logger.log(e);
+				}
+			}
+			if(null!=outputStream){
+				try {
+					outputStream.close();
+				} catch (IOException e) {
+					Logger.log(e);
+				}
+			}
+			if(null!=outputStreamWriter){
+				try {
+					outputStreamWriter.close();
+				} catch (IOException e) {
+					Logger.log(e);
+				}
+			}
+		}
 	}
 }

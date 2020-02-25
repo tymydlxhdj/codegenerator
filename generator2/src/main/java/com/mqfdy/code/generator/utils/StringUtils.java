@@ -28,17 +28,17 @@ import com.mqfdy.code.utils.Logger;
  */
 public class StringUtils {
 	
-	/** The Constant EOL. */
+	/** EOL. */
 	private static final String EOL = System.getProperty("line.separator");
 
 	/**
-	 * 判断字符串是否为 null 或为空字符串。.
+	 * 判断字符串是否为 null 或为空字符串。
+	 * 方法描述：isEmpty.
 	 *
 	 * @author mqfdy
-	 * @param str
-	 *            the str
-	 * @return true, if is empty
-	 * @Date 2018-09-03 09:00
+	 * @param str str
+	 * @return boolean实例
+	 * @Date 2018年8月31日 下午2:40:02
 	 */
 	public static boolean isEmpty(String str) {
 		if (str == null) {
@@ -50,13 +50,13 @@ public class StringUtils {
 	}
 	
 	/**
-	 * 校验表字段是否合规.
+	 * 校验表字段是否合规
+	 * 方法描述：validateFieldName.
 	 *
 	 * @author mqfdy
-	 * @param fieldName
-	 *            the field name
-	 * @return true, if successful
-	 * @Date 2018-09-03 09:00
+	 * @param fieldName fieldName
+	 * @return boolean实例
+	 * @Date 2018年8月31日 下午2:40:17
 	 */
 	public static boolean validateFieldName(String fieldName) {
 		
@@ -71,13 +71,12 @@ public class StringUtils {
 	}
 	
 	/**
-	 * Capitalize.
+	 * 方法描述：capitalize.
 	 *
 	 * @author mqfdy
-	 * @param str
-	 *            the str
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param str str
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:40:24
 	 */
 	public static String capitalize(String str) {
 		if (str == null || str.length() == 0) {
@@ -90,13 +89,12 @@ public class StringUtils {
 	}
 	
 	/**
-	 * Concat.
+	 * 方法描述：concat.
 	 *
 	 * @author mqfdy
-	 * @param list
-	 *            the list
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param list list
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:40:30
 	 */
 	public String concat(List<String> list) {
 		StringBuffer sb = new StringBuffer();
@@ -109,41 +107,51 @@ public class StringUtils {
 	}
 
 	/**
-	 * Gets the package as path.
+	 * 方法描述：getPackageAsPath.
 	 *
 	 * @author mqfdy
-	 * @param pckge
-	 *            the pckge
-	 * @return the package as path
-	 * @Date 2018-09-03 09:00
+	 * @param pckge pckge
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:40:36
 	 */
 	static public String getPackageAsPath(String pckge) {
 		return pckge.replace('.', File.separator.charAt(0)) + File.separator;
 	}
 
 	/**
-	 * Lowercase first letter.
+	 * 方法描述：lowercaseFirstLetter.
 	 *
 	 * @author mqfdy
-	 * @param str
-	 *            the str
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param str str
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:40:41
 	 */
 	static public String lowercaseFirstLetter(String str) {
 		String firstLetter = str.substring(0, 1);
 		String subLetter = str.substring(1);
 		return firstLetter.toLowerCase(Locale.getDefault()).concat(subLetter);
 	}
-
 	/**
-	 * Removes the under scores.
+	 * 方法描述：uppercaseFirstLetter.
 	 *
 	 * @author mqfdy
-	 * @param data
-	 *            the data
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param str str
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:40:41
+	 */
+	static public String uppercaseFirstLetter(String str) {
+		String firstLetter = str.substring(0, 1);
+		String subLetter = str.substring(1);
+		return firstLetter.toUpperCase(Locale.getDefault()).concat(subLetter);
+	}
+
+	/**
+	 * 方法描述：removeUnderScores.
+	 *
+	 * @author mqfdy
+	 * @param data data
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:40:46
 	 */
 	@Deprecated
 	static public String removeUnderScores(String data) {
@@ -162,28 +170,25 @@ public class StringUtils {
 	}
 
 	/**
-	 * Removes the and hump.
+	 * 方法描述：removeAndHump.
 	 *
 	 * @author mqfdy
-	 * @param data
-	 *            the data
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param data data
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:40:53
 	 */
 	static public String removeAndHump(String data) {
 		return removeAndHump(data, "_");
 	}
 
 	/**
-	 * Removes the and hump.
+	 * 方法描述：removeAndHump.
 	 *
 	 * @author mqfdy
-	 * @param data
-	 *            the data
-	 * @param replaceThis
-	 *            the replace this
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param data data
+	 * @param replaceThis replaceThis
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:40:57
 	 */
 	static public String removeAndHump(String data, String replaceThis) {
 		String temp = null;
@@ -201,13 +206,12 @@ public class StringUtils {
 	}
 
 	/**
-	 * First letter caps.
+	 * 方法描述：firstLetterCaps.
 	 *
 	 * @author mqfdy
-	 * @param data
-	 *            the data
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param data data
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:41:05
 	 */
 	static public String firstLetterCaps(String data) {
 		String firstLetter = data.substring(0, 1).toUpperCase(Locale.getDefault());
@@ -216,13 +220,12 @@ public class StringUtils {
 	}
 
 	/**
-	 * Capitalize first letter.
+	 * 方法描述：capitalizeFirstLetter.
 	 *
 	 * @author mqfdy
-	 * @param data
-	 *            the data
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param data data
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:41:10
 	 */
 	static public String capitalizeFirstLetter(String data) {
 		String firstLetter = data.substring(0, 1).toUpperCase(Locale.getDefault());
@@ -231,15 +234,13 @@ public class StringUtils {
 	}
 
 	/**
-	 * Split.
+	 * 方法描述：split.
 	 *
 	 * @author mqfdy
-	 * @param line
-	 *            the line
-	 * @param delim
-	 *            the delim
-	 * @return the string[]
-	 * @Date 2018-09-03 09:00
+	 * @param line line
+	 * @param delim delim
+	 * @return String[]实例
+	 * @Date 2018年8月31日 下午2:41:15
 	 */
 	public static String[] split(String line, String delim) {
 		List<String> list = new ArrayList<String>();
@@ -251,32 +252,27 @@ public class StringUtils {
 	}
 
 	/**
-	 * Chop.
+	 * 方法描述：chop.
 	 *
 	 * @author mqfdy
-	 * @param s
-	 *            the s
-	 * @param i
-	 *            the i
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param s s
+	 * @param i i
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:41:23
 	 */
 	public static String chop(String s, int i) {
 		return chop(s, i, EOL);
 	}
 
 	/**
-	 * Chop.
+	 * 方法描述：chop.
 	 *
 	 * @author mqfdy
-	 * @param s
-	 *            the s
-	 * @param i
-	 *            the i
-	 * @param eol
-	 *            the eol
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param s s
+	 * @param i i
+	 * @param eol eol
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:41:31
 	 */
 	public static String chop(String s, int i, String eol) {
 		if (i == 0 || s == null || eol == null) {
@@ -302,30 +298,26 @@ public class StringUtils {
 	}
 
 	/**
-	 * String substitution.
+	 * 方法描述：stringSubstitution.
 	 *
 	 * @author mqfdy
-	 * @param argStr
-	 *            the arg str
-	 * @param vars
-	 *            the vars
-	 * @return the string buffer
-	 * @Date 2018-09-03 09:00
+	 * @param argStr argStr
+	 * @param vars vars
+	 * @return StringBuffer实例
+	 * @Date 2018年8月31日 下午2:41:42
 	 */
 	public static StringBuffer stringSubstitution(String argStr, Hashtable<String, String> vars) {
 		return stringSubstitution(argStr, (Map<String, String>) vars);
 	}
 
 	/**
-	 * String substitution.
+	 * 方法描述：stringSubstitution.
 	 *
 	 * @author mqfdy
-	 * @param argStr
-	 *            the arg str
-	 * @param vars
-	 *            the vars
-	 * @return the string buffer
-	 * @Date 2018-09-03 09:00
+	 * @param argStr argStr
+	 * @param vars  vars
+	 * @return StringBuffer实例
+	 * @Date 2018年8月31日 下午2:41:48
 	 */
 	public static StringBuffer stringSubstitution(String argStr, Map<String, String> vars) {
 		StringBuffer argBuf = new StringBuffer();
@@ -364,13 +356,12 @@ public class StringUtils {
 	}
 
 	/**
-	 * File contents to string.
+	 * 方法描述：fileContentsToString.
 	 *
 	 * @author mqfdy
-	 * @param file
-	 *            the file
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param file file
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:41:58
 	 */
 	public static String fileContentsToString(String file) {
 		String contents = "";
@@ -401,13 +392,12 @@ public class StringUtils {
 	}
 
 	/**
-	 * Collapse newlines.
+	 * 方法描述：collapseNewlines.
 	 *
 	 * @author mqfdy
-	 * @param argStr
-	 *            the arg str
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param argStr argStr
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:42:05
 	 */
 	public static String collapseNewlines(String argStr) {
 		char last = argStr.charAt(0);
@@ -425,13 +415,12 @@ public class StringUtils {
 	}
 
 	/**
-	 * Collapse spaces.
+	 * 方法描述：collapseSpaces.
 	 *
 	 * @author mqfdy
-	 * @param argStr
-	 *            the arg str
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param argStr argStr
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:42:10
 	 */
 	public static String collapseSpaces(String argStr) {
 		char last = argStr.charAt(0);
@@ -449,17 +438,14 @@ public class StringUtils {
 	}
 
 	/**
-	 * Sub.
+	 * 方法描述：sub.
 	 *
 	 * @author mqfdy
-	 * @param line
-	 *            the line
-	 * @param oldString
-	 *            the old string
-	 * @param newString
-	 *            the new string
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param line  line
+	 * @param oldString newString
+	 * @param newString newString
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:42:17
 	 */
 	public static final String sub(String line, String oldString,
 			String newString) {
@@ -484,13 +470,12 @@ public class StringUtils {
 	}
 
 	/**
-	 * Stack trace.
+	 * 方法描述：stackTrace.
 	 *
 	 * @author mqfdy
-	 * @param e
-	 *            the e
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param e e
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:42:29
 	 */
 	public static final String stackTrace(Throwable e) {
 		String foo = null;
@@ -505,13 +490,12 @@ public class StringUtils {
 	}
 
 	/**
-	 * Normalize path.
+	 * 方法描述：normalizePath.
 	 *
 	 * @author mqfdy
-	 * @param path
-	 *            the path
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param path path
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:42:33
 	 */
 	public static final String normalizePath(String path) {
 		String normalized = path;
@@ -562,17 +546,14 @@ public class StringUtils {
 	}
 
 	/**
-	 * Select.
+	 * 方法描述：select.
 	 *
 	 * @author mqfdy
-	 * @param state
-	 *            the state
-	 * @param trueString
-	 *            the true string
-	 * @param falseString
-	 *            the false string
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param state state
+	 * @param trueString trueString
+	 * @param falseString falseString
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:42:40
 	 */
 	public String select(boolean state, String trueString, String falseString) {
 		if (state) {
@@ -583,13 +564,12 @@ public class StringUtils {
 	}
 
 	/**
-	 * All empty.
+	 * 方法描述：allEmpty.
 	 *
 	 * @author mqfdy
-	 * @param list
-	 *            the list
-	 * @return true, if successful
-	 * @Date 2018-09-03 09:00
+	 * @param list list
+	 * @return boolean实例
+	 * @Date 2018年8月31日 下午2:42:51
 	 */
 	public boolean allEmpty(List<String> list) {
 		int size = list.size();
@@ -603,13 +583,12 @@ public class StringUtils {
 	}
 
 	/**
-	 * Trim strings.
+	 * 方法描述：trimStrings.
 	 *
 	 * @author mqfdy
-	 * @param list
-	 *            the list
-	 * @return the list
-	 * @Date 2018-09-03 09:00
+	 * @param list list
+	 * @return List<String>实例
+	 * @Date 2018年8月31日 下午2:42:58
 	 */
 	public static List<String> trimStrings(List<String> list) {
 		if (list == null)
@@ -622,13 +601,12 @@ public class StringUtils {
 	}
 
 	/**
-	 * Null trim.
+	 * 方法描述：nullTrim.
 	 *
 	 * @author mqfdy
-	 * @param s
-	 *            the s
-	 * @return the string
-	 * @Date 2018-09-03 09:00
+	 * @param s s
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:43:05
 	 */
 	public static String nullTrim(String s) {
 		if (s == null) {
@@ -636,5 +614,128 @@ public class StringUtils {
 		} else {
 			return s.trim();
 		}
+	}
+	
+	/**
+	 * Concat string with comma.
+	 *
+	 * @author Administrator
+	 * @param str1 the str 1
+	 * @param str2 the str 2
+	 * @return the string
+	 * @Date 2019-12-2 15:22:43
+	 */
+	public static String concatStringWithComma(String str1,String str2){
+		if(isEmpty(str2)){
+			str2 = "";
+		}
+		if(isEmpty(str1)){
+			return str2;
+		}
+		return str1+","+str2;
+	}
+	
+	/**
+	 * Concat string with comma.
+	 *
+	 * @author Administrator
+	 * @param str1 the str 1
+	 * @param str2 the str 2
+	 * @return the string
+	 * @Date 2019-12-2 15:22:43
+	 */
+	public static String concatStringWithCommaValues(String str1,String str2){
+		if(isEmpty(str2)){
+			str2 = "";
+		}
+		if(isEmpty(str1)){
+			return "#{"+str2+"}";
+		}
+		return str1+",#{"+str2+"}";
+	}
+	
+	/**
+	 * Concat key value mybatis.
+	 *
+	 * @author Administrator
+	 * @param str1 the str 1
+	 * @param str2 the str 2
+	 * @return the string
+	 * @Date 2019-12-2 17:10:05
+	 */
+	public static String concatKeyValueMybatis(String str1,String str2){
+		if(isEmpty(str2)){
+			str2 = "";
+		}
+		if(isEmpty(str1)){
+			return str1;
+		}
+		return str1+"=#{"+str2+"}";
+	}
+	
+	/**
+	 * Concat string mybatis result.
+	 *
+	 * @author Administrator
+	 * @param javaName the java name
+	 * @param columnName the column name
+	 * @param javaType the java type
+	 * @return the string
+	 * @Date 2019-12-2 17:19:30
+	 */
+	public static String concatStringMybatisResult(String javaName,String columnName,String javaType){
+		return "@Result(property = \""+javaName+"\", column = \""+columnName+"\", javaType="+javaType+".class)";
+	}
+	
+	/**
+	 * Removes the end char.
+	 *
+	 * @author Administrator
+	 * @param str the str
+	 * @return the string
+	 * @Date 2019-11-28 17:24:48
+	 */
+	public static String removeEndChar(String str){
+		if(str != null && str.length()>0){
+			str = str.substring(0, str.length()-1);
+		}
+		return str;
+	}
+	
+	/**
+	 * To lower case.
+	 *
+	 * @author Administrator
+	 * @param str the str
+	 * @return the string
+	 * @Date 2019-12-3 15:38:06
+	 */
+	public static String toLowerCase(String str){
+		return str.toLowerCase(Locale.getDefault());
+	}
+	
+	/**
+	 * To upper case.
+	 *
+	 * @author Administrator
+	 * @param str the str
+	 * @return the string
+	 * @Date 2019-12-3 15:38:57
+	 */
+	public static String toUpperCase(String str){
+		return str.toUpperCase(Locale.getDefault());
+	}
+	
+	/**
+	 * Contains.
+	 *
+	 * @author Administrator
+	 * @param str1 the str 1
+	 * @param str2 the str 2
+	 * @return true, if successful
+	 * @Date 2020-1-15 17:32:42
+	 */
+	public static boolean contains(String str1,String str2){
+		return str1.contains(str2);
 	}
 }

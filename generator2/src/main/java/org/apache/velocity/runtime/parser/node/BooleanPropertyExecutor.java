@@ -81,10 +81,15 @@ public class BooleanPropertyExecutor extends PropertyExecutor
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.PropertyExecutor#discover(java.lang.Class, java.lang.String)
-     * @param clazz
-     * @param property BooleanPropertyExecutor
-     */
+	 * Discover.
+	 *
+	 * @param clazz
+	 *            the clazz
+	 * @param property
+	 *            BooleanPropertyExecutor
+	 * @see org.apache.velocity.runtime.parser.node.PropertyExecutor#discover(java.lang.Class,
+	 *      java.lang.String)
+	 */
     protected void discover(final Class clazz, final String property)
     {
         try

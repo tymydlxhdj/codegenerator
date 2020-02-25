@@ -48,24 +48,30 @@ public class TableModel extends AbstractModel implements IPersistenceModel {
 	
 	
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getPoJavaPackage()
+	 * Gets the po java package.
+	 *
 	 * @return TableModel
+	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getPoJavaPackage()
 	 */
 	public String getPoJavaPackage() {
 		return poJavaPackage;
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getTable()
+	 * Gets the table.
+	 *
 	 * @return TableModel
+	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getTable()
 	 */
 	public Table getTable() {
 		return table;
 	}
 
 	/**
-	 * @see com.mqfdy.code.datasource.model.AbstractModel#getElementType()
+	 * Gets the element type.
+	 *
 	 * @return TableModel
+	 * @see com.mqfdy.code.datasource.model.AbstractModel#getElementType()
 	 */
 	@Override
 	public int getElementType() {
@@ -73,8 +79,11 @@ public class TableModel extends AbstractModel implements IPersistenceModel {
 	}
 
 	/**
+	 * Adds the column model.
+	 *
+	 * @param columnModel
+	 *            TableModel
 	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#addColumnModel(com.mqfdy.code.generator.persistence.IColumnModel)
-	 * @param columnModel TableModel
 	 */
 	public void addColumnModel(final IColumnModel columnModel) {
 		columnModelList.add(columnModel);
@@ -82,24 +91,31 @@ public class TableModel extends AbstractModel implements IPersistenceModel {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getColumnModels()
+	 * Gets the column models.
+	 *
 	 * @return TableModel
+	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getColumnModels()
 	 */
 	public List<IColumnModel> getColumnModels() {
 		return columnModelList;
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getJavaPackage()
+	 * Gets the java package.
+	 *
 	 * @return TableModel
+	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getJavaPackage()
 	 */
 	public String getJavaPackage() {
 		return javaPackage;
 	}
 
 	/**
+	 * Sets the java package.
+	 *
+	 * @param pojoPackage
+	 *            TableModel
 	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#setJavaPackage(java.lang.String)
-	 * @param pojoPackage TableModel
 	 */
 	public void setJavaPackage(String pojoPackage) {
 		this.javaPackage = pojoPackage;
@@ -107,16 +123,21 @@ public class TableModel extends AbstractModel implements IPersistenceModel {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getJavaName()
+	 * Gets the java name.
+	 *
 	 * @return TableModel
+	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getJavaName()
 	 */
 	public String getJavaName() {
 		return getTable().getJavaName();
 	}
 
 	/**
+	 * Sets the java name.
+	 *
+	 * @param javaName
+	 *            TableModel
 	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#setJavaName(java.lang.String)
-	 * @param javaName TableModel
 	 */
 	public void setJavaName(String javaName) {
 		getTable().setJavaName(javaName);
@@ -124,16 +145,21 @@ public class TableModel extends AbstractModel implements IPersistenceModel {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getSrcFolder()
+	 * Gets the src folder.
+	 *
 	 * @return TableModel
+	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getSrcFolder()
 	 */
 	public String getSrcFolder() {
 		return srcFolderPath;
 	}
 
 	/**
+	 * Sets the src folder.
+	 *
+	 * @param srcFolder
+	 *            TableModel
 	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#setSrcFolder(java.lang.String)
-	 * @param srcFolder TableModel
 	 */
 	public void setSrcFolder(String srcFolder) {
 		this.srcFolderPath = srcFolder;
@@ -141,32 +167,41 @@ public class TableModel extends AbstractModel implements IPersistenceModel {
 	}
 
 	/**
+	 * Adds the foreign key model.
+	 *
+	 * @param foreignKeyModel
+	 *            TableModel
 	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#addForeignKeyModel(com.mqfdy.code.generator.persistence.IForeignKeyModel)
-	 * @param foreignKeyModel TableModel
 	 */
 	public void addForeignKeyModel(final IForeignKeyModel foreignKeyModel) {
 		foreignKeyModelList.add(foreignKeyModel);
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getForeignKeyModels()
+	 * Gets the foreign key models.
+	 *
 	 * @return TableModel
+	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getForeignKeyModels()
 	 */
 	public List<IForeignKeyModel> getForeignKeyModels() {
 		return foreignKeyModelList;
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#hasForeignTable()
+	 * Checks for foreign table.
+	 *
 	 * @return TableModel
+	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#hasForeignTable()
 	 */
 	public boolean hasForeignTable() {
 		return false;
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getPrimaryKeyColumn()
+	 * Gets the primary key column.
+	 *
 	 * @return TableModel
+	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getPrimaryKeyColumn()
 	 */
 	public IColumnModel getPrimaryKeyColumn() {
 		for (IColumnModel col : getColumnModels()) {
@@ -177,25 +212,32 @@ public class TableModel extends AbstractModel implements IPersistenceModel {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getIdMethod()
+	 * Gets the id method.
+	 *
 	 * @return TableModel
+	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getIdMethod()
 	 */
 	public String getIdMethod() {
 		return getTable().getIdMethod();
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getDBName()
+	 * Gets the DB name.
+	 *
 	 * @return TableModel
+	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getDBName()
 	 */
 	public String getDBName() {
 		return getTable().getName();
 	}
 
 	/**
-	 * @see java.lang.Object#equals(java.lang.Object)
+	 * Equals.
+	 *
 	 * @param object
+	 *            the object
 	 * @return TableModel
+	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
 	public boolean equals(Object object) {
@@ -213,8 +255,10 @@ public class TableModel extends AbstractModel implements IPersistenceModel {
 	}
 
 	/**
-	 * @see java.lang.Object#hashCode()
+	 * Hash code.
+	 *
 	 * @return TableModel
+	 * @see java.lang.Object#hashCode()
 	 */
 	public int hashCode() {
 		int result = 17; // 任意素数
@@ -224,8 +268,10 @@ public class TableModel extends AbstractModel implements IPersistenceModel {
 
 
 	/**
-	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getScenceName()
+	 * Gets the scence name.
+	 *
 	 * @return TableModel
+	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#getScenceName()
 	 */
 	public String getScenceName() {
 		return this.scenceName;
@@ -233,8 +279,11 @@ public class TableModel extends AbstractModel implements IPersistenceModel {
 
 
 	/**
+	 * Sets the scence name.
+	 *
+	 * @param scenceName
+	 *            TableModel
 	 * @see com.mqfdy.code.generator.persistence.IPersistenceModel#setScenceName(java.lang.String)
-	 * @param scenceName TableModel
 	 */
 	public void setScenceName(String scenceName) {
 		this.scenceName = scenceName;

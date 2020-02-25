@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Designer
+Bundle-SymbolicName: com.mqfdy.code.template.designer;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Export-Package: com.mqfdy.code.template.designer,
+ com.mqfdy.code.template.designer.model
+Require-Bundle: org.eclipse.jdt.core;bundle-version="3.12.0",
+ org.eclipse.equinox.registry,
+ org.eclipse.ui,
+ org.eclipse.core.resources;bundle-version="3.11.0",
+ org.eclipse.ui.ide,
+ com.mqfdy.code.commonlib;bundle-version="1.0.0",
+ org.eclipse.core.runtime;bundle-version="3.12.0"
+Import-Package: com.mqfdy.code.model.utils

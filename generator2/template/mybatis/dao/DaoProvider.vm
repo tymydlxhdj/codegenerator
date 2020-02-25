@@ -1,0 +1,55 @@
+#set($table=$ptable.getTable())
+#set($tjavaName=$table.getJavaName())
+#set($tjavaName_l=${strings.lowercaseFirstLetter($tjavaName)})
+#set($primaryKeyCol=$table.getPrimaryKey().getColumns().get(0))
+#set($primaryKey=$table.getPrimaryKey().getColumns().get(0).getJavaName())
+#set($columns=$table.columns)
+#set($columnStr="")
+#foreach($key in ${columns.keySet()})
+#set($col = ${columns.get($key)})
+#set($columnStr=${strings.concatStringWithComma(${columnStr},${col.name})})
+#end
+${packageStr}
+
+import java.util.Objects;
+
+import org.apache.ibatis.jdbc.SQL;
+
+import ${packageStrPre}.domain.${tjavaName};
+
+
+/**
+ * <b>概述</b>：<br>
+ * TODO
+ * <p>
+ * <b>功能</b>：<br>
+ * TODO
+ *
+ * @author ${author}
+ */
+public class ${tjavaName}DaoProvider {
+	
+	/**
+	 * @findByCondition: 根据条件查询构造查询sql
+	 * @return String 查询语句
+	 * @date ${now}
+	 * @author ${author}
+	 */
+	public String findByCondition(${tjavaName} ${tjavaName_l}) {
+		return new SQL() {
+			{
+				SELECT("$columnStr");
+				FROM("${table.getName()}");
+#foreach($key in ${columns.keySet()})
+#set($col = ${columns.get($key)})
+				if (Objects.nonNull(${tjavaName_l}.get${strings.capitalizeFirstLetter(${col.javaName})}())) {
+					WHERE("${col.name} = #{${col.javaName}}");
+				}
+#end
+				/**
+				 * TODO 按照业务需求进行添加字段判断
+				 */
+			}
+		}.toString();
+	}
+}

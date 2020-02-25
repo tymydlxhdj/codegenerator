@@ -36,7 +36,10 @@ public class ValidatorClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initPackage() ValidatorClass
+	 * Inits the package.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initPackage()
+	 *      ValidatorClass
 	 */
 	@Override
 	public void initPackage() {
@@ -44,7 +47,10 @@ public class ValidatorClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields() ValidatorClass
+	 * Inits the fields.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields()
+	 *      ValidatorClass
 	 */
 	@Override
 	public void initFields() {
@@ -52,7 +58,10 @@ public class ValidatorClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initImports() ValidatorClass
+	 * Inits the imports.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initImports()
+	 *      ValidatorClass
 	 */
 	@Override
 	public void initImports() {
@@ -61,7 +70,10 @@ public class ValidatorClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods() ValidatorClass
+	 * Inits the methods.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods()
+	 *      ValidatorClass
 	 */
 	@Override
 	public void initMethods() {
@@ -70,9 +82,12 @@ public class ValidatorClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#getCustomMethod(com.mqfdy.code.model.BusinessOperation)
+	 * Gets the custom method.
+	 *
 	 * @param bop
+	 *            the bop
 	 * @return ValidatorClass
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#getCustomMethod(com.mqfdy.code.model.BusinessOperation)
 	 */
 	@Override
 	protected String getCustomMethod(BusinessOperation bop) {
@@ -81,7 +96,10 @@ public class ValidatorClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#putToVelocityMap() ValidatorClass
+	 * Put to velocity map.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#putToVelocityMap()
+	 *      ValidatorClass
 	 */
 	@Override
 	public void putToVelocityMap() {

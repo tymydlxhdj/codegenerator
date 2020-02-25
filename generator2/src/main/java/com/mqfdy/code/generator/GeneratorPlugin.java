@@ -24,9 +24,13 @@ public class GeneratorPlugin extends Plugin {
 	}
 
 	/**
-	 * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
+	 * Start.
+	 *
 	 * @param context
-	 * @throws Exception GeneratorPlugin
+	 *            the context
+	 * @throws Exception
+	 *             GeneratorPlugin
+	 * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
 	 */
 	@Override
 	public void start(BundleContext context) throws Exception {
@@ -35,9 +39,13 @@ public class GeneratorPlugin extends Plugin {
 	}
 
 	/**
-	 * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
+	 * Stop.
+	 *
 	 * @param context
-	 * @throws Exception GeneratorPlugin
+	 *            the context
+	 * @throws Exception
+	 *             GeneratorPlugin
+	 * @see org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)
 	 */
 	@Override
 	public void stop(BundleContext context) throws Exception {

@@ -47,7 +47,10 @@ public class IServiceClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initPackage() IServiceClass
+	 * Inits the package.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initPackage()
+	 *      IServiceClass
 	 */
 	@Override
 	public void initPackage() {
@@ -55,7 +58,10 @@ public class IServiceClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields() IServiceClass
+	 * Inits the fields.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initFields()
+	 *      IServiceClass
 	 */
 	@Override
 	public void initFields() {
@@ -63,7 +69,10 @@ public class IServiceClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initImports() IServiceClass
+	 * Inits the imports.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initImports()
+	 *      IServiceClass
 	 */
 	@Override
 	public void initImports() {
@@ -74,7 +83,10 @@ public class IServiceClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods() IServiceClass
+	 * Inits the methods.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#initMethods()
+	 *      IServiceClass
 	 */
 	@Override
 	public void initMethods() {
@@ -113,9 +125,12 @@ public class IServiceClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#getCustomMethod(com.mqfdy.code.model.BusinessOperation)
+	 * Gets the custom method.
+	 *
 	 * @param bop
+	 *            the bop
 	 * @return IServiceClass
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#getCustomMethod(com.mqfdy.code.model.BusinessOperation)
 	 */
 	public String getCustomMethod(BusinessOperation bop) {
 		StringBuffer sb = new StringBuffer();
@@ -166,7 +181,10 @@ public class IServiceClass extends AbstractBusinessClass {
 	}
 
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#putToVelocityMap() IServiceClass
+	 * Put to velocity map.
+	 *
+	 * @see com.mqfdy.code.generator.auxiliary.AbstractBusinessClass#putToVelocityMap()
+	 *      IServiceClass
 	 */
 	@Override
 	public void putToVelocityMap() {

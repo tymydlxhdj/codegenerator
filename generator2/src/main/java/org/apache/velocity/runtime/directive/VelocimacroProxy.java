@@ -165,15 +165,24 @@ public class VelocimacroProxy extends Directive
     }
 
     /**
-     * @see org.apache.velocity.runtime.directive.Directive#render(org.apache.velocity.context.InternalContextAdapter, java.io.Writer, org.apache.velocity.runtime.parser.node.Node)
-     * @param context
-     * @param writer
-     * @param node
-     * @return
-     * @throws IOException
-     * @throws MethodInvocationException
-     * @throws MacroOverflowException VelocimacroProxy
-     */
+	 * Render.
+	 *
+	 * @param context
+	 *            the context
+	 * @param writer
+	 *            the writer
+	 * @param node
+	 *            the node
+	 * @return true, if successful
+	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
+	 * @throws MethodInvocationException
+	 *             the method invocation exception
+	 * @throws MacroOverflowException
+	 *             VelocimacroProxy
+	 * @see org.apache.velocity.runtime.directive.Directive#render(org.apache.velocity.context.InternalContextAdapter,
+	 *      java.io.Writer, org.apache.velocity.runtime.parser.node.Node)
+	 */
     public boolean render(InternalContextAdapter context, Writer writer, Node node)
             throws IOException, MethodInvocationException, MacroOverflowException
     {

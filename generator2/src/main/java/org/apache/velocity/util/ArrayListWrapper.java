@@ -48,21 +48,28 @@ public class ArrayListWrapper extends AbstractList
     }
 
     /**
-     * @see java.util.AbstractList#get(int)
-     * @param index
-     * @return ArrayListWrapper
-     */
+	 * Gets the.
+	 *
+	 * @param index
+	 *            the index
+	 * @return ArrayListWrapper
+	 * @see java.util.AbstractList#get(int)
+	 */
     public Object get(int index)
     {
         return Array.get(array, index);
     }
 
     /**
-     * @see java.util.AbstractList#set(int, java.lang.Object)
-     * @param index
-     * @param element
-     * @return ArrayListWrapper
-     */
+	 * Sets the.
+	 *
+	 * @param index
+	 *            the index
+	 * @param element
+	 *            the element
+	 * @return ArrayListWrapper
+	 * @see java.util.AbstractList#set(int, java.lang.Object)
+	 */
     public Object set(int index, Object element)
     {
         Object old = get(index);
@@ -71,9 +78,11 @@ public class ArrayListWrapper extends AbstractList
     }
 
     /**
-     * @see java.util.AbstractCollection#size()
-     * @return ArrayListWrapper
-     */
+	 * Size.
+	 *
+	 * @return ArrayListWrapper
+	 * @see java.util.AbstractCollection#size()
+	 */
     public int size()
     {
         return Array.getLength(array);

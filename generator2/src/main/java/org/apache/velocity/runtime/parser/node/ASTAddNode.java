@@ -63,12 +63,19 @@ public class ASTAddNode extends ASTMathNode
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.ASTMathNode#handleSpecial(java.lang.Object, java.lang.Object, org.apache.velocity.context.InternalContextAdapter)
-     * @param left
-     * @param right
-     * @param context
-     * @return ASTAddNode
-     */
+	 * Handle special.
+	 *
+	 * @param left
+	 *            the left
+	 * @param right
+	 *            the right
+	 * @param context
+	 *            the context
+	 * @return ASTAddNode
+	 * @see org.apache.velocity.runtime.parser.node.ASTMathNode#handleSpecial(java.lang.Object,
+	 *      java.lang.Object,
+	 *      org.apache.velocity.context.InternalContextAdapter)
+	 */
     //@Override
     protected Object handleSpecial(Object left, Object right, InternalContextAdapter context)
     {
@@ -91,12 +98,19 @@ public class ASTAddNode extends ASTMathNode
     }
 
     /**
-     * @see org.apache.velocity.runtime.parser.node.ASTMathNode#perform(java.lang.Number, java.lang.Number, org.apache.velocity.context.InternalContextAdapter)
-     * @param left
-     * @param right
-     * @param context
-     * @return ASTAddNode
-     */
+	 * Perform.
+	 *
+	 * @param left
+	 *            the left
+	 * @param right
+	 *            the right
+	 * @param context
+	 *            the context
+	 * @return ASTAddNode
+	 * @see org.apache.velocity.runtime.parser.node.ASTMathNode#perform(java.lang.Number,
+	 *      java.lang.Number,
+	 *      org.apache.velocity.context.InternalContextAdapter)
+	 */
     public Number perform(Number left, Number right, InternalContextAdapter context)
     {
         return MathUtils.add(left, right);

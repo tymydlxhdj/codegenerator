@@ -94,8 +94,7 @@ public interface NullSetEventHandler extends EventHandler
         }
 
         /**
-		 * Call the method shouldLogOnNullSet()
-		 * 
+		 * Call the method shouldLogOnNullSet().
 		 *
 		 * @author mqfdy
 		 * @param handler
@@ -114,9 +113,11 @@ public interface NullSetEventHandler extends EventHandler
         }
 
         /**
-         * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
-         * @return ShouldLogOnNullSetExecutor
-         */
+		 * Gets the return value.
+		 *
+		 * @return ShouldLogOnNullSetExecutor
+		 * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#getReturnValue()
+		 */
         public Object getReturnValue()
         {            
             // return new Boolean(result);
@@ -124,9 +125,11 @@ public interface NullSetEventHandler extends EventHandler
         }
 
         /**
-         * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#isDone()
-         * @return ShouldLogOnNullSetExecutor
-         */
+		 * Checks if is done.
+		 *
+		 * @return ShouldLogOnNullSetExecutor
+		 * @see org.apache.velocity.app.event.EventHandlerMethodExecutor#isDone()
+		 */
         public boolean isDone()
         {
             return executed && !result;

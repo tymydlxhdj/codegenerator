@@ -16,12 +16,19 @@ import org.xml.sax.SAXException;
 public class IgnoreDTDEntityResolver implements EntityResolver{
 
 	/**
-	 * @see org.xml.sax.EntityResolver#resolveEntity(java.lang.String, java.lang.String)
+	 * Resolve entity.
+	 *
 	 * @param arg0
+	 *            the arg 0
 	 * @param arg1
-	 * @return
+	 *            the arg 1
+	 * @return the input source
 	 * @throws SAXException
-	 * @throws IOException IgnoreDTDEntityResolver
+	 *             the SAX exception
+	 * @throws IOException
+	 *             IgnoreDTDEntityResolver
+	 * @see org.xml.sax.EntityResolver#resolveEntity(java.lang.String,
+	 *      java.lang.String)
 	 */
 	public InputSource resolveEntity(String arg0, String arg1)
 			throws SAXException, IOException {

@@ -16,60 +16,69 @@ import com.mqfdy.code.scence.IScenceType;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class ClassParam.
+ * 生成器代码参数.
  *
  * @author mqf
  */
 public class ClassParam {
 	
-	/** The bc. */
+	/** bc. */
 	private BusinessClass bc;
 	
-	/** The persistence model. */
+	/** persistenceModel. */
 	private IPersistenceModel persistenceModel;
 	
-	/** The project. */
+	/** project. */
 	private IProject project;
 	
-	/** The bom. */
+	/** bom. */
 	private BusinessObjectModel bom;
 	
-	/** The scene type set. */
+	/** sceneTypeSet. */
 	private Set<Integer> sceneTypeSet;
 	
-	/** The parent id. */
+	/** parentId. */
 	private String parentId;
-	
-	/** The output path. */
-	private String outputPath;
+
+	/** The paret column name. */
+	private String paretColumnName;
+
+	private String dbType;
 	
 	/**
 	 * Instantiates a new class param.
 	 *
-	 * @param bc
-	 *            the bc
-	 * @param project
-	 *            the project
-	 * @param bom
-	 *            the bom
-	 * @param outputPath
-	 *            the output path
+	 * @param bc bc
+	 * @param project project
+	 * @param bom bom
 	 */
-	public ClassParam(BusinessClass bc,IProject project,BusinessObjectModel bom,String outputPath){
+	public ClassParam(BusinessClass bc,IProject project,BusinessObjectModel bom){
 		this.bc = bc;
 		this.project = project;
 		this.bom = bom;
 		this.persistenceModel = ConvertUtil.convertToPersistenceModel(bc, bom);
 		this.sceneTypeSet = new HashSet<Integer>();
-		this.outputPath = outputPath;
 		init();
 	}
 	
 	/**
-	 * Inits the.
+	 * Instantiates a new class param.
+	 *
+	 * @param bc2 the bc 2
+	 * @param project2 the project 2
+	 * @param bom2 the bom 2
+	 * @param config the config
+	 */
+	public ClassParam(BusinessClass bc2, IProject project2, BusinessObjectModel bom2, String dbType) {
+		this(bc2, project2, bom2);
+		this.dbType = dbType;
+	}
+
+	/**
+	 * 方法描述：init.
 	 *
 	 * @author mqfdy
-	 * @Date 2018-9-3 11:38:33
+	 * @Date 2018年8月31日 上午11:07:58
 	 */
 	private void init() {
 		this.parentId = "";
@@ -94,30 +103,30 @@ public class ClassParam {
 	}
 	
 	/**
-	 * 设置树父节点id.
+	 * 方法描述：setParentId.
 	 *
 	 * @author mqfdy
-	 * @Date 2018-9-3 11:38:33
+	 * @Date 2018年8月31日 上午11:08:02
 	 */
 	private void setParentId() {
 		for(IForeignKeyModel fkm : persistenceModel.getForeignKeyModels()){
 			if(fkm.getForeignTableName().equals(bc.getTableName())){
 				this.parentId = fkm.getForeignKey().getFkColumnJavaName();
+				this.paretColumnName =  fkm.getForeignKey().getFkColumnName();
+				break;
 			}
 			
 		}
 	}
 	
 	/**
-	 * Gets the scene type.
+	 * 方法描述：getSceneType.
 	 *
 	 * @author mqfdy
-	 * @param ass
-	 *            the ass
-	 * @param bc
-	 *            the bc
-	 * @return the scene type
-	 * @Date 2018-9-3 11:38:33
+	 * @param ass ass
+	 * @param bc bc
+	 * @return Integer实例
+	 * @Date 2018年8月31日 上午11:08:10
 	 */
 	private Integer getSceneType(Association ass, BusinessClass bc) {
 		Integer sceneType = IScenceType.SINGLE_TABLE_SCENE_TYPE;
@@ -144,163 +153,150 @@ public class ClassParam {
 	}
 	
 	/**
-	 * Gets the bc.
+	 * 方法描述：getBc.
 	 *
 	 * @author mqfdy
-	 * @return the bc
-	 * @Date 2018-09-03 09:00
+	 * @return BusinessClass实例
+	 * @Date 2018年8月31日 上午11:08:20
 	 */
 	public BusinessClass getBc() {
 		return bc;
 	}
 	
 	/**
-	 * Gets the persistence model.
+	 * 方法描述：getPersistenceModel.
 	 *
 	 * @author mqfdy
-	 * @return the persistence model
-	 * @Date 2018-09-03 09:00
+	 * @return IPersistenceModel实例
+	 * @Date 2018年8月31日 上午11:08:23
 	 */
 	public IPersistenceModel getPersistenceModel() {
 		return persistenceModel;
 	}
 	
 	/**
-	 * Gets the project.
+	 * 方法描述：getProject.
 	 *
 	 * @author mqfdy
-	 * @return the project
-	 * @Date 2018-09-03 09:00
+	 * @return IProject实例
+	 * @Date 2018年8月31日 上午11:08:25
 	 */
 	public IProject getProject() {
 		return project;
 	}
 	
 	/**
-	 * Gets the bom.
+	 * 方法描述：getBom.
 	 *
 	 * @author mqfdy
-	 * @return the bom
-	 * @Date 2018-09-03 09:00
+	 * @return BusinessObjectModel实例
+	 * @Date 2018年8月31日 上午11:08:28
 	 */
 	public BusinessObjectModel getBom() {
 		return bom;
 	}
 	
 	/**
-	 * Sets the bc.
+	 * 方法描述：setBc.
 	 *
 	 * @author mqfdy
-	 * @param bc
-	 *            the new bc
-	 * @Date 2018-09-03 09:00
+	 * @param bc bc
+	 * @Date 2018年8月31日 上午11:08:31
 	 */
 	public void setBc(BusinessClass bc) {
 		this.bc = bc;
 	}
 	
 	/**
-	 * Sets the persistence model.
+	 * 方法描述：setPersistenceModel.
 	 *
 	 * @author mqfdy
-	 * @param persistenceModel
-	 *            the new persistence model
-	 * @Date 2018-09-03 09:00
+	 * @param persistenceModel persistenceModel
+	 * @Date 2018年8月31日 上午11:08:36
 	 */
 	public void setPersistenceModel(IPersistenceModel persistenceModel) {
 		this.persistenceModel = persistenceModel;
 	}
 	
 	/**
-	 * Sets the project.
+	 * 方法描述：setProject.
 	 *
 	 * @author mqfdy
-	 * @param project
-	 *            the new project
-	 * @Date 2018-09-03 09:00
+	 * @param project project
+	 * @Date 2018年8月31日 上午11:08:41
 	 */
 	public void setProject(IProject project) {
 		this.project = project;
 	}
 	
 	/**
-	 * Sets the bom.
+	 * 方法描述：setBom.
 	 *
 	 * @author mqfdy
-	 * @param bom
-	 *            the new bom
-	 * @Date 2018-09-03 09:00
+	 * @param bom bom
+	 * @Date 2018年8月31日 上午11:08:45
 	 */
 	public void setBom(BusinessObjectModel bom) {
 		this.bom = bom;
 	}
 	
 	/**
-	 * Gets the parent id.
+	 * 方法描述：getParentId.
 	 *
 	 * @author mqfdy
-	 * @return the parent id
-	 * @Date 2018-09-03 09:00
+	 * @return String实例
+	 * @Date 2018年8月31日 上午11:08:50
 	 */
 	public String getParentId() {
 		return parentId;
 	}
 	
 	/**
-	 * Sets the parent id.
+	 * 方法描述：setParentId.
 	 *
 	 * @author mqfdy
-	 * @param parentId
-	 *            the new parent id
-	 * @Date 2018-09-03 09:00
+	 * @param parentId parentId
+	 * @Date 2018年8月31日 上午11:08:53
 	 */
 	public void setParentId(String parentId) {
 		this.parentId = parentId;
 	}
 	
 	/**
-	 * Gets the scene type set.
+	 * 方法描述：getSceneTypeSet.
 	 *
 	 * @author mqfdy
-	 * @return the scene type set
-	 * @Date 2018-09-03 09:00
+	 * @return Set<Integer>实例
+	 * @Date 2018年8月31日 上午11:08:57
 	 */
 	public Set<Integer> getSceneTypeSet() {
 		return sceneTypeSet;
 	}
 	
 	/**
-	 * Sets the scene type set.
+	 * 方法描述：setSceneTypeSet.
 	 *
 	 * @author mqfdy
-	 * @param sceneTypeSet
-	 *            the new scene type set
-	 * @Date 2018-09-03 09:00
+	 * @param sceneTypeSet sceneTypeSet
+	 * @Date 2018年8月31日 上午11:09:00
 	 */
 	public void setSceneTypeSet(Set<Integer> sceneTypeSet) {
 		this.sceneTypeSet = sceneTypeSet;
 	}
-	
-	/**
-	 * Gets the output path.
-	 *
-	 * @author mqfdy
-	 * @return the output path
-	 * @Date 2018-09-03 09:00
-	 */
-	public String getOutputPath() {
-		return outputPath;
+
+	public String getParetColumnName() {
+		return paretColumnName;
 	}
-	
-	/**
-	 * Sets the output path.
-	 *
-	 * @author mqfdy
-	 * @param outputPath
-	 *            the new output path
-	 * @Date 2018-09-03 09:00
-	 */
-	public void setOutputPath(String outputPath) {
-		this.outputPath = outputPath;
+
+	public void setParetColumnName(String paretColumnName) {
+		this.paretColumnName = paretColumnName;
+	}
+
+	public String getDbType() {
+		return dbType;
+	}
+
+	public void setDbType(String dbType) {
+		this.dbType = dbType;
 	}
 }

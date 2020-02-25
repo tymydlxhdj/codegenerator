@@ -73,12 +73,18 @@ public class ASTIndex extends SimpleNode
     }
   
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#init(org.apache.velocity.context.InternalContextAdapter, java.lang.Object)
-     * @param context
-     * @param data
-     * @return
-     * @throws TemplateInitException ASTIndex
-     */
+	 * Inits the.
+	 *
+	 * @param context
+	 *            the context
+	 * @param data
+	 *            the data
+	 * @return the object
+	 * @throws TemplateInitException
+	 *             ASTIndex
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#init(org.apache.velocity.context.InternalContextAdapter,
+	 *      java.lang.Object)
+	 */
     public Object init(InternalContextAdapter context, Object data)
         throws TemplateInitException
     {
@@ -163,12 +169,18 @@ public class ASTIndex extends SimpleNode
     }
     
     /**
-     * @see org.apache.velocity.runtime.parser.node.SimpleNode#execute(java.lang.Object, org.apache.velocity.context.InternalContextAdapter)
-     * @param o
-     * @param context
-     * @return
-     * @throws MethodInvocationException ASTIndex
-     */
+	 * Execute.
+	 *
+	 * @param o
+	 *            the o
+	 * @param context
+	 *            the context
+	 * @return the object
+	 * @throws MethodInvocationException
+	 *             ASTIndex
+	 * @see org.apache.velocity.runtime.parser.node.SimpleNode#execute(java.lang.Object,
+	 *      org.apache.velocity.context.InternalContextAdapter)
+	 */
     public Object execute(Object o, InternalContextAdapter context)
         throws MethodInvocationException
     {

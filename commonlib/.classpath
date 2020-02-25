@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="lib" path="lib/dom4j-1.6.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jconn3.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/log4j-1.2.8.jar"/>
@@ -10,6 +9,7 @@
 	<classpathentry exported="true" kind="lib" path="lib/org.eclipse.gmf.runtime.common.ui.services.properties_1.1.0.v20080425-1959.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.springframework.beans_3.1.4.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/org.springframework.core_3.1.4.RELEASE.jar"/>
+	<classpathentry kind="src" path="src/"/>
 	<classpathentry exported="true" kind="lib" path="lib/json-20160810.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jdom2-2.0.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/ant-1.10.1.jar"/>

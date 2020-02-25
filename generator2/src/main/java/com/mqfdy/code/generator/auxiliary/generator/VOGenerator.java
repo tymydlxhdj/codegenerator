@@ -37,8 +37,10 @@ public class VOGenerator extends BOMGenerator {
 
 
 	/**
-	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getTemplatePath()
+	 * Gets the template path.
+	 *
 	 * @return VOGenerator
+	 * @see com.mqfdy.code.generator.model.AbstractGenerator#getTemplatePath()
 	 */
 	@Override
 	protected String getTemplatePath() {
@@ -46,8 +48,10 @@ public class VOGenerator extends BOMGenerator {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getPackageExtention()
+	 * Gets the package extention.
+	 *
 	 * @return VOGenerator
+	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getPackageExtention()
 	 */
 	@Override
 	public String getPackageExtention() {
@@ -55,8 +59,10 @@ public class VOGenerator extends BOMGenerator {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileNameSuffix()
+	 * Gets the file name suffix.
+	 *
 	 * @return VOGenerator
+	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileNameSuffix()
 	 */
 	@Override
 	public String getFileNameSuffix() {
@@ -64,8 +70,10 @@ public class VOGenerator extends BOMGenerator {
 	}
 	
 	/**
-	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileNamePrefix()
+	 * Gets the file name prefix.
+	 *
 	 * @return VOGenerator
+	 * @see com.mqfdy.code.generator.auxiliary.generator.BOMGenerator#getFileNamePrefix()
 	 */
 	@Override
 	public String getFileNamePrefix() {

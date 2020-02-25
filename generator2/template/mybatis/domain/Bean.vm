@@ -1,0 +1,218 @@
+#set($table=$ptable.getTable())
+#set($primaryKeyCol=$table.getPrimaryKey().getColumns().get(0))
+${packageStr}
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.sql.Timestamp;
+import java.sql.Time;
+
+/**
+ * ${table.getJavaName()}的POJO类
+ * @author ${author} 
+ */
+public class ${table.getJavaName()} implements Serializable {
+
+    /** 
+     * serialVersionUID
+     */
+	private static final long serialVersionUID = -7768637914227571159L;
+
+#foreach($key in ${table.columns.keySet()})
+#set ($col = ${table.columns.get($key)})
+#if(${col.generate})
+##定义字段的属性类型
+#set ( $cjtype = $col.javaType ) 
+##***********************设置属性的默认值 开始
+#set ($defVal = "")
+#if ($col.hasDefualtValue())
+#set ( $defaultValue = $col.defaultValue )
+#set ( $quote = '' )
+#if ( $cjtype == "String" ) 
+#set ( $quote = '"' )
+#set ($defVal = " = $quote$defaultValue$quote")
+#elseif ($cjtype == "Character" )
+#set ( $quote = "'" )
+#set ($defVal = " = $quote$defaultValue$quote")
+#elseif ($cjtype == "Long" || $cjtype == "Float" )
+#set ( $quote = '"' )
+#set ($defVal = " = ${cjtype}.valueOf($quote$defaultValue$quote)")
+#elseif ($cjtype == "BigDecimal")
+#set ($location = $defaultValue.indexOf(",")) 
+#if($location != -1)
+#set ( $first = $defaultValue.substring(0, $location) )
+#set ( $location = $location +1 )
+#set ( $second = $defaultValue.substring($location ) )
+#set ($defVal = " = BigDecimal.valueOf(Long.valueOf($first), Integer.valueOf($second))")
+#else
+#set ($defVal = " = ${cjtype}.valueOf($quote$defaultValue$quote)")
+#end
+#else
+#set ($defVal = " = $quote$defaultValue$quote")	
+#end
+#end
+##***********************设置属性的默认值 结束
+##***********************属性的声明   开始  
+#set ( $cfc=$col.javaName )
+#set ($invalue=${strings.lowercaseFirstLetter($cfc)})
+#set ($cfc_get=${strings.capitalizeFirstLetter($cfc)})
+#set ( $cjtype = $col.javaType )
+    /** 
+     * #if(""==${col.comment})${col.javaName}#else${col.comment}#end$separator
+     */
+    private $cjtype $invalue $defVal;
+    
+##***********************属性的声明   结束
+#end
+#end
+	/**
+	  *虚拟主键
+	  */
+	private String mxVirtualId;
+	
+	public ${table.getJavaName()}(){
+	
+	}
+#foreach($key in ${table.columns.keySet()})
+#set ($col = ${table.columns.get($key)})
+#set ( $cfc=$col.javaName )
+#set ($invalue=${strings.lowercaseFirstLetter($cfc)})
+#set ($cfc_get=${strings.capitalizeFirstLetter($cfc)})
+#set ( $cjtype = $col.javaType )  
+##***********************属性的get方法  开始   
+    /**
+     * @get${cfc_get}:#if(""==${col.comment})${col.javaName}#else${col.comment}#end的get方法
+     * @return $invalue
+     * @date ${now}
+     * @author ${author}
+     */
+    public $cjtype get${cfc_get}(){
+        return this.$invalue;
+    }
+##***********************属性的get方法   结束
+##***********************属性的set方法 开始
+    /**
+     * @set${cfc_get}:#if(""==${col.comment})${col.javaName}#else${col.comment}#end的set方法
+     * @param $invalue$separator $invalue
+     * @date ${now}
+     * @author ${author}
+     */
+    public void set${cfc_get}($col.JavaType $invalue){
+#if($col.primaryKey && $col.JavaType == "String")
+        if($invalue != null && ${invalue}.trim().length() == 0){
+        	this.$invalue = null;
+        }else{
+        	this.$invalue = $invalue;
+        }
+#else
+		this.$invalue = $invalue;
+#end 	
+	} 
+##***********************属性的set方法 结束
+#end 
+	public String getMxVirtualId() {
+        return this.mxVirtualId;
+    }
+    
+    public void setMxVirtualId(String mxVirtualId) {
+        this.mxVirtualId = mxVirtualId;
+    } 
+##***********************equals方法 开始  
+    /**
+     * Hibernate通过该方法判断对象是否相等
+     * @return boolean
+     */  
+    public boolean equals(Object obj) {
+        if (this == obj)
+			return true;
+		
+        if (obj == null || !(obj instanceof ${table.JavaName}))
+	        return false; 
+	        
+		if (getClass() != obj.getClass())
+			return false;
+		
+		${table.JavaName} other = (${table.JavaName}) obj;
+		
+#foreach($key in ${table.columns.keySet()})
+#set ($col = ${table.columns.get($key)})
+#if(${col.generate})
+#set ($cfc=$col.javaName ) 
+#set ($invalue=${strings.lowercaseFirstLetter($cfc)})
+#if($col.javaType == "double")
+		if (Double.doubleToLongBits($invalue) != Double
+						.doubleToLongBits(other.$invalue)) {
+			return false;
+		}
+#elseif ($col.javaType == "float")
+		if (Float.floatToIntBits($invalue) != Float.floatToIntBits(other.$invalue)) {
+			return false;
+		}
+#elseif ($col.javaType == "long" || $col.javaType == "boolean" || $col.javaType == "int" || $col.javaType == "short")
+		if ($invalue != other.$invalue) {
+			return false;
+		}
+#elseif ($col.javaType == "byte[]")
+		if (!Arrays.equals($invalue, other.$invalue))
+			return false;
+#else
+		if ($invalue == null) {
+			if (other.$invalue != null) {
+				return false;
+			}
+		} else if (!${invalue}.equals(other.$invalue)) {
+			return false;
+		}
+#end
+#end
+#end
+		return true;
+	}
+##***********************equals方法 结束 
+##***********************toString 方法 开始
+    
+    /**
+     * toString方法
+     * @return String
+     */
+	public String toString(){
+#set ( $quote = '"' )
+#set ( $comma = ', ')
+		return $quote${table.javaName} [$quote
+#foreach($key in ${table.columns.keySet()})
+#set ($col = ${table.columns.get($key)})
+#if(${col.generate})
+#set ($cfc=$col.javaName ) 
+#set ($invalue=${strings.lowercaseFirstLetter($cfc)})
+#if ($col.javaType == "byte[]")
+#if ($velocityCount == 1)
+			+ $quote$invalue=$quote + Arrays.toString($invalue)
+#else
+			+ $quote$comma$invalue=$quote + Arrays.toString($invalue)
+#end
+#else
+#if ($velocityCount == ${table.columns.keySet().size()})
+			+ $quote$comma$invalue=$quote + $invalue;
+#else
+			+ $quote$comma$invalue=$quote + $invalue
+#end
+#end
+#end
+#end		
+	}
+   
+##***********************toString 方法 结束
+##***********************复写hashcode 开始
+    
+    /**
+     * hashcode方法
+     * @return int
+     * 
+     */
+    @Override
+    public int hashCode(){
+		return super.hashCode();
+	}
+##***********************hashcode 结束
+}
