@@ -39,6 +39,7 @@ import org.eclipse.ui.PlatformUI;
 
 import com.mqfdy.code.designer.editor.actions.pages.GeneratorDiaolg;
 import com.mqfdy.code.designer.editor.actions.pages.ParametersPage;
+import com.mqfdy.code.generator.utils.TemplateUtil;
 import com.mqfdy.code.reverse.DataSourceInfo;
 import com.mqfdy.code.reverse.ReverseException;
 import com.mqfdy.code.reverse.utils.ReverseUtil;
@@ -55,6 +56,11 @@ public class MicroParametersPage extends ParametersPage {
 	
 	/** The wizard page. */
 	private MicroGeneratorWizardPage wizardPage;
+	
+
+	private Combo templateCombo;
+
+	protected String templateType;
 
 	/**
 	 * Instantiates a new micro parameters page.
@@ -446,8 +452,63 @@ public class MicroParametersPage extends ParametersPage {
 			dbListCombo.setEnabled(false);
 		}
 		dbListCombo.setEnabled(false);
+		createTemplateControl(next,grid,layout2);
 	}
-	
+
+	/**
+	 * Creates the template control.
+	 *
+	 * @author Administrator
+	 * @param next the next
+	 * @param db the db
+	 * @param layoutDb the layout db
+	 * @param btGridData the bt grid data
+	 * @param types the types
+	 * @Date 2019-11-25 17:12:24
+	 */
+	public void createTemplateControl(Composite next,GridData grid,GridLayout layout2 ) {
+		Group template = new Group(next, SWT.FILL);
+		template.setText("代码模板");
+		GridData gridDataTemplate = new GridData();
+		gridDataTemplate.grabExcessHorizontalSpace = true;
+		// gridData.grabExcessVerticalSpace = true;
+		// gridData.horizontalSpan = 3;
+		gridDataTemplate.horizontalAlignment = GridData.FILL;
+//		gridDataDb.verticalAlignment = GridData.FILL;
+		GridLayout layoutTemplate = new GridLayout();
+		layoutTemplate.numColumns = 2;
+		
+		
+		template.setLayoutData(gridDataTemplate);
+		template.setLayout(layoutTemplate);
+		Label txtTemplate = new Label(template, SWT.NONE);
+		txtTemplate.setText("选择模板：");
+		GridData templateGridData = new GridData();
+		templateGridData.horizontalAlignment = GridData.FILL;
+		templateGridData.grabExcessHorizontalSpace = true;
+//		btGridData.verticalAlignment = GridData.CENTER;
+		templateCombo = new Combo(template, SWT.READ_ONLY);
+		templateCombo.setLayoutData(templateGridData);
+		
+		List<String> listTemp = TemplateUtil.getTemplateTypes();
+		String[] typeTemps = new String[listTemp.size()];
+		for (int i = 0; i < listTemp.size(); i++) {
+			typeTemps[i] = listTemp.get(i);
+		}
+		templateCombo.setItems(typeTemps);
+		templateCombo.select(0);
+		templateCombo.addSelectionListener(new SelectionListener() {
+
+			public void widgetSelected(SelectionEvent e) {
+				templateType = templateCombo.getText();
+			}
+
+			public void widgetDefaultSelected(SelectionEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+	}
 	/**
 	 * 获取基础包名.
 	 *
@@ -478,5 +539,12 @@ public class MicroParametersPage extends ParametersPage {
 			}
 		}
 		return wizardPage.getBusinessObjectModel().getNameSpace();
+	}	
+	public String getTemplateType() {
+		return templateType;
+	}
+
+	public void setTemplateType(String templateType) {
+		this.templateType = templateType;
 	}	
 }

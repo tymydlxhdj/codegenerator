@@ -1,7 +1,11 @@
 package com.mqfdy.code.generator.entity;
 
+import java.util.List;
+
 import org.eclipse.core.resources.IProject;
 
+import com.mqfdy.code.generator.model.CodeGenerationException;
+import com.mqfdy.code.generator.model.ICodeFileMaterial;
 import com.mqfdy.code.generator.persistence.IPersistenceModel;
 
 // TODO: Auto-generated Javadoc
@@ -60,5 +64,4 @@ public class PoGenerator extends EntityGenerator {
 		// TODO Auto-generated method stub
 		return persistenceModel.getJavaName();
 	}
-
 }

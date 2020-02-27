@@ -23,6 +23,8 @@ import com.mqfdy.code.generator.GeneratorPlugin;
 import com.mqfdy.code.generator.auxiliary.convert.ConvertUtil;
 import com.mqfdy.code.generator.auxiliary.model.ClassParam;
 import com.mqfdy.code.generator.model.AbstractGenerator;
+import com.mqfdy.code.generator.model.CodeGenerationException;
+import com.mqfdy.code.generator.model.ICodeFileMaterial;
 import com.mqfdy.code.generator.persistence.IPersistenceModel;
 import com.mqfdy.code.generator.utils.CodePropertiesUtil;
 import com.mqfdy.code.generator.utils.HibernateDataType;

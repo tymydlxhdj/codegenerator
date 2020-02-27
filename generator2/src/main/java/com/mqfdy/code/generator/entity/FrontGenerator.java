@@ -1,6 +1,7 @@
 package com.mqfdy.code.generator.entity;
 
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.velocity.runtime.RuntimeConstants;
@@ -8,6 +9,8 @@ import org.eclipse.core.resources.IProject;
 
 import com.mqfdy.code.generator.auxiliary.model.TemplateParam;
 import com.mqfdy.code.generator.model.AbstractGenerator;
+import com.mqfdy.code.generator.model.CodeGenerationException;
+import com.mqfdy.code.generator.model.ICodeFileMaterial;
 
 
 // TODO: Auto-generated Javadoc
@@ -150,5 +153,4 @@ public class FrontGenerator extends AbstractGenerator {
 	protected Map<String, Object> getSourceMap() {
 		return sourceMap;
 	}
-
 }

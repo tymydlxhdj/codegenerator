@@ -554,5 +554,7 @@ public class MicroGeneratorWizardPage extends WizardPage {
 		this.packageName = packageName;
 		businessObjectModel.setNameSpace(packageName);
 	}
-
+	public String getTemplateType() {
+		return pPage.getTemplateType();
+	}
 }

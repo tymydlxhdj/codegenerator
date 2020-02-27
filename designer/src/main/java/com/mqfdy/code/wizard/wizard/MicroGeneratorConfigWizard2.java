@@ -180,7 +180,7 @@ public class MicroGeneratorConfigWizard2 extends Wizard implements IMicroGenerat
 		String exportPackage = getExportPackage();
 		ICodeGenerator engine = CodeGeneratorFactory
 				.createCodeGenerator(project,microGeneratorWizardPage.getOption(),
-						microGeneratorWizardPage.getPackageName(),microGeneratorWizardPage.getOutputFolderPath());
+						microGeneratorWizardPage.getPackageName(),microGeneratorWizardPage.getTemplateType());
 		//fl/ag = validateModel(flag) && flag;
 		genCode(true, exportPackage, engine);
 		try {

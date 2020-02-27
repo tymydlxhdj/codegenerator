@@ -54,6 +54,7 @@ import com.mqfdy.code.rest.utils.WrappedTreeNodes;
 import com.mqfdy.code.service.validator.ServiceValidatorBaseException;
 #end
 
+import ${packageStrPre}.domain.${tjavaName};
 import ${packageStrPre}.services.I${tjavaName}Service;
 import ${packageStrPre}.vo.${tjavaName}VO;
 

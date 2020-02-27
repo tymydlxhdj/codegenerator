@@ -29,6 +29,7 @@ Bundle-ActivationPolicy: lazy
 Export-Package: com.mqfdy.code.datasource.utils,
  com.mqfdy.code.generator,
  com.mqfdy.code.generator.model,
+ com.mqfdy.code.generator.utils,
  com.mqfdy.code.generator.web,
  com.mqfdy.code.utils,
  org.apache.velocity,

@@ -28,101 +28,94 @@ import com.mqfdy.code.generator.utils.StringUtils;
 import com.mqfdy.code.utils.Logger;
 import com.mqfdy.code.utils.PluginUtil;
 
+
 // TODO: Auto-generated Javadoc
+
 /**
- * The Class AbstractGenerator.
+ * 生成代码抽象类.
  *
  * @author mqfdy
  */
 abstract public class AbstractGenerator implements IGenerator {
 
-	/** The Constant PERSISTENCE_MODEL_LIST_KEY. */
 	// 对应vm模板中的ptableList变量
+	/** PERSISTENCE_MODEL_LIST_KEY. */
 	public static final String PERSISTENCE_MODEL_LIST_KEY = "ptableList";
 	
-	/** The Constant JavaName. */
 	// 对应vm模板中的JavaName变量
+	/** JavaName. */
 	protected static final String JavaName = "JavaName";
-	
-	/** The Constant PERSISTENCE_MODEL_KEY. */
 	// 对应vm模板中的ptable变量
+	/** PERSISTENCE_MODEL_KEY. */
 	protected static final String PERSISTENCE_MODEL_KEY = "ptable";
-	
-	/** The java file extension. */
 	// 要生成的java文件的扩展名
+	/** JAVA_FILE_EXTENSION. */
 	protected String JAVA_FILE_EXTENSION = ".java";
 
-	/** The context. */
+	/** context. */
 	private VelocityContext context;
 	
-	/** The parent id. */
+	/** parentId. */
 	private String parentId;
 	
-	/** The strings. */
 	// 对应注册到Context中东STRING_UTILS_KEY，也就是vm模板中的strings变量
+	/** strings. */
 	private static StringUtils strings = new StringUtils();
 	
-	/** The Constant TEMPLATE_FILE_ENCODEING. */
 	// 模板文件的编码方式
+	/** TEMPLATE_FILE_ENCODEING. */
 	private static final String TEMPLATE_FILE_ENCODEING = "UTF-8";
-	
-	/** The is generate. */
 	// 是否要生成gererator要生成的代码
+	/** isGenerate. */
 	private boolean isGenerate = true;
 	
-	/** The is generate internal. */
+	/** isGenerateInternal. */
 	private boolean isGenerateInternal = true;
 
-	/** The default output file encoding. */
+	/** DEFAULT_OUTPUT_FILE_ENCODING. */
 	private static String DEFAULT_OUTPUT_FILE_ENCODING = "UTF-8";
 
-	/** The gen project. */
+	/** genProject. */
 	protected IProject genProject;
 
-	/** The Constant TABLE_KEY. */
 	// 对应vm模板中的table变量
+	/** TABLE_KEY. */
 	protected static final String TABLE_KEY = "table";
-	
-	/** The Constant STRING_UTILS_KEY. */
 	// 对应vm模板中的strings变量
+	/** STRING_UTILS_KEY. */
 	protected static final String STRING_UTILS_KEY = "strings";
-	
-	/** The Constant NOW_KEY. */
 	// 对应vm模板中的now变量
+	/** NOW_KEY. */
 	protected static final String NOW_KEY = "now";
-	
-	/** The Constant AUTHOR_KEY. */
 	// 对应vm模板中的autor变量
+	/** AUTHOR_KEY. */
 	protected static final String AUTHOR_KEY = "author";
-	
-	/** The Constant SCENE_KEY. */
 	// 对应vm模板中的scene变量
+	/** SCENE_KEY. */
 	protected static final String SCENE_KEY = "scene";
-	
-	/** The Constant D_QUOTE_KEY. */
 	// 对应vm模板中的dquote变量
+	/** D_QUOTE_KEY. */
 	protected static final String D_QUOTE_KEY = "dquote";
 	
-	/** The Constant D_QUOTE_VALUE. */
+	/** D_QUOTE_VALUE. */
 	protected static final String D_QUOTE_VALUE = "\"";
-	
-	/** The Constant DOLLAR_KEY. */
 	// 对应vm模板中的dollar变量
+	/** DOLLAR_KEY. */
 	protected static final String DOLLAR_KEY = "dollar";
 	
-	/** The Constant DOLLAR_VALUE. */
+	/** DOLLAR_VALUE. */
 	protected static final String DOLLAR_VALUE = "$";
 	
-	/** The Constant LINE_SEPARATOR. */
+	/** LINE_SEPARATOR. */
 	protected static final String LINE_SEPARATOR = "separator";
 	
-	/** The Constant JAVA_FILE_TYPE_VO. */
+	/** JAVA_FILE_TYPE_VO. */
 	public static final String JAVA_FILE_TYPE_VO = "vo";
 	
-	/** The Constant JAVA_FILE_TYPE_BIZC. */
+	/** JAVA_FILE_TYPE_BIZC. */
 	public static final String JAVA_FILE_TYPE_BIZC = "bizc";
 	
-	/** The Constant JAVA_FILE_TYPE_DAO. */
+	/** JAVA_FILE_TYPE_DAO. */
 	public static final String JAVA_FILE_TYPE_DAO = "dao";
 	
 	/** 树场景查询 父节点 字段 变量. */
@@ -131,12 +124,20 @@ abstract public class AbstractGenerator implements IGenerator {
 	/** om与java类型转换map. */
 	protected static final String TYPE_MAP = "typeMap";
 	
-	/** The root. */
+	/** root. */
 	private static String root;
 	
-	/** The properties. */
+	/** properties. */
 	protected static Properties properties = new Properties();
 	static {
+		
+	/*	// 设置velocity资源加载方式为file
+		properties.setProperty(RuntimeConstants.RESOURCE_LOADER, "file");
+		
+		//设置velocity资源加载方式为file时的处理类
+		properties.setProperty("file.resource.loader.class",
+				"org.apache.velocity.runtime.resource.loader.FileResourceLoader");*/
+		
 		try {
 			root = PluginUtil
 					.getPluginOSPath(GeneratorPlugin.PLUGIN_ID);
@@ -147,23 +148,22 @@ abstract public class AbstractGenerator implements IGenerator {
 		}
 	}
 
+	// 是否要生成gererator要生成的代码
 	/**
 	 * Instantiates a new abstract generator.
 	 *
-	 * @param curGenProject
-	 *            the cur gen project
+	 * @param curGenProject curGenProject
 	 */
-	// 是否要生成gererator要生成的代码
 	public AbstractGenerator(IProject curGenProject) {
 		this.genProject = curGenProject;
 	}
 
 	/**
-	 * Generate.
+	 * 方法描述：generate.
 	 *
-	 * @throws CodeGenerationException
-	 *             AbstractGenerator
-	 * @see com.mqfdy.code.generator.model.IGenerator#generate()
+	 * @author mqfdy
+	 * @throws CodeGenerationException w
+	 * @Date 2018年8月31日 下午2:18:52
 	 */
 	public void generate() throws CodeGenerationException {
 		String filePath = getOutputFilePath();
@@ -225,21 +225,22 @@ abstract public class AbstractGenerator implements IGenerator {
 	}
 	
 	/**
-	 * Checks if is generate.
+	 * 方法描述：isGenerate.
 	 *
-	 * @return AbstractGenerator
-	 * @see com.mqfdy.code.generator.model.IGenerator#isGenerate()
+	 * @author mqfdy
+	 * @return boolean
+	 * @Date 2018年8月31日 下午2:19:02
 	 */
 	public boolean isGenerate() {
 		return isGenerateInternal() && isGenerate;
 	}
 
 	/**
-	 * Sets the generate.
+	 * 方法描述：setGenerate.
 	 *
-	 * @param isGenerate
-	 *            AbstractGenerator
-	 * @see com.mqfdy.code.generator.model.IGenerator#setGenerate(boolean)
+	 * @author mqfdy
+	 * @param isGenerate isGenerate
+	 * @Date 2018年8月31日 下午2:19:08
 	 */
 	public void setGenerate(boolean isGenerate) {
 		this.isGenerate = isGenerate;
@@ -250,7 +251,7 @@ abstract public class AbstractGenerator implements IGenerator {
 	 *
 	 * @author mqfdy
 	 * @return true 生成，false 不生成
-	 * @Date 2018-9-3 11:38:38
+	 * @Date 2018年8月31日 下午2:19:14
 	 */
 	protected boolean isGenerateInternal() {
 		return isGenerateInternal;
@@ -261,7 +262,7 @@ abstract public class AbstractGenerator implements IGenerator {
 	 * 但是推荐子类重写getSourceMap（）方法来完成填充自己数据的目的.
 	 *
 	 * @author mqfdy
-	 * @Date 2018-9-3 11:38:38
+	 * @Date 2018年8月31日 下午2:19:27
 	 */
 	protected void initContext() {
 		getContext().put(STRING_UTILS_KEY, strings);
@@ -287,8 +288,8 @@ abstract public class AbstractGenerator implements IGenerator {
 	 * 子类也可通过重写此方法返回自己定义的VelocityContext的子类对象.
 	 *
 	 * @author mqfdy
-	 * @return the context
-	 * @Date 2018-09-03 09:00
+	 * @return VelocityContext实例
+	 * @Date 2018年8月31日 下午2:19:33
 	 */
 	protected VelocityContext getContext() {
 		if (context == null)
@@ -300,26 +301,27 @@ abstract public class AbstractGenerator implements IGenerator {
 	 * 获得要生成文件的文件名，不包括扩展名，由各个generator自己计算得出要生成的文件名称.
 	 *
 	 * @author mqfdy
-	 * @return the file name without extension
-	 * @Date 2018-09-03 09:00
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:19:41
 	 */
 	abstract protected String getFileNameWithoutExtension();
 
 	/**
 	 * 获得要生成文件的扩展名，要以'.'开始，由各个generator自己维护要生成的文件的扩展名
+	 * 方法描述：getFileExtension
 	 *
 	 * @author mqfdy
-	 * @return the file extension
-	 * @Date 2018-09-03 09:00
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:19:48
 	 */
 	abstract protected String getFileExtension();
 
 	/**
-	 * Gets the output folder path.
+	 * 方法描述：getOutputFolderPath.
 	 *
 	 * @author mqfdy
-	 * @return the output folder path
-	 * @Date 2018-09-03 09:00
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:19:57
 	 */
 	abstract protected String getOutputFolderPath();
 
@@ -327,59 +329,60 @@ abstract public class AbstractGenerator implements IGenerator {
 	 * 获得generator要使用的vm模板所在的路径，有具体的generator维护自己的vm模板位置.
 	 *
 	 * @author mqfdy
-	 * @return the template path
-	 * @Date 2018-09-03 09:00
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:20:00
 	 */
 	abstract protected String getTemplatePath();
 
 	/**
-	 * Checks if is target file exist.
+	 * 方法描述：isTargetFileExist.
 	 *
-	 * @return AbstractGenerator
-	 * @see com.mqfdy.code.generator.model.IGenerator#isTargetFileExist()
+	 * @author mqfdy
+	 * @return boolean
+	 * @Date 2018年8月31日 下午2:20:04
 	 */
 	public boolean isTargetFileExist() {
 		return new File(getOutputFilePath()).exists();
 	}
 	
 	/**
-	 * 获得要填充到VelocityContext中的数据，key应该对应vm模板中的变量 作用就是为vm中的各个变量赋值.
+	 * 获得要填充到VelocityContext中的数据，key应该对应vm模板中的变量 作用就是为vm中的各个变量赋值
+	 * 方法描述：getSourceMap.
 	 *
 	 * @author mqfdy
-	 * @return the source map
-	 * @Date 2018-09-03 09:00
+	 * @return Map<String,Object>实例
+	 * @Date 2018年8月31日 下午2:20:11
 	 */
 	abstract protected Map<String, Object> getSourceMap();
 
 	/**
-	 * Gets the gen project.
+	 * 方法描述：getGenProject.
 	 *
 	 * @author mqfdy
-	 * @return the gen project
-	 * @Date 2018-09-03 09:00
+	 * @return IProject实例
+	 * @Date 2018年8月31日 下午2:20:18
 	 */
 	public IProject getGenProject() {
 		return genProject;
 	}
 
 	/**
-	 * Gets the parent id.
+	 * 方法描述：getParentId.
 	 *
 	 * @author mqfdy
-	 * @return the parent id
-	 * @Date 2018-09-03 09:00
+	 * @return String实例
+	 * @Date 2018年8月31日 下午2:20:21
 	 */
 	public String getParentId() {
 		return parentId;
 	}
 
 	/**
-	 * Sets the parent id.
+	 * 方法描述：setParentId.
 	 *
 	 * @author mqfdy
-	 * @param parentId
-	 *            the new parent id
-	 * @Date 2018-09-03 09:00
+	 * @param parentId parentId
+	 * @Date 2018年8月31日 下午2 :20:26
 	 */
 	public void setParentId(String parentId) {
 		this.parentId = parentId;

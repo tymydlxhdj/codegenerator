@@ -2,6 +2,7 @@ package com.mqfdy.code.generator.entity;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFolder;
@@ -9,6 +10,8 @@ import org.eclipse.core.resources.IProject;
 
 import com.mqfdy.code.generator.GenProjectTypeUtilTools;
 import com.mqfdy.code.generator.model.AbstractGenerator;
+import com.mqfdy.code.generator.model.CodeGenerationException;
+import com.mqfdy.code.generator.model.ICodeFileMaterial;
 import com.mqfdy.code.generator.persistence.IPersistenceModel;
 import com.mqfdy.code.generator.utils.StringUtils;
 
